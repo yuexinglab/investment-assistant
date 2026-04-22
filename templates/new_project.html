@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新建项目 — AI 项目判断工作台</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <a href="{{ url_for('index') }}" class="back-link">← 返回</a>
+      <h1>新建项目</h1>
+    </header>
+
+    <div class="form-card">
+      <form action="{{ url_for('create_project_route') }}" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="company_name">公司名称 *</label>
+          <input type="text" id="company_name" name="company_name"
+                 placeholder="例如：杉海创新科技" required>
+        </div>
+
+        <div class="form-group">
+          <label for="bp_file">上传 BP 材料 *</label>
+          <div class="file-upload-area" id="uploadArea">
+            <input type="file" id="bp_file" name="bp_file"
+                   accept=".pdf,.txt,.docx,.md" required>
+            <div class="file-upload-hint">
+              <span class="upload-icon">📄</span>
+              <p>点击选择文件或拖拽到此处</p>
+              <p class="hint-small">支持 PDF / TXT / DOCX，最大 50MB</p>
+            </div>
+          </div>
+          <p class="file-name-display" id="fileNameDisplay"></p>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary btn-large">
+            创建项目并上传 BP →
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // 显示选中的文件名
+    document.getElementById('bp_file').addEventListener('change', function(e) {
+      const name = e.target.files[0]?.name || '';
+      document.getElementById('fileNameDisplay').textContent = name ? '已选择：' + name : '';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ meta.company_name }} — 项目详情</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <a href="{{ url_for('index') }}" class="back-link">← 返回项目列表</a>
+      <h1>{{ meta.company_name }}</h1>
+      <span class="status-badge status-{{ meta.status }}">
+        {% if meta.status == 'created' %}待分析
+        {% elif meta.status == 'v1_done' %}初判完成
+        {% elif meta.status == 'v2_done' %}更新完成
+        {% endif %}
+      </span>
+    </header>
+
+    <!-- 步骤一：初判 1.0 -->
+    <div class="step-card {% if meta.status != 'created' %}step-done{% endif %}">
+      <div class="step-header">
+        <span class="step-num">第 1 步</span>
+        <h2>初判 1.0 — AI 分析 BP</h2>
+      </div>
+      <p class="step-desc">上传 BP 后，三个 AI 角色（业务理解 → 风险挑刺 → 整合裁判）协同分析，生成：公司快照 / BP拆解 / 初步优势与风险 / 第一轮问题清单 / 话术建议</p>
+
+      {% if meta.status == 'created' %}
+        <div class="analyze-action">
+          <button class="btn btn-primary btn-large" onclick="startAnalyze()">
+            🚀 开始初判分析（预计 2-3 分钟）
+          </button>
+          <p class="hint-small">AI 会依次调用三个角色分析，请耐心等待</p>
+        </div>
+      {% else %}
+        <a href="{{ url_for('result_v1', project_id=project_id) }}" class="btn btn-outline">查看初判报告</a>
+      {% endif %}
+    </div>
+
+    <!-- 步骤二：沟通更新 2.0 -->
+    <div class="step-card {% if meta.status == 'v2_done' %}step-done{% elif meta.status == 'created' %}step-locked{% endif %}">
+      <div class="step-header">
+        <span class="step-num">第 2 步</span>
+        <h2>沟通更新 2.0 — 会议后更新判断</h2>
+      </div>
+      <p class="step-desc">开完会之后，上传会议录音转写 / 纪要 / 聊天记录。AI 对照问题树更新判断状态，识别风险变化，生成第二轮追问。</p>
+
+      {% if meta.status == 'v1_done' or meta.status == 'v2_done' %}
+        <form id="updateForm" enctype="multipart/form-data">
+          <div class="form-group">
+            <label>上传会议记录（TXT / DOCX / PDF）</label>
+            <input type="file" id="meeting_file" name="meeting_file"
+                   accept=".txt,.docx,.pdf,.md">
+            <p class="file-name-display" id="meetingFileName"></p>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="startUpdate()">
+            📝 更新判断
+          </button>
+        </form>
+        {% if meta.status == 'v2_done' %}
+          <a href="{{ url_for('result_v2', project_id=project_id) }}" class="btn btn-outline" style="margin-left:12px">查看2.0报告</a>
+        {% endif %}
+      {% else %}
+        <p class="step-locked-msg">请先完成第 1 步初判分析</p>
+      {% endif %}
+    </div>
+
+    <!-- 导出 -->
+    {% if meta.status != 'created' %}
+    <div class="export-bar">
+      <a href="{{ url_for('export_report', project_id=project_id) }}" class="btn btn-outline">
+        ⬇ 导出 Markdown 报告
+      </a>
+    </div>
+    {% endif %}
+  </div>
+
+  <!-- 加载遮罩 -->
+  <div class="loading-overlay" id="loadingOverlay" style="display:none">
+    <div class="loading-box">
+      <div class="spinner"></div>
+      <p id="loadingText">AI 分析中，请稍候...</p>
+      <p class="hint-small">三个角色依次工作，预计 2-4 分钟</p>
+    </div>
+  </div>
+
+  <script>
+    function startAnalyze() {
+      document.getElementById('loadingOverlay').style.display = 'flex';
+      document.getElementById('loadingText').textContent = 'A角色：业务理解分析中...';
+
+      fetch('{{ url_for("analyze", project_id=project_id) }}', { method: 'POST' })
+        .then(r => r.json())
+        .then(data => {
+          if (data.redirect) window.location.href = data.redirect;
+          else alert('分析失败：' + (data.error || '未知错误'));
+        })
+        .catch(e => {
+          document.getElementById('loadingOverlay').style.display = 'none';
+          alert('请求失败，请检查网络和 API Key 配置：' + e);
+        });
+    }
+
+    function startUpdate() {
+      const file = document.getElementById('meeting_file').files[0];
+      if (!file) { alert('请先选择会议记录文件'); return; }
+
+      const formData = new FormData();
+      formData.append('meeting_file', file);
+
+      document.getElementById('loadingOverlay').style.display = 'flex';
+      document.getElementById('loadingText').textContent = 'D角色：会议分析中...';
+
+      fetch('{{ url_for("update_v2", project_id=project_id) }}', {
+        method: 'POST',
+        body: formData
+      })
+        .then(r => r.json())
+        .then(data => {
+          if (data.redirect) window.location.href = data.redirect;
+          else alert('更新失败：' + (data.error || '未知错误'));
+        })
+        .catch(e => {
+          document.getElementById('loadingOverlay').style.display = 'none';
+          alert('请求失败：' + e);
+        });
+    }
+
+    document.getElementById('meeting_file')?.addEventListener('change', function(e) {
+      const name = e.target.files[0]?.name || '';
+      document.getElementById('meetingFileName').textContent = name ? '已选择：' + name : '';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ meta.company_name }} — 初判报告 1.0</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container report-container">
+    <header class="report-header">
+      <a href="{{ url_for('project_detail', project_id=project_id) }}" class="back-link">← 返回项目</a>
+      <div class="report-title-row">
+        <h1>{{ meta.company_name }} — 初判报告 1.0</h1>
+        <a href="{{ url_for('export_report', project_id=project_id) }}" class="btn btn-outline btn-sm">⬇ 导出</a>
+      </div>
+      <p class="report-meta">AI 多角色分析 · 三角色协同生成</p>
+    </header>
+
+    <!-- 角色切换标签（可选查看中间过程） -->
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="showTab('final')">最终报告</button>
+      <button class="tab-btn" onclick="showTab('role_a')">A角色：业务理解</button>
+      <button class="tab-btn" onclick="showTab('role_b')">B角色：风险挑刺</button>
+    </div>
+
+    <!-- 最终报告（C角色整合输出） -->
+    <div class="tab-content active" id="tab-final">
+      <div class="report-body markdown-content">
+        {{ report.final_report | safe | replace('\n', '<br>') }}
+      </div>
+    </div>
+
+    <!-- A 角色原始输出 -->
+    <div class="tab-content" id="tab-role_a">
+      <div class="role-label role-a">A 角色：业务理解分析师</div>
+      <div class="report-body markdown-content">
+        {{ report.role_a | safe | replace('\n', '<br>') }}
+      </div>
+    </div>
+
+    <!-- B 角色原始输出 -->
+    <div class="tab-content" id="tab-role_b">
+      <div class="role-label role-b">B 角色：反方挑刺者</div>
+      <div class="report-body markdown-content">
+        {{ report.role_b | safe | replace('\n', '<br>') }}
+      </div>
+    </div>
+
+    <!-- 底部操作栏 -->
+    <div class="report-footer">
+      <p>初判完成后，开会之前可以直接使用第一轮问题清单</p>
+      <a href="{{ url_for('project_detail', project_id=project_id) }}" class="btn btn-primary">
+        开完会后 → 上传会议记录更新判断
+      </a>
+    </div>
+  </div>
+
+  <script>
+    function showTab(name) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById('tab-' + name).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
+</body>
+</html>

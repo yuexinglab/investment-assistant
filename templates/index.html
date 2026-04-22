@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 项目判断工作台</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>🔍 AI 项目判断工作台</h1>
+      <p class="subtitle">上传 BP → 多角色 AI 分析 → 问题清单 → 会议更新判断</p>
+    </header>
+
+    <div class="action-bar">
+      <a href="{{ url_for('new_project') }}" class="btn btn-primary">＋ 新建项目</a>
+    </div>
+
+    {% if projects %}
+    <div class="project-list">
+      <h2>项目列表</h2>
+      {% for p in projects %}
+      <div class="project-card">
+        <div class="project-info">
+          <h3>
+            <a href="{{ url_for('project_detail', project_id=p.project_id) }}">
+              {{ p.company_name }}
+            </a>
+          </h3>
+          <span class="status-badge status-{{ p.status }}">
+            {% if p.status == 'created' %}待分析
+            {% elif p.status == 'v1_done' %}初判完成
+            {% elif p.status == 'v2_done' %}更新完成
+            {% else %}{{ p.status }}
+            {% endif %}
+          </span>
+          <p class="meta-text">创建于 {{ p.created_at[:10] }}</p>
+        </div>
+        <div class="project-actions">
+          {% if p.status == 'v2_done' %}
+            <a href="{{ url_for('result_v2', project_id=p.project_id) }}" class="btn btn-sm">查看2.0报告</a>
+          {% elif p.status == 'v1_done' %}
+            <a href="{{ url_for('result_v1', project_id=p.project_id) }}" class="btn btn-sm">查看初判报告</a>
+          {% else %}
+            <a href="{{ url_for('project_detail', project_id=p.project_id) }}" class="btn btn-sm">开始分析</a>
+          {% endif %}
+          <a href="{{ url_for('export_report', project_id=p.project_id) }}" class="btn btn-sm btn-outline">导出</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">
+      <p>还没有项目，点击上方「新建项目」开始第一个项目判断</p>
+    </div>
+    {% endif %}
+  </div>
+</body>
+</html>

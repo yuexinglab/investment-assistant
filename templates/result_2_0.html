@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ meta.company_name }} — 沟通更新 2.0</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container report-container">
+    <header class="report-header">
+      <a href="{{ url_for('project_detail', project_id=project_id) }}" class="back-link">← 返回项目</a>
+      <div class="report-title-row">
+        <h1>{{ meta.company_name }} — 判断更新 2.0</h1>
+        <a href="{{ url_for('export_report', project_id=project_id) }}" class="btn btn-outline btn-sm">⬇ 导出</a>
+      </div>
+      <p class="report-meta">D+E+C 三角色协同更新 · 基于会议沟通</p>
+    </header>
+
+    <!-- 角色切换标签 -->
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="showTab('final')">更新报告</button>
+      <button class="tab-btn" onclick="showTab('role_d')">D角色：会议分析</button>
+      <button class="tab-btn" onclick="showTab('role_e')">E角色：第二轮追问</button>
+    </div>
+
+    <!-- 最终更新报告 -->
+    <div class="tab-content active" id="tab-final">
+      <div class="report-body markdown-content">
+        {{ report.final_report | safe | replace('\n', '<br>') }}
+      </div>
+    </div>
+
+    <!-- D 角色：会议分析 -->
+    <div class="tab-content" id="tab-role_d">
+      <div class="role-label role-d">D 角色：会议分析师</div>
+      <div class="report-body markdown-content">
+        {{ report.role_d | safe | replace('\n', '<br>') }}
+      </div>
+    </div>
+
+    <!-- E 角色：追问生成 -->
+    <div class="tab-content" id="tab-role_e">
+      <div class="role-label role-e">E 角色：专业投资人追问</div>
+      <div class="report-body markdown-content">
+        {{ report.role_e | safe | replace('\n', '<br>') }}
+      </div>
+    </div>
+
+    <!-- 底部操作栏 -->
+    <div class="report-footer">
+      <p>还有新的沟通？继续上传会议记录，持续更新判断</p>
+      <a href="{{ url_for('project_detail', project_id=project_id) }}" class="btn btn-primary">
+        继续上传会议记录 →
+      </a>
+    </div>
+  </div>
+
+  <script>
+    function showTab(name) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById('tab-' + name).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
+</body>
+</html>
