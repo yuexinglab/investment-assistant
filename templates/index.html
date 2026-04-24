@@ -38,14 +38,7 @@
           <p class="meta-text">创建于 {{ p.created_at[:10] }}</p>
         </div>
         <div class="project-actions">
-          {% if p.status == 'v2_done' %}
-            <a href="{{ url_for('result_v2', project_id=p.project_id) }}" class="btn btn-sm">查看2.0报告</a>
-          {% elif p.status == 'v1_done' %}
-            <a href="{{ url_for('result_v1', project_id=p.project_id) }}" class="btn btn-sm">查看初判报告</a>
-          {% else %}
-            <a href="{{ url_for('project_detail', project_id=p.project_id) }}" class="btn btn-sm">开始分析</a>
-          {% endif %}
-          <a href="{{ url_for('export_report', project_id=p.project_id) }}" class="btn btn-sm btn-outline">导出</a>
+          <a href="{{ url_for('project_detail', project_id=p.project_id) }}" class="btn btn-sm btn-outline">详情</a>
         </div>
       </div>
       {% endfor %}

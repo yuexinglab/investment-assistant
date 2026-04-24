@@ -1,0 +1,28 @@
+{
+  "timestamp": "20260424_002451",
+  "scan_questions_count": 7,
+  "internal_gaps_count": 3,
+  "gaps": [
+    {
+      "gap_id": "gap_1",
+      "has_main_path": true,
+      "has_backup_path": true,
+      "has_red_flag": true,
+      "main_path_deepens": 43
+    },
+    {
+      "gap_id": "gap_2",
+      "has_main_path": true,
+      "has_backup_path": true,
+      "has_red_flag": true,
+      "main_path_deepens": 52
+    },
+    {
+      "gap_id": "gap_3",
+      "has_main_path": true,
+      "has_backup_path": true,
+      "has_red_flag": true,
+      "main_path_deepens": 40
+    }
+  ]
+}

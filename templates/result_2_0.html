@@ -12,7 +12,7 @@
       <a href="{{ url_for('project_detail', project_id=project_id) }}" class="back-link">← 返回项目</a>
       <div class="report-title-row">
         <h1>{{ meta.company_name }} — 判断更新 2.0</h1>
-        <a href="{{ url_for('export_report', project_id=project_id) }}" class="btn btn-outline btn-sm">⬇ 导出</a>
+        <a href="{{ url_for('export_report', project_id=project_id, version='v2_0') }}" class="btn btn-outline btn-sm">⬇ 导出</a>
       </div>
       <p class="report-meta">D+E+C 三角色协同更新 · 基于会议沟通</p>
     </header>

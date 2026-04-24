@@ -1,0 +1,124 @@
+{
+  "selected_buckets": [
+    "tech_barrier",
+    "customer_value",
+    "commercialization"
+  ],
+  "bucket_outputs": [
+    {
+      "bucket_key": "tech_barrier",
+      "bucket_label": "技术/壁垒是否成立",
+      "point": "支持Step1：超分子自组装技术确实有诺奖级理论支撑，且公司通过专利和AI平台构建了差异化壁垒。",
+      "explanation": "【claim】BP强调基于超分子智组装技术获得两次诺奖背书，创始人直接与诺奖得主合作，并拥有156+项发明专利。【reality】超分子化学是公认前沿领域，但多数公司停留在实验室。公司已实现千吨级产能，且将AI用于高通量筛选，这在材料行业内相对少见。【gap】专利是否覆盖关键工艺节点（如非共价键组合方式）尚未明确。【结论】support。技术方向稀缺，形成一定壁垒。",
+      "relation_to_step1": "support",
+      "certainty": "medium",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "tech_barrier",
+      "bucket_label": "技术/壁垒是否成立",
+      "point": "反对Step1：超分子改性技术可能被包装成底层原创，实际是行业通用改性手段，壁垒有限。",
+      "explanation": "【claim】BP称其技术为“全球首创AI驱动超分子新材料研发体系”。【reality】超分子改性（如共晶、离子盐）在制药、化妆品行业是常规技术，多家公司（如Croda、BASF）也在做类似分子改性。AI高通量筛选在材料领域也非独创，晶泰科技等已应用。【gap】BP未提供与竞品性能的定量对比（如溶解性提升倍数、成本差异），也未说明专利是核心专利还是外围专利。【结论】contradict。技术可能被高估，壁垒不如自述坚实。",
+      "relation_to_step1": "contradict",
+      "certainty": "medium",
+      "source_type": "common_sense"
+    },
+    {
+      "bucket_key": "customer_value",
+      "bucket_label": "客户为什么付钱",
+      "point": "支持Step1：客户为性能提升和差异化卖点付费，头部品牌已验证。",
+      "explanation": "【claim】BP称服务欧莱雅、宝洁、华熙生物等100+头部企业，合作金额超3000万（敷尔佳）。【reality】美妆品牌对原料性能（如透皮吸收、稳定性）敏感，愿意为提升付费。超分子水杨酸、超分子VC等案例显示生物利用度提升40-104%，直接转化为产品卖点。【gap】未披露具体采购量或复购率，但头部客户合作本身是强信号。【结论】support。客户价值清晰：性能改善与营销卖点。",
+      "relation_to_step1": "support",
+      "certainty": "high",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "customer_value",
+      "bucket_label": "客户为什么付钱",
+      "point": "反对Step1：在新能源领域，客户付费动机不强，成本和可靠性是更大考量，性能提升未必驱动采购。",
+      "explanation": "【claim】BP称深共晶电解液可提升安全性、抑制枝晶，并展示500次循环保持率>95%。【reality】电池客户（如协鑫）更关注成本、供应链稳定性和系统级验证。深共晶电解液成本是否低于传统电解液未提及。离子电导率中等（~10⁻³ S/cm），可能牺牲倍率性能。客户替换现有电解液需重新设计电芯，切换成本高。【gap】BP只有实验室数据，无批量供货协议或第三方认证。【结论】contradict。新能源客户价值存疑，性能优势未转化为采购动机。",
+      "relation_to_step1": "contradict",
+      "certainty": "medium",
+      "source_type": "common_sense"
+    },
+    {
+      "bucket_key": "commercialization",
+      "bucket_label": "商业化路径是否成立",
+      "point": "支持Step1：美妆领域已跑通商业化，从原料到配方到成品，路径清晰。",
+      "explanation": "【claim】BP披露与敷尔佳年合作超3000万，从原料定制到OEM成品生产。【reality】美妆原料商业化周期短（1-2年），验证门槛低。公司已实现千吨级产能，并服务欧莱雅等全球品牌，证明交付能力。【gap】美妆收入规模仍小（2024年1.23亿），但增长路径明确。【结论】support。商业化第一步成立。",
+      "relation_to_step1": "support",
+      "certainty": "high",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "commercialization",
+      "bucket_label": "商业化路径是否成立",
+      "point": "反对Step1：从美妆向新能源跨越存在巨大商业化鸿沟，验证周期和资金需求远超预期。",
+      "explanation": "【claim】BP计划2025年合并千沐，推进锂电回收项目落地。【reality】新能源材料验证周期3-5年，需通过电芯厂、整车厂多重认证。公司2024年仍亏损，美妆收入仅1.23亿，难以支撑多线作战。锂电回收项目需重资产投入，BP未披露具体投资额和回报周期。【gap】新能源业务只有意向合作（协鑫）和测试数据，无批量订单。【结论】contradict。商业化路径过于激进，风险极高。",
+      "relation_to_step1": "contradict",
+      "certainty": "high",
+      "source_type": "common_sense"
+    }
+  ],
+  "publicly_resolvable": [
+    {
+      "bucket_key": "tech_barrier",
+      "item": "超分子改性技术在美妆/制药行业是否为通用技术",
+      "current_conclusion": "超分子共晶、离子盐等改性技术在制药（如提高溶解度）和化妆品（如改善透皮）中是成熟方法，多家公司（如BASF、Croda）有类似产品线。杉海创新的差异化在于AI筛选和专利布局，但底层技术并非独创。",
+      "confidence": "high"
+    },
+    {
+      "bucket_key": "customer_value",
+      "item": "头部客户合作是否代表真实付费",
+      "current_conclusion": "欧莱雅、宝洁等品牌对原料供应商有严格审核流程，合作通常意味着至少通过了小试或中试验证。但BP未披露合作是研发合作还是批量采购，需区分。",
+      "confidence": "medium"
+    },
+    {
+      "bucket_key": "commercialization",
+      "item": "新能源材料验证周期的一般长度",
+      "current_conclusion": "电池材料（如电解液）从实验室到量产通常需5-8年，需通过电芯级安全测试、循环寿命测试和整车认证。杉海创新2025年计划落地项目，时间上极为紧张。",
+      "confidence": "high"
+    }
+  ],
+  "still_unresolved": [
+    {
+      "bucket_key": "tech_barrier",
+      "question": "杉海创新的156+项专利中，有多少是覆盖核心工艺（如特定非共价键组合、AI筛选算法）的核心专利，而非外围应用专利？",
+      "why_unresolved": "BP未提供专利清单或权利要求摘要，无法判断专利的排他性和可绕开性。需通过公开专利数据库或尽调确认。",
+      "impact_level": "high"
+    },
+    {
+      "bucket_key": "commercialization",
+      "question": "千沐新能源的深共晶电解液和锂电回收技术，是否有已落地的批量供货协议或第三方认证（如车规级安全测试）？",
+      "why_unresolved": "BP仅展示实验室数据和与协鑫的意向合作，无批量订单或认证。新能源业务商业化真实性完全依赖这些未公开信息。",
+      "impact_level": "high"
+    },
+    {
+      "bucket_key": "customer_value",
+      "question": "在新能源领域，深共晶电解液的成本相比传统电解液是否有明确优势（如降低30%以上）？",
+      "why_unresolved": "BP未提供成本对比数据。若成本无优势，客户替换动力将极低。需通过行业对标或客户访谈验证。",
+      "impact_level": "high"
+    }
+  ],
+  "tensions": [
+    "技术壁垒：超分子改性为通用技术 vs 公司通过AI和专利宣称独创",
+    "客户价值：美妆客户为性能付费已验证 vs 新能源客户因成本和切换成本缺乏付费动机",
+    "商业化路径：美妆领域已跑通 vs 新能源领域验证周期和资金需求构成巨大鸿沟"
+  ],
+  "step1_adjustment_hints": {
+    "supported": [
+      "美妆商业化路径清晰，头部客户合作验证了客户价值。",
+      "技术方向（超分子+AI）在材料科学中具有前沿性和差异化潜力。"
+    ],
+    "caution": [
+      "超分子改性技术可能被包装为底层原创，实际在美妆和制药行业是通用手段，需警惕专利壁垒的真实强度。",
+      "新能源业务商业化鸿沟巨大，从美妆到电池的跨越可能过于激进，需重点关注验证周期和资金风险。"
+    ],
+    "to_step4": [
+      "核心专利的覆盖范围与可绕开性（tech_barrier）。",
+      "新能源业务是否有批量订单或第三方认证（commercialization）。",
+      "深共晶电解液的量产成本与传统方案对比（customer_value）。"
+    ]
+  },
+  "raw_text": "{\n  \"selected_buckets\": [\"tech_barrier\", \"customer_value\", \"commercialization\"],\n  \"bucket_outputs\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"bucket_label\": \"技术/壁垒是否成立\",\n      \"point\": \"支持Step1：超分子自组装技术确实有诺奖级理论支撑，且公司通过专利和AI平台构建了差异化壁垒。\",\n      \"explanation\": \"【claim】BP强调基于超分子智组装技术获得两次诺奖背书，创始人直接与诺奖得主合作，并拥有156+项发明专利。【reality】超分子化学是公认前沿领域，但多数公司停留在实验室。公司已实现千吨级产能，且将AI用于高通量筛选，这在材料行业内相对少见。【gap】专利是否覆盖关键工艺节点（如非共价键组合方式）尚未明确。【结论】support。技术方向稀缺，形成一定壁垒。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"bucket_label\": \"技术/壁垒是否成立\",\n      \"point\": \"反对Step1：超分子改性技术可能被包装成底层原创，实际是行业通用改性手段，壁垒有限。\",\n      \"explanation\": \"【claim】BP称其技术为“全球首创AI驱动超分子新材料研发体系”。【reality】超分子改性（如共晶、离子盐）在制药、化妆品行业是常规技术，多家公司（如Croda、BASF）也在做类似分子改性。AI高通量筛选在材料领域也非独创，晶泰科技等已应用。【gap】BP未提供与竞品性能的定量对比（如溶解性提升倍数、成本差异），也未说明专利是核心专利还是外围专利。【结论】contradict。技术可能被高估，壁垒不如自述坚实。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"common_sense\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"bucket_label\": \"客户为什么付钱\",\n      \"point\": \"支持Step1：客户为性能提升和差异化卖点付费，头部品牌已验证。\",\n      \"explanation\": \"【claim】BP称服务欧莱雅、宝洁、华熙生物等100+头部企业，合作金额超3000万（敷尔佳）。【reality】美妆品牌对原料性能（如透皮吸收、稳定性）敏感，愿意为提升付费。超分子水杨酸、超分子VC等案例显示生物利用度提升40-104%，直接转化为产品卖点。【gap】未披露具体采购量或复购率，但头部客户合作本身是强信号。【结论】support。客户价值清晰：性能改善与营销卖点。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"high\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"bucket_label\": \"客户为什么付钱\",\n      \"point\": \"反对Step1：在新能源领域，客户付费动机不强，成本和可靠性是更大考量，性能提升未必驱动采购。\",\n      \"explanation\": \"【claim】BP称深共晶电解液可提升安全性、抑制枝晶，并展示500次循环保持率>95%。【reality】电池客户（如协鑫）更关注成本、供应链稳定性和系统级验证。深共晶电解液成本是否低于传统电解液未提及。离子电导率中等（~10⁻³ S/cm），可能牺牲倍率性能。客户替换现有电解液需重新设计电芯，切换成本高。【gap】BP只有实验室数据，无批量供货协议或第三方认证。【结论】contradict。新能源客户价值存疑，性能优势未转化为采购动机。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"common_sense\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"bucket_label\": \"商业化路径是否成立\",\n      \"point\": \"支持Step1：美妆领域已跑通商业化，从原料到配方到成品，路径清晰。\",\n      \"explanation\": \"【claim】BP披露与敷尔佳年合作超3000万，从原料定制到OEM成品生产。【reality】美妆原料商业化周期短（1-2年），验证门槛低。公司已实现千吨级产能，并服务欧莱雅等全球品牌，证明交付能力。【gap】美妆收入规模仍小（2024年1.23亿），但增长路径明确。【结论】support。商业化第一步成立。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"high\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"bucket_label\": \"商业化路径是否成立\",\n      \"point\": \"反对Step1：从美妆向新能源跨越存在巨大商业化鸿沟，验证周期和资金需求远超预期。\",\n      \"explanation\": \"【claim】BP计划2025年合并千沐，推进锂电回收项目落地。【reality】新能源材料验证周期3-5年，需通过电芯厂、整车厂多重认证。公司2024年仍亏损，美妆收入仅1.23亿，难以支撑多线作战。锂电回收项目需重资产投入，BP未披露具体投资额和回报周期。【gap】新能源业务只有意向合作（协鑫）和测试数据，无批量订单。【结论】contradict。商业化路径过于激进，风险极高。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"high\",\n      \"source_type\": \"common_sense\"\n    }\n  ],\n  \"publicly_resolvable\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"item\": \"超分子改性技术在美妆/制药行业是否为通用技术\",\n      \"current_conclusion\": \"超分子共晶、离子盐等改性技术在制药（如提高溶解度）和化妆品（如改善透皮）中是成熟方法，多家公司（如BASF、Croda）有类似产品线。杉海创新的差异化在于AI筛选和专利布局，但底层技术并非独创。\",\n      \"confidence\": \"high\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"item\": \"头部客户合作是否代表真实付费\",\n      \"current_conclusion\": \"欧莱雅、宝洁等品牌对原料供应商有严格审核流程，合作通常意味着至少通过了小试或中试验证。但BP未披露合作是研发合作还是批量采购，需区分。\",\n      \"confidence\": \"medium\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"item\": \"新能源材料验证周期的一般长度\",\n      \"current_conclusion\": \"电池材料（如电解液）从实验室到量产通常需5-8年，需通过电芯级安全测试、循环寿命测试和整车认证。杉海创新2025年计划落地项目，时间上极为紧张。\",\n      \"confidence\": \"high\"\n    }\n  ],\n  \"still_unresolved\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"question\": \"杉海创新的156+项专利中，有多少是覆盖核心工艺（如特定非共价键组合、AI筛选算法）的核心专利，而非外围应用专利？\",\n      \"why_unresolved\": \"BP未提供专利清单或权利要求摘要，无法判断专利的排他性和可绕开性。需通过公开专利数据库或尽调确认。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"question\": \"千沐新能源的深共晶电解液和锂电回收技术，是否有已落地的批量供货协议或第三方认证（如车规级安全测试）？\",\n      \"why_unresolved\": \"BP仅展示实验室数据和与协鑫的意向合作，无批量订单或认证。新能源业务商业化真实性完全依赖这些未公开信息。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"question\": \"在新能源领域，深共晶电解液的成本相比传统电解液是否有明确优势（如降低30%以上）？\",\n      \"why_unresolved\": \"BP未提供成本对比数据。若成本无优势，客户替换动力将极低。需通过行业对标或客户访谈验证。\",\n      \"impact_level\": \"high\"\n    }\n  ],\n  \"tensions\": [\n    \"技术壁垒：超分子改性为通用技术 vs 公司通过AI和专利宣称独创\",\n    \"客户价值：美妆客户为性能付费已验证 vs 新能源客户因成本和切换成本缺乏付费动机\",\n    \"商业化路径：美妆领域已跑通 vs 新能源领域验证周期和资金需求构成巨大鸿沟\"\n  ],\n  \"step1_adjustment_hints\": {\n    \"supported\": [\n      \"美妆商业化路径清晰，头部客户合作验证了客户价值。\",\n      \"技术方向（超分子+AI）在材料科学中具有前沿性和差异化潜力。\"\n    ],\n    \"caution\": [\n      \"超分子改性技术可能被包装为底层原创，实际在美妆和制药行业是通用手段，需警惕专利壁垒的真实强度。\",\n      \"新能源业务商业化鸿沟巨大，从美妆到电池的跨越可能过于激进，需重点关注验证周期和资金风险。\"\n    ],\n    \"to_step4\": [\n      \"核心专利的覆盖范围与可绕开性（tech_barrier）。\",\n      \"新能源业务是否有批量订单或第三方认证（commercialization）。\",\n      \"深共晶电解液的量产成本与传统方案对比（customer_value）。\"\n    ]\n  }\n}"
+}

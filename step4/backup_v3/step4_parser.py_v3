@@ -1,0 +1,128 @@
+from __future__ import annotations
+
+import json
+import re
+from typing import Any, Tuple
+
+from step4.step4_schema import Step4Output
+
+def find_last_complete_json(text: str) -> int:
+    """找到最后一个完整 JSON 对象的结束位置（索引）"""
+    depth = 0
+    last_end = 0
+    in_str = False
+    esc = False
+
+    for i, c in enumerate(text):
+        if esc:
+            esc = False
+            continue
+        if c == '\\':
+            esc = True
+            continue
+        if c == '"':
+            in_str = not in_str
+            continue
+        if in_str:
+            continue
+        if c == '{':
+            if depth == 0:
+                last_end = i  # 记录开始位置
+            depth += 1
+        elif c == '}':
+            depth -= 1
+            if depth == 0:
+                last_end = i + 1  # 更新结束位置
+    return last_end
+
+def extract_json_block(text: str) -> str:
+    """从模型输出中提取 JSON 代码块内容"""
+    text = text.strip()
+
+    # 找 ```json 代码块标记
+    match = re.search(r"```json", text, flags=re.IGNORECASE)
+    if match:
+        after = text[match.end():]
+        brace_idx = after.find('{')
+        if brace_idx == -1:
+            raise ValueError("未找到 JSON 开始 {")
+        json_text = after[brace_idx:]
+        last_end = find_last_complete_json(json_text)
+        return json_text[:last_end]
+
+    # 直接以 { 开头
+    if text.startswith("{"):
+        last_end = find_last_complete_json(text)
+        return text[:last_end]
+
+    raise ValueError("未能从模型输出中提取 JSON。")
+
+def extract_markdown_block(text: str) -> str:
+    """从模型输出中提取 Markdown 部分"""
+    text = text.strip()
+
+    # 找 ```markdown 代码块
+    match = re.search(r"```markdown\s*(.*?)```", text, flags=re.DOTALL)
+    if match:
+        return match.group(1).strip()
+
+    # 找第二个代码块（第一个通常是 JSON）
+    blocks = re.findall(r"```(?:\w+)?\s*(.*?)```", text, flags=re.DOTALL)
+    if len(blocks) >= 2:
+        return blocks[1].strip()
+
+    # 回退：从 ```json 结束位置之后提取
+    json_end = re.search(r"```", text)
+    if json_end:
+        md_part = text[json_end.end():].strip()
+        md_part = re.sub(r"^```\w*\s*", "", md_part)
+        md_part = re.sub(r"```$", "", md_part)
+        return md_part.strip()
+
+    raise ValueError("未能从模型输出中提取 Markdown。")
+
+def split_output(text: str) -> Tuple[str, str]:
+    """从模型输出中拆出 JSON 和 Markdown 两部分"""
+    text = text.strip()
+    json_part = extract_json_block(text)
+    json_part = normalize_json_text(json_part)
+    md_part = extract_markdown_block(text)
+    return json_part, md_part
+
+def normalize_json_text(text: str) -> str:
+    """替换中文标点为英文，防止 JSON 解析失败"""
+    text = text.replace('\u201c', '"')
+    text = text.replace('\u201d', '"')
+    text = text.replace('\uff1a', ':')
+    # 清理尾部逗号
+    text = re.sub(r',\s*}', '}', text)
+    text = re.sub(r',\s*]', ']', text)
+    return text
+
+def parse_step4_output(raw_text: str) -> Step4Output:
+    """解析 JSON 部分"""
+    raw_json = extract_json_block(raw_text)
+    raw_json = normalize_json_text(raw_json)
+    data = json.loads(raw_json)
+    obj = Step4Output.model_validate(data)
+    obj.raw_text = raw_text
+    return obj
+
+def parse_step4_v3_output(raw_text: str) -> dict:
+    """
+    解析 v3 双输出
+
+    返回: {
+        "internal_json": Step4Output,
+        "meeting_brief_md": str
+    }
+    """
+    json_part, md_part = split_output(raw_text)
+    data = json.loads(json_part)
+    internal_json = Step4Output.model_validate(data)
+    internal_json.raw_text = raw_text
+
+    return {
+        "internal_json": internal_json,
+        "meeting_brief_md": md_part
+    }

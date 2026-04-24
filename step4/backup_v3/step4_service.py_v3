@@ -1,0 +1,43 @@
+from __future__ import annotations
+
+from typing import Callable
+
+from step4.step4_prompt import build_step4_prompt
+from step4.step4_parser import parse_step4_v3_output
+
+class Step4Service:
+    def __init__(self, call_llm: Callable[[str, str], str]):
+        self.call_llm = call_llm
+
+    def run(
+        self,
+        *,
+        step1_text: str,
+        step3_json: str,
+        bp_text: str,
+    ):
+        """
+        运行 Step4 v3
+
+        返回结构：
+        {
+            "internal_json": Step4Output,  # 给系统用
+            "meeting_brief_md": str        # 会议提纲（核心）
+        }
+        """
+        prompt = build_step4_prompt(
+            step1_text=step1_text,
+            step3_json=step3_json,
+            bp_text=bp_text,
+        )
+
+        raw = self.call_llm(
+            system_prompt="""你是一位资深投资人兼尽调提问教练。
+你的输出必须包含两部分：
+1. JSON 代码块（用 ```json 包裹）：内部决策框架
+2. Markdown 代码块（用 ```markdown 包裹）：会议提纲
+
+会议提纲必须像真实投资人的会前笔记，可以直接拿起来念。""",
+            user_prompt=prompt,
+        )
+        return parse_step4_v3_output(raw)

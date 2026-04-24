@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ meta.company_name }} — v2.5 投资判断报告</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    .step-indicator {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .step-badge {
+      background: #e8f4f8;
+      border: 1px solid #007bff;
+      border-radius: 12px;
+      padding: 4px 12px;
+      font-size: 12px;
+      color: #007bff;
+    }
+    .score-highlight {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+    .score-number {
+      font-size: 48px;
+      font-weight: bold;
+    }
+    .section-title {
+      color: #333;
+      border-left: 4px solid #007bff;
+      padding-left: 12px;
+      margin: 20px 0 10px 0;
+    }
+    .risk-tag {
+      display: inline-block;
+      background: #dc3545;
+      color: white;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      margin: 2px;
+    }
+    .question-item {
+      background: #f8f9fa;
+      border-left: 3px solid #28a745;
+      padding: 12px;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container report-container">
+    <header class="report-header">
+      <a href="{{ url_for('project_detail', project_id=project_id) }}" class="back-link">← 返回项目</a>
+      <div class="report-title-row">
+        <h1>{{ meta.company_name }} — v2.5 投资判断报告</h1>
+        <a href="{{ url_for('export_report', project_id=project_id, version='v2_5') }}" class="btn btn-outline btn-sm">⬇ 导出</a>
+      </div>
+      <p class="report-meta">AI v2.5模板驱动 · 9步投资人判断流程</p>
+
+      <!-- 流程步骤指示器 -->
+      <div class="step-indicator">
+        <span class="step-badge">Step1 通用理解 ✓</span>
+        <span class="step-badge">Step2 模板注入 ✓</span>
+        <span class="step-badge">Step3 字段抽取 ✓</span>
+        <span class="step-badge">Step4 缺口识别 ✓</span>
+        <span class="step-badge">Step5 问题生成 ✓</span>
+        <span class="step-badge">Step6 规则命中 ✓</span>
+        <span class="step-badge">Step7 评分计算 ✓</span>
+        <span class="step-badge">Step8 结构化报告 ✓</span>
+        <span class="step-badge" style="background:#007bff;color:white;">Step9 投资人判断 ★</span>
+      </div>
+    </header>
+
+    <!-- 一句话定性 -->
+    {% if report.step1_one_liner %}
+    <div class="score-highlight">
+      <h3>📌 一句话本质判断</h3>
+      <p style="font-size: 18px; margin-top: 10px;">{{ report.step1_one_liner | safe }}</p>
+    </div>
+    {% endif %}
+
+    <!-- 评分展示 -->
+    {% if report.step7_scores and report.step7_scores.scores %}
+    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+      <h4 style="margin: 0 0 10px 0;">📊 维度评分</h4>
+      {% for dim, score in report.step7_scores.scores.items() %}
+      <div style="display: flex; align-items: center; margin: 5px 0;">
+        <span style="width: 150px;">{{ dim }}</span>
+        <div style="flex: 1; background: #e9ecef; height: 20px; border-radius: 10px;">
+          <div style="width: {{ score * 10 }}%; background: linear-gradient(90deg, #28a745, #17a2b8); height: 100%; border-radius: 10px;"></div>
+        </div>
+        <span style="margin-left: 10px; font-weight: bold;">{{ score }}/10</span>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- 风险标签 -->
+    {% if report.step6_risk_tags and '未检测' not in report.step6_risk_tags %}
+    <div style="margin-bottom: 20px;">
+      <h4>🚨 命中风险规则</h4>
+      <div style="background: #fff3cd; padding: 15px; border-radius: 8px; border-left: 4px solid #ffc107;">
+        {{ report.step6_risk_tags | safe | replace('\n', '<br>') }}
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- 问题清单 -->
+    {% if report.step5_questions %}
+    <div style="margin-bottom: 20px;">
+      <h4>❓ 核心追问问题</h4>
+      <div class="report-body markdown-content">
+        {{ report.step5_questions | safe | replace('\n', '<br>') }}
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- 投资人最终判断（核心输出） -->
+    <div class="tab-content active" id="tab-final">
+      <div style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); padding: 25px; border-radius: 12px;">
+        <h3 style="margin-top: 0;">🎯 投资人最终判断</h3>
+        <div class="report-body markdown-content">
+          {{ report.final_report | safe | replace('\n', '<br>') }}
+        </div>
+      </div>
+    </div>
+
+    <!-- 全部过程可展开 -->
+    <details style="margin-top: 30px; border: 1px solid #ddd; border-radius: 8px; padding: 15px;">
+      <summary style="cursor: pointer; font-weight: bold; color: #666;">📋 查看完整9步分析过程</summary>
+      <div style="margin-top: 15px;">
+
+        <!-- Step1 -->
+        {% if report.all_steps.step1 %}
+        <details open style="margin: 10px 0;">
+          <summary>Step1 通用理解</summary>
+          <div class="report-body" style="background: #f8f9fa; padding: 10px; margin-top: 10px;">
+            {{ report.all_steps.step1 | safe | replace('\n', '<br>') }}
+          </div>
+        </details>
+        {% endif %}
+
+        <!-- Step3 -->
+        {% if report.all_steps.step3 %}
+        <details style="margin: 10px 0;">
+          <summary>Step3 字段抽取</summary>
+          <div class="report-body" style="background: #f8f9fa; padding: 10px; margin-top: 10px;">
+            {{ report.all_steps.step3 | safe | replace('\n', '<br>') }}
+          </div>
+        </details>
+        {% endif %}
+
+        <!-- Step4 -->
+        {% if report.all_steps.step4 %}
+        <details style="margin: 10px 0;">
+          <summary>Step4 缺口识别</summary>
+          <div class="report-body" style="background: #f8f9fa; padding: 10px; margin-top: 10px;">
+            {{ report.all_steps.step4 | safe | replace('\n', '<br>') }}
+          </div>
+        </details>
+        {% endif %}
+
+        <!-- Step8 -->
+        {% if report.all_steps.step8 %}
+        <details style="margin: 10px 0;">
+          <summary>Step8 结构化报告</summary>
+          <div class="report-body" style="background: #f8f9fa; padding: 10px; margin-top: 10px;">
+            {{ report.all_steps.step8 | safe | replace('\n', '<br>') }}
+          </div>
+        </details>
+        {% endif %}
+
+      </div>
+    </details>
+
+    <!-- 底部操作栏 -->
+    <div class="report-footer">
+      <p>v2.5模板驱动 · 投资人判断层 · 可直接用于内部讨论</p>
+      <a href="{{ url_for('project_detail', project_id=project_id) }}" class="btn btn-primary">
+        开完会后 → 上传会议记录更新判断
+      </a>
+    </div>
+  </div>
+</body>
+</html>

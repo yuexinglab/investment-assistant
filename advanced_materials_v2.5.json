@@ -1,0 +1,867 @@
+{
+  "template_id": "advanced_materials_general_v2",
+  "template_name": "新材料行业通用模板",
+  "industry": "advanced_materials",
+  "language": "zh-CN",
+  "version": "2.5",
+  "description": "新材料行业投资判断模板 v2.5。融合行业评分框架 + AI系统内核 + Step1通用理解升级版 + Step9/9.5投资人判断层。从'分析秘书'进化为'替你说话的投资人'。",
+  "usage": {
+    "fit_for": ["项目初判", "尽调问题生成", "会议更新", "投资备忘录"],
+    "not_fit_for": ["无人工复核的最终IC投票", "纯财务建模"]
+  },
+  "step1_prompts": {
+    "name": "通用理解层（升级版）",
+    "role": "你现在是一位一级市场投资分析师，请对输入的项目材料进行'通用理解分析'。你的目标不是复述BP，而是：用投资人的视角，把这个项目'讲清楚'，为后续结构化分析提供基础。",
+    "output_sections": {
+      "section_1": {
+        "name": "公司本质（One-liner）",
+        "requirement": "用一句话说明这家公司本质上在做什么，要去掉包装",
+        "example": "本质上是一家美妆原料公司，不是AI平台公司",
+        "style": "锋利、去包装、不模糊"
+      },
+      "section_2": {
+        "name": "业务结构拆解",
+        "requirement": "按重要性排序拆解当前业务，对每条说明：做什么/客户是谁/怎么赚钱/是否有收入",
+        "style": "清晰、结构化"
+      },
+      "section_3": {
+        "name": "收入与增长来源",
+        "requirement": "当前收入来源 + 增长来自哪里（老业务放量/新业务/新市场），数据不完整标注'不确定'",
+        "style": "具体、不编造"
+      },
+      "section_4": {
+        "name": "发展阶段判断",
+        "requirement": "必须选择或组合：实验室/技术验证 / 小规模商业化 / 已规模化收入 / 多业务扩张，并说明理由",
+        "style": "基于事实"
+      },
+      "section_5": {
+        "name": "核心能力判断",
+        "requirement": "公司最核心的能力是什么（最多2条），这些能力体现在哪里，避免泛化（如'技术很强'）",
+        "style": "精准、具体"
+      },
+      "section_6": {
+        "name": "初步风险扫描",
+        "requirement": "列出3-5个'第一眼风险'（信息缺失/逻辑不清/过度叙事/阶段错配），只做提示性标记",
+        "style": "快速、不深入"
+      }
+    },
+    "style_rules": [
+      "不要复述BP原话",
+      "可以使用'更像/本质是/大概率'等投资人语言",
+      "允许标注'不确定'，不要编造",
+      "输出要为后续结构化分析服务"
+    ]
+  },
+  "global_output_requirements": {
+    "must_identify": [
+      "current_business_base",
+      "customer_paid_feature",
+      "technology_stage",
+      "main_bottleneck",
+      "growth_source",
+      "second_curve_reality",
+      "ai_platform_reality"
+    ],
+    "status_labels": ["known", "partial", "missing", "weak_evidence", "conflicting"],
+    "priority_labels": ["high", "medium", "low"]
+  },
+  "core_fields": [
+    "current_main_application",
+    "revenue_by_application",
+    "main_customer_type",
+    "customer_paid_feature",
+    "customer_pain_point",
+    "direct_competitors",
+    "market_position",
+    "core_technology",
+    "technical_uniqueness",
+    "stage_lab_to_mass",
+    "mass_production_status",
+    "avg_conversion_time",
+    "main_bottleneck",
+    "conversion_success_rate",
+    "inhouse_capabilities",
+    "team_roles",
+    "industrialization_experience",
+    "top5_customer_ratio",
+    "single_customer_dependency",
+    "revenue_growth_source",
+    "revenue_model",
+    "gross_margin_logic",
+    "new_business_stage",
+    "new_business_revenue",
+    "ai_data_source",
+    "ai_closed_loop",
+    "ai_business_impact",
+    "shareholding_structure",
+    "future_financing_need"
+  ],
+  "question_generation_policy": {
+    "missing": "生成必须补全型问题",
+    "partial": "生成补充细化型问题",
+    "weak_evidence": "生成验证型问题",
+    "conflicting": "生成澄清型问题"
+  },
+  "reporting_policy": {
+    "must_output": [
+      "业务底盘判断",
+      "最确定的部分",
+      "最不确定的部分",
+      "真实业务与估值叙事的区分",
+      "下一步必须验证的3-5个点"
+    ],
+    "tone": "像专业投资经理写给老板的初判，结论优先，避免空泛叙事"
+  },
+  "dimensions": [
+    {
+      "dimension_id": "d1",
+      "dimension_name": "市场质量",
+      "weight_early": 0.20,
+      "weight_growth": 0.25,
+      "weight_mature": 0.20,
+      "purpose": "评估应用场景是否真实、需求是否刚性、竞争位置是否清晰，以及当前赛道热度对估值和融资的影响。",
+      "sub_dimensions": [
+        {
+          "id": "d1_s1",
+          "name": "市场空间与可触达性",
+          "weight": 0.25,
+          "definition": "判断目标市场是否清晰可测、公司能否真正触达，而不是停留在宏大TAM叙事。",
+          "required_fields": ["target_market_definition", "serviceable_market_size", "main_entry_segment", "market_growth_driver"],
+          "extract_prompts": ["公司BP或访谈中是否明确说明目标市场、主切入场景及可服务市场规模？", "是否区分了大行业空间与公司短期可触达市场？"],
+          "signals_positive": ["目标市场清晰，切入场景具体", "能区分TAM、SAM与当前可得订单市场", "增量来自真实下游行业变化"],
+          "signals_negative": ["只讲宏大市场空间，不讲切入场景", "市场规模依赖模糊外推", "当前可触达市场很小但估值建立在远期大市场上"],
+          "scoring": {
+            "10": "目标市场清晰可测算（TAM→SAM→SOM逻辑成立），可触达市场规模≥10亿元，下游应用处于高速增长期（CAGR≥20%），存在明确增量场景",
+            "8": "目标市场可测算，可触达市场规模≥5亿元，下游应用处于稳定增长期（CAGR 10%-20%），增量场景可见",
+            "6": "目标市场大致清晰，可触达市场规模1-5亿元，下游应用增速一般（CAGR 5%-10%），需要培育新场景",
+            "4": "目标市场较模糊，可触达市场规模<1亿元，或严重依赖单一应用场景",
+            "2": "目标市场无法清晰定义，或存在根本性的市场需求不确定性"
+          },
+          "questions": [
+            {"q": "公司当前最主要、最可触达的市场是哪一块？请按收入或订单优先级排序。", "why": "判断真实可触达市场", "priority": "high"},
+            {"q": "如果去掉所有远期叙事，未来2年真正能打到的市场规模大概是多少？", "why": "剥离估值叙事", "priority": "high"},
+            {"q": "当前业务最核心的切入场景是什么，为什么从这里切？", "why": "理解切入逻辑", "priority": "medium"}
+          ]
+        },
+        {
+          "id": "d1_s2",
+          "name": "竞争格局与护城河来源",
+          "weight": 0.25,
+          "definition": "判断公司在当前细分市场中的位置，以及护城河究竟来自技术、工艺、客户关系还是规模。",
+          "required_fields": ["direct_competitors", "indirect_substitutes", "moat_source", "customer_selection_reason", "market_position"],
+          "signals_positive": ["能清晰说出竞品和替代路线", "护城河来源明确（工艺know-how/客户验证周期/专利/成本/供应链绑定）", "已进入关键客户体系"],
+          "signals_negative": ["声称没有竞争对手", "只讲技术先进，不讲为什么客户选它", "护城河停留在概念层面"],
+          "scoring": {
+            "10": "同时满足：差异化明确，护城河真实且在商业中已体现，竞争格局尚未固化，仍有窗口期",
+            "8": "满足任意2项：差异化定位明确；护城河可识别；竞争格局未固化",
+            "6": "满足任意1项：有一定差异；护城河存在但可被复制；面临成熟玩家竞争",
+            "4": "与现有玩家存在直接竞争，护城河薄弱，主要依靠先发优势或价格竞争",
+            "2": "处于高度竞争的红海市场，护城河缺失，面临大厂碾压风险"
+          },
+          "questions": [
+            {"q": "当前最主要的2-3家竞争对手是谁？客户为什么选你而不是他们？", "why": "理解真实竞争关系", "priority": "high"},
+            {"q": "你的护城河最偏技术、工艺、客户关系还是规模？哪一个最关键？", "why": "识别核心壁垒", "priority": "high"},
+            {"q": "如果竞品知道路线，最难复制的地方在哪里？", "why": "验证壁垒持久性", "priority": "medium"}
+          ]
+        },
+        {
+          "id": "d1_s3",
+          "name": "下游需求确定性",
+          "weight": 0.25,
+          "definition": "判断下游客户需求是否真实明确，材料是否在真实业务链条中解决刚需问题。",
+          "required_fields": ["customer_paid_feature", "customer_pain_point", "validated_use_case", "order_or_test_status"],
+          "signals_positive": ["客户明确为某一性能指标付费（透皮吸收/生物利用度/导电性/成本改善）", "需求来自真实产业趋势或合规要求", "已通过下游客户测试或进入供应链"],
+          "signals_negative": ["价值点笼统，如更先进、更好用", "没有终端应用闭环", "客户需求更多来自想象而非订单/测试"],
+          "scoring": {
+            "10": "下游需求高度确定：已有明确的终端客户承诺或订单；材料应用已通过下游核心客户验证；需求增长由真实产业趋势驱动",
+            "8": "下游需求基本确定：有明确的客户在评估或测试；需求由可验证的政策/市场趋势驱动；替代现有方案的动力充足",
+            "6": "下游需求可见但不确定：处于早期导入阶段；需求依赖新应用场景的培育；替代动力一般",
+            "4": "下游需求模糊：主要依赖也许的场景；下游替代方案众多；需求窗口期不明",
+            "2": "下游需求根本不确定：尚未找到明确的终端应用；材料性能与下游需求存在gap"
+          },
+          "questions": [
+            {"q": "客户最愿意为哪一个性能提升付费？请只讲1-2个最核心点。", "why": "识别真实付费逻辑", "priority": "high"},
+            {"q": "如果没有这个材料，客户现有业务会有什么损失或痛点？", "why": "验证需求刚性", "priority": "high"},
+            {"q": "你们当前最典型的已验证应用案例是什么？", "why": "寻找真实业务闭环", "priority": "medium"}
+          ]
+        },
+        {
+          "id": "d1_s4",
+          "name": "替代威胁与产业粘性",
+          "weight": 0.25,
+          "definition": "判断替代路线是否成熟、客户切换成本是否高、材料在下游链条中的粘性如何。",
+          "required_fields": ["alternative_routes", "customer_switching_cost", "material_importance_in_customer_product", "replacement_cycle"],
+          "signals_positive": ["替代路线不成熟或代价高", "客户更换供应商需要较长验证周期", "材料在下游性能和合规中较关键"],
+          "signals_negative": ["存在成熟替代技术", "客户切换成本低", "材料在下游只是边缘改良项"],
+          "scoring": {
+            "10": "同时满足：不存在明确的技术替代路线；下游客户切换供应商的成本高、周期长；材料在下游成本占比适中",
+            "8": "满足任意2项：替代技术存在但不成熟；客户粘性较高；材料在下游有一定重要性",
+            "6": "满足任意1项：存在替代技术但需要较长时间；客户有一定切换成本；材料在下游可被优化",
+            "4": "替代威胁明显：存在成熟替代方案；客户切换成本低；可能被其他材料体系颠覆",
+            "2": "替代威胁严峻：面临多个成熟替代路线；客户可轻易替换；材料体系存在根本性颠覆风险"
+          },
+          "questions": [
+            {"q": "如果客户要替换你，通常需要多长验证周期和多大成本？", "why": "评估客户粘性", "priority": "high"},
+            {"q": "当前是否存在成熟替代路线？它们为什么还没把你替掉？", "why": "判断替代威胁", "priority": "high"},
+            {"q": "你的材料在客户产品中的成本占比和重要性分别如何？", "why": "理解产业位置", "priority": "medium"}
+          ]
+        }
+      ]
+    },
+    {
+      "dimension_id": "d2",
+      "dimension_name": "技术成熟与验证程度",
+      "weight_early": 0.30,
+      "weight_growth": 0.25,
+      "weight_mature": 0.20,
+      "purpose": "评估技术壁垒、验证阶段、工程化能力、量产稳定性与关键能力可控性，是新材料项目最核心维度。",
+      "sub_dimensions": [
+        {
+          "id": "d2_s1",
+          "name": "核心技术壁垒与差异化程度",
+          "weight": 0.20,
+          "required_fields": ["core_technology", "technical_uniqueness", "ip_portfolio_summary", "substitutability"],
+          "signals_positive": ["核心技术为公司自研或深度掌握", "与竞品存在明确技术差异", "技术不只是概念，而是已嵌入产品与工艺"],
+          "signals_negative": ["行业通用技术，差异主要在表述层面", "技术依赖外部授权或公开路线", "壁垒更多是PPT叙事"],
+          "scoring": {
+            "10": "同时满足：拥有核心自研技术（专利/工艺know-how/配方），非行业通用技术；技术壁垒经过验证，可复制难度高；与竞争对手存在明确的技术代差",
+            "8": "满足任意2项：核心技术自研；技术壁垒明确；与竞争对手存在差异",
+            "6": "满足任意1项：有核心技术但非完全自研；存在一定可复制难度；与竞争对手有一定差异但不显著",
+            "4": "使用行业通用技术，主要依靠工程实现差异，技术壁垒薄弱",
+            "2": "未识别出明确核心技术，技术主要依赖外部授权或行业公开技术"
+          },
+          "questions": [
+            {"q": "公司的核心技术具体是什么？请避免使用平台化泛描述。", "why": "识别真实技术内核", "priority": "high"},
+            {"q": "你们和行业通用做法相比，最本质的不同是什么？", "why": "验证差异化", "priority": "high"},
+            {"q": "如果别人沿相同方向做，最难复制的是哪部分？", "why": "评估壁垒持久性", "priority": "medium"}
+          ]
+        },
+        {
+          "id": "d2_s2",
+          "name": "技术成熟度与验证阶段",
+          "weight": 0.22,
+          "required_fields": ["stage_lab_to_mass", "pilot_status", "mass_production_status", "client_validation_stage"],
+          "signals_positive": ["已从实验室走到中试或量产", "经过真实客户端验证", "不是单次成功，而是持续稳定表现"],
+          "signals_negative": ["仅有实验室数据", "尚无独立验证或真实客户测试", "性能数据与工程化状态脱节"],
+          "scoring": {
+            "10": "连续批量出货，产品质量稳定，已进入头部客户供应链，良品率行业领先",
+            "8": "已完成小批量量产，良品率稳定，客户端测试通过，已获得真实订单",
+            "6": "已完成中试验证，具备小批量生产能力，良品率尚不稳定，仍处于客户端验证阶段",
+            "4": "完成实验室技术验证，性能指标达标，但工程化尚未完成，良品率未知",
+            "2": "仅有实验室样品或概念验证，技术路径尚未最终确定，性能指标未经独立验证"
+          },
+          "questions": [
+            {"q": "当前技术是实验室、小试、中试还是量产阶段？", "why": "判断真实成熟度", "priority": "high"},
+            {"q": "是否已经在真实客户体系中完成验证？处于什么阶段？", "why": "验证商业闭环", "priority": "high"},
+            {"q": "有没有跨批次、跨周期的稳定性数据？", "why": "验证量产稳定性", "priority": "medium"}
+          ]
+        },
+        {
+          "id": "d2_s3",
+          "name": "工程化能力与量产稳定性",
+          "weight": 0.22,
+          "required_fields": ["process_package_status", "yield_status", "batch_stability", "scale_up_plan"],
+          "signals_positive": ["工艺包较完整，参数清晰", "良率和批次表现稳定", "具备扩产与复制能力"],
+          "signals_negative": ["实验室结果好但量产不稳", "良率未知或波动大", "放大路径不清晰"],
+          "scoring": {
+            "10": "同时满足：具备完整的量产工艺包，工艺参数已固化；量产良品率≥行业平均水平且稳定；产能弹性充足，可快速扩产",
+            "8": "满足任意2项：工艺基本固化；良品率可接受；具备扩产能力",
+            "6": "满足任意1项：工艺尚在优化；良品率波动较大；扩产需要较大投入",
+            "4": "尚未建立完整量产工艺，良品率较低或不稳定，量产能力待验证",
+            "2": "无量产能力，工程化路径尚不清晰"
+          },
+          "questions": [
+            {"q": "工艺参数是否已经固化？量产良率大致处于什么水平？", "why": "评估量产能力", "priority": "high"},
+            {"q": "从小试到中试、再到量产时，最容易出问题的环节是什么？", "why": "识别工程化风险", "priority": "high"},
+            {"q": "如果未来订单翻倍，当前产能和工艺是否能承接？", "why": "评估产能弹性", "priority": "medium"}
+          ]
+        },
+        {
+          "id": "d2_s4",
+          "name": "关键材料与设备自主可控",
+          "weight": 0.18,
+          "required_fields": ["critical_raw_material_dependency", "critical_equipment_dependency", "single_supplier_risk", "import_dependency"],
+          "signals_positive": ["关键原料和设备可控，可替代性较强", "不存在单点断供风险", "供应链结构稳定"],
+          "signals_negative": ["核心环节高度依赖进口或单一供应商", "一旦外部中断即影响主业务", "供应链脆弱"],
+          "scoring": {
+            "10": "核心原材料、设备、配方自主可控，供应链高度分散，不存在单一依赖风险",
+            "8": "核心环节自主可控，部分辅材有备选供应商，供应链风险可控",
+            "6": "部分核心环节依赖外部，但有可替代方案，供应链风险存在但可管理",
+            "4": "核心环节依赖单一供应商，存在明显供应链风险",
+            "2": "核心环节高度依赖进口或单一供应商，供应链脆弱，面临断供风险"
+          },
+          "questions": [
+            {"q": "关键原料、关键设备是否掌握在自己手里？", "why": "评估自主可控", "priority": "high"},
+            {"q": "是否存在单一供应商或进口依赖？", "why": "识别断供风险", "priority": "high"},
+            {"q": "如果关键供应中断，多久会影响生产？", "why": "评估脆弱性", "priority": "medium"}
+          ]
+        },
+        {
+          "id": "d2_s5",
+          "name": "性能指标与竞品对比",
+          "weight": 0.18,
+          "required_fields": ["core_performance_metrics", "benchmark_competitors", "customer_verified_advantage", "cost_performance_position"],
+          "signals_positive": ["核心性能指标领先或至少不弱于主流竞品", "优势被客户认可，不只停留在实验室", "性价比具备解释力"],
+          "signals_negative": ["只有单点指标好", "综合性能不优或代价过高", "缺少独立或客户验证"],
+          "scoring": {
+            "10": "主要性能指标领先竞品10%以上，且综合性价比更优，已通过下游头部客户认证",
+            "8": "主要性能指标达到竞品水平，具有某一项显著优势，性价比相当",
+            "6": "主要性能指标接近竞品，但存在1-2项差距，性价比有待提升",
+            "4": "性能指标与竞品存在明显差距，或关键指标尚未验证",
+            "2": "性能指标落后于主流竞品，差距较大"
+          },
+          "questions": [
+            {"q": "和当前主流竞品相比，你们最强的性能指标是什么？", "why": "识别真实优势", "priority": "high"},
+            {"q": "优势是实验室数据还是已经被客户验证过？", "why": "验证优势真实性", "priority": "high"},
+            {"q": "如果性能更好，成本是否也相应更高？客户接受吗？", "why": "评估性价比", "priority": "medium"}
+          ]
+        }
+      ]
+    },
+    {
+      "dimension_id": "d3",
+      "dimension_name": "团队",
+      "weight_early": 0.20,
+      "weight_growth": 0.15,
+      "weight_mature": 0.10,
+      "purpose": "评估团队是否具备科学家、厂长、销售三种关键能力，尤其关注科学家创业的产业化补位能力。",
+      "sub_dimensions": [
+        {
+          "id": "d3_s1",
+          "name": "核心团队完整性",
+          "weight": 0.22,
+          "required_fields": ["team_roles", "technical_leads", "engineering_leads", "commercial_leads", "operations_leads"],
+          "signals_positive": ["技术-工程-市场-运营四类核心能力完备", "团队结构合理", "核心岗位无缺失"],
+          "signals_negative": ["只有单一能力突出", "其他能力严重依赖外部", "核心人员不稳定"],
+          "scoring": {
+            "10": "技术-工程-市场-运营四类核心能力完备，团队结构合理，核心岗位无缺失",
+            "8": "三类核心能力完备，第四类能力由外部资源补充或由核心人员兼任但胜任",
+            "6": "两类核心能力完备，技术+运营或技术+市场组合，其他能力有较大短板",
+            "4": "仅有一类核心能力突出，其他能力严重依赖创始人或外部",
+            "2": "团队尚未成形，核心人员不稳定或能力严重错配"
+          },
+          "questions": [
+            {"q": "团队除了研发外，是否具备工程化、工厂、供应链、销售等核心能力？", "why": "评估团队完整性", "priority": "high"},
+            {"q": "哪些关键岗位仍然缺失或由创始人兼任？", "why": "识别能力短板", "priority": "high"}
+          ]
+        },
+        {
+          "id": "d3_s2",
+          "name": "资历能力与产业经验",
+          "weight": 0.22,
+          "required_fields": ["founder_background", "industrialization_experience", "customer_access_experience", "same_domain_track_record"],
+          "signals_positive": ["核心成员有10年以上同领域经验", "有成功产业化案例", "有头部客户资源"],
+          "signals_negative": ["经验与业务错配", "首次从事此类工作", "缺乏关键经验"],
+          "scoring": {
+            "10": "核心技术成员具有10年以上同领域经验，有成功产业化案例；运营/市场成员有头部客户资源或成功创业经历",
+            "8": "核心技术成员有5-10年经验，产业化经验可迁移；运营/市场成员有相关行业背景",
+            "6": "核心技术成员有学术背景但产业化经验不足；运营/市场能力需要外部补充",
+            "4": "团队经验与当前业务存在明显错配，核心成员首次从事此类工作",
+            "2": "团队缺乏相关领域的关键经验，能力与业务需求严重不匹配"
+          },
+          "questions": [
+            {"q": "核心成员是否做过类似材料的产业化？", "why": "验证产业化经验", "priority": "high"},
+            {"q": "是否有对应客户群体的导入经验或资源？", "why": "评估商业化能力", "priority": "high"}
+          ]
+        },
+        {
+          "id": "d3_s3",
+          "name": "科学家创业：产业化补位能力",
+          "weight": 0.22,
+          "industry_specific": true,
+          "required_fields": ["founder_is_scientist", "professional_manager_support", "role_split", "operating_system_maturity"],
+          "signals_positive": ["科学家+职业经理人组合明确", "职责分工清晰", "职业经理人具有丰富的材料行业产业化经验"],
+          "signals_negative": ["科学家主导一切，不了解市场需求", "团队缺乏量产和商业化经验"],
+          "scoring": {
+            "10": "科学家+职业经理人组合明确，职业经理人具有丰富的材料行业产业化经验，职责分工清晰",
+            "8": "科学家具备一定的产业化意识，团队中有人负责工程化/商务，且能力可验证",
+            "6": "科学家愿意放权或自我迭代，但产业化补位人员能力待验证",
+            "4": "科学家主导一切，产业化意识薄弱，团队缺乏产业化经验",
+            "2": "科学家团队主导，缺乏任何产业化能力的补位"
+          },
+          "questions": [
+            {"q": "如果创始人偏科学家背景，谁来补位工艺放大和经营管理？", "why": "评估产业化补位", "priority": "high"},
+            {"q": "职责分工是否清晰，还是高度依赖创始人个人推动？", "why": "评估团队成熟度", "priority": "high"}
+          ]
+        },
+        {
+          "id": "d3_s4",
+          "name": "股权结构与公司治理",
+          "weight": 0.17,
+          "required_fields": ["shareholding_structure", "option_pool_status", "control_rights", "historical_disputes"],
+          "signals_positive": ["创始人控股+合理激励池+投资人席位平衡", "治理机制完善"],
+          "signals_negative": ["股权纠纷", "控制权争议", "历史遗留问题"],
+          "scoring": {
+            "10": "创始人控股+合理激励池+投资人席位平衡，股权结构清晰，治理机制完善",
+            "8": "股权结构基本合理，创始人有控制权，激励到位",
+            "6": "股权结构存在一定问题（如平均分配、外部主导），但有调整空间",
+            "4": "股权结构问题明显，可能影响公司决策效率或未来融资",
+            "2": "存在股权纠纷、控制权争议或历史遗留问题"
+          },
+          "questions": [
+            {"q": "创始人控制权是否稳定？是否有合理激励池？", "why": "评估治理健康度", "priority": "medium"},
+            {"q": "是否存在历史股权纠纷或治理隐患？", "why": "识别潜在风险", "priority": "high"}
+          ]
+        },
+        {
+          "id": "d3_s5",
+          "name": "创始人决心与耐心",
+          "weight": 0.17,
+          "required_fields": ["founder_full_time_status", "long_cycle_expectation", "resource_commitment"],
+          "signals_positive": ["全职投入", "长期产业化决心", "对周期有合理预期"],
+          "signals_negative": ["可能兼职", "产业化决心不坚定", "机会主义倾向"],
+          "scoring": {
+            "10": "创始人全职投入，具有长期产业化的决心和耐心，已做好长周期准备",
+            "8": "创始人全职投入，产业化决心坚定，对周期有合理预期",
+            "6": "创始人投入但存在摇摆，或对产业化周期预期不足",
+            "4": "创始人存在兼职可能，或产业化决心不坚定",
+            "2": "创始人态度消极，或存在明显的机会主义倾向"
+          },
+          "questions": [
+            {"q": "创始人是否全职投入并接受新材料长周期？", "why": "评估承诺度", "priority": "high"},
+            {"q": "对商业化周期和融资节奏是否有合理预期？", "why": "评估认知清醒度", "priority": "medium"}
+          ]
+        }
+      ]
+    },
+    {
+      "dimension_id": "d4",
+      "dimension_name": "商业化与交付能力",
+      "weight_early": 0.15,
+      "weight_growth": 0.25,
+      "weight_mature": 0.35,
+      "purpose": "评估客户验证、商业订单、导入周期、供应链与毛利能力，是技术走向收入的关键维度。",
+      "sub_dimensions": [
+        {
+          "id": "d4_s1",
+          "name": "客户验证与商业订单",
+          "weight": 0.22,
+          "required_fields": ["real_orders", "order_type", "repeat_order_status", "head_customer_presence", "payment_acceptance_terms"],
+          "signals_positive": ["已有多家头部客户的正式订单", "出现复购或续签", "订单结构健康"],
+          "signals_negative": ["只有测试单、POC、框架协议", "没有真实付费客户"],
+          "scoring": {
+            "10": "同时满足：已有多家头部客户的正式订单或长期供货协议；出现复购或续签；订单结构健康，非单一客户依赖",
+            "8": "满足任意2项：有明确订单；客户结构合理；存在复购",
+            "6": "满足任意1项：有小批量订单；处于客户验证后期；有明确客户意向",
+            "4": "以测试单、POC、框架协议为主，尚未有真实付费客户",
+            "2": "无可验证的商业订单，主要依赖内部判断或假设"
+          },
+          "questions": [
+            {"q": "当前已有的订单是真实采购、测试单还是联合开发？", "why": "识别真实商业化程度", "priority": "high"},
+            {"q": "有没有复购或续签？", "why": "验证客户认可度", "priority": "high"},
+            {"q": "订单的付款和验收条款是否明确？", "why": "评估商业条款健康度", "priority": "medium"}
+          ]
+        },
+        {
+          "id": "d4_s2",
+          "name": "客户导入阶段与验证周期",
+          "weight": 0.22,
+          "industry_specific": true,
+          "required_fields": ["client_validation_stage", "avg_validation_cycle", "validation_failure_cases", "import_pipeline"],
+          "signals_positive": ["验证周期符合行业惯例", "客户愿意做reference", "验证成功率高"],
+          "signals_negative": ["验证周期显著超出行业水平", "验证失败后无明确改进路径"],
+          "scoring": {
+            "10": "已完成头部客户导入，进入稳定供货阶段，验证周期符合行业惯例",
+            "8": "完成1-2家客户验证，验证周期正常，意向客户储备充足",
+            "6": "处于客户验证中期，验证周期偏长但可接受",
+            "4": "客户验证周期显著超出行业水平，存在验证障碍",
+            "2": "尚未开始客户验证，或验证失败后无明确改进路径"
+          },
+          "questions": [
+            {"q": "从客户测试到正式采购平均需要多久？", "why": "评估导入效率", "priority": "high"},
+            {"q": "目前处于导入、验证还是稳定供货阶段？", "why": "判断商业化阶段", "priority": "high"},
+            {"q": "验证过程中最常见的失败原因是什么？", "why": "识别导入障碍", "priority": "medium"}
+          ]
+        },
+        {
+          "id": "d4_s3",
+          "name": "供应链与产能弹性",
+          "weight": 0.18,
+          "required_fields": ["current_capacity", "capacity_utilization", "capacity_expansion_plan", "supply_chain_stability"],
+          "signals_positive": ["供应链稳定", "产能弹性充足", "可快速响应需求"],
+          "signals_negative": ["供应链问题明显", "产能不足", "质量不稳定"],
+          "scoring": {
+            "10": "供应链稳定，产能充足且具有弹性，可快速响应客户需求变化",
+            "8": "供应链基本稳定，产能可满足当前需求，有一定扩产计划",
+            "6": "供应链存在一定压力，产能偏紧但可管理",
+            "4": "供应链问题明显，产能不足或质量不稳定",
+            "2": "供应链严重受限，产能无法支撑业务发展"
+          },
+          "questions": [
+            {"q": "当前产能是否足够支撑现有和预期订单？", "why": "评估产能匹配度", "priority": "high"},
+            {"q": "产能利用率如何？扩产需要多久？", "why": "评估弹性", "priority": "medium"},
+            {"q": "供应链是否稳定？", "why": "识别供应链风险", "priority": "medium"}
+          ]
+        },
+        {
+          "id": "d4_s4",
+          "name": "成本控制与毛利能力",
+          "weight": 0.18,
+          "required_fields": ["cost_structure", "gross_margin_logic", "cost_down_path", "price_acceptance"],
+          "signals_positive": ["成本结构清晰可控", "毛利率具有竞争力", "降本路径明确"],
+          "signals_negative": ["成本显著高于竞品", "毛利率为负", "商业模式经济性存疑"],
+          "scoring": {
+            "10": "成本结构清晰可控，毛利率水平具有竞争力，降本路径明确",
+            "8": "成本基本可控，毛利率处于行业平均水平，有降本空间",
+            "6": "成本偏高但可解释，毛利率承压",
+            "4": "成本显著高于竞品，毛利率为负或极低",
+            "2": "成本结构不清晰，商业模式的经济性存疑"
+          },
+          "questions": [
+            {"q": "成本结构是否清晰？毛利率大概处于什么水平？", "why": "评估经济性", "priority": "high"},
+            {"q": "如果成本高于传统方案，客户为什么愿意接受？", "why": "验证价值合理性", "priority": "high"},
+            {"q": "未来降本路径是什么？", "why": "评估长期竞争力", "priority": "medium"}
+          ]
+        },
+        {
+          "id": "d4_s5",
+          "name": "商业模式与盈利逻辑",
+          "weight": 0.20,
+          "required_fields": ["revenue_model", "revenue_mix", "pricing_logic", "profitability_path"],
+          "signals_positive": ["商业模式闭环", "盈利路径可验证", "收入来源清晰"],
+          "signals_negative": ["模式存在跳跃", "依赖外部条件", "模式不清晰"],
+          "scoring": {
+            "10": "商业模式高度清晰，收入来源、定价方式、成本结构形成闭环，盈利路径可验证",
+            "8": "商业模式基本清晰，盈利逻辑成立，关键假设有待验证",
+            "6": "商业模式方向明确，但存在关键假设待验证",
+            "4": "商业模式存在明显跳跃，依赖外部条件",
+            "2": "商业模式不清晰或尚未形成"
+          },
+          "questions": [
+            {"q": "主要是卖标准品、定制开发、技术服务还是授权？", "why": "理解收入模式", "priority": "high"},
+            {"q": "收入和利润未来主要靠哪种模式拉动？", "why": "识别增长驱动力", "priority": "medium"},
+            {"q": "盈利路径目前是否已经跑通？", "why": "评估商业可行性", "priority": "high"}
+          ]
+        }
+      ]
+    },
+    {
+      "dimension_id": "d5",
+      "dimension_name": "资本适配度",
+      "weight_early": 0.15,
+      "weight_growth": 0.10,
+      "weight_mature": 0.15,
+      "purpose": "评估项目与当前融资阶段、估值、后续融资、退出路径及投资人资源的匹配程度。",
+      "sub_dimensions": [
+        {
+          "id": "d5_s1",
+          "name": "融资阶段与资金需求匹配",
+          "weight": 0.20,
+          "required_fields": ["current_financing_round", "fundraising_purpose", "use_of_proceeds", "technical_stage_vs_round"],
+          "signals_positive": ["阶段高度匹配", "资金用途清晰", "节奏合理"],
+          "signals_negative": ["阶段明显错配", "资金用途不清晰", "节奏混乱"],
+          "scoring": {
+            "10": "融资阶段与技术/商业化阶段高度匹配，资金用途清晰，融资节奏合理",
+            "8": "融资阶段基本匹配，资金用途合理",
+            "6": "融资阶段存在一定错配，但可解释",
+            "4": "融资阶段与技术/商业化阶段明显错配",
+            "2": "融资节奏混乱，资金用途不清晰"
+          },
+          "questions": [
+            {"q": "当前融资轮次与公司所处阶段是否匹配？", "why": "评估阶段合理性", "priority": "high"},
+            {"q": "本轮资金主要用于哪些里程碑？", "why": "理解资金用途", "priority": "medium"}
+          ]
+        },
+        {
+          "id": "d5_s2",
+          "name": "估值合理性",
+          "weight": 0.20,
+          "required_fields": ["current_valuation", "valuation_basis", "peer_context", "milestone_support"],
+          "signals_positive": ["估值合理", "与阶段匹配", "有后续融资空间"],
+          "signals_negative": ["估值偏高", "存在泡沫", "偏离基本面"],
+          "scoring": {
+            "10": "估值处于合理区间，与业务阶段匹配，有后续融资空间",
+            "8": "估值略高但有合理支撑，后续融资空间可预期",
+            "6": "估值偏高但市场共识已形成",
+            "4": "估值显著偏高，存在泡沫",
+            "2": "估值严重偏离业务基本面"
+          },
+          "questions": [
+            {"q": "当前估值的核心依据是什么？", "why": "理解估值逻辑", "priority": "high"},
+            {"q": "估值更多来自业务底盘还是赛道热度/远期叙事？", "why": "剥离叙事溢价", "priority": "high"}
+          ]
+        },
+        {
+          "id": "d5_s3",
+          "name": "资本结构健康度",
+          "weight": 0.20,
+          "required_fields": ["historical_financing", "investor_structure", "liquidation_or_special_terms", "future_financing_need"],
+          "signals_positive": ["结构清晰健康", "历史规范", "投资人合理"],
+          "signals_negative": ["问题明显", "可能影响融资", "存在法律纠纷"],
+          "scoring": {
+            "10": "资本结构清晰健康，历史融资规范，投资人结构合理",
+            "8": "资本结构基本健康，无重大历史遗留问题",
+            "6": "资本结构存在一定问题但可修复",
+            "4": "资本结构问题明显，可能影响后续融资",
+            "2": "资本结构严重失衡或存在法律纠纷"
+          },
+          "questions": [
+            {"q": "历史融资是否规范，是否有复杂条款影响后续融资？", "why": "评估资本健康度", "priority": "high"},
+            {"q": "后续融资需求和节奏是否清晰？", "why": "理解资金规划", "priority": "medium"}
+          ]
+        },
+        {
+          "id": "d5_s4",
+          "name": "退出路径清晰度",
+          "weight": 0.20,
+          "required_fields": ["ipo_path_visibility", "mna_buyers", "strategic_investor_presence", "exit_constraints"],
+          "signals_positive": ["IPO路径明确", "存在并购方", "战略投资人布局"],
+          "signals_negative": ["路径模糊", "依赖单一路径", "退出障碍明显"],
+          "scoring": {
+            "10": "退出路径清晰：IPO路径明确，满足上市条件时间可预期；或存在明确的产业并购方；战略投资人已布局",
+            "8": "退出路径基本清晰，存在2种以上的退出可能性",
+            "6": "退出路径可见但不确定",
+            "4": "退出路径模糊，依赖单一路径",
+            "2": "无清晰退出路径或退出障碍明显"
+          },
+          "questions": [
+            {"q": "未来退出更可能依赖IPO还是产业并购？", "why": "识别退出路径", "priority": "medium"},
+            {"q": "是否已有潜在并购方或战略投资方？", "why": "评估退出可行性", "priority": "medium"}
+          ]
+        },
+        {
+          "id": "d5_s5",
+          "name": "与投资人的战略协同",
+          "weight": 0.20,
+          "required_fields": ["strategic_resources_needed", "investor_resource_match", "commercial_synergy_potential"],
+          "signals_positive": ["带来产业资源", "客户订单", "关键人才"],
+          "signals_negative": ["资源有限", "存在潜在冲突", "结构混乱"],
+          "scoring": {
+            "10": "投资人为公司带来产业资源、客户订单或关键人才，协同效应显著",
+            "8": "投资人能提供一定的产业资源和战略支持",
+            "6": "投资人主要为财务支持，产业协同有限",
+            "4": "投资人资源有限或存在潜在冲突",
+            "2": "投资人结构混乱，存在潜在利益冲突"
+          },
+          "questions": [
+            {"q": "当前阶段最需要什么资源型投资人？", "why": "明确资源需求", "priority": "medium"},
+            {"q": "投资人能否带来客户、供应链、人才或产能资源？", "why": "评估协同价值", "priority": "medium"}
+          ]
+        }
+      ]
+    }
+  ],
+  "special_flags": {
+    "four_traps": [
+      {
+        "flag": "domestic_only_trap",
+        "name": "国内唯一陷阱",
+        "description": "技术带回国内后快速引发同质化竞争，形成进口替代式内卷。",
+        "questions": ["是否有大厂进入风险？", "竞争壁垒能否维持？"]
+      },
+      {
+        "flag": "second_curve_trap",
+        "name": "第二曲线陷阱",
+        "description": "主业务尚未站稳就扩展新方向，导致研发与组织资源失衡。",
+        "questions": ["新业务是否有独立收入？", "主业务是否已站稳？"]
+      },
+      {
+        "flag": "incremental_innovation_trap",
+        "name": "微创新陷阱",
+        "description": "渐进创新缺乏真正壁垒，易被大厂凭资本和生产能力后发制人。",
+        "questions": ["护城河的持久性如何？", "大厂复制成本有多高？"]
+      },
+      {
+        "flag": "industrial_import_trap",
+        "name": "产业导入陷阱",
+        "description": "新材料占下游成本比例过低或验证成本过高，导致替换动力不足。",
+        "questions": ["材料在下游成本占比？", "客户替换内在驱动力？"]
+      }
+    ],
+    "seven_challenges": [
+      {"challenge": "市场空间两难", "description": "大材料面临化工巨头压制，小材料市场过细分且并购退出路径不畅"},
+      {"challenge": "研发与商业周期割裂", "description": "材料商业化周期长达20-30年，技术突破拐点投资策略风险极高"},
+      {"challenge": "资本提前抢位", "description": "技术路径共识形成后，资本提前抢位导致估值透支"},
+      {"challenge": "资本补贴内卷", "description": "资本补贴缩短了技术溢价窗口，迫使企业陷入价格战"},
+      {"challenge": "创始人能力要求极高", "description": "需同时具备科学家、厂长和销售三重能力"},
+      {"challenge": "客户验证周期长", "description": "新材料导入需要下游承担系统风险，验证周期难以压缩"},
+      {"challenge": "量产与良率爬坡慢", "description": "实验室到量产的工程化过程中，存在大量隐性know-how"}
+    ]
+  },
+  "risk_rules": [
+    {
+      "rule_id": "am_rule_001",
+      "if": "company claims multi-industry platform but revenue concentrated in one application",
+      "then": "tag narrative_expansion_risk",
+      "severity": "high",
+      "meaning": "当前业务底盘单一，多行业平台叙事需谨慎",
+      "action": "追问各业务线的真实收入占比"
+    },
+    {
+      "rule_id": "am_rule_002",
+      "if": "customer_paid_feature unclear",
+      "then": "tag weak_commercial_value",
+      "severity": "high",
+      "meaning": "客户真实付费逻辑不清晰",
+      "action": "追问具体哪个性能指标对应哪个客户订单"
+    },
+    {
+      "rule_id": "am_rule_003",
+      "if": "avg_validation_cycle very long or not understood by team",
+      "then": "tag slow_scaling_risk",
+      "severity": "high",
+      "meaning": "客户验证周期将拖慢业务放量",
+      "action": "追问周期过长的具体原因"
+    },
+    {
+      "rule_id": "am_rule_004",
+      "if": "technology strong but process/yield unclear",
+      "then": "tag engineering_gap_risk",
+      "severity": "high",
+      "meaning": "技术与工程化之间存在断层",
+      "action": "追问量产工艺和良品率"
+    },
+    {
+      "rule_id": "am_rule_005",
+      "if": "ai_data mainly public or no closed loop",
+      "then": "tag ai_tool_not_moat",
+      "severity": "medium",
+      "meaning": "AI更像效率工具而非核心护城河",
+      "action": "追问AI数据的独占性和闭环性"
+    },
+    {
+      "rule_id": "am_rule_006",
+      "if": "new business has no short-term validation or revenue",
+      "then": "tag second_curve_story_risk",
+      "severity": "medium",
+      "meaning": "第二曲线更偏叙事而非已验证增长点",
+      "action": "追问新业务是否有独立收入"
+    },
+    {
+      "rule_id": "am_rule_007",
+      "if": "single customer dependency very high (>60%)",
+      "then": "tag customer_concentration_risk",
+      "severity": "high",
+      "meaning": "客户结构不健康，经营连续性受威胁",
+      "action": "追问客户分散化和替代方案"
+    },
+    {
+      "rule_id": "am_rule_008",
+      "if": "claims domestic_only_leader AND (import competition OR big company entering)",
+      "then": "tag domestic_only_story_risk",
+      "severity": "high",
+      "meaning": "技术带回国内易引发进口型内卷",
+      "action": "追问大厂进入风险和竞争壁垒"
+    }
+  ],
+  "investor_judgment_layer": {
+    "step": 9,
+    "name": "投资人判断重写层",
+    "name_en": "Investor Perspective Rewriter",
+    "purpose": "让AI从'分析秘书'进化为'替你说话的投资人'",
+    "trigger": "在Step8结构化报告之后执行",
+    "role_definition": "你现在不是分析助手，而是一位有经验的一级市场投资人。",
+    "input_required": [
+      "Step1通用分析结果",
+      "Step3字段抽取结果（含known/missing/weak_evidence状态）",
+      "Step4缺口分析（高/中/低优先级）",
+      "Step6规则命中结果（风险标签）",
+      "Step8结构化报告"
+    ],
+    "output_requirements": {
+      "section_1": {
+        "name": "一句话本质判断",
+        "requirement": "用一句话说明这家公司'本质是什么'，必须做取舍（例如：是XX公司，不是XX公司）",
+        "example": "本质是一家美妆原料公司，而非AI平台公司",
+        "style": "锋利、果断、不模糊"
+      },
+      "section_2": {
+        "name": "核心逻辑链",
+        "requirement": "用最关键的3条逻辑解释你的判断，每条一句话，不超过3条",
+        "example": [
+          "当前业务底盘：美妆原料销售",
+          "真正驱动：超分子技术的成本优势",
+          "在讲故事：AI平台+多行业扩展"
+        ],
+        "style": "清晰、主线明确"
+      },
+      "section_3": {
+        "name": "真实业务 vs 估值叙事",
+        "requirement": "必须用三层结构明确区分，不要混写",
+        "layers": {
+          "layer_1": "真实业务（已验证）：必须基于已知（known）字段",
+          "layer_2": "正在验证（中间层）：基于partial或weak_evidence的推断",
+          "layer_3": "估值叙事（未验证）：基于声明但缺乏证据的内容"
+        },
+        "style": "去包装化，用投资人语言"
+      },
+      "section_4": {
+        "name": "关键判断（带倾向）",
+        "requirement": "必须给出倾向性判断，不能中性地罗列",
+        "types": {
+          "nature": "稳健业务 / 早期机会 / 概念驱动 / 叙事驱动",
+          "action": "建议推进 / 谨慎跟踪 / 暂不考虑"
+        },
+        "style": "像投资经理写给合伙人的内部判断"
+      },
+      "section_5": {
+        "name": "最关键的3个风险",
+        "requirement": "必须从缺口和规则命中中筛选，不超过3个，每个必须说明'为什么关键'",
+        "style": "精准、不贪多"
+      },
+      "section_6": {
+        "name": "接下来最关键的3个验证问题",
+        "requirement": "不是重复前面的问题，而是'如果不搞清楚，就不能投'的核心问题",
+        "style": "直击要害"
+      },
+      "section_7": {
+        "name": "动机判断（Why Now）",
+        "requirement": "分析公司为什么在'现在这个阶段'讲这个故事",
+        "sub_questions": [
+          "公司为什么在'现在这个阶段'讲这个故事？",
+          "是业务自然发展到这一步，还是资本驱动的叙事扩张？",
+          "当前融资/并购/扩张动作的核心目的是什么？"
+        ],
+        "required_output": "给出明确判断：自然演进 / 资本驱动 / 混合 + 一句话总结动机本质"
+      },
+      "section_8": {
+        "name": "阶段-叙事错配（Stage Mismatch）",
+        "requirement": "分析当前真实阶段与对外叙事是否存在错配",
+        "output_structure": {
+          "current_stage": "用一句话定义公司真实阶段",
+          "external_narrative": "公司对外讲的故事",
+          "mismatch": "是否存在错配",
+          "mismatch_essence": "如果错配，本质错在哪里"
+        }
+      },
+      "section_9": {
+        "name": "市场认知差（Market Mispricing）",
+        "requirement": "分析市场/投资人可能高估或低估了什么",
+        "required_output": "至少各1条，必须具体，不能抽象",
+        "sub_questions": [
+          "市场/投资人'可能高估了什么'？",
+          "市场/投资人'可能低估了什么'？"
+        ]
+      },
+      "section_10": {
+        "name": "投资性价比判断（Risk/Return）",
+        "requirement": "最关键的性价比判断",
+        "required_output": [
+          "项目类型：高确定性低弹性 / 中等确定性中等弹性 / 低确定性高弹性 / 叙事驱动高波动",
+          "投资建议（三选一）：可以投 / 可以看 / 不建议投",
+          "前提条件（最多2条）：如果要投，必须满足什么"
+        ]
+      },
+      "section_11": {
+        "name": "反直觉判断（Optional）",
+        "requirement": "输出一句形成对比的认知差判断",
+        "format": "市场可能会认为______，但我更倾向于认为______",
+        "style": "必须形成对比，必须有认知差"
+      }
+    },
+    "style_rules": [
+      "像投资经理写给合伙人的内部判断",
+      "可以有一点主观，但必须基于事实",
+      "不要使用模板语言或空话",
+      "不要重复输入信息中的原话",
+      "优先给结论，而不是过程",
+      "要下重判断、做取舍、给倾向"
+    ],
+    "anti_patterns": [
+      "不要：'项目有一定优势，但也存在一些风险'（假中性）",
+      "不要：'建议进一步关注后续发展'（无倾向）",
+      "不要：'需要更多信息才能判断'（回避判断）",
+      "不要：评分（投资人看本质，不是打分）"
+    ]
+  }
+}

@@ -61,6 +61,13 @@ def list_projects() -> list:
         if os.path.isdir(project_dir) and os.path.exists(meta_path):
             meta = _read_json(meta_path)
             meta["project_id"] = dir_name
+            # 检查是否有 v2.5 报告
+            context_path = os.path.join(project_dir, "context.json")
+            if os.path.exists(context_path):
+                ctx = _read_json(context_path)
+                meta["has_v2_5"] = ctx.get("latest_v2_5_report") is not None
+            else:
+                meta["has_v2_5"] = False
             projects.append(meta)
 
     projects.sort(key=lambda x: x.get("created_at", ""), reverse=True)
@@ -75,7 +82,7 @@ def get_project_meta(project_dir: str) -> dict:
 def save_report(project_dir: str, version: str, report_content: dict):
     """
     保存报告到 reports/ 目录，并更新 context.json
-    version: "v1_0" | "v2_0" | "v2_1" 等
+    version: "v1_0" | "v2_0" | "v2_5" 等
     """
     ts = datetime.now().strftime("%Y%m%d_%H%M%S")
     filename = f"{version}_{ts}.json"
@@ -86,6 +93,8 @@ def save_report(project_dir: str, version: str, report_content: dict):
     context = load_project_context(project_dir)
     if version.startswith("v1"):
         context["latest_v1_report"] = report_content
+    elif version == "v2_5":
+        context["latest_v2_5_report"] = report_content
     elif version.startswith("v2"):
         context["latest_v2_report"] = report_content
     _write_json(os.path.join(project_dir, "context.json"), context)
@@ -95,6 +104,8 @@ def save_report(project_dir: str, version: str, report_content: dict):
     meta.setdefault("reports", []).append({"version": version, "filename": filename, "saved_at": ts})
     if version == "v1_0":
         meta["status"] = "v1_done"
+    elif version == "v2_5":
+        meta["status"] = "v2_5_done"
     elif version.startswith("v2"):
         meta["status"] = "v2_done"
     _write_json(os.path.join(project_dir, "meta.json"), meta)

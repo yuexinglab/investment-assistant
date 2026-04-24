@@ -1,0 +1,214 @@
+{
+  "version": "2.0",
+  "company_name": "杉海创新科技6",
+  "v2_structured": {
+    "new_info": [
+      {
+        "category": "业务",
+        "content": "公司核心技术为超分子技术，用于改进原料的溶解度、透皮吸收和生物利用度，覆盖美妆、食品、新能源等领域。"
+      },
+      {
+        "category": "业务",
+        "content": "美妆业务占营收95%，客户包括欧莱雅、宝洁、资生堂、妮维雅、LVMH、雅诗兰黛等国际大牌，以及珀莱雅等国内上市公司。"
+      },
+      {
+        "category": "业务",
+        "content": "食品业务已切入，主要改进功能性分子的生物利用度，但工厂改造尚未完成，预计今年量会较大。"
+      },
+      {
+        "category": "业务",
+        "content": "新能源业务包括电池电解液改进（热力学稳定性）、电池回收（正极材料从铝箔剥离）和光伏面板回收（银线剥离），与宏光科技、蓝海科技合作。"
+      },
+      {
+        "category": "业务",
+        "content": "公司计划并购千沐新能源，创始人相同，作为研发中台，协同超分子技术在不同行业应用。"
+      },
+      {
+        "category": "财务",
+        "content": "2023年营收约1.35亿元，预计2024年营收2亿至2.5亿元，增长主要来自国际客户放量（如欧莱雅、宝洁、珀莱雅）。"
+      },
+      {
+        "category": "财务",
+        "content": "2023年融资约17亿元。"
+      },
+      {
+        "category": "财务",
+        "content": "毛利率约60%以上。"
+      },
+      {
+        "category": "技术",
+        "content": "AI平台用于预测超分子形成，准确率约70-80%，数据来自公司自研和公开文献，目前作为参考工具。"
+      },
+      {
+        "category": "技术",
+        "content": "专利保护分子结构，与欧莱雅等客户合作时可能共有专利，公司独家生产。"
+      },
+      {
+        "category": "技术",
+        "content": "与诺奖实验室合作，该实验室由深圳科创委支持，公司在其平台下孵化，用于背书和研发。"
+      },
+      {
+        "category": "运营",
+        "content": "主要工厂在韶关，自投约1亿多元，产能利用率不到30%，五年内产能基本充足。"
+      },
+      {
+        "category": "运营",
+        "content": "公司成立于2017年，创始人张老师，其母亲有化妆品行业背景。"
+      },
+      {
+        "category": "市场",
+        "content": "超分子技术赛道竞争者少，全球第一家实现规模化，直接竞争对手在美妆领域不强，食品领域有共金科技。"
+      },
+      {
+        "category": "市场",
+        "content": "客户定制订单放量更快，标准品推广较慢。"
+      }
+    ],
+    "deltas": [
+      {
+        "field_id": "f1",
+        "field_name": "核心收入来源",
+        "old_status": "verified",
+        "new_status": "verified",
+        "change_summary": "美妆原料销售仍是核心，营收占比95%，且客户名单（欧莱雅、宝洁等国际大牌）进一步明确，验证了该来源的稳定性和高价值。",
+        "value_assessment": "high",
+        "impact_on_risk": "partially_relieved",
+        "impact_on_decision": "positive_change"
+      },
+      {
+        "field_id": "f2",
+        "field_name": "技术平台化能力（跨行业）",
+        "old_status": "weak",
+        "new_status": "partial",
+        "change_summary": "新增信息详细描述了食品和新能源的具体应用场景（如电池电解液、正极回收、光伏银线剥离）及合作方（宏光科技、蓝海科技），从‘早期未闭环’升级为‘有具体路径和合作伙伴’。",
+        "value_assessment": "high",
+        "impact_on_risk": "partially_relieved",
+        "impact_on_decision": "positive_change"
+      },
+      {
+        "field_id": "f3",
+        "field_name": "食品健康业务增长数据",
+        "old_status": "partial",
+        "new_status": "partial",
+        "change_summary": "新增信息确认了食品业务的切入点和目标（改进生物利用度），但工厂改造未完成，量产尚未落地。之前的300%增长率数据未更新，增长预期仍停留在‘预计今年量较大’。",
+        "value_assessment": "medium",
+        "impact_on_risk": "no_relief",
+        "impact_on_decision": "no_change"
+      },
+      {
+        "field_id": "f4",
+        "field_name": "客户集中度",
+        "old_status": "unknown",
+        "new_status": "partial",
+        "change_summary": "虽然未披露具体占比，但明确美妆业务95%营收来自欧莱雅、宝洁、资生堂、珀莱雅等少数国际和国内头部客户，暗示客户集中度极高。",
+        "value_assessment": "high",
+        "impact_on_risk": "new_risk_signal",
+        "impact_on_decision": "negative_change"
+      },
+      {
+        "field_id": "f5",
+        "field_name": "AI驱动研发体系（建沐™）",
+        "old_status": "weak",
+        "new_status": "weak",
+        "change_summary": "新增信息明确了AI平台的具体功能（预测超分子形成）、准确率（70-80%）和当前角色（参考工具），未提供商业化效率提升的量化数据，仍停留在‘宣称’阶段。",
+        "value_assessment": "low",
+        "impact_on_risk": "no_relief",
+        "impact_on_decision": "no_change"
+      }
+    ],
+    "delta_summary": "核心变化是技术平台化能力从‘弱’升级为‘有具体路径’，但美妆业务客户高度集中暴露了新风险；AI和食品业务尚未提供实质性突破证据。",
+    "qa_results": [
+      {
+        "qid": "q1",
+        "question": "请提供食品健康业务过去两年的绝对收入金额、前三大客户名称及收入占比、以及最大客户的合同期限。",
+        "answer_summary": "管理层未提供食品健康业务过去两年的绝对收入金额、前三大客户名称及收入占比、以及最大客户的合同期限。仅提及食品业务目前处于研发和工厂改造阶段，尚未批量出货，并预计五年后可能达到四个亿的规模。",
+        "judgment": "evasive",
+        "reason": "管理层完全回避了问题中要求的具体财务数据（过去两年绝对收入、前三大客户名称及收入占比、最大客户合同期限），转而描述食品业务的未来计划和当前状态（研发、工厂改造、尚未放量），没有提供任何实质性数据来验证300%增长率的含金量。",
+        "evidence": "会议中相关原话：'食品的话，第一个的话，我们像本来应该今年量会比较大的，主要是我们那边在韶关那边工厂，因为我还要改造我的工厂。'；'对于食品板食品板块，我们预计比如说五年之后，可能就是能做，五年之后，应该能做个但是四个亿。'"
+      },
+      {
+        "qid": "q2",
+        "question": "请提供前五大客户名称及各自收入占比，并说明公司与这些客户合作的深度（是单次采购、年度框架、还是联合研发）。",
+        "answer_summary": "管理层未直接列出前五大客户的名称及各自收入占比，也未明确说明与各客户的合作深度（单次采购、年度框架或联合研发）。仅提及部分国际客户（如欧莱雅、宝洁、资生堂、妮维雅、LVMH、雅诗兰黛）及国内客户（如珀莱雅、上海家化、富尔佳贝代琳等），并透露欧莱雅去年贡献约1200万元收入、今年预计3000万元，珀莱雅今年预计增加2000多万元，但未给出完整的客户集中度数据。合作模式方面，提到欧莱雅有定制研发和联合开发，但未系统说明前五大客户的合作性质。",
+        "judgment": "evasive",
+        "reason": "回答未直接回应问题核心要求，即提供前五大客户名称及各自收入占比，也未明确说明合作深度（单次采购、年度框架或联合研发）。虽然提及部分客户及收入预估，但信息碎片化、不完整，且未按问题要求进行结构化呈现，属于回避性回答。",
+        "evidence": "1. '去年的话在化在玻璃瓶原料里面，我们大概做了1点三五个亿。' 2. '去年他做了1200多万，今年可能应该能做到3000万到3000万多万。' 3. '珀莱雅那边，我们现在预计他今年大概融资了2500万，那么去年的话可能只做了几十万。' 4. '保洁贷了政策1000万。' 5. '欧莱雅、宝洁、资生堂、妮维雅四个国际客户，现在目前已经开始放量了。' 6. '像我们给了一些方案，他们提了一些要求，我们只要跟着他，要求我们做出了好几套方案，就是大家去共同去去研讨讨论。'"
+      },
+      {
+        "qid": "q3",
+        "question": "请列举一个美妆之外、已经签订正式商业合同、并已产生持续性收入的行业案例，并说明该案例中客户为“超分子改性”支付了多少溢价。",
+        "answer_summary": "管理层未直接回答美妆之外的行业案例及溢价数据，而是主要介绍美妆领域的客户（如欧莱雅、宝洁）和合作情况，并提及食品、新能源等领域尚在研发或早期阶段，未提供已签订正式商业合同并产生持续性收入的具体案例及溢价信息。",
+        "judgment": "evasive",
+        "reason": "问题明确要求列举美妆之外的行业案例（如食品、新能源等），并说明客户为“超分子改性”支付的溢价。但管理层的回答始终围绕美妆行业展开，虽然提到食品和新能源领域的布局，但均表示尚未产生持续性收入或仍在研发中，未提供任何已签订正式商业合同并产生收入的非美妆案例，也未涉及溢价数据。因此属于回避核心问题的回答。",
+        "evidence": "管理层原话：'我们从去年开始也慢慢的切入到食品类的。' '新能源我们预计可能到5月份它能够落地，但是你要今年创造收益，我们想可能没那么快。' '食品这一块，我们现在也有累计手上好多客户……等工厂弄好了之后，可能就会有开始批量出货。'"
+      }
+    ],
+    "qa_summary": {
+      "total": 3,
+      "effective": 0,
+      "fuzzy": 0,
+      "evasive": 3,
+      "high_frequency_theme": [
+        "财务数据回避",
+        "客户信息回避",
+        "跨行业案例回避"
+      ],
+      "one_line_signal": "管理层对所有关键问题均采取回避策略，未提供任何实质性数据或案例，回答质量极低。"
+    },
+    "risk_updates": [
+      {
+        "risk_id": "r1",
+        "risk_name": "叙事膨胀风险（平台化叙事超前于现实）",
+        "old_status": "unresolved",
+        "new_status": "partially_resolved",
+        "change_type": "partially_resolved",
+        "severity": "high",
+        "reason": "技术平台化能力从'weak'变为'partial'，且核心收入来源从'verified'变为'partially_relieved'，表明平台化叙事正在获得一定现实支撑，但跨行业能力仍为'partial'，且AI研发体系无改善，说明膨胀风险尚未完全解除。",
+        "evidence": [
+          "技术平台化能力（跨行业）: weak → partial (partially_relieved)",
+          "核心收入来源: verified → verified (partially_relieved)",
+          "AI驱动研发体系（建沐™）: weak → weak (no_relief)"
+        ]
+      },
+      {
+        "risk_id": "r2",
+        "risk_name": "第二曲线增长质量存疑",
+        "old_status": "unresolved",
+        "new_status": "unresolved",
+        "change_type": "unchanged",
+        "severity": "high",
+        "reason": "食品健康业务增长数据保持'partial'且无缓解，AI研发体系无改善，且回答质量摘要显示3/3回避问题，表明公司对第二曲线增长细节缺乏透明度和实质性进展。",
+        "evidence": [
+          "食品健康业务增长数据: partial → partial (no_relief)",
+          "AI驱动研发体系（建沐™）: weak → weak (no_relief)",
+          "回避问题数: 3/3"
+        ]
+      },
+      {
+        "risk_id": "r3",
+        "risk_name": "客户集中度风险",
+        "old_status": "unresolved",
+        "new_status": "partially_resolved",
+        "change_type": "partially_resolved",
+        "severity": "medium",
+        "reason": "客户集中度从'unknown'变为'partial'，且标记为'new_risk_signal'，表明公司开始披露部分客户集中度信息，但'partial'状态说明风险仍存在且信号变明确，因此状态为部分缓解但未消除。",
+        "evidence": [
+          "客户集中度: unknown → partial (new_risk_signal)"
+        ]
+      },
+      {
+        "risk_id": "auto_1",
+        "risk_name": "信息披露回避风险",
+        "old_status": "unverifiable",
+        "new_status": "new_risk",
+        "change_type": "new",
+        "severity": "high",
+        "reason": "回答质量摘要显示回避问题数为3/3，即所有问题均被回避，表明管理层在关键风险点上缺乏透明度，可能隐藏负面信息，这是新增的治理风险。",
+        "evidence": [
+          "回避问题数: 3/3"
+        ]
+      }
+    ],
+    "risk_summary": {
+      "updated_risks": [
+        

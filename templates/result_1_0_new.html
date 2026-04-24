@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ meta.company_name }} — 会前分析报告</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    /* ── 整体布局 ── */
+    .report-wrap { max-width: 960px; margin: 0 auto; padding: 24px 16px; }
+
+    /* ── 标签栏 ── */
+    .tab-bar {
+      display: flex; gap: 6px; flex-wrap: wrap;
+      border-bottom: 2px solid #e0e0e0; margin-bottom: 24px;
+    }
+    .tab-btn {
+      padding: 10px 18px; border: none; background: none;
+      cursor: pointer; font-size: 14px; font-weight: 500;
+      color: #666; border-bottom: 3px solid transparent;
+      margin-bottom: -2px; border-radius: 4px 4px 0 0;
+      transition: all 0.2s;
+    }
+    .tab-btn:hover { background: #f5f5f5; color: #333; }
+    .tab-btn.active { color: #2563eb; border-bottom-color: #2563eb; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    /* ── 步骤状态标签 ── */
+    .step-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+    .chip {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500;
+    }
+    .chip-done   { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
+    .chip-pending{ background: #f3f4f6; color: #9ca3af; border: 1px solid #e5e7eb; }
+
+    /* ── 下载区 ── */
+    .download-zone { margin-top: 20px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .download-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #2563eb; color: white; padding: 9px 18px;
+      border-radius: 8px; text-decoration: none; font-weight: 600;
+      font-size: 14px;
+    }
+    .download-primary:hover { background: #1d4ed8; }
+    .download-secondary {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #f3f4f6; color: #374151; padding: 7px 14px;
+      border-radius: 6px; text-decoration: none; font-size: 13px;
+    }
+    .download-secondary:hover { background: #e5e7eb; }
+
+    /* ── 通用内容卡片（统一风格） ── */
+    .content-card {
+      background: #fff; border: 1px solid #e5e7eb;
+      border-radius: 12px; padding: 24px; margin-bottom: 16px;
+    }
+    .content-card h3 {
+      font-size: 15px; font-weight: 600; color: #111;
+      margin: 0 0 14px 0; padding-bottom: 10px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    /* ── 统一字段行 ── */
+    .field-label {
+      font-size: 12px; font-weight: 600; color: #6b7280;
+      text-transform: uppercase; letter-spacing: 0.5px;
+      margin: 14px 0 6px;
+    }
+    .field-label:first-child { margin-top: 0; }
+
+    /* ── Markdown 文本块 ── */
+    .md-body { line-height: 1.7; color: #374151; font-size: 14px; }
+    .md-body p { margin: 6px 0; }
+    .md-body h1,.md-body h2,.md-body h3 { color: #111; margin: 14px 0 8px; }
+    .md-body h2 { font-size: 16px; border-bottom: 1px solid #eee; padding-bottom: 6px; }
+    .md-body h3 { font-size: 14px; }
+    .md-body ul,.md-body ol { padding-left: 20px; margin: 6px 0; }
+    .md-body li { margin: 4px 0; }
+    .md-body strong { color: #111; }
+    .md-body blockquote {
+      border-left: 3px solid #d1d5db; padding-left: 12px;
+      color: #6b7280; margin: 10px 0;
+    }
+
+    /* ── 列表项（统一用于 Step1/3/4） ── */
+    .item-block {
+      background: #f9fafb; border: 1px solid #e5e7eb;
+      border-radius: 8px; padding: 14px 16px; margin: 10px 0;
+    }
+    .item-block-title {
+      font-size: 13px; font-weight: 600; color: #111; margin-bottom: 8px;
+    }
+    .item-block ul { margin: 4px 0 0; padding-left: 18px; }
+    .item-block li { font-size: 13px; color: #374151; margin: 3px 0; }
+
+    /* ── 高亮标签行（信息/警告/风险） ── */
+    .tag-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+    .tag {
+      display: inline-block; padding: 2px 8px; border-radius: 10px;
+      font-size: 11px; font-weight: 500;
+    }
+    .tag-info    { background: #eff6ff; color: #2563eb; }
+    .tag-warn    { background: #fef9c3; color: #a16207; }
+    .tag-danger  { background: #fef2f2; color: #dc2626; }
+    .tag-success { background: #f0fdf4; color: #15803d; }
+
+    /* ── Step5 风格（稍保留，简化） ── */
+    .step5-hypothesis {
+      background: #eff6ff; border-left: 4px solid #2563eb;
+      padding: 14px 16px; border-radius: 8px; margin-bottom: 14px;
+    }
+    .step5-warning {
+      background: #fef9c3; border-left: 4px solid #eab308;
+      padding: 12px 14px; border-radius: 6px; margin: 10px 0;
+    }
+    .step5-breaker {
+      background: #fef2f2; border-left: 4px solid #ef4444;
+      padding: 10px 12px; border-radius: 6px; margin: 6px 0;
+    }
+    .step5-validate {
+      background: #f0fdf4; border-left: 4px solid #22c55e;
+      padding: 10px 12px; border-radius: 6px; margin: 6px 0;
+    }
+
+    /* ── 全部结果页 ── */
+    .all-section { margin-bottom: 24px; }
+    .all-section-title {
+      font-size: 14px; font-weight: 700; color: #374151;
+      padding: 8px 0; border-bottom: 2px solid #e5e7eb; margin-bottom: 12px;
+    }
+
+    /* ── ZIP 下载按钮 ── */
+    .download-zip {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #7c3aed; color: white; padding: 12px 24px;
+      border-radius: 10px; text-decoration: none; font-weight: 600;
+      font-size: 15px;
+    }
+    .download-zip:hover { background: #6d28d9; }
+  </style>
+</head>
+<body>
+<div class="report-wrap">
+
+  <!-- 标题栏 -->
+  <header style="margin-bottom:20px">
+    <a href="{{ url_for('project_detail', project_id=project_id) }}" style="color:#6b7280;text-decoration:none;font-size:14px">← 返回项目</a>
+    <h1 style="margin:8px 0 4px;font-size:20px">{{ meta.company_name }} — 会前分析报告</h1>
+    <p style="color:#9ca3af;font-size:13px;margin:0">Step1 → Step3 → Step4 → Step5 · 四步串行分析</p>
+  </header>
+
+  <!-- 步骤完成状态 -->
+  <div class="step-chips">
+    {% set steps = [("step1","①初步判断"),("step3","②背景分析"),("step4","③开会问题"),("step5","④会前判断")] %}
+    {% for sid, sname in steps %}
+      {% if sid in results.completed_steps %}
+        <span class="chip chip-done">✓ {{ sname }}</span>
+      {% else %}
+        <span class="chip chip-pending">○ {{ sname }}</span>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <!-- 标签栏 -->
+  <div class="tab-bar">
+    <button class="tab-btn {% if results.step1 %}active{% endif %}" onclick="showTab('step1',this)">① 初步判断</button>
+    <button class="tab-btn" onclick="showTab('step3',this)">② 背景分析</button>
+    <button class="tab-btn" onclick="showTab('step4',this)">③ 开会问题 ⭐</button>
+    <button class="tab-btn" onclick="showTab('step5',this)">④ 会前判断 ⭐</button>
+    <button class="tab-btn" onclick="showTab('all',this)">⑤ 全部结果</button>
+  </div>
+
+  <!-- ════ ① 初步判断 ════ -->
+  <div class="tab-content {% if results.step1 %}active{% endif %}" id="tab-step1">
+    {% if results.step1 %}
+      <div class="content-card">
+        <h3>① 初步判断（Step1）</h3>
+        <div class="md-body">
+          {% set lines = results.step1.split('\n') %}
+          {% for line in lines %}
+            {% if line.startswith('# ') %}
+              <h2>{{ line[2:] }}</h2>
+            {% elif line.startswith('## ') %}
+              <h3>{{ line[3:] }}</h3>
+            {% elif line.startswith('**') and line.endswith('**') %}
+              <p><strong>{{ line[2:-2] }}</strong></p>
+            {% elif line.startswith('- ') or line.startswith('* ') %}
+              <li>{{ line[2:] }}</li>
+            {% elif line.strip() %}
+              <p>{{ line }}</p>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="download-zone">
+        <a href="{{ url_for('download_step_file', project_id=project_id, step_name='step1', file_name='step1.txt') }}"
+           class="download-primary">⬇ 下载初步判断</a>
+      </div>
+    {% else %}
+      <div class="content-card">
+        <p style="color:#9ca3af">Step1 尚未完成。</p>
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- ════ ② 背景分析 ════ -->
+  <div class="tab-content" id="tab-step3">
+    {% if results.step3 %}
+      {# Step3 is a dict with bucket keys #}
+      {% for bucket_key, bucket_data in results.step3.items() %}
+        {% if bucket_data is mapping %}
+        <div class="content-card">
+          <h3>{{ bucket_key.replace('_',' ').title() }}</h3>
+
+          {# findings #}
+          {% if bucket_data.findings %}
+          <div class="field-label">📌 主要发现</div>
+          {% if bucket_data.findings is sequence and bucket_data.findings is not string %}
+            {% for f in bucket_data.findings %}
+              <div class="item-block">{{ f }}</div>
+            {% endfor %}
+          {% else %}
+            <div class="item-block">{{ bucket_data.findings }}</div>
+          {% endif %}
+          {% endif %}
+
+          {# risk_signals #}
+          {% if bucket_data.risk_signals %}
+          <div class="field-label">⚠️ 风险信号</div>
+          {% if bucket_data.risk_signals is sequence and bucket_data.risk_signals is not string %}
+            {% for r in bucket_data.risk_signals %}
+              <div class="item-block" style="border-left:3px solid #ef4444">
+                {{ r }}
+              </div>
+            {% endfor %}
+          {% else %}
+            <div class="item-block" style="border-left:3px solid #ef4444">{{ bucket_data.risk_signals }}</div>
+          {% endif %}
+          {% endif %}
+
+          {# to_step4 #}
+          {% if bucket_data.to_step4 %}
+          <div class="field-label">→ 传递给 Step4 的追问方向</div>
+          <div class="tag-row">
+            {% if bucket_data.to_step4 is sequence and bucket_data.to_step4 is not string %}
+              {% for q in bucket_data.to_step4 %}
+                <span class="tag tag-info">{{ q }}</span>
+              {% endfor %}
+            {% else %}
+              <span class="tag tag-info">{{ bucket_data.to_step4 }}</span>
+            {% endif %}
+          </div>
+          {% endif %}
+        </div>
+        {% endif %}
+      {% endfor %}
+
+      <div class="download-zone">
+        <a href="{{ url_for('download_step_file', project_id=project_id, step_name='step3', file_name='step3.json') }}"
+           class="download-primary">⬇ 下载背景分析（JSON）</a>
+      </div>
+    {% else %}
+      <div class="content-card">
+        <p style="color:#9ca3af">Step3 尚未完成，需先完成 Step1。</p>
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- ════ ③ 开会问题 ════ -->
+  <div class="tab-content" id="tab-step4">
+    {% if results.step4 %}
+      <div class="content-card">
+        <h3>⚔️ 开会要问的问题（Step4）</h3>
+        <div class="md-body">
+          {% set lines = results.step4.meeting_brief_md.split('\n') %}
+          {% for line in lines %}
+            {% if line.startswith('# ') %}
+              <h2>{{ line[2:] }}</h2>
+            {% elif line.startswith('## ') %}
+              <h3>{{ line[3:] }}</h3>
+            {% elif line.startswith('### ') %}
+              <h3 style="font-size:14px;color:#4b5563">{{ line[4:] }}</h3>
+            {% elif line.startswith('- ') or line.startswith('* ') %}
+              <li>{{ line[2:] }}</li>
+            {% elif line.strip() %}
+              <p>{{ line }}</p>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="download-zone">
+        <a href="{{ url_for('download_step_file', project_id=project_id, step_name='step4', file_name='step4_meeting_brief.md') }}"
+           class="download-primary">⭐ 下载开会问题清单</a>
+        <a href="{{ url_for('download_step_file', project_id=project_id, step_name='step4', file_name='step4_internal.json') }}"
+           class="download-secondary">内部推理数据</a>
+        <a href="{{ url_for('download_step_file', project_id=project_id, step_name='step4', file_name='step4_scan_questions.json') }}"
+           class="download-secondary">问题结构</a>
+      </div>
+    {% else %}
+      <div class="content-card">
+        <p style="color:#9ca3af">Step4 尚未完成，需先完成 Step1 和 Step3。</p>
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- ════ ④ 会前判断 ════ -->
+  <div class="tab-content" id="tab-step5">
+    {% if results.step5 %}
+      {# 当前假设 #}
+      {% if results.step5.current_hypothesis %}
+      <div class="step5-hypothesis">
+        <strong style="font-size:12px;color:#1d4ed8">🧭 当前假设（可被推翻）</strong>
+        <p style="margin:6px 0 0;line-height:1.6">{{ results.step5.current_hypothesis }}</p>
+      </div>
+      {% endif %}
+
+      {# 为什么可能是错的 #}
+      {% if results.step5.why_this_might_be_wrong %}
+      <div class="content-card" style="border-left:4px solid #eab308">
+        <h3>⚠️ 为什么这个假设可能是错的</h3>
+        {% for r in results.step5.why_this_might_be_wrong %}
+          <div class="item-block" style="border-left:3px solid #eab308">{{ r }}</div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      {# 关键验证点 #}
+      {% if results.step5.key_validation_points %}
+      <div class="content-card">
+        <h3>🎯 关键验证点</h3>
+        {% for vp in results.step5.key_validation_points %}
+        <div class="step5-validate">
+          <strong>{{ vp.point }}</strong>
+          <div style="font-size:12px;color:#374151;margin-top:4px">为什么重要：{{ vp.why_it_matters }}</div>
+          <div style="font-size:12px;color:#059669;margin-top:2px">要观察什么：{{ vp.what_to_look_for }}</div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      {# 放弃信号 #}
+      {% if results.step5.deal_breaker_signals %}
+      <div class="content-card">
+        <h3>🚫 放弃信号（一旦出现就停止跟进）</h3>
+        {% for db in results.step5.deal_breaker_signals %}
+        <div class="step5-breaker">
+          <strong>{{ db.signal }}</strong>
+          <div style="font-size:12px;color:#6b7280;margin-top:2px">→ {{ db.implication }}</div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      {# 会前目标 #}
+      {% if results.step5.meeting_objective %}
+      <div class="content-card" style="border-left:4px solid #2563eb">
+        <h3>📋 会前目标</h3>
+        <p style="line-height:1.6">{{ results.step5.meeting_objective }}</p>
+      </div>
+      {% endif %}
+
+      {# 下一步策略 #}
+      {% if results.step5.next_step_strategy %}
+      <div class="content-card">
+        <h3>🔀 下一步策略</h3>
+        <table style="width:100%;border-collapse:collapse;font-size:13px">
+          <tr style="background:#f9fafb">
+            <td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:600;width:28%">✅ 验证通过</td>
+            <td style="padding:8px 12px;border:1px solid #e5e7eb">{{ results.step5.next_step_strategy.if_validated }}</td>
+          </tr>
+          <tr>
+            <td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:600">❌ 验证不通过</td>
+            <td style="padding:8px 12px;border:1px solid #e5e7eb">{{ results.step5.next_step_strategy.if_not_validated }}</td>
+          </tr>
+          <tr style="background:#eff6ff">
+            <td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:600;color:#2563eb">📌 当前建议</td>
+            <td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:600">{{ results.step5.next_step_strategy.current_action }}</td>
+          </tr>
+        </table>
+      </div>
+      {% endif %}
+
+      <div class="download-zone">
+        <a href="{{ url_for('download_step_file', project_id=project_id, step_name='step5', file_name='step5_decision.md') }}"
+           class="download-primary">⭐ 下载会前判断总结</a>
+        <a href="{{ url_for('download_step_file', project_id=project_id, step_name='step5', file_name='step5_output.json') }}"
+           class="download-secondary">原始数据（JSON）</a>
+      </div>
+    {% else %}
+      <div class="content-card">
+        <p style="color:#9ca3af">Step5 尚未完成，需先完成 Step1、Step3 和 Step4。</p>
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- ════ ⑤ 全部结果 ════ -->
+  <div class="tab-content" id="tab-all">
+    <div style="text-align:center;padding:16px 0 24px">
+      <a href="{{ url_for('download_all', project_id=project_id) }}" class="download-zip">
+        📦 下载完整分析包（ZIP）
+      </a>
+      <p style="font-size:13px;color:#9ca3af;margin-top:8px">包含全部4个步骤的输出文件</p>
+    </div>
+
+    {% if results.step1 %}
+    <div class="all-section">
+      <div class="all-section-title">① 初步判断</div>
+      <div class="md-body" style="font-size:13px">{{ results.step1 | replace('\n','<br>') | safe }}</div>
+    </div>
+    {% endif %}
+
+    {% if results.step3 %}
+    <div class="all-section">
+      <div class="all-section-title">② 背景分析</div>
+      <details style="margin:8px 0">
+        <summary style="cursor:pointer;font-size:13px;color:#6b7280;padding:6px 10px;background:#f9fafb;border-radius:6px">展开原始数据</summary>
+        <pre style="background:#1e293b;color:#e2e8f0;padding:14px;border-radius:0 0 8px 8px;font-size:12px;overflow-x:auto;margin-top:4px">{{ results.step3 | tojson(indent=2, ensure_ascii=False) }}</pre>
+      </details>
+    </div>
+    {% endif %}
+
+    {% if results.step4 %}
+    <div class="all-section">
+      <div class="all-section-title">③ 开会问题</div>
+      <div class="md-body" style="font-size:13px">{{ results.step4.meeting_brief_md | replace('\n','<br>') | safe }}</div>
+    </div>
+    {% endif %}
+
+    {% if results.step5 and results.step5.decision_md %}
+    <div class="all-section">
+      <div class="all-section-title">④ 会前判断</div>
+      <div class="md-body" style="font-size:13px">{{ results.step5.decision_md | replace('\n','<br>') | safe }}</div>
+    </div>
+    {% endif %}
+  </div>
+
+</div><!-- /report-wrap -->
+
+<script>
+  function showTab(name, btn) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    var tab = document.getElementById('tab-' + name);
+    if (tab) tab.classList.add('active');
+    if (btn) btn.classList.add('active');
+  }
+</script>
+</body>
+</html>

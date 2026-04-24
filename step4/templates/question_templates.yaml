@@ -1,0 +1,103 @@
+# Step4 提问模板库（资产化，可持续扩展）
+# 使用方式：喂给模型作为思考约束，不是匹配调用
+
+revenue_quality:
+  - name: 收入来源拆解
+    opening: 今年收入增长，主要是老客户放量，还是新客户拓展？
+    deepen: 这些老客户的增长，是来自新产品，还是原有产品卖得更多？
+    trap: 如果不考虑新增客户，原有业务今年大概能增长多少？
+    signals:
+      good:
+        - 老客户复购明显
+        - 内生增长
+      bad:
+        - 依赖新客户
+        - 一次性订单
+
+customer_dependency:
+  - name: 合作起点
+    opening: 这些核心客户一般是怎么开始合作的？
+    deepen: 一开始通常是测试还是直接采购？
+    trap: 有没有客户试用之后没有继续合作？
+    signals:
+      good:
+        - 客户主动
+        - 测试转量产
+      bad:
+        - 强销售驱动
+        - 测试后流失
+
+tech_capability:
+  - name: AI真实作用
+    opening: 你们AI现在主要用在哪些研发环节？
+    deepen: 相比之前减少了多少实验或时间？
+    trap: 如果没有AI，这些产品还能做出来吗？
+    signals:
+      good:
+        - 参与核心流程
+        - 有量化提效
+      bad:
+        - 只是辅助工具
+
+new_business:
+  - name: 增长真实性
+    opening: 这个新业务现在大概是什么体量？
+    deepen: 是研发合作还是已经开始销售？
+    trap: 有没有复购客户？
+    signals:
+      good:
+        - 有真实收入
+      bad:
+        - 样品阶段
+
+team_stability:
+  - name: 团队稳定性
+    opening: 创始团队当初是怎么走到一起的？
+    deepen: 核心技术人员在公司待了多久？
+    trap: 过去一年有没有核心人员离开？为什么？
+    signals:
+      good:
+        - 创始团队共事多年
+        - 核心人员持股稳定
+      bad:
+        - 关键岗位近期离职
+        - 股权纠纷历史
+
+market_position:
+  - name: 市场竞争地位
+    opening: 你们觉得自己的核心竞争力是什么？
+    deepen: 客户选择你们而不是竞争对手的主要原因是什么？
+    trap: 有没有客户从你们这里转到竞争对手？为什么？
+    signals:
+      good:
+        - 有明确差异化
+        - 客户复购/续约率高
+      bad:
+        - 价格战驱动
+        - 客户黏性弱
+
+funds_usage:
+  - name: 资金使用效率
+    opening: 这轮融资的钱打算怎么花？
+    deepen: 预计多久能实现盈亏平衡？
+    trap: 如果收入增速不及预期，最先砍哪块支出？
+    signals:
+      good:
+        - 预算清晰有节奏
+        - 有里程碑对赌
+      bad:
+        - 纯营销驱动
+        - 人员成本过高
+
+ip_protection:
+  - name: 知识产权保护
+    opening: 你们有哪些核心专利或技术壁垒？
+    deepen: 技术团队离开时有没有签竞业和保密协议？
+    trap: 有没有发现过技术泄露或被抄袭的情况？
+    signals:
+      good:
+        - 专利布局完整
+        - 有法律保护意识
+      bad:
+        - 无核心壁垒
+        - 技术易复制

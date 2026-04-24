@@ -1,0 +1,56 @@
+from __future__ import annotations
+
+from typing import List, Literal, Optional
+from pydantic import BaseModel, Field
+
+QuestionType = Literal["fact", "counterfactual", "path"]
+AskStage = Literal["opening", "middle", "late"]
+Sensitivity = Literal["low", "medium", "high"]
+DecisionPriority = Literal["P1", "P2", "P3"]
+
+class DecisionImpact(BaseModel):
+    positive: str = Field(description="如果答案偏正面，投资判断如何变化")
+    negative: str = Field(description="如果答案偏负面，投资判断如何变化")
+
+class DecisionRule(BaseModel):
+    go_if: str = Field(description="满足什么条件，可以推进")
+    no_go_if: str = Field(description="出现什么条件，应暂停或终止")
+    next_action: str = Field(description="得到答案后下一步动作")
+
+class MeetingQuestion(BaseModel):
+    question: str = Field(description="会议中可直接说出口的问题")
+    intent: Optional[str] = Field(default=None, description="这个问题真正想验证什么")
+    question_type: Optional[QuestionType] = Field(default=None, description="fact / counterfactual / path")
+    ask_stage: Optional[AskStage] = Field(default=None, description="opening / middle / late")
+    sensitivity: Optional[Sensitivity] = Field(default=None, description="问题敏感度")
+    why_this_wording: Optional[str] = Field(default=None, description="为什么要这样问")
+    follow_up_if_positive: Optional[str] = Field(default=None, description="如果对方回答偏正面，下一句怎么追问")
+    follow_up_if_negative: Optional[str] = Field(default=None, description="如果对方回答偏负面或模糊，下一句怎么追问")
+    # v3 简化字段
+    follow_up_positive: Optional[str] = Field(default=None, description="对方回答好时怎么追问")
+    follow_up_negative: Optional[str] = Field(default=None, description="对方回答模糊时怎么追问")
+
+class DecisionGap(BaseModel):
+    gap_id: str = Field(description="缺口编号，如 G1")
+    priority: DecisionPriority = Field(description="优先级：P1/P2/P3")
+    core_issue: str = Field(description="一句话描述核心问题")
+    from_bucket: Optional[str] = Field(default=None, description="来自 Step3 的哪个桶")
+    why_it_matters: Optional[str] = Field(default=None, description="为什么这个问题会影响投资")
+    decision_impact: Optional[DecisionImpact] = Field(default=None, description="决策影响")
+    decision_rule: Optional[DecisionRule] = Field(default=None, description="决策规则")
+    internal_goal: Optional[str] = Field(default=None, description="内部真正想搞清楚的判断问题")
+    # v3 简化字段
+    go_if: Optional[str] = Field(default=None, description="满足什么条件可以推进")
+    no_go_if: Optional[str] = Field(default=None, description="出现什么条件应暂停")
+    meeting_questions: List[MeetingQuestion] = Field(
+        description="真实会议可用的问题，建议 1-2 个",
+        min_length=1,
+        max_length=2,
+    )
+
+class Step4Output(BaseModel):
+    total_gaps: int = Field(description="决策缺口总数")
+    meeting_strategy: str = Field(description="这场会整体应该怎么问的简短策略")
+    decision_gaps: List[DecisionGap]
+    summary: str = Field(default="", description="一句话总结：这轮尽调要搞清楚什么")
+    raw_text: Optional[str] = None

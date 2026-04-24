@@ -1,0 +1,125 @@
+{
+  "selected_buckets": [
+    "tech_barrier",
+    "customer_value",
+    "commercialization"
+  ],
+  "bucket_outputs": [
+    {
+      "bucket_key": "tech_barrier",
+      "bucket_label": "技术/壁垒是否成立",
+      "point": "超分子改性技术在美妆领域并非底层原创，而是已知分子的物理改性，易被模仿",
+      "explanation": "【claim】BP强调公司拥有156+项发明专利，覆盖共晶、离子盐等关键技术节点，形成专利壁垒。【reality】超分子共晶、离子盐等技术在制药和材料领域已有广泛应用，属于行业通用技术。公司主要对已知分子（如VC、麦角硫因）进行改性，未创造新分子，其“AI驱动超分子材料研发体系”可能仅是辅助筛选工具。【gap】BP未展示其AI模型的具体预测能力、数据闭环或量化缩短研发周期的证据，也未与竞品（如其他超分子改性公司）进行性能对比。【conclusion】contradict：该技术壁垒可能被高估，更多是配方优化层面的know-how，而非底层平台性壁垒。",
+      "relation_to_step1": "contradict",
+      "certainty": "medium",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "tech_barrier",
+      "bucket_label": "技术/壁垒是否成立",
+      "point": "在美妆领域的客户验证和千吨级产能构成了商业化的初步壁垒",
+      "explanation": "【claim】BP显示公司已服务欧莱雅、宝洁、华熙生物等100余家头部企业，年产能达千吨级。【reality】在美妆原料改性领域，能进入头部品牌供应链并实现稳定量产，需要经过严格的验证周期和工艺磨合，这本身就是一种壁垒，尤其对于配方型公司而言。【gap】但BP未披露良品率、工艺稳定性、成本结构等工程化细节，无法判断该壁垒的深度。【conclusion】support：客户验证和产能规模确实构成了初步商业化壁垒，与Step1判断一致。",
+      "relation_to_step1": "support",
+      "certainty": "high",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "customer_value",
+      "bucket_label": "客户为什么付钱",
+      "point": "客户付钱是为了获得‘更好用’的原料，即溶解性、稳定性、生物利用度提升，这与Step1判断一致",
+      "explanation": "【claim】BP展示的超分子VC、麦角硫因等产品，提升了水溶性、稳定性、生物利用度，并减弱了不良气味。【reality】美妆品牌客户的核心诉求是做出更有卖点、更稳定的产品，原料的‘易用性’直接关系到配方开发效率和终端产品宣称。【gap】BP未说明这些改进是否显著降低了客户的配方成本或开发周期，也未与竞品原料进行成本/性能对比。【conclusion】support：客户价值清晰，与Step1一致。",
+      "relation_to_step1": "support",
+      "certainty": "high",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "customer_value",
+      "bucket_label": "客户为什么付钱",
+      "point": "客户可能仅为‘尝鲜’付费，而非长期依赖，技术优势可能被替代",
+      "explanation": "【claim】BP强调技术带来的性能提升，但未说明客户切换回传统原料或自研替代方案的成本和动力。【reality】美妆原料改性技术门槛相对较低，下游品牌方（如欧莱雅、华熙生物）本身具备较强的研发能力，可能将改性原料视为短期卖点，或在内部开发替代方案。客户采购决策可能基于营销故事，而非不可替代的技术优势。【gap】BP未提供客户续约率、复购率或独家供应协议等信息。【conclusion】contradict：客户付费动机可能不稳固，存在被替代风险，挑战Step1中“客户付钱是为了更好用”的稳定性。",
+      "relation_to_step1": "contradict",
+      "certainty": "medium",
+      "source_type": "common_sense"
+    },
+    {
+      "bucket_key": "commercialization",
+      "bucket_label": "商业化路径是否成立",
+      "point": "美妆原料业务已实现商业化，有真实收入和头部客户，路径初步验证",
+      "explanation": "【claim】BP显示2023年营收1.04亿元，2024年1.23亿元，服务100余家头部企业，年产能千吨级。【reality】这表明公司至少在美妆领域完成了从技术到产品的商业化闭环，具备客户验证和交付能力。【gap】但营收增长缓慢（2024年仅增长18%），且净利润仍为负，需关注增长质量和盈利路径。【conclusion】support：美妆商业化路径成立，与Step1判断一致。",
+      "relation_to_step1": "support",
+      "certainty": "high",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "commercialization",
+      "bucket_label": "商业化路径是否成立",
+      "point": "跨行业扩张（食品、农业、新能源、医药）的商业化路径严重不清晰，风险极高",
+      "explanation": "【claim】BP声称食品订单年增长300%，农业与院士团队商议产业化，新能源并购千沐，烟草中标，药物共晶“复活”搁浅管线。【reality】这些行业对材料的法规、供应链、客户需求、验证周期截然不同。食品需通过安全性评估和法规审批，农业需田间试验和推广，新能源需电芯级验证和成本竞争力，医药需漫长临床试验。BP中除食品有订单增长率外，其他均无规模化收入证据，多为论文、中标公示或“商议中”。【gap】BP未提供食品订单的绝对金额、农业的产业化时间表、新能源的客户验证进展、医药的具体管线阶段。【conclusion】contradict：跨行业扩张路径高度不确定，存在叙事包装风险，挑战Step1中“更担心叙事宏大分散”的判断。",
+      "relation_to_step1": "contradict",
+      "certainty": "high",
+      "source_type": "bp"
+    }
+  ],
+  "publicly_resolvable": [
+    {
+      "bucket_key": "tech_barrier",
+      "item": "专利清单与权利要求范围",
+      "current_conclusion": "BP声称156+项发明专利，但未公开清单。通过公开专利数据库可核查其专利是否覆盖核心技术节点，以及是否容易被绕开。",
+      "confidence": "medium"
+    },
+    {
+      "bucket_key": "customer_value",
+      "item": "头部客户合作深度（如独家供应、联合开发协议）",
+      "current_conclusion": "BP列举了欧莱雅、宝洁、华熙生物等客户，但未说明合作性质（框架协议、联合开发还是独家供应）。通过公开新闻、行业报告可大致确认合作深度。",
+      "confidence": "medium"
+    },
+    {
+      "bucket_key": "commercialization",
+      "item": "千沐新能源的营收和客户情况",
+      "current_conclusion": "BP声称并购千沐新能源，但未披露其营收、客户、技术成熟度。通过公开工商信息、行业报道可初步了解千沐的业务规模。",
+      "confidence": "low"
+    }
+  ],
+  "still_unresolved": [
+    {
+      "bucket_key": "tech_barrier",
+      "question": "AI平台“建沐™”是否真正缩短了研发周期并降低了成本？其预测能力与实验结果的吻合度如何？",
+      "why_unresolved": "BP只做了定性描述，未提供量化数据（如研发周期缩短百分比、筛选成功率、成本降低比例）。无法通过公开信息验证，必须通过尽调或实验验证。",
+      "impact_level": "high"
+    },
+    {
+      "bucket_key": "customer_value",
+      "question": "客户（如欧莱雅、宝洁）是否将杉海创新的改性原料视为核心依赖，还是仅作为短期卖点？是否有独家供应协议或长期采购合同？",
+      "why_unresolved": "客户采购动机和合同细节属于商业机密，公开信息无法获取。必须通过客户访谈或尽调确认。",
+      "impact_level": "high"
+    },
+    {
+      "bucket_key": "commercialization",
+      "question": "食品原料订单300%增长的绝对金额是多少？是否已形成可持续的规模化收入？",
+      "why_unresolved": "BP未披露基数，高增长率可能由极小基数导致。食品行业验证周期长，需确认订单是否已转化为稳定收入。必须通过尽调或客户验证。",
+      "impact_level": "high"
+    }
+  ],
+  "tensions": [
+    "美妆商业化已成立 vs 跨行业扩张路径高度不确定",
+    "客户为性能改善付费 vs 客户可能仅为尝鲜、存在替代风险",
+    "专利数量多 vs 专利可能为外围专利、无法形成真实壁垒"
+  ],
+  "step1_adjustment_hints": {
+    "supported": [
+      "Step1中关于公司本质是配方型公司、美妆业务已验证的判断得到支持",
+      "Step1中关于客户付费动机是‘更好用’的判断得到支持",
+      "Step1中关于AI平台被包装、跨行业扩张风险高的担忧得到强化"
+    ],
+    "caution": [
+      "Step1对技术壁垒的判断可能过于乐观：超分子改性在美妆领域并非独创，易被模仿，专利壁垒可能不坚固",
+      "Step1对客户付费动机的稳定性判断需要更谨慎：客户可能仅为短期营销故事付费，长期依赖性存疑"
+    ],
+    "to_step4": [
+      "AI平台的真实效用和量化业务影响（研发周期、成本）",
+      "跨行业扩张（食品、新能源、医药）的客户验证进展和规模化收入证据",
+      "客户合作深度和续约率，以判断付费动机的稳定性"
+    ]
+  },
+  "raw_text": "{\n  \"selected_buckets\": [\"tech_barrier\", \"customer_value\", \"commercialization\"],\n  \"bucket_outputs\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"bucket_label\": \"技术/壁垒是否成立\",\n      \"point\": \"超分子改性技术在美妆领域并非底层原创，而是已知分子的物理改性，易被模仿\",\n      \"explanation\": \"【claim】BP强调公司拥有156+项发明专利，覆盖共晶、离子盐等关键技术节点，形成专利壁垒。【reality】超分子共晶、离子盐等技术在制药和材料领域已有广泛应用，属于行业通用技术。公司主要对已知分子（如VC、麦角硫因）进行改性，未创造新分子，其“AI驱动超分子材料研发体系”可能仅是辅助筛选工具。【gap】BP未展示其AI模型的具体预测能力、数据闭环或量化缩短研发周期的证据，也未与竞品（如其他超分子改性公司）进行性能对比。【conclusion】contradict：该技术壁垒可能被高估，更多是配方优化层面的know-how，而非底层平台性壁垒。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"bucket_label\": \"技术/壁垒是否成立\",\n      \"point\": \"在美妆领域的客户验证和千吨级产能构成了商业化的初步壁垒\",\n      \"explanation\": \"【claim】BP显示公司已服务欧莱雅、宝洁、华熙生物等100余家头部企业，年产能达千吨级。【reality】在美妆原料改性领域，能进入头部品牌供应链并实现稳定量产，需要经过严格的验证周期和工艺磨合，这本身就是一种壁垒，尤其对于配方型公司而言。【gap】但BP未披露良品率、工艺稳定性、成本结构等工程化细节，无法判断该壁垒的深度。【conclusion】support：客户验证和产能规模确实构成了初步商业化壁垒，与Step1判断一致。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"high\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"bucket_label\": \"客户为什么付钱\",\n      \"point\": \"客户付钱是为了获得‘更好用’的原料，即溶解性、稳定性、生物利用度提升，这与Step1判断一致\",\n      \"explanation\": \"【claim】BP展示的超分子VC、麦角硫因等产品，提升了水溶性、稳定性、生物利用度，并减弱了不良气味。【reality】美妆品牌客户的核心诉求是做出更有卖点、更稳定的产品，原料的‘易用性’直接关系到配方开发效率和终端产品宣称。【gap】BP未说明这些改进是否显著降低了客户的配方成本或开发周期，也未与竞品原料进行成本/性能对比。【conclusion】support：客户价值清晰，与Step1一致。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"high\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"bucket_label\": \"客户为什么付钱\",\n      \"point\": \"客户可能仅为‘尝鲜’付费，而非长期依赖，技术优势可能被替代\",\n      \"explanation\": \"【claim】BP强调技术带来的性能提升，但未说明客户切换回传统原料或自研替代方案的成本和动力。【reality】美妆原料改性技术门槛相对较低，下游品牌方（如欧莱雅、华熙生物）本身具备较强的研发能力，可能将改性原料视为短期卖点，或在内部开发替代方案。客户采购决策可能基于营销故事，而非不可替代的技术优势。【gap】BP未提供客户续约率、复购率或独家供应协议等信息。【conclusion】contradict：客户付费动机可能不稳固，存在被替代风险，挑战Step1中“客户付钱是为了更好用”的稳定性。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"common_sense\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"bucket_label\": \"商业化路径是否成立\",\n      \"point\": \"美妆原料业务已实现商业化，有真实收入和头部客户，路径初步验证\",\n      \"explanation\": \"【claim】BP显示2023年营收1.04亿元，2024年1.23亿元，服务100余家头部企业，年产能千吨级。【reality】这表明公司至少在美妆领域完成了从技术到产品的商业化闭环，具备客户验证和交付能力。【gap】但营收增长缓慢（2024年仅增长18%），且净利润仍为负，需关注增长质量和盈利路径。【conclusion】support：美妆商业化路径成立，与Step1判断一致。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"high\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"bucket_label\": \"商业化路径是否成立\",\n      \"point\": \"跨行业扩张（食品、农业、新能源、医药）的商业化路径严重不清晰，风险极高\",\n      \"explanation\": \"【claim】BP声称食品订单年增长300%，农业与院士团队商议产业化，新能源并购千沐，烟草中标，药物共晶“复活”搁浅管线。【reality】这些行业对材料的法规、供应链、客户需求、验证周期截然不同。食品需通过安全性评估和法规审批，农业需田间试验和推广，新能源需电芯级验证和成本竞争力，医药需漫长临床试验。BP中除食品有订单增长率外，其他均无规模化收入证据，多为论文、中标公示或“商议中”。【gap】BP未提供食品订单的绝对金额、农业的产业化时间表、新能源的客户验证进展、医药的具体管线阶段。【conclusion】contradict：跨行业扩张路径高度不确定，存在叙事包装风险，挑战Step1中“更担心叙事宏大分散”的判断。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"high\",\n      \"source_type\": \"bp\"\n    }\n  ],\n  \"publicly_resolvable\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"item\": \"专利清单与权利要求范围\",\n      \"current_conclusion\": \"BP声称156+项发明专利，但未公开清单。通过公开专利数据库可核查其专利是否覆盖核心技术节点，以及是否容易被绕开。\",\n      \"confidence\": \"medium\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"item\": \"头部客户合作深度（如独家供应、联合开发协议）\",\n      \"current_conclusion\": \"BP列举了欧莱雅、宝洁、华熙生物等客户，但未说明合作性质（框架协议、联合开发还是独家供应）。通过公开新闻、行业报告可大致确认合作深度。\",\n      \"confidence\": \"medium\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"item\": \"千沐新能源的营收和客户情况\",\n      \"current_conclusion\": \"BP声称并购千沐新能源，但未披露其营收、客户、技术成熟度。通过公开工商信息、行业报道可初步了解千沐的业务规模。\",\n      \"confidence\": \"low\"\n    }\n  ],\n  \"still_unresolved\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"question\": \"AI平台“建沐™”是否真正缩短了研发周期并降低了成本？其预测能力与实验结果的吻合度如何？\",\n      \"why_unresolved\": \"BP只做了定性描述，未提供量化数据（如研发周期缩短百分比、筛选成功率、成本降低比例）。无法通过公开信息验证，必须通过尽调或实验验证。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"question\": \"客户（如欧莱雅、宝洁）是否将杉海创新的改性原料视为核心依赖，还是仅作为短期卖点？是否有独家供应协议或长期采购合同？\",\n      \"why_unresolved\": \"客户采购动机和合同细节属于商业机密，公开信息无法获取。必须通过客户访谈或尽调确认。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"question\": \"食品原料订单300%增长的绝对金额是多少？是否已形成可持续的规模化收入？\",\n      \"why_unresolved\": \"BP未披露基数，高增长率可能由极小基数导致。食品行业验证周期长，需确认订单是否已转化为稳定收入。必须通过尽调或客户验证。\",\n      \"impact_level\": \"high\"\n    }\n  ],\n  \"tensions\": [\n    \"美妆商业化已成立 vs 跨行业扩张路径高度不确定\",\n    \"客户为性能改善付费 vs 客户可能仅为尝鲜、存在替代风险\",\n    \"专利数量多 vs 专利可能为外围专利、无法形成真实壁垒\"\n  ],\n  \"step1_adjustment_hints\": {\n    \"supported\": [\n      \"Step1中关于公司本质是配方型公司、美妆业务已验证的判断得到支持\",\n      \"Step1中关于客户付费动机是‘更好用’的判断得到支持\",\n      \"Step1中关于AI平台被包装、跨行业扩张风险高的担忧得到强化\"\n    ],\n    \"caution\": [\n      \"Step1对技术壁垒的判断可能过于乐观：超分子改性在美妆领域并非独创，易被模仿，专利壁垒可能不坚固\",\n      \"Step1对客户付费动机的稳定性判断需要更谨慎：客户可能仅为短期营销故事付费，长期依赖性存疑\"\n    ],\n    \"to_step4\": [\n      \"AI平台的真实效用和量化业务影响（研发周期、成本）\",\n      \"跨行业扩张（食品、新能源、医药）的客户验证进展和规模化收入证据\",\n      \"客户合作深度和续约率，以判断付费动机的稳定性\"\n    ]\n  }\n}"
+}

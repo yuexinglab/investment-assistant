@@ -5,6 +5,61 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ meta.company_name }} — 项目详情</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    /* ── 进度条区域 ── */
+    #progressArea {
+      display: none;
+      background: #fff; border: 1px solid #e5e7eb;
+      border-radius: 12px; padding: 24px; margin: 20px 0;
+    }
+    .progress-bar-wrap {
+      height: 10px; background: #e5e7eb; border-radius: 10px;
+      overflow: hidden; margin: 12px 0;
+    }
+    .progress-bar-fill {
+      height: 100%; background: linear-gradient(90deg, #2563eb, #7c3aed);
+      border-radius: 10px; transition: width 0.4s ease;
+      width: 0%;
+    }
+    .progress-steps {
+      display: flex; justify-content: space-between;
+      font-size: 12px; color: #9ca3af; margin-bottom: 8px;
+    }
+    .progress-step.active { color: #2563eb; font-weight: 600; }
+    .progress-step.done   { color: #16a34a; }
+
+    /* ── 思考流 ── */
+    #thinkingLog {
+      background: #f9fafb; border-radius: 8px;
+      padding: 12px 16px; min-height: 80px;
+      max-height: 180px; overflow-y: auto;
+      font-size: 13px; color: #6b7280;
+      margin-top: 12px;
+    }
+    .think-line { padding: 3px 0; animation: fadeIn 0.3s ease; }
+    .think-line.step1 { color: #2563eb; }
+    .think-line.step3 { color: #7c3aed; }
+    .think-line.step4 { color: #0891b2; }
+    .think-line.step5 { color: #059669; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+    /* ── 状态标签 ── */
+    #statusMsg {
+      font-size: 14px; font-weight: 500; color: #374151;
+      margin-bottom: 6px;
+    }
+    .step-status-row {
+      display: flex; gap: 12px; margin: 10px 0;
+    }
+    .ss-badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 3px 10px; border-radius: 12px; font-size: 12px;
+    }
+    .ss-pending { background: #f3f4f6; color: #9ca3af; }
+    .ss-running { background: #dbeafe; color: #1d4ed8; }
+    .ss-done    { background: #dcfce7; color: #15803d; }
+    .ss-error   { background: #fee2e2; color: #dc2626; }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -14,45 +69,122 @@
       <span class="status-badge status-{{ meta.status }}">
         {% if meta.status == 'created' %}待分析
         {% elif meta.status == 'v1_done' %}初判完成
+        {% elif meta.status == 'v2_5_done' %}v2.5判断完成
         {% elif meta.status == 'v2_done' %}更新完成
         {% endif %}
       </span>
     </header>
 
-    <!-- 步骤一：初判 1.0 -->
-    <div class="step-card {% if meta.status != 'created' %}step-done{% endif %}">
+    <!-- ════════ 1.0 会前分析（新流程，主推）════════ -->
+    <div class="step-card">
       <div class="step-header">
         <span class="step-num">第 1 步</span>
-        <h2>初判 1.0 — AI 分析 BP</h2>
+        <h2>🔬 会前分析（1.0）</h2>
       </div>
-      <p class="step-desc">上传 BP 后，三个 AI 角色（业务理解 → 风险挑刺 → 整合裁判）协同分析，生成：公司快照 / BP拆解 / 初步优势与风险 / 第一轮问题清单 / 话术建议</p>
+      <p class="step-desc">上传 BP → AI 四步串行分析 → 开会问题清单 + 会前判断框架<br>
+        <span style="font-size:12px;color:#9ca3af">Step1 初步判断 → Step3 背景分析 → Step4 开会问题 → Step5 会前判断</span>
+      </p>
 
-      {% if meta.status == 'created' %}
-        <div class="analyze-action">
-          <button class="btn btn-primary btn-large" onclick="startAnalyze()">
-            🚀 开始初判分析（预计 2-3 分钟）
-          </button>
-          <p class="hint-small">AI 会依次调用三个角色分析，请耐心等待</p>
+      <!-- 运行按钮区 -->
+      <div class="analyze-action">
+        <!-- 主按钮：一键完整流程 -->
+        <button class="btn btn-primary btn-large" id="btnRunAll" onclick="startPipeline()">
+          ▶ 运行完整分析（约3-5分钟）
+        </button>
+
+        <!-- 分步按钮（折叠） -->
+        <button class="btn btn-outline" onclick="toggleStepBtns()" style="margin-left:8px;font-size:13px">
+          单步运行 ▾
+        </button>
+      </div>
+
+      <!-- 分步按钮 -->
+      <div id="stepBtns" style="display:none;margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-sm btn-outline" onclick="runSingleStep('step1')">运行 Step1</button>
+        <button class="btn btn-sm btn-outline" onclick="runSingleStep('step3')">运行 Step3</button>
+        <button class="btn btn-sm btn-outline" onclick="runSingleStep('step4')">运行 Step4</button>
+        <button class="btn btn-sm btn-outline" onclick="runSingleStep('step5')">运行 Step5</button>
+      </div>
+
+      <!-- 进度区域 -->
+      <div id="progressArea">
+        <div id="statusMsg">准备中...</div>
+
+        <!-- 步骤状态行 -->
+        <div class="step-status-row">
+          <span class="ss-badge ss-pending" id="ss-step1">Step1</span>
+          <span class="ss-badge ss-pending" id="ss-step3">Step3</span>
+          <span class="ss-badge ss-pending" id="ss-step4">Step4</span>
+          <span class="ss-badge ss-pending" id="ss-step5">Step5</span>
         </div>
-      {% else %}
-        <a href="{{ url_for('result_v1', project_id=project_id) }}" class="btn btn-outline">查看初判报告</a>
+
+        <!-- 进度条 -->
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" id="progressFill"></div>
+        </div>
+        <div style="text-align:right;font-size:12px;color:#9ca3af" id="progressPct">0%</div>
+
+        <!-- 思考流 -->
+        <div id="thinkingLog">
+          <div class="think-line" style="color:#9ca3af">等待分析开始...</div>
+        </div>
+      </div>
+
+      <!-- 已有结果：查看按钮 -->
+      {% set has_new = results_available %}
+      {% if has_new %}
+      <div class="action-row" style="margin-top:12px">
+        <a href="{{ url_for('result_new', project_id=project_id) }}"
+           class="btn btn-primary">📊 查看会前分析报告</a>
+        <a href="{{ url_for('download_all', project_id=project_id) }}"
+           class="btn btn-outline" style="margin-left:8px">📦 下载完整包</a>
+      </div>
       {% endif %}
     </div>
 
-    <!-- 步骤二：沟通更新 2.0 -->
-    <div class="step-card {% if meta.status == 'v2_done' %}step-done{% elif meta.status == 'created' %}step-locked{% endif %}">
+    <!-- ════════ 旧版入口（保留，折叠展示）════════ -->
+    <details style="margin-top:16px">
+      <summary style="cursor:pointer;font-size:13px;color:#9ca3af;padding:8px">旧版分析入口（v2.5 / 1.0 AB互检）▾</summary>
+      <div class="step-card" style="margin-top:8px;border:1px dashed #e5e7eb">
+        <div class="step-header">
+          <span class="step-num" style="background:#9ca3af">旧版</span>
+          <h2 style="color:#6b7280">旧版初判</h2>
+        </div>
+        {% if meta.status == 'created' %}
+          <div class="analyze-action">
+            <button class="btn btn-outline btn-large" onclick="startAnalyzeV25()">
+              🚀 v2.5 投资人判断（旧流程）
+            </button>
+            <button class="btn btn-outline btn-large" onclick="startAnalyze()" style="margin-left: 10px;">
+              📊 1.0 AB互检分析
+            </button>
+          </div>
+        {% else %}
+          <div class="action-row">
+            <a href="{{ url_for('result_v1', project_id=project_id) }}" class="btn btn-outline">📄 查看 1.0</a>
+            <a href="{{ url_for('export_report', project_id=project_id, version='v1_0') }}" class="btn btn-outline" style="margin-left:8px">⬇ 导出 1.0</a>
+            {% if v2_5_available %}
+            <a href="{{ url_for('result_v25', project_id=project_id) }}" class="btn btn-outline" style="margin-left:20px">📄 查看 v2.5</a>
+            <a href="{{ url_for('export_report', project_id=project_id, version='v2_5') }}" class="btn btn-outline" style="margin-left:8px">⬇ 导出 v2.5</a>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </details>
+
+    <!-- ════════ 步骤二：2.0（沟通更新）════════ -->
+    <div class="step-card {% if meta.status == 'v2_done' %}step-done{% elif meta.status == 'created' %}step-locked{% endif %}" style="margin-top:16px">
       <div class="step-header">
         <span class="step-num">第 2 步</span>
         <h2>沟通更新 2.0 — 会议后更新判断</h2>
       </div>
       <p class="step-desc">开完会之后，上传会议录音转写 / 纪要 / 聊天记录。AI 对照问题树更新判断状态，识别风险变化，生成第二轮追问。</p>
 
-      {% if meta.status == 'v1_done' or meta.status == 'v2_done' %}
+      {% if meta.status == 'v1_done' or meta.status == 'v2_5_done' or meta.status == 'v2_done' %}
         <form id="updateForm" enctype="multipart/form-data">
           <div class="form-group">
             <label>上传会议记录（TXT / DOCX / PDF）</label>
-            <input type="file" id="meeting_file" name="meeting_file"
-                   accept=".txt,.docx,.pdf,.md">
+            <input type="file" id="meeting_file" name="meeting_file" accept=".txt,.docx,.pdf,.md">
             <p class="file-name-display" id="meetingFileName"></p>
           </div>
           <button type="button" class="btn btn-primary" onclick="startUpdate()">
@@ -60,37 +192,180 @@
           </button>
         </form>
         {% if meta.status == 'v2_done' %}
-          <a href="{{ url_for('result_v2', project_id=project_id) }}" class="btn btn-outline" style="margin-left:12px">查看2.0报告</a>
+          <a href="{{ url_for('result_v2', project_id=project_id) }}" class="btn btn-outline" style="margin-left:12px">📄 查看2.0报告</a>
+          <a href="{{ url_for('export_report', project_id=project_id, version='v2_0') }}" class="btn btn-outline" style="margin-left:8px">⬇ 导出2.0</a>
         {% endif %}
       {% else %}
-        <p class="step-locked-msg">请先完成第 1 步初判分析</p>
+        <p class="step-locked-msg">请先完成第 1 步分析</p>
       {% endif %}
     </div>
 
-    <!-- 导出 -->
-    {% if meta.status != 'created' %}
-    <div class="export-bar">
-      <a href="{{ url_for('export_report', project_id=project_id) }}" class="btn btn-outline">
-        ⬇ 导出 Markdown 报告
-      </a>
-    </div>
-    {% endif %}
   </div>
 
-  <!-- 加载遮罩 -->
+  <!-- 旧版加载遮罩（旧流程用） -->
   <div class="loading-overlay" id="loadingOverlay" style="display:none">
     <div class="loading-box">
       <div class="spinner"></div>
       <p id="loadingText">AI 分析中，请稍候...</p>
-      <p class="hint-small">三个角色依次工作，预计 2-4 分钟</p>
+      <p class="hint-small">预计 2-4 分钟</p>
     </div>
   </div>
 
   <script>
+    // ── 新流程：POST 触发 + EventSource 拉流 ──────────────────────────
+    function startPipeline() {
+      document.getElementById('progressArea').style.display = 'block';
+      document.getElementById('btnRunAll').disabled = true;
+      document.getElementById('btnRunAll').textContent = '分析中...';
+      document.getElementById('thinkingLog').innerHTML = '';
+
+      const stepLabels = { step1:'初步判断', step3:'背景分析', step4:'开会问题', step5:'会前判断' };
+
+      // POST 触发 pipeline，同时用 EventSource 拉取 SSE 流
+      fetch('{{ url_for("run_pipeline", project_id=project_id) }}', {
+        method: 'POST'
+      })
+      .then(resp => {
+        if (!resp.ok) throw new Error('HTTP ' + resp.status);
+        // resp.body 是 ReadableStream，直接传给 EventSource 的构造
+        // 但 EventSource 不支持 POST，所以我们改用 fetch + ReadableStream
+        return resp.body;
+      })
+      .then(stream => {
+        const reader = stream.getReader();
+        const decoder = new TextDecoder();
+        let buffer = '';
+
+        function read() {
+          reader.read().then(({ done, value }) => {
+            if (done) return;
+
+            buffer += decoder.decode(value, { stream: true });
+            // 拆分成独立事件（按 \n\n 分隔）
+            const lines = buffer.split('\n');
+            buffer = lines.pop() || '';
+
+            for (const raw of lines) {
+              const line = raw.trim();
+              if (!line.startsWith('data:')) continue;
+              const jsonStr = line.slice(5).trim();
+              if (!jsonStr) continue;
+              try {
+                const data = JSON.parse(jsonStr);
+                handleSSEMessage(data);
+              } catch {}
+            }
+
+            if (!done) read();
+          }).catch(err => {
+            addThinkLine('step1', '❌ 读取流失败：' + err.message);
+            document.getElementById('btnRunAll').disabled = false;
+            document.getElementById('btnRunAll').textContent = '▶ 重新运行';
+          });
+        }
+        read();
+      })
+      .catch(err => {
+        addThinkLine('step1', '❌ 触发失败：' + err.message);
+        document.getElementById('btnRunAll').disabled = false;
+        document.getElementById('btnRunAll').textContent = '▶ 重新运行';
+      });
+    }
+
+    function handleSSEMessage(data) {
+      if (data.type === 'ping') return;
+
+      if (data.type === 'thinking') {
+        const stepLabels = { step1:'初步判断', step3:'背景分析', step4:'开会问题', step5:'会前判断' };
+        addThinkLine(data.step, '[' + (stepLabels[data.step] || data.step) + '] ' + data.msg);
+      }
+
+      if (data.type === 'progress') {
+        updateProgress(data);
+      }
+
+      if (data.type === 'redirect') {
+        addThinkLine('step5', '✅ 分析完成！正在跳转...');
+        setTimeout(() => { window.location.href = data.url; }, 800);
+      }
+    }
+
+    function updateProgress(data) {
+      const pct = data.percent || 0;
+      document.getElementById('progressFill').style.width = pct + '%';
+      document.getElementById('progressPct').textContent = pct + '%';
+
+      const step = data.step;
+      const status = data.status;
+
+      if (step && step !== 'all') {
+        const badge = document.getElementById('ss-' + step);
+        if (badge) {
+          badge.className = 'ss-badge ss-' + (status === 'done' ? 'done' : status === 'error' ? 'error' : 'running');
+        }
+        const labels = { step1:'Step1', step3:'Step3', step4:'Step4', step5:'Step5' };
+        const statusText = status === 'done' ? '✓' : status === 'error' ? '✗' : '⟳';
+        if (badge) badge.textContent = statusText + ' ' + (labels[step] || step);
+      }
+
+      // 状态消息
+      const stepNames = { step1:'Step1 初步判断', step3:'Step3 背景分析', step4:'Step4 开会问题', step5:'Step5 会前判断' };
+      if (status === 'running') {
+        document.getElementById('statusMsg').textContent = '正在分析：' + (stepNames[step] || step) + '...';
+      } else if (status === 'done' && step === 'all') {
+        document.getElementById('statusMsg').textContent = '✅ 所有步骤完成！';
+      } else if (status === 'error') {
+        document.getElementById('statusMsg').textContent = '❌ ' + (step || '分析') + ' 运行失败：' + data.msg;
+      }
+    }
+
+    function addThinkLine(step, msg) {
+      const log = document.getElementById('thinkingLog');
+      const line = document.createElement('div');
+      line.className = 'think-line ' + (step || '');
+      line.textContent = msg;
+      log.appendChild(line);
+      log.scrollTop = log.scrollHeight;
+    }
+
+    // ── 分步运行 ──────────────────────────────────────────────────────
+    function toggleStepBtns() {
+      const el = document.getElementById('stepBtns');
+      el.style.display = el.style.display === 'none' ? 'flex' : 'none';
+    }
+
+    function runSingleStep(step) {
+      const stepNames = { step1:'Step1', step3:'Step3', step4:'Step4', step5:'Step5' };
+      if (!confirm(stepNames[step] + ' 运行中可能需要 1-2 分钟，确认继续？')) return;
+
+      document.getElementById('progressArea').style.display = 'block';
+      const badge = document.getElementById('ss-' + step);
+      if (badge) { badge.className = 'ss-badge ss-running'; badge.textContent = '⟳ ' + stepNames[step]; }
+      document.getElementById('statusMsg').textContent = '正在运行 ' + stepNames[step] + '...';
+
+      fetch('{{ url_for("run_step", project_id=project_id, step_name="__STEP__") }}'.replace('__STEP__', step), {
+        method: 'POST'
+      })
+      .then(r => r.json())
+      .then(data => {
+        if (data.status === 'ok') {
+          if (badge) { badge.className = 'ss-badge ss-done'; badge.textContent = '✓ ' + stepNames[step]; }
+          document.getElementById('statusMsg').textContent = stepNames[step] + ' 完成！';
+          setTimeout(() => location.reload(), 800);
+        } else {
+          if (badge) { badge.className = 'ss-badge ss-error'; badge.textContent = '✗ ' + stepNames[step]; }
+          document.getElementById('statusMsg').textContent = '❌ ' + (data.error || '运行失败');
+        }
+      })
+      .catch(e => {
+        document.getElementById('statusMsg').textContent = '❌ 请求失败：' + e;
+      });
+    }
+
+    // ── 旧版流程 ──────────────────────────────────────────────────────
     function startAnalyze() {
       document.getElementById('loadingOverlay').style.display = 'flex';
       document.getElementById('loadingText').textContent = 'A角色：业务理解分析中...';
-
       fetch('{{ url_for("analyze", project_id=project_id) }}', { method: 'POST' })
         .then(r => r.json())
         .then(data => {
@@ -99,24 +374,33 @@
         })
         .catch(e => {
           document.getElementById('loadingOverlay').style.display = 'none';
-          alert('请求失败，请检查网络和 API Key 配置：' + e);
+          alert('请求失败：' + e);
+        });
+    }
+
+    function startAnalyzeV25() {
+      document.getElementById('loadingOverlay').style.display = 'flex';
+      document.getElementById('loadingText').textContent = 'v2.5流程：Step1通用理解...';
+      fetch('{{ url_for("analyze_v25", project_id=project_id) }}', { method: 'POST' })
+        .then(r => r.json())
+        .then(data => {
+          if (data.redirect) window.location.href = data.redirect;
+          else alert('分析失败：' + (data.error || '未知错误'));
+        })
+        .catch(e => {
+          document.getElementById('loadingOverlay').style.display = 'none';
+          alert('请求失败：' + e);
         });
     }
 
     function startUpdate() {
       const file = document.getElementById('meeting_file').files[0];
       if (!file) { alert('请先选择会议记录文件'); return; }
-
       const formData = new FormData();
       formData.append('meeting_file', file);
-
       document.getElementById('loadingOverlay').style.display = 'flex';
       document.getElementById('loadingText').textContent = 'D角色：会议分析中...';
-
-      fetch('{{ url_for("update_v2", project_id=project_id) }}', {
-        method: 'POST',
-        body: formData
-      })
+      fetch('{{ url_for("update_v2", project_id=project_id) }}', { method: 'POST', body: formData })
         .then(r => r.json())
         .then(data => {
           if (data.redirect) window.location.href = data.redirect;
@@ -135,3 +419,4 @@
   </script>
 </body>
 </html>
+
