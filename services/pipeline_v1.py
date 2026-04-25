@@ -18,6 +18,7 @@ import os
 from typing import Callable, Optional
 
 from services.deepseek_service import call_deepseek
+from services.project_manager import update_project_status
 
 
 # ─── Step1 服务（inline，不需要独立模块）────────────────────────────────────────
@@ -299,6 +300,8 @@ def run_pipeline_v1(
         _save_step(project_dir, "step5", "step5_decision.md", step5_result.get("decision_md", ""))
         _save_step(project_dir, "step5", "step5_output.json",
                    json.dumps(step5_result, ensure_ascii=False, indent=2))
+        # 更新项目状态为 v1_done
+        update_project_status(project_dir, "v1_done")
         emit("step5", "done", 100, "会前判断生成完成")
     except Exception as e:
         emit("step5", "error", 100, f"Step5 失败: {e}")

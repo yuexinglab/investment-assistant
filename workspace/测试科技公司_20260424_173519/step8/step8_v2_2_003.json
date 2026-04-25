@@ -1,0 +1,95 @@
+{
+  "hypothesis_updates": [
+    {
+      "hypothesis_id": "h_001",
+      "hypothesis": "AI平台可能构成技术壁垒",
+      "updated_view": "AI平台尚未形成闭环，准确率约70-80%，仅作为辅助工具，技术壁垒较弱。",
+      "confidence_change": "medium→low",
+      "change_type": "weakened",
+      "supporting_evidence": [],
+      "contradicting_evidence": [
+        "ni_007",
+        "ni_008",
+        "ni_009"
+      ],
+      "why_changed": "创始人明确表示AI平台准确率约70-80%，未形成闭环，且数据量有限（几千条成功数据），与之前认为的准确率超80%和数据飞轮效应不符，轻微削弱了技术壁垒的判断。",
+      "source_question_id": "q_1"
+    },
+    {
+      "hypothesis_id": "h_002",
+      "hypothesis": "大客户（欧莱雅/宝洁）粘性高，切换成本大",
+      "updated_view": "大客户粘性较高，欧莱雅为股东且贡献收入增长显著，切换成本因研发周期长而较高。",
+      "confidence_change": "medium→medium(弱)",
+      "change_type": "reinforced",
+      "supporting_evidence": [
+        "ni_002",
+        "ni_003",
+        "ni_018",
+        "ni_021"
+      ],
+      "contradicting_evidence": [],
+      "why_changed": "会议确认欧莱雅为股东且2025年贡献约1200万元、2026年预计3000万元以上，宝洁收入也增长，研发周期9个月至1年以上，轻微增强了粘性和切换成本的判断。",
+      "source_question_id": "q_2"
+    },
+    {
+      "hypothesis_id": "h_003",
+      "hypothesis": "新能源和食品业务有明确的收入时间表",
+      "updated_view": "新能源和食品业务收入时间表推迟，新能源2025年无收入，食品2026年上半年才批量出货，近期收入不明确。",
+      "confidence_change": "medium→low",
+      "change_type": "weakened",
+      "supporting_evidence": [],
+      "contradicting_evidence": [
+        "ni_010",
+        "ni_012",
+        "ni_013"
+      ],
+      "why_changed": "会议显示新能源业务预计2026年5月方案落地、今年无收入，食品业务因工厂改造延迟至2026年上半年出货，与之前认为的2025年有收入和2025年下半年批量出货不符，轻微削弱了收入时间表的确定性。",
+      "source_question_id": "q_3"
+    },
+    {
+      "hypothesis_id": "h_004",
+      "hypothesis": "并购千沐有真实协同效应",
+      "updated_view": "并购千沐的协同效应存在但证据不足，仅有一个案例提及，缺乏量化支撑。",
+      "confidence_change": "unchanged",
+      "change_type": "reframed",
+      "supporting_evidence": [
+        "ni_014",
+        "ni_015"
+      ],
+      "contradicting_evidence": [],
+      "why_changed": "会议确认并购为同一创始人且计划本轮融资前完成，协同效应体现在研发中台共享，但仅有一个电池剥离剂配方受护肤品原料启发的案例，缺乏量化证据，对原判断无实质影响。",
+      "source_question_id": "q_4"
+    },
+    {
+      "hypothesis_id": "h_005",
+      "hypothesis": "专利保护构成有效竞争壁垒",
+      "updated_view": "专利保护力度较强，超分子领域无直接竞争对手，但食品领域存在竞争对手，共有专利范围未明确。",
+      "confidence_change": "medium→medium(弱)",
+      "change_type": "reinforced",
+      "supporting_evidence": [
+        "ni_022",
+        "ni_020"
+      ],
+      "contradicting_evidence": [],
+      "why_changed": "会议确认分子结构专利保护力度较强，超分子领域无直接竞争对手，但食品领域有竞争对手共晶科技，且未明确与欧莱雅共有专利的具体范围，轻微增强了专利壁垒的判断。",
+      "source_question_id": "q_5"
+    }
+  ],
+  "unchanged_hypotheses": [],
+  "overall_change": {
+    "is_judgement_significantly_changed": true,
+    "new_risks": [
+      {
+        "risk": "假设「AI平台可能构成技术壁垒...」被会议信息削弱：创始人明确表示AI平台准确率约70-80%，目前仅作为辅助参...",
+        "source_question_id": "q_1",
+        "severity": "medium"
+      },
+      {
+        "risk": "假设「新能源和食品业务有明确的收入时间表...」被会议信息削弱：新能源业务预计2026年5月方案落地，但今年无收入；食品业务...",
+        "source_question_id": "q_3",
+        "severity": "medium"
+      }
+    ],
+    "new_opportunity_added": null
+  }
+}

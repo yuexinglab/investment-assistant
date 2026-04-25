@@ -1,0 +1,131 @@
+{
+  "hypothesis_updates": [
+    {
+      "hypothesis_id": "h_1",
+      "hypothesis": "假设1: AI平台可能比当前判断的更核心，只是BP未充分披露其数据闭环和模型迭代能力，实际壁垒可能远超预期。...",
+      "updated_view": "AI平台并非核心壁垒，准确率仅70-80%，数据量小且去年才搭建，仍作为参考工具未形成闭环；公司核心是超分子技术平台，但两者协同关系未验证。",
+      "confidence_change": "unchanged",
+      "change_type": "reframed",
+      "supporting_evidence": [
+        "ni_007",
+        "ni_008",
+        "ni_014"
+      ],
+      "contradicting_evidence": [
+        "AI平台闭环项目清单及实际应用案例",
+        "超分子技术平台与AI平台的具体协同关系证明"
+      ],
+      "why_changed": "会议信息显示AI平台准确率仅70-80%，数据量几千条成功数据，去年才正式搭建，仍作为参考工具未形成闭环，削弱了AI平台的核心性假设；同时公司声称核心是超分子技术平台，但协同关系未验证。",
+      "source_question_id": "q_001"
+    },
+    {
+      "hypothesis_id": "h_2",
+      "hypothesis": "假设2: 新能源客户可能已形成隐性合作或意向订单，只是出于保密协议未在BP中披露，导致我低估了其商业化进展。...",
+      "updated_view": "新能源客户未形成隐性合作或意向订单，2026年预计无收入，业务仍处于早期技术方案阶段，商业化进展远低于预期。",
+      "confidence_change": "medium→high",
+      "change_type": "reinforced",
+      "supporting_evidence": [
+        "ni_009",
+        "ni_012"
+      ],
+      "contradicting_evidence": [
+        "新能源业务的具体落地时间表及合作合同",
+        "千沐新能源的财务数据及技术成果"
+      ],
+      "why_changed": "会议明确新能源业务2026年预计无收入，且并购千沐新能源为同一创始人旗下公司，旨在整合研发中台，说明业务仍处于早期技术方案阶段，尚未有客户付费，削弱了隐性合作的假设。",
+      "source_question_id": "q_002"
+    },
+    {
+      "hypothesis_id": "h_3",
+      "hypothesis": "假设3: 美妆客户可能已形成技术依赖，复购率和合同续签率极高，只是BP未强调，导致我低估了美妆业务的护城河。...",
+      "updated_view": "美妆客户依赖度未验证，但2025年美妆原料收入约1.35亿元，扭亏为盈依赖美妆业务，复购率和合同续签率数据缺失。",
+      "confidence_change": "medium→high",
+      "change_type": "reinforced",
+      "supporting_evidence": [
+        "ni_001"
+      ],
+      "contradicting_evidence": [
+        "美妆客户复购率及合同续签率数据",
+        "2025年美妆业务收入明细及财务报表"
+      ],
+      "why_changed": "会议显示2025年美妆原料收入约1.35亿元，但未提供复购率和合同续签率数据，美妆客户依赖度未验证，假设部分强化但证据不足。",
+      "source_question_id": "q_003"
+    },
+    {
+      "hypothesis_id": "h_4",
+      "hypothesis": "假设4: 多行业扩张可能并非资源分散，而是通过技术平台复用的高效策略，团队可能已具备跨行业管理能力，只是我未充分评估。...",
+      "updated_view": "多行业扩张策略未验证，新能源业务2026年无收入，美妆业务支撑盈利，跨行业管理能力证据缺失。",
+      "confidence_change": "unchanged",
+      "change_type": "reframed",
+      "supporting_evidence": [
+        "ni_001",
+        "ni_009"
+      ],
+      "contradicting_evidence": [
+        "多行业扩张的具体案例及技术平台复用证明",
+        "跨行业管理团队能力评估"
+      ],
+      "why_changed": "会议显示新能源业务2026年无收入，美妆业务是主要收入来源，多行业扩张是否高效未验证，跨行业管理能力证据缺失。",
+      "source_question_id": "q_001"
+    },
+    {
+      "hypothesis_id": "h_5",
+      "hypothesis": "验证点1: 建沐™AI平台与竞品（晶泰科技、深度原理）的核心差异化和不可替代性，以及其数据闭环规模和量化业务影响。...",
+      "updated_view": "AI平台与竞品的核心差异化未验证，数据闭环规模小，准确率仅70-80%，公司声称全球第一家实现超分子技术平台化，但不可替代性存疑。",
+      "confidence_change": "unchanged",
+      "change_type": "reframed",
+      "supporting_evidence": [
+        "ni_007",
+        "ni_008",
+        "ni_014"
+      ],
+      "contradicting_evidence": [
+        "AI平台与竞品对比数据",
+        "数据闭环规模及量化业务影响证明"
+      ],
+      "why_changed": "会议信息显示AI平台准确率仅70-80%，数据量小，去年才搭建，未提供与竞品对比数据，核心差异化未验证，但公司声称全球第一家实现超分子技术平台化。",
+      "source_question_id": "q_001"
+    },
+    {
+      "hypothesis_id": "h_6",
+      "hypothesis": "验证点2: 新能源客户（如电池厂商）是否已对深共晶电解液或锂电回收技术进行正式验证，是否有意向订单或框架协议。...",
+      "updated_view": "新能源客户未进行正式验证，2026年预计无收入，业务处于早期技术方案阶段，意向订单或框架协议缺失。",
+      "confidence_change": "medium→high",
+      "change_type": "reinforced",
+      "supporting_evidence": [
+        "ni_009",
+        "ni_012"
+      ],
+      "contradicting_evidence": [
+        "新能源客户验证报告或意向订单",
+        "框架协议或合作合同"
+      ],
+      "why_changed": "会议明确新能源业务2026年预计无收入，且并购千沐新能源为同一创始人旗下公司，旨在整合研发中台，说明客户验证未进行，意向订单缺失。",
+      "source_question_id": "q_002"
+    },
+    {
+      "hypothesis_id": "h_7",
+      "hypothesis": "验证点3: 2025年扭亏为盈的财务预测核心假设，以及美妆业务和新能源业务分别贡献多少收入。...",
+      "updated_view": "2025年扭亏为盈假设依赖美妆业务，新能源无收入，美妆收入约1.35亿元，但2026年美妆大客户订单未验证，财务预测可靠性存疑。",
+      "confidence_change": "medium→high",
+      "change_type": "reinforced",
+      "supporting_evidence": [
+        "ni_001",
+        "ni_002",
+        "ni_009"
+      ],
+      "contradicting_evidence": [
+        "2025年美妆业务收入明细及财务报表",
+        "2026年美妆大客户订单或合同支持"
+      ],
+      "why_changed": "会议显示2025年美妆原料收入约1.35亿元，2026年预计总营收2-2.5亿元主要来自美妆大客户放量，新能源无收入，但美妆大客户订单未提供，财务预测假设未完全验证。",
+      "source_question_id": "q_002"
+    }
+  ],
+  "unchanged_hypotheses": [],
+  "overall_change": {
+    "is_judgement_significantly_changed": false,
+    "new_risks": [],
+    "new_opportunity_added": null
+  }
+}

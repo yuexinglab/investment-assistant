@@ -1,0 +1,25 @@
+{
+  "key_findings": [
+    "⚠️ 4个假设被削弱/推翻",
+    "✅ 3个假设得到支持",
+    "🚨 4个新风险暴露"
+  ],
+  "validated_points": [
+    "新能源不成立",
+    "新能源待深入",
+    "新能源不成立"
+  ],
+  "invalidated_points": [
+    "AI不成立",
+    "美妆待深入",
+    "团队存疑",
+    "AI待深入"
+  ],
+  "uncertain_points": [],
+  "_counts": {
+    "reinforced": 3,
+    "uncertain": 0,
+    "weakened": 4,
+    "total": 7
+  }
+}

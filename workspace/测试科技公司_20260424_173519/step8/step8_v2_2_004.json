@@ -1,0 +1,112 @@
+{
+  "hypothesis_updates": [
+    {
+      "hypothesis_id": "h_001",
+      "hypothesis": "AI平台可能构成技术壁垒",
+      "updated_view": "AI平台准确率约70-80%，仅作为辅助参考工具，未形成闭环，技术壁垒被削弱；但数据飞轮效应尚未验证，仍存疑。",
+      "confidence_change": "medium→low",
+      "change_type": "slightly_weakened",
+      "supporting_evidence": [
+        "ni_007",
+        "ni_008",
+        "ni_009"
+      ],
+      "contradicting_evidence": [
+        "AI平台实际案例（从客户需求到候选分子的完整闭环案例）",
+        "湿实验减少比例的量化数据",
+        "与竞品（如晶泰科技）的对比数据"
+      ],
+      "why_changed": "创始人明确表示AI平台准确率约70-80%，仅作为辅助参考工具，未形成闭环，且平台于2024年正式搭建，数据量有限（几千条成功数据），与会前假设的'数据飞轮效应'和'显著降低客户研发成本'不符。",
+      "source_question_id": "q_1"
+    },
+    {
+      "hypothesis_id": "h_002",
+      "hypothesis": "大客户（欧莱雅/宝洁）粘性高，切换成本大",
+      "updated_view": "欧莱雅是股东且2025年贡献约1200万元，宝洁贡献700多万元，客户粘性部分强化；但切换成本高仍为claim，缺乏合同和客户访谈验证。",
+      "confidence_change": "unchanged",
+      "change_type": "reframed",
+      "supporting_evidence": [
+        "ni_002",
+        "ni_003",
+        "ni_018",
+        "ni_021"
+      ],
+      "contradicting_evidence": [
+        "欧莱雅2025年采购合同及订单",
+        "宝洁2025年采购合同及订单",
+        "客户粘性的第三方验证（如客户访谈记录）"
+      ],
+      "why_changed": "会议确认欧莱雅是公司股东（国内投资的第一家原料公司），2025年贡献约1200万元，2026年预计3000万元以上；宝洁2025年贡献700多万元，2026年预计增加约1000万元；客户定制研发周期9个月至1年以上，部分强化了粘性判断。",
+      "source_question_id": "q_2"
+    },
+    {
+      "hypothesis_id": "h_003",
+      "hypothesis": "新能源和食品业务有明确的收入时间表",
+      "updated_view": "新能源业务2026年5月方案落地但今年无收入，食品业务因工厂改造延迟至2026年上半年，原假设的2025年收入时间表被削弱，近期收入确定性低。",
+      "confidence_change": "medium→low",
+      "change_type": "slightly_weakened",
+      "supporting_evidence": [
+        "ni_010",
+        "ni_012"
+      ],
+      "contradicting_evidence": [
+        "新能源业务客户合作合同或测试报告",
+        "食品业务工厂改造进度表及已对接客户订单"
+      ],
+      "why_changed": "会议明确新能源业务预计2026年5月方案落地，但今年无收入；食品业务因工厂改造延迟，预计2026年上半年改造完成后开始批量出货，与会前假设的'新能源2025年有收入，食品2025年下半年开始批量出货'不符。",
+      "source_question_id": "q_3"
+    },
+    {
+      "hypothesis_id": "h_004",
+      "hypothesis": "并购千沐有真实协同效应",
+      "updated_view": "并购千沐为同一创始人，计划在本轮融资前完成，但协同效应仅有一个案例（电池剥离剂配方受护肤品原料启发），缺乏量化证据，原假设的'共享研发中台实现跨行业技术复用'未得到有力支持。",
+      "confidence_change": "unchanged",
+      "change_type": "reframed",
+      "supporting_evidence": [
+        "ni_014",
+        "ni_015"
+      ],
+      "contradicting_evidence": [
+        "千沐新能源的财务报表",
+        "技术路线及并购后组织架构安排",
+        "研发中台共享的具体案例和联合开发项目"
+      ],
+      "why_changed": "会议确认并购千沐新能源为同一创始人，计划在本轮融资前完成；协同效应体现在研发中台共享，但具体案例仅提及电池剥离剂配方受护肤品原料启发，缺乏量化证据和联合开发项目，原假设未获强化。",
+      "source_question_id": "q_4"
+    },
+    {
+      "hypothesis_id": "h_005",
+      "hypothesis": "专利保护构成有效竞争壁垒",
+      "updated_view": "公司专利为分子结构专利，保护力度较强，部分与欧莱雅共有，但食品领域存在竞争对手共晶科技，且共有专利范围未明确，原假设的'超分子领域无直接竞争对手'被削弱。",
+      "confidence_change": "unchanged",
+      "change_type": "reframed",
+      "supporting_evidence": [
+        "ni_022",
+        "ni_020"
+      ],
+      "contradicting_evidence": [
+        "专利清单及权属证明",
+        "与欧莱雅共有专利的协议及范围界定"
+      ],
+      "why_changed": "会议确认公司专利为分子结构专利，保护力度较强，部分与欧莱雅共有；但公司声称在超分子领域无直接竞争对手，同时承认食品领域有竞争对手共晶科技，且未明确共有专利的具体范围，原假设的'超分子领域无直接竞争对手'被削弱。",
+      "source_question_id": "q_5"
+    }
+  ],
+  "unchanged_hypotheses": [],
+  "overall_change": {
+    "is_judgement_significantly_changed": true,
+    "new_risks": [
+      {
+        "risk": "假设「AI平台可能构成技术壁垒...」被会议信息削弱：创始人明确表示AI平台准确率约70-80%，目前仅作为辅助参...",
+        "source_question_id": "q_1",
+        "severity": "medium"
+      },
+      {
+        "risk": "假设「新能源和食品业务有明确的收入时间表...」被会议信息削弱：新能源业务预计2026年5月方案落地，但今年无收入；食品业务...",
+        "source_question_id": "q_3",
+        "severity": "medium"
+      }
+    ],
+    "new_opportunity_added": null
+  }
+}

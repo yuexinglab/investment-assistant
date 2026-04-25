@@ -1,0 +1,194 @@
+{
+  "hypothesis_updates": [
+    {
+      "hypothesis_direction": "positive",
+      "hypothesis_id": "h_1",
+      "hypothesis": "假设1: AI平台可能比BP描述的更核心，只是未充分披露量化数据，实际筛选效率远超竞品，形成真实护城河。...",
+      "updated_view": "AI平台当前是辅助工具而非核心护城河，准确率仅70-80%，数据量有限且未形成闭环，与传统研发或竞品的提效对比数据缺失，无法判断其是否构成真实壁垒。",
+      "confidence_change": "medium→low",
+      "change_type": "slightly_weakened",
+      "supporting_evidence": [
+        "ni_009",
+        "ni_010"
+      ],
+      "contradicting_evidence": [
+        "与传统研发的提效对比数据",
+        "与竞品的量化对比数据",
+        "AI平台实际案例验证报告"
+      ],
+      "why_changed": "创始人承认AI平台准确率约70-80%，数据量几千条成功、上万条失败，主要用于辅助计算，尚未形成闭环，且未提供与传统研发或竞品的提效对比量化数据，削弱了原假设中'实际筛选效率远超竞品'的判断。",
+      "source_question_id": "q_001"
+    },
+    {
+      "hypothesis_direction": "positive",
+      "hypothesis_id": "h_2",
+      "hypothesis": "假设2: 新能源业务可能已有隐藏客户或POC订单，只是出于保密协议未在BP中披露，商业化进展比预期快。...",
+      "updated_view": "新能源业务无真实客户和规模化收入，预计2026年5月方案落地但年内不会产生收入，商业化进展远慢于预期，隐藏客户或POC订单的假设未获支持。",
+      "confidence_change": "medium→low",
+      "change_type": "slightly_weakened",
+      "supporting_evidence": [
+        "ni_008",
+        "ni_011"
+      ],
+      "contradicting_evidence": [
+        "电池厂认证报告",
+        "新能源业务客户合同或意向书",
+        "千沐新能源的技术专利清单"
+      ],
+      "why_changed": "创始人明确表示新能源业务预计2026年5月方案落地，但年内不会产生收入，无真实客户和规模化收入，且并购千沐新能源为同一创始人，协同效应体现在技术复用而非客户导入，削弱了原假设中'商业化进展比预期快'的判断。",
+      "source_question_id": "q_002"
+    },
+    {
+      "hypothesis_direction": "positive",
+      "hypothesis_id": "h_3",
+      "hypothesis": "假设3: 美妆客户可能已形成技术依赖，续约率和客单价远超预期，平台价值被低估。...",
+      "updated_view": "美妆客户的技术依赖和续约率、客单价情况未在会议中讨论，无法验证平台价值是否被低估。",
+      "confidence_change": "medium→low",
+      "change_type": "slightly_weakened",
+      "supporting_evidence": [],
+      "contradicting_evidence": [
+        "美妆客户续约率数据",
+        "美妆客户客单价数据",
+        "美妆客户技术依赖案例"
+      ],
+      "why_changed": "会议未涉及美妆客户的技术依赖、续约率或客单价等任何信息，无法对原假设进行验证或更新。",
+      "source_question_id": "q_001"
+    },
+    {
+      "hypothesis_direction": "positive",
+      "hypothesis_id": "h_4",
+      "hypothesis": "假设4: 跨行业扩张的管理风险可能被高估，团队通过并购和合作已具备多行业运营能力。...",
+      "updated_view": "跨行业扩张的管理风险未被验证，食品和新能源业务均无付费客户或订单，团队的多行业运营能力缺乏证据支持。",
+      "confidence_change": "medium→low",
+      "change_type": "overturned",
+      "supporting_evidence": [
+        "ni_007",
+        "ni_008"
+      ],
+      "contradicting_evidence": [
+        "食品业务客户意向书或小订单",
+        "新能源业务客户意向书或小订单"
+      ],
+      "why_changed": "食品业务因韶关工厂改造尚未放量，新能源业务预计2026年5月方案落地但年内不会产生收入，两个领域均无付费客户或订单，表明跨行业扩张的可行性存疑，削弱了原假设中'团队已具备多行业运营能力'的判断。",
+      "source_question_id": "q_003"
+    },
+    {
+      "hypothesis_direction": "positive",
+      "hypothesis_id": "h_5",
+      "hypothesis": "验证点1: 建沐™AI矩阵与竞品（晶泰科技、深度原理）的量化对比数据...",
+      "updated_view": "建沐™AI矩阵与竞品的量化对比数据完全缺失，无法判断AI平台是核心壁垒还是营销噱头。",
+      "confidence_change": "medium→low",
+      "change_type": "slightly_weakened",
+      "supporting_evidence": [
+        "ni_009",
+        "ni_010"
+      ],
+      "contradicting_evidence": [
+        "与传统研发的提效对比数据",
+        "与竞品的量化对比数据",
+        "AI平台实际案例验证报告"
+      ],
+      "why_changed": "会议中未提供与传统研发或竞品的提效对比量化数据，仅提及AI平台准确率约70-80%且未形成闭环，无法进行有效对比。",
+      "source_question_id": "q_001"
+    },
+    {
+      "hypothesis_direction": "positive",
+      "hypothesis_id": "h_6",
+      "hypothesis": "验证点2: 千沐新能源的真实客户、收入规模和技术认证进展...",
+      "updated_view": "千沐新能源无真实客户和规模化收入，预计2026年5月方案落地但年内不会产生收入，技术认证进展未提及，商业化路径极不清晰。",
+      "confidence_change": "medium→low",
+      "change_type": "slightly_weakened",
+      "supporting_evidence": [
+        "ni_008",
+        "ni_011"
+      ],
+      "contradicting_evidence": [
+        "电池厂认证报告",
+        "新能源业务客户合同或意向书",
+        "千沐新能源的技术专利清单"
+      ],
+      "why_changed": "创始人明确表示新能源业务预计2026年5月方案落地，但年内不会产生收入，无真实客户和规模化收入，且未提及电池厂认证，削弱了原假设中'商业化进展比预期快'的判断。",
+      "source_question_id": "q_002"
+    },
+    {
+      "hypothesis_direction": "positive",
+      "hypothesis_id": "h_7",
+      "hypothesis": "验证点3: 新能源和农业领域是否存在任何客户付费意愿证据...",
+      "updated_view": "新能源和农业领域均无任何客户付费意愿证据，食品业务因工厂改造尚未放量，跨行业扩张的可行性缺乏支撑。",
+      "confidence_change": "medium→low",
+      "change_type": "slightly_weakened",
+      "supporting_evidence": [
+        "ni_007",
+        "ni_008"
+      ],
+      "contradicting_evidence": [
+        "食品业务客户意向书或小订单",
+        "新能源业务客户意向书或小订单"
+      ],
+      "why_changed": "食品业务因韶关工厂改造尚未放量，新能源业务预计2026年5月方案落地但年内不会产生收入，两个领域均无付费客户或订单，直接削弱了原假设中'客户愿意为新技术付费'的判断。",
+      "source_question_id": "q_002"
+    },
+    {
+      "hypothesis_direction": "positive",
+      "hypothesis_id": "h_8",
+      "hypothesis": "验证点4: 公司未来2-3年的战略重心和资源分配计划...",
+      "updated_view": "公司未来2-3年的战略重心和资源分配计划未在会议中讨论，无法判断团队是否聚焦关键领域。",
+      "confidence_change": "medium→low",
+      "change_type": "slightly_weakened",
+      "supporting_evidence": [],
+      "contradicting_evidence": [
+        "公司战略规划文件",
+        "资源分配计划"
+      ],
+      "why_changed": "会议未涉及公司未来2-3年的战略重心和资源分配计划，无法对原假设进行验证或更新。",
+      "source_question_id": "q_001"
+    }
+  ],
+  "unchanged_hypotheses": [],
+  "overall_change": {
+    "is_judgement_significantly_changed": true,
+    "new_risks": [
+      {
+        "risk": "假设「假设1: AI平台可能比BP描述的更核心...」被会议信息削弱：创始人承认AI平台准确率约70-80%，数据量几千条成功、上...",
+        "source_question_id": "q_001",
+        "severity": "medium"
+      },
+      {
+        "risk": "假设「假设2: 新能源业务可能已有隐藏客户或P...」被会议信息削弱：新能源业务预计2026年5月方案落地，但年内不会产生收入，无...",
+        "source_question_id": "q_002",
+        "severity": "medium"
+      },
+      {
+        "risk": "假设「假设3: 美妆客户可能已形成技术依赖，续...」被会议信息削弱：创始人承认AI平台准确率约70-80%，数据量几千条成功、上...",
+        "source_question_id": "q_001",
+        "severity": "medium"
+      },
+      {
+        "risk": "假设「假设4: 跨行业扩张的管理风险可能被高估...」被会议信息削弱：食品业务因韶关工厂改造尚未放量，新能源业务预计2026年5月...",
+        "source_question_id": "q_003",
+        "severity": "medium"
+      },
+      {
+        "risk": "假设「验证点1: 建沐™AI矩阵与竞品（晶泰科...」被会议信息削弱：创始人承认AI平台准确率约70-80%，数据量几千条成功、上...",
+        "source_question_id": "q_001",
+        "severity": "medium"
+      },
+      {
+        "risk": "假设「验证点2: 千沐新能源的真实客户、收入规...」被会议信息削弱：新能源业务预计2026年5月方案落地，但年内不会产生收入，无...",
+        "source_question_id": "q_002",
+        "severity": "medium"
+      },
+      {
+        "risk": "假设「验证点3: 新能源和农业领域是否存在任何...」被会议信息削弱：新能源业务预计2026年5月方案落地，但年内不会产生收入，无...",
+        "source_question_id": "q_002",
+        "severity": "medium"
+      },
+      {
+        "risk": "假设「验证点4: 公司未来2-3年的战略重心和...」被会议信息削弱：创始人承认AI平台准确率约70-80%，数据量几千条成功、上...",
+        "source_question_id": "q_001",
+        "severity": "medium"
+      }
+    ],
+    "new_opportunity_added": null
+  }
+}

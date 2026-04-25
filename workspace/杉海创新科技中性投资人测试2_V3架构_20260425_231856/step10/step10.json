@@ -1,0 +1,30 @@
+{
+  "fit_decision": "partial_fit",
+  "final_recommendation": "pass",
+  "fit_score": 0,
+  "matched_constraints": [],
+  "mismatched_constraints": [],
+  "compromises": [],
+  "reasoning": "[Guardrail] neutral_investor 禁止 not_fit，已降级为 partial_fit。原推理：项目核心假设（AI壁垒、新能源业务）已被证伪，8项负面信号全部确认，逻辑基础崩塌，无论基金偏好如何，项目本身质量极差，不适合任何投资。",
+  "candidate_profile_updates": [
+    {
+      "profile_id": "neutral_investor",
+      "candidate_rule": "若项目核心假设被证伪且负面信号全部确认，则直接判定为not_fit，无需考虑约束匹配。",
+      "evidence": "杉海创新科技项目：AI平台不成立、新能源业务无客户、专利壁垒不成立、锂电回收经济性存疑，8项负面信号全部确认。",
+      "should_review": true
+    }
+  ],
+  "candidate_case_record": {
+    "project_name": "杉海创新科技中性投资人测试2_V3架构_20260425_231856",
+    "project_type": "",
+    "project_judgement": "核心假设（AI壁垒、新能源业务）已被证伪，8项负面信号全部确认，项目逻辑基础崩塌，建议停止跟进并拒绝投资。",
+    "fit_judgement": "not_fit",
+    "final_decision": "pass",
+    "fit_reason": [
+      "项目核心假设被证伪",
+      "所有负面信号已确认",
+      "项目逻辑基础崩塌"
+    ],
+    "source_profile": "neutral_investor"
+  }
+}

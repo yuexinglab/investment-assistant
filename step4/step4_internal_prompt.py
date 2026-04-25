@@ -8,17 +8,16 @@ Step4 v6.1 - Internal Prompt
 """
 
 import json
+import os
 import yaml
 from typing import Dict, List, Any
 
 
 def load_templates() -> Dict[str, List[Dict[str, Any]]]:
     """加载提问模板库（用于 deep dive 约束）"""
-    with open(
-        "D:/复旦文件/Semester3-4/搞事情/论文产品化/投资助手/step4/templates/question_templates.yaml",
-        "r",
-        encoding="utf-8"
-    ) as f:
+    _dir = os.path.dirname(os.path.abspath(__file__))
+    _path = os.path.join(_dir, "templates", "question_templates.yaml")
+    with open(_path, "r", encoding="utf-8") as f:
         return yaml.safe_load(f)
 
 

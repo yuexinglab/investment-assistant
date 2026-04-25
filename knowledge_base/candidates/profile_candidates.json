@@ -1,0 +1,47 @@
+[
+  {
+    "profile_id": "government_fund",
+    "candidate_rule": "项目方明确拒绝落地或反投的，直接判定为not_fit，无需进一步评估。",
+    "evidence": "项目方明确拒绝落地和反投，导致所有硬约束和回避项均不匹配。",
+    "should_review": true,
+    "status": "pending_review",
+    "created_at": "2026-04-25T15:06:28.802242",
+    "created_by": "Step10"
+  },
+  {
+    "profile_id": "government_fund",
+    "candidate_rule": "对于明确拒绝落地和反投的项目，直接判定为not_fit，无需进一步评估其他维度。",
+    "evidence": "项目方明确拒绝落地和反投，导致所有硬约束和偏好均无法满足。",
+    "should_review": true,
+    "status": "pending_review",
+    "created_at": "2026-04-25T15:07:07.532479",
+    "created_by": "Step10"
+  },
+  {
+    "profile_id": "neutral_investor",
+    "candidate_rule": "若项目核心假设在尽调中被证伪且关键问题回答质量低，应直接判定为not_fit",
+    "evidence": "杉海创新科技测试中，新能源和AI假设被确认不成立，且3个关键问题仅1个被正面回答，导致项目逻辑打穿",
+    "should_review": true,
+    "status": "pending_review",
+    "created_at": "2026-04-25T22:25:22.925120",
+    "created_by": "Step10"
+  },
+  {
+    "profile_id": "neutral_investor",
+    "candidate_rule": "若项目核心假设被证伪且负面信号全部确认，则直接判定为not_fit，无需考虑约束匹配。",
+    "evidence": "杉海创新科技项目：AI平台不成立、新能源业务无客户、专利壁垒不成立、锂电回收经济性存疑，8项负面信号全部确认。",
+    "should_review": true,
+    "status": "pending_review",
+    "created_at": "2026-04-25T23:24:32.772929",
+    "created_by": "Step10"
+  },
+  {
+    "profile_id": "neutral_investor",
+    "candidate_rule": "当项目关键不确定性未解决时，即使无硬约束冲突，也应标记为partial_fit并request_materials",
+    "evidence": "项目所有核心假设均悬而未决，无新信息提供",
+    "should_review": true,
+    "status": "pending_review",
+    "created_at": "2026-04-26T01:35:19.683550",
+    "created_by": "Step10"
+  }
+]

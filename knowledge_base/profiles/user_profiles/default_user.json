@@ -1,0 +1,19 @@
+{
+  "profile_id": "default_user",
+  "profile_type": "user",
+  "name": "默认用户",
+  "description": "复旦大学学生，项目经验较少，使用投资助手进行项目研判学习。",
+  "investment_focus": [],
+  "preferences": {
+    "analysis_depth": "medium",
+    "risk_tolerance": "medium",
+    "decision_style": "deliberate"
+  },
+  "fit_questions": [],
+  "notes": [
+    "用户偏好详细的问题拆解和分析过程。",
+    "建议在分析中标注关键判断点，帮助学习。"
+  ],
+  "status": "approved",
+  "created_at": "2026-04-25"
+}

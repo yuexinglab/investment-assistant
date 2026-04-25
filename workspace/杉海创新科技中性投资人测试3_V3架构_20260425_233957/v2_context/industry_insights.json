@@ -1,0 +1,101 @@
+[
+  {
+    "industry": "通用",
+    "insight": "假设 '假设3: 超分子技术可能在美妆领域已被头部客户形成技术依赖（如独家供应），只是未明说，导致我低估了客户粘性。...' 被新证据overturned，需关注",
+    "core_question": "",
+    "bucket_target": "risk_management",
+    "triggered_at": "Step8",
+    "confidence": "medium",
+    "note": "待更多交叉验证"
+  },
+  {
+    "industry": "通用",
+    "insight": "假设 '假设4: 并购千沐新能源可能已产生技术协同效应，只是整合进展未在BP中体现，导致我过度担忧整合风险。...' 被新证据overturned，需关注",
+    "core_question": "",
+    "bucket_target": "risk_management",
+    "triggered_at": "Step8",
+    "confidence": "medium",
+    "note": "待更多交叉验证"
+  },
+  {
+    "industry": "通用",
+    "insight": "假设 '验证点4: 并购千沐新能源后的整合进展与技术协同效果...' 被新证据overturned，需关注",
+    "core_question": "",
+    "bucket_target": "risk_management",
+    "triggered_at": "Step8",
+    "confidence": "medium",
+    "note": "待更多交叉验证"
+  },
+  {
+    "industry": "通用",
+    "insight": "假设 '假设1: AI平台可能比BP展示的更核心，只是缺乏量化对比数据，导致我低估了其护城河深度。...' 被新证据weakened，需关注",
+    "core_question": "",
+    "bucket_target": "risk_management",
+    "triggered_at": "Step8",
+    "confidence": "medium",
+    "note": "待更多交叉验证"
+  },
+  {
+    "industry": "通用",
+    "insight": "假设 '假设2: 新能源客户可能已形成隐性合作（如协鑫），只是未在BP中充分披露，导致我高估了商业化风险。...' 被新证据weakened，需关注",
+    "core_question": "",
+    "bucket_target": "risk_management",
+    "triggered_at": "Step8",
+    "confidence": "medium",
+    "note": "待更多交叉验证"
+  },
+  {
+    "industry": "通用",
+    "insight": "假设 '假设3: 超分子技术可能在美妆领域已被头部客户形成技术依赖（如独家供应），只是未明说，导致我低估了客户粘性。...' 被新证据weakened，需关注",
+    "core_question": "",
+    "bucket_target": "risk_management",
+    "triggered_at": "Step8",
+    "confidence": "medium",
+    "note": "待更多交叉验证"
+  },
+  {
+    "industry": "通用",
+    "insight": "假设 '假设4: 并购千沐新能源可能已产生技术协同效应，只是整合进展未在BP中体现，导致我过度担忧整合风险。...' 被新证据weakened，需关注",
+    "core_question": "",
+    "bucket_target": "risk_management",
+    "triggered_at": "Step8",
+    "confidence": "medium",
+    "note": "待更多交叉验证"
+  },
+  {
+    "industry": "通用",
+    "insight": "假设 '验证点1: 建沐™AI平台与竞品（如晶泰科技）在研发效率、成功率上的量化对比数据...' 被新证据weakened，需关注",
+    "core_question": "",
+    "bucket_target": "risk_management",
+    "triggered_at": "Step8",
+    "confidence": "medium",
+    "note": "待更多交叉验证"
+  },
+  {
+    "industry": "通用",
+    "insight": "假设 '验证点2: 深共晶电解液在主流电池厂的测试进展与供应商资格...' 被新证据weakened，需关注",
+    "core_question": "",
+    "bucket_target": "risk_management",
+    "triggered_at": "Step8",
+    "confidence": "medium",
+    "note": "待更多交叉验证"
+  },
+  {
+    "industry": "通用",
+    "insight": "假设 '验证点3: 锂电回收业务在碳酸锂价格低于10万元/吨时的经济性测算模型...' 被新证据weakened，需关注",
+    "core_question": "",
+    "bucket_target": "risk_management",
+    "triggered_at": "Step8",
+    "confidence": "medium",
+    "note": "待更多交叉验证"
+  },
+  {
+    "industry": "通用",
+    "insight": "假设 '验证点4: 并购千沐新能源后的整合进展与技术协同效果...' 被新证据weakened，需关注",
+    "core_question": "",
+    "bucket_target": "risk_management",
+    "triggered_at": "Step8",
+    "confidence": "medium",
+    "note": "待更多交叉验证"
+  }
+]

@@ -1,0 +1,100 @@
+{
+  "overall_decision": {
+    "process_decision": "pause",
+    "investment_decision": "reject",
+    "confidence": "high",
+    "one_line_conclusion": "尽调过程中核心假设被大量削弱，新风险集中暴露，且关键问题回答质量低，项目逻辑已被打穿，建议暂停并终止投资推进。"
+  },
+  "decision_breakdown": {
+    "verified_positives": [
+      "有3个假设在Step8中得到支持，表明项目在部分领域存在一定基础"
+    ],
+    "unverified_positives": [
+      "新能源待深入（尚未验证，不能作为投资依据）",
+      "美妆待深入（尚未验证，不能作为投资依据）",
+      "AI待深入（尚未验证，不能作为投资依据）"
+    ],
+    "confirmed_negatives": [
+      "新能源不成立（已确认的负面，核心逻辑被削弱）",
+      "AI不成立（已确认的负面，核心逻辑被削弱）",
+      "团队存疑（已确认的负面，影响执行能力）"
+    ],
+    "key_uncertainties": [
+      "会议回答直接性低（low），3个问题仅1个被正面回答，信息获取严重不足",
+      "4个新风险暴露，但具体内容未在摘要中详述，需进一步明确"
+    ]
+  },
+  "material_request_list": [
+    {
+      "priority": "high",
+      "material": "4个新风险的具体描述及来源",
+      "purpose": "评估风险严重程度及对项目的实际影响",
+      "related_hypothesis": "整体风险控制假设"
+    },
+    {
+      "priority": "medium",
+      "material": "新能源、美妆、AI三个‘待深入’方向的详细尽调报告或数据",
+      "purpose": "判断这些方向是否具备反转可能，或仅为无效线索",
+      "related_hypothesis": "新能源待深入、美妆待深入、AI待深入"
+    },
+    {
+      "priority": "low",
+      "material": "团队背景及存疑点的详细说明",
+      "purpose": "确认团队问题是否可解决或为硬伤",
+      "related_hypothesis": "团队存疑"
+    }
+  ],
+  "remaining_unknowns": [
+    {
+      "issue": "4个新风险的具体内容和影响范围",
+      "why_blocking": "新风险是导致决策转向reject的关键因素，不明确则无法判断是否有恢复可能",
+      "how_to_resolve": "要求项目方或尽调团队提供风险清单及应对措施",
+      "priority": "high"
+    },
+    {
+      "issue": "会议中未正面回答的2个问题是什么",
+      "why_blocking": "回答直接性低表明关键信息被回避，可能隐藏重大缺陷",
+      "how_to_resolve": "重新梳理问题清单，尝试通过其他渠道（如第三方访谈）获取答案",
+      "priority": "high"
+    },
+    {
+      "issue": "新能源、AI‘不成立’的具体证据是否确凿",
+      "why_blocking": "如果证据不充分，可能存在误判；但目前按已确认负面处理",
+      "how_to_resolve": "复核验证过程，确保结论可靠",
+      "priority": "medium"
+    }
+  ],
+  "next_actions": [
+    {
+      "action": "整理并归档所有已确认的负面证据（新能源不成立、AI不成立、团队存疑）",
+      "purpose": "为最终决策提供书面依据，防止后续重复工作",
+      "who": "用户",
+      "priority": "high"
+    },
+    {
+      "action": "要求尽调团队提交4个新风险的详细报告",
+      "purpose": "明确风险性质，判断是否有可能在暂停期间解决",
+      "who": "用户",
+      "priority": "high"
+    },
+    {
+      "action": "对会议中未回答的2个问题进行二次追问或通过独立渠道验证",
+      "purpose": "消除信息盲区，确认是否存在隐瞒",
+      "who": "AI/用户",
+      "priority": "medium"
+    },
+    {
+      "action": "暂停所有新投入，仅保留信息收集类动作",
+      "purpose": "避免资源浪费，等待关键信息明朗",
+      "who": "用户",
+      "priority": "high"
+    }
+  ],
+  "key_risks": [
+    "核心假设（新能源、AI）被推翻，项目基础逻辑不成立",
+    "团队存疑，执行能力存在硬伤",
+    "信息获取严重不足（会议回答直接性低），存在隐藏风险",
+    "4个新风险集中暴露，可能进一步恶化项目前景"
+  ],
+  "go_no_go_logic": "根据Step8统计，4个假设被削弱/推翻（reinforced仅3个，weakened达4个），且已确认3个负面（新能源不成立、AI不成立、团队存疑），同时会议回答质量低（直接性low）。规则引擎已强制设定process_decision为pause、investment_decision为reject。当前无任何已验证的正面信息足以支撑继续投资，且关键不确定性（新风险、未回答问题）无法在短期内解决。因此，项目应暂停并终止投资推进，除非未来有颠覆性新证据出现。"
+}

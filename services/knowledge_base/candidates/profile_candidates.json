@@ -1,0 +1,11 @@
+[
+  {
+    "profile_id": "unknown",
+    "candidate_rule": "项目方拒绝落地和反投时，应视为重大不匹配信号",
+    "evidence": "项目方明确表示不愿意在本地落地，也不接受反投要求",
+    "should_review": true,
+    "status": "pending_review",
+    "created_at": "2026-04-25T15:04:50.381133",
+    "created_by": "Step10"
+  }
+]

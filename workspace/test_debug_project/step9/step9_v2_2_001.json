@@ -1,0 +1,101 @@
+{
+  "overall_decision": {
+    "process_decision": "request_materials",
+    "investment_decision": "not_ready",
+    "confidence": "low",
+    "one_line_conclusion": "本次会议未提供任何有效新信息，核心假设均未验证，需先补充材料再决定是否继续尽调。"
+  },
+  "decision_breakdown": {
+    "verified_positives": [],
+    "unverified_positives": [
+      "AI平台是否具有技术护城河：缺乏与传统方法（如晶泰科技）的量化对比数据",
+      "新能源客户是否已形成隐性合作：未提供与主流电池厂的合同或订单"
+    ],
+    "confirmed_negatives": [],
+    "key_uncertainties": [
+      {
+        "issue": "所有关键假设（如技术可行性、市场验证、财务预测）均未得到任何验证或更新",
+        "why_blocking": "投资决策需要至少部分核心假设被验证，当前状态等同于零信息，无法判断项目价值",
+        "how_to_resolve": "要求提供书面材料或安排专题会议验证具体假设",
+        "priority": "high"
+      },
+      "2026年大客户放量是否有合同支撑：欧莱雅/宝洁/珀莱雅2026年预测收入合计超6000万，需采购订单验证",
+      "专利壁垒是否真实：声称的分子结构专利保护力度需专利清单验证",
+      "锂电回收经济性：碳酸锂价格持续低迷时，成本结构是否支撑盈利",
+      "新能源客户验证进展：与主流电池厂（宁德/比亚迪）的合作阶段不明确"
+    ]
+  },
+  "material_request_list": [
+    {
+      "priority": "high",
+      "material": "最新版商业计划书（含财务预测和用户/客户数据）",
+      "purpose": "验证市场假设和增长逻辑是否成立",
+      "related_hypothesis": "市场验证假设"
+    },
+    {
+      "priority": "high",
+      "material": "技术白皮书或产品演示视频",
+      "purpose": "验证技术可行性和产品成熟度",
+      "related_hypothesis": "技术可行性假设"
+    },
+    {
+      "priority": "medium",
+      "material": "历史融资文件和股东结构表",
+      "purpose": "了解资本结构和过往投资人背书情况",
+      "related_hypothesis": "团队和治理假设"
+    }
+  ],
+  "remaining_unknowns": [
+    {
+      "issue": "产品/技术的核心验证数据缺失",
+      "why_blocking": "没有技术验证数据，无法评估项目是否具备基本可行性",
+      "how_to_resolve": "要求提供第三方测试报告、POC结果或客户试用反馈",
+      "priority": "high"
+    },
+    {
+      "issue": "市场验证和客户反馈为零",
+      "why_blocking": "没有客户或用户数据，无法判断产品是否有真实需求",
+      "how_to_resolve": "要求提供客户访谈纪要、意向书或早期收入数据",
+      "priority": "high"
+    },
+    {
+      "issue": "团队背景和执行力缺乏证据",
+      "why_blocking": "没有团队履历或过往成功案例，无法评估团队能力",
+      "how_to_resolve": "要求提供核心团队简历及过往项目成果",
+      "priority": "medium"
+    }
+  ],
+  "next_actions": [
+    {
+      "action": "向项目方发送材料清单，要求7个工作日内提供商业计划书、技术白皮书和客户数据",
+      "purpose": "获取基础决策信息",
+      "who": "用户",
+      "priority": "high"
+    },
+    {
+      "action": "设定截止日期，若到期未收到材料则暂停跟进",
+      "purpose": "控制时间成本，避免无限期等待",
+      "who": "用户",
+      "priority": "medium"
+    },
+    {
+      "action": "收到材料后安排专题尽调会议，重点验证技术可行性和市场假设",
+      "purpose": "在材料基础上进行深度验证",
+      "who": "用户/AI",
+      "priority": "medium"
+    }
+  ],
+  "key_risks": [
+    {
+      "risk": "项目方可能无法提供有说服力的材料，表明项目本身缺乏实质进展",
+      "impact": "高",
+      "mitigation": "设置严格的材料截止日期，到期无回应则直接停止跟进"
+    },
+    {
+      "risk": "会议未提供新信息可能意味着项目方在回避关键问题",
+      "impact": "中",
+      "mitigation": "在材料请求中明确要求回答此前遗留的关键问题"
+    }
+  ],
+  "go_no_go_logic": "GO条件：收到并审阅材料后，至少验证1个核心假设（技术可行性或市场验证）为正向。NO-GO条件：材料逾期未到，或材料显示核心假设被证伪。"
+}

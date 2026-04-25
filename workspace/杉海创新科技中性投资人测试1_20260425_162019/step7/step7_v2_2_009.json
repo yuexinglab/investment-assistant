@@ -1,0 +1,78 @@
+{
+  "meeting_quality": {
+    "answer_directness": "low",
+    "evidence_strength": "medium",
+    "evasion_level": "low",
+    "overall_confidence": "medium",
+    "consistency": "medium",
+    "evasion_signals": [],
+    "answered_count": 1,
+    "partially_count": 2,
+    "weak_count": 0,
+    "missing_evidence_count": 5
+  },
+  "question_validation": [
+    {
+      "question_id": "q_001",
+      "original_question": "**建沐™AI平台到底有多“核心”？** 剥离AI平台，公司还剩什么？",
+      "matched_information_ids": [
+        "ni_007",
+        "ni_008"
+      ],
+      "matched_information_summary": [
+        "AI平台准确率约70-80%，主要用于辅助计算超分子形成概率，尚未形成闭环，仍在逐步优化中。",
+        "AI平台数据量约几千条成功数据，上万条失败数据，去年才真正搭建完成。"
+      ],
+      "answer_summary": "AI平台准确率约70-80%，数据量几千条成功、上万条失败，去年才搭建完成，目前仅作为辅助参数，未形成闭环。这表明AI平台尚不成熟，并非公司当前核心，剥离后公司仍以超分子化学工程化经验和美妆客户关系为基础。",
+      "status": "partially_answered",
+      "quality": "medium",
+      "impact": "slightly_weakens",
+      "missing_evidence": [
+        "AI平台与纯人工研发的对比数据",
+        "AI平台实际贡献的案例或收入占比"
+      ],
+      "follow_up_question": "要求提供AI平台在具体项目中的实际应用案例，以及剥离AI平台后对现有客户订单和研发效率的量化影响评估。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_002",
+      "original_question": "**新能源业务是真落地还是画饼？** 有没有客户为深共晶电解液或锂电回收技术付过钱？",
+      "matched_information_ids": [
+        "ni_009",
+        "ni_010"
+      ],
+      "matched_information_summary": [
+        "新能源业务预计2026年5月方案落地，但年内无收入贡献。",
+        "新能源业务包括电池电解液改进、电池回收（与宏光科技、蓝海科技合作）和光伏面板回收。"
+      ],
+      "answer_summary": "新能源业务预计2026年5月方案落地，但年内无收入贡献；业务包括电解液改进、电池回收（与宏光科技、蓝海科技合作）和光伏面板回收。目前没有客户为这些技术付过钱，仍处于方案阶段。",
+      "status": "answered",
+      "quality": "high",
+      "impact": "strengthens",
+      "missing_evidence": [
+        "与宏光科技、蓝海科技的合作合同或项目进展证明"
+      ],
+      "follow_up_question": "要求提供与宏光科技、蓝海科技的合作合同，确认合作模式、付款条款及当前项目阶段。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_003",
+      "original_question": "**2025年扭亏为盈的假设是什么？** 如果新能源一分钱收入都没有，还能盈利吗？",
+      "matched_information_ids": [],
+      "matched_information_summary": [],
+      "answer_summary": "会议未直接回答2025年扭亏为盈的假设，也未讨论新能源无收入情况下的盈利可能性。但提供了2025年美妆收入1.35亿元、2026年预计2-2.5亿元等数据，以及新能源无收入的预期，侧面暗示盈利主要依赖美妆业务。",
+      "status": "indirectly_answered",
+      "quality": "low",
+      "impact": "slightly_strengthens",
+      "missing_evidence": [
+        "2025年完整的盈利预测模型",
+        "成本结构及费用明细"
+      ],
+      "follow_up_question": "要求提供2025年详细的盈利预测模型，包括收入拆分、成本费用假设，并明确新能源无收入情景下的盈亏平衡点。",
+      "question_source": "base",
+      "profile_id": ""
+    }
+  ]
+}

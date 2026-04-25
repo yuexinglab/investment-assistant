@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ meta.company_name }} — 2.0 会后分析报告</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; max-width: 1100px; margin: 0 auto; padding: 20px; background: #f9fafb; }
+    h1 { font-size: 22px; color: #111827; margin-bottom: 8px; }
+    .back-link { display: inline-block; margin-bottom: 16px; color: #6b7280; text-decoration: none; font-size: 14px; }
+    .back-link:hover { color: #2563eb; }
+    .header-bar { display: flex; justify-content: space-between; align-items: center; background: #fff; border-radius: 12px; padding: 20px 24px; border: 1px solid #e5e7eb; margin-bottom: 16px; }
+
+    /* Tab 导航 */
+    .tabs { display: flex; border-bottom: 2px solid #e5e7eb; margin-bottom: 20px; }
+    .tab { padding: 10px 20px; cursor: pointer; color: #6b7280; font-size: 14px; font-weight: 500; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.2s; }
+    .tab:hover { color: #2563eb; }
+    .tab.active { color: #2563eb; border-bottom-color: #2563eb; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    /* 卡片 */
+    .card { background: #fff; border-radius: 12px; padding: 24px; margin: 16px 0; border: 1px solid #e5e7eb; }
+    h2 { font-size: 16px; color: #374151; margin: 0 0 16px 0; padding-bottom: 10px; border-bottom: 1px solid #f3f4f6; }
+    h3 { font-size: 15px; color: #111827; margin: 12px 0 8px 0; }
+
+    /* 表格 */
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th { background: #f9fafb; text-align: left; padding: 10px 12px; font-weight: 600; color: #374151; border-bottom: 1px solid #e5e7eb; }
+    td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; color: #374151; }
+    tr:hover { background: #f9fafb; }
+
+    /* 标签 */
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+    .badge-high { background: #fef3c7; color: #92400e; }
+    .badge-medium { background: #dbeafe; color: #1e40af; }
+    .badge-low { background: #e5e7eb; color: #6b7280; }
+
+    /* 状态徽章 */
+    .status-done { background: #d1fae5; color: #065f46; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+    .status-evaded { background: #fee2e2; color: #991b1b; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+
+    /* 决策标签 */
+    .decision-continue { background: #d1fae5; color: #065f46; padding: 8px 16px; border-radius: 8px; font-size: 14px; font-weight: 600; }
+    .decision-hold { background: #fef3c7; color: #92400e; padding: 8px 16px; border-radius: 8px; font-size: 14px; font-weight: 600; }
+    .decision-stop { background: #fee2e2; color: #991b1b; padding: 8px 16px; border-radius: 8px; font-size: 14px; font-weight: 600; }
+    .decision-request { background: #e0e7ff; color: #3730a3; padding: 8px 16px; border-radius: 8px; font-size: 14px; font-weight: 600; }
+
+    /* 引用 */
+    blockquote { background: #f9fafb; border-left: 3px solid #2563eb; padding: 10px 14px; margin: 8px 0; font-size: 13px; color: #6b7280; border-radius: 0 6px 6px 0; }
+
+    /* 证据区块 */
+    .evidence-block { background: #fffbeb; border: 1px solid #fbbf24; border-radius: 6px; padding: 10px 14px; margin: 6px 0; font-size: 13px; }
+    .evidence-support { background: #d1fae5; border-color: #10b981; }
+    .evidence-contradict { background: #fee2e2; border-color: #ef4444; }
+
+    /* 下载按钮 */
+    .btn { display: inline-block; padding: 10px 20px; background: #2563eb; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 500; text-decoration: none; transition: background 0.2s; }
+    .btn:hover { background: #1d4ed8; }
+    .btn-secondary { background: #fff; color: #374151; border: 1px solid #d1d5db; }
+    .btn-secondary:hover { background: #f3f4f6; }
+
+    /* 回避信号 */
+    .evasion-alert { background: #fef2f2; border: 1px solid #ef4444; border-radius: 6px; padding: 12px; margin: 8px 0; font-size: 13px; }
+    .evasion-alert strong { color: #dc2626; }
+
+    /* 新增信息关键标签 */
+    .critical-tag { background: #dc2626; color: #fff; padding: 1px 6px; border-radius: 3px; font-size: 11px; font-weight: 600; margin-left: 6px; }
+
+    /* Markdown 渲染区 */
+    .md-content { font-size: 14px; line-height: 1.8; color: #374151; }
+    .md-content h2 { color: #111827; border-bottom: 2px solid #e5e7eb; padding-bottom: 8px; margin-top: 24px; }
+    .md-content h3 { color: #374151; }
+    .md-content code { background: #f3f4f6; padding: 1px 4px; border-radius: 3px; font-size: 13px; }
+    .md-content pre { background: #1e293b; color: #e2e8f0; padding: 14px; border-radius: 8px; overflow-x: auto; }
+    .md-content table { margin: 12px 0; }
+    .md-content blockquote { border-left-color: #2563eb; }
+  </style>
+</head>
+<body>
+  <a href="{{ url_for('project_v2', project_id=project_id) }}" class="back-link">← 返回 2.0 分析页</a>
+  <a href="{{ url_for('project_detail', project_id=project_id) }}" class="back-link" style="margin-left:16px">返回项目详情</a>
+
+  <div class="header-bar">
+    <div>
+      <h1 style="margin:0">📋 会后分析报告</h1>
+      <p style="margin:4px 0 0 0;color:#6b7280;font-size:14px">{{ meta.company_name }}</p>
+    </div>
+    <div style="display:flex;gap:12px;align-items:center">
+      {% if has_report %}
+      <a href="{{ url_for('download_v2_report', project_id=project_id) }}" class="btn">📥 下载完整报告</a>
+      {% endif %}
+      <a href="{{ url_for('project_v2', project_id=project_id) }}" class="btn btn-secondary">🔄 重新分析</a>
+    </div>
+  </div>
+
+  <!-- Tab 导航 -->
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('step6')">Step6 信息</div>
+    <div class="tab" onclick="switchTab('step7')">Step7 验证</div>
+    <div class="tab" onclick="switchTab('step8')">Step8 认知</div>
+    <div class="tab" onclick="switchTab('step9')">Step9 决策</div>
+    <div class="tab" onclick="switchTab('step10')">Step10 Fit ⭐</div>
+    <div class="tab" onclick="switchTab('沉淀')">💎 沉淀</div>
+    <div class="tab" onclick="switchTab('raw')">📦 原始 JSON</div>
+    <div class="tab" onclick="switchTab('full')">📄 完整报告</div>
+  </div>
+
+  <!-- Step6: 新增信息 -->
+  <div id="tab-step6" class="tab-content active">
+    <div class="card">
+      <h2>📝 Step6：会议新增信息</h2>
+
+      {% if step6 and step6.get('new_information') %}
+      {% set new_info_list = step6.get('new_information', []) %}
+      <div style="background:#eff6ff;border-radius:8px;padding:12px 16px;margin-bottom:16px;font-size:14px">
+        <strong>会议摘要：</strong>{{ step6.get('meeting_summary', 'N/A') }}
+      </div>
+
+      <p style="font-size:13px;color:#6b7280;margin-bottom:12px">共提取 {{ new_info_list|length }} 条新增信息</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>#</th><th>类别</th><th>信息内容</th><th>重要性</th><th>与BP矛盾</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for ni in new_info_list %}
+          {% set ni_content = ni.get('content') if ni.get('content') else (ni.get('evidence', '')[:80] + '...' if ni.get('evidence', '')|length > 80 else ni.get('evidence', '')) %}
+          <tr>
+            <td>{{ loop.index }}</td>
+            <td><span class="badge badge-medium">{{ ni.get('category', 'N/A') }}</span></td>
+            <td>
+              {{ ni_content }}
+              {% if ni.get('is_critical') %}<span class="critical-tag">关键</span>{% endif %}
+            </td>
+            <td>
+              {% if ni.get('importance') == 'high' %}
+              <span class="badge badge-high">高</span>
+              {% elif ni.get('importance') == 'medium' %}
+              <span class="badge badge-medium">中</span>
+              {% else %}
+              <span class="badge badge-low">低</span>
+              {% endif %}
+            </td>
+            <td>{% if ni.get('contradicts_bp') %}⚠️ 是{% else %}否{% endif %}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <!-- 关键信息详情 -->
+      {% set critical_items = new_info_list|selectattr('is_critical')|list %}
+      {% if critical_items %}
+      <h3 style="margin-top:20px">🔥 关键信息详情</h3>
+      {% for ni in critical_items %}
+      <div style="background:#fef2f2;border-radius:8px;padding:12px;margin:8px 0">
+        <strong>{{ ni.get('content', 'N/A') }}</strong>
+        <blockquote style="margin:8px 0 0 0">{{ ni.get('evidence', 'N/A') }}</blockquote>
+      </div>
+      {% endfor %}
+      {% endif %}
+
+      {% else %}
+      <p style="color:#9ca3af">暂无 Step6 数据，请先运行 2.0 分析</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Step7: 问题验证 -->
+  <div id="tab-step7" class="tab-content">
+    <div class="card">
+      <h2>🔍 Step7：问题对齐与回答质量</h2>
+
+      {% if step7 and step7.get('meeting_quality') %}
+      <!-- 会议质量评估 -->
+      {% set mq = step7.get('meeting_quality') %}
+      <div style="background:#f9fafb;border-radius:8px;padding:16px;margin-bottom:16px">
+        <h3 style="margin:0 0 12px 0">会议整体评估</h3>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+          <div style="text-align:center;padding:12px;background:#fff;border-radius:8px">
+            <div style="font-size:24px;font-weight:700;color:#2563eb">{{ mq.get('answer_directness', 'N/A') }}</div>
+            <div style="font-size:12px;color:#6b7280;margin-top:4px">回答直接性</div>
+          </div>
+          <div style="text-align:center;padding:12px;background:#fff;border-radius:8px">
+            <div style="font-size:24px;font-weight:700;color:#059669">{{ mq.get('consistency', 'N/A') }}</div>
+            <div style="font-size:12px;color:#6b7280;margin-top:4px">与BP一致性</div>
+          </div>
+          <div style="text-align:center;padding:12px;background:#fff;border-radius:8px">
+            <div style="font-size:24px;font-weight:700;color:#7c3aed">{{ mq.get('overall_confidence', 'N/A') }}</div>
+            <div style="font-size:12px;color:#6b7280;margin-top:4px">整体可信度</div>
+          </div>
+        </div>
+
+        {% if mq.get('evasion_signals') and mq.get('evasion_signals')|length > 0 %}
+        <div class="evasion-alert" style="margin-top:12px">
+          <strong>⚠️ 回避信号：</strong>
+          <ul style="margin:8px 0 0 0;padding-left:20px">
+            {% for sig in mq.get('evasion_signals', []) %}
+            <li>{{ sig }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+      </div>
+
+      <!-- 问题验证列表 -->
+      {% if step7.get('question_validation') %}
+      {# 按 source 分组 #}
+      {% set qv_list = step7.get('question_validation', []) %}
+      {% set base_qs = qv_list|selectattr('question_source','equalto','base')|list %}
+      {% set profile_qs = qv_list|selectattr('question_source','equalto','profile')|list %}
+
+      {# Source 统计 #}
+      <div style="display:flex;gap:12px;margin-bottom:16px">
+        <div style="background:#eff6ff;border-radius:8px;padding:10px 16px;flex:1;text-align:center">
+          <div style="font-size:22px;font-weight:700;color:#2563eb">{{ base_qs|length }}</div>
+          <div style="font-size:12px;color:#6b7280">🔵 通用问题（base）</div>
+        </div>
+        {% if profile_qs|length > 0 %}
+        <div style="background:#fef9c3;border-radius:8px;padding:10px 16px;flex:1;text-align:center">
+          <div style="font-size:22px;font-weight:700;color:#d97706">{{ profile_qs|length }}</div>
+          <div style="font-size:12px;color:#6b7280">🟡 Profile 问题（profile）</div>
+        </div>
+        {% endif %}
+      </div>
+
+      <h3>🔵 通用问题（base）</h3>
+      {% if base_qs %}
+      <table>
+        <thead>
+          <tr>
+            <th>问题</th><th>状态</th><th>质量</th><th>对假设影响</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for v in base_qs %}
+          <tr>
+            <td style="max-width:300px">
+              <div style="font-size:13px">{{ v.get('original_question', 'N/A')[:80] }}{% if v.get('original_question', '')|length > 80 %}...{% endif %}</div>
+            </td>
+            <td>
+              {% if v.get('status') == 'answered' %}
+              <span class="status-done">✅ 回答</span>
+              {% elif v.get('status') == 'evaded' %}
+              <span class="status-evaded">❌ 回避</span>
+              {% elif v.get('status') == 'partially_answered' %}
+              <span style="background:#fef3c7;color:#92400e;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:600">⚠️ 部分</span>
+              {% else %}
+              <span style="background:#e5e7eb;color:#6b7280;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:600">➖ 未答</span>
+              {% endif %}
+            </td>
+            <td>
+              {% if v.get('quality') == 'strong' %}<span style="color:#059669;font-weight:600">强</span>
+              {% elif v.get('quality') == 'weak' %}<span style="color:#dc2626;font-weight:600">弱</span>
+              {% else %}<span style="color:#d97706;font-weight:600">中</span>{% endif %}
+            </td>
+            <td>
+              {% if v.get('impact') == 'supports' %}⬆️ 支持
+              {% elif v.get('impact') == 'weakens' %}⬇️ 削弱
+              {% elif v.get('impact') == 'overturns' %}🔄 推翻
+              {% else %}➡️ 中性{% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <p style="color:#9ca3af;font-size:13px">无通用问题记录</p>
+      {% endif %}
+
+      {% if profile_qs %}
+      <h3 style="margin-top:20px">🟡 Profile 问题（profile）</h3>
+      <div style="background:#fef9c3;border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:12px;color:#92400e">
+        💡 这些问题来自基金画像（hard_constraints / fit_questions），用于判断项目是否适合该基金
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>问题</th><th>关联约束</th><th>状态</th><th>质量</th><th>对Fit影响</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for v in profile_qs %}
+          <tr>
+            <td style="max-width:240px">
+              <div style="font-size:13px">{{ v.get('original_question', 'N/A')[:70] }}{% if v.get('original_question', '')|length > 70 %}...{% endif %}</div>
+            </td>
+            <td style="font-size:12px;color:#92400e">
+              {{ v.get('profile_id', v.get('question_source', 'N/A')) }}
+            </td>
+            <td>
+              {% if v.get('status') == 'answered' %}
+              <span class="status-done">✅ 回答</span>
+              {% elif v.get('status') == 'evaded' %}
+              <span class="status-evaded">❌ 回避</span>
+              {% elif v.get('status') == 'partially_answered' %}
+              <span style="background:#fef3c7;color:#92400e;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:600">⚠️ 部分</span>
+              {% else %}
+              <span style="background:#e5e7eb;color:#6b7280;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:600">➖ 未答</span>
+              {% endif %}
+            </td>
+            <td>
+              {% if v.get('quality') == 'strong' %}<span style="color:#059669;font-weight:600">强</span>
+              {% elif v.get('quality') == 'weak' %}<span style="color:#dc2626;font-weight:600">弱</span>
+              {% else %}<span style="color:#d97706;font-weight:600">中</span>{% endif %}
+            </td>
+            <td>
+              {% if v.get('impact') == 'supports' %}⬆️ 支持
+              {% elif v.get('impact') == 'weakens' %}⬇️ 削弱
+              {% elif v.get('impact') == 'overturns' %}🔄 推翻
+              {% else %}➡️ 中性{% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endif %}
+      {% endif %}
+
+      {% else %}
+      <p style="color:#9ca3af">暂无 Step7 数据</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Step8: 认知更新 -->
+  <div id="tab-step8" class="tab-content">
+    <div class="card">
+      <h2>🧠 Step8：会后认知更新（对抗式）</h2>
+
+      {% if step8 and step8.get('hypothesis_updates') %}
+      {% set hypotheses = step8.get('hypothesis_updates', []) %}
+      {% if hypotheses %}
+      {% for h in hypotheses %}
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:20px;margin:12px 0">
+        <h3 style="margin:0 0 12px 0">
+          {% if h.get('change_type') == 'reinforced' %}⬆️
+          {% elif h.get('change_type') == 'weakened' %}⬇️
+          {% elif h.get('change_type') == 'overturned' %}🔄
+          {% else %}🔁{% endif %}
+          {{ h.get('hypothesis', 'N/A') }}
+        </h3>
+
+        <div style="display:flex;gap:8px;margin-bottom:12px">
+          <span class="badge badge-medium">{{ h.get('change_type', 'N/A') }}</span>
+        </div>
+
+        <div style="font-size:14px;margin-bottom:12px">
+          <strong>最终判断：</strong>{{ h.get('final_view', 'N/A') }}
+        </div>
+
+        {% if h.get('why_changed') %}
+        <div style="font-size:13px;color:#6b7280;margin-bottom:12px">
+          <strong>原因：</strong>{{ h.get('why_changed') }}
+        </div>
+        {% endif %}
+
+        {% if h.get('supporting_evidence') %}
+        <div class="evidence-block evidence-support">
+          <strong>✅ 支持证据</strong>
+          <ul style="margin:6px 0 0 0;padding-left:20px">
+            {% for e in h.get('supporting_evidence', []) %}
+            <li>{{ e }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+
+        {% if h.get('contradicting_evidence') %}
+        <div class="evidence-block evidence-contradict">
+          <strong>❌ 反对证据</strong>
+          <ul style="margin:6px 0 0 0;padding-left:20px">
+            {% for e in h.get('contradicting_evidence', []) %}
+            <li>{{ e }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+      </div>
+      {% endfor %}
+      {% else %}
+      <p style="color:#9ca3af">暂无假设更新数据</p>
+      {% endif %}
+
+      {% if step8.get('overall_change') and step8.get('overall_change').get('is_judgement_significantly_changed') %}
+      <div style="background:#fef2f2;border:1px solid #ef4444;border-radius:8px;padding:16px;margin-top:16px">
+        <strong style="color:#dc2626;font-size:15px">⚡ 判断发生了显著变化！</strong>
+        {% if step8.get('overall_change').get('new_risk_added') %}
+        <div style="margin-top:8px">⚠️ 新增风险：{{ step8.get('overall_change').get('new_risk_added') }}</div>
+        {% endif %}
+        {% if step8.get('overall_change').get('new_opportunity_added') %}
+        <div style="margin-top:4px">✨ 新增机会：{{ step8.get('overall_change').get('new_opportunity_added') }}</div>
+        {% endif %}
+      </div>
+      {% endif %}
+      {% else %}
+      <p style="color:#9ca3af">暂无 Step8 数据，请先运行 2.0 分析</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Step9: 决策 -->
+  <div id="tab-step9" class="tab-content">
+    <div class="card">
+      <h2>🎯 Step9：决策与行动</h2>
+
+      {% if step9 and step9.get('overall_decision') %}
+      {% set od = step9.get('overall_decision') %}
+      {% set process_label = {
+        'continue_dd': '继续尽调',
+        'request_materials': '补充材料',
+        'pause': '暂缓',
+        'stop': '停止跟进'
+      } %}
+      {% set investment_label = {
+        'invest_ready': '可投资',
+        'not_ready': '条件不足',
+        'reject': '建议拒绝'
+      } %}
+
+      <!-- 双层决策卡片 -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px">
+        <div style="background:#eff6ff;border-radius:12px;padding:20px;text-align:center">
+          <div style="font-size:12px;color:#6b7280;margin-bottom:8px">流程决策</div>
+          <div style="font-size:28px;font-weight:700;color:#2563eb">{{ process_label.get(od.get('process_decision'), od.get('process_decision', 'N/A')) }}</div>
+          <div style="font-size:12px;color:#6b7280;margin-top:4px">Process Decision</div>
+        </div>
+        <div style="background:#fef3c7;border-radius:12px;padding:20px;text-align:center">
+          <div style="font-size:12px;color:#92400e;margin-bottom:8px">投资决策</div>
+          <div style="font-size:28px;font-weight:700;color:#d97706">{{ investment_label.get(od.get('investment_decision'), od.get('investment_decision', 'N/A')) }}</div>
+          <div style="font-size:12px;color:#92400e;margin-top:4px">Investment Decision</div>
+        </div>
+      </div>
+
+      {% if od.get('one_line_conclusion') %}
+      <div style="background:#f0fdf4;border:1px solid #86efac;border-radius:8px;padding:16px;margin-bottom:16px">
+        <h3 style="margin:0 0 8px 0">决策结论</h3>
+        <p style="font-size:14px;margin:0">{{ od.get('one_line_conclusion') }}</p>
+      </div>
+      {% endif %}
+
+      <!-- 四象限 breakdown -->
+      {% if step9.get('decision_breakdown') %}
+      {% set db = step9.get('decision_breakdown') %}
+      <h3>决策分析</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+        <div style="background:#f0fdf4;border-radius:8px;padding:12px">
+          <div style="font-weight:600;color:#166534;margin-bottom:8px">✅ 已验证正面</div>
+          {% for p in db.get('verified_positives', []) %}
+          <div style="font-size:13px;padding:4px 0">• {{ p }}</div>
+          {% endfor %}
+          {% if not db.get('verified_positives') %}
+          <div style="font-size:12px;color:#6b7280">暂无</div>
+          {% endif %}
+        </div>
+        <div style="background:#fef9c3;border-radius:8px;padding:12px">
+          <div style="font-weight:600;color:#92400e;margin-bottom:8px">❓ 待验证机会</div>
+          {% for p in db.get('unverified_positives', []) %}
+          <div style="font-size:13px;padding:4px 0">• {{ p }}</div>
+          {% endfor %}
+          {% if not db.get('unverified_positives') %}
+          <div style="font-size:12px;color:#6b7280">暂无</div>
+          {% endif %}
+        </div>
+        <div style="background:#fef2f2;border-radius:8px;padding:12px">
+          <div style="font-weight:600;color:#dc2626;margin-bottom:8px">⚠️ 已确认风险</div>
+          {% for n in db.get('confirmed_negatives', []) %}
+          <div style="font-size:13px;padding:4px 0">• {{ n }}</div>
+          {% endfor %}
+          {% if not db.get('confirmed_negatives') %}
+          <div style="font-size:12px;color:#6b7280">暂无</div>
+          {% endif %}
+        </div>
+        <div style="background:#f5f3ff;border-radius:8px;padding:12px">
+          <div style="font-weight:600;color:#7c3aed;margin-bottom:8px">🔮 关键未知</div>
+          {% for u in db.get('key_uncertainties', []) %}
+          <div style="font-size:13px;padding:4px 0">• {{ u }}</div>
+          {% endfor %}
+          {% if not db.get('key_uncertainties') %}
+          <div style="font-size:12px;color:#6b7280">暂无</div>
+          {% endif %}
+        </div>
+      </div>
+      {% endif %}
+
+      <!-- 材料请求清单 -->
+      {% if step9.get('material_request_list') %}
+      <h3>📋 材料请求</h3>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">
+        {% for mr in step9.get('material_request_list', []) %}
+        <div style="background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:12px">
+          <div style="font-weight:600">{{ mr.get('item', 'N/A') }}</div>
+          <div style="font-size:12px;color:#6b7280;margin-top:4px">
+            <strong>原因：</strong>{{ mr.get('reason', 'N/A') }}
+            {% if mr.get('priority') %} · <strong>优先级：</strong>{{ mr.get('priority', 'N/A') }}{% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <!-- 待解决问题 -->
+      {% if step9.get('remaining_unknowns') %}
+      <h3>待解决问题</h3>
+      {% for u in step9.get('remaining_unknowns', []) %}
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:12px;margin:8px 0">
+        <div style="font-size:14px;font-weight:600">{{ loop.index }}. {{ u.get('issue', 'N/A') }}</div>
+        <div style="font-size:13px;color:#6b7280;margin-top:4px">
+          <strong>为什么阻碍：</strong>{{ u.get('why_blocking', 'N/A') }}<br>
+          <strong>解决方式：</strong>{{ u.get('how_to_resolve', 'N/A') }}
+        </div>
+        {% if u.get('priority') == 'high' %}
+        <span class="badge badge-high" style="margin-top:6px">高优先级</span>
+        {% endif %}
+      </div>
+      {% endfor %}
+      {% endif %}
+
+      <!-- 下一步行动 -->
+      {% if step9.get('next_actions') %}
+      <h3 style="margin-top:20px">下一步行动</h3>
+      <table>
+        <thead>
+          <tr><th>#</th><th>行动</th><th>目的</th><th>优先级</th></tr>
+        </thead>
+        <tbody>
+          {% for a in step9.get('next_actions', []) %}
+          <tr>
+            <td>{{ loop.index }}</td>
+            <td style="font-weight:500">{{ a.get('action', 'N/A') }}</td>
+            <td style="color:#6b7280;font-size:13px">{{ a.get('purpose', 'N/A') }}</td>
+            <td>
+              {% if a.get('priority') == 'high' %}<span class="badge badge-high">高</span>
+              {% elif a.get('priority') == 'medium' %}<span class="badge badge-medium">中</span>
+              {% else %}<span class="badge badge-low">低</span>{% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endif %}
+
+      {% else %}
+      <p style="color:#9ca3af">暂无 Step9 数据或数据格式异常</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Step10: Fit 判断 -->
+  <div id="tab-step10" class="tab-content">
+    <div class="card">
+      <h2>🎯 Step10：基金 Fit 判断（适不适合当前投资人）</h2>
+
+      {% if step10 and step10.get('fit_decision') %}
+      {# Fit 决策卡片 #}
+      <div style="display:flex;gap:16px;align-items:center;margin-bottom:20px;flex-wrap:wrap">
+        <div style="flex:1">
+          <div style="font-size:12px;color:#6b7280;margin-bottom:4px">匹配决策</div>
+          {% if step10.get('fit_decision') == 'fit' %}
+          <div style="font-size:20px;font-weight:800;color:#059669">✅ FIT</div>
+          {% elif step10.get('fit_decision') == 'partial_fit' %}
+          <div style="font-size:20px;font-weight:800;color:#d97706">⚠️ PARTIAL FIT</div>
+          {% else %}
+          <div style="font-size:20px;font-weight:800;color:#dc2626">❌ NOT FIT</div>
+          {% endif %}
+        </div>
+        <div style="flex:1">
+          <div style="font-size:12px;color:#6b7280;margin-bottom:4px">最终建议</div>
+          {% if step10.get('final_recommendation') == 'continue' %}
+          <div class="decision-continue">▶ 继续跟进</div>
+          {% elif step10.get('final_recommendation') == 'request_materials' %}
+          <div class="decision-request">📋 请求补充材料</div>
+          {% elif step10.get('final_recommendation') == 'pass' %}
+          <div class="decision-stop">✗ 放弃</div>
+          {% else %}
+          <div class="decision-hold">{{ step10.get('final_recommendation', 'N/A') }}</div>
+          {% endif %}
+        </div>
+        {% if step10.get('fit_score') is defined and step10.get('fit_score') is not none %}
+        <div style="flex:1;text-align:center">
+          <div style="font-size:12px;color:#6b7280;margin-bottom:4px">匹配分</div>
+          <div style="font-size:28px;font-weight:800;color:#2563eb">{{ step10.get('fit_score') }}</div>
+        </div>
+        {% endif %}
+      </div>
+
+      {# 当前画像 #}
+      <div style="background:#eff6ff;border-radius:8px;padding:14px 16px;margin-bottom:16px">
+        <div style="font-size:13px;color:#0369a1;margin-bottom:4px">
+          <strong>👤 当前基金画像：{{ project_profile.name if project_profile else step10.get('source_profile', 'N/A') }}</strong>
+          <span style="font-size:11px;background:#dbeafe;padding:1px 6px;border-radius:8px;margin-left:6px">
+            {{ project_profile.profile_id if project_profile else step10.get('source_profile', 'unknown') }}
+          </span>
+        </div>
+        {% if project_profile and project_profile.hard_constraints %}
+        <div style="margin-top:8px">
+          <div style="font-size:11px;color:#0891b2;font-weight:600;margin-bottom:4px">🚫 硬约束</div>
+          {% for c in project_profile.hard_constraints %}
+          <div style="font-size:12px;color:#374151;padding:2px 0">• {{ c.get('description', c) if c is mapping else c }}</div>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+
+      {# 匹配/不匹配约束 #}
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+        <div>
+          <h3 style="margin:0 0 10px 0;color:#059669">✅ 匹配的约束</h3>
+          {% if step10.get('matched_constraints') %}
+          {% for m in step10.get('matched_constraints', []) %}
+          <div style="background:#d1fae5;border-radius:6px;padding:10px;margin-bottom:8px;font-size:13px">
+            <div style="font-weight:600;color:#065f46">{{ m.get('constraint', m) if m is mapping else m }}</div>
+            {% if m.get('evidence') %}<div style="color:#047857;margin-top:4px">{{ m.get('evidence') }}</div>{% endif %}
+          </div>
+          {% endfor %}
+          {% else %}
+          <p style="color:#9ca3af;font-size:13px">暂无匹配的约束</p>
+          {% endif %}
+        </div>
+
+        <div>
+          <h3 style="margin:0 0 10px 0;color:#dc2626">❌ 不匹配的约束</h3>
+          {% if step10.get('mismatched_constraints') %}
+          {% for m in step10.get('mismatched_constraints', []) %}
+          <div style="background:#fee2e2;border-radius:6px;padding:10px;margin-bottom:8px;font-size:13px">
+            <div style="font-weight:600;color:#991b1b">{{ m.get('constraint', m) if m is mapping else m }}</div>
+            {% if m.get('gap') %}<div style="color:#7f1d1d;margin-top:4px">{{ m.get('gap') }}</div>{% endif %}
+          </div>
+          {% endfor %}
+          {% else %}
+          <p style="color:#9ca3af;font-size:13px">暂无不匹配的约束</p>
+          {% endif %}
+        </div>
+      </div>
+
+      {# 推理 #}
+      {% if step10.get('reasoning') %}
+      <div style="background:#f9fafb;border-radius:8px;padding:14px 16px;margin-bottom:16px">
+        <h3 style="margin:0 0 8px 0;font-size:14px">🧠 Fit 推理</h3>
+        <p style="font-size:14px;line-height:1.7;margin:0;color:#374151">{{ step10.get('reasoning') }}</p>
+      </div>
+      {% endif %}
+
+      {# 妥协项 #}
+      {% if step10.get('compromises') %}
+      <h3 style="font-size:14px">🤝 可妥协项</h3>
+      {% for c in step10.get('compromises', []) %}
+      <div style="background:#fef9c3;border-radius:6px;padding:10px;margin-bottom:8px;font-size:13px">
+        <div style="font-weight:600;color:#92400e">{{ c.get('constraint', c) if c is mapping else c }}</div>
+        {% if c.get('tradeoff') %}<div style="color:#78350f;margin-top:4px">{{ c.get('tradeoff') }}</div>{% endif %}
+      </div>
+      {% endfor %}
+      {% endif %}
+
+      <div class="download-zone" style="margin-top:16px">
+        <a href="{{ url_for('download_step_file', project_id=project_id, step_name='step10', file_name='step10.json') }}"
+           class="btn btn-secondary">📄 查看 step10.json 原始数据</a>
+      </div>
+
+      {% else %}
+      <div style="text-align:center;padding:40px 0">
+        <div style="font-size:48px;margin-bottom:16px">🎯</div>
+        <p style="color:#6b7280;font-size:15px">Step10 尚未运行</p>
+        <p style="color:#9ca3af;font-size:13px;margin-top:8px">
+          运行 2.0 全流程后，Step10 会根据当前基金画像自动判断项目是否适合
+        </p>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- 沉淀层 -->
+  <div id="tab-沉淀" class="tab-content">
+    <div class="card">
+      <h2>💎 沉淀层</h2>
+
+      <h3>💎 问题库候选</h3>
+      {% if v2_context.questions %}
+      <p style="font-size:13px;color:#6b7280">共 {{ v2_context.questions|length }} 条</p>
+      <table>
+        <thead><tr><th>问题</th><th>用途</th><th>触发原因</th></tr></thead>
+        <tbody>
+          {% for q in v2_context.questions %}
+          <tr>
+            <td style="max-width:250px">{{ q.question }}</td>
+            <td style="font-size:12px;color:#6b7280">{{ q.use_case }}</td>
+            <td style="font-size:12px;color:#6b7280">{{ q.trigger_reason }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <a href="{{ url_for('download_v2_candidates', project_id=project_id, c_type='questions') }}" class="btn btn-secondary" style="margin-top:12px">📥 导出</a>
+      {% else %}
+      <p style="color:#9ca3af">暂无问题库候选</p>
+      {% endif %}
+
+      <h3 style="margin-top:20px">🏭 行业认知候选</h3>
+      {% if v2_context.industry_insights %}
+      <p style="font-size:13px;color:#6b7280">共 {{ v2_context.industry_insights|length }} 条</p>
+      {% for ins in v2_context.industry_insights %}
+      <div style="background:#dbeafe;border-radius:8px;padding:12px;margin:8px 0">
+        <div style="font-size:14px;font-weight:600">{{ ins.industry }}</div>
+        <div style="font-size:13px;margin-top:4px">{{ ins.insight }}</div>
+        <div style="font-size:12px;color:#6b7280;margin-top:4px"><strong>核心问题：</strong>{{ ins.core_question }}</div>
+        {% if ins.note %}<div style="font-size:12px;color:#d97706;margin-top:4px">备注：{{ ins.note }}</div>{% endif %}
+      </div>
+      {% endfor %}
+      <a href="{{ url_for('download_v2_candidates', project_id=project_id, c_type='industry') }}" class="btn btn-secondary" style="margin-top:8px">📥 导出</a>
+      {% else %}
+      <p style="color:#9ca3af">暂无行业认知候选</p>
+      {% endif %}
+
+      <h3 style="margin-top:20px">👤 用户画像候选</h3>
+      {% if v2_context.user_profile %}
+      <p style="font-size:13px;color:#6b7280">共 {{ v2_context.user_profile|length }} 条</p>
+      {% for p in v2_context.user_profile %}
+      <div style="background:#d1fae5;border-radius:8px;padding:12px;margin:8px 0">
+        <div style="font-size:13px"><strong>{{ p.dimension }}：</strong>{{ p.pattern }}</div>
+      </div>
+      {% endfor %}
+      <a href="{{ url_for('download_v2_candidates', project_id=project_id, c_type='user_profile') }}" class="btn btn-secondary" style="margin-top:8px">📥 导出</a>
+      {% else %}
+      <p style="color:#9ca3af">暂无用户画像候选</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- 完整报告 -->
+  <div id="tab-full" class="tab-content">
+    <div class="card">
+      <h2>📄 完整报告（Markdown）</h2>
+      {% if has_report %}
+      <iframe src="{{ url_for('static', filename='viewer.html') }}" style="display:none"></iframe>
+      <pre style="background:#1e293b;color:#e2e8f0;padding:20px;border-radius:8px;max-height:600px;overflow:auto;font-size:13px;line-height:1.6">
+{% if step6 and step6.get('new_information') %}
+## Step6：会议新增信息
+
+### 会议摘要
+{{ step6.get('meeting_summary', 'N/A') }}
+
+共 {{ step6.get('new_information', [])|length }} 条新增信息：
+{% endif %}
+
+{% if step7 and step7.get('meeting_quality') %}
+{% set mq = step7.get('meeting_quality') %}
+## Step7：问题对齐与会议质量
+
+### 会议质量评估
+- 回答直接性：{{ mq.get('answer_directness', 'N/A') }}
+- 与BP一致性：{{ mq.get('consistency', 'N/A') }}
+- 整体可信度：{{ mq.get('overall_confidence', 'N/A') }}
+{% if mq.get('evasion_signals') %}
+### ⚠️ 回避信号
+{% for sig in mq.get('evasion_signals', []) %}
+- {{ sig }}
+{% endfor %}
+{% endif %}
+{% endif %}
+
+{% if step8 and step8.get('hypothesis_updates') %}
+{% set hypotheses = step8.get('hypothesis_updates', []) %}
+## Step8：会后认知更新
+
+{% for h in hypotheses %}
+### {{ h.get('hypothesis', 'N/A') }}
+- **变化类型：** {{ h.get('change_type', 'N/A') }}
+- **最终判断：** {{ h.get('final_view', 'N/A') }}
+- **原因：** {{ h.get('why_changed', 'N/A') }}
+{% if h.get('supporting_evidence') %}
+- **✅ 支持证据：**
+{% for e in h.get('supporting_evidence', []) %}
+  - {{ e }}
+{% endfor %}
+{% endif %}
+{% if h.get('contradicting_evidence') %}
+- **❌ 反对证据：**
+{% for e in h.get('contradicting_evidence', []) %}
+  - {{ e }}
+{% endfor %}
+{% endif %}
+---
+{% endfor %}
+{% endif %}
+
+{% if step9 and step9.get('overall_decision') %}
+{% set od = step9.get('overall_decision') %}
+## Step9：决策与行动
+
+### 双层决策
+- **流程决策：** {{ od.get('process_decision', 'N/A') }}
+- **投资决策：** {{ od.get('investment_decision', 'N/A') }}
+{% if od.get('one_line_conclusion') %}
+- **结论：** {{ od.get('one_line_conclusion') }}
+{% endif %}
+{% endif %}
+      </pre>
+      {% else %}
+      <p style="color:#9ca3af">报告未生成，请先运行 2.0 分析</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- 原始 JSON -->
+  <div id="tab-raw" class="tab-content">
+    <div class="card">
+      <h2>📦 原始 JSON 数据</h2>
+      <p style="font-size:13px;color:#6b7280;margin-bottom:16px">以下链接直接下载各步骤的原始 JSON 文件，点开后可直接复制使用或本地调试。</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px">
+        {# Step6 #}
+        <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:14px">
+          <div style="font-weight:700;font-size:14px;color:#111;margin-bottom:8px">Step6 新增信息提取</div>
+          <div style="font-size:12px;color:#6b7280;margin-bottom:8px">
+            {% if step6 and step6.get('new_information') %}✅ 已完成 · {{ step6.get('new_information', [])|length }} 条信息{% else %}⏳ 未运行{% endif %}
+          </div>
+          <a href="{{ url_for('download_step_file', project_id=project_id, step_name='step6', file_name='step6_latest.json') }}"
+             class="btn btn-secondary" style="font-size:12px;padding:6px 12px">📄 step6_latest.json</a>
+        </div>
+
+        {# Step7 #}
+        <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:14px">
+          <div style="font-weight:700;font-size:14px;color:#111;margin-bottom:8px">Step7 问题验证</div>
+          <div style="font-size:12px;color:#6b7280;margin-bottom:8px">
+            {% if step7 %}✅ 已完成{% else %}⏳ 未运行{% endif %}
+          </div>
+          <a href="{{ url_for('download_step_file', project_id=project_id, step_name='step7', file_name='step7_latest.json') }}"
+             class="btn btn-secondary" style="font-size:12px;padding:6px 12px">📄 step7_latest.json</a>
+        </div>
+
+        {# Step8 #}
+        <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:14px">
+          <div style="font-weight:700;font-size:14px;color:#111;margin-bottom:8px">Step8 认知更新</div>
+          <div style="font-size:12px;color:#6b7280;margin-bottom:8px">
+            {% if step8 and step8.get('hypothesis_updates') %}✅ 已完成 · {{ step8.get('hypothesis_updates', [])|length }} 个假设{% else %}⏳ 未运行{% endif %}
+          </div>
+          <a href="{{ url_for('download_step_file', project_id=project_id, step_name='step8', file_name='step8_latest.json') }}"
+             class="btn btn-secondary" style="font-size:12px;padding:6px 12px">📄 step8_latest.json</a>
+        </div>
+
+        {# Step9 #}
+        <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:14px">
+          <div style="font-weight:700;font-size:14px;color:#111;margin-bottom:8px">Step9 项目决策</div>
+          <div style="font-size:12px;color:#6b7280;margin-bottom:8px">
+            {% if step9 and step9.get('overall_decision') %}✅ 已完成 · {{ step9.get('overall_decision', {}).get('process_decision', 'N/A') }} / {{ step9.get('overall_decision', {}).get('investment_decision', 'N/A') }}{% else %}⏳ 未运行{% endif %}
+          </div>
+          <a href="{{ url_for('download_step_file', project_id=project_id, step_name='step9', file_name='step9_latest.json') }}"
+             class="btn btn-secondary" style="font-size:12px;padding:6px 12px">📄 step9_latest.json</a>
+        </div>
+
+        {# Step10 #}
+        <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:14px">
+          <div style="font-weight:700;font-size:14px;color:#111;margin-bottom:8px">Step10 Fit 判断 ⭐</div>
+          <div style="font-size:12px;color:#6b7280;margin-bottom:8px">
+            {% if step10 %}✅ 已完成 · {{ step10.get('fit_decision', 'N/A') }} · {{ step10.get('final_recommendation', 'N/A') }}{% else %}⏳ 未运行{% endif %}
+          </div>
+          <a href="{{ url_for('download_step_file', project_id=project_id, step_name='step10', file_name='step10.json') }}"
+             class="btn btn-secondary" style="font-size:12px;padding:6px 12px">📄 step10.json</a>
+        </div>
+
+        {# Step0 #}
+        <div style="background:#eff6ff;border:1px solid #bae6fd;border-radius:8px;padding:14px">
+          <div style="font-weight:700;font-size:14px;color:#0369a1;margin-bottom:8px">Step0 基金画像</div>
+          <div style="font-size:12px;color:#6b7280;margin-bottom:8px">
+            {{ project_profile.name if project_profile else 'neutral_investor' }}
+            · {{ project_profile.profile_id if project_profile else '' }}
+          </div>
+          <a href="{{ url_for('download_step_file', project_id=project_id, step_name='step0', file_name='step0.json') }}"
+             class="btn btn-secondary" style="font-size:12px;padding:6px 12px;background:#dbeafe;color:#1e40af">📄 step0.json</a>
+        </div>
+
+        {# 沉淀候选 #}
+        <div style="background:#fef9c3;border:1px solid #fcd34d;border-radius:8px;padding:14px">
+          <div style="font-weight:700;font-size:14px;color:#92400e;margin-bottom:8px">沉淀层候选</div>
+          <div style="font-size:12px;color:#6b7280;margin-bottom:8px">💎 问题库 / 行业认知 / 用户画像</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <a href="{{ url_for('download_v2_candidates', project_id=project_id, c_type='questions') }}"
+               class="btn btn-secondary" style="font-size:12px;padding:5px 10px;background:#fef3c7">💬 questions.json</a>
+            <a href="{{ url_for('download_v2_candidates', project_id=project_id, c_type='industry') }}"
+               class="btn btn-secondary" style="font-size:12px;padding:5px 10px;background:#fef3c7">🏭 industry_insights.json</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function switchTab(name) {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      // 找到并激活对应的 tab 按钮
+      document.querySelectorAll('.tab').forEach(t => {
+        if (t.getAttribute('onclick') && t.getAttribute('onclick').includes(`'${name}'`)) {
+          t.classList.add('active');
+        }
+      });
+      // 激活对应的内容区
+      const contentEl = document.getElementById('tab-' + name);
+      if (contentEl) contentEl.classList.add('active');
+    }
+  </script>
+</body>
+</html>

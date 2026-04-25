@@ -1,0 +1,126 @@
+{
+  "selected_buckets": [
+    "tech_barrier",
+    "customer_value",
+    "commercialization"
+  ],
+  "bucket_outputs": [
+    {
+      "bucket_key": "tech_barrier",
+      "bucket_label": "技术/壁垒是否成立",
+      "point": "超分子共晶技术是行业通用改性方法，但公司通过AI高通量筛选和工程化放大形成了差异化壁垒",
+      "explanation": "【claim】BP称超分子智组装技术获得诺奖背书，且自研建沐™AI矩阵是全球首个AI驱动的超分子材料筛选体系。【reality】超分子化学（共晶、离子盐）是材料科学中成熟的通用技术，并非公司原创。诺奖背书的是整个超分子领域，而非公司特定技术。AI筛选在材料领域已有晶泰科技、深度原理等竞品。【gap】BP未提供与竞品在筛选效率、成功率上的量化对比数据。【conclusion】support：技术方向有诺奖背书和学术团队支撑，且156+专利形成一定壁垒；但contradict：核心超分子技术本身非独创，AI平台差异化证据不足，壁垒高度依赖工程化能力和专利布局。",
+      "relation_to_step1": "support",
+      "certainty": "medium",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "tech_barrier",
+      "bucket_label": "技术/壁垒是否成立",
+      "point": "AI平台‘建沐™矩阵’可能只是效率工具，而非核心护城河，且与深度原理的合作暗示自身AI能力不足",
+      "explanation": "【claim】BP称建沐™AI矩阵是全球首个AI驱动的超分子材料合成矩阵，可大幅缩短研发周期。【reality】AI辅助材料筛选是行业趋势，多家公司已布局。BP中明确提到与深度原理（Deep Origin）合作，后者提供生成式AI和领域LLM能力，暗示杉海创新自身AI能力可能不完整，依赖外部合作。【gap】未披露建沐™矩阵的具体算法、数据量、与深度原理的合作边界（是工具采购还是联合开发）。【conclusion】contradict：AI平台可能被过度包装，核心壁垒仍是超分子化学工程化能力，而非AI。",
+      "relation_to_step1": "contradict",
+      "certainty": "medium",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "customer_value",
+      "bucket_label": "客户为什么付钱",
+      "point": "美妆客户为性能提升（溶解性、稳定性、渗透性）和产品差异化卖点付费，订单已验证",
+      "explanation": "【claim】BP称服务欧莱雅、宝洁、华熙生物等100余家头部企业，年合作金额超3000万（敷尔佳）。【reality】美妆行业对原料的溶解性、稳定性、透皮吸收等性能提升有明确需求，超分子技术可改善这些指标，且客户愿意为差异化原料支付溢价。【gap】BP未披露具体订单中性能提升带来的客户成本节约或收入增量数据。【conclusion】support：客户付费动机清晰，且头部客户订单验证了价值主张。",
+      "relation_to_step1": "support",
+      "certainty": "high",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "customer_value",
+      "bucket_label": "客户为什么付钱",
+      "point": "新能源和农业领域的客户价值尚未验证，付费意愿存疑",
+      "explanation": "【claim】BP称深共晶电解液可提升电池安全性，超分子回收技术可降低锂电回收成本。【reality】新能源电池行业对电解液和回收技术的性能、成本、安全性有严苛要求，且已有成熟替代方案（如传统电解液、湿法回收）。深共晶电解液在离子电导率（中等）上不占优，且成本优势需规模化验证。农业领域论文发表于学术期刊，但产业化合作仅处于‘商议’阶段。【gap】无新能源或农业领域的真实客户订单或意向合同。【conclusion】contradict：跨行业客户价值尚未落地，付费意愿和替代动力不明。",
+      "relation_to_step1": "contradict",
+      "certainty": "medium",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "commercialization",
+      "bucket_label": "商业化路径是否成立",
+      "point": "美妆业务已实现千吨级产能和头部客户稳定合作，商业化路径清晰",
+      "explanation": "【claim】BP称超分子活性物年产能达千吨级，服务欧莱雅、华熙生物等，2025年预测净利润1000万。【reality】美妆原料行业客户验证周期相对较短（6-12个月），且公司已与欧莱雅、华熙生物等建立战略投资和联合开发关系，订单稳定。【gap】未披露产能利用率、良品率、毛利率等关键运营数据。【conclusion】support：美妆业务从技术到产品到收入的路径已走通，是公司当前现金流基础。",
+      "relation_to_step1": "support",
+      "certainty": "high",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "commercialization",
+      "bucket_label": "商业化路径是否成立",
+      "point": "新能源业务商业化路径不清晰，并购整合和规模化放量风险高",
+      "explanation": "【claim】BP称2025年合并千沐新能源，开发深共晶电解液和锂电回收技术，预计2025年锂电回收项目落地。【reality】新能源材料行业客户验证周期长（2-5年），且需通过电池厂和车企的严格认证。千沐新能源的技术处于‘已实现商业化’但未披露具体客户和收入规模。并购整合存在团队、文化、技术路线协同风险。【gap】无新能源业务的具体收入预测、客户验证进展、产能规划。【conclusion】contradict：新能源商业化路径缺乏细节，验证周期和并购风险被低估。",
+      "relation_to_step1": "contradict",
+      "certainty": "medium",
+      "source_type": "bp"
+    }
+  ],
+  "publicly_resolvable": [
+    {
+      "bucket_key": "tech_barrier",
+      "item": "超分子共晶技术是否为行业通用技术",
+      "current_conclusion": "是行业通用技术，但公司通过专利和工程化放大形成差异化",
+      "confidence": "high"
+    },
+    {
+      "bucket_key": "customer_value",
+      "item": "美妆头部客户（欧莱雅、华熙生物）是否真实合作",
+      "current_conclusion": "是，BP披露了战略投资和联合开发，公开信息可交叉验证",
+      "confidence": "high"
+    },
+    {
+      "bucket_key": "commercialization",
+      "item": "新能源业务客户验证周期",
+      "current_conclusion": "通常2-5年，公司2025年项目落地时间表偏乐观",
+      "confidence": "medium"
+    }
+  ],
+  "still_unresolved": [
+    {
+      "bucket_key": "tech_barrier",
+      "question": "建沐™AI矩阵与竞品（晶泰科技、深度原理）相比，在筛选效率、成功率上的量化差异是多少？",
+      "why_unresolved": "BP未提供与竞品的对比数据，且与深度原理的合作关系模糊，无法判断AI平台是核心壁垒还是辅助工具。",
+      "impact_level": "high"
+    },
+    {
+      "bucket_key": "commercialization",
+      "question": "千沐新能源的真实客户、收入规模和深共晶电解液的技术成熟度（是否通过电池厂认证）？",
+      "why_unresolved": "BP仅称‘已实现商业化’，但未披露任何客户名称、订单金额或认证进展，无法评估并购后的协同效应和放量节奏。",
+      "impact_level": "high"
+    },
+    {
+      "bucket_key": "customer_value",
+      "question": "新能源和农业领域客户是否已产生付费意愿（意向合同或POC订单）？",
+      "why_unresolved": "BP无任何新能源或农业领域的客户合作证据，仅停留在技术描述和学术论文阶段，无法判断跨行业扩张的可行性。",
+      "impact_level": "high"
+    }
+  ],
+  "tensions": [
+    "美妆业务已验证但新能源业务零客户：平台化扩张逻辑与执行落地之间的张力",
+    "AI平台被包装为核心壁垒，但实际依赖外部合作：技术叙事与真实能力之间的张力",
+    "高估值（20亿投前）基于新能源爆发预期，但新能源商业化路径极不清晰：估值逻辑与业务现实之间的张力"
+  ],
+  "step1_adjustment_hints": {
+    "supported": [
+      "美妆业务的技术-客户-收入路径已走通，支持Step1中‘美妆是现金流根据地’的判断",
+      "超分子技术平台在美妆领域的工程化能力已验证，支持Step1中‘技术平台’定位"
+    ],
+    "caution": [
+      "AI平台壁垒可能被高估，需警惕‘AI+材料’叙事中的营销成分",
+      "新能源业务商业化路径极不清晰，Step1中‘逻辑清晰’的判断需收缩，实际风险远高于预期",
+      "跨行业扩张的管理带宽和资源聚焦问题被低估，Step1中‘由易到难’策略在新能源领域可能不适用"
+    ],
+    "to_step4": [
+      "建沐™AI矩阵的真实壁垒和量化效果（需尽调对比竞品）",
+      "千沐新能源的技术成熟度、客户认证进展和并购整合风险（需尽调）",
+      "新能源和农业领域是否存在任何客户付费意愿证据（需沟通验证）",
+      "高估值（200倍PE）是否仅由新能源故事支撑，缺乏业务基础（需财务模型校验）"
+    ]
+  },
+  "raw_text": "{\n  \"selected_buckets\": [\"tech_barrier\", \"customer_value\", \"commercialization\"],\n  \"bucket_outputs\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"bucket_label\": \"技术/壁垒是否成立\",\n      \"point\": \"超分子共晶技术是行业通用改性方法，但公司通过AI高通量筛选和工程化放大形成了差异化壁垒\",\n      \"explanation\": \"【claim】BP称超分子智组装技术获得诺奖背书，且自研建沐™AI矩阵是全球首个AI驱动的超分子材料筛选体系。【reality】超分子化学（共晶、离子盐）是材料科学中成熟的通用技术，并非公司原创。诺奖背书的是整个超分子领域，而非公司特定技术。AI筛选在材料领域已有晶泰科技、深度原理等竞品。【gap】BP未提供与竞品在筛选效率、成功率上的量化对比数据。【conclusion】support：技术方向有诺奖背书和学术团队支撑，且156+专利形成一定壁垒；但contradict：核心超分子技术本身非独创，AI平台差异化证据不足，壁垒高度依赖工程化能力和专利布局。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"bucket_label\": \"技术/壁垒是否成立\",\n      \"point\": \"AI平台‘建沐™矩阵’可能只是效率工具，而非核心护城河，且与深度原理的合作暗示自身AI能力不足\",\n      \"explanation\": \"【claim】BP称建沐™AI矩阵是全球首个AI驱动的超分子材料合成矩阵，可大幅缩短研发周期。【reality】AI辅助材料筛选是行业趋势，多家公司已布局。BP中明确提到与深度原理（Deep Origin）合作，后者提供生成式AI和领域LLM能力，暗示杉海创新自身AI能力可能不完整，依赖外部合作。【gap】未披露建沐™矩阵的具体算法、数据量、与深度原理的合作边界（是工具采购还是联合开发）。【conclusion】contradict：AI平台可能被过度包装，核心壁垒仍是超分子化学工程化能力，而非AI。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"bucket_label\": \"客户为什么付钱\",\n      \"point\": \"美妆客户为性能提升（溶解性、稳定性、渗透性）和产品差异化卖点付费，订单已验证\",\n      \"explanation\": \"【claim】BP称服务欧莱雅、宝洁、华熙生物等100余家头部企业，年合作金额超3000万（敷尔佳）。【reality】美妆行业对原料的溶解性、稳定性、透皮吸收等性能提升有明确需求，超分子技术可改善这些指标，且客户愿意为差异化原料支付溢价。【gap】BP未披露具体订单中性能提升带来的客户成本节约或收入增量数据。【conclusion】support：客户付费动机清晰，且头部客户订单验证了价值主张。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"high\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"bucket_label\": \"客户为什么付钱\",\n      \"point\": \"新能源和农业领域的客户价值尚未验证，付费意愿存疑\",\n      \"explanation\": \"【claim】BP称深共晶电解液可提升电池安全性，超分子回收技术可降低锂电回收成本。【reality】新能源电池行业对电解液和回收技术的性能、成本、安全性有严苛要求，且已有成熟替代方案（如传统电解液、湿法回收）。深共晶电解液在离子电导率（中等）上不占优，且成本优势需规模化验证。农业领域论文发表于学术期刊，但产业化合作仅处于‘商议’阶段。【gap】无新能源或农业领域的真实客户订单或意向合同。【conclusion】contradict：跨行业客户价值尚未落地，付费意愿和替代动力不明。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"bucket_label\": \"商业化路径是否成立\",\n      \"point\": \"美妆业务已实现千吨级产能和头部客户稳定合作，商业化路径清晰\",\n      \"explanation\": \"【claim】BP称超分子活性物年产能达千吨级，服务欧莱雅、华熙生物等，2025年预测净利润1000万。【reality】美妆原料行业客户验证周期相对较短（6-12个月），且公司已与欧莱雅、华熙生物等建立战略投资和联合开发关系，订单稳定。【gap】未披露产能利用率、良品率、毛利率等关键运营数据。【conclusion】support：美妆业务从技术到产品到收入的路径已走通，是公司当前现金流基础。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"high\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"bucket_label\": \"商业化路径是否成立\",\n      \"point\": \"新能源业务商业化路径不清晰，并购整合和规模化放量风险高\",\n      \"explanation\": \"【claim】BP称2025年合并千沐新能源，开发深共晶电解液和锂电回收技术，预计2025年锂电回收项目落地。【reality】新能源材料行业客户验证周期长（2-5年），且需通过电池厂和车企的严格认证。千沐新能源的技术处于‘已实现商业化’但未披露具体客户和收入规模。并购整合存在团队、文化、技术路线协同风险。【gap】无新能源业务的具体收入预测、客户验证进展、产能规划。【conclusion】contradict：新能源商业化路径缺乏细节，验证周期和并购风险被低估。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    }\n  ],\n  \"publicly_resolvable\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"item\": \"超分子共晶技术是否为行业通用技术\",\n      \"current_conclusion\": \"是行业通用技术，但公司通过专利和工程化放大形成差异化\",\n      \"confidence\": \"high\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"item\": \"美妆头部客户（欧莱雅、华熙生物）是否真实合作\",\n      \"current_conclusion\": \"是，BP披露了战略投资和联合开发，公开信息可交叉验证\",\n      \"confidence\": \"high\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"item\": \"新能源业务客户验证周期\",\n      \"current_conclusion\": \"通常2-5年，公司2025年项目落地时间表偏乐观\",\n      \"confidence\": \"medium\"\n    }\n  ],\n  \"still_unresolved\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"question\": \"建沐™AI矩阵与竞品（晶泰科技、深度原理）相比，在筛选效率、成功率上的量化差异是多少？\",\n      \"why_unresolved\": \"BP未提供与竞品的对比数据，且与深度原理的合作关系模糊，无法判断AI平台是核心壁垒还是辅助工具。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"question\": \"千沐新能源的真实客户、收入规模和深共晶电解液的技术成熟度（是否通过电池厂认证）？\",\n      \"why_unresolved\": \"BP仅称‘已实现商业化’，但未披露任何客户名称、订单金额或认证进展，无法评估并购后的协同效应和放量节奏。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"question\": \"新能源和农业领域客户是否已产生付费意愿（意向合同或POC订单）？\",\n      \"why_unresolved\": \"BP无任何新能源或农业领域的客户合作证据，仅停留在技术描述和学术论文阶段，无法判断跨行业扩张的可行性。\",\n      \"impact_level\": \"high\"\n    }\n  ],\n  \"tensions\": [\n    \"美妆业务已验证但新能源业务零客户：平台化扩张逻辑与执行落地之间的张力\",\n    \"AI平台被包装为核心壁垒，但实际依赖外部合作：技术叙事与真实能力之间的张力\",\n    \"高估值（20亿投前）基于新能源爆发预期，但新能源商业化路径极不清晰：估值逻辑与业务现实之间的张力\"\n  ],\n  \"step1_adjustment_hints\": {\n    \"supported\": [\n      \"美妆业务的技术-客户-收入路径已走通，支持Step1中‘美妆是现金流根据地’的判断\",\n      \"超分子技术平台在美妆领域的工程化能力已验证，支持Step1中‘技术平台’定位\"\n    ],\n    \"caution\": [\n      \"AI平台壁垒可能被高估，需警惕‘AI+材料’叙事中的营销成分\",\n      \"新能源业务商业化路径极不清晰，Step1中‘逻辑清晰’的判断需收缩，实际风险远高于预期\",\n      \"跨行业扩张的管理带宽和资源聚焦问题被低估，Step1中‘由易到难’策略在新能源领域可能不适用\"\n    ],\n    \"to_step4\": [\n      \"建沐™AI矩阵的真实壁垒和量化效果（需尽调对比竞品）\",\n      \"千沐新能源的技术成熟度、客户认证进展和并购整合风险（需尽调）\",\n      \"新能源和农业领域是否存在任何客户付费意愿证据（需沟通验证）\",\n      \"高估值（200倍PE）是否仅由新能源故事支撑，缺乏业务基础（需财务模型校验）\"\n    ]\n  }\n}"
+}

@@ -1,0 +1,77 @@
+{
+  "meeting_quality": {
+    "answer_directness": "high",
+    "evidence_strength": "low",
+    "evasion_level": "low",
+    "overall_confidence": "low",
+    "consistency": "medium",
+    "evasion_signals": []
+  },
+  "question_validation": [
+    {
+      "question_id": "q_1",
+      "original_question": "AI平台是否已形成闭环？准确率和实际应用效果如何？",
+      "matched_information_ids": [],
+      "answer_summary": "",
+      "status": "answered",
+      "quality": "medium",
+      "impact": "weakens",
+      "missing_evidence": [
+        "AI平台实际案例的量化数据（如从客户需求输入到候选分子输出的平均周期、成功率、湿实验减少比例），以及闭环验证的具体指标。"
+      ],
+      "follow_up_question": "请提供AI平台从客户需求输入到候选分子输出的平均周期、成功率、以及湿实验减少比例的具体案例数据。"
+    },
+    {
+      "question_id": "q_2",
+      "original_question": "大客户（欧莱雅/宝洁）的粘性来源是什么？切换成本是否真的高？",
+      "matched_information_ids": [],
+      "answer_summary": "",
+      "status": "answered",
+      "quality": "medium",
+      "impact": "strengthens",
+      "missing_evidence": [
+        "欧莱雅、宝洁、珀莱雅2025年的采购订单、合同及2026年预测依据的详细文件。"
+      ],
+      "follow_up_question": "请提供欧莱雅、宝洁、珀莱雅2025年的采购订单、合同，以及2026年预测的详细依据文件。"
+    },
+    {
+      "question_id": "q_3",
+      "original_question": "新能源和食品业务的收入时间表是什么？是否存在重大延期风险？",
+      "matched_information_ids": [],
+      "answer_summary": "",
+      "status": "answered",
+      "quality": "medium",
+      "impact": "strengthens",
+      "missing_evidence": [
+        "新能源业务的具体客户合作阶段（探索性测试/小批量/量产）及预计首个订单时间；食品业务工厂改造进度表及已对接的客户订单。"
+      ],
+      "follow_up_question": "请提供新能源业务与宏光科技、蓝海科技的合作阶段（探索性测试/小批量/量产）及预计首个订单时间；食品业务工厂改造的详细进度表和已对接的客户订单。"
+    },
+    {
+      "question_id": "q_4",
+      "original_question": "并购千沐的协同效应是否真实？整合进展如何？",
+      "matched_information_ids": [],
+      "answer_summary": "",
+      "status": "answered",
+      "quality": "medium",
+      "impact": "strengthens",
+      "missing_evidence": [
+        "千沐新能源的财务报表、技术路线及并购后组织架构安排；研发中台共享的具体案例和联合开发项目。"
+      ],
+      "follow_up_question": "请提供千沐新能源的财务报表、技术路线及并购后组织架构安排；以及研发中台共享的具体案例和联合开发项目清单。"
+    },
+    {
+      "question_id": "q_5",
+      "original_question": "专利保护是否真正构成竞争壁垒？与欧莱雅共有专利的范围有多大？",
+      "matched_information_ids": [],
+      "answer_summary": "",
+      "status": "answered",
+      "quality": "medium",
+      "impact": "strengthens",
+      "missing_evidence": [
+        "专利清单、权属证明及与欧莱雅共有专利的协议。"
+      ],
+      "follow_up_question": "请提供公司专利清单、权属证明，以及与欧莱雅共有专利的协议文件。"
+    }
+  ]
+}

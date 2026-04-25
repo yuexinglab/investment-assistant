@@ -1,0 +1,15 @@
+{
+  "meeting_quality": {
+    "answer_directness": "medium",
+    "evidence_strength": "medium",
+    "evasion_level": "low",
+    "overall_confidence": "medium",
+    "consistency": "medium",
+    "evasion_signals": [],
+    "answered_count": 0,
+    "partially_count": 0,
+    "weak_count": 0,
+    "missing_evidence_count": 0
+  },
+  "question_validation": []
+}

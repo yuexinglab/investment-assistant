@@ -1,0 +1,121 @@
+{
+  "overall_decision": {
+    "process_decision": "request_materials",
+    "investment_decision": "not_ready",
+    "confidence": "low",
+    "one_line_conclusion": "当前信息严重不足，且会议可信度低，核心假设均未验证，必须暂停深度沟通，先补材料。"
+  },
+  "decision_breakdown": {
+    "verified_positives": [],
+    "unverified_positives": [
+      {
+        "point": "AI平台可能构成技术壁垒",
+        "status": "unverified",
+        "source_hypothesis": "h_001",
+        "reason": "会议未正面回答，且可信度低，无第三方验证或技术文档支撑。"
+      },
+      {
+        "point": "新能源业务有明确收入时间表",
+        "status": "unverified",
+        "source_hypothesis": "h_002",
+        "reason": "假设方向已轻微弱化，无客户沟通记录或合作意向书佐证。"
+      },
+      "AI平台是否具有技术护城河：缺乏与传统方法（如晶泰科技）的量化对比数据",
+      "新能源客户是否已形成隐性合作：未提供与主流电池厂的合同或订单"
+    ],
+    "confirmed_negatives": [
+      {
+        "point": "会议整体可信度低，回答直接性低",
+        "impact": "管理层沟通质量差，关键问题被回避，信息可靠性存疑。"
+      }
+    ],
+    "key_uncertainties": [
+      {
+        "hypothesis_id": "h_001",
+        "point": "AI技术壁垒的真实性",
+        "required_material": "第三方验证报告；测试方法及数据集说明；专利或技术文档"
+      },
+      {
+        "hypothesis_id": "h_002",
+        "point": "新能源业务收入时间表的可行性",
+        "required_material": "与潜在客户的沟通记录；技术验证进展报告；合作备忘录或意向书"
+      },
+      "2026年大客户放量是否有合同支撑：欧莱雅/宝洁/珀莱雅2026年预测收入合计超6000万，需采购订单验证",
+      "专利壁垒是否真实：声称的分子结构专利保护力度需专利清单验证",
+      "锂电回收经济性：碳酸锂价格持续低迷时，成本结构是否支撑盈利",
+      "新能源客户验证进展：与主流电池厂（宁德/比亚迪）的合作阶段不明确"
+    ]
+  },
+  "material_request_list": [
+    {
+      "priority": "high",
+      "material": "第三方AI技术验证报告及测试方法说明",
+      "purpose": "验证AI平台是否构成真实技术壁垒，排除夸大宣传",
+      "related_hypothesis": "h_001"
+    },
+    {
+      "priority": "high",
+      "material": "新能源业务与潜在客户的沟通记录或合作意向书",
+      "purpose": "确认收入时间表是否有实质客户背书，而非单方面预测",
+      "related_hypothesis": "h_002"
+    },
+    {
+      "priority": "medium",
+      "material": "核心AI技术相关的专利或技术文档",
+      "purpose": "评估技术独特性及可保护性",
+      "related_hypothesis": "h_001"
+    },
+    {
+      "priority": "medium",
+      "material": "新能源业务技术验证进展报告",
+      "purpose": "判断技术成熟度及商业化落地风险",
+      "related_hypothesis": "h_002"
+    }
+  ],
+  "remaining_unknowns": [
+    {
+      "issue": "AI技术壁垒的真实性及可验证性",
+      "why_blocking": "若技术壁垒不成立，公司核心竞争逻辑将被削弱，投资价值大幅下降",
+      "how_to_resolve": "获取第三方验证报告及专利文档，必要时安排技术专家访谈",
+      "priority": "high"
+    },
+    {
+      "issue": "新能源业务收入时间表的可靠性",
+      "why_blocking": "若收入时间表不可靠，未来现金流预测将失去依据，估值模型失效",
+      "how_to_resolve": "获取客户沟通记录、意向书及技术验证报告，验证商业化进展",
+      "priority": "high"
+    },
+    {
+      "issue": "管理层沟通可信度低的原因",
+      "why_blocking": "可能隐藏重大风险或经营问题，导致后续尽调信息失真",
+      "how_to_resolve": "通过第三方渠道（如客户、供应商、行业专家）交叉验证管理层陈述",
+      "priority": "medium"
+    }
+  ],
+  "next_actions": [
+    {
+      "action": "向公司正式发送材料清单，要求提供第三方AI验证报告、专利文档、新能源客户沟通记录及合作意向书",
+      "purpose": "获取关键证据以验证核心假设",
+      "who": "用户",
+      "priority": "high"
+    },
+    {
+      "action": "在材料未到之前，暂停任何深度沟通或管理层访谈",
+      "purpose": "避免在信息不充分的情况下形成偏见或浪费资源",
+      "who": "用户",
+      "priority": "high"
+    },
+    {
+      "action": "启动行业专家访谈，了解AI技术壁垒在行业内的普遍性及新能源业务商业化节奏",
+      "purpose": "从第三方视角验证公司声称的技术优势及市场前景",
+      "who": "AI",
+      "priority": "medium"
+    }
+  ],
+  "key_risks": [
+    "管理层沟通可信度低，可能存在信息隐瞒或夸大风险",
+    "两项核心假设均未验证，投资决策缺乏基本依据",
+    "若材料迟迟不到或质量差，可能意味着公司缺乏实质进展"
+  ],
+  "go_no_go_logic": "只有当两项关键不确定性（AI技术壁垒、新能源收入时间表）均通过第三方材料或独立验证得到正面确认后，investment_decision才能从not_ready转为invest_ready。若材料无法提供或验证结果负面，则直接转为reject。"
+}

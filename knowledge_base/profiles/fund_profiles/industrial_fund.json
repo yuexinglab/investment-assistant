@@ -1,0 +1,63 @@
+{
+  "profile_id": "industrial_fund",
+  "profile_type": "fund",
+  "name": "产业资本",
+  "description": "偏好与自身产业链有协同、能补能力或补渠道的项目。",
+  "hard_constraints": [
+    {
+      "key": "strategic_synergy",
+      "description": "项目需要与现有产业链或业务能力形成明确协同。",
+      "priority": "high",
+      "examples": ["补充供应链", "补充客户资源", "补充技术能力", "补充渠道"]
+    }
+  ],
+  "preferences": [
+    {
+      "key": "supply_chain_synergy",
+      "description": "能补充供应链、客户资源、技术能力或渠道的项目优先。",
+      "priority": "high",
+      "weight": 0.4
+    },
+    {
+      "key": "capability_building",
+      "description": "能帮助补齐自身能力短板的战略项目。",
+      "priority": "medium",
+      "weight": 0.25
+    },
+    {
+      "key": "market_expansion",
+      "description": "能帮助进入新市场或扩大市场份额。",
+      "priority": "medium",
+      "weight": 0.25
+    }
+  ],
+  "avoid": [
+    {
+      "key": "no_synergy",
+      "description": "没有产业协同，仅财务回报逻辑的项目优先级较低。",
+      "priority": "medium",
+      "severity": "medium"
+    },
+    {
+      "key": "competitor_aligned",
+      "description": "与竞争对手高度绑定的项目不偏好。",
+      "priority": "low",
+      "severity": "low"
+    }
+  ],
+  "fit_questions": [
+    "项目与现有产业链有什么协同？",
+    "能否补充客户、技术、产能或渠道？",
+    "是否存在并购整合价值？",
+    "是否能提升集团主业竞争力？",
+    "协同效应是否可量化？"
+  ],
+  "notes": [
+    "产业资本的核心是战略协同，不是财务回报。",
+    "偏好能带来实质业务提升的项目，而非纯财务投资。",
+    "需要评估项目与自身业务的协同空间和整合难度。"
+  ],
+  "status": "approved",
+  "created_at": "2026-04-25",
+  "updated_at": "2026-04-25"
+}

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile 对比测试 — AI 项目判断工作台</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    body {
+      font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 32px 20px;
+      background: #f9fafb;
+      color: #374151;
+      line-height: 1.7;
+    }
+    h1 { font-size: 22px; color: #111827; margin-bottom: 8px; }
+    h2 { font-size: 17px; color: #111827; margin: 24px 0 12px; border-bottom: 2px solid #e5e7eb; padding-bottom: 8px; }
+    h3 { font-size: 15px; color: #374151; margin: 16px 0 8px; }
+
+    .back-link { color: #6b7280; text-decoration: none; font-size: 14px; display: inline-block; margin-bottom: 16px; }
+    .back-link:hover { color: #2563eb; }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px;
+      margin: 16px 0;
+      border: 1px solid #e5e7eb;
+    }
+
+    /* 核心差异表 */
+    .diff-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+    .diff-table th { background: #f9fafb; text-align: left; padding: 10px 12px; border: 1px solid #e5e7eb; font-weight: 600; }
+    .diff-table td { padding: 10px 12px; border: 1px solid #e5e7eb; vertical-align: top; }
+    .diff-table tr:hover td { background: #f9fafb; }
+
+    .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+    .tag-neutral { background: #eff6ff; color: #2563eb; }
+    .tag-gov { background: #fef9c3; color: #d97706; }
+    .tag-vc { background: #dbeafe; color: #1e40af; }
+    .tag-industrial { background: #ede9fe; color: #6d28d9; }
+
+    .highlight-box {
+      background: #eff6ff;
+      border: 2px solid #2563eb;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 16px 0;
+    }
+    .highlight-box h3 { margin-top: 0; color: #1d4ed8; }
+
+    .step-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 12px 0;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .step-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #2563eb;
+      color: white;
+      font-weight: 700;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-num.green { background: #059669; }
+    .step-num.amber { background: #d97706; }
+    .step-num.red { background: #dc2626; }
+    .step-content { flex: 1; }
+
+    /* 验证清单 */
+    .checklist { list-style: none; padding: 0; margin: 0; }
+    .checklist li {
+      padding: 10px 14px;
+      border-radius: 8px;
+      margin: 6px 0;
+      font-size: 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .check-item { background: #dcfce7; color: #15803d; }
+    .check-fail { background: #fee2e2; color: #991b1b; }
+
+    .warn-box {
+      background: #fef9c3;
+      border: 1px solid #fcd34d;
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin: 12px 0;
+      font-size: 13px;
+      color: #92400e;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      margin: 12px 0;
+    }
+    .profile-card {
+      border-radius: 10px;
+      padding: 14px;
+      border: 2px solid;
+    }
+    .profile-card h4 { margin: 0 0 6px; font-size: 14px; }
+    .profile-card p { margin: 4px 0; font-size: 12px; }
+    .profile-card.neutral { background: #eff6ff; border-color: #2563eb; }
+    .profile-card.neutral h4 { color: #1d4ed8; }
+    .profile-card.gov { background: #fef9c3; border-color: #d97706; }
+    .profile-card.gov h4 { color: #b45309; }
+    .profile-card.vc { background: #dbeafe; border-color: #1e40af; }
+    .profile-card.vc h4 { color: #1e40af; }
+    .profile-card.industrial { background: #ede9fe; border-color: #6d28d9; }
+    .profile-card.industrial h4 { color: #6d28d9; }
+
+    code {
+      background: #f3f4f6;
+      padding: 1px 5px;
+      border-radius: 4px;
+      font-size: 13px;
+      font-family: "Courier New", monospace;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #2563eb;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: #1d4ed8; }
+    .btn-outline {
+      background: #fff;
+      color: #374151;
+      border: 1px solid #d1d5db;
+    }
+    .btn-outline:hover { background: #f3f4f6; }
+  </style>
+</head>
+<body>
+
+  <a href="{{ url_for('index') }}" class="back-link">← 返回项目列表</a>
+  <h1>📊 Profile 对比测试</h1>
+  <p style="color:#6b7280;font-size:14px">验证不同基金画像是否对 Step10 Fit 判断产生预期差异</p>
+
+  <!-- 什么是 Profile -->
+  <div class="card">
+    <h2>🤔 什么是 Profile（投资人画像）</h2>
+    <p>Profile 是系统判断"项目适不适合"的上下文变量。同一个 BP，切换不同 Profile → Step10 Fit 判断不同。</p>
+
+    <div class="profile-grid">
+      <div class="profile-card neutral">
+        <h4>🔵 neutral_investor</h4>
+        <p><strong>中性投资人</strong>（默认）</p>
+        <p>无硬约束，纯项目质量判断</p>
+        <p>不因落地/反投直接 pass</p>
+      </div>
+      <div class="profile-card gov">
+        <h4>🟡 government_fund</h4>
+        <p><strong>政府产业基金</strong></p>
+        <p>硬约束：落地、反投、税收贡献</p>
+        <p>不满足 → not_fit + pass</p>
+      </div>
+      <div class="profile-card vc">
+        <h4>🔷 vc_fund</h4>
+        <p><strong>市场化VC</strong></p>
+        <p>硬约束：增长性、退出路径</p>
+        <p>偏好：高增长赛道</p>
+      </div>
+      <div class="profile-card industrial">
+        <h4>🟣 industrial_fund</h4>
+        <p><strong>产业资本</strong></p>
+        <p>硬约束：战略协同</p>
+        <p>偏好：上下游整合</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 核心差异表 -->
+  <div class="card">
+    <h2>🔑 核心差异：neutral vs government_fund</h2>
+    <p style="font-size:13px;color:#6b7280;margin-top:0">以"杉海创新科技"为例（该 BP 不承诺落地、反投条件苛刻）：</p>
+
+    <table class="diff-table">
+      <thead>
+        <tr>
+          <th>维度</th>
+          <th>🔵 neutral_investor（默认）</th>
+          <th>🟡 government_fund（政府基金）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Step0 硬约束</strong></td>
+          <td>无硬约束</td>
+          <td>必须有落地意愿、反投要求、税收贡献承诺</td>
+        </tr>
+        <tr>
+          <td><strong>Step5 会前判断</strong></td>
+          <td>基于项目本身质量判断</td>
+          <td>可能因落地问题降低初步评分</td>
+        </tr>
+        <tr>
+          <td><strong>Step7 Profile问题</strong></td>
+          <td>无 profile 专属问题</td>
+          <td>验证落地意愿、反投能力等</td>
+        </tr>
+        <tr>
+          <td><strong>Step10 fit_decision</strong></td>
+          <td><span class="tag tag-neutral">partial_fit</span></td>
+          <td><span class="tag tag-gov">not_fit</span></td>
+        </tr>
+        <tr>
+          <td><strong>Step10 recommendation</strong></td>
+          <td><span class="tag tag-neutral">request_materials</span></td>
+          <td><span class="tag tag-gov">pass</span></td>
+        </tr>
+        <tr>
+          <td><strong>关键触发点</strong></td>
+          <td>不因落地/反投直接拒绝</td>
+          <td>落地意愿缺失 → 硬约束冲突 → 直接 pass</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="warn-box">
+      ⚠️ <strong>重要原则：</strong>Step6 永远不受 Profile 影响！会议记录的事实提取是纯客观的，不能被基金偏好污染。
+    </div>
+  </div>
+
+  <!-- 测试步骤 -->
+  <div class="card">
+    <h2>🧪 对比测试步骤（按顺序做）</h2>
+
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3 style="margin-top:0">上传同一个 BP（建议用杉海创新科技）</h3>
+        <p>新建两个项目，分别选择不同 Profile：</p>
+        <ul>
+          <li>项目 A → 选择 <code>neutral_investor</code></li>
+          <li>项目 B → 选择 <code>government_fund</code></li>
+        </ul>
+        <p>两个项目使用<strong>完全相同的 BP 文件</strong>，这样才能准确对比 Profile 影响。</p>
+        <a href="{{ url_for('new_project_page') }}" class="btn">创建新项目 →</a>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3 style="margin-top:0">运行 1.0 会前分析（Step1→5）</h3>
+        <p>分别对两个项目运行 1.0 流程。完成后：</p>
+        <ul>
+          <li>打开项目 A 的结果页 → 记住 Step5 的会前判断</li>
+          <li>打开项目 B 的结果页 → 对比 Step5 的会前判断是否不同</li>
+        </ul>
+        <p><strong>观察点：</strong>government_fund 版本是否对"落地意愿"等问题更敏感？</p>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num green">3</div>
+      <div class="step-content">
+        <h3 style="margin-top:0">上传同一份模拟会议记录</h3>
+        <p>两个项目使用<strong>相同的模拟会议记录</strong>（或粘贴同一段文本）。</p>
+        <p>推荐使用已有的测试会议记录：
+          <code>workspace/测试科技公司_20260424_173519/meeting/meeting.txt</code>
+        </p>
+        <p>Step6 的输出在两个项目中应该<strong>完全相同</strong>（不受 Profile 影响）。</p>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num green">4</div>
+      <div class="step-content">
+        <h3 style="margin-top:0">运行 2.0 全流程（Step6→10）</h3>
+        <p>两个项目都跑完 2.0 后，分别查看结果页。</p>
+        <p><strong>观察点 1（Step7）：</strong>government_fund 版本是否有额外的 Profile 问题被验证？</p>
+        <p><strong>观察点 2（Step10）：</strong>这是最关键的区别：</p>
+        <ul>
+          <li>项目 A（neutral）：应该是 <strong>partial_fit + request_materials</strong></li>
+          <li>项目 B（gov）：应该是 <strong>not_fit + pass</strong>（因为落地/反投硬约束冲突）</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num green">5</div>
+      <div class="step-content">
+        <h3 style="margin-top:0">点击"📦 原始 JSON" tab 对比</h3>
+        <p>在两个项目的 2.0 结果页 → 点击「📦 原始 JSON」tab，下载并对比：</p>
+        <ul>
+          <li><code>step10.json</code> — 重点对比 <code>fit_decision</code>、<code>final_recommendation</code>、<code>matched_constraints</code>、<code>mismatched_constraints</code></li>
+          <li><code>step7.json</code> — 对比 <code>question_source</code> 分布（neutral 无 profile 问题，gov 有）</li>
+          <li><code>step6.json</code> — 确认两份 step6 完全相同（Profile 不影响事实提取）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 验收清单 -->
+  <div class="card">
+    <h2>✅ 验收清单（全部通过才算成功）</h2>
+
+    <ul class="checklist">
+      <li class="check-item">
+        <span>✅</span>
+        <span>项目 B（government_fund）Step10 的 <code>fit_decision</code> = <code>not_fit</code>（不是 partial_fit）</span>
+      </li>
+      <li class="check-item">
+        <span>✅</span>
+        <span>项目 B（government_fund）Step10 的 <code>final_recommendation</code> = <code>pass</code>（不是 continue）</span>
+      </li>
+      <li class="check-item">
+        <span>✅</span>
+        <span>项目 A（neutral_investor）Step10 的 <code>final_recommendation</code> = <code>request_materials</code> 或 <code>continue</code>（不是直接 pass）</span>
+      </li>
+      <li class="check-item">
+        <span>✅</span>
+        <span>项目 B Step10 的 <code>mismatched_constraints</code> 包含"落地意愿"或"反投要求"</span>
+      </li>
+      <li class="check-item">
+        <span>✅</span>
+        <span>两个项目的 <code>step6.json</code> 内容完全一致（Profile 不污染事实提取）</span>
+      </li>
+      <li class="check-item">
+        <span>✅</span>
+        <span>Step7 在 government_fund 版本中有 <code>question_source=profile</code> 的问题</span>
+      </li>
+      <li class="check-fail">
+        <span>❌</span>
+        <span>如果 government_fund 版本的 Step6 内容与 neutral 不同 → 说明 Profile 污染了 Step6，这是严重 bug！</span>
+      </li>
+    </ul>
+
+    <div class="highlight-box" style="margin-top:20px">
+      <h3>🎯 测试通过的标准</h3>
+      <p>同一个 BP + 同一个会议记录 → neutral_investor 和 government_fund 版本：</p>
+      <ul>
+        <li><strong>Step6（事实提取）</strong>：✅ 完全相同</li>
+        <li><strong>Step7（问题验证）</strong>：⚠️ government 版本多出 profile 专属问题</li>
+        <li><strong>Step10（Fit 判断）</strong>：❌ 明显不同（gov 直接 pass，neutral 继续 request_materials）</li>
+      </ul>
+      <p style="margin:8px 0 0;font-size:13px;color:#6b7280">
+        如果 Step10 结果相同，说明 Profile 硬约束没有生效，或 Step10 的规则引擎有问题。
+      </p>
+    </div>
+  </div>
+
+  <!-- 已知限制 -->
+  <div class="card">
+    <h2>⚠️ 当前已知限制</h2>
+    <ul>
+      <li><strong>Step4 尚无 profile 区分标注：</strong>Step4 开会问题目前全部为 base 类型，profile 相关问题暂未在 step4 层面注入。这是后续迭代点。</li>
+      <li><strong>Step10 依赖 Step9 结果：</strong>如果 Step9 项目层判断为 stop，Step10 无论如何都会是 not_fit。</li>
+      <li><strong>Profile 切换后需重新跑流程：</strong>切换 Profile 只影响 step0.json，不会自动清空后续步骤的缓存。</li>
+    </ul>
+  </div>
+
+</body>
+</html>

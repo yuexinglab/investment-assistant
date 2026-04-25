@@ -1,0 +1,75 @@
+{
+  "profile_id": "vc_fund",
+  "profile_type": "fund",
+  "name": "风险投资（VC）",
+  "description": "追求高成长、高回报的风险投资基金，重点支持早期和成长期的创新项目。",
+  "hard_constraints": [
+    {
+      "key": "high_growth_potential",
+      "description": "项目需具备高成长潜力，能够在3-5年内实现规模化增长。",
+      "priority": "high",
+      "examples": ["可触达的大市场", "高复购/高毛利", "网络效应"]
+    },
+    {
+      "key": "scalability",
+      "description": "商业模式必须可规模化，边际成本趋近于零或持续降低。",
+      "priority": "high",
+      "examples": ["软件/SaaS", "平台模式", "高复制性"]
+    },
+    {
+      "key": "team_capability",
+      "description": "创始团队需具备执行力和行业深度。",
+      "priority": "high",
+      "examples": ["连续创业者", "行业专家", "完整团队"]
+    }
+  ],
+  "preferences": [
+    {
+      "key": "tech_barrier",
+      "description": "偏好有一定技术壁垒或护城河的项目。",
+      "priority": "high",
+      "weight": 0.3
+    },
+    {
+      "key": "market_timing",
+      "description": "进入市场的时机要好，有先发优势或卡位优势。",
+      "priority": "medium",
+      "weight": 0.2
+    },
+    {
+      "key": "capital_efficiency",
+      "description": "偏好轻资产、资本效率高的模式。",
+      "priority": "medium",
+      "weight": 0.2
+    }
+  ],
+  "avoid": [
+    {
+      "key": "heavy_assets",
+      "description": "重资产、资本密集型项目需要更低估值或更高确信度。",
+      "priority": "medium",
+      "severity": "medium"
+    },
+    {
+      "key": "slow_growth",
+      "description": "增长缓慢、依赖线性扩张的项目优先级低。",
+      "priority": "medium",
+      "severity": "medium"
+    }
+  ],
+  "fit_questions": [
+    "项目的 TAM/SAM/SOM 是多少？",
+    "单位经济模型（Unit Economics）是否健康？",
+    "是否有明确的增长飞轮或网络效应？",
+    "技术壁垒有多深？能持续多久？",
+    "团队是否有足够的执行力？"
+  ],
+  "notes": [
+    "VC 的核心是追求倍数回报，不是稳健收益。",
+    "可以接受短期亏损，只要能看到清晰的盈利路径。",
+    "对市场空间的要求很高，天花板太低的不投。"
+  ],
+  "status": "approved",
+  "created_at": "2026-04-25",
+  "updated_at": "2026-04-25"
+}

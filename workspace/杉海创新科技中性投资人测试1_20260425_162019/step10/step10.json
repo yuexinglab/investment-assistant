@@ -1,0 +1,31 @@
+{
+  "fit_decision": "not_fit",
+  "final_recommendation": "pass",
+  "fit_score": 20,
+  "matched_constraints": [],
+  "mismatched_constraints": [],
+  "compromises": [],
+  "reasoning": "项目核心假设（新能源、AI）已被证伪，团队存疑，关键问题回答质量低，新风险暴露，逻辑被打穿。虽无硬约束，但项目质量本身已不满足任何投资底线，故不匹配。",
+  "candidate_profile_updates": [
+    {
+      "profile_id": "neutral_investor",
+      "candidate_rule": "若项目核心假设在尽调中被证伪且关键问题回答质量低，应直接判定为not_fit",
+      "evidence": "杉海创新科技测试中，新能源和AI假设被确认不成立，且3个关键问题仅1个被正面回答，导致项目逻辑打穿",
+      "should_review": true
+    }
+  ],
+  "candidate_case_record": {
+    "project_name": "杉海创新科技中性投资人测试1_20260425_162019",
+    "project_type": "",
+    "project_judgement": "尽调过程中核心假设被大量削弱，新风险集中暴露，且关键问题回答质量低，项目逻辑已被打穿，建议暂停并终止投资推进。",
+    "fit_judgement": "not_fit",
+    "final_decision": "pass",
+    "fit_reason": [
+      "核心假设（新能源、AI）被证伪",
+      "团队存疑",
+      "关键问题回答质量低，信息获取不足",
+      "新风险暴露，逻辑被打穿"
+    ],
+    "source_profile": "neutral_investor"
+  }
+}

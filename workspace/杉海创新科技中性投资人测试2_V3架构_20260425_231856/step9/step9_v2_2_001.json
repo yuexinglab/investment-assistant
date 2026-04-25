@@ -1,0 +1,131 @@
+{
+  "overall_decision": {
+    "process_decision": "pause",
+    "investment_decision": "reject",
+    "confidence": "high",
+    "one_line_conclusion": "核心假设（AI壁垒、新能源业务）已被证伪，8项负面信号全部确认，项目逻辑基础崩塌，建议停止跟进并拒绝投资。"
+  },
+  "decision_breakdown": {
+    "verified_positives": [],
+    "unverified_positives": [],
+    "confirmed_negatives": [
+      {
+        "hypothesis_id": "h_1",
+        "point": "AI平台不成立：数据来源不明、预测准确率无法验证，无法构成核心壁垒。",
+        "source_hypothesis": "假设1: AI平台可能比BP描述的更核心...",
+        "evidence": "会议中未提供数据来源说明及准确率验证报告，回答直接性低。"
+      },
+      {
+        "hypothesis_id": "h_2",
+        "point": "新能源业务不成立：无客户意向书或合同，深共晶电解液成本优势未量化。",
+        "source_hypothesis": "假设2: 新能源客户可能已形成初步合作意向...",
+        "evidence": "未提供客户采购意向书或合同，成本对比数据缺失。"
+      },
+      {
+        "hypothesis_id": "h_3",
+        "point": "专利壁垒不成立：专利清单及核心权利要求范围未提供，无法判断是否为关键基础专利。",
+        "source_hypothesis": "假设3: 专利可能包含关键基础结构专利...",
+        "evidence": "专利清单及核心权利要求范围未提供。"
+      },
+      {
+        "hypothesis_id": "h_4",
+        "point": "锂电回收经济性假设存疑：未提供敏感性分析，无法验证在特定锂价区间（10-15万元/吨）的经济性。",
+        "source_hypothesis": "假设4: 锂电回收项目可能在特定锂价区间仍有经济性...",
+        "evidence": "未提供锂电回收项目经济性敏感性分析。"
+      },
+      {
+        "hypothesis_id": "h_5",
+        "point": "AI平台数据来源和预测准确率不成立：与h_1重复确认，无有效验证。",
+        "source_hypothesis": "验证点1: 建沐™AI平台的数据来源和预测准确率...",
+        "evidence": "未提供数据来源说明、准确率验证报告及实际应用案例。"
+      }
+    ],
+    "key_uncertainties": []
+  },
+  "material_request_list": [
+    {
+      "priority": "high",
+      "material": "AI平台数据来源说明及预测准确率第三方验证报告",
+      "purpose": "验证AI壁垒是否真实存在",
+      "related_hypothesis": "h_1, h_5"
+    },
+    {
+      "priority": "high",
+      "material": "新能源客户采购意向书或合同",
+      "purpose": "验证新能源业务是否具备实质进展",
+      "related_hypothesis": "h_2"
+    },
+    {
+      "priority": "high",
+      "material": "深共晶电解液与LiPF6成本对比数据",
+      "purpose": "量化新能源业务成本优势",
+      "related_hypothesis": "h_2"
+    },
+    {
+      "priority": "high",
+      "material": "专利清单及核心权利要求范围",
+      "purpose": "判断专利是否构成关键壁垒",
+      "related_hypothesis": "h_3"
+    },
+    {
+      "priority": "high",
+      "material": "锂电回收项目经济性敏感性分析（锂价10-15万元/吨区间）",
+      "purpose": "验证锂电回收项目在低锂价下的经济性",
+      "related_hypothesis": "h_4"
+    }
+  ],
+  "remaining_unknowns": [
+    {
+      "issue": "AI平台的数据来源是否可靠？预测准确率是否达到行业领先水平？",
+      "why_blocking": "这是公司宣称的核心壁垒，若无法验证，整个投资逻辑不成立。",
+      "how_to_resolve": "要求公司提供数据来源说明、第三方验证报告及实际应用案例。",
+      "priority": "high"
+    },
+    {
+      "issue": "新能源业务是否有真实客户？深共晶电解液成本是否优于LiPF6？",
+      "why_blocking": "新能源是公司第二增长曲线，若无实质进展，成长性存疑。",
+      "how_to_resolve": "要求提供客户采购意向书或合同，以及成本对比数据。",
+      "priority": "high"
+    },
+    {
+      "issue": "专利是否覆盖关键基础结构？",
+      "why_blocking": "专利壁垒是公司护城河的核心，若为外围专利，护城河薄弱。",
+      "how_to_resolve": "要求提供专利清单及核心权利要求范围，进行专利分析。",
+      "priority": "high"
+    },
+    {
+      "issue": "锂电回收项目在锂价10-15万元/吨区间是否仍有经济性？",
+      "why_blocking": "锂价波动直接影响项目盈利能力，若无敏感性分析，无法评估风险。",
+      "how_to_resolve": "要求提供详细的经济性敏感性分析。",
+      "priority": "high"
+    }
+  ],
+  "next_actions": [
+    {
+      "action": "正式通知项目方：因核心假设（AI壁垒、新能源业务）无法验证，且存在多项负面信号，决定暂停推进。",
+      "purpose": "明确沟通决策，避免资源浪费。",
+      "who": "用户",
+      "priority": "high"
+    },
+    {
+      "action": "归档项目材料，标记为'暂停-待关键材料补充'。",
+      "purpose": "保留未来重新评估的可能性。",
+      "who": "用户",
+      "priority": "medium"
+    },
+    {
+      "action": "若项目方后续主动提供上述缺失材料，可重新启动评估。",
+      "purpose": "保持开放态度，但不再主动跟进。",
+      "who": "用户",
+      "priority": "low"
+    }
+  ],
+  "key_risks": [
+    "AI平台数据来源不明，预测准确率无法验证，核心壁垒不成立。",
+    "新能源业务无客户意向书或合同，第二增长曲线存疑。",
+    "专利清单及核心权利要求范围未提供，护城河无法评估。",
+    "锂电回收项目经济性敏感性分析缺失，盈利能力无法验证。",
+    "会议回答直接性低，管理层可能存在信息隐瞒或沟通障碍。"
+  ],
+  "go_no_go_logic": "根据规则引擎，Step8统计显示：validated_positive=0, confirmed_negative=8, key_uncertainty=0。所有核心假设均被削弱或证伪，无任何已验证的正面信号。因此，process_decision强制为pause，investment_decision强制为reject。"
+}

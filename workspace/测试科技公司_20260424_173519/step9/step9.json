@@ -1,0 +1,66 @@
+{
+  "next_decision": {
+    "recommendation": "request_more_info",
+    "reason": "",
+    "confidence": "medium",
+    "key_remaining_uncertainty": ""
+  },
+  "remaining_unknowns": [
+    {
+      "issue": "",
+      "why_blocking": "",
+      "how_to_resolve": "要求提供内部测试或客户案例中的具体周期对比数据，可通过二次会议或书面材料获取",
+      "priority": "medium"
+    },
+    {
+      "issue": "",
+      "why_blocking": "",
+      "how_to_resolve": "安排客户访谈或要求提供客户合作证明（如合同、测试报告）",
+      "priority": "medium"
+    },
+    {
+      "issue": "",
+      "why_blocking": "",
+      "how_to_resolve": "直接询问协鑫合作阶段、测试结果及下一步计划，或通过行业渠道交叉验证",
+      "priority": "medium"
+    },
+    {
+      "issue": "",
+      "why_blocking": "",
+      "how_to_resolve": "要求提供第三方检测报告或内部对比数据，并明确对标竞品",
+      "priority": "medium"
+    },
+    {
+      "issue": "",
+      "why_blocking": "",
+      "how_to_resolve": "要求提供客户调研数据或财务模型中的具体假设和结果",
+      "priority": "medium"
+    }
+  ],
+  "next_actions": [
+    {
+      "action": "针对AI平台效率数据、电解质性能对比等核心指标，向公司发出书面信息请求清单",
+      "purpose": "获取量化数据以验证技术优势和市场潜力",
+      "who": "用户",
+      "priority": "medium"
+    },
+    {
+      "action": "安排与公司技术负责人的二次会议，重点追问回避信号中的具体问题",
+      "purpose": "澄清模糊表述，评估团队透明度和技术实力",
+      "who": "用户，AI可协助准备问题清单",
+      "priority": "medium"
+    },
+    {
+      "action": "通过行业渠道或客户访谈，交叉验证新能源客户验证进展及协鑫合作状态",
+      "purpose": "独立核实公司声称的市场进展，降低信息不对称风险",
+      "who": "用户",
+      "priority": "medium"
+    },
+    {
+      "action": "若公司提供数据后仍存疑，考虑进行竞品调研或第三方检测对比",
+      "purpose": "建立客观的技术性能参照系，辅助决策",
+      "who": "AI可建议调研范围和方法",
+      "priority": "medium"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+[
+  {
+    "industry": "通用",
+    "insight": "假设 '假设2: 新能源客户可能已形成隐性合作或意向订单，只是出于保密协议未在BP中披露，导致我低估了其商业化进展。...' 被新证据overturned，需关注",
+    "core_question": "",
+    "bucket_target": "risk_management",
+    "triggered_at": "Step8",
+    "confidence": "medium",
+    "note": "待更多交叉验证"
+  },
+  {
+    "industry": "通用",
+    "insight": "假设 '验证点2: 新能源客户（如电池厂商）是否已对深共晶电解液或锂电回收技术进行正式验证，是否有意向订单或框架协议。...' 被新证据overturned，需关注",
+    "core_question": "",
+    "bucket_target": "risk_management",
+    "triggered_at": "Step8",
+    "confidence": "medium",
+    "note": "待更多交叉验证"
+  },
+  {
+    "industry": "通用",
+    "insight": "假设 '验证点3: 2025年扭亏为盈的财务预测核心假设，以及美妆业务和新能源业务分别贡献多少收入。...' 被新证据overturned，需关注",
+    "core_question": "",
+    "bucket_target": "risk_management",
+    "triggered_at": "Step8",
+    "confidence": "medium",
+    "note": "待更多交叉验证"
+  }
+]

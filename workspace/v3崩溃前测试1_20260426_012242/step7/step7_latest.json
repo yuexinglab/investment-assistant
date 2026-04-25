@@ -1,0 +1,93 @@
+{
+  "meeting_quality": {
+    "answer_directness": "low",
+    "evidence_strength": "medium",
+    "evasion_level": "low",
+    "overall_confidence": "medium",
+    "consistency": "medium",
+    "evasion_signals": [],
+    "answered_count": 1,
+    "partially_count": 2,
+    "weak_count": 0,
+    "missing_evidence_count": 8
+  },
+  "question_validation": [
+    {
+      "question_id": "q_1",
+      "original_question": "**AI是真壁垒还是营销噱头？** 建沐™AI矩阵相比传统研发和竞品，到底能提效多少？有没有量化数据？",
+      "matched_information_ids": [
+        "ni_009",
+        "ni_010"
+      ],
+      "matched_information_summary": [
+        "AI平台准确率约70-80%，主要用于辅助计算，尚未形成闭环。",
+        "AI平台数据量约几千条成功数据，上万条失败数据，2024年才正式搭建。"
+      ],
+      "answer_summary": "创始人承认AI平台准确率约70-80%，主要用于辅助计算，尚未形成闭环；数据量仅几千条成功数据、上万条失败数据，且平台2024年才搭建。这表明AI仍处于早期辅助阶段，未提供与竞品对比的提效量化数据。",
+      "status": "partially_answered",
+      "quality": "low",
+      "impact": "slightly_weakens",
+      "missing_evidence": [
+        "AI平台与竞品对比的提效量化数据",
+        "AI平台闭环验证案例",
+        "第三方测试报告"
+      ],
+      "follow_up_question": "要求提供AI平台与竞品（如传统研发方法）在研发周期、成本、成功率上的对比数据，以及至少一个完整闭环（从AI预测到产品上市）的案例和测试报告。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_2",
+      "original_question": "**新能源业务是故事还是现实？** 千沐新能源是否有真实客户和规模化收入？技术是否通过了电池厂认证？",
+      "matched_information_ids": [
+        "ni_008",
+        "ni_011",
+        "ni_020",
+        "ni_021"
+      ],
+      "matched_information_summary": [
+        "新能源业务预计2026年5月方案落地，但年内不会产生收入。",
+        "并购千沐新能源为同一创始人，协同性体现在技术中台共享，但具体协同案例仅提及电池剥离剂开发受护肤品配体启发。",
+        "公司声称在电池回收领域与宏光科技、蓝海科技两家上市公司合作。",
+        "公司声称在光伏面板回收领域开发了固态材料，可剥离银线。"
+      ],
+      "answer_summary": "新能源业务预计2026年5月方案落地，但年内无收入；并购千沐新能源为同一创始人，协同性仅体现在一个案例（电池剥离剂受护肤品配体启发）；声称与宏光科技、蓝海科技合作及开发固态材料，但无客户认证或收入证据。整体显示业务处于早期研发阶段，无真实客户或规模化收入。",
+      "status": "partially_answered",
+      "quality": "low",
+      "impact": "weakens",
+      "missing_evidence": [
+        "电池厂认证报告",
+        "与宏光科技、蓝海科技的合作协议或订单",
+        "千沐新能源的财务数据"
+      ],
+      "follow_up_question": "要求提供与宏光科技、蓝海科技的合作协议或采购订单，以及电池厂（如宁德时代、比亚迪）的认证测试报告，确认技术是否通过验证。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_3",
+      "original_question": "**跨行业扩张是否已有付费意愿？** 除了美妆，新能源和农业领域是否有客户愿意掏钱？哪怕是小订单。",
+      "matched_information_ids": [
+        "ni_006",
+        "ni_007",
+        "ni_008"
+      ],
+      "matched_information_summary": [
+        "2025年美妆收入占比约95%，食品收入占比极低。",
+        "食品业务因韶关工厂改造尚未放量，预计2026年上半年改造完成后批量出货。",
+        "新能源业务预计2026年5月方案落地，但年内不会产生收入。"
+      ],
+      "answer_summary": "2025年美妆收入占比95%，食品收入极低且因工厂改造未放量，新能源业务2026年无收入。跨行业（食品、新能源）均无实际付费客户或小订单证据，付费意愿未得到验证。",
+      "status": "answered",
+      "quality": "high",
+      "impact": "weakens",
+      "missing_evidence": [
+        "食品业务客户订单或合同",
+        "新能源业务客户订单或合同"
+      ],
+      "follow_up_question": "要求提供食品业务已对接的客户清单及意向订单，新能源业务与潜在客户的合作备忘录或小批量测试订单。",
+      "question_source": "base",
+      "profile_id": ""
+    }
+  ]
+}

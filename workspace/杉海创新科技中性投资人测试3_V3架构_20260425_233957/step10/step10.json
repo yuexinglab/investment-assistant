@@ -1,0 +1,22 @@
+{
+  "fit_decision": "partial_fit",
+  "final_recommendation": "request_materials",
+  "fit_score": 50,
+  "matched_constraints": [],
+  "mismatched_constraints": [],
+  "compromises": [],
+  "reasoning": "[Guardrail] 当前为中性投资人画像，不施加特定偏好。项目是否推进完全基于 Step9 判断。",
+  "candidate_profile_updates": [],
+  "candidate_case_record": {
+    "project_name": "杉海创新科技中性投资人测试3_V3架构_20260425_233957",
+    "project_type": "",
+    "project_judgement": "当前信息极度匮乏，8项关键不确定性全部未验证，且会议可信度低，必须暂停深入沟通，先要求补充核心材料。",
+    "fit_judgement": "partial_fit",
+    "final_decision": "request_materials",
+    "fit_reason": [
+      "中性投资人不对项目质量做判断",
+      "项目推进建议完全基于 Step9 双层决策"
+    ],
+    "source_profile": "neutral_investor"
+  }
+}

@@ -151,6 +151,30 @@
     <p style="color:#9ca3af;font-size:13px;margin:0">Step1 → Step3 → Step4 → Step5 · 四步串行分析</p>
   </header>
 
+  <!-- Profile 横幅 -->
+  {% if project_profile %}
+  <div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:10px;padding:12px 16px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+    <div>
+      <div style="font-size:13px;font-weight:700;color:#0369a1">👤 当前基金画像：{{ project_profile.name }}</div>
+      <div style="font-size:12px;color:#6b7280;margin-top:4px">
+        {% if project_profile.hard_constraints %}
+        🚫 硬约束 {{ project_profile.hard_constraints|length }} 项
+        · {% endif %}
+        {% if project_profile.preferences %}
+        ⭐ 偏好 {{ project_profile.preferences|length }} 项
+        · {% endif %}
+        {% if project_profile.fit_questions %}
+        ❓ Fit问题 {{ project_profile.fit_questions|length }} 项
+        {% endif %}
+      </div>
+    </div>
+    <a href="{{ url_for('download_step_file', project_id=project_id, step_name='step0', file_name='step0.json') }}"
+       style="font-size:12px;color:#0369a1;background:#dbeafe;padding:5px 10px;border-radius:6px;text-decoration:none">
+      📄 查看 step0.json
+    </a>
+  </div>
+  {% endif %}
+
   <!-- 步骤完成状态 -->
   <div class="step-chips">
     {% set steps = [("step1","①初步判断"),("step3","②背景分析"),("step4","③开会问题"),("step5","④会前判断")] %}
@@ -386,7 +410,9 @@
         <a href="{{ url_for('download_step_file', project_id=project_id, step_name='step5', file_name='step5_decision.md') }}"
            class="download-primary">⭐ 下载会前判断总结</a>
         <a href="{{ url_for('download_step_file', project_id=project_id, step_name='step5', file_name='step5_output.json') }}"
-           class="download-secondary">原始数据（JSON）</a>
+           class="download-secondary">📄 step5_output.json（原始）</a>
+        <a href="{{ url_for('download_step_file', project_id=project_id, step_name='step0', file_name='step0.json') }}"
+           class="download-secondary">👤 step0.json（当前画像）</a>
       </div>
     {% else %}
       <div class="content-card">
@@ -416,7 +442,7 @@
       <div class="all-section-title">② 背景分析</div>
       <details style="margin:8px 0">
         <summary style="cursor:pointer;font-size:13px;color:#6b7280;padding:6px 10px;background:#f9fafb;border-radius:6px">展开原始数据</summary>
-        <pre style="background:#1e293b;color:#e2e8f0;padding:14px;border-radius:0 0 8px 8px;font-size:12px;overflow-x:auto;margin-top:4px">{{ results.step3 | tojson(indent=2, ensure_ascii=False) }}</pre>
+        <pre style="background:#1e293b;color:#e2e8f0;padding:14px;border-radius:0 0 8px 8px;font-size:12px;overflow-x:auto;margin-top:4px">{{ results.step3 | tojson(indent=2) | safe }}</pre>
       </details>
     </div>
     {% endif %}

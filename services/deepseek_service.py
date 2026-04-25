@@ -8,7 +8,9 @@ from config import DEEPSEEK_API_KEY, DEEPSEEK_BASE_URL, DEEPSEEK_MODEL
 
 
 def call_deepseek(system_prompt: str, user_prompt: str,
-                  model: str = None, max_retries: int = 3) -> str:
+                  model: str = None, max_retries: int = 3,
+                  max_tokens: int = 8192,
+                  temperature: float = 0.3) -> str:
     """
     调用 DeepSeek 对话 API
     返回：AI 回复的文本字符串
@@ -28,8 +30,8 @@ def call_deepseek(system_prompt: str, user_prompt: str,
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt},
         ],
-        "temperature": 0.7,
-        "max_tokens": 4096,
+        "temperature": temperature,
+        "max_tokens": max_tokens,
     }
 
     last_error = None

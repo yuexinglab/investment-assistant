@@ -1,0 +1,15 @@
+{
+  "question_validation": [],
+  "meeting_quality": {
+    "answer_directness": "medium",
+    "consistency": "medium",
+    "evasion_signals": [
+      "对AI平台缩短研发周期的具体数据回避",
+      "新能源领域客户验证进展模糊",
+      "未提及协鑫合作",
+      "未提供电解质性能指标对比",
+      "对客户更换动力和成本占比未量化"
+    ],
+    "overall_confidence": "medium"
+  }
+}

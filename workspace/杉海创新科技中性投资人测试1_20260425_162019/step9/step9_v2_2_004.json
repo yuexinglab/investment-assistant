@@ -1,0 +1,62 @@
+{
+  "overall_decision": {
+    "process_decision": "request_materials",
+    "investment_decision": "not_ready",
+    "confidence": "medium",
+    "one_line_conclusion": "关键假设未验证，暂不进入投资决策。"
+  },
+  "decision_breakdown": {
+    "verified_positives": [
+      "2025年美妆原料收入约1.35亿元。",
+      "欧莱雅2025年贡献约1200万元，2026年预计3000万元以上。",
+      "宝洁2025年贡献700多万元，2026年预计增加约1000万元。",
+      "珀莱雅2025年贡献几十万元，2026年预计增加约2500万元。",
+      "美妆业务毛利率约60%以上。"
+    ],
+    "unverified_positives": [],
+    "confirmed_negatives": [],
+    "key_uncertainties": [
+      "假设1: AI平台可能比当前判断的更核心，只是BP未充分披露其数据闭环和模型迭代能力，实际壁垒可能远超预期。...：AI平台并非核心壁垒，准确率仅70-80%，数据量小且去年才搭建，仍作为参考工具未形成闭环；公司核心是超分子技术平台，但",
+      "假设4: 多行业扩张可能并非资源分散，而是通过技术平台复用的高效策略，团队可能已具备跨行业管理能力，只是我未充分评估。...：多行业扩张策略未验证，新能源业务2026年无收入，美妆业务支撑盈利，跨行业管理能力证据缺失。",
+      "验证点1: 建沐™AI平台与竞品（晶泰科技、深度原理）的核心差异化和不可替代性，以及其数据闭环规模和量化业务影响。...：AI平台与竞品的核心差异化未验证，数据闭环规模小，准确率仅70-80%，公司声称全球第一家实现超分子技术平台化，但不可替"
+    ]
+  },
+  "material_request_list": [
+    {
+      "priority": "high",
+      "material": "AI平台完整案例、准确率测试方法、湿实验减少比例",
+      "purpose": "验证AI是否构成技术壁垒",
+      "related_hypothesis": "假设1: AI平台可能比当前判断的更核心，只是BP未充分披露其数据闭环和模型迭代能力，实际壁垒可能远超预期。..."
+    }
+  ],
+  "remaining_unknowns": [
+    {
+      "issue": "假设1: AI平台可能比当前判断的更核心，只是BP未充分披露其数据闭环和模型迭代能力，实际壁垒可能远超预期。...",
+      "why_blocking": "该假设reframed，AI平台闭环项目清单及实际应用案例",
+      "how_to_resolve": "要求提供：AI平台闭环项目清单及实际应用案例、超分子技术平台与AI平台的具体协同关系证明",
+      "priority": "medium"
+    },
+    {
+      "issue": "假设4: 多行业扩张可能并非资源分散，而是通过技术平台复用的高效策略，团队可能已具备跨行业管理能力，只是我未充分评估。...",
+      "why_blocking": "该假设reframed，多行业扩张的具体案例及技术平台复用证明",
+      "how_to_resolve": "要求提供：多行业扩张的具体案例及技术平台复用证明、跨行业管理团队能力评估",
+      "priority": "medium"
+    },
+    {
+      "issue": "验证点1: 建沐™AI平台与竞品（晶泰科技、深度原理）的核心差异化和不可替代性，以及其数据闭环规模和量化业务影响。...",
+      "why_blocking": "该假设reframed，AI平台与竞品对比数据",
+      "how_to_resolve": "要求提供：AI平台与竞品对比数据、数据闭环规模及量化业务影响证明",
+      "priority": "medium"
+    }
+  ],
+  "next_actions": [
+    {
+      "action": "向公司索取：AI平台完整案例、准确率测试方法、湿实验减少比例",
+      "purpose": "验证AI是否构成技术壁垒",
+      "who": "用户",
+      "priority": "high"
+    }
+  ],
+  "key_risks": [],
+  "go_no_go_logic": "【Step8 change_type 统计】\n- reinforced: 4个\n- reframed: 3个\n\n【双层决策】\n- 流程决策: request_materials\n- 投资决策: not_ready\n\n【决策说明】\n当前不能进入投资决策，需要先补充关键材料验证假设。"
+}

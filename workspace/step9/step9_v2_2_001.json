@@ -1,0 +1,107 @@
+{
+  "overall_decision": {
+    "process_decision": "request_materials",
+    "investment_decision": "not_ready",
+    "confidence": "low",
+    "one_line_conclusion": "本次会议未提供任何新信息，原有关键不确定性均未得到验证，当前不具备投资决策条件，需先补充材料再推进。"
+  },
+  "decision_breakdown": {
+    "verified_positives": [],
+    "unverified_positives": [
+      "AI平台是否具有技术护城河：缺乏与传统方法（如晶泰科技）的量化对比数据",
+      "新能源客户是否已形成隐性合作：未提供与主流电池厂的合同或订单"
+    ],
+    "confirmed_negatives": [],
+    "key_uncertainties": [
+      "所有此前识别出的关键假设均未得到任何验证或更新",
+      "2026年大客户放量是否有合同支撑：欧莱雅/宝洁/珀莱雅2026年预测收入合计超6000万，需采购订单验证",
+      "专利壁垒是否真实：声称的分子结构专利保护力度需专利清单验证",
+      "锂电回收经济性：碳酸锂价格持续低迷时，成本结构是否支撑盈利",
+      "新能源客户验证进展：与主流电池厂（宁德/比亚迪）的合作阶段不明确"
+    ]
+  },
+  "material_request_list": [
+    {
+      "priority": "high",
+      "material": "历史财务数据（近3年审计报告及管理报表）",
+      "purpose": "验证收入真实性、毛利率稳定性及现金流状况",
+      "related_hypothesis": "公司具备可持续盈利能力"
+    },
+    {
+      "priority": "high",
+      "material": "核心客户合同及Top 5客户收入占比明细",
+      "purpose": "验证客户集中度风险及收入来源的可靠性",
+      "related_hypothesis": "客户结构健康，无单一客户依赖风险"
+    },
+    {
+      "priority": "high",
+      "material": "核心产品/技术专利清单及有效期",
+      "purpose": "验证技术壁垒的持续性和法律保护状态",
+      "related_hypothesis": "公司拥有可持续的竞争壁垒"
+    },
+    {
+      "priority": "medium",
+      "material": "竞品对比分析报告（公司自述版）",
+      "purpose": "了解公司对竞争格局的认知及自身定位",
+      "related_hypothesis": "公司在市场中具有差异化优势"
+    },
+    {
+      "priority": "medium",
+      "material": "股权结构及历史融资文件",
+      "purpose": "验证股东背景、历史估值逻辑及潜在利益冲突",
+      "related_hypothesis": "公司治理结构清晰，无隐性风险"
+    }
+  ],
+  "remaining_unknowns": [
+    {
+      "issue": "公司真实财务表现（收入、利润、现金流）",
+      "why_blocking": "没有财务数据无法判断公司基本面的健康程度，这是投资决策的基石",
+      "how_to_resolve": "要求提供经审计的财务报表及管理报表",
+      "priority": "high"
+    },
+    {
+      "issue": "客户集中度与客户稳定性",
+      "why_blocking": "若过度依赖少数客户，收入波动风险极高，直接影响估值逻辑",
+      "how_to_resolve": "获取Top 5客户合同及收入占比，并访谈核心客户",
+      "priority": "high"
+    },
+    {
+      "issue": "技术壁垒的真实性与可持续性",
+      "why_blocking": "没有专利/技术验证，无法判断护城河深度，影响长期投资价值判断",
+      "how_to_resolve": "获取专利清单并验证法律状态，必要时进行技术专家访谈",
+      "priority": "high"
+    },
+    {
+      "issue": "市场竞争格局及公司真实市场地位",
+      "why_blocking": "不了解竞争态势无法判断增长空间和定价权",
+      "how_to_resolve": "获取竞品分析报告，并进行行业专家访谈",
+      "priority": "medium"
+    }
+  ],
+  "next_actions": [
+    {
+      "action": "向公司正式发送材料清单，要求提供上述high优先级材料",
+      "purpose": "获取投资决策所需的基础数据",
+      "who": "用户",
+      "priority": "high"
+    },
+    {
+      "action": "准备第二轮访谈提纲，聚焦财务、客户、技术三个核心维度",
+      "purpose": "在材料到位后，进行有针对性的深度验证",
+      "who": "AI",
+      "priority": "medium"
+    },
+    {
+      "action": "同步进行行业桌面研究，验证公司所在赛道的市场规模和增长趋势",
+      "purpose": "建立外部参照系，为后续判断公司定位做准备",
+      "who": "用户",
+      "priority": "medium"
+    }
+  ],
+  "key_risks": [
+    "公司可能无法或不愿提供核心财务数据，这本身是一个危险信号",
+    "会议无任何新信息输出，可能意味着公司对投资人沟通不重视或有所保留",
+    "关键假设全部悬空，当前信息基础极其薄弱，任何投资判断都缺乏依据"
+  ],
+  "go_no_go_logic": "当前阶段为信息收集期，不涉及投资决策。只有当high优先级材料全部到位并验证通过后，才可进入continue_dd阶段。若公司拒绝提供核心材料，则直接转为stop。"
+}

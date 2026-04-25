@@ -1,0 +1,134 @@
+[
+  {
+    "project_name": "测试科技公司_20260424_173519",
+    "project_judgement": "核心假设被削弱，关键不确定性未验证，暂不具备投资决策条件。",
+    "fit_judgement": "not_fit",
+    "final_decision": "pass",
+    "fit_reason": [
+      "项目方明确拒绝本地落地和反投，违反核心硬约束",
+      "业务模式偏定制化，不符合规模化偏好",
+      "回避项（拒绝落地）被触发，构成否决"
+    ],
+    "source_profile": "government_fund",
+    "status": "pending_review",
+    "created_at": "2026-04-25T15:06:28.804487",
+    "created_by": "Step10"
+  },
+  {
+    "project_name": "测试科技公司_20260424_173519",
+    "project_judgement": "核心假设被削弱，关键不确定性未验证，暂不具备投资决策条件。",
+    "fit_judgement": "not_fit",
+    "final_decision": "pass",
+    "fit_reason": [
+      "项目方明确拒绝本地落地和反投，违反核心硬约束。",
+      "业务偏定制化，无规模化产能，不符合偏好。",
+      "新能源业务无收入验证，风险较高。"
+    ],
+    "source_profile": "government_fund",
+    "status": "pending_review",
+    "created_at": "2026-04-25T15:07:07.534576",
+    "created_by": "Step10"
+  },
+  {
+    "project_name": "杉海创新科技中性投资人测试1_20260425_162019",
+    "project_judgement": "关键假设未验证，暂不进入投资决策。",
+    "fit_judgement": "partial_fit",
+    "final_decision": "request_materials",
+    "fit_reason": [
+      "无硬约束限制",
+      "项目有实际收入和客户验证",
+      "关键不确定性需进一步材料验证"
+    ],
+    "source_profile": "neutral_investor",
+    "status": "pending_review",
+    "created_at": "2026-04-25T17:33:43.442998",
+    "created_by": "Step10"
+  },
+  {
+    "project_name": "杉海创新科技中性投资人测试1_20260425_162019",
+    "project_judgement": "核心逻辑已被打穿，不建议继续跟进。",
+    "fit_judgement": "fit",
+    "final_decision": "pass",
+    "fit_reason": [
+      "无硬约束冲突",
+      "项目本身质量不达标"
+    ],
+    "source_profile": "neutral_investor",
+    "status": "pending_review",
+    "created_at": "2026-04-25T18:27:08.228602",
+    "created_by": "Step10"
+  },
+  {
+    "project_name": "杉海创新科技中性投资人测试1_20260425_162019",
+    "project_judgement": "尽调过程中核心假设被大量削弱，新风险集中暴露，且关键问题回答质量低，项目逻辑已被打穿，建议暂停并终止投资推进。",
+    "fit_judgement": "not_fit",
+    "final_decision": "pass",
+    "fit_reason": [
+      "核心假设（新能源、AI）被证伪",
+      "团队存疑",
+      "关键问题回答质量低，信息获取不足",
+      "新风险暴露，逻辑被打穿"
+    ],
+    "source_profile": "neutral_investor",
+    "status": "pending_review",
+    "created_at": "2026-04-25T22:25:22.926297",
+    "created_by": "Step10"
+  },
+  {
+    "project_name": "杉海创新科技中性投资人测试2_V3架构_20260425_231856",
+    "project_judgement": "核心假设（AI壁垒、新能源业务）已被证伪，8项负面信号全部确认，项目逻辑基础崩塌，建议停止跟进并拒绝投资。",
+    "fit_judgement": "partial_fit",
+    "final_decision": "pass",
+    "fit_reason": [
+      "项目核心假设被证伪",
+      "所有负面信号已确认",
+      "项目逻辑基础崩塌"
+    ],
+    "source_profile": "neutral_investor",
+    "status": "pending_review",
+    "created_at": "2026-04-25T23:24:32.773785",
+    "created_by": "Step10"
+  },
+  {
+    "project_name": "杉海创新科技中性投资人测试3_V3架构_20260425_233957",
+    "project_judgement": "项目核心逻辑已被打穿：美妆和新能源两大业务线均被证伪，仅剩AI平台存疑，且负面信号多于正面，建议暂停跟进并拒绝投资。",
+    "fit_judgement": "partial_fit",
+    "final_decision": "request_materials",
+    "fit_reason": [
+      "项目核心逻辑已被打穿，美妆和新能源业务均被证伪",
+      "仅剩AI平台存疑且负面信号多于正面"
+    ],
+    "source_profile": "neutral_investor",
+    "status": "pending_review",
+    "created_at": "2026-04-25T23:45:03.489936",
+    "created_by": "Step10"
+  },
+  {
+    "project_name": "杉海创新科技中性投资人测试3_V3架构_20260425_233957",
+    "project_judgement": "当前信息极度匮乏，8项关键不确定性全部未验证，且会议可信度低，必须暂停深入沟通，先要求补充核心材料。",
+    "fit_judgement": "partial_fit",
+    "final_decision": "request_materials",
+    "fit_reason": [
+      "中性投资人不对项目质量做判断",
+      "项目推进建议完全基于 Step9 双层决策"
+    ],
+    "source_profile": "neutral_investor",
+    "status": "pending_review",
+    "created_at": "2026-04-26T00:17:38.783744",
+    "created_by": "Step10"
+  },
+  {
+    "project_name": "v3崩溃前测试1_20260426_012242",
+    "project_judgement": "本次会议未提供任何新信息，核心假设仍悬而未决，需先补材料再决定是否继续深入尽调。",
+    "fit_judgement": "partial_fit",
+    "final_decision": "request_materials",
+    "fit_reason": [
+      "中性投资人不对项目质量做判断",
+      "项目推进建议完全基于 Step9 双层决策"
+    ],
+    "source_profile": "neutral_investor",
+    "status": "pending_review",
+    "created_at": "2026-04-26T01:35:19.689495",
+    "created_by": "Step10"
+  }
+]

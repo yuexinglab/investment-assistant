@@ -1,0 +1,208 @@
+{
+  "meeting_quality": {
+    "answer_directness": "low",
+    "evidence_strength": "medium",
+    "evasion_level": "low",
+    "overall_confidence": "low",
+    "consistency": "medium",
+    "evasion_signals": [
+      "问题「追问：这个成本里，原材料（废旧电池）采购成本、加工成本、环保...」未得到有效回答"
+    ],
+    "answered_count": 1,
+    "partially_count": 7,
+    "weak_count": 1,
+    "missing_evidence_count": 17
+  },
+  "question_validation": [
+    {
+      "question_id": "q_001",
+      "original_question": "**AI平台是护城河还是工具？** 建沐™平台相比传统方法和竞品，能否拿出可量化的效率优势（研发周期缩短、成功率提升）？",
+      "matched_information_ids": [
+        "ni_009",
+        "ni_010"
+      ],
+      "matched_information_summary": [
+        "AI平台准确率约70-80%，主要用于辅助计算，尚未形成闭环。",
+        "AI平台于2024年正式搭建，数据量约几千条（含失败数据上万条）。"
+      ],
+      "answer_summary": "创始人承认AI平台准确率约70-80%，主要用于辅助计算，尚未形成闭环，且数据量仅几千条，未提供与传统方法对比的量化效率优势。",
+      "status": "partially_answered",
+      "quality": "low",
+      "impact": "slightly_weakens",
+      "missing_evidence": [
+        "与传统方法对比的研发周期缩短数据",
+        "成功率提升的量化测试报告",
+        "第三方验证的准确率测试报告"
+      ],
+      "follow_up_question": "要求提供AI平台与传统方法在至少3个具体项目上的研发周期和成功率对比数据，并附上第三方测试报告。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_002",
+      "original_question": "**新能源故事是真是假？** 深共晶电解液是否已进入主流电池厂供应链，还是只停留在与协鑫的研发合作？",
+      "matched_information_ids": [
+        "ni_008",
+        "ni_012"
+      ],
+      "matched_information_summary": [
+        "新能源业务预计2026年5月方案落地，但年内无收入贡献。",
+        "并购千沐新能源为同一创始人旗下公司，旨在整合研发中台。"
+      ],
+      "answer_summary": "新能源业务预计2026年5月方案落地，但年内无收入贡献，且并购千沐新能源为同一创始人旗下公司，说明深共晶电解液尚未进入主流电池厂供应链。",
+      "status": "partially_answered",
+      "quality": "medium",
+      "impact": "weakens",
+      "missing_evidence": [
+        "与主流电池厂（如宁德时代、比亚迪）的采购合同或合作备忘录",
+        "深共晶电解液的第三方测试报告"
+      ],
+      "follow_up_question": "要求提供与协鑫或其他电池厂的合作合同、2026年5月方案落地的具体里程碑及已完成的测试报告。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_003",
+      "original_question": "**锂电回收的经济性是否成立？** 在碳酸锂价格低于10万元/吨时，回收业务的成本模型是否还能赚钱？",
+      "matched_information_ids": [
+        "ni_014"
+      ],
+      "matched_information_summary": [
+        "公司毛利率约60%以上。"
+      ],
+      "answer_summary": "公司仅提到毛利率约60%以上，但未提供在碳酸锂价格低于10万元/吨时的成本模型或盈亏平衡分析。",
+      "status": "partially_answered",
+      "quality": "low",
+      "impact": "no_change",
+      "missing_evidence": [
+        "碳酸锂价格低于10万元/吨时的成本模型",
+        "盈亏平衡分析",
+        "原材料采购成本、加工成本、环保成本的具体比例"
+      ],
+      "follow_up_question": "要求提供在碳酸锂价格10万元/吨、8万元/吨、5万元/吨三种情景下的成本模型和毛利率测算。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_004",
+      "original_question": "切入：我看到BP里提到建沐™平台是全球首个AI驱动的超分子材料合成矩阵，能大幅缩短研发周期",
+      "matched_information_ids": [
+        "ni_009",
+        "ni_010"
+      ],
+      "matched_information_summary": [
+        "AI平台准确率约70-80%，主要用于辅助计算，尚未形成闭环。",
+        "AI平台于2024年正式搭建，数据量约几千条（含失败数据上万条）。"
+      ],
+      "answer_summary": "创始人承认AI平台准确率约70-80%，主要用于辅助计算，尚未形成闭环，且数据量仅几千条，未提供缩短研发周期的具体数据。",
+      "status": "partially_answered",
+      "quality": "low",
+      "impact": "weakens",
+      "missing_evidence": [
+        "与传统方法对比的研发周期缩短数据",
+        "AI平台实际应用案例及效果报告"
+      ],
+      "follow_up_question": "要求提供AI平台在至少3个具体项目上缩短研发周期的量化对比数据。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_005",
+      "original_question": "追问：这个产品从概念到量产，传统方法大概需要多久",
+      "matched_information_ids": [
+        "ni_017"
+      ],
+      "matched_information_summary": [
+        "客户定制研发周期通常为9个月至1年以上，欧莱雅周期更长。"
+      ],
+      "answer_summary": "创始人明确回答客户定制研发周期通常为9个月至1年以上，欧莱雅周期更长。",
+      "status": "answered",
+      "quality": "medium",
+      "impact": "no_change",
+      "missing_evidence": [
+        "典型项目的研发周期记录"
+      ],
+      "follow_up_question": "要求提供3个典型项目的研发周期记录，以验证9个月至1年的说法。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_006",
+      "original_question": "切入：BP里提到你们并购千沐后，在深共晶电解液方面有突破",
+      "matched_information_ids": [
+        "ni_012"
+      ],
+      "matched_information_summary": [
+        "并购千沐新能源为同一创始人旗下公司，旨在整合研发中台。"
+      ],
+      "answer_summary": "创始人说明并购千沐新能源为同一创始人旗下公司，旨在整合研发中台，但未提及深共晶电解液的具体突破。",
+      "status": "indirectly_answered",
+      "quality": "low",
+      "impact": "slightly_weakens",
+      "missing_evidence": [
+        "深共晶电解液的突破性技术成果",
+        "千沐新能源的财务报表和研发团队"
+      ],
+      "follow_up_question": "要求提供深共晶电解液的具体技术突破报告、测试数据及与并购前的对比。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_007",
+      "original_question": "追问：比如，在宁德时代或比亚迪，你们的产品目前处于什么阶段",
+      "matched_information_ids": [
+        "ni_008"
+      ],
+      "matched_information_summary": [
+        "新能源业务预计2026年5月方案落地，但年内无收入贡献。"
+      ],
+      "answer_summary": "创始人表示新能源业务预计2026年5月方案落地，但年内无收入贡献，暗示产品在宁德时代或比亚迪等主流电池厂尚未进入实质阶段。",
+      "status": "indirectly_answered",
+      "quality": "low",
+      "impact": "weakens",
+      "missing_evidence": [
+        "与宁德时代或比亚迪的合作协议或测试报告"
+      ],
+      "follow_up_question": "要求明确说明与宁德时代、比亚迪等主流电池厂的合作阶段（如送样、测试、小批量等），并提供相关文件。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_008",
+      "original_question": "切入：BP里提到你们的锂电回收技术解决了经济性难题，能具体讲讲你们的成本结构吗",
+      "matched_information_ids": [
+        "ni_014"
+      ],
+      "matched_information_summary": [
+        "公司毛利率约60%以上。"
+      ],
+      "answer_summary": "创始人仅提到毛利率约60%以上，未具体说明成本结构。",
+      "status": "partially_answered",
+      "quality": "low",
+      "impact": "no_change",
+      "missing_evidence": [
+        "成本结构明细（原材料、加工、环保成本占比）",
+        "盈亏平衡分析"
+      ],
+      "follow_up_question": "要求提供锂电回收业务的详细成本结构，包括原材料采购成本、加工成本、环保成本的具体比例及毛利率测算。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_009",
+      "original_question": "追问：这个成本里，原材料（废旧电池）采购成本、加工成本、环保成本各占多少比例",
+      "matched_information_ids": [],
+      "matched_information_summary": [],
+      "answer_summary": "会议中未提及原材料采购成本、加工成本、环保成本的具体比例数据。",
+      "status": "not_answered",
+      "quality": "low",
+      "impact": "no_change",
+      "missing_evidence": [
+        "成本结构明细（原材料、加工、环保成本占比）"
+      ],
+      "follow_up_question": "要求提供锂电回收业务的成本结构明细，包括原材料采购成本、加工成本、环保成本的具体比例。",
+      "question_source": "base",
+      "profile_id": ""
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "executive_summary": "会议未提供显著改变原有判断的信息。",
+  "decision_signals": {
+    "validated_positives": [],
+    "confirmed_negatives": [],
+    "key_uncertainties": []
+  },
+  "key_findings": [],
+  "validated_points": [],
+  "invalidated_points": [],
+  "uncertain_points": [],
+  "_counts": {
+    "validated_positive": 0,
+    "confirmed_negative": 0,
+    "key_uncertainty": 0,
+    "total": 0,
+    "reinforced": 0,
+    "uncertain": 0,
+    "weakened": 0
+  }
+}

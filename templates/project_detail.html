@@ -6,6 +6,85 @@
   <title>{{ meta.company_name }} — 项目详情</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   <style>
+    /* ── Profile 展示 ── */
+    .profile-card {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 12px 0;
+      max-width: 700px;
+    }
+    .profile-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .profile-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: #0369a1;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .profile-switch select {
+      border: 1px solid #bae6fd;
+      background: white;
+      color: #0369a1;
+      font-size: 13px;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 6px;
+    }
+    .profile-switch select:focus { outline: none; border-color: #0ea5e9; }
+    .profile-hint-tag {
+      font-size: 11px;
+      background: #e0f2fe;
+      color: #0369a1;
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin-left: 8px;
+    }
+    .profile-sections { display: flex; flex-direction: column; gap: 10px; }
+    .profile-section-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #0891b2;
+      margin-bottom: 4px;
+    }
+    .constraint-list { display: flex; flex-direction: column; gap: 4px; }
+    .constraint-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      font-size: 13px;
+      color: #374151;
+      padding: 4px 8px;
+      background: white;
+      border-radius: 6px;
+      border: 1px solid #e5e7eb;
+    }
+    .constraint-item.strict {
+      border-color: #fca5a5;
+      background: #fef2f2;
+      color: #991b1b;
+    }
+    .fit-q-list { display: flex; flex-direction: column; gap: 4px; }
+    .fit-q-item {
+      font-size: 12px;
+      color: #374151;
+      padding: 4px 8px;
+      background: white;
+      border-radius: 6px;
+      border: 1px solid #d1fae5;
+    }
+    .no-constraints { font-size: 12px; color: #9ca3af; font-style: italic; }
+
     /* ── 进度条区域 ── */
     #progressArea {
       display: none;
@@ -74,6 +153,74 @@
         {% endif %}
       </span>
     </header>
+
+    <!-- Profile 详情展示 -->
+    <div class="profile-card" id="profileArea">
+      <div class="profile-card-header">
+        <div class="profile-name">
+          👤 当前画像：
+          <span id="profileName">{{ project_profile.name if project_profile else '中性投资人' }}</span>
+          <span class="profile-hint-tag">{{ project_profile.profile_id if project_profile else 'neutral_investor' }}</span>
+        </div>
+        <div class="profile-switch">
+          <select id="profileSelect" onchange="changeProfile()">
+            <option value="neutral_investor" {% if project_profile.profile_id == 'neutral_investor' %}selected{% endif %}>中性投资人</option>
+            <option value="government_fund" {% if project_profile.profile_id == 'government_fund' %}selected{% endif %}>政府产业基金</option>
+            <option value="vc_fund" {% if project_profile.profile_id == 'vc_fund' %}selected{% endif %}>市场化VC基金</option>
+            <option value="industrial_fund" {% if project_profile.profile_id == 'industrial_fund' %}selected{% endif %}>产业资本</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="profile-sections">
+        {# 硬约束 #}
+        <div>
+          <div class="profile-section-label">🚫 硬约束（必须满足，否则直接 pass）</div>
+          {% if project_profile and project_profile.hard_constraints %}
+          <div class="constraint-list">
+            {% for c in project_profile.hard_constraints %}
+            <div class="constraint-item strict">
+              <span>•</span>
+              <span>{{ c.description }}</span>
+            </div>
+            {% endfor %}
+          </div>
+          {% else %}
+          <div class="no-constraints">无硬约束（纯项目质量判断）</div>
+          {% endif %}
+        </div>
+
+        {# 偏好 #}
+        {% if project_profile and project_profile.preferences %}
+        <div>
+          <div class="profile-section-label">⭐ 偏好（加分项）</div>
+          <div class="constraint-list">
+            {% for p in project_profile.preferences %}
+            <div class="constraint-item">
+              <span>•</span>
+              <span>{{ p.description }}</span>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+
+        {# fit_questions #}
+        {% if project_profile and project_profile.fit_questions %}
+        <div>
+          <div class="profile-section-label">❓ Fit 判断必问题</div>
+          <div class="fit-q-list">
+            {% for q in project_profile.fit_questions %}
+            <div class="fit-q-item">
+              <strong>{{ loop.index }}.</strong> {{ q.question }}
+              {% if q.related_constraint %}<span style="color:#0369a1;font-size:11px">（关联：{{ q.related_constraint }}）</span>{% endif %}
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
 
     <!-- ════════ 1.0 会前分析（新流程，主推）════════ -->
     <div class="step-card">
@@ -172,33 +319,27 @@
       </div>
     </details>
 
-    <!-- ════════ 步骤二：2.0（沟通更新）════════ -->
-    <div class="step-card {% if meta.status == 'v2_done' %}step-done{% elif meta.status == 'created' %}step-locked{% endif %}" style="margin-top:16px">
+
+    <!-- ════════ 步骤二：2.0（会后分析）════════ -->
+    <div class="step-card {% if meta.status == 'v2_done' %}step-done{% elif meta.status == 'created' %}step-locked{% else %}step-done{% endif %}" style="margin-top:16px">
       <div class="step-header">
         <span class="step-num">第 2 步</span>
-        <h2>沟通更新 2.0 — 会议后更新判断</h2>
+        <h2>会后分析 2.0 — 会议后更新判断</h2>
       </div>
-      <p class="step-desc">开完会之后，上传会议录音转写 / 纪要 / 聊天记录。AI 对照问题树更新判断状态，识别风险变化，生成第二轮追问。</p>
+      <p class="step-desc">开完会之后，上传会议录音转写 / 纪要。Step6提取新增信息 → Step7对齐问题 → Step8对抗式认知更新 → Step9决策建议。支持问题库和行业认知沉淀。</p>
 
       {% if meta.status == 'v1_done' or meta.status == 'v2_5_done' or meta.status == 'v2_done' %}
-        <form id="updateForm" enctype="multipart/form-data">
-          <div class="form-group">
-            <label>上传会议记录（TXT / DOCX / PDF）</label>
-            <input type="file" id="meeting_file" name="meeting_file" accept=".txt,.docx,.pdf,.md">
-            <p class="file-name-display" id="meetingFileName"></p>
-          </div>
-          <button type="button" class="btn btn-primary" onclick="startUpdate()">
-            📝 更新判断
-          </button>
-        </form>
-        {% if meta.status == 'v2_done' %}
-          <a href="{{ url_for('result_v2', project_id=project_id) }}" class="btn btn-outline" style="margin-left:12px">📄 查看2.0报告</a>
-          <a href="{{ url_for('export_report', project_id=project_id, version='v2_0') }}" class="btn btn-outline" style="margin-left:8px">⬇ 导出2.0</a>
-        {% endif %}
+        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+          <a href="{{ url_for('project_v2', project_id=project_id) }}" class="btn btn-primary">📝 进入 2.0 分析</a>
+          {% if meta.status == 'v2_done' %}
+          <a href="{{ url_for('result_v2_page', project_id=project_id) }}" class="btn btn-outline">📄 查看 2.0 报告</a>
+          {% endif %}
+        </div>
       {% else %}
-        <p class="step-locked-msg">请先完成第 1 步分析</p>
+        <p class="step-locked-msg">请先完成第 1 步（1.0 会前分析）</p>
       {% endif %}
     </div>
+
 
   </div>
 
@@ -416,6 +557,33 @@
       const name = e.target.files[0]?.name || '';
       document.getElementById('meetingFileName').textContent = name ? '已选择：' + name : '';
     });
+
+    // ── Profile 切换 ──────────────────────────────────────────────────────
+    function changeProfile() {
+      const profileId = document.getElementById('profileSelect').value;
+      if (!confirm('切换画像将影响后续问题生成和 Fit 判断。确认切换？')) {
+        document.getElementById('profileSelect').value = '{{ project_profile.profile_id if project_profile else "neutral_investor" }}';
+        return;
+      }
+
+      fetch('{{ url_for("set_project_profile", project_id=project_id) }}', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ profile_id: profileId })
+      })
+      .then(r => r.json())
+      .then(data => {
+        if (data.status === 'ok') {
+          // 刷新页面以显示新的 profile 内容（硬约束/fiq 等）
+          window.location.reload();
+        } else {
+          alert('更新失败：' + (data.error || '未知错误'));
+        }
+      })
+      .catch(e => {
+        alert('请求失败：' + e);
+      });
+    }
   </script>
 </body>
 </html>

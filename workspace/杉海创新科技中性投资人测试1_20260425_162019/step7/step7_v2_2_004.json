@@ -1,0 +1,98 @@
+{
+  "meeting_quality": {
+    "answer_directness": "low",
+    "evidence_strength": "medium",
+    "evasion_level": "low",
+    "overall_confidence": "low",
+    "consistency": "medium",
+    "evasion_signals": [],
+    "answered_count": 0,
+    "partially_count": 3,
+    "weak_count": 0,
+    "missing_evidence_count": 7
+  },
+  "question_validation": [
+    {
+      "question_id": "q_001",
+      "original_question": "**建沐™AI平台到底有多“核心”？** 剥离AI平台，公司还剩什么？",
+      "matched_information_ids": [
+        "ni_008",
+        "ni_009"
+      ],
+      "matched_information_summary": [
+        "AI平台于2023年正式搭建，目前准确率约70-80%，主要用于辅助研发计算，未形成闭环。",
+        "AI平台数据量约几千条成功数据，上万条失败数据，数据来源包括公司自研和公开文献。"
+      ],
+      "answer_summary": "AI平台于2023年搭建，准确率约70-80%，数据量几千条成功数据，主要用于辅助研发计算，未形成闭环。剥离AI平台后，公司仍以美妆原料业务为主，AI平台并非核心收入来源。",
+      "status": "partially_answered",
+      "quality": "medium",
+      "impact": "slightly_weakens",
+      "missing_evidence": [
+        "AI平台实际应用案例及效果验证报告",
+        "AI平台对研发效率提升的量化数据"
+      ],
+      "follow_up_question": "要求提供AI平台在具体研发项目中的完整应用案例，展示从输入到输出的流程，并验证准确率测试方法，以评估其对研发的实际贡献程度。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_002",
+      "original_question": "**新能源业务是真落地还是画饼？** 有没有客户为深共晶电解液或锂电回收技术付过钱？",
+      "matched_information_ids": [
+        "ni_011",
+        "ni_019",
+        "ni_022"
+      ],
+      "matched_information_summary": [
+        "新能源业务预计2026年5月方案落地，但2026年全年不会产生收入。",
+        "公司创始人张嘉恒教授自2017年起在哈尔滨工业大学深圳校区研究新能源电池电解液和电池回收。",
+        "公司已与两家上市公司（宏光科技、蓝海科技）合作电池回收技术。"
+      ],
+      "answer_summary": "新能源业务预计2026年5月方案落地，但2026年全年不会产生收入。创始人自2017年起研究新能源电池电解液和回收，已与两家上市公司（宏光科技、蓝海科技）合作电池回收技术，但未提及任何客户已付费。",
+      "status": "partially_answered",
+      "quality": "medium",
+      "impact": "slightly_weakens",
+      "missing_evidence": [
+        "与宏光科技、蓝海科技的合作协议或项目合同",
+        "新能源业务落地的具体方案和客户意向书"
+      ],
+      "follow_up_question": "要求提供与宏光科技、蓝海科技的合作协议，确认合作阶段和是否有预付款或里程碑付款，并获取新能源业务落地的详细方案和客户意向书。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_003",
+      "original_question": "**2025年扭亏为盈的假设是什么？** 如果新能源一分钱收入都没有，还能盈利吗？",
+      "matched_information_ids": [
+        "ni_001",
+        "ni_002",
+        "ni_003",
+        "ni_004",
+        "ni_005",
+        "ni_011",
+        "ni_013"
+      ],
+      "matched_information_summary": [
+        "2025年美妆原料收入约1.35亿元，占公司总营收95%。",
+        "2026年预计总营收2-2.5亿元，增长主要来自现有大客户放量。",
+        "欧莱雅2025年贡献约1200万元，2026年预计增长至3000万元以上。",
+        "宝洁2025年贡献700多万元，2026年预计增加约1000万元。",
+        "珀莱雅2026年预计贡献约2500万元，2025年贡献仅几十万元。",
+        "新能源业务预计2026年5月方案落地，但2026年全年不会产生收入。",
+        "公司整体毛利率约60%多。"
+      ],
+      "answer_summary": "2025年扭亏为盈主要依赖美妆原料业务，该业务2025年收入约1.35亿元，占总营收95%。2026年增长来自现有大客户放量（欧莱雅、宝洁、珀莱雅等），新能源业务2026年无收入。公司整体毛利率约60%多，即使新能源无收入，美妆业务增长仍可能支撑盈利。",
+      "status": "partially_answered",
+      "quality": "medium",
+      "impact": "slightly_strengthens",
+      "missing_evidence": [
+        "2025年经审计的财务报表",
+        "2026年Q1收入数据及在手订单明细",
+        "欧莱雅、宝洁、珀莱雅等大客户的采购合同或订单"
+      ],
+      "follow_up_question": "要求提供2025年经审计的财务报表验证收入拆分，并提供2026年Q1收入数据及在手订单明细，以及欧莱雅、宝洁、珀莱雅等大客户的采购合同，以验证增长预测的合理性和盈利假设的可靠性。",
+      "question_source": "base",
+      "profile_id": ""
+    }
+  ]
+}

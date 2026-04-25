@@ -79,6 +79,17 @@ def get_project_meta(project_dir: str) -> dict:
     return _read_json(os.path.join(project_dir, "meta.json"))
 
 
+def update_project_status(project_dir: str, status: str):
+    """
+    更新项目 meta.json 中的 status 字段
+    status: "v1_done" | "v2_done"
+    """
+    meta_path = os.path.join(project_dir, "meta.json")
+    meta = _read_json(meta_path)
+    meta["status"] = status
+    _write_json(meta_path, meta)
+
+
 def save_report(project_dir: str, version: str, report_content: dict):
     """
     保存报告到 reports/ 目录，并更新 context.json

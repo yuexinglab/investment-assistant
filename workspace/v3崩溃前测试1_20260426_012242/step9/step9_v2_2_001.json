@@ -1,0 +1,113 @@
+{
+  "overall_decision": {
+    "process_decision": "request_materials",
+    "investment_decision": "not_ready",
+    "confidence": "low",
+    "one_line_conclusion": "本次会议未提供任何新信息，核心假设仍悬而未决，需先补材料再决定是否继续深入尽调。"
+  },
+  "decision_breakdown": {
+    "verified_positives": [],
+    "unverified_positives": [
+      "AI平台是否具有技术护城河：缺乏与传统方法（如晶泰科技）的量化对比数据",
+      "新能源客户是否已形成隐性合作：未提供与主流电池厂的合同或订单"
+    ],
+    "confirmed_negatives": [],
+    "key_uncertainties": [
+      "所有此前识别的关键不确定性均未得到验证或否定，项目仍处于信息真空状态",
+      "2026年大客户放量是否有合同支撑：欧莱雅/宝洁/珀莱雅2026年预测收入合计超6000万，需采购订单验证",
+      "专利壁垒是否真实：声称的分子结构专利保护力度需专利清单验证",
+      "锂电回收经济性：碳酸锂价格持续低迷时，成本结构是否支撑盈利",
+      "新能源客户验证进展：与主流电池厂（宁德/比亚迪）的合作阶段不明确"
+    ]
+  },
+  "material_request_list": [
+    {
+      "priority": "high",
+      "material": "近12个月经审计的财务报表及收入明细",
+      "purpose": "验证收入真实性、毛利率稳定性及现金流状况",
+      "related_hypothesis": "公司具备可持续盈利能力和健康的财务基础"
+    },
+    {
+      "priority": "high",
+      "material": "核心客户合同清单及前五大客户收入占比",
+      "purpose": "评估客户集中度风险及客户粘性",
+      "related_hypothesis": "客户基础多元且合作关系稳定"
+    },
+    {
+      "priority": "high",
+      "material": "产品/技术路线图及研发投入明细",
+      "purpose": "判断技术壁垒和未来竞争力",
+      "related_hypothesis": "公司拥有可持续的技术领先优势"
+    },
+    {
+      "priority": "medium",
+      "material": "竞品对比分析报告（公司内部版本）",
+      "purpose": "验证市场定位和差异化优势",
+      "related_hypothesis": "公司在目标市场中具有明确竞争优势"
+    },
+    {
+      "priority": "medium",
+      "material": "股权结构及历史融资文件",
+      "purpose": "确认股东背景、估值逻辑及潜在利益冲突",
+      "related_hypothesis": "股权结构清晰，无隐性风险"
+    }
+  ],
+  "remaining_unknowns": [
+    {
+      "issue": "公司真实财务表现及增长驱动力",
+      "why_blocking": "无财务数据无法评估投资回报和风险敞口",
+      "how_to_resolve": "获取经审计财务报表及管理层对未来业绩的预测依据",
+      "priority": "high"
+    },
+    {
+      "issue": "核心客户粘性与流失风险",
+      "why_blocking": "客户集中度直接决定收入稳定性",
+      "how_to_resolve": "获取客户合同清单及续约率数据，必要时访谈主要客户",
+      "priority": "high"
+    },
+    {
+      "issue": "技术壁垒与替代风险",
+      "why_blocking": "决定长期护城河和估值天花板",
+      "how_to_resolve": "获取技术路线图、专利清单及研发投入数据",
+      "priority": "high"
+    },
+    {
+      "issue": "市场竞争格局的真实情况",
+      "why_blocking": "影响定价能力和市场份额预期",
+      "how_to_resolve": "获取竞品分析报告，并独立进行市场调研",
+      "priority": "medium"
+    }
+  ],
+  "next_actions": [
+    {
+      "action": "向公司正式发送材料清单，要求提供上述high优先级材料",
+      "purpose": "补全关键信息缺口，为后续尽调提供基础",
+      "who": "用户",
+      "priority": "high"
+    },
+    {
+      "action": "设定材料提交截止日期（如2周），逾期未提供则考虑暂停或终止",
+      "purpose": "控制项目节奏，避免无限期等待",
+      "who": "用户",
+      "priority": "high"
+    },
+    {
+      "action": "在等待材料期间，启动独立行业研究，验证市场空间和竞争格局",
+      "purpose": "建立外部视角，避免完全依赖公司信息",
+      "who": "AI",
+      "priority": "medium"
+    },
+    {
+      "action": "准备下一轮访谈提纲，重点针对财务、客户和技术三个维度",
+      "purpose": "一旦材料到位，可立即进入深度尽调",
+      "who": "用户",
+      "priority": "medium"
+    }
+  ],
+  "key_risks": [
+    "信息真空风险：连续会议未提供新信息，可能暗示公司配合度低或有意隐瞒",
+    "时间成本风险：在无新证据的情况下持续投入，可能浪费资源",
+    "决策惯性风险：缺乏负面信息时容易默认项目可行，需警惕乐观偏差"
+  ],
+  "go_no_go_logic": "若材料提交后，关键不确定性（财务真实性、客户粘性、技术壁垒）得到正面验证，则进入continue_dd；若材料缺失或验证结果为负面，则转为stop；若部分验证但仍有重大未知，则继续request_materials。"
+}

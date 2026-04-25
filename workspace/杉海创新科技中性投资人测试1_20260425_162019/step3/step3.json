@@ -1,0 +1,111 @@
+{
+  "selected_buckets": [
+    "tech_barrier",
+    "customer_value",
+    "commercialization"
+  ],
+  "bucket_outputs": [
+    {
+      "bucket_key": "tech_barrier",
+      "bucket_label": "技术/壁垒是否成立",
+      "point": "支持：AI+超分子平台具备差异化壁垒",
+      "explanation": "【claim】BP声称建沐™AI平台是全球首个AI驱动的超分子材料合成矩阵，能大幅缩短研发周期。【reality】行业通用做法是单独使用AI或传统超分子化学，将两者深度耦合并形成标准化筛选流程的案例极少。【gap】BP未提供与竞品（如晶泰科技、深度原理）的直接对比数据，但诺奖团队背景和156+发明专利（覆盖共晶、离子盐等关键技术节点）提供了初步排他性。【conclusion】support。技术方向独特，但壁垒强度需进一步验证。",
+      "relation_to_step1": "support",
+      "certainty": "medium",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "tech_barrier",
+      "bucket_label": "技术/壁垒是否成立",
+      "point": "挑战：AI平台可能只是效率工具，而非核心壁垒",
+      "explanation": "【claim】BP强调AI平台是核心。【reality】AI材料筛选在行业中已非罕见，许多公司（如Schrödinger、Materials Design）都提供类似服务。杉海创新的AI平台若仅基于公开数据库（如CSD）和通用算法，则容易被复制。【gap】BP未披露建沐™平台的数据闭环规模、模型迭代速度或与深度原理合作的具体分工，难以判断其不可替代性。【conclusion】contradict。AI部分可能被高估，真正的壁垒可能在于超分子化学的工程化经验而非AI本身。",
+      "relation_to_step1": "contradict",
+      "certainty": "medium",
+      "source_type": "common_sense"
+    },
+    {
+      "bucket_key": "customer_value",
+      "bucket_label": "客户为什么付钱",
+      "point": "支持：客户为性能提升和品牌背书付费",
+      "explanation": "【claim】BP显示欧莱雅、宝洁、华熙生物等头部客户已合作，且敷尔佳年合作金额超3000万。【reality】美妆行业对原料的稳定性、渗透性、生物利用度有刚性需求，超分子技术能显著改善这些指标（如VC烟酰胺共晶提高生物利用度41%）。【gap】BP未披露客户复购率或合同续签率，但头部客户的持续合作本身就是付费意愿的强信号。【conclusion】support。客户价值在美妆领域已初步验证。",
+      "relation_to_step1": "support",
+      "certainty": "high",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "customer_value",
+      "bucket_label": "客户为什么付钱",
+      "point": "挑战：新能源客户付费意愿存疑，技术指标未转化为订单",
+      "explanation": "【claim】BP声称深共晶电解液在安全性、界面兼容性上优于传统方案。【reality】新能源电池行业对电解液的性能要求极为严苛，且客户切换供应商的验证周期长（通常1-3年）。BP中仅展示了实验室数据（如500次循环容量保持率>95%），未提及任何新能源客户的正式订单或框架协议。【gap】与协鑫的合作仍处于“协同开发”阶段，未明确商业化时间表。【conclusion】contradict。新能源客户价值尚未被市场验证，存在过度乐观风险。",
+      "relation_to_step1": "contradict",
+      "certainty": "high",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "commercialization",
+      "bucket_label": "商业化路径是否成立",
+      "point": "支持：美妆业务已进入量产阶段，验证了商业化能力",
+      "explanation": "【claim】BP显示超分子活性物年产能达千吨级，服务100余家头部企业。【reality】美妆原料行业从实验室到量产通常需要2-3年，杉海创新已实现千吨级产能，说明其工程化能力已初步过关。【gap】BP未披露良品率或产能利用率，但产能规模本身是商业化的重要里程碑。【conclusion】support。美妆领域的商业化路径已基本走通。",
+      "relation_to_step1": "support",
+      "certainty": "medium",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "commercialization",
+      "bucket_label": "商业化路径是否成立",
+      "point": "挑战：多行业扩张导致资源分散，新能源业务商业化节奏不清晰",
+      "explanation": "【claim】BP计划同时进军新能源、食品、农业、医药等多个领域。【reality】每个行业的技术要求、客户关系、供应链、监管体系都截然不同。杉海创新2024年仍亏损，美妆业务尚未实现规模化盈利，此时多线作战极易导致资源分散。【gap】BP未提供新能源业务的具体商业化时间表（如预计何时产生规模化收入），也未说明团队如何同时管理多个行业。【conclusion】contradict。平台化战略的落地节奏存在重大疑问。",
+      "relation_to_step1": "contradict",
+      "certainty": "high",
+      "source_type": "common_sense"
+    }
+  ],
+  "publicly_resolvable": [
+    {
+      "bucket_key": "tech_barrier",
+      "item": "专利清单与权利要求范围",
+      "current_conclusion": "BP声称156+发明专利，但未提供清单。通过公开专利数据库可确认专利是否覆盖核心技术节点（如共晶、离子盐），以及是否形成有效排他性。",
+      "confidence": "high"
+    }
+  ],
+  "still_unresolved": [
+    {
+      "bucket_key": "tech_barrier",
+      "question": "建沐™AI平台与竞品（如晶泰科技、深度原理）相比，核心差异化和不可替代性在哪里？是否已形成数据闭环和量化业务影响？",
+      "why_unresolved": "BP仅描述了AI平台的功能，未提供与竞品的直接对比数据，也未披露数据闭环规模或模型迭代速度。这些信息无法通过公开资料获取，必须通过尽调或技术访谈验证。",
+      "impact_level": "high"
+    },
+    {
+      "bucket_key": "customer_value",
+      "question": "新能源客户（如电池厂商）是否已对深共晶电解液或锂电回收技术进行正式验证？是否有意向订单或框架协议？",
+      "why_unresolved": "BP仅展示了实验室数据和与协鑫的协同开发，未提及任何新能源客户的正式订单。客户验证周期长，且公开信息无法确认进展，必须通过客户访谈或尽调确认。",
+      "impact_level": "high"
+    },
+    {
+      "bucket_key": "commercialization",
+      "question": "2025年扭亏为盈的预测核心假设是什么？美妆业务增长和新能源业务爆发分别贡献多少？",
+      "why_unresolved": "BP提供了财务预测，但未拆解收入构成和盈利驱动因素。公开信息无法验证假设的合理性，必须通过管理层访谈或财务尽调确认。",
+      "impact_level": "high"
+    }
+  ],
+  "tensions": [
+    "技术壁垒强（诺奖+专利） vs AI平台可复制性高（行业通用工具）",
+    "美妆客户价值已验证（头部客户合作） vs 新能源客户价值未验证（无订单）",
+    "美妆商业化已走通（千吨级产能） vs 多行业扩张导致资源分散（亏损状态下）"
+  ],
+  "step1_adjustment_hints": {
+    "supported": [
+      "美妆领域的技术壁垒和客户价值得到BP数据支持，Step1判断‘技术赋能者’定位合理。"
+    ],
+    "caution": [
+      "AI平台可能被高估为壁垒，实际核心壁垒可能在于超分子化学的工程化经验，而非AI本身。Step1需谨慎对待‘AI驱动’的叙事。",
+      "新能源业务的商业化节奏不清晰，Step1中‘增长第二曲线’的判断可能过于乐观，需更多证据支撑。"
+    ],
+    "to_step4": [
+      "建沐™AI平台的真实壁垒和不可替代性需在Step4中作为关键决策缺口识别。",
+      "新能源客户验证进展和订单情况是判断商业化路径是否成立的核心，需在Step4中重点追问。",
+      "2025年扭亏为盈的财务假设需在Step4中拆解验证，避免被乐观预测误导。"
+    ]
+  },
+  "raw_text": "{\n  \"selected_buckets\": [\"tech_barrier\", \"customer_value\", \"commercialization\"],\n  \"bucket_outputs\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"bucket_label\": \"技术/壁垒是否成立\",\n      \"point\": \"支持：AI+超分子平台具备差异化壁垒\",\n      \"explanation\": \"【claim】BP声称建沐™AI平台是全球首个AI驱动的超分子材料合成矩阵，能大幅缩短研发周期。【reality】行业通用做法是单独使用AI或传统超分子化学，将两者深度耦合并形成标准化筛选流程的案例极少。【gap】BP未提供与竞品（如晶泰科技、深度原理）的直接对比数据，但诺奖团队背景和156+发明专利（覆盖共晶、离子盐等关键技术节点）提供了初步排他性。【conclusion】support。技术方向独特，但壁垒强度需进一步验证。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"bucket_label\": \"技术/壁垒是否成立\",\n      \"point\": \"挑战：AI平台可能只是效率工具，而非核心壁垒\",\n      \"explanation\": \"【claim】BP强调AI平台是核心。【reality】AI材料筛选在行业中已非罕见，许多公司（如Schrödinger、Materials Design）都提供类似服务。杉海创新的AI平台若仅基于公开数据库（如CSD）和通用算法，则容易被复制。【gap】BP未披露建沐™平台的数据闭环规模、模型迭代速度或与深度原理合作的具体分工，难以判断其不可替代性。【conclusion】contradict。AI部分可能被高估，真正的壁垒可能在于超分子化学的工程化经验而非AI本身。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"common_sense\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"bucket_label\": \"客户为什么付钱\",\n      \"point\": \"支持：客户为性能提升和品牌背书付费\",\n      \"explanation\": \"【claim】BP显示欧莱雅、宝洁、华熙生物等头部客户已合作，且敷尔佳年合作金额超3000万。【reality】美妆行业对原料的稳定性、渗透性、生物利用度有刚性需求，超分子技术能显著改善这些指标（如VC烟酰胺共晶提高生物利用度41%）。【gap】BP未披露客户复购率或合同续签率，但头部客户的持续合作本身就是付费意愿的强信号。【conclusion】support。客户价值在美妆领域已初步验证。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"high\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"bucket_label\": \"客户为什么付钱\",\n      \"point\": \"挑战：新能源客户付费意愿存疑，技术指标未转化为订单\",\n      \"explanation\": \"【claim】BP声称深共晶电解液在安全性、界面兼容性上优于传统方案。【reality】新能源电池行业对电解液的性能要求极为严苛，且客户切换供应商的验证周期长（通常1-3年）。BP中仅展示了实验室数据（如500次循环容量保持率>95%），未提及任何新能源客户的正式订单或框架协议。【gap】与协鑫的合作仍处于“协同开发”阶段，未明确商业化时间表。【conclusion】contradict。新能源客户价值尚未被市场验证，存在过度乐观风险。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"high\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"bucket_label\": \"商业化路径是否成立\",\n      \"point\": \"支持：美妆业务已进入量产阶段，验证了商业化能力\",\n      \"explanation\": \"【claim】BP显示超分子活性物年产能达千吨级，服务100余家头部企业。【reality】美妆原料行业从实验室到量产通常需要2-3年，杉海创新已实现千吨级产能，说明其工程化能力已初步过关。【gap】BP未披露良品率或产能利用率，但产能规模本身是商业化的重要里程碑。【conclusion】support。美妆领域的商业化路径已基本走通。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"bucket_label\": \"商业化路径是否成立\",\n      \"point\": \"挑战：多行业扩张导致资源分散，新能源业务商业化节奏不清晰\",\n      \"explanation\": \"【claim】BP计划同时进军新能源、食品、农业、医药等多个领域。【reality】每个行业的技术要求、客户关系、供应链、监管体系都截然不同。杉海创新2024年仍亏损，美妆业务尚未实现规模化盈利，此时多线作战极易导致资源分散。【gap】BP未提供新能源业务的具体商业化时间表（如预计何时产生规模化收入），也未说明团队如何同时管理多个行业。【conclusion】contradict。平台化战略的落地节奏存在重大疑问。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"high\",\n      \"source_type\": \"common_sense\"\n    }\n  ],\n  \"publicly_resolvable\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"item\": \"专利清单与权利要求范围\",\n      \"current_conclusion\": \"BP声称156+发明专利，但未提供清单。通过公开专利数据库可确认专利是否覆盖核心技术节点（如共晶、离子盐），以及是否形成有效排他性。\",\n      \"confidence\": \"high\"\n    }\n  ],\n  \"still_unresolved\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"question\": \"建沐™AI平台与竞品（如晶泰科技、深度原理）相比，核心差异化和不可替代性在哪里？是否已形成数据闭环和量化业务影响？\",\n      \"why_unresolved\": \"BP仅描述了AI平台的功能，未提供与竞品的直接对比数据，也未披露数据闭环规模或模型迭代速度。这些信息无法通过公开资料获取，必须通过尽调或技术访谈验证。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"question\": \"新能源客户（如电池厂商）是否已对深共晶电解液或锂电回收技术进行正式验证？是否有意向订单或框架协议？\",\n      \"why_unresolved\": \"BP仅展示了实验室数据和与协鑫的协同开发，未提及任何新能源客户的正式订单。客户验证周期长，且公开信息无法确认进展，必须通过客户访谈或尽调确认。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"question\": \"2025年扭亏为盈的预测核心假设是什么？美妆业务增长和新能源业务爆发分别贡献多少？\",\n      \"why_unresolved\": \"BP提供了财务预测，但未拆解收入构成和盈利驱动因素。公开信息无法验证假设的合理性，必须通过管理层访谈或财务尽调确认。\",\n      \"impact_level\": \"high\"\n    }\n  ],\n  \"tensions\": [\n    \"技术壁垒强（诺奖+专利） vs AI平台可复制性高（行业通用工具）\",\n    \"美妆客户价值已验证（头部客户合作） vs 新能源客户价值未验证（无订单）\",\n    \"美妆商业化已走通（千吨级产能） vs 多行业扩张导致资源分散（亏损状态下）\"\n  ],\n  \"step1_adjustment_hints\": {\n    \"supported\": [\n      \"美妆领域的技术壁垒和客户价值得到BP数据支持，Step1判断‘技术赋能者’定位合理。\"\n    ],\n    \"caution\": [\n      \"AI平台可能被高估为壁垒，实际核心壁垒可能在于超分子化学的工程化经验，而非AI本身。Step1需谨慎对待‘AI驱动’的叙事。\",\n      \"新能源业务的商业化节奏不清晰，Step1中‘增长第二曲线’的判断可能过于乐观，需更多证据支撑。\"\n    ],\n    \"to_step4\": [\n      \"建沐™AI平台的真实壁垒和不可替代性需在Step4中作为关键决策缺口识别。\",\n      \"新能源客户验证进展和订单情况是判断商业化路径是否成立的核心，需在Step4中重点追问。\",\n      \"2025年扭亏为盈的财务假设需在Step4中拆解验证，避免被乐观预测误导。\"\n    ]\n  }\n}"
+}

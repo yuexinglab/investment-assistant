@@ -1,0 +1,17 @@
+[
+  {
+    "project_name": "测试科技公司_20260424_173519",
+    "project_judgement": "核心假设被削弱，关键不确定性未验证，暂不具备投资决策条件。",
+    "fit_judgement": "partial_fit",
+    "final_decision": "pass",
+    "fit_reason": [
+      "基金无硬约束，项目有收入基础，但核心假设被削弱",
+      "项目方明确拒绝落地和反投，与基金潜在诉求冲突",
+      "关键不确定性未验证，投资风险较高"
+    ],
+    "source_profile": "unknown",
+    "status": "pending_review",
+    "created_at": "2026-04-25T15:04:50.382253",
+    "created_by": "Step10"
+  }
+]

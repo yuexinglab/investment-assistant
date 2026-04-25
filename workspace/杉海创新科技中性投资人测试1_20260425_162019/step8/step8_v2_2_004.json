@@ -1,0 +1,149 @@
+{
+  "hypothesis_updates": [
+    {
+      "hypothesis_id": "h_1",
+      "hypothesis": "假设1: AI平台可能比当前判断的更核心，只是BP未充分披露其数据闭环和模型迭代能力，实际壁垒可能远超预期。...",
+      "updated_view": "AI平台的核心性被削弱，准确率仅70-80%且未形成闭环，但超分子技术等非AI资产仍构成壁垒，需进一步验证AI平台的实际应用效果。",
+      "confidence_change": "low→medium",
+      "change_type": "slightly_reinforced",
+      "supporting_evidence": [
+        "ni_009",
+        "ni_010",
+        "ni_012"
+      ],
+      "contradicting_evidence": [
+        "AI平台准确率测试报告",
+        "AI平台实际案例验证数据"
+      ],
+      "why_changed": "会议明确AI平台准确率仅70-80%，目前仅作为辅助参考，未形成闭环，且平台于2023年搭建，数据来源包括自研和公开文献，表明AI平台并非公司唯一核心，剥离后仍有超分子技术、美妆业务等支撑。",
+      "source_question_id": "q_001"
+    },
+    {
+      "hypothesis_id": "h_2",
+      "hypothesis": "假设2: 新能源客户可能已形成隐性合作或意向订单，只是出于保密协议未在BP中披露，导致我低估了其商业化进展。...",
+      "updated_view": "新能源客户尚未形成隐性合作或意向订单，业务预计2026年5月方案落地但年内不会产生收入，商业化进展被高估。",
+      "confidence_change": "medium→low",
+      "change_type": "slightly_weakened",
+      "supporting_evidence": [
+        "ni_008",
+        "ni_020",
+        "ni_021"
+      ],
+      "contradicting_evidence": [
+        "与宏光科技、蓝海科技的合作协议及付款条款",
+        "光伏面板回收技术的专利或测试报告"
+      ],
+      "why_changed": "会议明确新能源业务预计2026年5月方案落地，但年内不会产生收入，表明目前无客户付费，与两家上市公司合作电池回收项目但未提及付款，整体显示新能源业务尚未有实际收入。",
+      "source_question_id": "q_002"
+    },
+    {
+      "hypothesis_id": "h_3",
+      "hypothesis": "假设3: 美妆客户可能已形成技术依赖，复购率和合同续签率极高，只是BP未强调，导致我低估了美妆业务的护城河。...",
+      "updated_view": "美妆客户技术依赖未获直接证据，但2025年美妆收入占比约95%且是扭亏为盈的核心，需验证客户复购率和合同续签率。",
+      "confidence_change": "medium→high",
+      "change_type": "reinforced",
+      "supporting_evidence": [
+        "ni_001",
+        "ni_006"
+      ],
+      "contradicting_evidence": [
+        "美妆客户复购率数据",
+        "美妆客户合同续签率数据"
+      ],
+      "why_changed": "会议未直接提及美妆客户的技术依赖或复购率，但明确2025年美妆原料收入约1.35亿元，美妆收入占比约95%，表明美妆业务是盈利支柱，但护城河证据不足。",
+      "source_question_id": "q_003"
+    },
+    {
+      "hypothesis_id": "h_4",
+      "hypothesis": "假设4: 多行业扩张可能并非资源分散，而是通过技术平台复用的高效策略，团队可能已具备跨行业管理能力，只是我未充分评估。...",
+      "updated_view": "多行业扩张通过技术平台复用的策略得到部分支持，超分子技术可共用，但跨行业管理能力未验证，需进一步评估。",
+      "confidence_change": "medium→high",
+      "change_type": "reinforced",
+      "supporting_evidence": [
+        "ni_012"
+      ],
+      "contradicting_evidence": [
+        "跨行业管理团队经验案例",
+        "多行业项目并行管理数据"
+      ],
+      "why_changed": "会议提到并购千沐新能源为同一创始人，旨在整合研发中台，协同效应在于超分子技术可共用，表明技术平台复用有一定基础，但跨行业管理能力未提及。",
+      "source_question_id": "q_003"
+    },
+    {
+      "hypothesis_id": "h_5",
+      "hypothesis": "验证点1: 建沐™AI平台与竞品（晶泰科技、深度原理）的核心差异化和不可替代性，以及其数据闭环规模和量化业务影响。...",
+      "updated_view": "AI平台与竞品的核心差异化被削弱，准确率仅70-80%且未形成闭环，但超分子技术等非AI资产仍构成壁垒，需进一步验证AI平台的实际应用效果。",
+      "confidence_change": "low→medium",
+      "change_type": "slightly_reinforced",
+      "supporting_evidence": [
+        "ni_009",
+        "ni_010",
+        "ni_012"
+      ],
+      "contradicting_evidence": [
+        "AI平台准确率测试报告",
+        "AI平台实际案例验证数据"
+      ],
+      "why_changed": "会议明确AI平台准确率仅70-80%，目前仅作为辅助参考，未形成闭环，且平台于2023年搭建，数据来源包括自研和公开文献，表明AI平台并非公司唯一核心，剥离后仍有超分子技术、美妆业务等支撑。",
+      "source_question_id": "q_001"
+    },
+    {
+      "hypothesis_id": "h_6",
+      "hypothesis": "验证点2: 新能源客户（如电池厂商）是否已对深共晶电解液或锂电回收技术进行正式验证，是否有意向订单或框架协议。...",
+      "updated_view": "新能源客户验证未实现，业务预计2026年5月方案落地但年内不会产生收入，增长第二曲线尚未启动。",
+      "confidence_change": "medium→low",
+      "change_type": "slightly_weakened",
+      "supporting_evidence": [
+        "ni_008",
+        "ni_020",
+        "ni_021"
+      ],
+      "contradicting_evidence": [
+        "与宏光科技、蓝海科技的合作协议及付款条款",
+        "光伏面板回收技术的专利或测试报告"
+      ],
+      "why_changed": "会议明确新能源业务预计2026年5月方案落地，但年内不会产生收入，表明目前无客户付费，与两家上市公司合作电池回收项目但未提及付款，整体显示新能源业务尚未有实际收入。",
+      "source_question_id": "q_002"
+    },
+    {
+      "hypothesis_id": "h_7",
+      "hypothesis": "验证点3: 2025年扭亏为盈的财务预测核心假设，以及美妆业务和新能源业务分别贡献多少收入。...",
+      "updated_view": "2025年扭亏为盈假设得到强化，完全基于美妆业务，新能源无收入不影响盈利，但需验证美妆收入明细和财务报表。",
+      "confidence_change": "medium→low",
+      "change_type": "slightly_weakened",
+      "supporting_evidence": [
+        "ni_001",
+        "ni_006",
+        "ni_008"
+      ],
+      "contradicting_evidence": [
+        "2025年美妆收入明细及客户订单合同",
+        "2025年财务报表"
+      ],
+      "why_changed": "会议明确2025年美妆原料收入约1.35亿元，美妆收入占比约95%，食品收入极少，新能源业务2026年不会产生收入，因此扭亏为盈假设完全基于美妆业务，即使新能源无收入，仍可依靠美妆盈利。",
+      "source_question_id": "q_002"
+    }
+  ],
+  "unchanged_hypotheses": [],
+  "overall_change": {
+    "is_judgement_significantly_changed": true,
+    "new_risks": [
+      {
+        "risk": "假设「假设2: 新能源客户可能已形成隐性合作或...」被会议信息削弱：会议明确新能源业务预计2026年5月方案落地，但年内不会产生...",
+        "source_question_id": "q_002",
+        "severity": "medium"
+      },
+      {
+        "risk": "假设「验证点2: 新能源客户（如电池厂商）是否...」被会议信息削弱：会议明确新能源业务预计2026年5月方案落地，但年内不会产生...",
+        "source_question_id": "q_002",
+        "severity": "medium"
+      },
+      {
+        "risk": "假设「验证点3: 2025年扭亏为盈的财务预测...」被会议信息削弱：会议明确新能源业务预计2026年5月方案落地，但年内不会产生...",
+        "source_question_id": "q_002",
+        "severity": "medium"
+      }
+    ],
+    "new_opportunity_added": null
+  }
+}

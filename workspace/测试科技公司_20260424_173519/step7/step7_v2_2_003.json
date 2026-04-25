@@ -1,0 +1,132 @@
+{
+  "meeting_quality": {
+    "answer_directness": "low",
+    "evidence_strength": "low",
+    "evasion_level": "low",
+    "overall_confidence": "low",
+    "consistency": "medium",
+    "evasion_signals": [],
+    "answered_count": 0,
+    "partially_count": 5,
+    "weak_count": 0,
+    "missing_evidence_count": 13
+  },
+  "question_validation": [
+    {
+      "question_id": "q_1",
+      "original_question": "AI平台是否已形成闭环？准确率和实际应用效果如何？",
+      "matched_information_ids": [
+        "ni_007",
+        "ni_008",
+        "ni_009"
+      ],
+      "matched_information_summary": [
+        "AI平台准确率约70-80%，主要作为辅助参考工具，未形成闭环。",
+        "AI平台数据量约几千条成功数据，上万条失败数据。",
+        "AI平台于2024年正式搭建，此前为数据积累阶段。"
+      ],
+      "answer_summary": "创始人明确表示AI平台准确率约70-80%，目前仅作为辅助参考工具，未形成闭环；平台于2024年正式搭建，数据量约几千条成功数据和上万条失败数据。",
+      "status": "partially_answered",
+      "quality": "medium",
+      "impact": "slightly_weakens",
+      "missing_evidence": [
+        "AI平台实际案例（从客户需求到候选分子的完整闭环案例）",
+        "湿实验减少比例的量化数据",
+        "与竞品（如晶泰科技）的对比数据"
+      ],
+      "follow_up_question": "要求提供AI平台从客户需求输入到候选分子输出的完整闭环案例，包括平均周期、成功率、湿实验减少比例，并与晶泰科技等竞品进行量化对比。"
+    },
+    {
+      "question_id": "q_2",
+      "original_question": "大客户（欧莱雅/宝洁）的粘性来源是什么？切换成本是否真的高？",
+      "matched_information_ids": [
+        "ni_002",
+        "ni_003",
+        "ni_018",
+        "ni_021"
+      ],
+      "matched_information_summary": [
+        "欧莱雅2025年贡献约1200万元，2026年预计3000万元以上。",
+        "宝洁2025年贡献700多万元，2026年预计增加约1000万元。",
+        "欧莱雅是公司股东，且为欧莱雅在国内投资的第一家原料公司。",
+        "客户定制研发周期通常为9个月至1年以上，欧莱雅等大客户周期更长。"
+      ],
+      "answer_summary": "欧莱雅2025年贡献约1200万元，2026年预计3000万元以上，且欧莱雅是公司股东（国内投资的第一家原料公司）；宝洁2025年贡献700多万元，2026年预计增加约1000万元；客户定制研发周期通常为9个月至1年以上，切换成本高。",
+      "status": "partially_answered",
+      "quality": "medium",
+      "impact": "slightly_strengthens",
+      "missing_evidence": [
+        "欧莱雅2025年采购合同及订单",
+        "宝洁2025年采购合同及订单",
+        "客户粘性的第三方验证（如客户访谈记录）"
+      ],
+      "follow_up_question": "要求提供欧莱雅和宝洁2025年采购合同及订单，确认实际贡献金额是否与会议数据一致，并获取客户访谈记录以验证粘性来源。"
+    },
+    {
+      "question_id": "q_3",
+      "original_question": "新能源和食品业务的收入时间表是什么？是否存在重大延期风险？",
+      "matched_information_ids": [
+        "ni_010",
+        "ni_012",
+        "ni_013"
+      ],
+      "matched_information_summary": [
+        "新能源业务（电池回收、电解液）预计2026年5月方案落地，但今年无收入。",
+        "食品业务因工厂改造延迟，预计2026年上半年改造完成后开始批量出货。",
+        "食品业务五年目标营收4亿元，美妆业务五年目标营收4-5亿元。"
+      ],
+      "answer_summary": "新能源业务预计2026年5月方案落地，但今年无收入；食品业务因工厂改造延迟，预计2026年上半年改造完成后开始批量出货；五年目标分别为4亿元和4-5亿元，但近期收入时间表不明确。",
+      "status": "partially_answered",
+      "quality": "medium",
+      "impact": "slightly_weakens",
+      "missing_evidence": [
+        "新能源业务客户合作合同或测试报告",
+        "食品业务工厂改造进度表及已对接客户订单"
+      ],
+      "follow_up_question": "要求提供新能源业务与宏光科技、蓝海科技的合作合同或测试报告，以及食品业务工厂改造的详细进度表和已对接的食品客户订单。"
+    },
+    {
+      "question_id": "q_4",
+      "original_question": "并购千沐的协同效应是否真实？整合进展如何？",
+      "matched_information_ids": [
+        "ni_014",
+        "ni_015"
+      ],
+      "matched_information_summary": [
+        "并购千沐新能源为同一创始人，计划在本轮融资前完成并购。",
+        "并购千沐的协同效应体现在研发中台共享，但具体案例仅提及电池剥离剂配方受护肤品原料启发。"
+      ],
+      "answer_summary": "并购千沐新能源为同一创始人，计划在本轮融资前完成；协同效应体现在研发中台共享，但具体案例仅提及电池剥离剂配方受护肤品原料启发，缺乏量化证据。",
+      "status": "partially_answered",
+      "quality": "low",
+      "impact": "no_change",
+      "missing_evidence": [
+        "千沐新能源的财务报表",
+        "技术路线及并购后组织架构安排",
+        "研发中台共享的具体案例和联合开发项目"
+      ],
+      "follow_up_question": "要求提供千沐新能源的财务报表、技术路线及并购后组织架构安排，并获取研发中台共享的具体案例和联合开发项目清单。"
+    },
+    {
+      "question_id": "q_5",
+      "original_question": "专利保护是否真正构成竞争壁垒？与欧莱雅共有专利的范围有多大？",
+      "matched_information_ids": [
+        "ni_022",
+        "ni_020"
+      ],
+      "matched_information_summary": [
+        "公司专利为分子结构专利，保护力度较强，部分与欧莱雅共有。",
+        "公司声称在超分子领域无直接竞争对手，但食品领域有竞争对手共晶科技。"
+      ],
+      "answer_summary": "公司专利为分子结构专利，保护力度较强，部分与欧莱雅共有；公司声称在超分子领域无直接竞争对手，但食品领域有竞争对手共晶科技，未明确共有专利的具体范围。",
+      "status": "partially_answered",
+      "quality": "medium",
+      "impact": "slightly_strengthens",
+      "missing_evidence": [
+        "专利清单及权属证明",
+        "与欧莱雅共有专利的协议及范围界定"
+      ],
+      "follow_up_question": "要求提供公司专利清单、权属证明，以及与欧莱雅共有专利的协议，明确共有专利的具体范围和保护期限。"
+    }
+  ]
+}

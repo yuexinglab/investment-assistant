@@ -1,0 +1,91 @@
+{
+  "meeting_quality": {
+    "answer_directness": "medium",
+    "evidence_strength": "medium",
+    "evasion_level": "low",
+    "overall_confidence": "medium",
+    "consistency": "medium",
+    "evasion_signals": [],
+    "answered_count": 2,
+    "partially_count": 1,
+    "weak_count": 0,
+    "missing_evidence_count": 6
+  },
+  "question_validation": [
+    {
+      "question_id": "q_001",
+      "original_question": "**建沐™AI平台到底有多“核心”？** 剥离AI平台，公司还剩什么？",
+      "matched_information_ids": [
+        "ni_009",
+        "ni_010",
+        "ni_012"
+      ],
+      "matched_information_summary": [
+        "AI平台准确率约70-80%，目前仅作为辅助参考，未形成闭环。",
+        "AI平台于2023年正式搭建，数据来源包括公司自研数据和公开文献。",
+        "并购千沐新能源为同一创始人，旨在整合研发中台，协同效应在于超分子技术可共用。"
+      ],
+      "answer_summary": "会议明确AI平台准确率仅70-80%，目前仅作为辅助参考，未形成闭环，且平台于2023年搭建，数据来源包括自研和公开文献。同时，并购千沐新能源旨在整合研发中台，超分子技术可共用，表明AI平台并非公司唯一核心，剥离后仍有超分子技术、美妆业务等支撑。",
+      "status": "answered",
+      "quality": "medium",
+      "impact": "slightly_strengthens",
+      "missing_evidence": [
+        "AI平台准确率测试报告",
+        "AI平台实际案例验证数据"
+      ],
+      "follow_up_question": "要求提供AI平台准确率测试的详细方法、测试数据集及至少3个实际应用案例的验证结果。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_002",
+      "original_question": "**新能源业务是真落地还是画饼？** 有没有客户为深共晶电解液或锂电回收技术付过钱？",
+      "matched_information_ids": [
+        "ni_008",
+        "ni_020",
+        "ni_021"
+      ],
+      "matched_information_summary": [
+        "新能源业务预计2026年5月方案落地，但年内不会产生收入。",
+        "公司已与两家上市公司（宏光科技、蓝海科技）合作电池回收项目。",
+        "公司已开发光伏面板回收技术，使用固态材料剥离银线。"
+      ],
+      "answer_summary": "会议明确新能源业务预计2026年5月方案落地，但年内不会产生收入，表明目前无客户付费。已与两家上市公司（宏光科技、蓝海科技）合作电池回收项目，并开发了光伏面板回收技术，但均未提及客户付费，整体显示新能源业务尚未有实际收入。",
+      "status": "partially_answered",
+      "quality": "medium",
+      "impact": "slightly_weakens",
+      "missing_evidence": [
+        "与宏光科技、蓝海科技的合作协议及付款条款",
+        "光伏面板回收技术的专利或测试报告"
+      ],
+      "follow_up_question": "要求提供与宏光科技、蓝海科技的合作协议，确认是否有预付款或里程碑付款，以及光伏回收技术的专利或第三方测试报告。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_003",
+      "original_question": "**2025年扭亏为盈的假设是什么？** 如果新能源一分钱收入都没有，还能盈利吗？",
+      "matched_information_ids": [
+        "ni_001",
+        "ni_006",
+        "ni_008"
+      ],
+      "matched_information_summary": [
+        "2025年美妆原料收入约1.35亿元。",
+        "2025年美妆收入占比约95%，食品收入极少。",
+        "新能源业务预计2026年5月方案落地，但年内不会产生收入。"
+      ],
+      "answer_summary": "会议明确2025年美妆原料收入约1.35亿元，美妆收入占比约95%，食品收入极少，新能源业务2026年不会产生收入。因此，2025年扭亏为盈假设完全基于美妆业务，即使新能源无收入，仍可依靠美妆盈利。",
+      "status": "answered",
+      "quality": "high",
+      "impact": "strengthens",
+      "missing_evidence": [
+        "2025年美妆收入明细及客户订单合同",
+        "2025年财务报表"
+      ],
+      "follow_up_question": "要求提供2025年美妆收入按客户拆分的明细及对应订单合同，以及2025年审计后的财务报表以验证盈利假设。",
+      "question_source": "base",
+      "profile_id": ""
+    }
+  ]
+}

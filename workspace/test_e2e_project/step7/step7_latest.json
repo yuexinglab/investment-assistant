@@ -1,0 +1,82 @@
+{
+  "meeting_quality": {
+    "answer_directness": "low",
+    "evidence_strength": "low",
+    "evasion_level": "low",
+    "overall_confidence": "low",
+    "consistency": "medium",
+    "evasion_signals": [],
+    "answered_count": 0,
+    "partially_count": 3,
+    "weak_count": 0,
+    "missing_evidence_count": 9
+  },
+  "question_validation": [
+    {
+      "question_id": "q_1",
+      "original_question": "AI平台的技术壁垒是什么？",
+      "matched_information_ids": [
+        "ni_001"
+      ],
+      "matched_information_summary": [
+        "AI平台准确率在70-80%之间。"
+      ],
+      "answer_summary": "创始人声称AI平台准确率在70-80%之间，但未说明具体技术壁垒（如数据飞轮、算法独特性、专利等），仅提供了一个性能指标。",
+      "status": "partially_answered",
+      "quality": "low",
+      "impact": "slightly_strengthens",
+      "missing_evidence": [
+        "第三方验证报告",
+        "测试方法及数据集说明",
+        "专利或技术文档"
+      ],
+      "follow_up_question": "要求提供AI平台准确率的测试方法、测试数据集、第三方验证报告或客户案例，并明确技术壁垒的具体体现（如数据飞轮、算法独特性、专利等）。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_2",
+      "original_question": "2026年客户放量的预测依据？",
+      "matched_information_ids": [
+        "ni_002"
+      ],
+      "matched_information_summary": [
+        "预计欧莱雅2026年订单金额超过3000万元。"
+      ],
+      "answer_summary": "创始人预计欧莱雅2026年订单金额超过3000万元，但未提供任何合同、意向书或历史采购记录作为预测依据。",
+      "status": "partially_answered",
+      "quality": "low",
+      "impact": "slightly_strengthens",
+      "missing_evidence": [
+        "欧莱雅2026年订单意向书或框架协议",
+        "历史采购记录",
+        "客户沟通记录"
+      ],
+      "follow_up_question": "要求提供欧莱雅2026年订单的意向书、框架协议或历史采购记录，以验证3000万元预测的合理性和依据。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_3",
+      "original_question": "新能源业务的进展如何？",
+      "matched_information_ids": [
+        "ni_003"
+      ],
+      "matched_information_summary": [
+        "深共晶电解液方案预计2026年5月落地，但未签署正式合同。"
+      ],
+      "answer_summary": "创始人表示深共晶电解液方案预计2026年5月落地，但明确未签署正式合同，进展停留在计划阶段。",
+      "status": "partially_answered",
+      "quality": "medium",
+      "impact": "slightly_weakens",
+      "missing_evidence": [
+        "与潜在客户的沟通记录",
+        "技术验证进展报告",
+        "合作备忘录或意向书"
+      ],
+      "follow_up_question": "要求提供与潜在客户的沟通记录、技术验证进展或合作备忘录，以评估2026年5月落地的实际可能性。",
+      "question_source": "base",
+      "profile_id": ""
+    }
+  ]
+}

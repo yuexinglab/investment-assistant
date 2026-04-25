@@ -1,0 +1,73 @@
+{
+  "executive_summary": "暴露5项负面信号。建议暂停推进，待关键问题明确后再评估。",
+  "decision_signals": {
+    "validated_positives": [],
+    "confirmed_negatives": [
+      {
+        "hypothesis_id": "h_1",
+        "point": "AI不成立",
+        "source_hypothesis": "假设1: AI平台可能比BP描述的更核心，其数据积累和预测能力可能构成真实壁垒，只是BP未充分量化展示。...",
+        "change_type": "slightly_weakened",
+        "hypothesis_direction": "positive",
+        "required_material": "数据来源说明；准确率验证报告；实际应用案例"
+      },
+      {
+        "hypothesis_id": "h_2",
+        "point": "新能源不成立",
+        "source_hypothesis": "假设2: 新能源客户可能已形成初步合作意向或订单，BP未披露以避免过早暴露竞争信息。...",
+        "change_type": "slightly_weakened",
+        "hypothesis_direction": "positive",
+        "required_material": "深共晶电解液与LiPF6成本对比数据；客户采购意向书或合同；新能源业务独立收入预测"
+      },
+      {
+        "hypothesis_id": "h_3",
+        "point": "壁垒不成立",
+        "source_hypothesis": "假设3: 专利可能包含关键基础结构专利，而非全是外围专利，需尽调确认。...",
+        "change_type": "slightly_weakened",
+        "hypothesis_direction": "positive",
+        "required_material": "专利清单；核心权利要求范围"
+      },
+      {
+        "hypothesis_id": "h_4",
+        "point": "假设存疑",
+        "source_hypothesis": "假设4: 锂电回收项目可能在特定锂价区间（如10-15万元/吨）仍有经济性，BP未提供详细敏感性分析。...",
+        "change_type": "slightly_weakened",
+        "hypothesis_direction": "neutral",
+        "required_material": "锂电回收项目经济性敏感性分析"
+      },
+      {
+        "hypothesis_id": "h_5",
+        "point": "AI不成立",
+        "source_hypothesis": "验证点1: 建沐™AI平台的数据来源和预测准确率...",
+        "change_type": "slightly_weakened",
+        "hypothesis_direction": "positive",
+        "required_material": "数据来源说明；准确率验证报告；实际应用案例"
+      }
+    ],
+    "key_uncertainties": []
+  },
+  "key_findings": [
+    "⚠️ 8项负面信号",
+    "🚨 8个新风险暴露",
+    "AI不成立",
+    "新能源不成立"
+  ],
+  "validated_points": [],
+  "invalidated_points": [
+    "AI不成立",
+    "新能源不成立",
+    "壁垒不成立",
+    "假设存疑",
+    "AI不成立"
+  ],
+  "uncertain_points": [],
+  "_counts": {
+    "validated_positive": 0,
+    "confirmed_negative": 8,
+    "key_uncertainty": 0,
+    "total": 8,
+    "reinforced": 0,
+    "uncertain": 0,
+    "weakened": 8
+  }
+}

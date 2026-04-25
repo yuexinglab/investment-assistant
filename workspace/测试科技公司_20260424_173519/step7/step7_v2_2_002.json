@@ -1,0 +1,95 @@
+{
+  "meeting_quality": {
+    "answer_directness": "low",
+    "evidence_strength": "low",
+    "evasion_level": "low",
+    "overall_confidence": "low",
+    "consistency": "medium",
+    "evasion_signals": []
+  },
+  "question_validation": [
+    {
+      "question_id": "q_1",
+      "original_question": "AI平台是否已形成闭环？准确率和实际应用效果如何？",
+      "matched_information_ids": [
+        "ni_007",
+        "ni_008",
+        "ni_009"
+      ],
+      "answer_summary": "",
+      "status": "partially_answered",
+      "quality": "medium",
+      "impact": "weakens",
+      "missing_evidence": [
+        "AI平台准确率70-80%但未形成闭环，缺乏实际案例数据（如客户需求输入到候选分子输出的平均周期、成功率、湿实验减少比例）和与竞品的对比数据。"
+      ],
+      "follow_up_question": "请提供AI平台从客户需求输入到候选分子输出的平均周期、成功率、以及湿实验减少比例的具体数据，并与晶泰科技等竞品进行对比。"
+    },
+    {
+      "question_id": "q_2",
+      "original_question": "大客户（欧莱雅/宝洁）的粘性来源是什么？切换成本是否真的高？",
+      "matched_information_ids": [
+        "ni_002",
+        "ni_003",
+        "ni_018",
+        "ni_021"
+      ],
+      "answer_summary": "",
+      "status": "answered",
+      "quality": "medium",
+      "impact": "strengthens",
+      "missing_evidence": [
+        "欧莱雅和宝洁的采购订单、合同及2026年预测依据未提供，欧莱雅作为股东的具体投资协议和合作条款缺失。"
+      ],
+      "follow_up_question": "请提供欧莱雅和宝洁2025年的采购订单和合同，以及2026年收入预测的详细依据，并展示欧莱雅投资协议中关于技术排他性的条款。"
+    },
+    {
+      "question_id": "q_3",
+      "original_question": "新能源和食品业务的收入时间表是什么？是否存在重大延期风险？",
+      "matched_information_ids": [
+        "ni_010",
+        "ni_012",
+        "ni_013"
+      ],
+      "answer_summary": "",
+      "status": "partially_answered",
+      "quality": "medium",
+      "impact": "weakens",
+      "missing_evidence": [
+        "新能源业务的具体时间表、客户合作阶段（探索性测试/小批量/量产）及首个订单时间未提供；食品业务工厂改造进度表和已对接客户订单缺失。"
+      ],
+      "follow_up_question": "请提供新能源业务与宏光科技、蓝海科技的合作合同或测试报告，以及食品业务工厂改造的详细进度表和已对接的客户订单。"
+    },
+    {
+      "question_id": "q_4",
+      "original_question": "并购千沐的协同效应是否真实？整合进展如何？",
+      "matched_information_ids": [
+        "ni_014",
+        "ni_015"
+      ],
+      "answer_summary": "",
+      "status": "partially_answered",
+      "quality": "low",
+      "impact": "no_change",
+      "missing_evidence": [
+        "并购千沐的财务报表、技术路线及并购后组织架构安排未提供；协同效应仅有一个案例，缺乏量化证据和联合开发项目。"
+      ],
+      "follow_up_question": "请提供千沐新能源的财务报表、技术路线图、并购后组织架构安排，以及研发中台共享的具体案例和联合开发项目清单。"
+    },
+    {
+      "question_id": "q_5",
+      "original_question": "专利保护是否真正构成竞争壁垒？与欧莱雅共有专利的范围有多大？",
+      "matched_information_ids": [
+        "ni_022"
+      ],
+      "answer_summary": "",
+      "status": "answered",
+      "quality": "medium",
+      "impact": "strengthens",
+      "missing_evidence": [
+        "专利清单、权属证明及与欧莱雅共有专利的协议未提供，专利保护范围的具体细节（如权利要求覆盖范围）缺失。"
+      ],
+      "follow_up_question": "请提供公司专利清单、权属证明文件，以及与欧莱雅共有专利的协议，并说明这些专利在分子结构上的具体保护范围。"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "fit_decision": "partial_fit",
+  "final_recommendation": "request_materials",
+  "fit_score": 50,
+  "matched_constraints": [],
+  "mismatched_constraints": [],
+  "compromises": [],
+  "reasoning": "[Guardrail] 当前为中性投资人画像，不施加特定偏好。项目是否推进完全基于 Step9 判断。",
+  "candidate_profile_updates": [
+    {
+      "profile_id": "neutral_investor",
+      "candidate_rule": "当项目关键不确定性未解决时，即使无硬约束冲突，也应标记为partial_fit并request_materials",
+      "evidence": "项目所有核心假设均悬而未决，无新信息提供",
+      "should_review": true
+    }
+  ],
+  "candidate_case_record": {
+    "project_name": "v3崩溃前测试1_20260426_012242",
+    "project_type": "",
+    "project_judgement": "本次会议未提供任何新信息，核心假设仍悬而未决，需先补材料再决定是否继续深入尽调。",
+    "fit_judgement": "partial_fit",
+    "final_decision": "request_materials",
+    "fit_reason": [
+      "中性投资人不对项目质量做判断",
+      "项目推进建议完全基于 Step9 双层决策"
+    ],
+    "source_profile": "neutral_investor"
+  }
+}

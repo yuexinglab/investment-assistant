@@ -1,0 +1,64 @@
+{
+  "meeting_summary": "会议提供了AI平台准确率、欧莱雅2026年订单预测和新能源业务时间表等新增信息，但均缺乏外部验证，需进一步核实。",
+  "quality_check": {
+    "total_count": 3,
+    "critical_count": 3,
+    "high_importance_count": 3,
+    "contradiction_count": 0,
+    "low_confidence_count": 1,
+    "claim_count": 1,
+    "fact_count": 0,
+    "number_count": 0,
+    "plan_count": 2
+  },
+  "new_information": [
+    {
+      "id": "ni_001",
+      "content": "AI平台准确率在70-80%之间。",
+      "category": "技术",
+      "evidence": "我们的AI平台准确率在70-80%之间。",
+      "importance": "high",
+      "contradicts_bp": false,
+      "is_critical": true,
+      "info_type": "claim",
+      "novelty_type": "new",
+      "confidence": "low",
+      "affects_judgement": "技术壁垒、AI平台真实性",
+      "related_prior_judgement": "会前判断：AI平台可能已形成技术壁垒或数据飞轮",
+      "follow_up_hint": "要求提供AI平台准确率的测试方法、测试数据集、第三方验证报告或客户案例。",
+      "transcript_noise": false
+    },
+    {
+      "id": "ni_002",
+      "content": "预计欧莱雅2026年订单金额超过3000万元。",
+      "category": "客户",
+      "evidence": "我们预计欧莱雅2026年会有3000万以上的订单。",
+      "importance": "high",
+      "contradicts_bp": false,
+      "is_critical": true,
+      "info_type": "plan",
+      "novelty_type": "more_specific",
+      "confidence": "medium",
+      "affects_judgement": "收入质量、客户真实性、商业化验证",
+      "related_prior_judgement": "会前判断：大客户（欧莱雅）粘性来源是什么？切换成本是否真的高？",
+      "follow_up_hint": "要求提供欧莱雅2026年订单的意向书、框架协议或历史采购记录以验证预测依据。",
+      "transcript_noise": false
+    },
+    {
+      "id": "ni_003",
+      "content": "深共晶电解液方案预计2026年5月落地，但未签署正式合同。",
+      "category": "战略",
+      "evidence": "深共晶电解液方案预计2026年5月落地，但没有签署正式合同。",
+      "importance": "high",
+      "contradicts_bp": false,
+      "is_critical": true,
+      "info_type": "plan",
+      "novelty_type": "more_specific",
+      "confidence": "medium",
+      "affects_judgement": "扩张可行性、收入时间表、团队可信度",
+      "related_prior_judgement": "会前判断：新能源业务是否有明确的收入时间表？",
+      "follow_up_hint": "要求提供与潜在客户的沟通记录、技术验证进展或合作备忘录，以评估落地可能性。",
+      "transcript_noise": false
+    }
+  ]
+}

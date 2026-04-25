@@ -1,0 +1,52 @@
+{
+  "hypothesis_updates": [
+    {
+      "hypothesis_direction": "positive",
+      "hypothesis_id": "h_001",
+      "hypothesis": "AI平台可能构成技术壁垒",
+      "updated_view": "AI平台准确率在70-80%之间，但技术壁垒（如数据飞轮、算法独特性、专利等）未得到验证，技术护城河存疑。",
+      "confidence_change": "unchanged",
+      "change_type": "reframed",
+      "supporting_evidence": [
+        "ni_001"
+      ],
+      "contradicting_evidence": [
+        "第三方验证报告",
+        "测试方法及数据集说明",
+        "专利或技术文档"
+      ],
+      "why_changed": "创始人仅提供了AI平台准确率指标，未说明具体技术壁垒，且缺少第三方验证报告、测试方法及数据集说明、专利或技术文档等关键证据，导致原假设（AI平台构成技术壁垒）被削弱。",
+      "source_question_id": "q_1"
+    },
+    {
+      "hypothesis_direction": "positive",
+      "hypothesis_id": "h_002",
+      "hypothesis": "新能源业务有明确收入时间表",
+      "updated_view": "新能源业务预计2026年5月落地，但未签署正式合同，进展停留在计划阶段，收入时间表存在较大不确定性。",
+      "confidence_change": "medium→low",
+      "change_type": "slightly_weakened",
+      "supporting_evidence": [
+        "ni_003"
+      ],
+      "contradicting_evidence": [
+        "与潜在客户的沟通记录",
+        "技术验证进展报告",
+        "合作备忘录或意向书"
+      ],
+      "why_changed": "创始人明确表示深共晶电解液方案预计2026年5月落地，但未签署正式合同，且缺少与潜在客户的沟通记录、技术验证进展报告或合作备忘录等证据，导致原假设（有明确收入时间表）被削弱。",
+      "source_question_id": "q_3"
+    }
+  ],
+  "unchanged_hypotheses": [],
+  "overall_change": {
+    "is_judgement_significantly_changed": true,
+    "new_risks": [
+      {
+        "risk": "假设「新能源业务有明确收入时间表...」被会议信息削弱：创始人表示深共晶电解液方案预计2026年5月落地，但明确未签...",
+        "source_question_id": "q_3",
+        "severity": "medium"
+      }
+    ],
+    "new_opportunity_added": null
+  }
+}

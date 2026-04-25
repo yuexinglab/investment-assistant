@@ -1,0 +1,87 @@
+{
+  "meeting_quality": {
+    "answer_directness": "low",
+    "evidence_strength": "medium",
+    "evasion_level": "low",
+    "overall_confidence": "medium",
+    "consistency": "medium",
+    "evasion_signals": [],
+    "answered_count": 1,
+    "partially_count": 2,
+    "weak_count": 0,
+    "missing_evidence_count": 8
+  },
+  "question_validation": [
+    {
+      "question_id": "q_001",
+      "original_question": "**AI是真壁垒还是营销噱头？** 建沐™AI矩阵相比传统研发和竞品，到底能提效多少？有没有量化数据？",
+      "matched_information_ids": [
+        "ni_009",
+        "ni_010"
+      ],
+      "matched_information_summary": [
+        "AI平台准确率约70-80%，主要用于辅助计算，尚未形成闭环。",
+        "AI平台数据量约几千条成功数据，上万条失败数据，去年才真正搭建完成。"
+      ],
+      "answer_summary": "创始人承认AI平台准确率约70-80%，数据量几千条成功、上万条失败，主要用于辅助计算，尚未形成闭环。未提供与传统研发或竞品的提效对比量化数据。",
+      "status": "partially_answered",
+      "quality": "medium",
+      "impact": "slightly_weakens",
+      "missing_evidence": [
+        "与传统研发的提效对比数据",
+        "与竞品的量化对比数据",
+        "AI平台实际案例验证报告"
+      ],
+      "follow_up_question": "要求提供AI平台与传统研发在相同分子筛选任务上的时间、成本、成功率对比数据，以及至少3个成功案例的完整验证记录。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_002",
+      "original_question": "**新能源业务是故事还是现实？** 千沐新能源是否有真实客户和规模化收入？技术是否通过了电池厂认证？",
+      "matched_information_ids": [
+        "ni_008",
+        "ni_011"
+      ],
+      "matched_information_summary": [
+        "新能源业务预计2026年5月方案落地，但年内不会产生收入。",
+        "并购千沐新能源为同一创始人，旨在整合研发中台，协同效应体现在技术复用。"
+      ],
+      "answer_summary": "新能源业务预计2026年5月方案落地，但年内不会产生收入，无真实客户和规模化收入。并购千沐新能源为同一创始人，旨在整合研发中台，技术协同效应存在但未提及电池厂认证。",
+      "status": "partially_answered",
+      "quality": "medium",
+      "impact": "slightly_weakens",
+      "missing_evidence": [
+        "电池厂认证报告",
+        "新能源业务客户合同或意向书",
+        "千沐新能源的技术专利清单"
+      ],
+      "follow_up_question": "要求提供新能源业务已获得的电池厂认证文件或测试报告，以及千沐新能源的技术专利清单和研发团队构成。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_003",
+      "original_question": "**跨行业扩张是否已有付费意愿？** 除了美妆，新能源和农业领域是否有客户愿意掏钱？哪怕是小订单。",
+      "matched_information_ids": [
+        "ni_007",
+        "ni_008"
+      ],
+      "matched_information_summary": [
+        "食品业务因韶关工厂改造尚未放量，预计改造完成后开始批量出货。",
+        "新能源业务预计2026年5月方案落地，但年内不会产生收入。"
+      ],
+      "answer_summary": "食品业务因韶关工厂改造尚未放量，新能源业务预计2026年5月方案落地但年内不会产生收入，两个领域均无付费客户或订单。",
+      "status": "answered",
+      "quality": "high",
+      "impact": "weakens",
+      "missing_evidence": [
+        "食品业务客户意向书或小订单",
+        "新能源业务客户意向书或小订单"
+      ],
+      "follow_up_question": "要求提供食品业务和新能源业务已接触的潜在客户名单及意向沟通记录，确认是否有任何形式的付费意愿表达。",
+      "question_source": "base",
+      "profile_id": ""
+    }
+  ]
+}

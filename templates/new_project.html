@@ -5,6 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>新建项目 — AI 项目判断工作台</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    .form-group select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 14px;
+      background-color: white;
+      cursor: pointer;
+    }
+    .form-group select:focus {
+      outline: none;
+      border-color: #4a90e2;
+      box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+    }
+    .profile-hint {
+      font-size: 12px;
+      color: #666;
+      margin-top: 4px;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -19,6 +40,17 @@
           <label for="company_name">公司名称 *</label>
           <input type="text" id="company_name" name="company_name"
                  placeholder="例如：杉海创新科技" required>
+        </div>
+
+        <div class="form-group">
+          <label for="profile_id">投资人/基金画像</label>
+          <select id="profile_id" name="profile_id">
+            <option value="neutral_investor" selected>中性投资人（通用判断）</option>
+            <option value="government_fund">政府产业基金</option>
+            <option value="vc_fund">市场化VC基金</option>
+            <option value="industrial_fund">产业资本</option>
+          </select>
+          <p class="profile-hint">该画像会影响会前问题生成和最终fit判断，但不会影响会议事实提取。</p>
         </div>
 
         <div class="form-group">

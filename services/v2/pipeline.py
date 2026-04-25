@@ -1,597 +1,619 @@
+# -*- coding: utf-8 -*-
 """
-pipeline.py — 2.0 真正串行的执行链
+pipeline.py — 2.0 会后分析主流程编排
 
-核心思想：每个模块的真实输出 → 传给下一个模块
-
-执行顺序：
-1. extract_new_info (Extractor)
-2. analyze_field_deltas (Delta Engine)
-3. judge_answers (QA Judge - 单题判断)
-4. summarize_qa (QA汇总)
-5. update_risks (Risk Update)
-6. update_decision (Decision Updater)
-7. alpha_insights (Alpha Layer)
+数据流: Step6 → Step7 → Step8 → Step9
+沉淀: 问题库候选 + 行业认知候选 + 用户画像候选
 """
-
 import json
-from typing import List, Dict, Any, Optional
+import os
+from typing import Dict, Any, List, Optional
+
 from .schemas import (
-    V1StructuredOutput, V2PipelineResult,
-    DeltaResult, QAResult, QASummary,
-    RiskUpdate, RiskUpdateSummary,
-    DecisionUpdate, AlphaSignal, FieldState, Question, Risk,
-    FieldStatus, QAJudgment, ValueAssessment,
-    RiskImpact, DecisionImpact,
-    RiskStatus, Recommendation, RiskSignal
+    V2Output, DialogueTurn, UserProfileCandidate,
+    QuestionCandidate, IndustryInsightCandidate
 )
-from .prompts import (
-    build_extractor_prompt, build_delta_prompt,
-    build_qa_single_prompt, build_qa_summary_prompt,
-    build_risk_update_prompt, build_decision_updater_prompt,
-    build_alpha_layer_prompt, build_v1_structured_prompt
-)
-from services.deepseek_service import call_deepseek
+from .services import step6_extractor, step7_validator, step8_updater, step9_decider
+from .services import step0_profile_loader, step10_fit_decider, candidate_writer
+from .renderer import render_v2_report
 
 
-def _parse_json_response(response: str) -> dict:
-    """解析JSON响应，处理可能的markdown代码块"""
-    # 去掉可能的markdown代码块
-    if "```json" in response:
-        response = response.split("```json")[1].split("```")[0]
-    elif "```" in response:
-        response = response.split("```")[1].split("```")[0]
-    
-    # 尝试解析JSON
-    try:
-        return json.loads(response.strip())
-    except json.JSONDecodeError:
-        # 尝试提取JSON部分
-        start = response.find("{")
-        end = response.rfind("}") + 1
-        if start >= 0 and end > start:
-            try:
-                return json.loads(response[start:end])
-            except:
-                pass
-        return {}
+class PipelineV2:
+    """2.0 会后分析主流程"""
 
+    def __init__(self, project_id: str, project_name: str, workspace_dir: str = None):
+        self.project_id = project_id
+        self.project_name = project_name
+        # workspace 路径
+        if workspace_dir is None:
+            workspace_dir = os.path.join(
+                os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                "workspace", project_name)
+            )
+        self.workspace_dir = workspace_dir
+        self.model = None  # 可传入 DeepSeek 模型名
+        # Step0 基金画像
+        self.fund_profile = None
 
-def _build_v1_structured(v1_report: str, field_template: str = "") -> V1StructuredOutput:
-    """从v1报告提取结构化数据（真正调用LLM）"""
-    prompt = build_v1_structured_prompt(v1_report, field_template)
-    
-    try:
-        # 调用 LLM 做结构化
-        response = call_deepseek(
-            system_prompt="你是一个分析结果结构化器。必须严格输出JSON格式。",
-            user_prompt=prompt
+    # ============================================================
+    # Step0: 投资人/基金画像加载
+    # ============================================================
+
+    def run_step0(
+        self,
+        profile_id: str = None,
+        user_description: str = ""
+    ) -> Dict[str, Any]:
+        """
+        Step0: 加载投资人/基金画像
+
+        Args:
+            profile_id: 已有画像ID，若为 None 则根据 user_description 匹配或创建
+            user_description: 用户描述（用于生成新画像）
+
+        Returns:
+            画像 dict
+        """
+        profile = step0_profile_loader.load_or_create_profile(
+            profile_id=profile_id,
+            user_description=user_description
         )
-        
-        result = _parse_json_response(response)
-        
-        if result and "summary" in result:
-            # 从 LLM 输出重建 V1StructuredOutput
-            output = V1StructuredOutput()
-            output.summary = result.get("summary", {})
-            output.field_template = field_template
-            
-            # 解析 field_states
-            output.field_states = {}
-            for fs_data in result.get("field_states", []):
-                field_id = fs_data.get("field_id", f"field_{len(output.field_states)}")
-                output.field_states[field_id] = FieldState(
-                    field_id=field_id,
-                    field_name=fs_data.get("field_name", field_id),
-                    status=FieldStatus(fs_data.get("status", "unknown")),
-                    value=fs_data.get("value", ""),
-                    evidence=fs_data.get("evidence", ""),
-                    confidence=fs_data.get("confidence", 0.5)
-                )
-            
-            # 解析 questions
-            output.questions = [
-                Question(
-                    qid=q.get("qid", f"q{i}"),
-                    question=q.get("question", ""),
-                    why=q.get("why", ""),
-                    priority=q.get("priority", "medium"),
-                    topic=q.get("topic", "")
-                )
-                for i, q in enumerate(result.get("questions", []))
-            ]
-            
-            # 解析 risks
-            output.risks = [
-                Risk(
-                    risk_id=r.get("risk_id", f"risk_{i}"),
-                    name=r.get("name", ""),
-                    severity=r.get("severity", "medium"),
-                    reason=r.get("reason", ""),
-                    evidence=r.get("evidence", [])
-                )
-                for i, r in enumerate(result.get("risks", []))
-            ]
-            
-            # 解析 conclusion
-            output.conclusion = result.get("conclusion", {
-                "stance": "继续跟进",
-                "reason": "",
-                "must_verify": []
-            })
-            
-            return output
-    except Exception as e:
-        print(f"[Pipeline] _build_v1_structured LLM调用失败: {e}，回退到启发式解析")
-    
-    # 回退：使用启发式解析（仅作为兜底）
-    output = V1StructuredOutput()
-    output.summary = {
-        "one_liner": v1_report[:200] + "..." if len(v1_report) > 200 else v1_report,
-        "business_model": "",
-        "revenue_source": "",
-        "stage": "",
-        "core_capabilities": [],
-        "initial_risk_scan": []
-    }
-    output.questions = _extract_questions_from_text(v1_report)
-    output.risks = _extract_risks_from_text(v1_report)
-    output.conclusion = {
-        "stance": _extract_stance(v1_report),
-        "reason": "",
-        "must_verify": []
-    }
-    output.field_template = field_template
-    return output
+        self.fund_profile = step0_profile_loader.to_dict(profile)
 
+        # 持久化
+        self._save_json("step0", "step0.json", self.fund_profile)
 
-def _field_state_to_dict(fs: FieldState) -> dict:
-    """将 FieldState 转为 dict 供 prompt 使用"""
-    return {
-        "field_id": fs.field_id,
-        "field_name": fs.field_name,
-        "status": fs.status.value if hasattr(fs.status, 'value') else str(fs.status),
-        "value": fs.value,
-        "evidence": fs.evidence,
-        "confidence": fs.confidence
-    }
+        return self.fund_profile
 
+    # ============================================================
+    # Step6: 新增信息提取
+    # ============================================================
 
-def _question_to_dict(q: Question) -> dict:
-    """将 Question 转为 dict"""
-    return {
-        "qid": q.qid,
-        "question": q.question,
-        "why": q.why,
-        "priority": q.priority,
-        "topic": q.topic
-    }
+    def run_step6(
+        self,
+        step5_summary: str,
+        meeting_record: str
+    ) -> Dict[str, Any]:
+        """Step6: 从会议记录中提取新增信息"""
+        output = step6_extractor.extract(
+            step5_summary=step5_summary,
+            meeting_record=meeting_record,
+            model=self.model
+        )
 
+        # 持久化（版本号文件 + latest）
+        self._save_versioned_json("step6", "step6", step6_extractor.to_dict(output))
 
-def _risk_to_dict(r: Risk) -> dict:
-    """将 Risk 转为 dict"""
-    return {
-        "risk_id": r.risk_id,
-        "name": r.name,
-        "severity": r.severity,
-        "reason": r.reason,
-        "evidence": r.evidence
-    }
+        return step6_extractor.to_dict(output)
 
+    # ============================================================
+    # Step7: 问题对齐 + 会议质量
+    # ============================================================
 
-def _delta_to_dict(d: DeltaResult) -> dict:
-    """将 DeltaResult 转为 dict"""
-    return {
-        "field_id": d.field_id,
-        "field_name": d.field_name,
-        "old_status": d.old_status.value if hasattr(d.old_status, 'value') else d.old_status,
-        "new_status": d.new_status.value if hasattr(d.new_status, 'value') else d.new_status,
-        "change_summary": d.change_summary,
-        "value_assessment": d.value_assessment.value if hasattr(d.value_assessment, 'value') else d.value_assessment,
-        "impact_on_risk": d.impact_on_risk.value if hasattr(d.impact_on_risk, 'value') else d.impact_on_risk,
-        "impact_on_decision": d.impact_on_decision.value if hasattr(d.impact_on_decision, 'value') else d.impact_on_decision,
-    }
+    def run_step7(
+        self,
+        step4_questions: List[str],
+        step6_new_information: List[Dict[str, Any]],
+        meeting_record: str = None,
+        step6_summary: str = None
+    ) -> Dict[str, Any]:
+        """
+        Step7: 问题对齐与会议质量评估
 
+        优先使用 step6_new_information（新两步架构），不推荐用旧参数。
+        """
+        output = step7_validator.validate(
+            step4_questions=step4_questions,
+            meeting_record=meeting_record,
+            step6_summary=step6_summary,
+            step6_new_information=step6_new_information,
+            model=self.model
+        )
 
-def _extract_questions_from_text(text: str) -> List:
-    """从文本中提取问题"""
-    questions = []
-    if "问题" in text or "追问" in text:
-        # 简单的正则匹配
-        import re
-        q_matches = re.findall(r'[\d]+\.\s*["""](.+?)["""]', text)
-        for i, q in enumerate(q_matches[:10]):
-            questions.append({
-                "qid": f"q{i+1}",
-                "question": q.strip(),
-                "why": "",
-                "priority": "medium",
-                "topic": ""
-            })
-    return questions
+        # 持久化（版本号文件 + latest）
+        self._save_versioned_json("step7", "step7", step7_validator.to_dict(output))
 
+        return step7_validator.to_dict(output)
 
-def _extract_risks_from_text(text: str) -> List:
-    """从文本中提取风险"""
-    risks = []
-    if "风险" in text:
-        import re
-        # 简单匹配风险相关段落
-        risk_keywords = ["风险", "隐患", "担忧", "问题"]
-        for keyword in risk_keywords:
-            if keyword in text:
-                idx = text.find(keyword)
-                snippet = text[max(0, idx-50):min(len(text), idx+100)]
-                if len(snippet) > 20:
-                    risks.append({
-                        "risk_id": f"auto_risk_{len(risks)+1}",
-                        "name": snippet[:30],
-                        "severity": "medium",
-                        "reason": snippet,
-                        "evidence": []
-                    })
-    return risks
+    # ============================================================
+    # Step8: 对抗式认知更新
+    # ============================================================
 
+    def run_step8(
+        self,
+        step5_judgements: List[Dict[str, str]],
+        step7_result: Dict[str, Any]
+    ) -> Dict[str, Any]:
+        """Step8: 认知更新（规则驱动）"""
+        output = step8_updater.update(
+            step5_judgements=step5_judgements,
+            step7_result=step7_result,
+            model=self.model
+        )
 
-def _extract_stance(text: str) -> str:
-    """从文本中提取立场"""
-    positive_words = ["推进", "建议投资", "看好", "值得关注"]
-    negative_words = ["暂缓", "不建议", "风险大", "观望"]
-    
-    for word in positive_words:
-        if word in text:
-            return "建议推进"
-    for word in negative_words:
-        if word in text:
-            return "暂不推进"
-    return "继续跟进"
+        # 持久化（版本号文件 + latest）
+        self._save_versioned_json("step8", "step8", step8_updater.to_dict(output))
 
+        return step8_updater.to_dict(output)
 
-def run_v2_pipeline(v1_data: Dict, meeting_text: str) -> V2PipelineResult:
-    """
-    2.0 Pipeline 真正串行执行
-    
-    :param v1_data: 1.0结构化输出 (dict格式)
-    :param meeting_text: 会议纪要文本
-    :return: V2PipelineResult 结构化结果
-    """
-    import traceback
-    
-    print("[Pipeline] 开始执行2.0流程...")
-    
-    try:
-        # 转换为V1StructuredOutput
-        if isinstance(v1_data, dict):
-            v1_structured = V1StructuredOutput.from_dict(v1_data) if "field_states" in v1_data else _build_v1_structured(
-                v1_data.get("final_report", v1_data.get("role_c", "")),
-                v1_data.get("field_template", "")
+    # ============================================================
+    # Step9: 决策与行动
+    # ============================================================
+
+    def run_step9(
+        self,
+        step6_output: Dict[str, Any],
+        step7_output: Dict[str, Any],
+        step8_output: Dict[str, Any]
+    ) -> Dict[str, Any]:
+        """
+        Step9: 双层决策与行动（v3）
+
+        架构：Step9 只接收 step8_summary（轻量摘要），不接收原始完整数据。
+        目的：避免 token 过多导致 LLM 输出截断。
+        """
+        # 生成 Step8 摘要（轻量结构化结论）
+        step8_summary = step8_updater.build_step8_summary(step8_output)
+
+        # 生成 Step7 摘要
+        step7_summary = self._summarize_step7(step7_output)
+
+        # 持久化 step8_summary（给后续分析用）
+        summary_path = os.path.join(self._ensure_dir("step8"), "step8_summary.json")
+        with open(summary_path, "w", encoding="utf-8") as f:
+            json.dump(step8_summary, f, ensure_ascii=False, indent=2)
+
+        output = step9_decider.decide(
+            step8_summary=step8_summary,
+            step7_summary=step7_summary,
+            model=self.model
+        )
+
+        # 持久化（版本号文件 + latest）
+        self._save_versioned_json("step9", "step9", output)
+
+        return output
+
+    # ============================================================
+    # Step10: Fit 判断（投资匹配）
+    # ============================================================
+
+    def run_step10(
+        self,
+        step9_output: Dict[str, Any],
+        profile_id: str = None,
+        user_description: str = "",
+        user_feedback: str = ""
+    ) -> Dict[str, Any]:
+        """
+        Step10: Fit 判断（项目是否适合当前基金/投资人）
+
+        Args:
+            step9_output: Step9 输出的项目决策
+            profile_id: 基金画像ID（可选，默认使用 self.fund_profile）
+            user_description: 用户描述（用于生成新画像）
+            user_feedback: 用户额外反馈
+
+        Returns:
+            Step10 输出 dict
+        """
+        # Step0: 确保有基金画像
+        if self.fund_profile is None:
+            self.fund_profile = self.run_step0(
+                profile_id=profile_id,
+                user_description=user_description
+            )
+
+        project_summary = {
+            "project_id": self.project_id,
+            "project_name": self.project_name
+        }
+
+        # Step10: Fit 判断
+        output = step10_fit_decider.decide_fit(
+            fund_profile=self.fund_profile,
+            step9_output=step9_output,
+            project_summary=project_summary,
+            user_feedback=user_feedback,
+            model=self.model
+        )
+
+        # 持久化
+        self._save_json("step10", "step10.json", output)
+
+        # 沉淀候选（到 knowledge_base/candidates/）
+        self._persist_step10_candidates(output)
+
+        return output
+
+    def _persist_step10_candidates(self, step10_output: Dict[str, Any]):
+        """
+        将 Step10 的候选沉淀写入 knowledge_base/candidates/
+        """
+        writer = candidate_writer.get_writer()
+
+        # 画像更新候选
+        for item in step10_output.get("candidate_profile_updates", []):
+            writer.append_candidate("profile_candidates", item)
+
+        # Fit 反馈候选
+        case_record = step10_output.get("candidate_case_record", {})
+        if case_record:
+            writer.append_fit_feedback(
+                project_name=case_record.get("project_name", self.project_name),
+                fit_decision=step10_output.get("fit_decision", "not_fit"),
+                final_decision=step10_output.get("final_recommendation", "pass"),
+                fit_reason=case_record.get("fit_reason", []),
+                project_judgement=case_record.get("project_judgement", ""),
+                source_profile=case_record.get("source_profile", "")
+            )
+
+    # ============================================================
+    # 全流程运行
+    # ============================================================
+
+    def run_full(
+        self,
+        meeting_record: str,
+        step5_summary: str,
+        step5_judgements: List[Dict[str, str]],
+        step5_decision: str,
+        step4_questions: List[str],
+        dialogue_history: List[DialogueTurn] = None,
+        profile_id: str = "government_fund",
+        user_description: str = "",
+        user_feedback: str = ""
+    ) -> Dict[str, Any]:
+        """
+        运行完整的 2.0 会后分析流程
+
+        Args:
+            meeting_record: 原始会议记录
+            step5_summary: Step5 会前判断摘要
+            step5_judgements: Step5 的假设与判断列表
+            step5_decision: Step5 的决策结论
+            step4_questions: Step4 的关键问题列表
+            dialogue_history: 对话历史（可选）
+            profile_id: 基金画像ID（默认 government_fund）
+            user_description: 用户描述（用于生成新画像）
+            user_feedback: 用户额外反馈
+
+        Returns:
+            包含所有步骤输出的完整结果
+        """
+        results = {}
+
+        # Step0: 加载基金画像
+        step0 = self.run_step0(profile_id=profile_id, user_description=user_description)
+        results["step0"] = step0
+
+        # Step6: 新增信息提取
+        step6 = self.run_step6(
+            step5_summary=step5_summary,
+            meeting_record=meeting_record
+        )
+        results["step6"] = step6
+        step6_summary_text = step6.get("meeting_summary", "")
+
+        # Step7: 问题对齐 + 会议质量（传 step6_new_information，走两步架构）
+        step7 = self.run_step7(
+            step4_questions=step4_questions,
+            step6_new_information=step6.get("new_information", []),
+            meeting_record=meeting_record,
+            step6_summary=step6_summary_text
+        )
+        results["step7"] = step7
+
+        # 生成 Step7 摘要（用于 Step9 的输入）
+        step7_summary_text = self._summarize_step7(step7)
+        step7_validation_summary = self._summarize_validation(step7)
+
+        # Step8: 认知更新（规则驱动，需注入 step6 new_information 以查 info_type）
+        step7_for_step8 = dict(step7)  # 浅拷贝，避免修改原始 step7
+        step7_for_step8["_step6_new_information"] = step6.get("new_information", [])
+        step8 = self.run_step8(
+            step5_judgements=step5_judgements,
+            step7_result=step7_for_step8
+        )
+        results["step8"] = step8
+
+        # Step9: 双层决策与行动
+        step9 = self.run_step9(
+            step6_output=step6,
+            step7_output=step7,
+            step8_output=step8
+        )
+        results["step9"] = step9
+
+        # 沉淀层：问题库候选 + 行业认知候选 + 用户画像候选
+        沉淀_result = self._extract_candidates(step7, step8, dialogue_history or [])
+        results["沉淀"] =沉淀_result
+
+        # Step10: Fit 判断（项目是否适合当前基金）
+        step10 = self.run_step10(
+            step9_output=step9,
+            profile_id=profile_id,
+            user_description=user_description,
+            user_feedback=user_feedback
+        )
+        results["step10"] = step10
+
+        # 保存对话历史
+        if dialogue_history:
+            self._save_dialogue_history(dialogue_history)
+
+        # 生成完整报告
+        results["report"] = self._render_report(results)
+
+        return results
+
+    # ============================================================
+    # 单步运行（用于 UI 分步执行）
+    # ============================================================
+
+    def run_single_step(
+        self,
+        step_name: str,
+        meeting_record: str = None,
+        step5_summary: str = None,
+        step5_judgements: List[Dict[str, str]] = None,
+        step5_decision: str = None,
+        step4_questions: List[str] = None,
+        step6_summary: str = None,
+        step6_new_info: List[Dict[str, Any]] = None,
+        step7_summary: str = None,
+        step7_quality: Dict[str, Any] = None,
+        step7_validation_summary: str = None,
+        step8_updates: Dict[str, Any] = None,
+        dialogue_history: List[DialogueTurn] = None,
+    ) -> Dict[str, Any]:
+        """
+        运行单个步骤
+
+        step_name: step6 / step7 / step8 / step9 / 沉淀
+        """
+        if step_name == "step6":
+            return self.run_step6(step5_summary, meeting_record)
+        elif step_name == "step7":
+            return self.run_step7(
+                step4_questions=step4_questions,
+                step6_new_information=step6_new_info or [],
+                meeting_record=meeting_record,
+                step6_summary=step6_summary
+            )
+        elif step_name == "step8":
+            # step7_result 是 Step7 的完整 dict 输出，注入 step6 info 以便查 info_type
+            step7_for_step8 = dict(step7_result) if step7_result else {}
+            step7_for_step8["_step6_new_information"] = step6_new_info or []
+            return self.run_step8(step5_judgements=step5_judgements, step7_result=step7_for_step8)
+        elif step_name == "step9":
+            return self.run_step9(
+                step6_output={"new_information": step6_new_info or []},
+                step7_output=step7_quality or {},
+                step8_output=step8_updates or {}
+            )
+        elif step_name == "沉淀":
+            return self._extract_candidates(
+                step7_quality or {},
+                step8_updates or {},
+                dialogue_history or []
             )
         else:
-            v1_structured = _build_v1_structured(str(v1_data))
-        
-        print(f"[Pipeline] V1结构化完成: {len(v1_structured.questions)}个问题, {len(v1_structured.risks)}个风险")
-        
-        # ===== Step 1: Extractor =====
-        print("[Pipeline] Step1: 提取新增信息...")
-        new_info = _run_extractor(meeting_text, v1_structured.summary.get("one_liner", ""))
-        print(f"[Pipeline] Step1完成: 提取到{len(new_info)}条新信息")
-        
-        # ===== Step 2: Delta Engine =====
-        print("[Pipeline] Step2: 分析字段变化...")
-        deltas, delta_summary = _run_delta(
-            [_field_state_to_dict(fs) for fs in v1_structured.field_states.values()],
-            new_info
-        )
-        print(f"[Pipeline] Step2完成: {len(deltas)}个字段变化")
-        
-        # ===== Step 3: QA Judge (逐题判断) =====
-        print("[Pipeline] Step3: 逐题判断回答质量...")
-        qa_results = _run_qa_judge(v1_structured.questions, meeting_text)
-        print(f"[Pipeline] Step3完成: 判断了{len(qa_results)}个问题")
-        
-        # ===== Step 4: QA 汇总 =====
-        print("[Pipeline] Step4: 汇总QA结果...")
-        qa_summary = _run_qa_summary(qa_results)
-        
-        # ===== Step 5: Risk Update =====
-        print("[Pipeline] Step5: 更新风险状态...")
-        risk_updates, risk_summary = _run_risk_update(
-            v1_structured.risks,
-            deltas,
-            qa_results
-        )
-        print(f"[Pipeline] Step5完成: 更新了{len(risk_updates)}个风险")
-        
-        # ===== Step 6: Decision Updater =====
-        print("[Pipeline] Step6: 更新投资判断...")
-        decision = _run_decision_updater(
-            v1_structured.conclusion,
-            risk_summary,
-            qa_summary,
-            new_info,
-            [d for d in deltas if d.value_assessment == ValueAssessment.HIGH]
-        )
-        print(f"[Pipeline] Step6完成: {decision.recommendation}")
-        
-        # ===== Step 7: Alpha Layer =====
-        print("[Pipeline] Step7: 输出直觉信号...")
-        alpha = _run_alpha_layer(meeting_text, qa_results, new_info)
-        print(f"[Pipeline] Step7完成: 风险信号={alpha.risk_signal}")
-        
-        print("[Pipeline] 2.0流程完成！")
-        
-        # 组装结果
-        return V2PipelineResult(
-            new_info=new_info,
-            deltas=deltas,
-            delta_summary=delta_summary,
-            qa_results=qa_results,
-            qa_summary=qa_summary,
-            risk_updates=risk_updates,
-            risk_summary=risk_summary,
-            decision=decision,
-            alpha=alpha
-        )
-    except Exception as e:
-        print(f"[Pipeline] 发生错误: {e}")
-        traceback.print_exc()
-        raise
+            raise ValueError(f"未知步骤: {step_name}")
 
+    # ============================================================
+    # 沉淀层
+    # ============================================================
 
-def _run_extractor(meeting_text: str, v1_summary: str) -> List[Dict]:
-    """执行Extractor"""
-    prompt = build_extractor_prompt(meeting_text, v1_summary)
-    response = call_deepseek(
-        system_prompt="你是一个专业的信息提取器。",
-        user_prompt=prompt
-    )
-    
-    result = _parse_json_response(response)
-    return result.get("new_info", [])
+    def _extract_candidates(
+        self,
+        step7: Dict[str, Any],
+        step8: Dict[str, Any],
+        dialogue_history: List[DialogueTurn]
+    ) -> Dict[str, List]:
+        """
+        从 Step7/8 和对话历史中提取沉淀候选
+        第一版：只做结构化输出，不做自动入库
+        """
+        # 读取之前的沉淀文件（增量追加）
+        q_candidates = self._load_candidates("questions.json")
+        i_candidates = self._load_candidates("industry_insights.json")
+        u_candidates = self._load_candidates("user_profile_candidates.json")
 
+        # TODO: 调用 LLM 提炼高质量候选（第一版先用规则判断）
+        # 第一版 MVP: 从 step7 的低质量回答中提名问题
+        question_validations = step7.get("question_validation", [])
+        for v in question_validations:
+            if v.get("quality") == "weak":
+                q_candidates.append({
+                    "question": v.get("original_question", ""),
+                    "use_case": "质量弱的问题（需优化后复用）",
+                    "why_effective": f"回答质量为 weak，可能暴露了真实风险点",
+                    "triggered_at": "Step7",
+                    "trigger_reason": f"回答质量: {v.get('quality')}"
+                })
 
-def _run_delta(field_states: List[Dict], new_info: List[Dict]) -> tuple:
-    """执行Delta Engine"""
-    prompt = build_delta_prompt(field_states, new_info)
-    response = call_deepseek(
-        system_prompt="你是一个变化分析引擎。",
-        user_prompt=prompt
-    )
-    
-    result = _parse_json_response(response)
-    
-    # 解析deltas
-    deltas = []
-    for d in result.get("deltas", []):
-        deltas.append(DeltaResult(
-            field_id=d.get("field_id", ""),
-            field_name=d.get("field_name", ""),
-            old_status=FieldStatus(d.get("old_status", "unknown")),
-            new_status=FieldStatus(d.get("new_status", "unknown")),
-            change_summary=d.get("change_summary", ""),
-            value_assessment=ValueAssessment(d.get("value_assessment", "low")),
-            impact_on_risk=RiskImpact(d.get("impact_on_risk", "no_relief")),
-            impact_on_decision=DecisionImpact(d.get("impact_on_decision", "no_change"))
-        ))
-    
-    return deltas, result.get("delta_summary", "")
+        # 从 step8 的被推翻/削弱的假设中提炼行业洞察
+        hypothesis_updates = step8.get("hypothesis_updates", [])
+        for h in hypothesis_updates:
+            if h.get("change_type") in ("weakened", "overturned"):
+                i_candidates.append({
+                    "industry": "通用",
+                    "insight": f"假设 '{h.get('hypothesis', '')}' 被新证据{h.get('change_type')}，需关注",
+                    "core_question": h.get("final_view", ""),
+                    "bucket_target": "risk_management",
+                    "triggered_at": "Step8",
+                    "confidence": "medium",
+                    "note": "待更多交叉验证"
+                })
 
+        # 从对话历史中提炼用户画像
+        for turn in dialogue_history:
+            if turn.role == "user" and len(turn.content) > 10:
+                u_candidates.append({
+                    "dimension": "待分析",
+                    "pattern": turn.content[:50],
+                    "evidence": turn.content,
+                    "triggered_at": "对话"
+                })
 
-def _run_qa_judge(questions: List, meeting_text: str) -> List[QAResult]:
-    """执行QA Judge (逐题判断)"""
-    if not questions:
-        # 如果没有结构化问题，从文本中推断
+        # 去重（基于问题/洞察的文本）
+        q_candidates = self._deduplicate_candidates(q_candidates, "question")
+        i_candidates = self._deduplicate_candidates(i_candidates, "insight")
+        u_candidates = self._deduplicate_candidates(u_candidates, "pattern")
+
+        # 持久化
+        self._save_v2_context("questions.json", q_candidates)
+        self._save_v2_context("industry_insights.json", i_candidates)
+        self._save_v2_context("user_profile_candidates.json", u_candidates)
+
+        return {
+            "question_candidates": q_candidates,
+            "industry_insight_candidates": i_candidates,
+            "user_profile_candidates": u_candidates
+        }
+
+    # ============================================================
+    # 辅助方法
+    # ============================================================
+
+    def _ensure_dir(self, sub_dir: str):
+        """确保子目录存在"""
+        path = os.path.join(self.workspace_dir, sub_dir)
+        os.makedirs(path, exist_ok=True)
+        return path
+
+    def _get_next_version_num(self, sub_dir: str, step_prefix: str) -> str:
+        """
+        自动找最大版本号，返回形如 _001 的字符串。
+        扫描 {workspace}/{sub_dir}/ 目录下所有 {step_prefix}_v2_2_*.json 文件，
+        提取序号，最大序号+1，不存在则返回 _001。
+        """
+        import re
+        dir_path = self._ensure_dir(sub_dir)
+        pattern = re.compile(rf"^{re.escape(step_prefix)}_v2_2_(\d{{3}})\.json$")
+        max_num = 0
+        for fname in os.listdir(dir_path):
+            m = pattern.match(fname)
+            if m:
+                num = int(m.group(1))
+                if num > max_num:
+                    max_num = num
+        return f"_{max_num + 1:03d}"
+
+    def _save_versioned_json(self, sub_dir: str, step_prefix: str, data: Dict[str, Any]):
+        """
+        保存带版本号的 JSON 文件，同时写一份 latest.json 方便后续步骤读取。
+        版本命名：{step_prefix}_v2_2_001.json, _002, _003 ...
+        """
+        version = self._get_next_version_num(sub_dir, step_prefix)
+        versioned_name = f"{step_prefix}_v2_2{version}.json"
+        self._save_json(sub_dir, versioned_name, data)
+        # 同时写一份 latest.json（覆盖模式，方便后续步骤读取）
+        self._save_json(sub_dir, f"{step_prefix}_latest.json", data)
+
+    def _ensure_v2_context_dir(self):
+        """确保 v2_context 目录存在"""
+        return self._ensure_dir("v2_context")
+
+    def _save_json(self, sub_dir: str, filename: str, data: Dict[str, Any]):
+        """保存 JSON 文件到 step 目录"""
+        path = os.path.join(self._ensure_dir(sub_dir), filename)
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+
+    def _save_v2_context(self, filename: str, data: list):
+        """保存沉淀文件到 v2_context"""
+        path = os.path.join(self._ensure_v2_context_dir(), filename)
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+
+    def _load_candidates(self, filename: str) -> list:
+        """读取沉淀文件（用于增量追加）"""
+        path = os.path.join(self._ensure_v2_context_dir(), filename)
+        if os.path.exists(path):
+            with open(path, "r", encoding="utf-8") as f:
+                return json.load(f)
         return []
-    
-    results = []
-    for q in questions[:10]:  # 限制最多10个问题
-        # 转换为dict
-        if isinstance(q, Question):
-            q_dict = _question_to_dict(q)
-        elif isinstance(q, dict):
-            q_dict = q
-        else:
-            q_dict = {"qid": "unknown", "question": str(q), "why": "", "priority": "medium", "topic": ""}
-        prompt = build_qa_single_prompt(q_dict, meeting_text)
-        
-        response = call_deepseek(
-            system_prompt="你是回答质量判官。",
-            user_prompt=prompt
+
+    def _save_dialogue_history(self, dialogue_history: List[DialogueTurn]):
+        """保存对话历史"""
+        path = os.path.join(self._ensure_v2_context_dir(), "dialogue_history.json")
+        data = [
+            {"turn_id": t.turn_id, "role": t.role, "content": t.content, "timestamp": t.timestamp}
+            for t in dialogue_history
+        ]
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+
+    def _load_dialogue_history(self) -> List[DialogueTurn]:
+        """读取对话历史"""
+        path = os.path.join(self._ensure_v2_context_dir(), "dialogue_history.json")
+        if os.path.exists(path):
+            with open(path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                return [DialogueTurn(**d) for d in data]
+        return []
+
+    def _summarize_step7(self, step7: Dict[str, Any]) -> str:
+        """生成 Step7 的摘要文本"""
+        quality = step7.get("meeting_quality", {})
+        validations = step7.get("question_validation", [])
+
+        answered = sum(1 for v in validations if v.get("status") == "answered")
+        evaded = sum(1 for v in validations if v.get("status") == "evaded")
+
+        return (
+            f"会议整体可信度：{quality.get('overall_confidence', 'medium')}；"
+            f"回答直接性：{quality.get('answer_directness', 'medium')}；"
+            f"共 {len(validations)} 个问题，{answered} 个被正面回答，{evaded} 个被回避。"
         )
-        
-        result = _parse_json_response(response)
-        if result:
-            results.append(QAResult(
-                qid=result.get("qid", q_dict.get("qid", "unknown")),
-                question=result.get("question", q_dict.get("question", "")),
-                answer_summary=result.get("answer_summary", ""),
-                judgment=QAJudgment(result.get("judgment", "fuzzy")),
-                reason=result.get("reason", ""),
-                evidence=result.get("evidence", "")
-            ))
-    
-    return results
 
+    def _summarize_validation(self, step7: Dict[str, Any]) -> str:
+        """生成问题验证的摘要"""
+        validations = step7.get("question_validation", [])
+        parts = []
+        for v in validations:
+            parts.append(f"Q: {v.get('original_question', '')[:30]}... → {v.get('status', '')} ({v.get('quality', '')})")
+        return "\n".join(parts)
 
-def _run_qa_summary(qa_results: List[QAResult]) -> QASummary:
-    """执行QA汇总"""
-    if not qa_results:
-        return QASummary(
-            total=0, effective=0, fuzzy=0, evasive=0,
-            high_frequency_theme=[], one_line_signal="无问题可评估"
+    def _deduplicate_candidates(self, candidates: list, key: str) -> list:
+        """基于文本字段去重"""
+        seen = set()
+        result = []
+        for c in candidates:
+            val = c.get(key, "")
+            if val and val not in seen:
+                seen.add(val)
+                result.append(c)
+        return result
+
+    def _render_report(self, results: Dict[str, Any]) -> str:
+        """渲染完整报告"""
+        from .schemas import Step6Output, Step7Output, Step8Output, Step9Output
+        from .services import step6_extractor, step7_validator, step8_updater, step9_decider
+
+        # 统一为 dict 格式（避免重复调用 to_dict()）
+        step6_raw = results.get("step6", {})
+        step7_raw = results.get("step7", {})
+        step8_raw = results.get("step8", {})
+        step9_raw = results.get("step9", {})
+
+        # 如果是 dataclass，转为 dict；如果是 dict，直接使用
+        step6 = step6_extractor.to_dict(step6_raw) if hasattr(step6_raw, "meeting_summary") else step6_raw
+        step7 = step7_validator.to_dict(step7_raw) if hasattr(step7_raw, "meeting_quality") else step7_raw
+        step8 = step8_updater.to_dict(step8_raw) if hasattr(step8_raw, "hypothesis_updates") else step8_raw
+        step9 = step9_decider.to_dict(step9_raw) if hasattr(step9_raw, "next_decision") else step9_raw
+
+        沉淀_data = results.get("沉淀", {})
+
+        return render_v2_report(
+            project_name=self.project_name,
+            step6=step6,
+            step7=step7,
+            step8=step8,
+            step9=step9,
+            question_candidates=沉淀_data.get("question_candidates", []),
+            industry_insight_candidates=沉淀_data.get("industry_insight_candidates", []),
+            user_profile_candidates=沉淀_data.get("user_profile_candidates", [])
         )
-    
-    # 统计
-    effective = sum(1 for r in qa_results if r.judgment == QAJudgment.EFFECTIVE)
-    fuzzy = sum(1 for r in qa_results if r.judgment == QAJudgment.FUZZY)
-    evasive = sum(1 for r in qa_results if r.judgment == QAJudgment.EVASIVE)
-    
-    # 找高频回避主题
-    evasive_questions = [r.question for r in qa_results if r.judgment == QAJudgment.EVASIVE]
-    
-    # 调用LLM做汇总
-    prompt = build_qa_summary_prompt([
-        {"qid": r.qid, "judgment": r.judgment.value, "reason": r.reason}
-        for r in qa_results
-    ])
-    
-    response = call_deepseek(
-        system_prompt="你是回答质量汇总器。",
-        user_prompt=prompt
-    )
-    
-    result = _parse_json_response(response)
-    
-    return QASummary(
-        total=len(qa_results),
-        effective=effective,
-        fuzzy=fuzzy,
-        evasive=evasive,
-        high_frequency_theme=result.get("high_frequency_theme", evasive_questions[:3]),
-        one_line_signal=result.get("one_line_signal", f"有效{effective}/模糊{fuzzy}/回避{evasive}")
-    )
-
-
-def _run_risk_update(
-    v1_risks: List, 
-    deltas: List[DeltaResult],
-    qa_results: List[QAResult]
-) -> tuple:
-    """执行Risk Update"""
-    # 转换v1_risks为dict
-    risks_dict = [_risk_to_dict(r) if isinstance(r, Risk) else (r if isinstance(r, dict) else {"risk_id": "unknown", "name": str(r), "severity": "medium", "reason": "", "evidence": []}) for r in v1_risks]
-    
-    prompt = build_risk_update_prompt(
-        risks_dict,
-        [_delta_to_dict(d) for d in deltas],
-        [{"qid": r.qid, "judgment": r.judgment.value} for r in qa_results]
-    )
-    
-    response = call_deepseek(
-        system_prompt="你是风险更新引擎。",
-        user_prompt=prompt
-    )
-    
-    result = _parse_json_response(response)
-    
-    # 解析更新的风险
-    updated_risks = []
-    for r in result.get("updated_risks", []):
-        updated_risks.append(RiskUpdate(
-            risk_id=r.get("risk_id", ""),
-            risk_name=r.get("risk_name", ""),
-            old_status=RiskStatus(r.get("old_status", "unresolved")),
-            new_status=RiskStatus(r.get("new_status", "unresolved")),
-            change_type=r.get("change_type", "unchanged"),
-            severity=r.get("severity", "medium"),
-            reason=r.get("reason", ""),
-            evidence=r.get("evidence", [])
-        ))
-    
-    # 解析新增风险
-    new_risks = []
-    for r in result.get("new_risks", []):
-        new_risks.append(RiskUpdate(
-            risk_id=r.get("risk_id", f"new_{len(updated_risks) + len(new_risks)}"),
-            risk_name=r.get("risk_name", ""),
-            old_status=RiskStatus.UNVERIFIABLE,
-            new_status=RiskStatus.NEW_RISK,
-            change_type="new",
-            severity=r.get("severity", "medium"),
-            reason=r.get("reason", ""),
-            evidence=r.get("evidence", [])
-        ))
-    
-    summary = RiskUpdateSummary(
-        updated_risks=updated_risks,
-        new_risks=new_risks,
-        summary=result.get("risk_summary", "")
-    )
-    
-    return updated_risks + new_risks, summary
-
-
-def _run_decision_updater(
-    v1_conclusion: Dict,
-    risk_summary: RiskUpdateSummary,
-    qa_summary: QASummary,
-    new_info: List[Dict],
-    high_value_deltas: List[DeltaResult]
-) -> DecisionUpdate:
-    """执行Decision Updater"""
-    # 找高价值变化
-    hv_deltas = [_delta_to_dict(d) for d in high_value_deltas]
-    
-    prompt = build_decision_updater_prompt(
-        v1_conclusion,
-        risk_summary.summary,
-        qa_summary,  # 传入完整的 QASummary 对象
-        new_info,
-        hv_deltas
-    )
-    
-    response = call_deepseek(
-        system_prompt="你是投资判断更新器。",
-        user_prompt=prompt
-    )
-    
-    result = _parse_json_response(response)
-    
-    # 映射recommendation
-    rec_map = {
-        "推进": Recommendation.PROCEED,
-        "暂不推进": Recommendation.HOLD,
-        "继续跟进": Recommendation.FOLLOW_UP
-    }
-    rec = rec_map.get(result.get("recommendation", "继续跟进"), Recommendation.FOLLOW_UP)
-    
-    return DecisionUpdate(
-        previous_stance=result.get("previous_stance", "未知"),
-        current_stance=result.get("current_stance", "未知"),
-        changed=result.get("changed", False),
-        decision_logic=result.get("decision_logic", []),
-        why_not_now=result.get("why_not_now", []),
-        what_would_change_decision=result.get("what_would_change_decision", []),
-        recommendation=rec,
-        one_line_decision=result.get("one_line_decision", "")
-    )
-
-
-def _run_alpha_layer(
-    meeting_text: str,
-    qa_results: List[QAResult],
-    new_info: List[Dict]
-) -> AlphaSignal:
-    """执行Alpha Layer"""
-    prompt = build_alpha_layer_prompt(
-        meeting_text,
-        [{"qid": r.qid, "judgment": r.judgment.value, "question": r.question} for r in qa_results],
-        new_info
-    )
-    
-    response = call_deepseek(
-        system_prompt="你是投资人直觉层。",
-        user_prompt=prompt
-    )
-    
-    result = _parse_json_response(response)
-    
-    # 映射risk_signal
-    signal_map = {
-        "red": RiskSignal.RED,
-        "yellow": RiskSignal.YELLOW,
-        "green": RiskSignal.GREEN
-    }
-    
-    return AlphaSignal(
-        team_profile_label=result.get("team_profile_label", "无法判断"),
-        team_profile_evidence=result.get("team_profile_evidence", ""),
-        risk_signal=signal_map.get(result.get("risk_signal", "yellow"), RiskSignal.YELLOW),
-        risk_signal_reason=result.get("risk_signal_reason", ""),
-        valuation_guidance_exists=result.get("valuation_guidance_exists", False),
-        valuation_guidance_evidence=result.get("valuation_guidance_evidence", ""),
-        avoidance_pattern=result.get("avoidance_pattern", ""),
-        avoidance_frequency=result.get("avoidance_frequency", "medium"),
-        avoidance_example=result.get("avoidance_example", ""),
-        meeting_quality_score=result.get("meeting_quality_score", 5),
-        one_line_insight=result.get("one_line_insight", "")
-    )

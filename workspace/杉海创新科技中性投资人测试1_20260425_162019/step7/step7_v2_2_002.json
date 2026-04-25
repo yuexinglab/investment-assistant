@@ -1,0 +1,95 @@
+{
+  "meeting_quality": {
+    "answer_directness": "high",
+    "evidence_strength": "medium",
+    "evasion_level": "low",
+    "overall_confidence": "high",
+    "consistency": "medium",
+    "evasion_signals": [],
+    "answered_count": 3,
+    "partially_count": 0,
+    "weak_count": 0,
+    "missing_evidence_count": 6
+  },
+  "question_validation": [
+    {
+      "question_id": "q_001",
+      "original_question": "**建沐™AI平台到底有多“核心”？** 剥离AI平台，公司还剩什么？",
+      "matched_information_ids": [
+        "ni_008",
+        "ni_013"
+      ],
+      "matched_information_summary": [
+        "AI平台准确率约70-80%，主要用于辅助计算超分子形成概率，未形成闭环。",
+        "公司声称是全球第一家实现超分子技术平台化的公司，直接竞争对手在护肤品领域无强对手。"
+      ],
+      "answer_summary": "ni_008显示AI平台准确率约70-80%，主要用于辅助计算超分子形成概率，未形成闭环；ni_013声称公司是全球第一家实现超分子技术平台化的公司，但未提及AI平台的核心地位。综合来看，AI平台并非核心业务支柱，剥离后公司仍有美妆、食品等业务支撑。",
+      "status": "answered",
+      "quality": "medium",
+      "impact": "slightly_strengthens",
+      "missing_evidence": [
+        "AI平台实际研发决策案例",
+        "第三方对AI平台准确率的验证报告"
+      ],
+      "follow_up_question": "要求提供AI平台在至少3个新成分开发中的实际应用案例，包括计算过程、实验结果和最终决策，以验证其是否真正用于研发决策。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_002",
+      "original_question": "**新能源业务是真落地还是画饼？** 有没有客户为深共晶电解液或锂电回收技术付过钱？",
+      "matched_information_ids": [
+        "ni_007",
+        "ni_019"
+      ],
+      "matched_information_summary": [
+        "新能源业务预计2026年5月方案落地，但年内不会产生收入。",
+        "公司已与两家上市公司（宏光科技、蓝海科技）合作电池回收技术。"
+      ],
+      "answer_summary": "ni_007明确新能源业务2026年5月方案落地但年内不会产生收入，ni_019提到与两家上市公司合作电池回收技术但未提及付费。目前没有客户为深共晶电解液或锂电回收技术付过钱，业务仍处于早期阶段。",
+      "status": "answered",
+      "quality": "high",
+      "impact": "strengthens",
+      "missing_evidence": [
+        "与宏光科技、蓝海科技的合作协议或项目证明",
+        "新能源业务落地方案细节"
+      ],
+      "follow_up_question": "要求提供与宏光科技、蓝海科技的合作协议，明确合作内容、付款条款和里程碑，并跟踪2026年5月方案落地进展。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_003",
+      "original_question": "**2025年扭亏为盈的假设是什么？** 如果新能源一分钱收入都没有，还能盈利吗？",
+      "matched_information_ids": [
+        "ni_001",
+        "ni_002",
+        "ni_003",
+        "ni_004",
+        "ni_005",
+        "ni_006",
+        "ni_007"
+      ],
+      "matched_information_summary": [
+        "2025年美妆原料收入约1.35亿元。",
+        "2026年预计总营收2-2.5亿元，主要来自美妆客户放量。",
+        "欧莱雅2025年贡献约1200万元，2026年预计3000万元以上。",
+        "宝洁2025年贡献700多万元，2026年预计增加约1000万元。",
+        "珀莱雅2025年贡献几十万元，2026年预计增加约2500万元。",
+        "食品业务因工厂改造尚未放量，预计2026年上半年改造完成后开始批量出货。",
+        "新能源业务预计2026年5月方案落地，但年内不会产生收入。"
+      ],
+      "answer_summary": "ni_001显示2025年美妆原料收入约1.35亿元，ni_002预计2026年总营收2-2.5亿元主要来自美妆客户放量，ni_003、ni_004、ni_005分别列出欧莱雅、宝洁、珀莱雅等美妆客户的贡献，ni_006说明食品业务尚未放量，ni_007明确新能源业务2026年不会产生收入。扭亏为盈的假设完全基于美妆客户放量，即使新能源无收入，美妆业务仍可支撑盈利。",
+      "status": "answered",
+      "quality": "high",
+      "impact": "strengthens",
+      "missing_evidence": [
+        "2025年美妆业务利润表或审计报告",
+        "欧莱雅、宝洁、珀莱雅2026年采购订单或框架协议"
+      ],
+      "follow_up_question": "要求提供2025年美妆业务利润表，验证1.35亿元收入对应的毛利率和净利润；同时要求提供欧莱雅、宝洁、珀莱雅2026年采购订单或框架协议，验证放量逻辑。",
+      "question_source": "base",
+      "profile_id": ""
+    }
+  ]
+}

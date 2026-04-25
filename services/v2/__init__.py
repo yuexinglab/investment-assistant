@@ -1,54 +1,20 @@
-"""
-v2 package — 2.0尽调更新系统
+# -*- coding: utf-8 -*-
+"""services/v2 — 2.0 会后分析模块"""
 
-包含：
-- schemas.py: 数据结构定义
-- prompts.py: Prompt构建器
-- pipeline.py: 执行链
-- renderer.py: 报告渲染器
-"""
-
+from .pipeline import PipelineV2
 from .schemas import (
-    # 枚举
-    FieldStatus, QAJudgment, ValueAssessment,
-    RiskImpact, DecisionImpact,
-    RiskStatus, Recommendation, RiskSignal,
-    # V1结构化
-    V1StructuredOutput, FieldState, Question, Risk,
-    # 2.0模块输出
-    V2PipelineResult, DeltaResult, QAResult, QASummary,
-    RiskUpdate, RiskUpdateSummary,
-    DecisionUpdate, AlphaSignal,
+    V2Output,
+    Step6Output, Step7Output, Step8Output, Step9Output,
+    DialogueTurn, UserProfileCandidate,
+    QuestionCandidate, IndustryInsightCandidate,
 )
-from .pipeline import run_v2_pipeline
-from .renderer import render_markdown, render_ui_card
+from .renderer import render_v2_report
 
 __all__ = [
-    # 枚举
-    "FieldStatus",
-    "QAJudgment",
-    "ValueAssessment",
-    "RiskImpact",
-    "DecisionImpact",
-    "RiskStatus",
-    "Recommendation",
-    "RiskSignal",
-    # V1结构化
-    "V1StructuredOutput",
-    "FieldState",
-    "Question",
-    "Risk",
-    # 2.0模块输出
-    "V2PipelineResult",
-    "DeltaResult",
-    "QAResult",
-    "QASummary",
-    "RiskUpdate",
-    "RiskUpdateSummary",
-    "DecisionUpdate",
-    "AlphaSignal",
-    # 函数
-    "run_v2_pipeline",
-    "render_markdown",
-    "render_ui_card",
+    "PipelineV2",
+    "V2Output",
+    "Step6Output", "Step7Output", "Step8Output", "Step9Output",
+    "DialogueTurn", "UserProfileCandidate",
+    "QuestionCandidate", "IndustryInsightCandidate",
+    "render_v2_report",
 ]

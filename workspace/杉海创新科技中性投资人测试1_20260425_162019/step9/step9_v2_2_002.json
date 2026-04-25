@@ -1,0 +1,25 @@
+{
+  "overall_decision": {
+    "process_decision": "request_materials",
+    "investment_decision": "not_ready",
+    "confidence": "medium",
+    "one_line_conclusion": "信息不足以支撑投资决策，需继续尽调。"
+  },
+  "decision_breakdown": {
+    "verified_positives": [
+      "2025年美妆原料收入约1.35亿元，占公司总营收95%。",
+      "欧莱雅是公司股东，在B轮投资，是欧莱雅在国内投资的第一家原料公司。",
+      "韶关工厂产能利用率不足30%，但公司认为五年内产能充足。",
+      "公司整体毛利率约60%多。",
+      "并购千沐新能源为同一创始人控制，旨在整合研发中台，不涉及外部收购。"
+    ],
+    "unverified_positives": [],
+    "confirmed_negatives": [],
+    "key_uncertainties": []
+  },
+  "material_request_list": [],
+  "remaining_unknowns": [],
+  "next_actions": [],
+  "key_risks": [],
+  "go_no_go_logic": "【Step8 change_type 统计】\n\n【双层决策】\n- 流程决策: request_materials\n- 投资决策: not_ready\n\n【决策说明】\n当前不能进入投资决策，需要先补充关键材料验证假设。"
+}

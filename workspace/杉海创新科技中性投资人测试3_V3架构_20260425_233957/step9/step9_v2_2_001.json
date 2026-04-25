@@ -1,0 +1,173 @@
+{
+  "overall_decision": {
+    "process_decision": "pause",
+    "investment_decision": "reject",
+    "confidence": "medium",
+    "one_line_conclusion": "项目核心逻辑已被打穿：美妆和新能源两大业务线均被证伪，仅剩AI平台存疑，且负面信号多于正面，建议暂停跟进并拒绝投资。"
+  },
+  "decision_breakdown": {
+    "verified_positives": [
+      {
+        "point": "AI平台可能比BP展示的更核心，护城河深度被低估",
+        "source": "Step8 认知更新摘要 - h_1",
+        "evidence": "假设被reinforced，但缺乏量化对比数据，仅为定性判断。"
+      },
+      {
+        "point": "新能源客户可能已形成隐性合作（如协鑫），商业化风险被高估",
+        "source": "Step8 认知更新摘要 - h_2",
+        "evidence": "假设被reinforced，但未提供具体合同或订单。"
+      },
+      {
+        "point": "建沐AI平台与竞品对比需深入验证",
+        "source": "Step8 认知更新摘要 - h_5",
+        "evidence": "假设被reinforced，但缺乏量化效率数据。"
+      },
+      {
+        "point": "深共晶电解液在主流电池厂的测试进展需验证",
+        "source": "Step8 认知更新摘要 - h_6",
+        "evidence": "假设被reinforced，但未提供测试报告或合作协议。"
+      }
+    ],
+    "unverified_positives": [
+      {
+        "point": "AI平台可能具有技术护城河",
+        "source": "Step8 认知更新摘要 - h_1, h_5",
+        "why_unverified": "缺乏与传统方法的量化对比数据，且无闭环跑通的项目案例。"
+      },
+      {
+        "point": "新能源客户可能已形成隐性合作",
+        "source": "Step8 认知更新摘要 - h_2",
+        "why_unverified": "未提供与主流电池厂的合作合同或订单。"
+      },
+      {
+        "point": "深共晶电解液可能已通过主流电池厂测试",
+        "source": "Step8 认知更新摘要 - h_6",
+        "why_unverified": "未提供样品测试报告或合作协议。"
+      }
+    ],
+    "confirmed_negatives": [
+      {
+        "point": "美妆领域头部客户技术依赖不成立",
+        "source": "Step8 认知更新摘要 - h_3",
+        "evidence": "假设被overturned，美妆业务被证伪。"
+      },
+      {
+        "point": "并购千沐新能源的技术协同效应不成立",
+        "source": "Step8 认知更新摘要 - h_4, h_8",
+        "evidence": "假设被overturned，新能源业务整合被证伪。"
+      },
+      {
+        "point": "新能源业务整体不成立",
+        "source": "Step8 认知更新摘要 - h_2, h_8",
+        "evidence": "多个假设被overturned，新能源业务线被证伪。"
+      }
+    ],
+    "key_uncertainties": [
+      {
+        "point": "锂电回收业务在碳酸锂价格低于10万元/吨时的经济性",
+        "source": "Step8 认知更新摘要 - h_7",
+        "why_blocking": "碳酸锂价格持续低迷，若经济性不成立，则锂电回收业务无商业价值，影响整体估值。",
+        "current_status": "假设被reframed，但未提供成本结构明细和敏感性分析模型。"
+      }
+    ]
+  },
+  "material_request_list": [
+    {
+      "priority": "high",
+      "material": "AI平台与传统方法（如晶泰科技）在研发效率、成功率上的量化对比数据",
+      "purpose": "验证AI平台的技术护城河是否真实存在",
+      "related_hypothesis": "h_1, h_5"
+    },
+    {
+      "priority": "high",
+      "material": "锂电回收业务的成本结构明细及碳酸锂价格敏感性分析模型",
+      "purpose": "评估锂电回收业务在低价环境下的经济可行性",
+      "related_hypothesis": "h_7"
+    },
+    {
+      "priority": "medium",
+      "material": "与主流电池厂（如宁德时代、比亚迪）的合作合同、订单或样品测试报告",
+      "purpose": "验证新能源客户隐性合作假设是否成立",
+      "related_hypothesis": "h_2, h_6"
+    },
+    {
+      "priority": "low",
+      "material": "千沐新能源的财务报表和技术专利清单",
+      "purpose": "验证并购整合失败的具体原因",
+      "related_hypothesis": "h_4, h_8"
+    }
+  ],
+  "remaining_unknowns": [
+    {
+      "issue": "AI平台的技术护城河深度无法量化",
+      "why_blocking": "若AI平台效率提升不显著，则项目核心价值不成立",
+      "how_to_resolve": "要求公司提供与传统方法的对比数据，或访谈第三方专家（如晶泰科技客户）",
+      "priority": "high"
+    },
+    {
+      "issue": "锂电回收业务在低价环境下的经济性未知",
+      "why_blocking": "若经济性为负，则锂电回收业务无商业价值，影响整体估值",
+      "how_to_resolve": "要求公司提供成本结构明细和敏感性分析模型，或访谈行业分析师",
+      "priority": "high"
+    },
+    {
+      "issue": "新能源客户合作进展不透明",
+      "why_blocking": "若无法获得主流电池厂订单，则新能源业务线无商业化前景",
+      "how_to_resolve": "要求公司提供合作合同或测试报告，或直接访谈潜在客户",
+      "priority": "medium"
+    }
+  ],
+  "next_actions": [
+    {
+      "action": "暂停所有尽调活动，等待公司提供AI平台量化对比数据和锂电回收经济性模型",
+      "purpose": "避免在关键证据缺失的情况下继续投入资源",
+      "who": "用户",
+      "priority": "high"
+    },
+    {
+      "action": "向公司正式发送材料请求清单（优先要求AI对比数据和锂电回收模型）",
+      "purpose": "明确告知公司所需证据，推动信息透明化",
+      "who": "用户",
+      "priority": "high"
+    },
+    {
+      "action": "若公司无法在2周内提供上述材料，则正式停止跟进",
+      "purpose": "设定明确的时间底线，避免无限期等待",
+      "who": "用户",
+      "priority": "medium"
+    },
+    {
+      "action": "内部复盘：总结美妆和新能源业务证伪的经验，优化未来尽调假设",
+      "purpose": "提升团队对类似项目的判断效率",
+      "who": "公司",
+      "priority": "low"
+    }
+  ],
+  "key_risks": [
+    {
+      "risk": "AI平台技术护城河被高估",
+      "impact": "若AI效率提升不显著，项目核心价值消失",
+      "likelihood": "medium",
+      "mitigation": "要求提供量化对比数据，或访谈第三方专家"
+    },
+    {
+      "risk": "锂电回收业务在低价环境下亏损",
+      "impact": "锂电回收业务无商业价值，影响整体估值",
+      "likelihood": "high",
+      "mitigation": "要求提供成本结构明细和敏感性分析模型"
+    },
+    {
+      "risk": "新能源客户合作无法落地",
+      "impact": "新能源业务线无商业化前景",
+      "likelihood": "high",
+      "mitigation": "要求提供合作合同或测试报告"
+    },
+    {
+      "risk": "公司信息不透明，存在隐瞒负面信息",
+      "impact": "尽调结论可能基于不完整信息",
+      "likelihood": "medium",
+      "mitigation": "要求提供第三方验证（如客户访谈、行业分析师）"
+    }
+  ],
+  "go_no_go_logic": "当前项目核心逻辑已被打穿：美妆和新能源两大业务线均被证伪，仅剩AI平台存疑。虽然AI平台有4项正面信号，但均为未验证的假设，且存在3项已确认的负面信号和1项关键不确定性。根据规则引擎，负面信号多于正面，且关键假设未验证，因此process_decision为pause，investment_decision为reject。除非公司能提供AI平台的量化对比数据证明其技术护城河，以及锂电回收业务的经济性模型证明其商业可行性，否则不建议重启。"
+}

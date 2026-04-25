@@ -1,0 +1,95 @@
+{
+  "profile_id": "government_fund",
+  "profile_type": "fund",
+  "name": "政府产业基金",
+  "description": "政府设立的产业引导基金，重点支持能带动本地经济发展、产业升级和就业的项目。",
+  "hard_constraints": [
+    {
+      "key": "local_landing",
+      "description": "项目需要有明确本地落地可能性，能够在当地形成实质性的生产经营活动。",
+      "priority": "high",
+      "examples": ["在本地建厂", "设立子公司", "产能迁移至当地"]
+    },
+    {
+      "key": "reverse_investment",
+      "description": "项目方需配合形成反投或地方经济贡献（如税收、就业、产业链带动）。",
+      "priority": "high",
+      "examples": ["承诺反投金额", "本地采购比例", "带动就业人数"]
+    },
+    {
+      "key": "production_capacity",
+      "description": "偏好有产线建设、产能扩张或规模化生产能力的项目。",
+      "priority": "medium",
+      "examples": ["有在建产线", "计划扩产", "具备量产能力"]
+    }
+  ],
+  "preferences": [
+    {
+      "key": "industrialization",
+      "description": "偏好能带动产业链上下游协同、促进本地制造和实体经济的项目。",
+      "priority": "high",
+      "weight": 0.3
+    },
+    {
+      "key": "technology_transfer",
+      "description": "希望项目能带来技术转移或产业升级。",
+      "priority": "medium",
+      "weight": 0.2
+    },
+    {
+      "key": "employment",
+      "description": "能带动当地就业的项目优先。",
+      "priority": "low",
+      "weight": 0.1
+    }
+  ],
+  "avoid": [
+    {
+      "key": "pure_customized_rnd",
+      "description": "不偏好只做小批量定制研发、难以本地规模化落地的项目。",
+      "priority": "high",
+      "severity": "high"
+    },
+    {
+      "key": "virtual_economy",
+      "description": "不偏好纯软件、SaaS等虚拟经济模式，除非能证明有明确的本地化需求。",
+      "priority": "medium",
+      "severity": "medium"
+    },
+    {
+      "key": "no_production_plan",
+      "description": "项目方明确拒绝落地、反投或产线建设要求的，基本不符合。",
+      "priority": "high",
+      "severity": "critical"
+    }
+  ],
+  "fit_questions": [
+    "项目是否愿意在本地落地？",
+    "是否有明确产线建设或产能迁移计划？",
+    "是否接受反投或地方产业协同要求？",
+    "业务模式是否依赖规模化生产，而不是小批量定制？",
+    "新能源/新材料等项目是否具备本地落地的技术和市场条件？"
+  ],
+  "evaluation_criteria": {
+    "landing_willingness": {
+      "weight": 0.4,
+      "description": "落地意愿和可行性"
+    },
+    "production_scale": {
+      "weight": 0.3,
+      "description": "产线规模和产能规划"
+    },
+    "reverse_investment": {
+      "weight": 0.3,
+      "description": "反投和地方贡献"
+    }
+  },
+  "notes": [
+    "该画像只用于 fit 判断，不应污染通用项目判断。",
+    "政府基金的核心诉求是带动地方经济，不是追求最高回报率。",
+    "项目本身好≠适合政府基金，必须同时满足落地要求。"
+  ],
+  "status": "approved",
+  "created_at": "2026-04-25",
+  "updated_at": "2026-04-25"
+}

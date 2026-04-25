@@ -1,0 +1,18 @@
+{
+  "profile_id": "neutral_investor",
+  "profile_type": "fund",
+  "name": "中性投资人",
+  "description": "不带特定基金约束的通用投资判断画像。用于不带偏好色彩的纯项目判断。",
+  "hard_constraints": [],
+  "preferences": [],
+  "avoid": [],
+  "fit_questions": [],
+  "notes": [
+    "这是系统的默认画像，不偏向任何特定基金类型。",
+    "Step1/5 可以使用此画像做无偏好色彩的通用判断。",
+    "Step10 如果使用此画像，只会基于项目本身质量判断，不做基金匹配。"
+  ],
+  "status": "approved",
+  "created_at": "2026-04-25",
+  "updated_at": "2026-04-25"
+}

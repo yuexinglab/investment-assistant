@@ -1,0 +1,230 @@
+{
+  "meeting_quality": {
+    "answer_directness": "low",
+    "evidence_strength": "low",
+    "evasion_level": "medium",
+    "overall_confidence": "medium",
+    "consistency": "medium",
+    "evasion_signals": [
+      "问题「追问：那这些实验数据大概有多少条...」未得到有效回答",
+      "问题「切入：看到你们和协鑫在合作深共晶电解液，这个产品跟现在主流的...」未得到有效回答",
+      "问题「追问：那如果考虑到规模化生产，比如年产1000吨，成本能降到...」未得到有效回答"
+    ],
+    "answered_count": 3,
+    "partially_count": 3,
+    "weak_count": 3,
+    "missing_evidence_count": 17
+  },
+  "question_validation": [
+    {
+      "question_id": "q_001",
+      "original_question": "**AI平台是真壁垒还是营销噱头** — 数据来源和预测准确率",
+      "matched_information_ids": [
+        "ni_009"
+      ],
+      "matched_information_summary": [
+        "公司AI平台于2024年搭建，目前准确率约70-80%，尚未形成闭环，主要作为研发参考工具。"
+      ],
+      "answer_summary": "公司称AI平台于2024年搭建，目前准确率约70-80%，尚未形成闭环，主要作为研发参考工具，未明确说明数据来源。",
+      "status": "partially_answered",
+      "quality": "medium",
+      "impact": "slightly_weakens",
+      "missing_evidence": [
+        "数据来源说明",
+        "准确率验证报告",
+        "实际应用案例"
+      ],
+      "follow_up_question": "要求提供AI平台的数据来源清单、准确率验证方法及至少3个实际研发案例，以判断其是否构成真正壁垒。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_002",
+      "original_question": "**新能源业务是真需求还是概念** — 成本对比和客户采购意向",
+      "matched_information_ids": [
+        "ni_008",
+        "ni_013"
+      ],
+      "matched_information_summary": [
+        "公司新能源业务（电池电解液/电池回收/光伏回收）预计2026年5月方案落地，但年内预计无收入贡献。",
+        "公司并购千沐新能源主要为整合研发中台，技术底层逻辑一致（A+B超分子组合）。"
+      ],
+      "answer_summary": "新能源业务预计2026年5月方案落地但年内无收入贡献，并购千沐主要为整合研发中台，技术底层逻辑一致，但无成本对比和客户采购意向数据。",
+      "status": "partially_answered",
+      "quality": "medium",
+      "impact": "slightly_weakens",
+      "missing_evidence": [
+        "深共晶电解液与LiPF6成本对比数据",
+        "客户采购意向书或合同",
+        "新能源业务独立收入预测"
+      ],
+      "follow_up_question": "要求提供深共晶电解液的成本测算表、与协鑫的合作协议及客户采购意向书，以验证需求真实性。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_003",
+      "original_question": "**2025年扭亏为盈的可靠性** — 增长驱动力是美妆老业务还是新业务爆发",
+      "matched_information_ids": [
+        "ni_001",
+        "ni_002",
+        "ni_003",
+        "ni_004",
+        "ni_005",
+        "ni_007",
+        "ni_008"
+      ],
+      "matched_information_summary": [
+        "2025年公司美妆原料收入约1.35亿元，占总营收95%。",
+        "公司预计2026年总营收2-2.5亿元，主要增长来自现有大客户放量。",
+        "欧莱雅2025年贡献约1200万元，2026年预计增长至3000万元以上。",
+        "宝洁2025年贡献700多万元，2026年预计增加约1000万元。",
+        "珀莱雅2025年贡献仅几十万元，2026年预计增长至约2500万元。",
+        "公司食品业务因韶关工厂改造尚未放量，预计2026年上半年改造完成后开始批量出货。",
+        "公司新能源业务（电池电解液/电池回收/光伏回收）预计2026年5月方案落地，但年内预计无收入贡献。"
+      ],
+      "answer_summary": "2025年美妆原料收入1.35亿元占总营收95%，2026年增长主要来自欧莱雅、宝洁、珀莱雅等大客户放量，食品和新能源业务2026年无收入贡献，增长驱动力明确为美妆老业务。",
+      "status": "answered",
+      "quality": "high",
+      "impact": "strengthens",
+      "missing_evidence": [
+        "2025年财务报表",
+        "大客户采购合同或框架协议"
+      ],
+      "follow_up_question": "要求提供2025年经审计的财务报表及欧莱雅、宝洁、珀莱雅的采购合同，以验证收入数据的真实性。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_004",
+      "original_question": "切入：看到你们BP里提到建沐™AI平台，这个平台的数据来源主要是哪些",
+      "matched_information_ids": [
+        "ni_009"
+      ],
+      "matched_information_summary": [
+        "公司AI平台于2024年搭建，目前准确率约70-80%，尚未形成闭环，主要作为研发参考工具。"
+      ],
+      "answer_summary": "公司仅说明AI平台于2024年搭建，准确率约70-80%，未明确回答数据来源。",
+      "status": "partially_answered",
+      "quality": "low",
+      "impact": "no_change",
+      "missing_evidence": [
+        "数据来源清单",
+        "数据采集方法说明"
+      ],
+      "follow_up_question": "要求明确列出AI平台的数据来源（如实验数据、文献、客户反馈等），并提供数据采集流程文档。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_005",
+      "original_question": "追问：那这些实验数据大概有多少条",
+      "matched_information_ids": [],
+      "matched_information_summary": [],
+      "answer_summary": "（会议记录中未找到该问题的明确回答）",
+      "status": "not_answered",
+      "quality": "low",
+      "impact": "no_change",
+      "missing_evidence": [
+        "实验数据条数"
+      ],
+      "follow_up_question": "要求提供AI平台训练所用的实验数据总条数及数据增长计划。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_006",
+      "original_question": "切入：看到你们和协鑫在合作深共晶电解液，这个产品跟现在主流的LiPF6电解液比，成本大概是什么水平",
+      "matched_information_ids": [],
+      "matched_information_summary": [],
+      "answer_summary": "（会议记录中未找到该问题的明确回答）",
+      "status": "not_answered",
+      "quality": "low",
+      "impact": "no_change",
+      "missing_evidence": [
+        "成本对比数据"
+      ],
+      "follow_up_question": "要求提供深共晶电解液与LiPF6电解液的成本对比表，包括原材料、生产、规模化后的成本测算。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_007",
+      "original_question": "追问：那如果考虑到规模化生产，比如年产1000吨，成本能降到多少",
+      "matched_information_ids": [],
+      "matched_information_summary": [],
+      "answer_summary": "（会议记录中未找到该问题的明确回答）",
+      "status": "not_answered",
+      "quality": "low",
+      "impact": "no_change",
+      "missing_evidence": [
+        "规模化成本测算"
+      ],
+      "follow_up_question": "要求提供年产1000吨深共晶电解液的详细成本测算模型，包括设备投资、原材料成本、能耗等。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_008",
+      "original_question": "切入：看到你们预计2025年扭亏为盈，主要驱动力是什么",
+      "matched_information_ids": [
+        "ni_001",
+        "ni_002",
+        "ni_003",
+        "ni_004",
+        "ni_005",
+        "ni_007",
+        "ni_008"
+      ],
+      "matched_information_summary": [
+        "2025年公司美妆原料收入约1.35亿元，占总营收95%。",
+        "公司预计2026年总营收2-2.5亿元，主要增长来自现有大客户放量。",
+        "欧莱雅2025年贡献约1200万元，2026年预计增长至3000万元以上。",
+        "宝洁2025年贡献700多万元，2026年预计增加约1000万元。",
+        "珀莱雅2025年贡献仅几十万元，2026年预计增长至约2500万元。",
+        "公司食品业务因韶关工厂改造尚未放量，预计2026年上半年改造完成后开始批量出货。",
+        "公司新能源业务（电池电解液/电池回收/光伏回收）预计2026年5月方案落地，但年内预计无收入贡献。"
+      ],
+      "answer_summary": "2025年扭亏为盈的主要驱动力是美妆老业务，其中美妆原料收入1.35亿元占总营收95%，2026年增长来自欧莱雅、宝洁、珀莱雅等大客户放量，食品和新能源业务无贡献。",
+      "status": "answered",
+      "quality": "high",
+      "impact": "strengthens",
+      "missing_evidence": [
+        "2025年扭亏为盈的财务预测表",
+        "成本控制措施说明"
+      ],
+      "follow_up_question": "要求提供2025年扭亏为盈的详细财务预测，包括收入、成本、费用拆分，并验证大客户订单的确定性。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_009",
+      "original_question": "追问：美妆业务2025年预计增长多少",
+      "matched_information_ids": [
+        "ni_001",
+        "ni_002",
+        "ni_003",
+        "ni_004",
+        "ni_005"
+      ],
+      "matched_information_summary": [
+        "2025年公司美妆原料收入约1.35亿元，占总营收95%。",
+        "公司预计2026年总营收2-2.5亿元，主要增长来自现有大客户放量。",
+        "欧莱雅2025年贡献约1200万元，2026年预计增长至3000万元以上。",
+        "宝洁2025年贡献700多万元，2026年预计增加约1000万元。",
+        "珀莱雅2025年贡献仅几十万元，2026年预计增长至约2500万元。"
+      ],
+      "answer_summary": "2025年美妆收入1.35亿元，2026年预计总营收2-2.5亿元，主要增长来自欧莱雅（从1200万增至3000万+）、宝洁（从700万增至1700万左右）、珀莱雅（从几十万增至2500万），可推算美妆业务2026年增长约48%-85%。",
+      "status": "answered",
+      "quality": "high",
+      "impact": "strengthens",
+      "missing_evidence": [
+        "2025年美妆业务具体增长率数据",
+        "大客户增长预测的合同依据"
+      ],
+      "follow_up_question": "要求提供2025年美妆业务收入增长率的具体计算，以及欧莱雅、宝洁、珀莱雅增长预测的采购合同或框架协议。",
+      "question_source": "base",
+      "profile_id": ""
+    }
+  ]
+}

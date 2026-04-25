@@ -71,3 +71,29 @@ def save_and_parse(file_obj, project_dir: str, source_type: str = "bp") -> str:
         f.write(text)
 
     return text_path
+
+
+def parse_meeting_file(file_obj, project_dir: str, source_type: str = "meeting") -> str:
+    """
+    解析会议记录文件（txt / doc / docx），返回纯文本内容。
+    保存到 v2_context/materials/
+    """
+    materials_dir = os.path.join(project_dir, "v2_context", "materials")
+    os.makedirs(materials_dir, exist_ok=True)
+
+    filename = secure_filename(file_obj.filename)
+    ext = filename.rsplit(".", 1)[-1].lower() if "." in filename else "txt"
+    ts = datetime.now().strftime("%H%M%S")
+    save_name = f"{source_type}_{ts}.{ext}"
+    raw_path = os.path.join(materials_dir, save_name)
+    file_obj.save(raw_path)
+
+    # 解析
+    if ext in ("docx",):
+        text = parse_docx(raw_path)
+    elif ext in ("pdf",):
+        text = parse_pdf(raw_path)
+    else:
+        text = parse_txt(raw_path)
+
+    return text

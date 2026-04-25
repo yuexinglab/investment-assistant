@@ -1,0 +1,67 @@
+{
+  "fit_decision": "not_fit",
+  "final_recommendation": "pass",
+  "fit_score": 10,
+  "matched_constraints": [],
+  "mismatched_constraints": [
+    {
+      "constraint": "项目需要有明确本地落地可能性，能够在当地形成实质性的生产经营活动。",
+      "evidence": "项目方明确表示不愿意在本地落地，也不接受反投要求。",
+      "severity": "high"
+    },
+    {
+      "constraint": "项目方需配合形成反投或地方经济贡献（如税收、就业、产业链带动）。",
+      "evidence": "项目方明确拒绝反投要求。",
+      "severity": "high"
+    },
+    {
+      "constraint": "偏好有产线建设、产能扩张或规模化生产能力的项目。",
+      "evidence": "业务模式偏定制化，产量不是主要驱动因素。",
+      "severity": "medium"
+    },
+    {
+      "constraint": "项目方明确拒绝落地、反投或产线建设要求的，基本不符合。",
+      "evidence": "项目方明确拒绝落地和反投。",
+      "severity": "critical"
+    }
+  ],
+  "compromises": [
+    {
+      "preference": "偏好能带动产业链上下游协同、促进本地制造和实体经济的项目。",
+      "compromise_reason": "项目方拒绝落地，无法实现本地制造和实体经济带动，不可妥协。",
+      "acceptable": false
+    },
+    {
+      "preference": "希望项目能带来技术转移或产业升级。",
+      "compromise_reason": "即使有技术转移可能，但无本地落地意愿，无法实现产业升级，不可妥协。",
+      "acceptable": false
+    },
+    {
+      "preference": "能带动当地就业的项目优先。",
+      "compromise_reason": "无本地落地，无法带动就业，不可妥协。",
+      "acceptable": false
+    }
+  ],
+  "reasoning": "项目方明确拒绝本地落地和反投，直接违反政府产业基金的核心硬约束（HIGH和CRITICAL），且业务偏定制化、无规模化产能，与基金偏好严重冲突，匹配度极低。",
+  "candidate_profile_updates": [
+    {
+      "profile_id": "government_fund",
+      "candidate_rule": "对于明确拒绝落地和反投的项目，直接判定为not_fit，无需进一步评估其他维度。",
+      "evidence": "项目方明确拒绝落地和反投，导致所有硬约束和偏好均无法满足。",
+      "should_review": true
+    }
+  ],
+  "candidate_case_record": {
+    "project_name": "测试科技公司_20260424_173519",
+    "project_type": "美妆原料+新能源+食品",
+    "project_judgement": "核心假设被削弱，关键不确定性未验证，暂不具备投资决策条件。",
+    "fit_judgement": "not_fit",
+    "final_decision": "pass",
+    "fit_reason": [
+      "项目方明确拒绝本地落地和反投，违反核心硬约束。",
+      "业务偏定制化，无规模化产能，不符合偏好。",
+      "新能源业务无收入验证，风险较高。"
+    ],
+    "source_profile": "government_fund"
+  }
+}
