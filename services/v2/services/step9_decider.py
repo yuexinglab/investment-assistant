@@ -239,6 +239,7 @@ def _generate_with_llm(
     model: str = None
 ) -> Dict[str, Any]:
     """调用 LLM 生成 decision_breakdown + material_request_list 等"""
+    import time
 
     system_prompt, user_prompt = build_step9_prompt_v3(
         step8_summary=step8_summary,
@@ -256,8 +257,14 @@ def _generate_with_llm(
 请基于上述约束，生成其他内容。"""
     user_prompt += constraint_note
 
-    raw = call_deepseek(system_prompt, user_prompt, model=model, max_tokens=8192)
-    data = _parse_json(raw)
+    # Step9: 60s 超时 + 不重试（快速失败，规则兜底）
+    try:
+        raw = call_deepseek(system_prompt, user_prompt, model=model, max_tokens=8192,
+                           timeout=60, max_retries=0)
+        data = _parse_json(raw)
+    except Exception as e:
+        print(f"[Step9] LLM 调用失败，使用规则兜底：{e}")
+        data = {}
 
     if not isinstance(data, dict):
         data = {}

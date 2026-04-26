@@ -130,5 +130,145 @@
     "status": "pending_review",
     "created_at": "2026-04-26T01:35:19.689495",
     "created_by": "Step10"
+  },
+  {
+    "project_name": "杉海创新科技中性投资人测试2_V3架构_20260425_231856",
+    "project_judgement": "当前信息严重不足，4项关键不确定性未解决，且会议可信度低，必须补充核心材料后方可继续推进。",
+    "fit_judgement": "partial_fit",
+    "final_decision": "request_materials",
+    "fit_reason": [
+      "中性投资人不对项目质量做判断",
+      "项目推进建议完全基于 Step9 双层决策"
+    ],
+    "source_profile": "neutral_investor",
+    "status": "pending_review",
+    "created_at": "2026-04-26T10:50:58.072720",
+    "created_by": "Step10"
+  },
+  {
+    "project_name": "杉海创新科技中性投资人测试2_V3架构_20260425_231856",
+    "project_judgement": "本次会议未提供任何实质性新信息，无法验证或否定任何关键假设，项目仍处于材料缺失状态，需先补足基础材料后再决定是否继续深入尽调。",
+    "fit_judgement": "partial_fit",
+    "final_decision": "request_materials",
+    "fit_reason": [
+      "中性投资人不对项目质量做判断",
+      "项目推进建议完全基于 Step9 双层决策"
+    ],
+    "source_profile": "neutral_investor",
+    "status": "pending_review",
+    "created_at": "2026-04-26T10:52:26.313540",
+    "created_by": "Step10"
+  },
+  {
+    "project_name": "杉海创新科技中性投资人测试2_V3架构_20260425_231856",
+    "project_judgement": "当前信息严重不足，4项关键假设均未验证，且会议可信度低，必须先补材料再决定是否继续尽调。",
+    "fit_judgement": "partial_fit",
+    "final_decision": "request_materials",
+    "fit_reason": [
+      "中性投资人不对项目质量做判断",
+      "项目推进建议完全基于 Step9 双层决策"
+    ],
+    "source_profile": "neutral_investor",
+    "status": "pending_review",
+    "created_at": "2026-04-26T11:02:09.756423",
+    "created_by": "Step10"
+  },
+  {
+    "project_name": "杉海创新科技中性投资人测试2_V3架构_20260425_231856",
+    "project_judgement": "本次会议未提供任何有效新信息，原有认知未获验证或更新，项目缺乏进入投资决策的基础，需先补充关键材料再决定是否继续尽调。",
+    "fit_judgement": "partial_fit",
+    "final_decision": "request_materials",
+    "fit_reason": [
+      "中性投资人不对项目质量做判断",
+      "项目推进建议完全基于 Step9 双层决策"
+    ],
+    "source_profile": "neutral_investor",
+    "status": "pending_review",
+    "created_at": "2026-04-26T11:07:54.871916",
+    "created_by": "Step10"
+  },
+  {
+    "project_name": "杉海创新科技中性投资人测试2_V3架构_20260425_231856",
+    "project_judgement": "当前信息严重不足，4项关键不确定性均未验证，且会议可信度低，必须暂停深度沟通，先补材料再决定是否继续。",
+    "fit_judgement": "partial_fit",
+    "final_decision": "request_materials",
+    "fit_reason": [
+      "中性投资人不对项目质量做判断",
+      "项目推进建议完全基于 Step9 双层决策"
+    ],
+    "source_profile": "neutral_investor",
+    "status": "pending_review",
+    "created_at": "2026-04-26T11:42:58.667264",
+    "created_by": "Step10"
+  },
+  {
+    "project_name": "杉海创新科技中性投资人测试2_V3架构_20260425_231856",
+    "project_judgement": "当前信息严重不足，4项关键不确定性均未验证，且会议可信度低，必须先补材料再决定是否继续尽调。",
+    "fit_judgement": "partial_fit",
+    "final_decision": "request_materials",
+    "fit_reason": [
+      "中性投资人不对项目质量做判断",
+      "项目推进建议完全基于 Step9 双层决策"
+    ],
+    "source_profile": "neutral_investor",
+    "status": "pending_review",
+    "created_at": "2026-04-26T11:51:00.360345",
+    "created_by": "Step10"
+  },
+  {
+    "project_name": "杉海创新科技中性投资人测试2_V3架构_20260425_231856",
+    "project_judgement": "本次会议未提供任何新信息，既未验证正面假设也未排除负面风险，项目仍处于材料不足阶段，无法推进投资决策。",
+    "fit_judgement": "partial_fit",
+    "final_decision": "request_materials",
+    "fit_reason": [
+      "中性投资人不对项目质量做判断",
+      "项目推进建议完全基于 Step9 双层决策"
+    ],
+    "source_profile": "neutral_investor",
+    "status": "pending_review",
+    "created_at": "2026-04-26T11:54:08.050622",
+    "created_by": "Step10"
+  },
+  {
+    "project_name": "杉海创新科技中性投资人测试2_V3架构_20260425_231856",
+    "project_judgement": "本次会议未提供任何有效新信息，项目仍处于材料缺失状态，无法推进投资决策，需先补足关键材料。",
+    "fit_judgement": "partial_fit",
+    "final_decision": "request_materials",
+    "fit_reason": [
+      "中性投资人不对项目质量做判断",
+      "项目推进建议完全基于 Step9 双层决策"
+    ],
+    "source_profile": "neutral_investor",
+    "status": "pending_review",
+    "created_at": "2026-04-26T11:55:26.908711",
+    "created_by": "Step10"
+  },
+  {
+    "project_name": "杉海创新科技中性投资人测试2_V3架构_20260425_231856",
+    "project_judgement": "当前信息不足以支持任何投资判断，4项关键不确定性均未验证，且会议可信度低，必须要求补充核心材料后再决定是否继续尽调。",
+    "fit_judgement": "partial_fit",
+    "final_decision": "request_materials",
+    "fit_reason": [
+      "中性投资人不对项目质量做判断",
+      "项目推进建议完全基于 Step9 双层决策"
+    ],
+    "source_profile": "neutral_investor",
+    "status": "pending_review",
+    "created_at": "2026-04-26T12:01:50.065845",
+    "created_by": "Step10"
+  },
+  {
+    "project_name": "杉海创新科技中性投资人测试2_V3架构_20260425_231856",
+    "project_judgement": "本次会议未提供任何有效新信息，原有关键不确定性未得到验证，项目处于信息真空状态，必须要求补充材料后才能继续推进。",
+    "fit_judgement": "partial_fit",
+    "final_decision": "request_materials",
+    "fit_reason": [
+      "中性投资人不对项目质量做判断",
+      "项目推进建议完全基于 Step9 双层决策"
+    ],
+    "source_profile": "neutral_investor",
+    "status": "pending_review",
+    "created_at": "2026-04-26T12:09:25.193549",
+    "created_by": "Step10"
   }
 ]

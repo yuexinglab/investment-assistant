@@ -18,9 +18,10 @@ AI 项目判断工作台 -- Flask 主入口
   POST /project/<id>/analyze          -> 旧1.0 AB互检
   POST /project/<id>/analyze_v25      -> 旧v2.5 9步流程
 """
-import sys, io, msvcrt, os
-# Windows 控制台 UTF-8 编码支持
+import sys, io, os
+# Windows 控制台 UTF-8 编码支持（仅 Windows 生效）
 if sys.platform == "win32":
+    import msvcrt
     msvcrt.setmode(sys.stdout.fileno(), os.O_BINARY)
     msvcrt.setmode(sys.stderr.fileno(), os.O_BINARY)
     # 重定向 stdout/stderr 为 UTF-8

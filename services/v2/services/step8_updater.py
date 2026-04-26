@@ -2,6 +2,11 @@
 """
 step8_updater.py — Step8 认知更新（v2.3 语义分离架构）
 
+v2.3.1 修复（2026-04-26）：
+- _fill_with_llm 增加 90s 超时（防止 LLM 响应慢卡死 step8）
+- update() 增加 try/except 兜底，确保 step8 永不让 pipeline 卡死
+
+
 核心设计：
 - Step8 只看 Step5（会前假设）+ Step7（问题验证结果）
 - 不再看 Step6 或会议原文
@@ -519,7 +524,9 @@ def _fill_with_llm(
         step7_result=step7_result
     )
 
-    raw = call_deepseek(system_prompt, user_prompt, model=model)
+    # v2.3.1: 用 60s 超时（禁用重试），让 LLM 快速失败
+    raw = call_deepseek(system_prompt, user_prompt, model=model,
+                        max_retries=1, timeout=60)
     parsed = _parse_json(raw)
 
     raw_updates = parsed.get("hypothesis_updates", []) if isinstance(parsed, dict) else []
@@ -594,50 +601,73 @@ def update(
     Returns:
         Step8Output
     """
-    # Step7 结构
-    step7_validations = step7_result.get("question_validation", [])
-    step7_quality = step7_result.get("meeting_quality", {})
+    # v2.3.1: 整体 try/except，确保任何异常都不让 pipeline 卡死
+    try:
+        # Step7 结构
+        step7_validations = step7_result.get("question_validation", [])
+        step7_quality = step7_result.get("meeting_quality", {})
 
-    # ---- 规则引擎：自动映射所有假设 ----
-    hypothesis_updates, new_risks, unchanged = compute_hypothesis_updates(
-        step5_judgements=step5_judgements,
-        step7_validations=step7_validations,
-        step7_result=step7_result,  # v2.2.2 传入以获取 info_type
-    )
-
-    # ---- LLM 辅助：填充 updated_view 和 why_changed ----
-    if hypothesis_updates:
-        hypothesis_updates = _fill_with_llm(
-            hypothesis_updates=hypothesis_updates,
+        # 规则引擎：自动映射所有假设
+        hypothesis_updates, new_risks, unchanged = compute_hypothesis_updates(
             step5_judgements=step5_judgements,
+            step7_validations=step7_validations,
             step7_result=step7_result,
-            model=model
         )
 
-    # ---- 综合判断是否显著变化 ----
-    # 标准：有任何 weakened/overturned，或新增风险 >= 2 条
-    has_significant = any(
-        h.change_type in (ChangeType.WEAKENED, ChangeType.OVERTURNED)
-        for h in hypothesis_updates
-    ) or len(new_risks) >= 2
+        # LLM 辅助：填充 updated_view 和 why_changed（超时60s则规则兜底）
+        if hypothesis_updates:
+            try:
+                hypothesis_updates = _fill_with_llm(
+                    hypothesis_updates=hypothesis_updates,
+                    step5_judgements=step5_judgements,
+                    step7_result=step7_result,
+                    model=model
+                )
+            except Exception as e:
+                print(f"[Step8] LLM 填充失败，使用规则兜底：{e}")
+                for h in hypothesis_updates:
+                    if not h.updated_view:
+                        h.updated_view = _default_updated_view(h)
+                    if not h.why_changed:
+                        h.why_changed = _default_why_changed(h, step7_result)
 
-    # 如果没有任何更新，且 Step7 整体质量好 → 未显著变化
-    if not has_significant and step7_quality.get("overall_confidence") in ("high", "medium"):
-        has_significant = False
-    else:
-        has_significant = True
+        # 综合判断是否显著变化
+        has_significant = any(
+            h.change_type in (ChangeType.WEAKENED, ChangeType.OVERTURNED)
+            for h in hypothesis_updates
+        ) or len(new_risks) >= 2
 
-    overall_change = OverallChange(
-        is_judgement_significantly_changed=has_significant,
-        new_risks=new_risks,
-        new_opportunity_added=None
-    )
+        if not has_significant and step7_quality.get("overall_confidence") in ("high", "medium"):
+            has_significant = False
+        else:
+            has_significant = True
 
-    return Step8Output(
-        hypothesis_updates=hypothesis_updates,
-        overall_change=overall_change,
-        unchanged_hypotheses=unchanged
-    )
+        overall_change = OverallChange(
+            is_judgement_significantly_changed=has_significant,
+            new_risks=new_risks,
+            new_opportunity_added=None
+        )
+
+        return Step8Output(
+            hypothesis_updates=hypothesis_updates,
+            overall_change=overall_change,
+            unchanged_hypotheses=unchanged
+        )
+
+    except Exception as e:
+        import traceback
+        print(f"[Step8] update() 异常，使用全量 unchanged 兜底：{e}")
+        traceback.print_exc()
+        unchanged = [h.get("hypothesis", h.get("dimension", "")) for h in step5_judgements]
+        return Step8Output(
+            hypothesis_updates=[],
+            overall_change=OverallChange(
+                is_judgement_significantly_changed=False,
+                new_risks=[],
+                new_opportunity_added=None
+            ),
+            unchanged_hypotheses=unchanged
+        )
 
 
 def to_dict(output: Step8Output) -> Dict[str, Any]:

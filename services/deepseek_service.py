@@ -10,10 +10,13 @@ from config import DEEPSEEK_API_KEY, DEEPSEEK_BASE_URL, DEEPSEEK_MODEL
 def call_deepseek(system_prompt: str, user_prompt: str,
                   model: str = None, max_retries: int = 3,
                   max_tokens: int = 8192,
-                  temperature: float = 0.3) -> str:
+                  temperature: float = 0.3,
+                  timeout: int = 120) -> str:
     """
     调用 DeepSeek 对话 API
     返回：AI 回复的文本字符串
+
+    timeout: 每次请求超时秒数（默认120s），调用方可覆盖
     """
     if not DEEPSEEK_API_KEY or DEEPSEEK_API_KEY == "your_api_key_here":
         raise ValueError("请先在 .env 文件中配置 DEEPSEEK_API_KEY")
@@ -37,20 +40,23 @@ def call_deepseek(system_prompt: str, user_prompt: str,
     last_error = None
     for attempt in range(1, max_retries + 1):
         try:
-            resp = requests.post(url, json=payload, headers=headers, timeout=120)
+            resp = requests.post(url, json=payload, headers=headers, timeout=timeout)
             resp.raise_for_status()
             data = resp.json()
             return data["choices"][0]["message"]["content"]
         except requests.exceptions.Timeout:
-            last_error = "请求超时"
-            time.sleep(2 * attempt)
+            last_error = f"请求超时（{timeout}s）"
+            if attempt < max_retries:
+                time.sleep(2 * attempt)
         except requests.exceptions.HTTPError as e:
             last_error = f"HTTP 错误: {e.response.status_code} - {e.response.text}"
             if e.response.status_code in (400, 401, 403):
                 break   # 不可重试的错误
-            time.sleep(2 * attempt)
+            if attempt < max_retries:
+                time.sleep(2 * attempt)
         except Exception as e:
             last_error = str(e)
-            time.sleep(2 * attempt)
+            if attempt < max_retries:
+                time.sleep(2 * attempt)
 
     raise RuntimeError(f"DeepSeek API 调用失败（重试 {max_retries} 次）：{last_error}")

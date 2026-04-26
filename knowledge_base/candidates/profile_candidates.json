@@ -43,5 +43,41 @@
     "status": "pending_review",
     "created_at": "2026-04-26T01:35:19.683550",
     "created_by": "Step10"
+  },
+  {
+    "profile_id": "neutral_investor",
+    "candidate_rule": "对于无约束的基金，项目匹配度取决于信息充分性，信息不足时应要求补充材料而非直接否决。",
+    "evidence": "项目核心假设均未验证，但无硬约束冲突，故匹配度中性但需进一步材料。",
+    "should_review": true,
+    "status": "pending_review",
+    "created_at": "2026-04-26T11:07:54.871648",
+    "created_by": "Step10"
+  },
+  {
+    "profile_id": "neutral_investor",
+    "candidate_rule": "对于信息严重不足的项目，即使无硬约束也应暂缓决策，优先要求补充材料",
+    "evidence": "项目4项关键不确定性均未验证，会议可信度低，无法做出有效匹配判断",
+    "should_review": true,
+    "status": "pending_review",
+    "created_at": "2026-04-26T11:42:58.666971",
+    "created_by": "Step10"
+  },
+  {
+    "profile_id": "neutral_investor",
+    "candidate_rule": "对于无约束的通用画像，若项目核心假设未验证，应要求补充材料而非直接通过",
+    "evidence": "项目缺乏市场规模、获客成本、单位经济模型等验证，且大客户合同和专利清单缺失",
+    "should_review": true,
+    "status": "pending_review",
+    "created_at": "2026-04-26T11:54:08.050189",
+    "created_by": "Step10"
+  },
+  {
+    "profile_id": "neutral_investor",
+    "candidate_rule": "对于无约束的通用画像，项目匹配度取决于信息充分性，信息不足时应要求补充材料而非直接通过或拒绝。",
+    "evidence": "项目存在4项关键不确定性且会议可信度低，流程决策为request_materials。",
+    "should_review": true,
+    "status": "pending_review",
+    "created_at": "2026-04-26T12:01:50.065432",
+    "created_by": "Step10"
   }
 ]

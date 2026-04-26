@@ -258,7 +258,8 @@
       const stepMap = {
         'step6': 'ps-step6', 'step7': 'ps-step7',
         'step8': 'ps-step8', 'step9': 'ps-step9',
-        '沉淀': 'ps-沉淀'
+        'step10': 'ps-step9',  // Step9 和 Step10 共用最后一个指示器
+        '沉淀': 'ps-沉淀', 'report': 'ps-沉淀'  // report 完成后复用沉淀指示器
       };
 
       // 1. POST 启动流程（不等待响应，SSE 会并行返回）
@@ -284,8 +285,13 @@
           thinkingLog.scrollTop = thinkingLog.scrollHeight;
         }
         else if (data.type === 'progress') {
-          progressBar.style.width = data.percent + '%';
-          progressMsg.textContent = data.msg || '';
+          // 确保 progressMsg 元素存在且正确更新
+          if (progressMsg) {
+            progressMsg.textContent = data.msg || '';
+          }
+          if (progressBar) {
+            progressBar.style.width = data.percent + '%';
+          }
 
           const step = data.step;
           const el = document.getElementById(stepMap[step]);
@@ -293,6 +299,12 @@
             el.classList.remove('active');
             if (data.status === 'running') el.classList.add('active');
             else if (data.status === 'done') el.classList.add('done');
+          }
+
+          // 当完成所有步骤时，清空 thinkingLog 并显示完成提示
+          if (data.status === 'done' && data.step === 'report') {
+            thinkingLog.innerHTML = '<div class="think-line success">✅ 报告生成完成！</div>';
+            thinkingLog.scrollTop = thinkingLog.scrollHeight;
           }
 
           if (data.status === 'error') {
@@ -307,7 +319,13 @@
             `<div class="think-line success">✅ 分析完成！正在跳转报告...</div>`;
           thinkingLog.scrollTop = thinkingLog.scrollHeight;
           es.close();
-          document.getElementById('completionArea').style.display = 'block';
+          // 自动跳转到后端返回的 URL（包含正确的 project_id）
+          if (data.url) {
+            window.location.href = data.url;
+          } else {
+            // 兜底：使用页面上的按钮跳转
+            document.getElementById('completionArea').style.display = 'block';
+          }
         }
       };
 
