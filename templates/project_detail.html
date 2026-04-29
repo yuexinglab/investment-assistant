@@ -138,6 +138,335 @@
     .ss-running { background: #dbeafe; color: #1d4ed8; }
     .ss-done    { background: #dcfce7; color: #15803d; }
     .ss-error   { background: #fee2e2; color: #dc2626; }
+
+    /* ═══════════════════════════════════════════
+       人工初判 — 两层卡片式交互
+    ═══════════════════════════════════════════ */
+
+    /* ── 主容器 ── */
+    .feedback-section {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .feedback-header {
+      padding: 20px 28px 16px;
+      border-bottom: 1px solid #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .feedback-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1a1a2e;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .feedback-badge {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 2px 10px;
+      border-radius: 10px;
+      background: #f3f4f6;
+      color: #9ca3af;
+    }
+    .feedback-badge.done { background: #dcfce7; color: #15803d; }
+
+    /* ── 统一字段基础 ── */
+    .fb-section {
+      margin-bottom: 28px;
+    }
+    .fb-section:last-child { margin-bottom: 0; }
+    .fb-section-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #9ca3af;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .fb-section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #f0f0f0;
+    }
+    .fb-row { display: grid; gap: 12px; margin-bottom: 12px; }
+    .fb-row-2 { grid-template-columns: 1fr 1fr; }
+    @media (max-width: 600px) { .fb-row-2 { grid-template-columns: 1fr; } }
+    .fb-field { display: flex; flex-direction: column; gap: 4px; }
+    .fb-field label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #374151;
+    }
+    .fb-field input,
+    .fb-field select,
+    .fb-field textarea {
+      padding: 9px 12px;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #1a1a2e;
+      background: white;
+      outline: none;
+      transition: border-color 0.2s;
+      font-family: inherit;
+      resize: vertical;
+    }
+    .fb-field input:focus,
+    .fb-field select:focus,
+    .fb-field textarea:focus {
+      border-color: #d97706;
+      box-shadow: 0 0 0 3px rgba(217,119,6,0.08);
+    }
+    .fb-field input[readonly] { background: #f9fafb; color: #6b7280; }
+
+    /* ── 第一层：直觉卡片 ── */
+    .layer1-card {
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      margin: 0 28px 20px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .layer1-card.has-content { border-color: #d97706; }
+    .layer1-card:hover { border-color: #d97706; }
+
+    /* 折叠头：点击展开/收起 */
+    .layer1-summary {
+      padding: 16px 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+    }
+    .layer1-summary-left {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+    }
+    .layer1-summary-top {
+      font-size: 13px;
+      color: #374151;
+      line-height: 1.5;
+    }
+    .layer1-summary-top .empty-hint {
+      color: #9ca3af;
+      font-style: italic;
+    }
+    .layer1-summary-meta {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .layer1-tag {
+      font-size: 11px;
+      padding: 2px 10px;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+    .tag-meet    { background: #dcfce7; color: #15803d; }
+    .tag-maybe   { background: #fef3c7; color: #92400e; }
+    .tag-pass    { background: #fee2e2; color: #dc2626; }
+    .tag-unknown { background: #f3f4f6; color: #9ca3af; }
+    .tag-pending { background: #f3f4f6; color: #9ca3af; }
+
+    .layer1-expand-icon {
+      font-size: 16px;
+      color: #9ca3af;
+      transition: transform 0.3s;
+      flex-shrink: 0;
+      margin-left: 12px;
+    }
+    .layer1-card.expanded .layer1-expand-icon { transform: rotate(180deg); }
+
+    /* 展开后的表单区 */
+    .layer1-form {
+      display: none;
+      padding: 0 20px 20px;
+      border-top: 1px solid #f0f0f0;
+    }
+    .layer1-card.expanded .layer1-form { display: block; }
+
+    /* 决策卡片 */
+    .decision-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-top: 4px;
+    }
+    @media (max-width: 560px) { .decision-cards { grid-template-columns: repeat(2, 1fr); } }
+    .decision-card {
+      position: relative;
+      border: 2px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 10px 12px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s;
+      background: white;
+    }
+    .decision-card input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
+    .decision-card:hover { border-color: #d97706; background: #fffbeb; }
+    .decision-card.selected { border-color: #d97706; background: #fffbeb; }
+    .decision-card .card-label { font-size: 14px; font-weight: 700; color: #1a1a2e; }
+    .decision-card .card-desc { font-size: 11px; color: #9ca3af; margin-top: 2px; }
+
+    /* 第一层底部按钮 */
+    .layer1-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid #f0f0f0;
+    }
+    .btn-layer1-save {
+      padding: 9px 18px;
+      background: #d97706;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-layer1-save:hover { background: #b45309; }
+    .layer1-hint {
+      font-size: 12px;
+      color: #9ca3af;
+      margin-left: auto;
+    }
+    .layer1-expand-link {
+      font-size: 12px;
+      color: #4a90d9;
+      cursor: pointer;
+      margin-left: 8px;
+      text-decoration: underline;
+      background: none;
+      border: none;
+      padding: 0;
+      font-family: inherit;
+    }
+    .layer1-expand-link:hover { color: #2563eb; }
+    .msg-saved { font-size: 12px; color: #15803d; }
+
+    /* ── 第二层：深入思考 ── */
+    .layer2-section {
+      padding: 0 28px 24px;
+      display: none;
+    }
+    .layer2-section.visible { display: block; }
+
+    .layer2-hint {
+      padding: 12px 16px;
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      font-size: 13px;
+      color: #0369a1;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    /* 自动整理 */
+    .normalize-area { display: flex; align-items: flex-start; gap: 10px; margin-top: 4px; }
+    .btn-normalize {
+      padding: 9px 16px;
+      background: #fef3c7;
+      color: #92400e;
+      border: 1.5px solid #fde68a;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+    .btn-normalize:hover { background: #fde68a; }
+    .normalize-loading { font-size: 12px; color: #9ca3af; padding-top: 8px; }
+
+    /* 标签选择 */
+    .tag-select-group { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+    .tag-select-item {
+      padding: 5px 12px;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 20px;
+      font-size: 12px;
+      color: #374151;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .tag-select-item input[type="checkbox"] { display: none; }
+    .tag-select-item:hover { border-color: #d97706; color: #92400e; }
+    .tag-select-item.selected {
+      border-color: #d97706;
+      background: #fef3c7;
+      color: #92400e;
+      font-weight: 600;
+    }
+
+    /* 底栏 */
+    .feedback-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding-top: 16px;
+      border-top: 1px solid #f0f0f0;
+      margin-top: 20px;
+    }
+    .btn-save {
+      padding: 10px 20px;
+      background: #d97706;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-save:hover { background: #b45309; }
+    .btn-save-run {
+      padding: 10px 20px;
+      background: white;
+      color: #d97706;
+      border: 2px solid #d97706;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-save-run:hover { background: #fffbeb; }
   </style>
 </head>
 <body>
@@ -220,6 +549,424 @@
         </div>
         {% endif %}
       </div>
+    </div>
+
+    <!-- ════════ 人工初判 — 两层卡片 ═══════════════════════ -->
+    <div class="feedback-section">
+      <div class="feedback-header">
+        <div class="feedback-title">
+          <span>🧠</span> 人工初判
+          <span class="feedback-badge" id="fbStatusBadge">
+            {% if feedback_case and feedback_case.review_status == 'deep_reflection_saved' %}✅ 完成
+            {% elif feedback_case and feedback_case.review_status == 'first_impression_saved' %}💡 直觉已保存
+            {% else %}未开始{% endif %}
+          </span>
+        </div>
+        <span style="font-size:12px;color:#9ca3af">先直觉 → 再深思 → 对比 AI</span>
+      </div>
+
+      {# ── 从后端读取现有数据 ── #}
+      {% set fi = {} %}
+      {% set dr = {} %}
+      {% if feedback_case %}
+        {% set fi = feedback_case.get('first_impression', {}) %}
+        {% set dr = feedback_case.get('deep_reflection', {}) %}
+      {% endif %}
+
+      <form id="feedbackForm" onsubmit="return false;">
+        <input type="hidden" id="fb_feedback_id" value="{{ feedback_case.feedback_id if feedback_case else '' }}">
+
+        <!-- ══ 第一层：直觉卡片（始终可见）═════════════════ -->
+        <div class="layer1-card{% if fi.one_liner or fi.decision %} has-content{% endif %}" id="layer1Card">
+
+          {# 折叠头：显示摘要 or 提示填直觉 #}
+          <div class="layer1-summary" onclick="toggleLayer1()">
+            <div class="layer1-summary-left">
+              <div class="layer1-summary-top">
+                {% if fi.one_liner %}
+                  <strong>{{ fi.one_liner }}</strong>
+                {% else %}
+                  <span class="empty-hint">点击填写你的第一直觉...</span>
+                {% endif %}
+              </div>
+              <div class="layer1-summary-meta">
+                {% if fi.decision == 'meet' %}
+                  <span class="layer1-tag tag-meet">✅ 建议约</span>
+                {% elif fi.decision == 'maybe_meet' %}
+                  <span class="layer1-tag tag-maybe">🤔 可以约</span>
+                {% elif fi.decision == 'request_materials' %}
+                  <span class="layer1-tag tag-pass">📄 先要材料</span>
+                {% elif fi.decision == 'pass' %}
+                  <span class="layer1-tag tag-pass">❌ Pass</span>
+                {% else %}
+                  <span class="layer1-tag tag-pending">约不约？</span>
+                {% endif %}
+                {% if fi.top_confusion %}
+                  <span style="font-size:11px;color:#9ca3af">❓ {{ fi.top_confusion }}</span>
+                {% endif %}
+              </div>
+            </div>
+            <span class="layer1-expand-icon">▾</span>
+          </div>
+
+          {# 展开后的直觉表单 #}
+          <div class="layer1-form">
+            <div class="fb-section" style="margin-top:16px">
+              <div class="fb-section-label">💡 第一直觉（30秒，不需想清楚）</div>
+
+              {# 自由书写笔记 #}
+              <div class="fb-field" style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:12px;margin-bottom:12px;">
+                <label style="font-weight:600;color:#1e293b;font-size:13px;">
+                  📝 随便写（AI 自动整理）
+                  <span style="font-weight:400;color:#64748b;font-size:11px;margin-left:8px">把你的碎片想法全倒进去，点「AI整理」自动填充下方字段</span>
+                </label>
+                <textarea id="fi_raw_note" rows="5"
+                  style="width:100%;margin-top:8px;font-size:13px;line-height:1.6;border:1px solid #cbd5e1;border-radius:6px;padding:10px;font-family:inherit;"
+                  placeholder="比如：感觉这家公司讲得很虚，AI 好像只是个噱头... 客户到底是谁？港口真的有需求吗？但是团队背景不错，清华的..."
+                >{{ fi.raw_note or '' }}</textarea>
+                <div style="margin-top:8px;display:flex;gap:8px;align-items:center;">
+                  <button type="button" onclick="normalizeFirstImpression()" id="btnNormalizeFi"
+                    style="background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:white;border:none;padding:8px 16px;border-radius:6px;cursor:pointer;font-size:13px;font-weight:600;">
+                    ✨ AI 自动整理
+                  </button>
+                  <span id="fiNormalizeLoading" style="display:none;color:#64748b;font-size:13px;">🤖 整理中...</span>
+                  <span id="fiNormalizeSuccess" style="display:none;color:#10b981;font-size:13px;">✅ 整理完成！</span>
+                </div>
+              </div>
+
+              {# 一句话理解 + 最大困惑 #}
+              <div class="fb-row fb-row-2" style="margin-top:12px;">
+                <div class="fb-field">
+                  <label>一句话理解 <span style="font-weight:400;color:#9ca3af;font-size:11px">30秒速判</span></label>
+                  <input type="text" id="fi_one_liner" placeholder="这家公司是干嘛的"
+                    value="{{ fi.one_liner or '' }}">
+                </div>
+                <div class="fb-field">
+                  <label>最困惑的点 <span style="font-weight:400;color:#9ca3af;font-size:11px">什么让你不确定</span></label>
+                  <input type="text" id="fi_top_confusion" placeholder="客户是谁？技术真假？"
+                    value="{{ fi.top_confusion or '' }}">
+                </div>
+              </div>
+
+              {# 判断 + 优先级 + 信心 #}
+              <div class="fb-field" style="margin-top:12px;">
+                <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:8px">约不约？</label>
+                <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;">
+                  <div class="decision-cards" id="layer1DecisionCards">
+                    {% set fi_dec = fi.decision or '' %}
+                    <label class="decision-card{% if fi_dec == 'meet' %} selected{% endif %}">
+                      <input type="radio" name="fi_decision" value="meet"{% if fi_dec == 'meet' %} checked{% endif %}>
+                      <div class="card-label">建议约</div><div class="card-desc">值得跟进</div>
+                    </label>
+                    <label class="decision-card{% if fi_dec == 'maybe_meet' %} selected{% endif %}">
+                      <input type="radio" name="fi_decision" value="maybe_meet"{% if fi_dec == 'maybe_meet' %} checked{% endif %}>
+                      <div class="card-label">可以约</div><div class="card-desc">优先级不高</div>
+                    </label>
+                    <label class="decision-card{% if fi_dec == 'request_materials' %} selected{% endif %}">
+                      <input type="radio" name="fi_decision" value="request_materials"{% if fi_dec == 'request_materials' %} checked{% endif %}>
+                      <div class="card-label">先要材料</div><div class="card-desc">暂不约</div>
+                    </label>
+                    <label class="decision-card{% if fi_dec == 'pass' %} selected{% endif %}">
+                      <input type="radio" name="fi_decision" value="pass"{% if fi_dec == 'pass' %} checked{% endif %}>
+                      <div class="card-label">直接 Pass</div><div class="card-desc">不值得看</div>
+                    </label>
+                  </div>
+                  <div style="display:flex;gap:12px;margin-left:8px;">
+                    <div>
+                      <label style="font-size:11px;color:#64748b;">优先级</label>
+                      <select id="fi_priority" style="border:1px solid #d1d5db;border-radius:6px;padding:6px 10px;font-size:13px;">
+                        <option value="">请选择</option>
+                        <option value="高" {% if fi.priority == '高' %}selected{% endif %}>高</option>
+                        <option value="中" {% if fi.priority == '中' %}selected{% endif %}>中</option>
+                        <option value="低" {% if fi.priority == '低' %}selected{% endif %}>低</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label style="font-size:11px;color:#64748b;">信心</label>
+                      <select id="fi_confidence" style="border:1px solid #d1d5db;border-radius:6px;padding:6px 10px;font-size:13px;">
+                        <option value="">请选择</option>
+                        <option value="高" {% if fi.confidence == '高' %}selected{% endif %}>高</option>
+                        <option value="中" {% if fi.confidence == '中' %}selected{% endif %}>中</option>
+                        <option value="低" {% if fi.confidence == '低' %}selected{% endif %}>低</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {# 深入分析（可折叠） #}
+            <div class="fb-section" style="margin-top:8px;">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;cursor:pointer;" onclick="toggleLayer1Deep()">
+                <span id="layer1DeepToggle" style="color:#64748b;font-size:18px;">▸</span>
+                <span class="fb-section-label" style="margin:0;">📋 深入分析（选填，可猜）</span>
+              </div>
+              <div id="layer1DeepFields" style="display:none;">
+                <div class="fb-field">
+                  <label>当前真实业务 <span style="font-weight:400;color:#9ca3af;font-size:11px">只写现在的，不清楚写「不确定」</span></label>
+                  <textarea id="fi_current_business" rows="2" placeholder="这家公司现在实际靠什么赚钱"
+                  >{{ fi.current_business or '' }}</textarea>
+                </div>
+                <div class="fb-field" style="margin-top:10px;">
+                  <label>未来故事 / 包装叙事 <span style="font-weight:400;color:#9ca3af;font-size:11px">BP里哪些可能是夸大</span></label>
+                  <textarea id="fi_future_story" rows="2" placeholder="哪些听起来像包装"
+                  >{{ fi.future_story or '' }}</textarea>
+                </div>
+                <div class="fb-field" style="margin-top:10px;">
+                  <label>客户与付费逻辑 <span style="font-weight:400;color:#9ca3af;font-size:11px">谁会真的付钱</span></label>
+                  <input type="text" id="fi_real_customer" placeholder="真正的客户是谁"
+                    value="{{ fi.real_customer or '' }}">
+                </div>
+                <div class="fb-field" style="margin-top:10px;">
+                  <label>市场 / 容量判断</label>
+                  <input type="text" id="fi_market_view" placeholder="对这个市场空间的判断"
+                    value="{{ fi.market_view or '' }}">
+                </div>
+                <div class="fb-field" style="margin-top:10px;">
+                  <label>值得约的理由</label>
+                  <textarea id="fi_reasons_to_meet" rows="2" placeholder="一条一条写"
+                  >{{ fi.reasons_to_meet[0] if fi.reasons_to_meet else '' }}</textarea>
+                </div>
+                <div class="fb-field" style="margin-top:10px;">
+                  <label>不值得约的理由</label>
+                  <textarea id="fi_reasons_to_pass" rows="2" placeholder="如果有的话"
+                  >{{ fi.reasons_to_pass[0] if fi.reasons_to_pass else '' }}</textarea>
+                </div>
+                <div class="fb-field" style="margin-top:10px;">
+                  <label>关键未知点</label>
+                  <textarea id="fi_key_unknowns" rows="2" placeholder="最需要搞清楚的问题"
+                  >{{ fi.key_unknowns[0] if fi.key_unknowns else '' }}</textarea>
+                </div>
+                <div class="fb-field" style="margin-top:10px;">
+                  <label>必须问的问题</label>
+                  <textarea id="fi_must_ask" rows="2" placeholder="见面时必须问的核心问题"
+                  >{{ fi.must_ask_questions[0] if fi.must_ask_questions else '' }}</textarea>
+                </div>
+              </div>
+            </div>
+
+            <div class="layer1-actions">
+              <button type="button" class="btn-layer1-save" onclick="saveFirstImpression()">
+                💾 保存直觉
+              </button>
+              <span class="msg-saved" id="fiSaveMsg" style="display:none">✅ 已保存</span>
+              <span class="layer1-hint">直觉独立保存，不被后续内容覆盖</span>
+              <button type="button" class="layer1-expand-link" id="expandLayer2Btn"
+                onclick="event.stopPropagation(); showLayer2()">
+                → 深入思考 ▸
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <script>
+        // 展开/折叠深入分析字段
+        function toggleLayer1Deep() {
+          const deepFields = document.getElementById('layer1DeepFields');
+          const toggle = document.getElementById('layer1DeepToggle');
+          if (deepFields.style.display === 'none') {
+            deepFields.style.display = 'block';
+            toggle.textContent = '▾';
+          } else {
+            deepFields.style.display = 'none';
+            toggle.textContent = '▸';
+          }
+        }
+        </script>
+
+        <!-- ══ 第二层：深入思考（可折叠展开）═════════════ -->
+        <div class="layer2-section" id="layer2Section">
+          <div class="layer2-hint">
+            💭 <strong>可以像以前一样：先把 BP 丢给 GPT 聊清楚，再回到这里填。</strong><br>
+            这一层记录的是「经过你深入思考后的判断」，会和直觉层分开保存，对比时能看出你思维的变化。
+          </div>
+
+          <!-- 基础信息 -->
+          <div class="fb-section">
+            <div class="fb-section-label">📋 基础信息</div>
+            <div class="fb-row fb-row-2">
+              <div class="fb-field">
+                <label>项目名称</label>
+                <input type="text" id="fb_project_name" value="{{ meta.company_name }}" readonly>
+              </div>
+              <div class="fb-field">
+                <label>BP 来源</label>
+                <select id="fb_bp_source">
+                  <option value="">请选择</option>
+                  {% set bp_src = feedback_case.bp_source if feedback_case else '' %}
+                  <option value="老板提供"{% if bp_src == '老板提供' %} selected{% endif %}>老板提供</option>
+                  <option value="项目方主动投递"{% if bp_src == '项目方主动投递' %} selected{% endif %}>项目方主动投递</option>
+                  <option value="政府推荐"{% if bp_src == '政府推荐' %} selected{% endif %}>政府推荐</option>
+                  <option value="FA推荐"{% if bp_src == 'FA推荐' %} selected{% endif %}>FA 推荐</option>
+                  <option value="其他"{% if bp_src == '其他' %} selected{% endif %}>其他</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- 自动整理 -->
+          <div class="fb-section">
+            <div class="fb-section-label">✨ 自动整理（可选）</div>
+            <div class="fb-field">
+              <label style="display:flex;align-items:center;gap:6px;">
+                原始笔记 / 推理过程
+                <span style="font-size:11px;background:#fef3c7;color:#92400e;border:1px solid #fde68a;border-radius:4px;padding:1px 7px;font-weight:600;">📦 核心资产 · 原文保存</span>
+                <span style="font-size:11px;color:#9ca3af;font-weight:400;">（一字不少存入 raw_note，用于认知回溯和规则蒸馏）</span>
+              </label>
+              <textarea id="fb_raw_note" rows="10"
+                style="font-size:13px;line-height:1.7;font-family:inherit;"
+                placeholder="把你看完BP的完整分析、和GPT的推理过程、所有疑问和判断，粘贴在这里。点「自动整理」可自动填充下方各结构化字段。这里的内容会原封不动存入数据库，是未来做规则蒸馏的第一手资料。"
+              >{{ dr.raw_note or '' }}</textarea>
+            </div>
+            <div class="normalize-area">
+              <button type="button" class="btn-normalize" id="btnNormalize" onclick="normalizeNote()">✨ 自动整理</button>
+              <span class="normalize-loading" id="normalizeLoading" style="display:none">整理中...</span>
+            </div>
+          </div>
+
+          <!-- 结构化判断 -->
+          <div class="fb-section">
+            <div class="fb-section-label">🧠 深入判断（和 GPT 聊完后再填）</div>
+            <div class="fb-row fb-row-2">
+              <div class="fb-field">
+                <label>一句话理解</label>
+                <input type="text" id="fb_one_liner" placeholder="深入理解后，这家公司是干什么的"
+                  value="{{ dr.one_liner or fi.one_liner or '' }}">
+              </div>
+              <div class="fb-field">
+                <label>客户与付费逻辑</label>
+                <input type="text" id="fb_real_customer" placeholder="谁会真的付钱"
+                  value="{{ dr.real_customer or '' }}">
+              </div>
+            </div>
+            <div class="fb-field">
+              <label>当前真实业务 <span style="font-weight:400;color:#9ca3af;font-size:11px">只写现在的，不清楚写「不确定」</span></label>
+              <textarea id="fb_current_business" rows="2">{{ dr.current_business or '' }}</textarea>
+            </div>
+            <div class="fb-field">
+              <label>未来故事 / 包装叙事</label>
+              <textarea id="fb_future_story" rows="2"
+                placeholder="BP 里哪些可能是包装"
+              >{{ dr.future_story or '' }}</textarea>
+            </div>
+            <div class="fb-field">
+              <label>市场 / 容量判断</label>
+              <textarea id="fb_market_view" rows="2"
+                placeholder="经过深入了解后，市场怎么看"
+              >{{ dr.market_view or '' }}</textarea>
+            </div>
+          </div>
+
+          <!-- 决策（深思后） -->
+          <div class="fb-section">
+            <div class="fb-section-label">🎯 深思后的决策</div>
+            <div class="decision-cards" id="decisionCards">
+              {% set dr_dec = dr.decision or '' %}
+              <label class="decision-card{% if dr_dec == 'meet' %} selected{% endif %}">
+                <input type="radio" name="fb_decision" value="meet"{% if dr_dec == 'meet' %} checked{% endif %}>
+                <div class="card-label">建议约</div><div class="card-desc">值得跟进</div>
+              </label>
+              <label class="decision-card{% if dr_dec == 'maybe_meet' %} selected{% endif %}">
+                <input type="radio" name="fb_decision" value="maybe_meet"{% if dr_dec == 'maybe_meet' %} checked{% endif %}>
+                <div class="card-label">可以约</div><div class="card-desc">优先级不高</div>
+              </label>
+              <label class="decision-card{% if dr_dec == 'request_materials' %} selected{% endif %}">
+                <input type="radio" name="fb_decision" value="request_materials"{% if dr_dec == 'request_materials' %} checked{% endif %}>
+                <div class="card-label">先要材料</div><div class="card-desc">暂不约</div>
+              </label>
+              <label class="decision-card{% if dr_dec == 'pass' %} selected{% endif %}">
+                <input type="radio" name="fb_decision" value="pass"{% if dr_dec == 'pass' %} checked{% endif %}>
+                <div class="card-label">直接 Pass</div><div class="card-desc">不值得看</div>
+              </label>
+            </div>
+
+            {# 理由标签 #}
+            {% set reasons_m = dr.reasons_to_meet or [] %}
+            {% set reasons_p = dr.reasons_to_pass or [] %}
+            <div class="fb-field" style="margin-top:14px">
+              <label>✅ 值得约的理由（可多选）</label>
+              <div class="tag-select-group" id="reasonsMeetGroup">
+                {% for opt in ['方向符合基金关注','市场空间值得看','技术可能有壁垒','已有真实收入','已有重要客户','团队值得聊','有政府/产业落地价值','有产业协同价值','BP不清楚但方向值得验证'] %}
+                  <label class="tag-select-item{% if opt in reasons_m %} selected{% endif %}">
+                    <input type="checkbox" value="{{ opt }}" {% if opt in reasons_m %}checked{% endif %}>
+                    {{ opt }}
+                  </label>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="fb-field" style="margin-top:10px">
+              <label>❌ 不值得约 / 暂不约的理由（可多选）</label>
+              <div class="tag-select-group" id="reasonsPassGroup">
+                {% for opt in ['看不懂公司到底干什么','当前业务太早','太像包装故事','市场太小','客户不清楚','商业模式不清楚','技术壁垒不清楚','不符合基金方向','没有政府/产业落地价值','融资诉求不合理','BP信息太少'] %}
+                  <label class="tag-select-item{% if opt in reasons_p %} selected{% endif %}">
+                    <input type="checkbox" value="{{ opt }}" {% if opt in reasons_p %}checked{% endif %}>
+                    {{ opt }}
+                  </label>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+
+          <!-- 优先级 & 信心 -->
+          <div class="fb-section">
+            <div class="fb-section-label">📊 优先级 & 信心</div>
+            <div class="fb-row fb-row-2">
+              <div class="fb-field">
+                <label>优先级</label>
+                {% set dr_pri = dr.priority or 'medium' %}
+                <select id="fb_priority">
+                  <option value="high"{% if dr_pri == 'high' %} selected{% endif %}>🔴 高</option>
+                  <option value="medium"{% if dr_pri == 'medium' %} selected{% endif %}>🟡 中</option>
+                  <option value="low"{% if dr_pri == 'low' %} selected{% endif %}>🟢 低</option>
+                </select>
+              </div>
+              <div class="fb-field">
+                <label>判断信心</label>
+                {% set dr_con = dr.confidence or 'medium' %}
+                <select id="fb_confidence">
+                  <option value="high"{% if dr_con == 'high' %} selected{% endif %}>高 — 看得很清楚</option>
+                  <option value="medium"{% if dr_con == 'medium' %} selected{% endif %}>中 — 有一些不确定性</option>
+                  <option value="low"{% if dr_con == 'low' %} selected{% endif %}>低 — 信息太少，判断模糊</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- 问题准备 -->
+          <div class="fb-section">
+            <div class="fb-section-label">❓ 问题准备</div>
+            <div class="fb-field">
+              <label>关键未知点</label>
+              <textarea id="fb_key_unknowns" rows="2"
+                placeholder="BP 里哪些没写清楚"
+              >{{ (dr.key_unknowns or [])|join('；') }}</textarea>
+            </div>
+            <div class="fb-field" style="margin-top:10px">
+              <label>如果约，必须问的问题 <span style="font-weight:400;color:#9ca3af;font-size:11px">每行一个</span></label>
+              <textarea id="fb_must_ask" rows="4"
+                placeholder="比如：团队的真实行业背景（判断是否是包装）"
+              >{% for q in (dr.must_ask_questions or []) %}{{ (q.question if q is mapping else q) }}{% if not loop.last %}
+
+{% endif %}{% endfor %}</textarea>
+            </div>
+          </div>
+
+          <!-- 底栏 -->
+          <div class="feedback-actions">
+            <button type="button" class="btn-save" onclick="saveDeepReflection()">
+              💾 保存深入判断
+            </button>
+            <button type="button" class="btn-save-run" onclick="saveDeepAndRun()">
+              保存并运行 1.0 AI 分析 →
+            </button>
+            <span class="save-msg" id="drSaveMsg" style="display:none">✅ 已保存</span>
+            <span style="font-size:12px;color:#9ca3af;margin-left:auto">
+              💡 直觉层和深思层分开保存，随时可补充
+            </span>
+          </div>
+        </div>
+
+      </form>
     </div>
 
     <!-- ════════ 1.0 会前分析（新流程，主推）════════ -->
@@ -353,6 +1100,356 @@
   </div>
 
   <script>
+    // ══════════════════════════════════════════════════════════════
+    // 人工初判 — 两层卡片交互
+    // ══════════════════════════════════════════════════════════════
+
+    function toggleLayer1() {
+      const card = document.getElementById('layer1Card');
+      card.classList.toggle('expanded');
+    }
+
+    function showLayer2() {
+      const section = document.getElementById('layer2Section');
+      section.classList.add('visible');
+      document.getElementById('layer1Card').classList.add('expanded');
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // ── 初始化：自动展开已有内容的层 ──
+    (function initLayers() {
+      const fiOneLiner = document.getElementById('fi_one_liner')?.value;
+      const fiDecision = document.querySelector('input[name="fi_decision"]:checked')?.value;
+      // 如果有直觉内容，保持展开
+      if (fiOneLiner || fiDecision) {
+        document.getElementById('layer1Card').classList.add('expanded');
+      }
+      // 如果有深思内容，显示第二层
+      if (document.getElementById('fb_one_liner')?.value) {
+        document.getElementById('layer2Section').classList.add('visible');
+      }
+    })();
+
+    // ── 标签多选：点击切换选中状态 ──
+    document.querySelectorAll('.tag-select-item').forEach(function(item) {
+      item.addEventListener('click', function(e) {
+        // 防止点击到子元素时重复触发
+        e.stopPropagation();
+        const checkbox = item.querySelector('input[type="checkbox"]');
+        if (checkbox) {
+          checkbox.checked = !checkbox.checked;
+          item.classList.toggle('selected', checkbox.checked);
+        }
+      });
+    });
+
+    // ── 第一层：保存直觉（完整版） ──
+    async function saveFirstImpression() {
+      const decision = document.querySelector('input[name="fi_decision"]:checked')?.value || '';
+      const oneLiner = document.getElementById('fi_one_liner').value.trim();
+      const topConfusion = document.getElementById('fi_top_confusion').value.trim();
+      const priority = document.getElementById('fi_priority')?.value || '';
+      const confidence = document.getElementById('fi_confidence')?.value || '';
+      const currentBusiness = document.getElementById('fi_current_business')?.value.trim() || '';
+      const futureStory = document.getElementById('fi_future_story')?.value.trim() || '';
+      const realCustomer = document.getElementById('fi_real_customer')?.value.trim() || '';
+      const marketView = document.getElementById('fi_market_view')?.value.trim() || '';
+      const reasonsToMeet = document.getElementById('fi_reasons_to_meet')?.value.trim() || '';
+      const reasonsToPass = document.getElementById('fi_reasons_to_pass')?.value.trim() || '';
+      const keyUnknowns = document.getElementById('fi_key_unknowns')?.value.trim() || '';
+      const mustAsk = document.getElementById('fi_must_ask')?.value.trim() || '';
+      const rawNote = document.getElementById('fi_raw_note')?.value.trim() || '';
+
+      if (!oneLiner && !topConfusion && !decision) {
+        alert('请至少填写一句话理解或最困惑的点');
+        return;
+      }
+
+      try {
+        const resp = await fetch('/api/feedback/save-first-impression', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            project_id: '{{ project_id }}',
+            project_name: document.getElementById('fb_project_name')?.value || '{{ meta.company_name }}',
+            profile_id: '{{ project_profile.profile_id if project_profile else "neutral_investor" }}',
+            first_impression: {
+              one_liner: oneLiner,
+              top_confusion: topConfusion,
+              decision: decision,
+              priority: priority,
+              confidence: confidence,
+              current_business: currentBusiness,
+              future_story: futureStory,
+              real_customer: realCustomer,
+              market_view: marketView,
+              reasons_to_meet: reasonsToMeet ? [reasonsToMeet] : [],
+              reasons_to_pass: reasonsToPass ? [reasonsToPass] : [],
+              key_unknowns: keyUnknowns ? [keyUnknowns] : [],
+              must_ask_questions: mustAsk ? [mustAsk] : [],
+              raw_note: rawNote,
+            }
+          })
+        });
+        const result = await resp.json();
+        if (result.error) throw new Error(result.error);
+
+        // 更新卡片显示
+        updateLayer1Summary(oneLiner, decision, topConfusion);
+        document.getElementById('layer1Card').classList.add('has-content');
+        document.getElementById('fb_feedback_id').value = result.feedback_id || '';
+
+        // 更新状态徽标
+        document.getElementById('fbStatusBadge').textContent = '💡 直觉已保存';
+        document.getElementById('fbStatusBadge').className = 'feedback-badge';
+
+        // 显示保存提示
+        const msg = document.getElementById('fiSaveMsg');
+        msg.style.display = 'inline';
+        setTimeout(() => { msg.style.display = 'none'; }, 3000);
+      } catch (e) {
+        alert('保存失败: ' + e.message);
+      }
+    }
+
+    // ── AI 自动整理直觉 ──
+    async function normalizeFirstImpression() {
+      const rawNote = document.getElementById('fi_raw_note')?.value.trim();
+      if (!rawNote) {
+        alert('请先在上面的框里写点东西');
+        return;
+      }
+
+      const btn = document.getElementById('btnNormalizeFi');
+      const loading = document.getElementById('fiNormalizeLoading');
+      const success = document.getElementById('fiNormalizeSuccess');
+
+      btn.disabled = true;
+      loading.style.display = 'inline';
+      success.style.display = 'none';
+
+      try {
+        const resp = await fetch('/api/feedback/normalize-first-impression', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            project_id: '{{ project_id }}',
+            raw_note: rawNote
+          })
+        });
+        const result = await resp.json();
+        if (result.error) throw new Error(result.error);
+
+        const s = result.structured;
+
+        // 填充各字段
+        if (s.one_liner) document.getElementById('fi_one_liner').value = s.one_liner;
+        if (s.top_confusion) document.getElementById('fi_top_confusion').value = s.top_confusion;
+        if (s.decision) {
+          const radio = document.querySelector(`input[name="fi_decision"][value="${s.decision}"]`);
+          if (radio) radio.checked = true;
+        }
+        if (s.priority) {
+          const sel = document.getElementById('fi_priority');
+          if (sel) sel.value = s.priority;
+        }
+        if (s.confidence) {
+          const sel = document.getElementById('fi_confidence');
+          if (sel) sel.value = s.confidence;
+        }
+        if (s.current_business) document.getElementById('fi_current_business').value = s.current_business;
+        if (s.future_story) document.getElementById('fi_future_story').value = s.future_story;
+        if (s.real_customer) document.getElementById('fi_real_customer').value = s.real_customer;
+        if (s.market_view) document.getElementById('fi_market_view').value = s.market_view;
+        if (s.reasons_to_meet && s.reasons_to_meet.length > 0) {
+          document.getElementById('fi_reasons_to_meet').value = s.reasons_to_meet[0];
+        }
+        if (s.reasons_to_pass && s.reasons_to_pass.length > 0) {
+          document.getElementById('fi_reasons_to_pass').value = s.reasons_to_pass[0];
+        }
+        if (s.key_unknowns && s.key_unknowns.length > 0) {
+          document.getElementById('fi_key_unknowns').value = s.key_unknowns[0];
+        }
+        if (s.must_ask_questions && s.must_ask_questions.length > 0) {
+          document.getElementById('fi_must_ask').value = s.must_ask_questions[0];
+        }
+
+        // 自动展开深入分析字段
+        document.getElementById('layer1DeepFields').style.display = 'block';
+        document.getElementById('layer1DeepToggle').textContent = '▾';
+
+        success.style.display = 'inline';
+        setTimeout(() => { success.style.display = 'none'; }, 3000);
+
+      } catch (e) {
+        alert('AI 整理失败: ' + e.message);
+      } finally {
+        btn.disabled = false;
+        loading.style.display = 'none';
+      }
+    }
+
+    function updateLayer1Summary(oneLiner, decision, topConfusion) {
+      const summaryTop = document.querySelector('.layer1-summary-top');
+      const metaEl = document.querySelector('.layer1-summary-meta');
+      if (summaryTop) {
+        summaryTop.innerHTML = oneLiner
+          ? `<strong>${oneLiner}</strong>`
+          : '<span class="empty-hint">点击填写你的第一直觉...</span>';
+      }
+      if (metaEl) {
+        const tagMap = {
+          'meet': '<span class="layer1-tag tag-meet">✅ 建议约</span>',
+          'maybe_meet': '<span class="layer1-tag tag-maybe">🤔 可以约</span>',
+          'request_materials': '<span class="layer1-tag tag-pass">📄 先要材料</span>',
+          'pass': '<span class="layer1-tag tag-pass">❌ Pass</span>',
+        };
+        const decisionTag = tagMap[decision] || '<span class="layer1-tag tag-pending">约不约？</span>';
+        const confusionTag = topConfusion
+          ? `<span style="font-size:11px;color:#9ca3af">❓ ${topConfusion}</span>`
+          : '';
+        metaEl.innerHTML = decisionTag + ' ' + confusionTag;
+      }
+    }
+
+    // ── 第二层：保存深入判断 ──
+    async function saveDeepReflection() {
+      const reasonsMeet = Array.from(document.querySelectorAll('#reasonsMeetGroup .tag-select-item.selected'))
+        .map(item => item.querySelector('input').value);
+      const reasonsPass = Array.from(document.querySelectorAll('#reasonsPassGroup .tag-select-item.selected'))
+        .map(item => item.querySelector('input').value);
+      const decision = document.querySelector('#decisionCards input[type="radio"]:checked')?.value || '';
+      const mustAskRaw = document.getElementById('fb_must_ask').value.trim();
+      const mustAskQuestions = mustAskRaw
+        ? mustAskRaw.split('\n').filter(Boolean).map(line => {
+            const m = line.match(/^([^（]+)（(.+)）$/);
+            return m ? { question: m[1].trim(), why_important: m[2] } : { question: line.trim(), why_important: '' };
+          })
+        : [];
+      const keyUnknownsRaw = document.getElementById('fb_key_unknowns').value.trim();
+      const keyUnknowns = keyUnknownsRaw ? keyUnknownsRaw.split(/[；;]/).filter(Boolean).map(s => s.trim()) : [];
+
+      try {
+        const resp = await fetch('/api/feedback/save-deep-reflection', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            project_id: '{{ project_id }}',
+            project_name: document.getElementById('fb_project_name')?.value || '{{ meta.company_name }}',
+            profile_id: '{{ project_profile.profile_id if project_profile else "neutral_investor" }}',
+            bp_source: document.getElementById('fb_bp_source').value,
+            deep_reflection: {
+              one_liner: document.getElementById('fb_one_liner').value,
+              current_business: document.getElementById('fb_current_business').value,
+              future_story: document.getElementById('fb_future_story').value,
+              real_customer: document.getElementById('fb_real_customer').value,
+              market_view: document.getElementById('fb_market_view').value,
+              decision: decision,
+              priority: document.getElementById('fb_priority').value,
+              confidence: document.getElementById('fb_confidence').value,
+              reasons_to_meet: reasonsMeet,
+              reasons_to_pass: reasonsPass,
+              key_unknowns: keyUnknowns,
+              must_ask_questions: mustAskQuestions,
+              raw_note: document.getElementById('fb_raw_note').value,
+            }
+          })
+        });
+        const result = await resp.json();
+        if (result.error) throw new Error(result.error);
+        document.getElementById('fb_feedback_id').value = result.feedback_id || '';
+        document.getElementById('fbStatusBadge').textContent = '✅ 完成';
+        document.getElementById('fbStatusBadge').className = 'feedback-badge done';
+        const msg = document.getElementById('drSaveMsg');
+        msg.style.display = 'inline';
+        setTimeout(() => { msg.style.display = 'none'; }, 3000);
+      } catch (e) {
+        alert('保存失败: ' + e.message);
+      }
+    }
+
+    async function saveDeepAndRun() {
+      await saveDeepReflection();
+      startPipeline();
+    }
+
+    // ── 自动整理（填充第二层字段）──
+    async function normalizeNote() {
+      const rawNote = document.getElementById('fb_raw_note').value.trim();
+      if (!rawNote) { alert('请先在「自动整理」上方输入一段初步想法'); return; }
+      const btn = document.getElementById('btnNormalize');
+      const loading = document.getElementById('normalizeLoading');
+      btn.disabled = true; loading.style.display = 'inline';
+      try {
+        const resp = await fetch('/api/feedback/normalize-human-note', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ raw_note: rawNote })
+        });
+        const data = await resp.json();
+        if (data.error) throw new Error(data.error);
+        if (data.one_liner) document.getElementById('fb_one_liner').value = data.one_liner;
+        if (data.current_business) document.getElementById('fb_current_business').value = data.current_business;
+        if (data.future_story) document.getElementById('fb_future_story').value = data.future_story;
+        if (data.real_customer) document.getElementById('fb_real_customer').value = data.real_customer;
+        if (data.market_view) document.getElementById('fb_market_view').value = data.market_view;
+        if (data.decision) {
+          document.querySelectorAll('#decisionCards .decision-card').forEach(c =>
+            c.classList.toggle('selected', c.querySelector('input').value === data.decision));
+        }
+        if (data.priority) document.getElementById('fb_priority').value = data.priority;
+        if (data.confidence) document.getElementById('fb_confidence').value = data.confidence;
+        if (Array.isArray(data.reasons_to_meet)) {
+          document.querySelectorAll('#reasonsMeetGroup .tag-select-item').forEach(item => {
+            const checked = data.reasons_to_meet.includes(item.querySelector('input').value);
+            item.classList.toggle('selected', checked);
+            item.querySelector('input').checked = checked;
+          });
+        }
+        if (Array.isArray(data.reasons_to_pass)) {
+          document.querySelectorAll('#reasonsPassGroup .tag-select-item').forEach(item => {
+            const checked = data.reasons_to_pass.includes(item.querySelector('input').value);
+            item.classList.toggle('selected', checked);
+            item.querySelector('input').checked = checked;
+          });
+        }
+        if (Array.isArray(data.key_unknowns))
+          document.getElementById('fb_key_unknowns').value = data.key_unknowns.join('；');
+        if (Array.isArray(data.must_ask_questions)) {
+          document.getElementById('fb_must_ask').value = data.must_ask_questions
+            .map(q => (q.question||q) + (q.why_important?'（'+q.why_important+'）':'')).join('\n');
+        }
+      } catch (e) { alert('自动整理失败: ' + e.message); }
+      finally { btn.disabled = false; loading.style.display = 'none'; }
+    }
+
+    // ── 旧函数（兼容）──
+    async function savePreAiFeedback() { saveDeepReflection(); }
+    async function savePreAiAndRun() { saveDeepAndRun(); }
+
+    // ── 标签/决策卡片交互（Layer 1）──
+    document.querySelectorAll('#layer1DecisionCards .decision-card').forEach(card => {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('#layer1DecisionCards .decision-card').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+      });
+    });
+
+    // ── 标签/决策卡片交互（Layer 2）──
+    document.querySelectorAll('.decision-card').forEach(card => {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('.decision-card').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+      });
+    });
+    document.querySelectorAll('.tag-select-item').forEach(item => {
+      item.addEventListener('click', () => {
+        item.classList.toggle('selected');
+        const cb = item.querySelector('input[type="checkbox"]');
+        if (cb) cb.checked = item.classList.contains('selected');
+      });
+    });
+
     // ── 新流程：POST 触发 + EventSource 拉流 ──────────────────────────
     function startPipeline() {
       document.getElementById('progressArea').style.display = 'block';
@@ -474,6 +1571,23 @@
       const el = document.getElementById('stepBtns');
       el.style.display = el.style.display === 'none' ? 'flex' : 'none';
     }
+
+    // ============================================================
+    // 人工初判模块 JS
+    // ============================================================
+    document.querySelectorAll('.decision-cards .decision-card').forEach(card => {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('.decision-card').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+      });
+    });
+    document.querySelectorAll('.tag-select-item').forEach(item => {
+      item.addEventListener('click', () => {
+        item.classList.toggle('selected');
+        const cb = item.querySelector('input[type="checkbox"]');
+        if (cb) cb.checked = item.classList.contains('selected');
+      });
+    });
 
     function runSingleStep(step) {
       const stepNames = { step1:'Step1', step3:'Step3', step4:'Step4', step5:'Step5' };

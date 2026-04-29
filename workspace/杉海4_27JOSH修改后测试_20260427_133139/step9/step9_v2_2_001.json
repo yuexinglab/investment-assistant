@@ -1,0 +1,77 @@
+{
+  "overall_decision": {
+    "process_decision": "request_materials",
+    "investment_decision": "not_ready",
+    "confidence": "medium",
+    "one_line_conclusion": "存在8项关键不确定性未验证，暂不进入投资决策。"
+  },
+  "decision_breakdown": {
+    "verified_positives": [],
+    "unverified_positives": [
+      "AI平台是否具有技术护城河：缺乏与传统方法（如晶泰科技）的量化对比数据",
+      "新能源客户是否已形成隐性合作：未提供与主流电池厂的合同或订单"
+    ],
+    "confirmed_negatives": [],
+    "key_uncertainties": [
+      "AI不成立",
+      "新能源待深入",
+      "美妆不成立",
+      "新能源不成立",
+      "AI不成立",
+      "2026年大客户放量是否有合同支撑：欧莱雅/宝洁/珀莱雅2026年预测收入合计超6000万，需采购订单验证",
+      "专利壁垒是否真实：声称的分子结构专利保护力度需专利清单验证",
+      "锂电回收经济性：碳酸锂价格持续低迷时，成本结构是否支撑盈利",
+      "新能源客户验证进展：与主流电池厂（宁德/比亚迪）的合作阶段不明确"
+    ]
+  },
+  "material_request_list": [
+    {
+      "priority": "high",
+      "material": "AI平台完整案例、准确率测试方法",
+      "purpose": "验证AI技术实力",
+      "related_hypothesis": "AI不成立"
+    }
+  ],
+  "remaining_unknowns": [
+    {
+      "issue": "AI不成立",
+      "why_blocking": "假设未得到有效验证，无法支撑决策",
+      "how_to_resolve": "补充关键证据",
+      "priority": "high"
+    },
+    {
+      "issue": "新能源待深入",
+      "why_blocking": "假设未得到有效验证，无法支撑决策",
+      "how_to_resolve": "补充关键证据",
+      "priority": "high"
+    },
+    {
+      "issue": "美妆不成立",
+      "why_blocking": "假设未得到有效验证，无法支撑决策",
+      "how_to_resolve": "补充关键证据",
+      "priority": "high"
+    },
+    {
+      "issue": "新能源不成立",
+      "why_blocking": "假设未得到有效验证，无法支撑决策",
+      "how_to_resolve": "补充关键证据",
+      "priority": "high"
+    },
+    {
+      "issue": "AI不成立",
+      "why_blocking": "假设未得到有效验证，无法支撑决策",
+      "how_to_resolve": "补充关键证据",
+      "priority": "high"
+    }
+  ],
+  "next_actions": [
+    {
+      "action": "向公司索取：AI平台完整案例、准确率测试方法",
+      "purpose": "验证AI技术实力",
+      "who": "用户",
+      "priority": "high"
+    }
+  ],
+  "key_risks": [],
+  "go_no_go_logic": "【Step8 v3 语义信号统计】\n- key_uncertainty（关键不确定性）: 8项\n【Step8 change_type 统计（兜底）】\n- uncertain/reframed: 3个\n\n【双层决策】\n- 流程决策: request_materials\n- 投资决策: not_ready\n\n【决策说明】\n当前不能进入投资决策，需要先补充关键材料验证假设。"
+}

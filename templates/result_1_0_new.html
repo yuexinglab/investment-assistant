@@ -13,6 +13,7 @@
     .tab-bar {
       display: flex; gap: 6px; flex-wrap: wrap;
       border-bottom: 2px solid #e0e0e0; margin-bottom: 24px;
+      position: relative; z-index: 10;
     }
     .tab-btn {
       padding: 10px 18px; border: none; background: none;
@@ -23,8 +24,9 @@
     }
     .tab-btn:hover { background: #f5f5f5; color: #333; }
     .tab-btn.active { color: #2563eb; border-bottom-color: #2563eb; }
+    .tab-btn.tab-comparison { background: #fef3c7; color: #92400e; }
     .tab-content { display: none; }
-    .tab-content.active { display: block; }
+    .tab-content.active { display: block !important; }
 
     /* ── 步骤状态标签 ── */
     .step-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
@@ -139,6 +141,103 @@
       font-size: 15px;
     }
     .download-zip:hover { background: #6d28d9; }
+
+    /* 标签选中样式 */
+    .tag-select-item {
+      background: #f3f4f6;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-block;
+      transition: all 0.15s;
+    }
+    .tag-select-item:hover {
+      background: #e5e7eb;
+      border-color: #d1d5db;
+    }
+    .tag-select-item.selected {
+      background: #fef3c7;
+      border-color: #f59e0b;
+      color: #92400e;
+    }
+
+    /* 按钮样式 */
+    .btn {
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .btn-primary {
+      background: #2563eb;
+      color: white;
+      border: 1px solid #2563eb;
+    }
+    .btn-primary:hover {
+      background: #1d4ed8;
+    }
+    .btn-outline {
+      background: white;
+      border: 1px solid #d1d5db;
+      color: #374151;
+    }
+    .btn-outline:hover {
+      background: #f9fafb;
+    }
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    /* 表单元素样式 */
+    .form-select {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 13px;
+      background: white;
+    }
+    .form-select:focus {
+      outline: none;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+    }
+    .form-textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 13px;
+      resize: vertical;
+      font-family: inherit;
+    }
+    .form-textarea:focus {
+      outline: none;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+    }
+
+    /* 标签容器 */
+    .tag-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* 成功/错误消息 */
+    .success-msg {
+      background: #dcfce7;
+      color: #15803d;
+      border: 1px solid #86efac;
+    }
+    .error-msg {
+      background: #fef2f2;
+      color: #dc2626;
+      border: 1px solid #fecaca;
+    }
   </style>
 </head>
 <body>
@@ -194,6 +293,7 @@
     <button class="tab-btn" onclick="showTab('step4',this)">③ 开会问题 ⭐</button>
     <button class="tab-btn" onclick="showTab('step5',this)">④ 会前判断 ⭐</button>
     <button class="tab-btn" onclick="showTab('all',this)">⑤ 全部结果</button>
+    <button class="tab-btn tab-comparison" onclick="showTab('comparison',this)">⑥ 人机对比</button>
   </div>
 
   <!-- ════ ① 初步判断 ════ -->
@@ -462,15 +562,674 @@
     {% endif %}
   </div>
 
+  <!-- ════════ ⑥ 人机对比标注（训练数据采集页） ════════ -->
+  <div class="tab-content" id="tab-comparison">
+    <form id="comparisonForm" onsubmit="return false;">
+      <input type="hidden" id="cmp_feedback_id" value="{{ feedback_case.feedback_id if feedback_case else '' }}">
+      <input type="hidden" id="cmp_project_id" value="{{ project_id }}">
+      {# 整块对比数据嵌入页面，供 JS 回填使用 #}
+      <script id="feedback-case-data" type="application/json">{{ feedback_case | tojson | safe if feedback_case else '{}' }}</script>
+
+      <!-- 区块1：AI 输出展示区 -->
+      <div class="content-card" style="border-left:4px solid #2563eb">
+        <h3 style="font-size:15px;font-weight:700;color:#2563eb;margin:0 0 14px 0">&#x1F916; 区块1：AI 输出展示</h3>
+        <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:14px;font-size:13px">
+          <div style="margin-bottom:10px">
+            <div style="font-weight:600;color:#1e40af;margin-bottom:4px">&#x1F4CB; AI Step5 决策</div>
+            {% if results.step5 %}
+              <div style="margin-bottom:4px"><strong>判断：</strong>{{ results.step5.get('decision', '无') or '无' }}</div>
+              <div style="margin-bottom:4px"><strong>一句话：</strong>{{ results.step5.get('current_hypothesis', results.step5.get('one_liner', '无'))[:150] if results.step5.get('current_hypothesis') or results.step5.get('one_liner') else '无' }}</div>
+            {% else %}
+              <div style="color:#6b7280">暂无 Step5 数据</div>
+            {% endif %}
+          </div>
+          <div style="margin-bottom:10px">
+            <div style="font-weight:600;color:#1e40af;margin-bottom:4px">&#x1F9EE; AI Step4 优先级排序</div>
+            {% if results.step4 and results.step4.get('meeting_brief_md') %}
+              {% set lines = results.step4.meeting_brief_md.split('\n') %}
+              {% for line in lines[:10] %}
+                {% if line.strip() and not line.startswith('#') %}
+                  <div style="margin-bottom:2px;color:#374151">{{ line[:100] }}{% if line|length > 100 %}...{% endif %}</div>
+                {% endif %}
+              {% endfor %}
+            {% else %}
+              <div style="color:#6b7280">暂无 Step4 数据</div>
+            {% endif %}
+          </div>
+          <div>
+            <div style="font-weight:600;color:#1e40af;margin-bottom:4px">&#x1F4CC; AI Step1 本质理解</div>
+            <div style="color:#374151">{{ (results.step1 or '无')[:300] }}{% if results.step1 and results.step1|length > 300 %}...{% endif %}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 区块2：用户原始评价输入区 -->
+      <div class="content-card" style="border-left:4px solid #7c3aed">
+        <h3 style="font-size:15px;font-weight:700;color:#7c3aed;margin:0 0 14px 0">&#x1F4AC; 区块2：你的原始评价</h3>
+        <div style="font-size:12px;color:#6b7280;margin-bottom:8px">
+          随便写，不用结构化。AI 会自动分析并填表。
+        </div>
+        <textarea id="rawHumanFeedback" rows="6" style="width:100%;padding:12px;border:1px solid #d1d5db;border-radius:8px;font-size:13px;resize:vertical"
+          placeholder="例如：AI整体判断有价值，但主线排序不对。AI把增材制造放到第一，但我认为第一应该是商业模式真相：卖车、技术服务、代运营收入占比和资产归属。第二是客户真实需求，是政策驱动还是真实ROI。第三是规模化复制。增材制造应该是成本优势验证，不应超过商业模式和客户需求。">{{ feedback_case.get('raw_human_feedback', '') if feedback_case else '' }}</textarea>
+      </div>
+
+      <!-- 区块3：AI 自动解析区 -->
+      <div class="content-card" style="border-left:4px solid #059669">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px">
+          <h3 style="font-size:15px;font-weight:700;color:#059669;margin:0">&#x2728; 区块3：AI 自动解析</h3>
+          <button type="button" onclick="analyzeFreeNote()" id="analyzeBtn" class="btn"
+            style="background:#059669;color:white;border:none;padding:8px 16px">
+            &#x1F50D; AI 分析备注并填表
+          </button>
+        </div>
+        <div id="analyzeStatus" style="font-size:13px;margin-bottom:10px;display:none;padding:8px;border-radius:6px"></div>
+        <div style="font-size:12px;color:#6b7280;background:#f0fdf4;padding:10px;border-radius:6px">
+          点击按钮后，AI 会分析你的评价，自动填入下方「区块4」和「区块5」的表单。
+        </div>
+      </div>
+
+      <!-- 区块4：结构化人机对比评分区 -->
+      <div class="content-card" style="border-left:4px solid #d97706">
+        <h3 style="font-size:15px;font-weight:700;color:#d97706;margin:0 0 14px 0">&#x1F9EE; 区块4：结构化评分</h3>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:16px">
+          <!-- 本质理解一致程度 -->
+          <div>
+            <label style="font-size:12px;font-weight:600;color:#374151;display:block;margin-bottom:6px">本质理解一致程度</label>
+            <select id="essence_alignment" class="form-select">
+              <option value="">请选择</option>
+              <option value="aligned">一致</option>
+              <option value="partially_aligned">部分一致</option>
+              <option value="misaligned">不一致</option>
+              <option value="unclear">不确定</option>
+            </select>
+          </div>
+          <!-- 本质理解评分 -->
+          <div>
+            <label style="font-size:12px;font-weight:600;color:#374151;display:block;margin-bottom:6px">本质理解评分</label>
+            <select id="essence_score" class="form-select">
+              <option value="">请评分</option>
+              {% for i in range(5,0,-1) %}
+              <option value="{{ i }}">{{ i }}分{% if i==5 %} - 很准{% elif i==3 %} - 一般{% elif i==1 %} - 很差{% endif %}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <!-- 约交流判断是否一致 -->
+          <div>
+            <label style="font-size:12px;font-weight:600;color:#374151;display:block;margin-bottom:6px">约交流判断是否一致</label>
+            <select id="meeting_judgement_alignment" class="form-select">
+              <option value="">请选择</option>
+              <option value="aligned">一致</option>
+              <option value="partially_aligned">部分一致</option>
+              <option value="misaligned">不一致</option>
+              <option value="unclear">不确定</option>
+            </select>
+          </div>
+          <!-- 理由覆盖评分 -->
+          <div>
+            <label style="font-size:12px;font-weight:600;color:#374151;display:block;margin-bottom:6px">理由覆盖评分</label>
+            <select id="reasoning_score" class="form-select">
+              <option value="">请评分</option>
+              {% for i in range(5,0,-1) %}<option value="{{ i }}">{{ i }}分</option>{% endfor %}
+            </select>
+          </div>
+          <!-- 问题覆盖评分 -->
+          <div>
+            <label style="font-size:12px;font-weight:600;color:#374151;display:block;margin-bottom:6px">问题覆盖评分</label>
+            <select id="question_coverage_score" class="form-select">
+              <option value="">请评分</option>
+              {% for i in range(5,0,-1) %}<option value="{{ i }}">{{ i }}分</option>{% endfor %}
+            </select>
+          </div>
+          <!-- 总体有用性 -->
+          <div>
+            <label style="font-size:12px;font-weight:600;color:#374151;display:block;margin-bottom:6px">总体有用性</label>
+            <select id="overall_usefulness_score" class="form-select">
+              <option value="">请评分</option>
+              {% for i in range(5,0,-1) %}<option value="{{ i }}">{{ i }}分</option>{% endfor %}
+            </select>
+          </div>
+        </div>
+
+        <div style="margin-top:16px">
+          <label style="font-size:12px;font-weight:600;color:#374151;display:block;margin-bottom:6px">AI 判断偏差方向</label>
+          <select id="ai_bias_direction" class="form-select">
+            <option value="">不适用</option>
+            <option value="too_optimistic">太乐观</option>
+            <option value="too_conservative">太保守</option>
+            <option value="wrong_focus">重点错了</option>
+            <option value="too_generic">太泛</option>
+          </select>
+        </div>
+
+        <div style="margin-top:16px">
+          <label style="font-size:12px;font-weight:600;color:#374151;display:block;margin-bottom:6px">AI 主要错在哪一步（可多选）</label>
+          <div class="tag-container">
+            {% for step in ['step0_profile','step1_essence','step3_structure','step3b_consistency','step4_gap_ranking','step5_decision'] %}
+            <label class="tag-select-item" data-value="{{ step }}">
+              {{ step.replace('step0_profile','Step0 基金画像').replace('step1_essence','Step1 本质判断').replace('step3_structure','Step3 背景结构').replace('step3b_consistency','Step3B 一致性').replace('step4_gap_ranking','Step4 缺口排序').replace('step5_decision','Step5 决策框架') }}
+            </label>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div style="margin-top:16px">
+          <label style="font-size:12px;font-weight:600;color:#374151;display:block;margin-bottom:6px">错误类型（可多选）</label>
+          <div class="tag-container">
+            {% for etype in ['missed_company_essence','treated_future_as_current','overestimated_tech_moat','underestimated_tech_moat','overestimated_market_size','underestimated_market_size','missed_packaging_story','missed_team_or_endorsement_packaging','ignored_fund_profile','questions_too_broad','missed_key_question','too_optimistic','too_conservative','wrong_priority','overweighted_secondary_issue'] %}
+            <label class="tag-select-item" data-value="{{ etype }}">
+              {{ etype.replace('missed_company_essence','没看懂公司本质').replace('treated_future_as_current','把未来当当前').replace('overestimated_tech_moat','高估技术壁垒').replace('underestimated_tech_moat','低估技术壁垒').replace('overestimated_market_size','高估市场空间').replace('underestimated_market_size','低估市场空间').replace('missed_packaging_story','没识别包装叙事').replace('missed_team_or_endorsement_packaging','没识别团队包装').replace('ignored_fund_profile','没结合基金画像').replace('questions_too_broad','问题太泛').replace('missed_key_question','漏掉关键问题').replace('too_optimistic','太乐观').replace('too_conservative','太保守').replace('wrong_priority','主线排序错误').replace('overweighted_secondary_issue','次要问题权重过高') }}
+            </label>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div style="margin-top:16px">
+          <label style="font-size:12px;font-weight:600;color:#374151;display:block;margin-bottom:6px">简单说明 AI 哪里错了</label>
+          <textarea id="brief_error_summary" rows="2" class="form-textarea" placeholder="请简单描述 AI 的主要问题（50字以内）..."></textarea>
+        </div>
+      </div>
+
+      <!-- 区块5：核心差异记录区 -->
+      <div class="content-card" style="border-left:4px solid #dc2626">
+        <h3 style="font-size:15px;font-weight:700;color:#dc2626;margin:0 0 14px 0">&#x1F525; 区块5：核心差异记录（最重要！）</h3>
+
+        <div style="margin-bottom:16px">
+          <label style="font-size:12px;font-weight:600;color:#374151;display:block;margin-bottom:6px">AI 选的主线</label>
+          <textarea id="ai_main_thesis" rows="2" class="form-textarea" placeholder="例如：增材制造真实性, 代运营模式, 跨场景复制（每行一个）"></textarea>
+        </div>
+
+        <div style="margin-bottom:16px">
+          <label style="font-size:12px;font-weight:600;color:#374151;display:block;margin-bottom:6px">你认为是正确的主线</label>
+          <textarea id="human_main_thesis" rows="3" class="form-textarea" placeholder="例如：商业模式真相（卖车/代运营占比）, 客户真实需求（政策vs ROI）, 规模化复制能力（是否非标）"></textarea>
+        </div>
+
+        <div style="margin-bottom:16px">
+          <label style="font-size:12px;font-weight:600;color:#374151;display:block;margin-bottom:6px">AI 漏掉的关键问题</label>
+          <textarea id="missed_key_issues" rows="2" class="form-textarea" placeholder="例如：政策驱动 vs 真实ROI, 事故责任与智驾级别, 估值与竞品对比"></textarea>
+        </div>
+
+        <div style="margin-bottom:16px">
+          <label style="font-size:12px;font-weight:600;color:#374151;display:block;margin-bottom:6px">AI 过度提权的问题</label>
+          <textarea id="overweighted_issues" rows="2" class="form-textarea" placeholder="例如：增材制造被放到P1，但应作为成本优势验证"></textarea>
+        </div>
+
+        <div style="margin-bottom:16px">
+          <label style="font-size:12px;font-weight:600;color:#374151;display:block;margin-bottom:6px">AI 权重不足的问题</label>
+          <textarea id="underweighted_issues" rows="2" class="form-textarea" placeholder="例如：产业链竞争和主机厂替代风险权重不足"></textarea>
+        </div>
+
+        <div style="margin-bottom:16px">
+          <label style="font-size:12px;font-weight:600;color:#374151;display:block;margin-bottom:6px">一句话学习（核心教训）</label>
+          <textarea id="one_sentence_learning" rows="2" class="form-textarea" style="background:#fef3c7" placeholder="请提炼一句核心教训，未来可以直接进入候选知识库（80字以内）..."></textarea>
+        </div>
+      </div>
+
+      <!-- 区块6：保存与生成 -->
+      <div class="content-card" style="border-left:4px solid #6366f1">
+        <h3 style="font-size:15px;font-weight:700;color:#6366f1;margin:0 0 14px 0">&#x1F4BE; 区块6：保存与生成</h3>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px">
+          <button type="button" onclick="saveComparisonFeedback()" class="btn btn-primary"
+            style="background:#6366f1;border-color:#6366f1;padding:10px 20px">
+            &#x1F4BE; 保存对比反馈
+          </button>
+          <button type="button" onclick="generateKnowledgeCandidates()" class="btn"
+            style="background:#f59e0b;color:white;border:none;padding:10px 20px">
+            &#x2728; 生成候选知识
+          </button>
+          <a href="{{ url_for('comparison_doc', project_id=project_id) }}" class="btn btn-outline"
+            style="padding:10px 20px">
+            &#x1F4CE; 下载对比文档
+          </a>
+        </div>
+        <div id="saveMsg" style="font-size:13px;margin-top:8px;display:none;padding:8px;border-radius:6px"></div>
+        <div id="cmpError" style="font-size:13px;margin-top:8px;display:none;padding:8px;border-radius:6px;color:#dc2626"></div>
+      </div>
+    </form>
+  </div>
+
 </div><!-- /report-wrap -->
 
 <script>
   function showTab(name, btn) {
-    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-    var tab = document.getElementById('tab-' + name);
-    if (tab) tab.classList.add('active');
-    if (btn) btn.classList.add('active');
+    // 调试
+    console.log('[showTab] name:', name, 'btn:', btn);
+    try {
+      // 隐藏所有 tab-content
+      document.querySelectorAll('.tab-content').forEach(function(el) {
+        el.style.display = 'none';
+        el.classList.remove('active');
+      });
+      // 取消所有按钮的 active
+      document.querySelectorAll('.tab-btn').forEach(function(el) {
+        el.classList.remove('active');
+      });
+      // 显示目标 tab
+      var tab = document.getElementById('tab-' + name);
+      if (tab) {
+        tab.style.display = 'block';
+        tab.classList.add('active');
+        console.log('[showTab] 显示 tab:', 'tab-' + name);
+      } else {
+        console.error('[showTab] 未找到 tab:', 'tab-' + name);
+      }
+      if (btn) {
+        btn.classList.add('active');
+      }
+    } catch(e) {
+      console.error('showTab error:', e);
+    }
+  }
+
+  // ========== Dirty Check 全局变量 ==========
+  var formChanged = false;
+  var isRestoring = false;
+
+  // 页面加载时初始化 + 回填已保存数据
+  document.addEventListener('DOMContentLoaded', function() {
+    // 标签点击事件
+    document.querySelectorAll('.tag-select-item').forEach(item => {
+      item.addEventListener('click', () => {
+        item.classList.toggle('selected');
+      });
+    });
+
+    // ========== 回填已保存的对比数据（跳过 dirty check） ==========
+    isRestoring = true;
+    var dataEl = document.getElementById('feedback-case-data');
+    if (!dataEl) { isRestoring = false; return; }
+    try {
+      var fc = JSON.parse(dataEl.textContent || '{}');
+      var ev = fc.evaluation || {};
+      var cd = fc.core_difference || {};
+
+      // 文本字段
+      function fill(id, val) {
+        var el = document.getElementById(id);
+        if (el && val) el.value = val;
+      }
+
+      fill('rawHumanFeedback', fc.raw_human_feedback);
+      fill('essence_alignment', ev.essence_alignment);
+      fill('essence_score', ev.essence_score);
+      fill('meeting_judgement_alignment', ev.meeting_judgement_alignment);
+      fill('reasoning_score', ev.reasoning_score);
+      fill('question_coverage_score', ev.question_coverage_score);
+      fill('overall_usefulness_score', ev.overall_usefulness_score);
+      fill('ai_bias_direction', ev.ai_bias_direction);
+      fill('brief_error_summary', ev.brief_error_summary);
+      fill('ai_main_thesis', Array.isArray(cd.ai_main_thesis) ? cd.ai_main_thesis.join('\n') : cd.ai_main_thesis);
+      fill('human_main_thesis', Array.isArray(cd.human_main_thesis) ? cd.human_main_thesis.join('\n') : cd.human_main_thesis);
+      fill('missed_key_issues', Array.isArray(cd.missed_key_issues) ? cd.missed_key_issues.join('\n') : cd.missed_key_issues);
+      fill('overweighted_issues', Array.isArray(cd.overweighted_issues) ? cd.overweighted_issues.join('\n') : cd.overweighted_issues);
+      fill('underweighted_issues', Array.isArray(cd.underweighted_issues) ? cd.underweighted_issues.join('\n') : cd.underweighted_issues);
+      fill('one_sentence_learning', cd.one_sentence_learning);
+
+      // tag-select 多选：wrong_steps
+      var wrongSteps = ev.wrong_steps || [];
+      wrongSteps.forEach(function(v) {
+        var tag = document.querySelector('#tab-comparison .tag-select-item[data-value="' + v + '"]');
+        if (tag) tag.classList.add('selected');
+      });
+
+      // tag-select 多选：error_types
+      var errorTypes = ev.error_types || [];
+      errorTypes.forEach(function(v) {
+        var tag = document.querySelector('#tab-comparison .tag-select-item[data-value="' + v + '"]');
+        if (tag) tag.classList.add('selected');
+      });
+
+      console.log('[恢复] 对比反馈数据已回填:', Object.keys(ev).length, '个评分字段,', wrongSteps.length, '个错误步骤,', errorTypes.length, '个错误类型');
+    } catch(e) {
+      console.error('[恢复] 回填失败:', e);
+    } finally {
+      isRestoring = false;
+    }
+
+    // ========== Dirty Check：离开页面前警告未保存 ==========
+    function markDirty() {
+      if (!isRestoring) formChanged = true;
+    }
+    document.getElementById('comparisonForm').addEventListener('input', markDirty);
+    document.querySelectorAll('#tab-comparison .tag-select-item').forEach(function(item) {
+      item.addEventListener('click', markDirty);
+    });
+    window.addEventListener('beforeunload', function(e) {
+      if (formChanged) {
+        e.preventDefault();
+        e.returnValue = '你还有未保存的对比反馈，确定要离开吗？';
+        return e.returnValue;
+      }
+    });
+  });
+
+  // 获取选中标签的值
+  function getSelectedTagValues(containerId) {
+    const container = document.querySelector(`#${containerId}`) || document.querySelector(`.tag-container`);
+    if (!container) return [];
+    return Array.from(container.querySelectorAll('.tag-select-item.selected'))
+      .map(item => item.getAttribute('data-value'))
+      .filter(v => v);
+  }
+
+  // 区块2的标签容器
+  function getSelectedTags(container) {
+    return Array.from(container.querySelectorAll('.tag-select-item.selected'))
+      .map(item => item.getAttribute('data-value'))
+      .filter(v => v);
+  }
+
+  // 自由备注 AI 分析
+  async function analyzeFreeNote() {
+    const freeNote = document.getElementById('rawHumanFeedback').value.trim();
+    const statusEl = document.getElementById('analyzeStatus');
+    const btn = document.getElementById('analyzeBtn');
+
+    if (!freeNote) {
+      statusEl.textContent = '请先输入备注内容';
+      statusEl.className = 'error-msg';
+      statusEl.style.display = 'block';
+      return;
+    }
+
+    if (freeNote.length < 20) {
+      statusEl.textContent = '备注内容太短，请输入更多评价';
+      statusEl.className = 'error-msg';
+      statusEl.style.display = 'block';
+      return;
+    }
+
+    // 显示加载状态
+    btn.disabled = true;
+    btn.textContent = '分析中...';
+    statusEl.textContent = '正在分析备注内容，请稍候...';
+    statusEl.className = '';
+    statusEl.style.background = '#e0e7ff';
+    statusEl.style.color = '#4338ca';
+    statusEl.style.display = 'block';
+
+    try {
+      // 构建 AI outputs（用于对比）
+      const aiOutputs = {
+        step5: {{ results.step5 | tojson | safe }},
+        step4: {{ results.step4 | tojson | safe }},
+        step1: {{ (results.step1 or '') | tojson }}
+      };
+
+      const resp = await fetch('/api/feedback/analyze-free-note', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          free_note: freeNote,
+          ai_outputs: aiOutputs
+        })
+      });
+      const result = await resp.json();
+
+      if (result.error) {
+        throw new Error(result.error);
+      }
+
+      const analysis = result.analysis;
+
+      // 自动填表
+      fillFormWithAnalysis(analysis);
+
+      // 自动保存
+      await saveComparisonFeedback();
+
+      statusEl.textContent = '✓ 分析完成，已自动填表并保存';
+      statusEl.className = 'success-msg';
+      statusEl.style.display = 'block';
+
+    } catch (e) {
+      statusEl.textContent = '分析失败: ' + e.message;
+      statusEl.className = 'error-msg';
+      statusEl.style.display = 'block';
+    } finally {
+      btn.disabled = false;
+      btn.textContent = '🔍 AI 分析备注并填表';
+    }
+  }
+
+  // 根据分析结果填表（新结构）
+  function fillFormWithAnalysis(analysis) {
+    // evaluation 字段
+    const evalData = analysis.evaluation || analysis;
+
+    // 本质理解一致程度
+    if (evalData.essence_alignment) {
+      document.getElementById('essence_alignment').value = evalData.essence_alignment;
+    }
+
+    // 本质理解评分
+    if (evalData.essence_score) {
+      document.getElementById('essence_score').value = evalData.essence_score;
+    }
+
+    // 约交流判断是否一致
+    if (evalData.meeting_judgement_alignment) {
+      document.getElementById('meeting_judgement_alignment').value = evalData.meeting_judgement_alignment;
+    }
+
+    // 理由覆盖评分
+    if (evalData.reasoning_score) {
+      document.getElementById('reasoning_score').value = evalData.reasoning_score;
+    }
+
+    // 问题覆盖评分
+    if (evalData.question_coverage_score) {
+      document.getElementById('question_coverage_score').value = evalData.question_coverage_score;
+    }
+
+    // 总体有用性
+    if (evalData.overall_usefulness_score) {
+      document.getElementById('overall_usefulness_score').value = evalData.overall_usefulness_score;
+    }
+
+    // 偏差方向
+    if (evalData.ai_bias_direction) {
+      document.getElementById('ai_bias_direction').value = evalData.ai_bias_direction;
+    }
+
+    // 错误步骤 - 选中标签
+    if (evalData.wrong_steps && Array.isArray(evalData.wrong_steps)) {
+      document.querySelectorAll('#tab-comparison .tag-select-item').forEach(item => {
+        const val = item.getAttribute('data-value');
+        if (val && evalData.wrong_steps.includes(val)) {
+          item.classList.add('selected');
+        }
+      });
+    }
+
+    // 错误类型 - 选中标签
+    if (evalData.error_types && Array.isArray(evalData.error_types)) {
+      evalData.error_types.forEach(etype => {
+        document.querySelectorAll('#tab-comparison .tag-select-item').forEach(item => {
+          const val = item.getAttribute('data-value');
+          if (val === etype) {
+            item.classList.add('selected');
+          }
+        });
+      });
+    }
+
+    // 简单说明
+    if (evalData.brief_error_summary) {
+      document.getElementById('brief_error_summary').value = evalData.brief_error_summary;
+    }
+
+    // core_difference 字段
+    const coreDiff = analysis.core_difference || {};
+
+    if (coreDiff.ai_main_thesis) {
+      const thesis = Array.isArray(coreDiff.ai_main_thesis) 
+        ? coreDiff.ai_main_thesis.join('\n') 
+        : coreDiff.ai_main_thesis;
+      document.getElementById('ai_main_thesis').value = thesis;
+    }
+
+    if (coreDiff.human_main_thesis) {
+      const thesis = Array.isArray(coreDiff.human_main_thesis) 
+        ? coreDiff.human_main_thesis.join('\n') 
+        : coreDiff.human_main_thesis;
+      document.getElementById('human_main_thesis').value = thesis;
+    }
+
+    if (coreDiff.missed_key_issues) {
+      const issues = Array.isArray(coreDiff.missed_key_issues) 
+        ? coreDiff.missed_key_issues.join('\n') 
+        : coreDiff.missed_key_issues;
+      document.getElementById('missed_key_issues').value = issues;
+    }
+
+    if (coreDiff.overweighted_issues) {
+      const issues = Array.isArray(coreDiff.overweighted_issues) 
+        ? coreDiff.overweighted_issues.join('\n') 
+        : coreDiff.overweighted_issues;
+      document.getElementById('overweighted_issues').value = issues;
+    }
+
+    if (coreDiff.underweighted_issues) {
+      const issues = Array.isArray(coreDiff.underweighted_issues) 
+        ? coreDiff.underweighted_issues.join('\n') 
+        : coreDiff.underweighted_issues;
+      document.getElementById('underweighted_issues').value = issues;
+    }
+
+    if (coreDiff.one_sentence_learning) {
+      document.getElementById('one_sentence_learning').value = coreDiff.one_sentence_learning;
+    }
+  }
+
+  // 保存对比反馈
+  async function saveComparisonFeedback() {
+    console.log('[DEBUG] saveComparisonFeedback 被调用了！');
+    const feedbackId = document.getElementById('cmp_feedback_id').value;
+    const projectId = document.getElementById('cmp_project_id').value;
+    const saveMsg = document.getElementById('saveMsg');
+    const errorEl = document.getElementById('cmpError');
+    console.log('[DEBUG] feedbackId:', feedbackId, 'projectId:', projectId);
+    console.log('[DEBUG] saveMsg:', saveMsg, 'errorEl:', errorEl);
+
+    if (!feedbackId) {
+      errorEl.textContent = '请先在项目详情页保存人工初判，再填写对比反馈';
+      errorEl.style.display = 'block';
+      return;
+    }
+
+    // 收集所有选中标签
+    const wrongSteps = [];
+    const errorTypes = [];
+    document.querySelectorAll('#tab-comparison .tag-select-item').forEach(item => {
+      const val = item.getAttribute('data-value');
+      if (item.classList.contains('selected') && val) {
+        if (val.startsWith('step')) {
+          wrongSteps.push(val);
+        } else {
+          errorTypes.push(val);
+        }
+      }
+    });
+
+    const postFeedback = {
+      feedback_id: feedbackId,
+      project_id: projectId,
+      raw_human_feedback: document.getElementById('rawHumanFeedback').value,
+      ai_outputs_snapshot: {
+        step5: {{ results.step5 | tojson | safe }},
+        step4: {{ results.step4 | tojson | safe }},
+        step3b: {},
+        step3: {{ results.step3 | tojson | safe }},
+        step1: {{ (results.step1 or '') | tojson }}
+      },
+      evaluation: {
+        essence_alignment: document.getElementById('essence_alignment').value,
+        essence_score: parseInt(document.getElementById('essence_score').value) || null,
+        meeting_judgement_alignment: document.getElementById('meeting_judgement_alignment').value,
+        reasoning_score: parseInt(document.getElementById('reasoning_score').value) || null,
+        question_coverage_score: parseInt(document.getElementById('question_coverage_score').value) || null,
+        overall_usefulness_score: parseInt(document.getElementById('overall_usefulness_score').value) || null,
+        ai_bias_direction: document.getElementById('ai_bias_direction').value,
+        wrong_steps: wrongSteps,
+        error_types: errorTypes,
+        brief_error_summary: document.getElementById('brief_error_summary').value
+      },
+      core_difference: {
+        ai_main_thesis: (document.getElementById('ai_main_thesis').value || '').split('\n').filter(s => s.trim()),
+        human_main_thesis: (document.getElementById('human_main_thesis').value || '').split('\n').filter(s => s.trim()),
+        missed_key_issues: (document.getElementById('missed_key_issues').value || '').split('\n').filter(s => s.trim()),
+        overweighted_issues: (document.getElementById('overweighted_issues').value || '').split('\n').filter(s => s.trim()),
+        underweighted_issues: (document.getElementById('underweighted_issues').value || '').split('\n').filter(s => s.trim()),
+        one_sentence_learning: document.getElementById('one_sentence_learning').value
+      }
+    };
+
+    // 分段 debug：确认每个字段是否都读取到
+    console.log('[DEBUG] evaluation fields:', Object.keys(postFeedback.evaluation || {}));
+    console.log('[DEBUG] core_difference fields:', Object.keys(postFeedback.core_difference || {}));
+    console.log('[DEBUG] evaluation values:', JSON.stringify(postFeedback.evaluation));
+    console.log('[DEBUG] core_difference values:', JSON.stringify(postFeedback.core_difference));
+    console.log('[DEBUG] postFeedback JSON length:', JSON.stringify(postFeedback).length);
+
+    try {
+      const resp = await fetch('/api/feedback/save-comparison-v2', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(postFeedback)
+      });
+      const result = await resp.json();
+      if (!resp.ok) {
+        errorEl.textContent = '保存失败: ' + (result.error || `HTTP ${resp.status}`);
+        errorEl.style.display = 'block';
+        saveMsg.style.display = 'none';
+        return;
+      }
+      if (result.error) throw new Error(result.error);
+      formChanged = false;  // 保存成功后清除 dirty 标志
+      saveMsg.textContent = '✓ 保存成功！';
+    } catch (e) {
+      errorEl.textContent = '保存失败: ' + e.message;
+      errorEl.style.display = 'block';
+      saveMsg.style.display = 'none';
+    }
+  }
+
+  // 生成候选知识
+  async function generateKnowledgeCandidates() {
+    const feedbackId = document.getElementById('cmp_feedback_id').value;
+    const saveMsg = document.getElementById('saveMsg');
+    const errorEl = document.getElementById('cmpError');
+
+    if (!feedbackId) {
+      errorEl.textContent = '请先保存对比反馈，再生成候选知识';
+      errorEl.style.display = 'block';
+      return;
+    }
+    try {
+      const resp = await fetch('/api/feedback/generate-knowledge-candidates', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({feedback_id: feedbackId})
+      });
+      const result = await resp.json();
+      if (!resp.ok) {
+        errorEl.textContent = '生成失败: ' + (result.error || `HTTP ${resp.status}`);
+        errorEl.style.display = 'block';
+        saveMsg.style.display = 'none';
+        return;
+      }
+      if (result.error) throw new Error(result.error);
+      saveMsg.textContent = '✓ 候选知识已生成！请下载对比文档查看';
+      saveMsg.className = 'success-msg';
+      saveMsg.style.display = 'block';
+      errorEl.style.display = 'none';
+    } catch (e) {
+      errorEl.textContent = '生成候选知识失败: ' + e.message;
+      errorEl.style.display = 'block';
+      saveMsg.style.display = 'none';
+    }
   }
 </script>
 </body>

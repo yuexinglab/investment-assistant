@@ -1,0 +1,18 @@
+Status: 200
+Content-Length: 213155
+Body tag: OK
+Body close tags: 1
+
+Script tags count: 1
+pointer-events:none occurrences: 0
+Overlay divs: 0
+No active tab found!
+style.css link: /static/style.css
+style.css status: 200, size: 7571
+
+Style block 1 has .tab-content rules:
+  .tab-content { display: none; }
+  .tab-content.active { display: block !important; }
+
+Tab bar: <div class="tab-bar">
+report-wrap div: OK

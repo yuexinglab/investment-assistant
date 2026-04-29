@@ -1,0 +1,176 @@
+{
+  "project_structure": {
+    "industry_tags": [
+      {
+        "tag": "autonomous_driving",
+        "label": "自动驾驶",
+        "confidence": "medium",
+        "evidence": "命中关键词：自动驾驶、智驾"
+      },
+      {
+        "tag": "industrial_logistics",
+        "label": "工业物流/场内物流",
+        "confidence": "medium",
+        "evidence": "命中关键词：物流、港口、园区"
+      },
+      {
+        "tag": "ai_application",
+        "label": "AI应用",
+        "confidence": "low",
+        "evidence": "命中关键词：数据"
+      }
+    ],
+    "business_lines": [
+      {
+        "name": "代运营服务",
+        "role": "growth_story",
+        "status": "模式待验证",
+        "revenue_status": "是否形成持续收入待确认",
+        "evidence": "命中关键词：代运营、运营托管",
+        "confidence": "medium"
+      }
+    ],
+    "business_model_hypotheses": [
+      {
+        "bucket_key": "manufacturing_product_sales",
+        "bucket_name": "制造/产品销售型",
+        "role": "primary",
+        "current_or_future": "current",
+        "confidence": "medium",
+        "evidence": "命中关键词：设备销售、销售",
+        "why_it_matters": "如果当前收入主要来自产品/设备/原料销售，则公司更接近制造/产品销售型公司。"
+      },
+      {
+        "bucket_key": "project_delivery",
+        "bucket_name": "项目制交付型",
+        "role": "secondary",
+        "current_or_future": "current",
+        "confidence": "medium",
+        "evidence": "命中关键词：项目、实施、解决方案",
+        "why_it_matters": "如果收入依赖一个个项目交付，则需要重点验证标准化和毛利稳定性。"
+      },
+      {
+        "bucket_key": "asset_heavy_operation",
+        "bucket_name": "重资产运营型",
+        "role": "secondary",
+        "current_or_future": "mixed",
+        "confidence": "low",
+        "evidence": "命中关键词：代运营",
+        "why_it_matters": "如果公司需要自投资产或长期运营回收现金流，则估值和风险更接近重资产运营公司。"
+      },
+      {
+        "bucket_key": "data_ai_model",
+        "bucket_name": "数据/AI模型驱动型",
+        "role": "secondary",
+        "current_or_future": "narrative",
+        "confidence": "low",
+        "evidence": "命中关键词：数据",
+        "why_it_matters": "如果AI只是内部效率工具，则不应按AI平台公司估值；如果形成数据闭环，才可能构成壁垒。"
+      },
+      {
+        "bucket_key": "hardtech_commercialization",
+        "bucket_name": "硬科技商业化型",
+        "role": "secondary",
+        "current_or_future": "mixed",
+        "confidence": "high",
+        "evidence": "命中关键词：技术、专利、研发、自动驾驶",
+        "why_it_matters": "硬科技项目重点不是技术先进，而是能否稳定量产并被真实客户持续采购。"
+      },
+      {
+        "bucket_key": "financing_valuation_story",
+        "bucket_name": "融资估值叙事型",
+        "role": "risk",
+        "current_or_future": "narrative",
+        "confidence": "low",
+        "evidence": "命中关键词：融资",
+        "why_it_matters": "需验证融资用途和估值逻辑是否匹配真实业务阶段。"
+      }
+    ],
+    "risk_buckets": [
+      {
+        "bucket_key": "asset_heavy_operation",
+        "bucket_name": "重资产运营型",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：代运营、车队、重资产",
+        "why_it_matters": "如果业务扩张需要同步投入大量资产，会带来现金流和回本周期风险。"
+      },
+      {
+        "bucket_key": "project_delivery",
+        "bucket_name": "项目制交付型",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：项目制、实施",
+        "why_it_matters": "如果每个项目都需要定制，规模化后交付和毛利可能承压。"
+      },
+      {
+        "bucket_key": "asset_heavy_operation_cashflow",
+        "bucket_name": "asset_heavy_operation_cashflow",
+        "risk_role": "risk",
+        "confidence": "low",
+        "evidence": "命中关键词：现金流",
+        "why_it_matters": "如果回款慢或需要垫资，增长可能反而加剧资金压力。"
+      },
+      {
+        "bucket_key": "customer_concentration",
+        "bucket_name": "客户集中风险",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：大客户、前五大、港口",
+        "why_it_matters": "如果收入依赖少数大客户，公司议价权和收入稳定性可能较弱。"
+      },
+      {
+        "bucket_key": "financing_valuation_story",
+        "bucket_name": "融资估值叙事型",
+        "risk_role": "risk",
+        "confidence": "low",
+        "evidence": "命中关键词：融资",
+        "why_it_matters": "融资用途和估值逻辑可能与真实业务阶段不匹配。"
+      }
+    ],
+    "key_uncertainties": [
+      {
+        "uncertainty": "公司到底是客户买产品/设备，还是公司自投资产做运营？",
+        "why_it_matters": "这决定公司是偏轻资产产品销售型，还是重资产运营型，估值和现金流逻辑完全不同。",
+        "related_buckets": [
+          "manufacturing_product_sales",
+          "asset_heavy_operation"
+        ],
+        "discriminating_questions": [
+          "客户是否直接购买设备/车辆/产品？",
+          "是否存在公司自投资产并通过运营回收现金流？",
+          "资产由谁持有？折旧和维修由谁承担？",
+          "收入是一次性销售，还是按使用量/服务费持续收费？"
+        ]
+      },
+      {
+        "uncertainty": "项目交付是否标准化，还是每个客户都需要大量定制？",
+        "why_it_matters": "决定公司能否规模化复制，以及毛利率是否会被交付成本侵蚀。",
+        "related_buckets": [
+          "project_delivery"
+        ],
+        "discriminating_questions": [
+          "一个新项目中有多少模块可以复用？",
+          "单个项目从签约到验收回款需要多久？",
+          "每个项目需要多少实施人员？",
+          "不同项目毛利率差异大不大？"
+        ]
+      },
+      {
+        "uncertainty": "AI/数据能力是核心壁垒，还是研发/交付效率工具？",
+        "why_it_matters": "如果AI只是内部工具，则不应按AI平台公司估值。",
+        "related_buckets": [
+          "data_ai_model"
+        ],
+        "discriminating_questions": [
+          "AI是否直接决定客户购买或产品性能？",
+          "AI相比传统方法带来什么量化提升？",
+          "数据是否独占并形成持续反馈闭环？",
+          "模型输出是否仍需要大量人工验证？"
+        ]
+      }
+    ],
+    "structure_summary": "系统初步识别该项目涉及行业：自动驾驶、工业物流/场内物流、AI应用；主要业务线包括：代运营服务；可能适用的投资逻辑包括：制造/产品销售型、项目制交付型、重资产运营型。该识别仅作为后续分析入口，不代表最终判断。"
+  },
+  "raw_step3": "{\n  \"selected_buckets\": [\"tech_barrier\", \"commercialization\", \"customer_value\"],\n  \"bucket_outputs\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"bucket_label\": \"技术/壁垒是否成立\",\n      \"point\": \"技术栈完整且已获多项核心专利，形成一定壁垒\",\n      \"explanation\": \"【claim】BP称拥有完整的感知、决策、执行全栈技术，并已获得多项核心专利。【reality】在自动驾驶领域，拥有全栈技术栈和专利是进入该行业的基础门槛，但并非充分壁垒。港口和园区场景相对封闭，技术难度低于开放道路，多家公司（如主线科技、西井科技）也具备类似能力。【gap】BP未披露专利的具体内容、覆盖范围及与竞争对手的差异点，也未说明技术是否已转化为可量化的性能优势（如安全率、效率提升）。【结论】support：技术栈完整是成立的基础，但壁垒强度存疑。\",\n      \"relation_to_step1\"..."
+}

@@ -1,0 +1,102 @@
+{
+  "profile_id": "hong_gov_fund_v1",
+  "profile_type": "fund",
+  "parent_profile": "government_industrial_fund",
+  "name": "洪总政府产业基金视角 v1",
+  "description": "基于洪总真实判断数据积累的政府产业基金画像。来源：洪总对一批BP的约/不约判断及原因标注。标注时间：2026年4月。",
+  "origin": "由人工初判标注数据生成，非预设模板。",
+  "hard_constraints": [
+    {
+      "key": "local_landing",
+      "description": "项目需要有明确本地落地可能性。",
+      "priority": "high",
+      "examples": ["在本地建厂", "设立子公司", "产能迁移至当地"]
+    },
+    {
+      "key": "reverse_investment",
+      "description": "项目方需配合反投或地方经济贡献。",
+      "priority": "high",
+      "examples": ["承诺反投金额", "本地采购比例", "带动就业人数"]
+    },
+    {
+      "key": "real_customer",
+      "description": "必须有真实付费客户，不能只是技术/平台故事。",
+      "priority": "high",
+      "examples": ["已有签约客户", "已有收入", "有明确客户意向"]
+    }
+  ],
+  "preferences": [
+    {
+      "key": "industrialization",
+      "description": "偏好能带动产业链上下游协同、促进本地制造和实体经济的项目。",
+      "priority": "high",
+      "weight": 0.3
+    },
+    {
+      "key": "real_revenue",
+      "description": "已有真实收入或接近收入的业务优先。",
+      "priority": "high",
+      "weight": 0.25
+    },
+    {
+      "key": "clear_business",
+      "description": "业务逻辑清晰、不依赖复杂包装叙事的项目优先。",
+      "priority": "medium",
+      "weight": 0.2
+    },
+    {
+      "key": "technology_transfer",
+      "description": "希望项目能带来技术转移或产业升级。",
+      "priority": "medium",
+      "weight": 0.15
+    },
+    {
+      "key": "employment",
+      "description": "能带动当地就业的项目优先。",
+      "priority": "low",
+      "weight": 0.1
+    }
+  ],
+  "avoid": [
+    {
+      "key": "pure_platform_packaging",
+      "description": "不偏好打着平台化/AI名号但实质是原料/制造业务的公司。",
+      "priority": "high"
+    },
+    {
+      "key": "pure_customized_rnd",
+      "description": "不偏好只做小批量定制研发、难以本地规模化落地的项目。",
+      "priority": "medium"
+    },
+    {
+      "key": "unclear_money_model",
+      "description": "商业模式不清晰、付费逻辑不明确的项目。",
+      "priority": "medium"
+    }
+  ],
+  "fit_questions": [
+    {
+      "question": "这个项目有本地落地的可能性吗？具体怎么落地？",
+      "related_constraint": "local_landing"
+    },
+    {
+      "question": "项目方愿意做反投或经济贡献吗？",
+      "related_constraint": "reverse_investment"
+    },
+    {
+      "question": "现在有没有真实付费客户？客户是谁？",
+      "related_constraint": "real_customer"
+    },
+    {
+      "question": "当前真实收入有多少？毛利多少？",
+      "related_constraint": "real_revenue"
+    },
+    {
+      "question": "这个公司到底在干什么业务，不是PPT里讲的故事？",
+      "related_constraint": "clear_business"
+    }
+  ],
+  "created_at": "2026-04-27",
+  "data_source": "洪总BP标注数据 v1",
+  "note": "本画像来自洪总对具体BP的判断积累，随标注数据增加会持续更新。"
+}

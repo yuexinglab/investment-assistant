@@ -1,0 +1,32 @@
+{
+  "project_structure": {
+    "industry_tags": [
+      "autonomous_driving",
+      "logistics"
+    ],
+    "business_lines": [
+      "研发/技术",
+      "销售/商业化",
+      "运营/服务"
+    ],
+    "business_model_hypotheses": [
+      "equipment_sales",
+      "project_contract",
+      "asset_heavy_operation"
+    ],
+    "risk_buckets": [
+      "heavy_asset_risk",
+      "customer_concentration_risk",
+      "cashflow_pressure_risk"
+    ],
+    "key_uncertainties": [
+      "扩张是否会带来更大的资本压力？资金来源是否落实？",
+      "大客户流失对业务的影响程度有多大？",
+      "设备/产品是否真的被客户采购还是停留在试点？出货量能否支撑估值？",
+      "现金流压力是否会影响正常运营和发展节奏？",
+      "重资产运营的现金流压力是否可控？资产利用率如何？",
+      "项目制收入是否稳定？是否高度依赖单一大客户？"
+    ]
+  },
+  "raw_step3": "{\n  \"selected_buckets\": [\"tech_barrier\", \"commercialization\", \"customer_value\"],\n  \"bucket_outputs\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"bucket_label\": \"技术/壁垒是否成立\",\n      \"point\": \"支持Step1：技术壁垒成立，有专利和运营验证\",\n      \"explanation\": \"【claim】BP称拥有完整的自动驾驶技术栈和多项核心专利，运营超过1000万公里。【reality】在港口和物流园区场景，L4级自动驾驶技术已有多家公司在测试，但实际商业化运营里程超过1000万公里且无重大事故的案例较少，这构成了一定的先发优势和数据壁垒。【gap】BP未披露专利具体数量和核心专利覆盖领域，也未说明运营里程中的事故率或接管率。【conclusion】support\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"med..."
+}

@@ -1,0 +1,214 @@
+{
+  "meeting_quality": {
+    "answer_directness": "low",
+    "evidence_strength": "medium",
+    "evasion_level": "medium",
+    "overall_confidence": "low",
+    "consistency": "medium",
+    "evasion_signals": [
+      "问题「**团队能打仗吗？** 食品、新能源的负责人是谁？有没有干过...」未得到有效回答",
+      "问题「追问：这个成本差异，是你们自己测算的，还是已经有客户（比如协...」未得到有效回答",
+      "问题「追问：比如在新能源这块，除了技术团队，有没有专门负责市场拓展...」未得到有效回答"
+    ],
+    "answered_count": 1,
+    "partially_count": 5,
+    "weak_count": 3,
+    "missing_evidence_count": 17
+  },
+  "question_validation": [
+    {
+      "question_id": "q_001",
+      "original_question": "**AI到底多有用？** 建沐™AI矩阵的预测准确率是多少？研发周期到底缩短了多少？",
+      "matched_information_ids": [
+        "ni_010",
+        "ni_011"
+      ],
+      "matched_information_summary": [
+        "AI平台数据量约几千至一万条，准确率约70-80%，尚未形成闭环。",
+        "AI平台于2024年正式搭建，此前为数据积累阶段。"
+      ],
+      "answer_summary": "会议中创始人提到AI平台数据量约几千至一万条，准确率约70-80%，但未提及研发周期缩短的具体数据。",
+      "status": "partially_answered",
+      "quality": "medium",
+      "impact": "slightly_weakens",
+      "missing_evidence": [
+        "研发周期缩短的具体数据",
+        "AI预测结果与实验结果的对比案例"
+      ],
+      "follow_up_question": "要求提供AI平台实际应用案例，展示预测结果与实验结果的对比，并明确研发周期缩短的具体天数或百分比。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_002",
+      "original_question": "**新能源电解液能赚钱吗？** 成本比LiPF₆高还是低？协鑫到底买不买？",
+      "matched_information_ids": [
+        "ni_008",
+        "ni_012"
+      ],
+      "matched_information_summary": [
+        "新能源业务预计2026年5月方案落地，但年内创造收入可能性低。",
+        "并购千沐新能源为同一创始人控制，计划在本轮融资前完成，旨在整合研发中台。"
+      ],
+      "answer_summary": "会议提到新能源业务预计2026年5月方案落地，但年内创造收入可能性低，未提及成本对比或协鑫的购买意向。",
+      "status": "partially_answered",
+      "quality": "low",
+      "impact": "slightly_weakens",
+      "missing_evidence": [
+        "成本对比数据（与LiPF₆）",
+        "协鑫的客户意向书或合同"
+      ],
+      "follow_up_question": "要求提供新能源电解液的成本测算明细，以及协鑫等潜在客户的意向书或合作备忘录。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_003",
+      "original_question": "**团队能打仗吗？** 食品、新能源的负责人是谁？有没有干过大规模生产的人？",
+      "matched_information_ids": [
+        "ni_018"
+      ],
+      "matched_information_summary": [
+        "公司创始人张嘉恒教授的背景与公司技术起源相关（其母亲从事化妆品行业）。"
+      ],
+      "answer_summary": "会议仅提到创始人张嘉恒教授的背景（其母亲从事化妆品行业），未提及食品、新能源的负责人或大规模生产经验。",
+      "status": "not_answered",
+      "quality": "low",
+      "impact": "no_change",
+      "missing_evidence": [
+        "食品业务负责人信息",
+        "新能源业务负责人信息",
+        "团队大规模生产经验证明"
+      ],
+      "follow_up_question": "要求提供食品和新能源业务负责人的简历，以及团队中具有大规模生产经验的核心成员背景。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_004",
+      "original_question": "切入：张教授，BP里提到建沐™AI矩阵能大幅缩短研发周期，我们很感兴趣",
+      "matched_information_ids": [
+        "ni_010",
+        "ni_011"
+      ],
+      "matched_information_summary": [
+        "AI平台数据量约几千至一万条，准确率约70-80%，尚未形成闭环。",
+        "AI平台于2024年正式搭建，此前为数据积累阶段。"
+      ],
+      "answer_summary": "会议中创始人回应了AI平台的数据量和准确率，但未正面回答研发周期缩短的具体幅度。",
+      "status": "partially_answered",
+      "quality": "medium",
+      "impact": "slightly_weakens",
+      "missing_evidence": [
+        "研发周期缩短的具体数据"
+      ],
+      "follow_up_question": "要求提供AI平台缩短研发周期的具体案例，包括对比传统方法的周期数据。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_005",
+      "original_question": "再追：这个准确率是基于你们自己的数据训练出来的吗",
+      "matched_information_ids": [
+        "ni_010",
+        "ni_011"
+      ],
+      "matched_information_summary": [
+        "AI平台数据量约几千至一万条，准确率约70-80%，尚未形成闭环。",
+        "AI平台于2024年正式搭建，此前为数据积累阶段。"
+      ],
+      "answer_summary": "会议提到AI平台数据量约几千至一万条，2024年正式搭建，此前为数据积累阶段，暗示数据为公司自有。",
+      "status": "answered",
+      "quality": "medium",
+      "impact": "slightly_strengthens",
+      "missing_evidence": [
+        "数据来源的详细说明",
+        "模型训练方法的文档"
+      ],
+      "follow_up_question": "要求提供AI平台数据来源的详细说明，包括数据采集方式、清洗流程及模型训练方法。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_006",
+      "original_question": "切入：我们非常看好新能源这块业务，特别是深共晶电解液",
+      "matched_information_ids": [
+        "ni_008",
+        "ni_012"
+      ],
+      "matched_information_summary": [
+        "新能源业务预计2026年5月方案落地，但年内创造收入可能性低。",
+        "并购千沐新能源为同一创始人控制，计划在本轮融资前完成，旨在整合研发中台。"
+      ],
+      "answer_summary": "会议提到新能源业务预计2026年5月方案落地，并购千沐新能源旨在整合研发中台，但未深入讨论深共晶电解液的具体优势。",
+      "status": "partially_answered",
+      "quality": "medium",
+      "impact": "slightly_strengthens",
+      "missing_evidence": [
+        "深共晶电解液的技术优势对比数据",
+        "客户验证报告"
+      ],
+      "follow_up_question": "要求提供深共晶电解液与LiPF₆的性能对比测试报告，以及潜在客户的验证反馈。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_007",
+      "original_question": "追问：这个成本差异，是你们自己测算的，还是已经有客户（比如协鑫）验证过",
+      "matched_information_ids": [
+        "ni_008"
+      ],
+      "matched_information_summary": [
+        "新能源业务预计2026年5月方案落地，但年内创造收入可能性低。"
+      ],
+      "answer_summary": "会议未提及成本差异的测算方式或客户验证情况，仅提到新能源业务方案落地时间。",
+      "status": "not_answered",
+      "quality": "low",
+      "impact": "no_change",
+      "missing_evidence": [
+        "成本差异测算依据",
+        "客户验证报告"
+      ],
+      "follow_up_question": "要求提供新能源电解液成本差异的测算明细，并说明是否已有客户（如协鑫）进行过验证。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_008",
+      "original_question": "切入：张教授，你们的团队在超分子化学和AI方面非常强，这从BP里能看出来",
+      "matched_information_ids": [
+        "ni_018"
+      ],
+      "matched_information_summary": [
+        "公司创始人张嘉恒教授的背景与公司技术起源相关（其母亲从事化妆品行业）。"
+      ],
+      "answer_summary": "会议提到创始人张嘉恒教授的背景（其母亲从事化妆品行业），间接说明团队在超分子化学方面的渊源，但未深入讨论AI团队。",
+      "status": "indirectly_answered",
+      "quality": "low",
+      "impact": "no_change",
+      "missing_evidence": [
+        "AI团队核心成员背景",
+        "超分子化学团队的具体成就"
+      ],
+      "follow_up_question": "要求提供AI团队核心成员的简历，以及超分子化学团队的代表性研发成果。",
+      "question_source": "base",
+      "profile_id": ""
+    },
+    {
+      "question_id": "q_009",
+      "original_question": "追问：比如在新能源这块，除了技术团队，有没有专门负责市场拓展和客户关系的高管",
+      "matched_information_ids": [],
+      "matched_information_summary": [],
+      "answer_summary": "会议未提及新能源业务的市场拓展或客户关系高管。",
+      "status": "not_answered",
+      "quality": "low",
+      "impact": "no_change",
+      "missing_evidence": [
+        "新能源业务市场拓展负责人信息"
+      ],
+      "follow_up_question": "要求提供新能源业务市场拓展和客户关系高管的简历及过往业绩。",
+      "question_source": "base",
+      "profile_id": ""
+    }
+  ]
+}

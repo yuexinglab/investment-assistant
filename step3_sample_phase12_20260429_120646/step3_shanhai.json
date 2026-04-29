@@ -1,0 +1,184 @@
+{
+  "industry_tags": [
+    {
+      "tag": "advanced_materials",
+      "label": "新材料",
+      "confidence": "medium",
+      "evidence": "命中关键词：材料、分子、原料"
+    },
+    {
+      "tag": "beauty_ingredients",
+      "label": "美妆/日化原料",
+      "confidence": "medium",
+      "evidence": "命中关键词：美妆、日化、原料"
+    },
+    {
+      "tag": "ai_application",
+      "label": "AI应用",
+      "confidence": "medium",
+      "evidence": "命中关键词：AI、大模型、模型"
+    },
+    {
+      "tag": "food_ingredients",
+      "label": "食品/营养原料",
+      "confidence": "low",
+      "evidence": "命中关键词：食品"
+    },
+    {
+      "tag": "new_energy",
+      "label": "新能源",
+      "confidence": "low",
+      "evidence": "命中关键词：新能源"
+    }
+  ],
+  "business_lines": [
+    {
+      "name": "项目制交付/场景解决方案",
+      "role": "current_business",
+      "status": "项目制落地/场景交付",
+      "revenue_status": "项目收入和毛利待确认",
+      "evidence": "命中关键词：解决方案",
+      "confidence": "low"
+    },
+    {
+      "name": "美妆/日化原料",
+      "role": "current_business",
+      "status": "当前收入底盘",
+      "revenue_status": "已有收入但金额需确认",
+      "evidence": "命中关键词：美妆、日化、原料、配方",
+      "confidence": "high"
+    },
+    {
+      "name": "食品/营养原料",
+      "role": "growth_story",
+      "status": "增长业务",
+      "revenue_status": "收入基数和复购待确认",
+      "evidence": "命中关键词：食品、保健品、原料、成分",
+      "confidence": "high"
+    },
+    {
+      "name": "AI研发平台",
+      "role": "supporting_capability",
+      "status": "研发工具/效率工具",
+      "revenue_status": "是否对外收费待确认",
+      "evidence": "命中关键词：AI、大模型、筛选、研发平台、分子设计、材料筛选、人工智能、研发",
+      "confidence": "high"
+    },
+    {
+      "name": "新能源材料/回收业务",
+      "role": "valuation_story",
+      "status": "远期故事/待验证业务",
+      "revenue_status": "是否已有收入待确认",
+      "evidence": "命中关键词：新能源、锂电、材料、回收",
+      "confidence": "high"
+    }
+  ],
+  "business_model_hypotheses": [
+    {
+      "bucket_key": "manufacturing_product_sales",
+      "bucket_name": "制造/产品销售型",
+      "role": "primary",
+      "current_or_future": "current",
+      "confidence": "low",
+      "evidence": "命中关键词：销售",
+      "why_it_matters": "如果当前收入主要来自产品/设备/原料销售，则公司更接近制造/产品销售型公司。"
+    },
+    {
+      "bucket_key": "project_delivery",
+      "bucket_name": "项目制交付型",
+      "role": "secondary",
+      "current_or_future": "current",
+      "confidence": "medium",
+      "evidence": "命中关键词：定制、解决方案",
+      "why_it_matters": "如果收入依赖一个个项目交付，则需要重点验证标准化和毛利稳定性。"
+    },
+    {
+      "bucket_key": "data_ai_model",
+      "bucket_name": "数据/AI模型驱动型",
+      "role": "secondary",
+      "current_or_future": "narrative",
+      "confidence": "high",
+      "evidence": "命中关键词：AI、大模型、模型、筛选",
+      "why_it_matters": "如果AI只是内部效率工具，则不应按AI平台公司估值；如果形成数据闭环，才可能构成壁垒。"
+    },
+    {
+      "bucket_key": "hardtech_commercialization",
+      "bucket_name": "硬科技商业化型",
+      "role": "secondary",
+      "current_or_future": "mixed",
+      "confidence": "high",
+      "evidence": "命中关键词：技术、专利、研发、材料",
+      "why_it_matters": "硬科技项目重点不是技术先进，而是能否稳定量产并被真实客户持续采购。"
+    },
+    {
+      "bucket_key": "expansion_story",
+      "bucket_name": "多业务扩张/第二曲线型",
+      "role": "narrative",
+      "current_or_future": "future",
+      "confidence": "medium",
+      "evidence": "命中关键词：新能源、医药、食品",
+      "why_it_matters": "如果当前收入来自A业务，但估值故事来自B/C业务，需警惕扩张叙事。"
+    }
+  ],
+  "risk_buckets": [
+    {
+      "bucket_key": "project_delivery",
+      "bucket_name": "项目制交付型",
+      "risk_role": "risk",
+      "confidence": "low",
+      "evidence": "命中关键词：定制",
+      "why_it_matters": "如果每个项目都需要定制，规模化后交付和毛利可能承压。"
+    },
+    {
+      "bucket_key": "expansion_story",
+      "bucket_name": "多业务扩张/第二曲线型",
+      "risk_role": "risk",
+      "confidence": "medium",
+      "evidence": "命中关键词：新能源、医药",
+      "why_it_matters": "多业务扩张可能是真增长，也可能只是扩大估值边界。"
+    }
+  ],
+  "key_uncertainties": [
+    {
+      "uncertainty": "项目交付是否标准化，还是每个客户都需要大量定制？",
+      "why_it_matters": "决定公司能否规模化复制，以及毛利率是否会被交付成本侵蚀。",
+      "related_buckets": [
+        "project_delivery"
+      ],
+      "discriminating_questions": [
+        "一个新项目中有多少模块可以复用？",
+        "单个项目从签约到验收回款需要多久？",
+        "每个项目需要多少实施人员？",
+        "不同项目毛利率差异大不大？"
+      ]
+    },
+    {
+      "uncertainty": "AI/数据能力是核心壁垒，还是研发/交付效率工具？",
+      "why_it_matters": "如果AI只是内部工具，则不应按AI平台公司估值。",
+      "related_buckets": [
+        "data_ai_model"
+      ],
+      "discriminating_questions": [
+        "AI是否直接决定客户购买或产品性能？",
+        "AI相比传统方法带来什么量化提升？",
+        "数据是否独占并形成持续反馈闭环？",
+        "模型输出是否仍需要大量人工验证？"
+      ]
+    },
+    {
+      "uncertainty": "当前真实收入、增长业务和估值叙事是否错位？",
+      "why_it_matters": "如果当前收入来自小业务，但融资按平台/多行业故事估值，可能存在估值泡沫。",
+      "related_buckets": [
+        "expansion_story",
+        "financing_valuation_story"
+      ],
+      "discriminating_questions": [
+        "当前收入主要来自哪条业务线？",
+        "增长最快的业务线收入基数是多少？",
+        "估值主要依据当前收入还是未来平台故事？",
+        "新业务是否已有真实收入、复购和毛利？"
+      ]
+    }
+  ],
+  "structure_summary": "系统初步识别该项目涉及行业：新材料、美妆/日化原料、AI应用；主要业务线包括：项目制交付/场景解决方案、美妆/日化原料、食品/营养原料；可能适用的投资逻辑包括：制造/产品销售型、项目制交付型、数据/AI模型驱动型。该识别仅作为后续分析入口，不代表最终判断。"
+}

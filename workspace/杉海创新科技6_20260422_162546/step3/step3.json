@@ -8,35 +8,35 @@
     {
       "bucket_key": "tech_barrier",
       "bucket_label": "技术/壁垒是否成立",
-      "point": "超分子技术是行业通用改性手段，非底层原创，AI平台缺乏量化证据",
-      "explanation": "【claim】BP将超分子技术包装为诺奖级底层创新，并宣称AI驱动。【reality】超分子化学（共晶、离子盐）是制药、材料领域成熟的工程化手段，并非杉海原创。大量论文和专利集中于已知分子的性能改良，而非新分子发现。【gap】BP未提供任何AI平台缩短研发周期或发现新材料的量化数据（如节省天数、发现的新分子数量）。【结论】contradict",
-      "relation_to_step1": "contradict",
-      "certainty": "high",
-      "source_type": "common_sense"
+      "point": "支持Step1：超分子技术本身有诺奖背书，且公司拥有大量专利，形成初步壁垒。",
+      "explanation": "【claim】BP声称超分子智组装技术体系获得两次诺贝尔奖技术背书，并拥有156+发明专利，覆盖共晶、离子盐、离子液体等关键技术节点。【reality】诺奖技术（超分子化学与分子机器）是基础科学发现，并非直接可商业化的技术。公司拥有大量专利，但需验证其是否为原创核心专利，还是围绕现有分子的外围改性专利。【gap】BP未提供专利的具体权利要求范围、被引用次数或与竞品的专利对比，无法判断其排他性。【conclusion】support：诺奖背书和专利数量确实构成初步壁垒，但壁垒强度待验证。",
+      "relation_to_step1": "support",
+      "certainty": "medium",
+      "source_type": "bp"
     },
     {
       "bucket_key": "tech_barrier",
       "bucket_label": "技术/壁垒是否成立",
-      "point": "头部客户投资和合作验证了技术应用价值",
-      "explanation": "【claim】欧莱雅、华熙生物等产业巨头战略投资并合作开发原料。【reality】在美妆行业，头部品牌对原料供应商的技术验证极为严格，投资和联合开发通常意味着技术通过了初步工程验证和商业可行性评估。【gap】合作深度和排他性未知，但至少证明技术在美妆领域有真实应用价值。【结论】support",
-      "relation_to_step1": "support",
-      "certainty": "medium",
+      "point": "挑战Step1：AI平台“建沐™”可能只是效率工具，而非核心壁垒，且技术通用性存疑。",
+      "explanation": "【claim】BP称建沐™AI是全球首个AI驱动的超分子材料数据库与高通量筛选体系，能大幅缩短研发周期。【reality】AI辅助材料筛选在化学和材料领域已成为行业通用做法（如Schrödinger、Materials Project等），并非公司独有。公司AI平台的核心数据库规模和独特性未披露，且与深度原理的合作表明其AI能力部分依赖外部合作。【gap】BP未提供AI预测成功率的量化数据（如预测后一次实验成功的比例），也未说明数据闭环是否形成。【conclusion】contradict：AI平台可能只是效率工具，而非不可复制的核心壁垒；技术在不同行业（美妆vs新能源）的通用性缺乏证据。",
+      "relation_to_step1": "contradict",
+      "certainty": "high",
       "source_type": "bp"
     },
     {
       "bucket_key": "customer_value",
       "bucket_label": "客户为什么付钱",
-      "point": "美妆客户付费主要为了产品宣称和性能提升，而非底层技术",
-      "explanation": "【claim】BP声称客户为‘超分子技术’付费。【reality】美妆品牌采购原料的核心动机是：提升功效（如透皮吸收）、改善肤感、支持‘科技’宣称以增加产品溢价。超分子改性后的原料（如超分子水杨酸）确实能提供这些价值，但客户并不为‘超分子’概念本身付费，而是为可量化的性能指标和营销故事付费。【gap】BP未区分客户购买的是‘改性后的原料’还是‘技术授权’，后者溢价更高但尚未验证。【结论】neutral",
-      "relation_to_step1": "neutral",
+      "point": "支持Step1：客户为性能提升付费，且头部客户（欧莱雅、宝洁）的采购行为验证了价值。",
+      "explanation": "【claim】BP显示公司服务欧莱雅、宝洁、华熙生物等100余家头部企业，并与欧莱雅联合开发超分子原料，与宝洁合作升级活性物透皮递送技术。【reality】头部美妆品牌对原料性能（如稳定性、渗透性、生物利用度）有严格要求和持续需求，且更换供应商成本较高。公司能进入这些巨头供应链，说明其技术确实解决了客户痛点。【gap】BP未披露具体合作金额、订单规模或客户复购率，无法判断客户付费的深度和持续性。【conclusion】support：头部客户的采购行为是客户价值的有力证明，但付费深度需进一步验证。",
+      "relation_to_step1": "support",
       "certainty": "high",
-      "source_type": "common_sense"
+      "source_type": "bp"
     },
     {
       "bucket_key": "customer_value",
       "bucket_label": "客户为什么付钱",
-      "point": "新能源客户付费意愿存疑，缺乏订单验证",
-      "explanation": "【claim】BP宣称深共晶电解液和回收技术能解决行业痛点，客户将为此付费。【reality】新能源材料领域，客户（电池厂、回收商）对成本、安全性、循环寿命要求极高。深共晶电解液虽阻燃，但离子电导率低于传统液态电解液，且与现有产线兼容性未知。锂电回收技术尚未有规模化收入，仅与上市公司‘洽谈战略合作’，无真实订单。【gap】BP未披露任何新能源客户的采购合同或意向书。【结论】contradict",
+      "point": "挑战Step1：在新能源领域，客户价值尚未验证，且替换动力可能不足。",
+      "explanation": "【claim】BP声称深共晶电解液具有高安全性、阻燃、抑制锂枝晶等优势，并展示了循环性能数据。【reality】新能源电池行业对电解液的性能要求极为苛刻，且现有方案（如液态电解液、固态电解质）已有成熟供应链和成本优势。深共晶电解液虽在安全性上有优势，但其离子导电性（中等）可能成为瓶颈，且成本竞争力未与现有方案对比。【gap】BP未提供与现有电解液方案的成本对比、客户验证进展或意向订单，仅展示了实验室数据。【conclusion】contradict：在新能源领域，客户价值尚未被订单或客户验证，替换现有方案的动力可能不足。",
       "relation_to_step1": "contradict",
       "certainty": "medium",
       "source_type": "bp"
@@ -44,17 +44,17 @@
     {
       "bucket_key": "commercialization",
       "bucket_label": "商业化路径是否成立",
-      "point": "美妆业务已实现亿元级营收和头部客户复购，商业化初步成立",
-      "explanation": "【claim】公司美妆原料年收入超1亿元，服务欧莱雅、宝洁等100+客户。【reality】1亿+营收、头部客户持续合作，说明在美妆领域已跑通‘技术-产品-销售’的闭环。2025年预测扭亏，主要驱动力应是美妆业务的持续放量。【gap】但美妆业务的增长是否可持续？客户是否在扩大采购量？BP未披露老客户复购率和新客户获取成本。【结论】support",
+      "point": "支持Step1：美妆业务已实现商业化，营收和客户基础验证了从实验室到量产的路径。",
+      "explanation": "【claim】BP显示公司2024年营收1.23亿元，主要来自美妆原料销售，年产能达千吨级，服务100余家头部企业。【reality】美妆原料行业客户验证周期相对较短（通常6-12个月），且公司已与欧莱雅、华熙生物等建立合作，说明其产品已通过客户验证并进入量产阶段。【gap】BP未披露毛利率、产能利用率或客户复购率，无法判断商业化的健康度。【conclusion】support：美妆业务的营收和客户基础表明商业化路径在美妆领域已初步成立。",
       "relation_to_step1": "support",
-      "certainty": "medium",
+      "certainty": "high",
       "source_type": "bp"
     },
     {
       "bucket_key": "commercialization",
       "bucket_label": "商业化路径是否成立",
-      "point": "新能源、食品等新业务商业化路径模糊，缺乏落地细节",
-      "explanation": "【claim】BP计划通过并购千沐、建设AI平台、合资合作等方式进入新能源等领域。【reality】从美妆到新能源，技术、客户、供应链、法规体系完全不同。BP中新能源业务仅停留在实验室数据和合作意向，无明确的产线建设计划、量产时间表、客户导入周期。食品业务虽宣称订单增长300%，但基数极小（2024年刚起步），且需通过严格的食品安全认证。【gap】BP未回答‘如何从卖原料转型为卖技术授权或合资建厂’的具体路径和里程碑。【结论】contradict",
+      "point": "挑战Step1：新能源和食品等新业务的商业化路径尚未验证，预测增长可能过于乐观。",
+      "explanation": "【claim】BP预测2025年营收1.65亿元，净利润扭亏为盈，并称食品业务订单年增长率达300%，新能源业务预计2025年落地。【reality】新能源材料行业客户验证周期通常长达2-5年，且需要经过严格的性能测试和认证。食品原料行业同样需要较长的安全评估和客户导入周期。公司2024年营收仅1.23亿元，且净利润亏损，2025年扭亏为盈的预测缺乏新业务订单的明确支撑。【gap】BP未提供新能源业务的意向订单或客户验证进展，食品业务的订单增长率300%但基数未披露。【conclusion】contradict：新业务商业化路径尚未验证，预测增长可能过于乐观，存在较大不确定性。",
       "relation_to_step1": "contradict",
       "certainty": "high",
       "source_type": "bp"
@@ -63,62 +63,378 @@
   "publicly_resolvable": [
     {
       "bucket_key": "tech_barrier",
-      "item": "专利布局是否形成真实壁垒",
-      "current_conclusion": "BP声称156+发明专利，但未提供权利要求范围。通过公开专利数据库可核实专利类型（核心化合物专利 vs 应用型专利 vs 工艺专利）。大概率是围绕已知分子的超分子改性方法专利，排他性有限，竞争对手可通过绕道设计规避。",
+      "item": "通过公开专利数据库可确认公司专利的权利要求范围、被引用次数和原创性。",
+      "current_conclusion": "公司拥有156+发明专利，但需确认其是否为原创核心专利，还是外围改性专利。",
       "confidence": "medium"
     },
     {
       "bucket_key": "customer_value",
-      "item": "欧莱雅、华熙生物的投资和合作细节",
-      "current_conclusion": "通过公开新闻和行业报道可确认欧莱雅、华熙生物确实参与了投资和联合开发。但合作深度（是独家供应商还是普通供应商）、投资金额、技术授权范围等信息不透明。头部客户背书有效，但可能被夸大。",
-      "confidence": "high"
+      "item": "通过公开信息可确认欧莱雅、宝洁等头部客户对超分子原料的公开采购或合作声明。",
+      "current_conclusion": "头部客户的合作声明可在公开渠道验证，但具体合作金额和订单规模通常不公开。",
+      "confidence": "medium"
     },
     {
       "bucket_key": "commercialization",
-      "item": "千沐新能源的并购背景和业绩",
-      "current_conclusion": "千沐新能源的公开信息极少。通过企查查等工具可查到其工商信息、注册资本、股东结构，但无法获得其真实技术水平和财务数据。并购整合风险极高，且估值逻辑不透明。",
-      "confidence": "medium"
+      "item": "通过公开信息可确认新能源电池行业客户验证的平均周期和成本结构。",
+      "current_conclusion": "新能源材料客户验证周期通常为2-5年，公司2025年落地新能源业务的预测可能过于乐观。",
+      "confidence": "high"
     }
   ],
   "still_unresolved": [
     {
       "bucket_key": "tech_barrier",
-      "question": "建沐™AI平台是否产生了可量化的业务价值？请提供具体案例数据（如缩短研发周期天数、降低成本百分比、发现的新材料数量及商业化进展）。",
-      "why_unresolved": "BP中AI平台描述停留在概念和架构层面，无任何量化输出。这是判断其技术护城河深度的核心问题，必须通过尽调或技术验证才能回答。",
+      "question": "建沐™AI平台的核心数据库规模和独特性如何？AI预测后一次实验成功的比例是多少？",
+      "why_unresolved": "BP未提供AI预测成功率的量化数据，也未说明数据闭环是否形成。这些信息无法通过公开资料获取，必须通过尽调或公司沟通确认。",
       "impact_level": "high"
     },
     {
       "bucket_key": "customer_value",
-      "question": "新能源业务（电解液、回收）是否有真实的客户采购订单或意向合同？与协鑫等企业的合作处于哪个具体阶段（框架协议、联合研发、试点、量产）？",
-      "why_unresolved": "BP中新能源业务仅展示实验室数据和‘洽谈合作’，无任何收入或订单证据。新能源材料验证周期长，若无真实订单，商业化路径存在巨大不确定性。",
+      "question": "深共晶电解液的成本与现有成熟方案（如液态电解液、固态电解质）相比是否有竞争力？",
+      "why_unresolved": "BP未提供成本对比数据，也未说明在新能源电池中的具体应用场景和客户验证进展。这些信息无法通过公开资料获取，必须通过尽调或实验验证。",
       "impact_level": "high"
     },
     {
       "bucket_key": "commercialization",
-      "question": "美妆业务的老客户复购率和新客户获取成本是多少？2025年扭亏的主要驱动力是美妆业务放量还是新业务贡献？",
-      "why_unresolved": "BP未披露美妆业务的客户留存和增长质量。若扭亏依赖新业务（如食品、新能源）的收入，但新业务尚未验证，则盈利预测风险极高。",
+      "question": "2025年扭亏为盈的核心驱动力是什么？新业务（食品、新能源）是否有明确订单支撑？",
+      "why_unresolved": "BP预测2025年营收1.65亿元、净利润1000万元，但未拆解营收构成，也未提供新业务的明确订单或客户验证进展。这些信息无法通过公开资料获取，必须通过尽调或公司沟通确认。",
       "impact_level": "high"
     }
   ],
   "tensions": [
-    "美妆业务已验证（support） vs 技术壁垒被高估（contradict）",
-    "头部客户背书强（support） vs 新能源客户付费意愿存疑（contradict）",
-    "AI平台故事宏大（neutral） vs 缺乏量化证据（contradict）"
+    "技术壁垒（诺奖背书+专利）强 vs AI平台可能只是效率工具，技术通用性存疑",
+    "美妆业务客户价值已验证 vs 新能源业务客户价值尚未验证，替换动力不足",
+    "美妆业务商业化已成立 vs 新业务（食品、新能源）商业化路径尚未验证，预测增长可能过于乐观"
   ],
   "step1_adjustment_hints": {
     "supported": [
-      "Step1判断‘本质上是美妆原料公司’得到支持，美妆业务已跑通商业化闭环。",
-      "Step1判断‘扩张方向非常不靠谱’得到支持，新能源、食品等商业化路径模糊。"
+      "美妆业务的技术壁垒和客户价值得到支持，Step1中关于'美妆原料的差异化供应商'的判断成立。"
     ],
     "caution": [
-      "Step1判断‘技术是应用型改良’可能低估了超分子技术在美妆领域的工程化难度和客户价值，头部客户的持续合作表明其技术在该细分领域有实际竞争力。",
-      "Step1判断‘AI平台是工具包装’需谨慎，虽然缺乏量化证据，但AI辅助筛选在材料研发中确实是效率工具，不能完全否定其价值。"
+      "Step1中关于'AI+超分子'研发体系的壁垒判断需谨慎，AI平台可能只是效率工具，而非核心护城河。",
+      "Step1中关于'战略升级路径'的判断需收缩，新能源和食品业务的商业化路径尚未验证，预测增长可能过于乐观。"
     ],
     "to_step4": [
-      "【决策缺口1】AI平台的真实效用和量化价值，这是判断技术护城河深度的核心。",
-      "【决策缺口2】新能源业务是否有真实订单或明确合作阶段，这是判断扩张逻辑是否成立的关键。",
-      "【决策缺口3】美妆业务的盈利质量和增长可持续性，这是判断公司估值基础是否稳固的前提。"
+      "建沐™AI平台的核心数据库规模和预测成功率如何？是否形成数据闭环？",
+      "深共晶电解液的成本竞争力如何？是否有明确客户验证或意向订单？",
+      "2025年扭亏为盈的核心驱动力是什么？新业务是否有明确订单支撑？"
     ]
   },
-  "raw_text": "{\n  \"selected_buckets\": [\"tech_barrier\", \"customer_value\", \"commercialization\"],\n  \"bucket_outputs\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"bucket_label\": \"技术/壁垒是否成立\",\n      \"point\": \"超分子技术是行业通用改性手段，非底层原创，AI平台缺乏量化证据\",\n      \"explanation\": \"【claim】BP将超分子技术包装为诺奖级底层创新，并宣称AI驱动。【reality】超分子化学（共晶、离子盐）是制药、材料领域成熟的工程化手段，并非杉海原创。大量论文和专利集中于已知分子的性能改良，而非新分子发现。【gap】BP未提供任何AI平台缩短研发周期或发现新材料的量化数据（如节省天数、发现的新分子数量）。【结论】contradict\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"high\",\n      \"source_type\": \"common_sense\"\n    },\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"bucket_label\": \"技术/壁垒是否成立\",\n      \"point\": \"头部客户投资和合作验证了技术应用价值\",\n      \"explanation\": \"【claim】欧莱雅、华熙生物等产业巨头战略投资并合作开发原料。【reality】在美妆行业，头部品牌对原料供应商的技术验证极为严格，投资和联合开发通常意味着技术通过了初步工程验证和商业可行性评估。【gap】合作深度和排他性未知，但至少证明技术在美妆领域有真实应用价值。【结论】support\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"bucket_label\": \"客户为什么付钱\",\n      \"point\": \"美妆客户付费主要为了产品宣称和性能提升，而非底层技术\",\n      \"explanation\": \"【claim】BP声称客户为‘超分子技术’付费。【reality】美妆品牌采购原料的核心动机是：提升功效（如透皮吸收）、改善肤感、支持‘科技’宣称以增加产品溢价。超分子改性后的原料（如超分子水杨酸）确实能提供这些价值，但客户并不为‘超分子’概念本身付费，而是为可量化的性能指标和营销故事付费。【gap】BP未区分客户购买的是‘改性后的原料’还是‘技术授权’，后者溢价更高但尚未验证。【结论】neutral\",\n      \"relation_to_step1\": \"neutral\",\n      \"certainty\": \"high\",\n      \"source_type\": \"common_sense\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"bucket_label\": \"客户为什么付钱\",\n      \"point\": \"新能源客户付费意愿存疑，缺乏订单验证\",\n      \"explanation\": \"【claim】BP宣称深共晶电解液和回收技术能解决行业痛点，客户将为此付费。【reality】新能源材料领域，客户（电池厂、回收商）对成本、安全性、循环寿命要求极高。深共晶电解液虽阻燃，但离子电导率低于传统液态电解液，且与现有产线兼容性未知。锂电回收技术尚未有规模化收入，仅与上市公司‘洽谈战略合作’，无真实订单。【gap】BP未披露任何新能源客户的采购合同或意向书。【结论】contradict\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"bucket_label\": \"商业化路径是否成立\",\n      \"point\": \"美妆业务已实现亿元级营收和头部客户复购，商业化初步成立\",\n      \"explanation\": \"【claim】公司美妆原料年收入超1亿元，服务欧莱雅、宝洁等100+客户。【reality】1亿+营收、头部客户持续合作，说明在美妆领域已跑通‘技术-产品-销售’的闭环。2025年预测扭亏，主要驱动力应是美妆业务的持续放量。【gap】但美妆业务的增长是否可持续？客户是否在扩大采购量？BP未披露老客户复购率和新客户获取成本。【结论】support\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"bucket_label\": \"商业化路径是否成立\",\n      \"point\": \"新能源、食品等新业务商业化路径模糊，缺乏落地细节\",\n      \"explanation\": \"【claim】BP计划通过并购千沐、建设AI平台、合资合作等方式进入新能源等领域。【reality】从美妆到新能源，技术、客户、供应链、法规体系完全不同。BP中新能源业务仅停留在实验室数据和合作意向，无明确的产线建设计划、量产时间表、客户导入周期。食品业务虽宣称订单增长300%，但基数极小（2024年刚起步），且需通过严格的食品安全认证。【gap】BP未回答‘如何从卖原料转型为卖技术授权或合资建厂’的具体路径和里程碑。【结论】contradict\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"high\",\n      \"source_type\": \"bp\"\n    }\n  ],\n  \"publicly_resolvable\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"item\": \"专利布局是否形成真实壁垒\",\n      \"current_conclusion\": \"BP声称156+发明专利，但未提供权利要求范围。通过公开专利数据库可核实专利类型（核心化合物专利 vs 应用型专利 vs 工艺专利）。大概率是围绕已知分子的超分子改性方法专利，排他性有限，竞争对手可通过绕道设计规避。\",\n      \"confidence\": \"medium\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"item\": \"欧莱雅、华熙生物的投资和合作细节\",\n      \"current_conclusion\": \"通过公开新闻和行业报道可确认欧莱雅、华熙生物确实参与了投资和联合开发。但合作深度（是独家供应商还是普通供应商）、投资金额、技术授权范围等信息不透明。头部客户背书有效，但可能被夸大。\",\n      \"confidence\": \"high\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"item\": \"千沐新能源的并购背景和业绩\",\n      \"current_conclusion\": \"千沐新能源的公开信息极少。通过企查查等工具可查到其工商信息、注册资本、股东结构，但无法获得其真实技术水平和财务数据。并购整合风险极高，且估值逻辑不透明。\",\n      \"confidence\": \"medium\"\n    }\n  ],\n  \"still_unresolved\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"question\": \"建沐™AI平台是否产生了可量化的业务价值？请提供具体案例数据（如缩短研发周期天数、降低成本百分比、发现的新材料数量及商业化进展）。\",\n      \"why_unresolved\": \"BP中AI平台描述停留在概念和架构层面，无任何量化输出。这是判断其技术护城河深度的核心问题，必须通过尽调或技术验证才能回答。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"question\": \"新能源业务（电解液、回收）是否有真实的客户采购订单或意向合同？与协鑫等企业的合作处于哪个具体阶段（框架协议、联合研发、试点、量产）？\",\n      \"why_unresolved\": \"BP中新能源业务仅展示实验室数据和‘洽谈合作’，无任何收入或订单证据。新能源材料验证周期长，若无真实订单，商业化路径存在巨大不确定性。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"question\": \"美妆业务的老客户复购率和新客户获取成本是多少？2025年扭亏的主要驱动力是美妆业务放量还是新业务贡献？\",\n      \"why_unresolved\": \"BP未披露美妆业务的客户留存和增长质量。若扭亏依赖新业务（如食品、新能源）的收入，但新业务尚未验证，则盈利预测风险极高。\",\n      \"impact_level\": \"high\"\n    }\n  ],\n  \"tensions\": [\n    \"美妆业务已验证（support） vs 技术壁垒被高估（contradict）\",\n    \"头部客户背书强（support） vs 新能源客户付费意愿存疑（contradict）\",\n    \"AI平台故事宏大（neutral） vs 缺乏量化证据（contradict）\"\n  ],\n  \"step1_adjustment_hints\": {\n    \"supported\": [\n      \"Step1判断‘本质上是美妆原料公司’得到支持，美妆业务已跑通商业化闭环。\",\n      \"Step1判断‘扩张方向非常不靠谱’得到支持，新能源、食品等商业化路径模糊。\"\n    ],\n    \"caution\": [\n      \"Step1判断‘技术是应用型改良’可能低估了超分子技术在美妆领域的工程化难度和客户价值，头部客户的持续合作表明其技术在该细分领域有实际竞争力。\",\n      \"Step1判断‘AI平台是工具包装’需谨慎，虽然缺乏量化证据，但AI辅助筛选在材料研发中确实是效率工具，不能完全否定其价值。\"\n    ],\n    \"to_step4\": [\n      \"【决策缺口1】AI平台的真实效用和量化价值，这是判断技术护城河深度的核心。\",\n      \"【决策缺口2】新能源业务是否有真实订单或明确合作阶段，这是判断扩张逻辑是否成立的关键。\",\n      \"【决策缺口3】美妆业务的盈利质量和增长可持续性，这是判断公司估值基础是否稳固的前提。\"\n    ]\n  }\n}"
+  "project_structure": {
+    "industry_tags": [
+      {
+        "tag": "advanced_materials",
+        "label": "新材料",
+        "confidence": "high",
+        "evidence": "命中关键词：材料、超分子、分子、配方、原料"
+      },
+      {
+        "tag": "beauty_ingredients",
+        "label": "美妆/日化原料",
+        "confidence": "high",
+        "evidence": "命中关键词：美妆、化妆品、原料、配方"
+      },
+      {
+        "tag": "ai_application",
+        "label": "AI应用",
+        "confidence": "high",
+        "evidence": "命中关键词：AI、算法、模型、数据"
+      },
+      {
+        "tag": "new_energy",
+        "label": "新能源",
+        "confidence": "high",
+        "evidence": "命中关键词：新能源、锂电、电池、回收、光伏"
+      },
+      {
+        "tag": "food_ingredients",
+        "label": "食品/营养原料",
+        "confidence": "medium",
+        "evidence": "命中关键词：食品、营养"
+      },
+      {
+        "tag": "industrial_logistics",
+        "label": "工业物流/场内物流",
+        "confidence": "low",
+        "evidence": "命中关键词：物流"
+      }
+    ],
+    "business_lines": [
+      {
+        "name": "项目制交付/场景解决方案",
+        "role": "current_business",
+        "status": "项目制落地/场景交付",
+        "revenue_status": "项目收入和毛利待确认",
+        "evidence": "命中关键词：项目、项目制、解决方案、改造、适配",
+        "confidence": "high"
+      },
+      {
+        "name": "美妆/日化原料",
+        "role": "current_business",
+        "status": "当前收入底盘",
+        "revenue_status": "已有收入但金额需确认",
+        "evidence": "命中关键词：美妆、化妆品、原料、配方、活性物、日化",
+        "confidence": "high"
+      },
+      {
+        "name": "无人重载车辆/无人集卡",
+        "role": "current_business",
+        "status": "核心产品/已落地业务",
+        "revenue_status": "可能已有设备/整车/硬件收入，具体金额待确认",
+        "evidence": "根据商业模式识别为制造/产品销售型，并结合自动驾驶/工业物流行业标签反推",
+        "confidence": "medium"
+      },
+      {
+        "name": "代运营服务",
+        "role": "growth_story",
+        "status": "持续收入模式待验证",
+        "revenue_status": "是否已经形成稳定持续收入待确认",
+        "evidence": "命中关键词：运营、托管、车辆、车队",
+        "confidence": "high"
+      },
+      {
+        "name": "食品/营养原料",
+        "role": "growth_story",
+        "status": "增长业务",
+        "revenue_status": "收入基数和复购待确认",
+        "evidence": "命中关键词：食品、营养、保健品、原料、成分",
+        "confidence": "high"
+      },
+      {
+        "name": "自动驾驶系统/云端调度平台",
+        "role": "supporting_capability",
+        "status": "支撑主业务的技术/平台能力",
+        "revenue_status": "可能作为技术服务或软件服务收费，需确认",
+        "evidence": "命中关键词：决策、规划",
+        "confidence": "medium"
+      },
+      {
+        "name": "AI研发平台",
+        "role": "supporting_capability",
+        "status": "研发工具/效率工具",
+        "revenue_status": "是否对外收费待确认",
+        "evidence": "命中关键词：AI、算法、筛选、预测、研发平台、分子设计、材料筛选、人工智能",
+        "confidence": "high"
+      },
+      {
+        "name": "新能源材料/回收业务",
+        "role": "valuation_story",
+        "status": "远期故事/待验证业务",
+        "revenue_status": "是否已有收入待确认",
+        "evidence": "命中关键词：新能源、锂电、电池、回收、正极、负极、电解液、电池材料",
+        "confidence": "high"
+      }
+    ],
+    "business_model_hypotheses": [
+      {
+        "bucket_key": "manufacturing_product_sales",
+        "bucket_name": "制造/产品销售型",
+        "role": "primary",
+        "current_or_future": "current",
+        "confidence": "low",
+        "evidence": "命中关键词：销售",
+        "why_it_matters": "如果当前收入主要来自产品/设备/原料销售，则公司更接近制造/产品销售型公司。"
+      },
+      {
+        "bucket_key": "project_delivery",
+        "bucket_name": "项目制交付型",
+        "role": "secondary",
+        "current_or_future": "current",
+        "confidence": "high",
+        "evidence": "命中关键词：项目、定制、解决方案、改造",
+        "why_it_matters": "如果收入依赖一个个项目交付，则需要重点验证标准化和毛利稳定性。"
+      },
+      {
+        "bucket_key": "software_platform_saas",
+        "bucket_name": "软件/SaaS/平台型",
+        "role": "secondary",
+        "current_or_future": "mixed",
+        "confidence": "low",
+        "evidence": "命中关键词：API",
+        "why_it_matters": "如果软件收入标准化且可续费，才适合按软件/平台公司分析。"
+      },
+      {
+        "bucket_key": "data_ai_model",
+        "bucket_name": "数据/AI模型驱动型",
+        "role": "secondary",
+        "current_or_future": "narrative",
+        "confidence": "high",
+        "evidence": "命中关键词：AI、算法、数据、模型、筛选、预测",
+        "why_it_matters": "如果AI只是内部效率工具，则不应按AI平台公司估值；如果形成数据闭环，才可能构成壁垒。"
+      },
+      {
+        "bucket_key": "hardtech_commercialization",
+        "bucket_name": "硬科技商业化型",
+        "role": "secondary",
+        "current_or_future": "mixed",
+        "confidence": "high",
+        "evidence": "命中关键词：技术、专利、研发、材料、机器人、量产",
+        "why_it_matters": "硬科技项目重点不是技术先进，而是能否稳定量产并被真实客户持续采购。"
+      },
+      {
+        "bucket_key": "government_industrial_landing",
+        "bucket_name": "政府/产业落地型",
+        "role": "secondary",
+        "current_or_future": "mixed",
+        "confidence": "medium",
+        "evidence": "命中关键词：政府、落地、本地",
+        "why_it_matters": "对政府基金而言，需判断项目是否能真实落地产值、税收、就业和产业协同。"
+      },
+      {
+        "bucket_key": "expansion_story",
+        "bucket_name": "多业务扩张/第二曲线型",
+        "role": "narrative",
+        "current_or_future": "future",
+        "confidence": "high",
+        "evidence": "命中关键词：多行业、平台化、新能源、农业、医药、食品",
+        "why_it_matters": "如果当前收入来自A业务，但估值故事来自B/C业务，需警惕扩张叙事。"
+      },
+      {
+        "bucket_key": "team_credibility_story",
+        "bucket_name": "团队/背书叙事型",
+        "role": "risk",
+        "current_or_future": "narrative",
+        "confidence": "high",
+        "evidence": "命中关键词：诺奖、院士、博士、实验室、教授、专家",
+        "why_it_matters": "团队/背书需要验证是否转化为排他资源、成果转化或商业化能力。"
+      },
+      {
+        "bucket_key": "financing_valuation_story",
+        "bucket_name": "融资估值叙事型",
+        "role": "risk",
+        "current_or_future": "narrative",
+        "confidence": "medium",
+        "evidence": "命中关键词：融资、估值、并购",
+        "why_it_matters": "需验证融资用途和估值逻辑是否匹配真实业务阶段。"
+      }
+    ],
+    "risk_buckets": [
+      {
+        "bucket_key": "project_delivery",
+        "bucket_name": "项目制交付型",
+        "risk_role": "risk",
+        "confidence": "high",
+        "evidence": "命中关键词：定制、项目制、改造、适配",
+        "why_it_matters": "如果每个项目都需要定制，规模化后交付和毛利可能承压。"
+      },
+      {
+        "bucket_key": "policy_driven",
+        "bucket_name": "政策驱动型",
+        "risk_role": "risk",
+        "confidence": "low",
+        "evidence": "命中关键词：政府",
+        "why_it_matters": "如果需求由政策驱动，需要验证政策退坡后客户是否仍会付费。"
+      },
+      {
+        "bucket_key": "hardtech_commercialization",
+        "bucket_name": "硬科技商业化型",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：供应商、量产",
+        "why_it_matters": "硬科技项目需要验证关键供应链、量产良率和工程化能力。"
+      },
+      {
+        "bucket_key": "customer_concentration",
+        "bucket_name": "客户集中风险",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：欧莱雅、宝洁",
+        "why_it_matters": "如果收入依赖少数大客户，公司议价权和收入稳定性可能较弱。"
+      },
+      {
+        "bucket_key": "expansion_story",
+        "bucket_name": "多业务扩张/第二曲线型",
+        "risk_role": "risk",
+        "confidence": "high",
+        "evidence": "命中关键词：多行业、平台化、新能源、农业、医药",
+        "why_it_matters": "多业务扩张可能是真增长，也可能只是扩大估值边界。"
+      },
+      {
+        "bucket_key": "team_credibility_story",
+        "bucket_name": "团队/背书叙事型",
+        "risk_role": "risk",
+        "confidence": "high",
+        "evidence": "命中关键词：诺奖、院士、博士、实验室、教授",
+        "why_it_matters": "背书需要验证是否真正转化为公司壁垒。"
+      },
+      {
+        "bucket_key": "financing_valuation_story",
+        "bucket_name": "融资估值叙事型",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：融资、估值、并购",
+        "why_it_matters": "融资用途和估值逻辑可能与真实业务阶段不匹配。"
+      }
+    ],
+    "key_uncertainties": [
+      {
+        "uncertainty": "项目交付是否标准化，还是每个客户都需要大量定制？",
+        "why_it_matters": "决定公司能否规模化复制，以及毛利率是否会被交付成本侵蚀。",
+        "related_buckets": [
+          "project_delivery"
+        ],
+        "discriminating_questions": [
+          "一个新项目中有多少模块可以复用？",
+          "单个项目从签约到验收回款需要多久？",
+          "每个项目需要多少实施人员？",
+          "不同项目毛利率差异大不大？"
+        ]
+      },
+      {
+        "uncertainty": "AI/数据能力是核心壁垒，还是研发/交付效率工具？",
+        "why_it_matters": "如果AI只是内部工具，则不应按AI平台公司估值。",
+        "related_buckets": [
+          "data_ai_model"
+        ],
+        "discriminating_questions": [
+          "AI是否直接决定客户购买或产品性能？",
+          "AI相比传统方法带来什么量化提升？",
+          "数据是否独占并形成持续反馈闭环？",
+          "模型输出是否仍需要大量人工验证？"
+        ]
+      },
+      {
+        "uncertainty": "当前真实收入、增长业务和估值叙事是否错位？",
+        "why_it_matters": "如果当前收入来自小业务，但融资按平台/多行业故事估值，可能存在估值泡沫。",
+        "related_buckets": [
+          "expansion_story",
+          "financing_valuation_story"
+        ],
+        "discriminating_questions": [
+          "当前收入主要来自哪条业务线？",
+          "增长最快的业务线收入基数是多少？",
+          "估值主要依据当前收入还是未来平台故事？",
+          "新业务是否已有真实收入、复购和毛利？"
+        ]
+      },
+      {
+        "uncertainty": "客户需求是政策驱动，还是真实经济 ROI 驱动？",
+        "why_it_matters": "如果主要依赖政策/示范项目，政策退坡后收入可持续性存疑。",
+        "related_buckets": [
+          "policy_driven",
+          "government_industrial_landing"
+        ],
+        "discriminating_questions": [
+          "客户中有多少是纯商业ROI驱动？",
+          "如果没有补贴或政策要求，客户是否仍会采购？",
+          "客户是否有明确降本增效测算？",
+          "是否有非政策客户的复购案例？"
+        ]
+      },
+      {
+        "uncertainty": "团队/学术/名人背书是否真正转化为排他壁垒？",
+        "why_it_matters": "学历、奖项、名人、实验室背书本身不等于商业化能力。",
+        "related_buckets": [
+          "team_credibility_story"
+        ],
+        "discriminating_questions": [
+          "专家/实验室与公司的关系是全职、股东、顾问还是普通合作？",
+          "是否有排他性成果转化协议？",
+          "知识产权归属公司还是高校/实验室？",
+          "背书是否已经转化为产品、客户或收入？"
+        ]
+      }
+    ],
+    "structure_summary": "系统初步识别该项目涉及行业：新材料、美妆/日化原料、AI应用；主要业务线包括：项目制交付/场景解决方案、美妆/日化原料、无人重载车辆/无人集卡；可能适用的投资逻辑包括：制造/产品销售型、项目制交付型、软件/SaaS/平台型。该识别仅作为后续分析入口，不代表最终判断。"
+  },
+  "raw_text": "{\n  \"selected_buckets\": [\"tech_barrier\", \"customer_value\", \"commercialization\"],\n  \"bucket_outputs\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"bucket_label\": \"技术/壁垒是否成立\",\n      \"point\": \"支持Step1：超分子技术本身有诺奖背书，且公司拥有大量专利，形成初步壁垒。\",\n      \"explanation\": \"【claim】BP声称超分子智组装技术体系获得两次诺贝尔奖技术背书，并拥有156+发明专利，覆盖共晶、离子盐、离子液体等关键技术节点。【reality】诺奖技术（超分子化学与分子机器）是基础科学发现，并非直接可商业化的技术。公司拥有大量专利，但需验证其是否为原创核心专利，还是围绕现有分子的外围改性专利。【gap】BP未提供专利的具体权利要求范围、被引用次数或与竞品的专利对比，无法判断其排他性。【conclusion】support：诺奖背书和专利数量确实构成初步壁垒，但壁垒强度待验证。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"bucket_label\": \"技术/壁垒是否成立\",\n      \"point\": \"挑战Step1：AI平台“建沐™”可能只是效率工具，而非核心壁垒，且技术通用性存疑。\",\n      \"explanation\": \"【claim】BP称建沐™AI是全球首个AI驱动的超分子材料数据库与高通量筛选体系，能大幅缩短研发周期。【reality】AI辅助材料筛选在化学和材料领域已成为行业通用做法（如Schrödinger、Materials Project等），并非公司独有。公司AI平台的核心数据库规模和独特性未披露，且与深度原理的合作表明其AI能力部分依赖外部合作。【gap】BP未提供AI预测成功率的量化数据（如预测后一次实验成功的比例），也未说明数据闭环是否形成。【conclusion】contradict：AI平台可能只是效率工具，而非不可复制的核心壁垒；技术在不同行业（美妆vs新能源）的通用性缺乏证据。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"high\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"bucket_label\": \"客户为什么付钱\",\n      \"point\": \"支持Step1：客户为性能提升付费，且头部客户（欧莱雅、宝洁）的采购行为验证了价值。\",\n      \"explanation\": \"【claim】BP显示公司服务欧莱雅、宝洁、华熙生物等100余家头部企业，并与欧莱雅联合开发超分子原料，与宝洁合作升级活性物透皮递送技术。【reality】头部美妆品牌对原料性能（如稳定性、渗透性、生物利用度）有严格要求和持续需求，且更换供应商成本较高。公司能进入这些巨头供应链，说明其技术确实解决了客户痛点。【gap】BP未披露具体合作金额、订单规模或客户复购率，无法判断客户付费的深度和持续性。【conclusion】support：头部客户的采购行为是客户价值的有力证明，但付费深度需进一步验证。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"high\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"bucket_label\": \"客户为什么付钱\",\n      \"point\": \"挑战Step1：在新能源领域，客户价值尚未验证，且替换动力可能不足。\",\n      \"explanation\": \"【claim】BP声称深共晶电解液具有高安全性、阻燃、抑制锂枝晶等优势，并展示了循环性能数据。【reality】新能源电池行业对电解液的性能要求极为苛刻，且现有方案（如液态电解液、固态电解质）已有成熟供应链和成本优势。深共晶电解液虽在安全性上有优势，但其离子导电性（中等）可能成为瓶颈，且成本竞争力未与现有方案对比。【gap】BP未提供与现有电解液方案的成本对比、客户验证进展或意向订单，仅展示了实验室数据。【conclusion】contradict：在新能源领域，客户价值尚未被订单或客户验证，替换现有方案的动力可能不足。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"bucket_label\": \"商业化路径是否成立\",\n      \"point\": \"支持Step1：美妆业务已实现商业化，营收和客户基础验证了从实验室到量产的路径。\",\n      \"explanation\": \"【claim】BP显示公司2024年营收1.23亿元，主要来自美妆原料销售，年产能达千吨级，服务100余家头部企业。【reality】美妆原料行业客户验证周期相对较短（通常6-12个月），且公司已与欧莱雅、华熙生物等建立合作，说明其产品已通过客户验证并进入量产阶段。【gap】BP未披露毛利率、产能利用率或客户复购率，无法判断商业化的健康度。【conclusion】support：美妆业务的营收和客户基础表明商业化路径在美妆领域已初步成立。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"high\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"bucket_label\": \"商业化路径是否成立\",\n      \"point\": \"挑战Step1：新能源和食品等新业务的商业化路径尚未验证，预测增长可能过于乐观。\",\n      \"explanation\": \"【claim】BP预测2025年营收1.65亿元，净利润扭亏为盈，并称食品业务订单年增长率达300%，新能源业务预计2025年落地。【reality】新能源材料行业客户验证周期通常长达2-5年，且需要经过严格的性能测试和认证。食品原料行业同样需要较长的安全评估和客户导入周期。公司2024年营收仅1.23亿元，且净利润亏损，2025年扭亏为盈的预测缺乏新业务订单的明确支撑。【gap】BP未提供新能源业务的意向订单或客户验证进展，食品业务的订单增长率300%但基数未披露。【conclusion】contradict：新业务商业化路径尚未验证，预测增长可能过于乐观，存在较大不确定性。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"high\",\n      \"source_type\": \"bp\"\n    }\n  ],\n  \"publicly_resolvable\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"item\": \"通过公开专利数据库可确认公司专利的权利要求范围、被引用次数和原创性。\",\n      \"current_conclusion\": \"公司拥有156+发明专利，但需确认其是否为原创核心专利，还是外围改性专利。\",\n      \"confidence\": \"medium\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"item\": \"通过公开信息可确认欧莱雅、宝洁等头部客户对超分子原料的公开采购或合作声明。\",\n      \"current_conclusion\": \"头部客户的合作声明可在公开渠道验证，但具体合作金额和订单规模通常不公开。\",\n      \"confidence\": \"medium\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"item\": \"通过公开信息可确认新能源电池行业客户验证的平均周期和成本结构。\",\n      \"current_conclusion\": \"新能源材料客户验证周期通常为2-5年，公司2025年落地新能源业务的预测可能过于乐观。\",\n      \"confidence\": \"high\"\n    }\n  ],\n  \"still_unresolved\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"question\": \"建沐™AI平台的核心数据库规模和独特性如何？AI预测后一次实验成功的比例是多少？\",\n      \"why_unresolved\": \"BP未提供AI预测成功率的量化数据，也未说明数据闭环是否形成。这些信息无法通过公开资料获取，必须通过尽调或公司沟通确认。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"question\": \"深共晶电解液的成本与现有成熟方案（如液态电解液、固态电解质）相比是否有竞争力？\",\n      \"why_unresolved\": \"BP未提供成本对比数据，也未说明在新能源电池中的具体应用场景和客户验证进展。这些信息无法通过公开资料获取，必须通过尽调或实验验证。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"question\": \"2025年扭亏为盈的核心驱动力是什么？新业务（食品、新能源）是否有明确订单支撑？\",\n      \"why_unresolved\": \"BP预测2025年营收1.65亿元、净利润1000万元，但未拆解营收构成，也未提供新业务的明确订单或客户验证进展。这些信息无法通过公开资料获取，必须通过尽调或公司沟通确认。\",\n      \"impact_level\": \"high\"\n    }\n  ],\n  \"tensions\": [\n    \"技术壁垒（诺奖背书+专利）强 vs AI平台可能只是效率工具，技术通用性存疑\",\n    \"美妆业务客户价值已验证 vs 新能源业务客户价值尚未验证，替换动力不足\",\n    \"美妆业务商业化已成立 vs 新业务（食品、新能源）商业化路径尚未验证，预测增长可能过于乐观\"\n  ],\n  \"step1_adjustment_hints\": {\n    \"supported\": [\n      \"美妆业务的技术壁垒和客户价值得到支持，Step1中关于'美妆原料的差异化供应商'的判断成立。\"\n    ],\n    \"caution\": [\n      \"Step1中关于'AI+超分子'研发体系的壁垒判断需谨慎，AI平台可能只是效率工具，而非核心护城河。\",\n      \"Step1中关于'战略升级路径'的判断需收缩，新能源和食品业务的商业化路径尚未验证，预测增长可能过于乐观。\"\n    ],\n    \"to_step4\": [\n      \"建沐™AI平台的核心数据库规模和预测成功率如何？是否形成数据闭环？\",\n      \"深共晶电解液的成本竞争力如何？是否有明确客户验证或意向订单？\",\n      \"2025年扭亏为盈的核心驱动力是什么？新业务是否有明确订单支撑？\"\n    ]\n  }\n}"
 }

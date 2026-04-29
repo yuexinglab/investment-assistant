@@ -10,7 +10,7 @@ v6.1 改动：
 
 from __future__ import annotations
 
-from typing import Callable
+from typing import Callable, Optional
 
 from step4.context_builder import build_step4_context
 from step4.step4_internal_service import Step4InternalService
@@ -32,6 +32,7 @@ class Step4Service:
         step1_text: str,
         step3_json: str,
         bp_text: str,
+        step3b_json: Optional[str | dict] = None,
     ):
         # 1. 基础扫描层（v6 新增：快速扫一遍7个维度）
         scan_questions = self.scan_service.run(
@@ -39,11 +40,12 @@ class Step4Service:
             bp_text=bp_text,
         )
 
-        # 2. Context pack（供深挖层使用）
+        # 2. Context pack（供深挖层使用，新增 Step3B 整合）
         context_pack = build_step4_context(
             step1_text=step1_text,
             step3_json=step3_json,
             bp_text=bp_text,
+            step3b_json=step3b_json,
         )
 
         # 3. 深挖层（v5：决策缺口 + 提问路径）

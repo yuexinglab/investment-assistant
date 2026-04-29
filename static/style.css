@@ -226,8 +226,7 @@ body {
   transition: all 0.2s;
 }
 .tab-btn.active { color: #4a90d9; border-bottom-color: #4a90d9; font-weight: 600; }
-.tab-content { display: none; }
-.tab-content.active { display: block; }
+/* .tab-content display 规则在模板内通过 !important 控制，此处不再重复 */
 
 /* ===== 报告内容 ===== */
 .role-label {

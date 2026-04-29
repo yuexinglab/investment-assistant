@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Callable, List, Optional
+from typing import Any, Callable, Dict, List, Optional
 
 from step3.step3_parser import parse_step3_output
 from step3.step3_prompt import build_step3_prompt
@@ -53,6 +53,7 @@ class Step3Service:
         industry: str,
         external_context: Optional[str] = None,
         selected_buckets: Optional[List[str]] = None,
+        project_structure: Optional[Dict[str, Any]] = None,
     ):
         if not selected_buckets:
             selected_buckets = simple_bucket_selector(step1_text)
@@ -63,6 +64,7 @@ class Step3Service:
             industry=industry,
             selected_buckets=selected_buckets,
             external_context=external_context,
+            project_structure=project_structure,
         )
 
         raw = self.call_llm(

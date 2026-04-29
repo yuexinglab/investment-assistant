@@ -1,0 +1,358 @@
+{
+  "selected_buckets": [
+    "tech_barrier",
+    "customer_value",
+    "commercialization"
+  ],
+  "bucket_outputs": [
+    {
+      "bucket_key": "tech_barrier",
+      "bucket_label": "技术/壁垒是否成立",
+      "point": "支持：自动轮三合一集成方案（轮毂电机+线控制动+线控转向）在行业内具有独特性，专利布局（如一体式行星滚轴EMB）构成技术壁垒。",
+      "explanation": "【claim】BP声称自动轮方案实现了电机、制动、转向的高度集成，并拥有相关专利。【reality】行业内多数公司仅聚焦于单一部件（如轮毂电机或线控制动），三合一集成方案在量产层面极为罕见。【gap】BP未提供与竞品（如Protean、e-Traction）的详细对比数据，也未说明专利的授权或诉讼状态。【结论】support。",
+      "relation_to_step1": "support",
+      "certainty": "medium",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "tech_barrier",
+      "bucket_label": "技术/壁垒是否成立",
+      "point": "反对：轮毂电机方案固有的工程难题（簧下质量、散热、耐久性）是行业共识，BP未提供具体解决方案或测试数据，技术壁垒可能被高估。",
+      "explanation": "【claim】BP宣称减重40%、降本30%，但未说明如何解决轮毂电机带来的簧下质量增加和散热问题。【reality】行业普遍认为轮毂电机在乘用车上的应用面临严峻的NVH和耐久性挑战，目前尚无大规模量产案例。【gap】BP缺少台架耐久测试、整车路试（高低温、涉水、振动）等关键数据。【结论】contradict。",
+      "relation_to_step1": "contradict",
+      "certainty": "high",
+      "source_type": "common_sense"
+    },
+    {
+      "bucket_key": "customer_value",
+      "bucket_label": "客户为什么付钱",
+      "point": "支持：客户为“极致机动性”和“底盘简化”付钱，这在特种车辆（如军工、物流）和未来共享出行场景中具有明确价值。",
+      "explanation": "【claim】BP展示的“横行”、“原地掉头”等功能，以及底盘减重40%带来的续航提升，对特定客户（如军工、无人配送车）有直接吸引力。【reality】特种车辆对机动性要求极高，且对成本敏感度较低；滑板底盘概念在商用车领域已被多家公司（如Rivian、REE）验证。【gap】BP未提供客户对这些功能的量化价值评估（如节省多少时间、增加多少载货空间）。【结论】support。",
+      "relation_to_step1": "support",
+      "certainty": "medium",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "customer_value",
+      "bucket_label": "客户为什么付钱",
+      "point": "反对：对于主流乘用车客户，成本和安全是首要考量，自动轮方案在成本和安全上的不确定性可能削弱其付费意愿。",
+      "explanation": "【claim】BP宣称降本30%，但未给出详细成本构成，也未说明与传统方案在安全冗余（如制动失效备份）上的对比。【reality】主机厂对Tier 1的可靠性要求极高，任何未经过充分验证的新技术都难以进入量产定点。轮毂电机在碰撞安全性、电磁兼容性等方面存在潜在风险。【gap】BP未提供任何主机厂对自动轮方案的安全认证或风险评估报告。【结论】contradict。",
+      "relation_to_step1": "contradict",
+      "certainty": "high",
+      "source_type": "common_sense"
+    },
+    {
+      "bucket_key": "commercialization",
+      "bucket_label": "商业化路径是否成立",
+      "point": "支持：公司已获得行业奖项（AITC2024最具投资价值项目）和初步客户合作（北汽、华为等），表明商业化路径已起步。",
+      "explanation": "【claim】BP列举了北汽、华为、广汽等客户，并提及技术开发、定制底盘等合作模式。【reality】获得行业奖项和与主机厂进行技术开发合作，是硬科技公司商业化的常见早期步骤，表明技术方案获得了一定认可。【gap】BP未明确这些合作是否已产生收入，以及合作是否包含量产定点合同（SOP）。【结论】support。",
+      "relation_to_step1": "support",
+      "certainty": "medium",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "commercialization",
+      "bucket_label": "商业化路径是否成立",
+      "point": "反对：从实验室样机到车规级量产存在巨大鸿沟，BP未提供明确的量产时间表和关键里程碑，商业化路径存在重大不确定性。",
+      "explanation": "【claim】BP展示了多个底盘产品（凌波、金刚等），但未说明这些产品处于哪个阶段（概念、样机、小批量）。【reality】汽车零部件的量产通常需要3-5年，并需通过DV/PV测试。BP中提到的“2028年量产”预测与公司当前阶段（样机）之间存在巨大差距。【gap】BP缺少详细的工程化验证计划、供应链建设方案、以及量产工厂规划。【结论】contradict。",
+      "relation_to_step1": "contradict",
+      "certainty": "high",
+      "source_type": "common_sense"
+    }
+  ],
+  "publicly_resolvable": [
+    {
+      "bucket_key": "tech_barrier",
+      "item": "靳立强教授团队在自动轮领域的专利数量和质量可以通过公开专利数据库查询。",
+      "current_conclusion": "BP声称拥有高价值专利，但未提供专利号或具体技术细节。通过公开检索可确认专利布局的广度和深度，以及是否覆盖核心壁垒。",
+      "confidence": "high"
+    }
+  ],
+  "still_unresolved": [
+    {
+      "bucket_key": "tech_barrier",
+      "question": "自动轮模块是否已通过车规级耐久性测试（如DV/PV）？具体测试数据（如高低温、涉水、振动、电磁兼容）如何？",
+      "why_unresolved": "BP未提供任何测试数据，且此类数据通常属于公司内部机密，无法通过公开信息获取。这是判断技术是否具备量产可行性的核心依据。",
+      "impact_level": "high"
+    },
+    {
+      "bucket_key": "customer_value",
+      "question": "BP中列举的客户（北汽、华为等）的合作模式具体是什么？是否有明确的量产定点合同（SOP）？合作产生的收入是多少？",
+      "why_unresolved": "BP仅提及客户名称和合作模式，但未提供合同细节或收入数据。客户合作深度是判断商业化真实进展的关键，必须通过尽调或客户访谈确认。",
+      "impact_level": "high"
+    },
+    {
+      "bucket_key": "commercialization",
+      "question": "公司团队中除了靳立强教授，是否有具备大规模汽车零部件制造、质量管理、供应链管理经验的产业界核心成员？",
+      "why_unresolved": "BP未介绍团队配置。从教授创业到产业公司，需要产业经验丰富的核心成员来主导工程化、量产和供应链管理。这是判断商业化能力的关键。",
+      "impact_level": "high"
+    }
+  ],
+  "tensions": [
+    "技术壁垒（专利集成方案）被行业认可 vs 轮毂电机固有工程难题（簧下质量、散热）未解决",
+    "客户合作（北汽、华为等）表明商业化起步 vs 缺乏量产定点合同和收入数据，商业化路径不清晰",
+    "BP宣称降本30%的颠覆性优势 vs 未提供成本构成和安全验证，主流乘用车客户付费意愿存疑"
+  ],
+  "step1_adjustment_hints": {
+    "supported": [
+      "Step1对技术方向（线控底盘、角模块）的判断得到支持，行业趋势明确。",
+      "Step1对技术亮点（极致机动性）的判断得到支持，特种车辆场景价值明确。"
+    ],
+    "caution": [
+      "Step1对工程化能力的疑问需要升级为‘核心风险’，因为BP未提供任何解决轮毂电机固有难题的具体方案或测试数据。",
+      "Step1对客户与订单真实性的疑问需要升级为‘决策阻断问题’，因为缺乏量产定点合同和收入数据，商业化进展可能远低于BP暗示。"
+    ],
+    "to_step4": [
+      "必须验证自动轮模块是否已通过车规级耐久性测试（DV/PV），并获取具体测试数据。",
+      "必须确认BP中客户合作的真实性和深度，特别是是否存在量产定点合同（SOP）及对应收入。",
+      "必须评估团队中是否具备产业界量产经验的成员，以判断从教授创业到产业公司的转化能力。"
+    ]
+  },
+  "project_structure": {
+    "industry_tags": [
+      {
+        "tag": "commercial_vehicle",
+        "label": "商用车/重卡",
+        "confidence": "medium",
+        "evidence": "命中关键词：底盘、线控底盘、商用车"
+      },
+      {
+        "tag": "ai_application",
+        "label": "AI应用",
+        "confidence": "medium",
+        "evidence": "命中关键词：AI、算法、数据"
+      },
+      {
+        "tag": "industrial_logistics",
+        "label": "工业物流/场内物流",
+        "confidence": "low",
+        "evidence": "命中关键词：物流"
+      },
+      {
+        "tag": "new_energy",
+        "label": "新能源",
+        "confidence": "low",
+        "evidence": "命中关键词：电池"
+      }
+    ],
+    "business_lines": [
+      {
+        "name": "无人重载车辆/无人集卡",
+        "role": "current_business",
+        "status": "核心产品/已落地业务",
+        "revenue_status": "可能已有设备/整车/硬件收入，具体金额待确认",
+        "evidence": "命中关键词：商用车",
+        "confidence": "low"
+      },
+      {
+        "name": "项目制交付/场景解决方案",
+        "role": "current_business",
+        "status": "项目制落地/场景交付",
+        "revenue_status": "项目收入和毛利待确认",
+        "evidence": "命中关键词：项目、解决方案",
+        "confidence": "medium"
+      },
+      {
+        "name": "代运营服务",
+        "role": "growth_story",
+        "status": "持续收入模式待验证",
+        "revenue_status": "是否已经形成稳定持续收入待确认",
+        "evidence": "命中关键词：运营、托管、车辆、车队",
+        "confidence": "high"
+      },
+      {
+        "name": "自动驾驶系统/云端调度平台",
+        "role": "supporting_capability",
+        "status": "支撑主业务的技术/平台能力",
+        "revenue_status": "可能作为技术服务或软件服务收费，需确认",
+        "evidence": "命中关键词：控制",
+        "confidence": "low"
+      },
+      {
+        "name": "AI研发平台",
+        "role": "supporting_capability",
+        "status": "研发工具/效率工具",
+        "revenue_status": "是否对外收费待确认",
+        "evidence": "命中关键词：AI、算法、预测、人工智能、研发、筛选",
+        "confidence": "high"
+      },
+      {
+        "name": "新能源材料/回收业务",
+        "role": "valuation_story",
+        "status": "远期故事/待验证业务",
+        "revenue_status": "是否已有收入待确认",
+        "evidence": "命中关键词：电池、新能源、锂电、材料、回收",
+        "confidence": "high"
+      }
+    ],
+    "business_model_hypotheses": [
+      {
+        "bucket_key": "project_delivery",
+        "bucket_name": "项目制交付型",
+        "role": "secondary",
+        "current_or_future": "current",
+        "confidence": "high",
+        "evidence": "命中关键词：项目、定制、解决方案、集成",
+        "why_it_matters": "如果收入依赖一个个项目交付，则需要重点验证标准化和毛利稳定性。"
+      },
+      {
+        "bucket_key": "data_ai_model",
+        "bucket_name": "数据/AI模型驱动型",
+        "role": "secondary",
+        "current_or_future": "narrative",
+        "confidence": "high",
+        "evidence": "命中关键词：AI、算法、数据、预测",
+        "why_it_matters": "如果AI只是内部效率工具，则不应按AI平台公司估值；如果形成数据闭环，才可能构成壁垒。"
+      },
+      {
+        "bucket_key": "hardtech_commercialization",
+        "bucket_name": "硬科技商业化型",
+        "role": "secondary",
+        "current_or_future": "mixed",
+        "confidence": "high",
+        "evidence": "命中关键词：技术、专利、研发、量产",
+        "why_it_matters": "硬科技项目重点不是技术先进，而是能否稳定量产并被真实客户持续采购。"
+      },
+      {
+        "bucket_key": "policy_driven",
+        "bucket_name": "政策驱动型",
+        "role": "risk",
+        "current_or_future": "mixed",
+        "confidence": "low",
+        "evidence": "命中关键词：政策",
+        "why_it_matters": "如果需求主要来自政策/补贴/示范项目，需验证政策退坡后的商业可持续性。"
+      },
+      {
+        "bucket_key": "team_credibility_story",
+        "bucket_name": "团队/背书叙事型",
+        "role": "risk",
+        "current_or_future": "narrative",
+        "confidence": "medium",
+        "evidence": "命中关键词：实验室、教授",
+        "why_it_matters": "团队/背书需要验证是否转化为排他资源、成果转化或商业化能力。"
+      },
+      {
+        "bucket_key": "financing_valuation_story",
+        "bucket_name": "融资估值叙事型",
+        "role": "risk",
+        "current_or_future": "narrative",
+        "confidence": "medium",
+        "evidence": "命中关键词：融资、估值",
+        "why_it_matters": "需验证融资用途和估值逻辑是否匹配真实业务阶段。"
+      }
+    ],
+    "risk_buckets": [
+      {
+        "bucket_key": "project_delivery",
+        "bucket_name": "项目制交付型",
+        "risk_role": "risk",
+        "confidence": "low",
+        "evidence": "命中关键词：定制",
+        "why_it_matters": "如果每个项目都需要定制，规模化后交付和毛利可能承压。"
+      },
+      {
+        "bucket_key": "policy_driven",
+        "bucket_name": "政策驱动型",
+        "risk_role": "risk",
+        "confidence": "low",
+        "evidence": "命中关键词：政策",
+        "why_it_matters": "如果需求由政策驱动，需要验证政策退坡后客户是否仍会付费。"
+      },
+      {
+        "bucket_key": "hardtech_commercialization",
+        "bucket_name": "硬科技商业化型",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：供应商、量产",
+        "why_it_matters": "硬科技项目需要验证关键供应链、量产良率和工程化能力。"
+      },
+      {
+        "bucket_key": "team_credibility_story",
+        "bucket_name": "团队/背书叙事型",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：实验室、教授",
+        "why_it_matters": "背书需要验证是否真正转化为公司壁垒。"
+      },
+      {
+        "bucket_key": "financing_valuation_story",
+        "bucket_name": "融资估值叙事型",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：融资、估值",
+        "why_it_matters": "融资用途和估值逻辑可能与真实业务阶段不匹配。"
+      }
+    ],
+    "key_uncertainties": [
+      {
+        "uncertainty": "项目交付是否标准化，还是每个客户都需要大量定制？",
+        "why_it_matters": "决定公司能否规模化复制，以及毛利率是否会被交付成本侵蚀。",
+        "related_buckets": [
+          "project_delivery"
+        ],
+        "discriminating_questions": [
+          "一个新项目中有多少模块可以复用？",
+          "单个项目从签约到验收回款需要多久？",
+          "每个项目需要多少实施人员？",
+          "不同项目毛利率差异大不大？"
+        ]
+      },
+      {
+        "uncertainty": "AI/数据能力是核心壁垒，还是研发/交付效率工具？",
+        "why_it_matters": "如果AI只是内部工具，则不应按AI平台公司估值。",
+        "related_buckets": [
+          "data_ai_model"
+        ],
+        "discriminating_questions": [
+          "AI是否直接决定客户购买或产品性能？",
+          "AI相比传统方法带来什么量化提升？",
+          "数据是否独占并形成持续反馈闭环？",
+          "模型输出是否仍需要大量人工验证？"
+        ]
+      },
+      {
+        "uncertainty": "当前真实收入、增长业务和估值叙事是否错位？",
+        "why_it_matters": "如果当前收入来自小业务，但融资按平台/多行业故事估值，可能存在估值泡沫。",
+        "related_buckets": [
+          "expansion_story",
+          "financing_valuation_story"
+        ],
+        "discriminating_questions": [
+          "当前收入主要来自哪条业务线？",
+          "增长最快的业务线收入基数是多少？",
+          "估值主要依据当前收入还是未来平台故事？",
+          "新业务是否已有真实收入、复购和毛利？"
+        ]
+      },
+      {
+        "uncertainty": "客户需求是政策驱动，还是真实经济 ROI 驱动？",
+        "why_it_matters": "如果主要依赖政策/示范项目，政策退坡后收入可持续性存疑。",
+        "related_buckets": [
+          "policy_driven",
+          "government_industrial_landing"
+        ],
+        "discriminating_questions": [
+          "客户中有多少是纯商业ROI驱动？",
+          "如果没有补贴或政策要求，客户是否仍会采购？",
+          "客户是否有明确降本增效测算？",
+          "是否有非政策客户的复购案例？"
+        ]
+      },
+      {
+        "uncertainty": "团队/学术/名人背书是否真正转化为排他壁垒？",
+        "why_it_matters": "学历、奖项、名人、实验室背书本身不等于商业化能力。",
+        "related_buckets": [
+          "team_credibility_story"
+        ],
+        "discriminating_questions": [
+          "专家/实验室与公司的关系是全职、股东、顾问还是普通合作？",
+          "是否有排他性成果转化协议？",
+          "知识产权归属公司还是高校/实验室？",
+          "背书是否已经转化为产品、客户或收入？"
+        ]
+      }
+    ],
+    "structure_summary": "系统初步识别该项目涉及行业：商用车/重卡、AI应用、工业物流/场内物流；主要业务线包括：无人重载车辆/无人集卡、项目制交付/场景解决方案、代运营服务；可能适用的投资逻辑包括：项目制交付型、数据/AI模型驱动型、硬科技商业化型。该识别仅作为后续分析入口，不代表最终判断。"
+  },
+  "raw_text": "{\n  \"selected_buckets\": [\"tech_barrier\", \"customer_value\", \"commercialization\"],\n  \"bucket_outputs\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"bucket_label\": \"技术/壁垒是否成立\",\n      \"point\": \"支持：自动轮三合一集成方案（轮毂电机+线控制动+线控转向）在行业内具有独特性，专利布局（如一体式行星滚轴EMB）构成技术壁垒。\",\n      \"explanation\": \"【claim】BP声称自动轮方案实现了电机、制动、转向的高度集成，并拥有相关专利。【reality】行业内多数公司仅聚焦于单一部件（如轮毂电机或线控制动），三合一集成方案在量产层面极为罕见。【gap】BP未提供与竞品（如Protean、e-Traction）的详细对比数据，也未说明专利的授权或诉讼状态。【结论】support。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"bucket_label\": \"技术/壁垒是否成立\",\n      \"point\": \"反对：轮毂电机方案固有的工程难题（簧下质量、散热、耐久性）是行业共识，BP未提供具体解决方案或测试数据，技术壁垒可能被高估。\",\n      \"explanation\": \"【claim】BP宣称减重40%、降本30%，但未说明如何解决轮毂电机带来的簧下质量增加和散热问题。【reality】行业普遍认为轮毂电机在乘用车上的应用面临严峻的NVH和耐久性挑战，目前尚无大规模量产案例。【gap】BP缺少台架耐久测试、整车路试（高低温、涉水、振动）等关键数据。【结论】contradict。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"high\",\n      \"source_type\": \"common_sense\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"bucket_label\": \"客户为什么付钱\",\n      \"point\": \"支持：客户为“极致机动性”和“底盘简化”付钱，这在特种车辆（如军工、物流）和未来共享出行场景中具有明确价值。\",\n      \"explanation\": \"【claim】BP展示的“横行”、“原地掉头”等功能，以及底盘减重40%带来的续航提升，对特定客户（如军工、无人配送车）有直接吸引力。【reality】特种车辆对机动性要求极高，且对成本敏感度较低；滑板底盘概念在商用车领域已被多家公司（如Rivian、REE）验证。【gap】BP未提供客户对这些功能的量化价值评估（如节省多少时间、增加多少载货空间）。【结论】support。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"bucket_label\": \"客户为什么付钱\",\n      \"point\": \"反对：对于主流乘用车客户，成本和安全是首要考量，自动轮方案在成本和安全上的不确定性可能削弱其付费意愿。\",\n      \"explanation\": \"【claim】BP宣称降本30%，但未给出详细成本构成，也未说明与传统方案在安全冗余（如制动失效备份）上的对比。【reality】主机厂对Tier 1的可靠性要求极高，任何未经过充分验证的新技术都难以进入量产定点。轮毂电机在碰撞安全性、电磁兼容性等方面存在潜在风险。【gap】BP未提供任何主机厂对自动轮方案的安全认证或风险评估报告。【结论】contradict。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"high\",\n      \"source_type\": \"common_sense\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"bucket_label\": \"商业化路径是否成立\",\n      \"point\": \"支持：公司已获得行业奖项（AITC2024最具投资价值项目）和初步客户合作（北汽、华为等），表明商业化路径已起步。\",\n      \"explanation\": \"【claim】BP列举了北汽、华为、广汽等客户，并提及技术开发、定制底盘等合作模式。【reality】获得行业奖项和与主机厂进行技术开发合作，是硬科技公司商业化的常见早期步骤，表明技术方案获得了一定认可。【gap】BP未明确这些合作是否已产生收入，以及合作是否包含量产定点合同（SOP）。【结论】support。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"bucket_label\": \"商业化路径是否成立\",\n      \"point\": \"反对：从实验室样机到车规级量产存在巨大鸿沟，BP未提供明确的量产时间表和关键里程碑，商业化路径存在重大不确定性。\",\n      \"explanation\": \"【claim】BP展示了多个底盘产品（凌波、金刚等），但未说明这些产品处于哪个阶段（概念、样机、小批量）。【reality】汽车零部件的量产通常需要3-5年，并需通过DV/PV测试。BP中提到的“2028年量产”预测与公司当前阶段（样机）之间存在巨大差距。【gap】BP缺少详细的工程化验证计划、供应链建设方案、以及量产工厂规划。【结论】contradict。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"high\",\n      \"source_type\": \"common_sense\"\n    }\n  ],\n  \"publicly_resolvable\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"item\": \"靳立强教授团队在自动轮领域的专利数量和质量可以通过公开专利数据库查询。\",\n      \"current_conclusion\": \"BP声称拥有高价值专利，但未提供专利号或具体技术细节。通过公开检索可确认专利布局的广度和深度，以及是否覆盖核心壁垒。\",\n      \"confidence\": \"high\"\n    }\n  ],\n  \"still_unresolved\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"question\": \"自动轮模块是否已通过车规级耐久性测试（如DV/PV）？具体测试数据（如高低温、涉水、振动、电磁兼容）如何？\",\n      \"why_unresolved\": \"BP未提供任何测试数据，且此类数据通常属于公司内部机密，无法通过公开信息获取。这是判断技术是否具备量产可行性的核心依据。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"question\": \"BP中列举的客户（北汽、华为等）的合作模式具体是什么？是否有明确的量产定点合同（SOP）？合作产生的收入是多少？\",\n      \"why_unresolved\": \"BP仅提及客户名称和合作模式，但未提供合同细节或收入数据。客户合作深度是判断商业化真实进展的关键，必须通过尽调或客户访谈确认。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"question\": \"公司团队中除了靳立强教授，是否有具备大规模汽车零部件制造、质量管理、供应链管理经验的产业界核心成员？\",\n      \"why_unresolved\": \"BP未介绍团队配置。从教授创业到产业公司，需要产业经验丰富的核心成员来主导工程化、量产和供应链管理。这是判断商业化能力的关键。\",\n      \"impact_level\": \"high\"\n    }\n  ],\n  \"tensions\": [\n    \"技术壁垒（专利集成方案）被行业认可 vs 轮毂电机固有工程难题（簧下质量、散热）未解决\",\n    \"客户合作（北汽、华为等）表明商业化起步 vs 缺乏量产定点合同和收入数据，商业化路径不清晰\",\n    \"BP宣称降本30%的颠覆性优势 vs 未提供成本构成和安全验证，主流乘用车客户付费意愿存疑\"\n  ],\n  \"step1_adjustment_hints\": {\n    \"supported\": [\n      \"Step1对技术方向（线控底盘、角模块）的判断得到支持，行业趋势明确。\",\n      \"Step1对技术亮点（极致机动性）的判断得到支持，特种车辆场景价值明确。\"\n    ],\n    \"caution\": [\n      \"Step1对工程化能力的疑问需要升级为‘核心风险’，因为BP未提供任何解决轮毂电机固有难题的具体方案或测试数据。\",\n      \"Step1对客户与订单真实性的疑问需要升级为‘决策阻断问题’，因为缺乏量产定点合同和收入数据，商业化进展可能远低于BP暗示。\"\n    ],\n    \"to_step4\": [\n      \"必须验证自动轮模块是否已通过车规级耐久性测试（DV/PV），并获取具体测试数据。\",\n      \"必须确认BP中客户合作的真实性和深度，特别是是否存在量产定点合同（SOP）及对应收入。\",\n      \"必须评估团队中是否具备产业界量产经验的成员，以判断从教授创业到产业公司的转化能力。\"\n    ]\n  }\n}"
+}

@@ -81,7 +81,7 @@ INDUSTRY_KEYWORDS = {
 def detect_industry(text: str) -> str:
     """
     根据文本关键词推断行业。
-    优先匹配 commercial_space（更细分），否则默认 advanced_materials。
+    优先匹配 commercial_space（更细分），否则默认 general。
     """
     text_lower = text.lower()
     scores = {}
@@ -92,7 +92,7 @@ def detect_industry(text: str) -> str:
     # 只有得分 >= 2 才认定，否则用默认
     if scores[best] >= 2:
         return best
-    return "advanced_materials"
+    return "general"
 
 
 # ─── Step3 服务 ─────────────────────────────────────────────────────────────
@@ -102,10 +102,14 @@ def run_step3(bp_text: str, step1_text: str) -> dict:
     import sys
     sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+    from step3.project_structure_detector import detect_project_structure
     from step3.step3_service import Step3Service
 
-    # 自动检测行业（兜底 advanced_materials）
+    # 自动检测行业（兜底 general）
     industry = detect_industry(bp_text + step1_text)
+
+    # 识别项目结构
+    project_structure = detect_project_structure(bp_text + step1_text)
 
     def _call_llm(system_prompt: str, user_prompt: str) -> str:
         return call_deepseek(
@@ -119,17 +123,56 @@ def run_step3(bp_text: str, step1_text: str) -> dict:
         step1_text=step1_text,
         bp_text=bp_text,
         industry=industry,
+        project_structure=project_structure.to_dict(),
     )
 
-    # 返回 dict
-    if hasattr(result, "model_dump"):
-        return result.model_dump()
-    return dict(result)
+    # 返回 dict，附加 project_structure
+    output = result.model_dump() if hasattr(result, "model_dump") else dict(result)
+    output["project_structure"] = project_structure.to_dict()
+    return output
+
+
+# ─── Step3B 服务 ───────────────────────────────────────────────────────────
+
+def run_step3b(
+    bp_text: str,
+    step3_json: dict,
+    user_input: dict = None,
+    investment_modules: list = None,
+) -> dict:
+    """
+    运行 Step3B：BP一致性 & 包装识别
+
+    基于 Step3 的 project_structure 做一致性检查、矛盾识别、包装信号识别
+
+    Args:
+        bp_text: BP原文
+        step3_json: Step3 完整输出（包含 project_structure）
+        user_input: Step1 用户输入（可选）
+        investment_modules: 投资思维模块列表（可选）
+
+    Returns:
+        dict: Step3B 输出
+    """
+    import sys
+    sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+    from step3b.step3b_service import run_step3b_simple
+
+    project_structure = step3_json.get("project_structure", {})
+
+    result = run_step3b_simple(
+        bp_text=bp_text,
+        project_structure=project_structure,
+        investment_modules=investment_modules,
+    )
+
+    return result
 
 
 # ─── Step4 服务 ─────────────────────────────────────────────────────────────
 
-def run_step4(bp_text: str, step1_text: str, step3_json: dict) -> dict:
+def run_step4(bp_text: str, step1_text: str, step3_json: dict, step3b_json: dict = None) -> dict:
     """
     运行 Step4，返回 dict 包含：
       - internal: Step4 internal 原始 dict
@@ -151,11 +194,22 @@ def run_step4(bp_text: str, step1_text: str, step3_json: dict) -> dict:
     service = Step4Service(call_llm=_call_llm)
     # Step4 期望 step3_json 为 JSON 字符串
     step3_str = json.dumps(step3_json, ensure_ascii=False) if isinstance(step3_json, dict) else step3_json
+    # Step3B 也需要转为字符串（如果传入的是 dict）
+    step3b_str = json.dumps(step3b_json, ensure_ascii=False) if isinstance(step3b_json, dict) else step3b_json
     result = service.run(
         bp_text=bp_text,
         step1_text=step1_text,
-        step3_json=step3_str
+        step3_json=step3_str,
+        step3b_json=step3b_str,
     )
+
+    # DEBUG: 检查 result 类型和内容
+    print(f"[DEBUG] run_step4 result type: {type(result)}")
+    if isinstance(result, dict):
+        print(f"[DEBUG] result keys: {list(result.keys())}")
+        if "internal" in result:
+            ij = result["internal"]
+            print(f"[DEBUG] internal type: {type(ij)}, len: {len(str(ij))}")
 
     # result 是 Step4Service 的统一输出
     # 返回结构化 dict
@@ -169,15 +223,15 @@ def run_step4(bp_text: str, step1_text: str, step3_json: dict) -> dict:
     else:
         output["meeting_brief_md"] = str(result)
 
-    # internal JSON
-    if hasattr(result, "internal"):
-        internal = result.internal
+    # internal JSON（Step4Service 返回 internal_json）
+    if hasattr(result, "internal_json"):
+        internal = result.internal_json
         if hasattr(internal, "model_dump"):
             output["internal"] = internal.model_dump()
         else:
             output["internal"] = dict(internal) if internal else {}
-    elif isinstance(result, dict) and "internal" in result:
-        output["internal"] = result["internal"]
+    elif isinstance(result, dict) and "internal_json" in result:
+        output["internal"] = result["internal_json"]
     else:
         output["internal"] = {}
 
@@ -195,12 +249,19 @@ def run_step4(bp_text: str, step1_text: str, step3_json: dict) -> dict:
 
 # ─── Step5 服务 ─────────────────────────────────────────────────────────────
 
-def run_step5(step1_text: str, step3_json: dict, step4_internal: dict) -> dict:
+def run_step5(
+    step1_text: str,
+    step3_json: dict,
+    step4_internal: dict,
+    step3b_json: dict = None,
+    step4_output_full: dict = None,
+    investment_modules: list = None,
+) -> dict:
     """运行 Step5，返回 dict"""
     import sys
     sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-    from step5.step5_service import Step5Service
+    from step5.step5_service import run_step5 as _run_step5
 
     def _call_llm(system_prompt: str, user_prompt: str) -> str:
         return call_deepseek(
@@ -209,11 +270,16 @@ def run_step5(step1_text: str, step3_json: dict, step4_internal: dict) -> dict:
             max_retries=2
         )
 
-    service = Step5Service(call_llm=_call_llm)
-    result = service.run(
+    # 使用完整 step4_output（包含 meeting_brief_md）传给 Step5
+    step4_out = step4_output_full if step4_output_full is not None else step4_internal
+
+    result = _run_step5(
         step1_text=step1_text,
         step3_json=step3_json,
-        step4_internal=step4_internal
+        step3b_json=step3b_json or {},
+        step4_output={"internal_json": step4_internal, "meeting_brief_md": step4_out.get("meeting_brief_md", "")} if isinstance(step4_out, dict) else {"internal_json": step4_internal},
+        call_llm=_call_llm,
+        investment_modules=investment_modules,
     )
 
     if hasattr(result, "model_dump"):
@@ -276,10 +342,34 @@ def run_pipeline_v1(
         emit("step3", "error", 50, f"Step3 失败: {e}")
         raise RuntimeError(f"Step3 失败: {e}")
 
-    # ── Step4 ────────────────────────────────────────────────
-    emit("step4", "running", 55, "正在生成开会问题...")
+    # ── 选择投资思维模块 ─────────────────────────────────────
     try:
-        step4_result = run_step4(bp_text, step1_text, step3_json)
+        from investment_modules.module_loader import select_relevant_modules
+        investment_modules = select_relevant_modules(
+            project_structure=step3_json.get("project_structure", {}),
+            step3b_output=None,
+        )
+        print(f"[投资思维模块] 已选择 {len(investment_modules)} 个模块: {[m['module_id'] for m in investment_modules]}")
+    except Exception as e:
+        print(f"[投资思维模块] 选择失败，使用空列表: {e}")
+        investment_modules = []
+
+    # ── Step3B ──────────────────────────────────────────────
+    emit("step3b", "running", 52, "正在做BP一致性检查...")
+    try:
+        step3b_json = run_step3b(bp_text, step3_json, investment_modules=investment_modules)
+        results["step3b"] = step3b_json
+        _save_step(project_dir, "step3b", "step3b.json", json.dumps(step3b_json, ensure_ascii=False, indent=2))
+        emit("step3b", "done", 55, "BP一致性检查完成")
+    except Exception as e:
+        emit("step3b", "error", 55, f"Step3B 失败: {e}")
+        # Step3B 失败不阻断流程，继续
+        results["step3b"] = {}
+        step3b_json = {}
+
+    # ── Step4 ────────────────────────────────────────────────
+    try:
+        step4_result = run_step4(bp_text, step1_text, step3_json, step3b_json=results.get("step3b"))
         results["step4"] = step4_result
         _save_step(project_dir, "step4", "step4_meeting_brief.md", step4_result.get("meeting_brief_md", ""))
         _save_step(project_dir, "step4", "step4_internal.json",
@@ -295,7 +385,14 @@ def run_pipeline_v1(
     emit("step5", "running", 80, "正在整理判断逻辑...")
     try:
         step4_internal = step4_result.get("internal", {})
-        step5_result = run_step5(step1_text, step3_json, step4_internal)
+        step5_result = run_step5(
+            step1_text,
+            step3_json,
+            step4_internal,
+            step3b_json=results.get("step3b"),
+            step4_output_full=step4_result,
+            investment_modules=investment_modules,
+        )
         results["step5"] = step5_result
         _save_step(project_dir, "step5", "step5_decision.md", step5_result.get("decision_md", ""))
         _save_step(project_dir, "step5", "step5_output.json",
@@ -350,7 +447,9 @@ def run_single_step(step_name: str, project_dir: str) -> dict:
         raise FileNotFoundError("未找到 Step3 结果，请先运行 Step3")
 
     if step_name == "step4":
-        result = run_step4(bp_text, step1_text, step3_json)
+        # 尝试加载 Step3B 结果
+        step3b_json = _load_step_json(project_dir, "step3b", "step3b.json")
+        result = run_step4(bp_text, step1_text, step3_json, step3b_json=step3b_json)
         _save_step(project_dir, "step4", "step4_meeting_brief.md", result.get("meeting_brief_md", ""))
         _save_step(project_dir, "step4", "step4_internal.json",
                    json.dumps(result.get("internal", {}), ensure_ascii=False, indent=2))

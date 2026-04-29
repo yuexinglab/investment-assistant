@@ -1,0 +1,153 @@
+{
+  "industry_tags": [
+    {
+      "tag": "autonomous_driving",
+      "label": "自动驾驶",
+      "confidence": "medium",
+      "evidence": "命中关键词：自动驾驶、智驾"
+    },
+    {
+      "tag": "industrial_logistics",
+      "label": "工业物流/场内物流",
+      "confidence": "medium",
+      "evidence": "命中关键词：物流、运输、园区"
+    }
+  ],
+  "business_lines": [
+    {
+      "name": "无人重载车辆/无人集卡",
+      "role": "current_business",
+      "status": "核心产品/已落地业务",
+      "revenue_status": "可能已有设备/整车/硬件收入，具体金额待确认",
+      "evidence": "命中关键词：无人重载、设备销售、自动驾驶、无人驾驶、车辆、重卡",
+      "confidence": "high"
+    },
+    {
+      "name": "项目制交付/场景解决方案",
+      "role": "current_business",
+      "status": "项目制落地/场景交付",
+      "revenue_status": "项目收入和毛利待确认",
+      "evidence": "命中关键词：项目、部署、实施、港口、矿区",
+      "confidence": "high"
+    },
+    {
+      "name": "代运营服务",
+      "role": "growth_story",
+      "status": "持续收入模式待验证",
+      "revenue_status": "是否已经形成稳定持续收入待确认",
+      "evidence": "命中关键词：代运营、运营服务、运营、托管、车辆、车队",
+      "confidence": "high"
+    },
+    {
+      "name": "自动驾驶系统/云端调度平台",
+      "role": "supporting_capability",
+      "status": "支撑主业务的技术/平台能力",
+      "revenue_status": "可能作为技术服务或软件服务收费，需确认",
+      "evidence": "命中关键词：感知、决策",
+      "confidence": "medium"
+    }
+  ],
+  "business_model_hypotheses": [
+    {
+      "bucket_key": "manufacturing_product_sales",
+      "bucket_name": "制造/产品销售型",
+      "role": "primary",
+      "current_or_future": "current",
+      "confidence": "medium",
+      "evidence": "命中关键词：设备销售、销售",
+      "why_it_matters": "如果当前收入主要来自产品/设备/原料销售，则公司更接近制造/产品销售型公司。"
+    },
+    {
+      "bucket_key": "project_delivery",
+      "bucket_name": "项目制交付型",
+      "role": "secondary",
+      "current_or_future": "current",
+      "confidence": "medium",
+      "evidence": "命中关键词：项目、部署、实施",
+      "why_it_matters": "如果收入依赖一个个项目交付，则需要重点验证标准化和毛利稳定性。"
+    },
+    {
+      "bucket_key": "asset_heavy_operation",
+      "bucket_name": "重资产运营型",
+      "role": "secondary",
+      "current_or_future": "mixed",
+      "confidence": "low",
+      "evidence": "命中关键词：代运营",
+      "why_it_matters": "如果公司需要自投资产或长期运营回收现金流，则估值和风险更接近重资产运营公司。"
+    },
+    {
+      "bucket_key": "hardtech_commercialization",
+      "bucket_name": "硬科技商业化型",
+      "role": "secondary",
+      "current_or_future": "mixed",
+      "confidence": "medium",
+      "evidence": "命中关键词：技术、自动驾驶",
+      "why_it_matters": "硬科技项目重点不是技术先进，而是能否稳定量产并被真实客户持续采购。"
+    },
+    {
+      "bucket_key": "government_industrial_landing",
+      "bucket_name": "政府/产业落地型",
+      "role": "secondary",
+      "current_or_future": "mixed",
+      "confidence": "low",
+      "evidence": "命中关键词：落地",
+      "why_it_matters": "对政府基金而言，需判断项目是否能真实落地产值、税收、就业和产业协同。"
+    }
+  ],
+  "risk_buckets": [
+    {
+      "bucket_key": "asset_heavy_operation",
+      "bucket_name": "重资产运营型",
+      "risk_role": "risk",
+      "confidence": "low",
+      "evidence": "命中关键词：代运营",
+      "why_it_matters": "如果业务扩张需要同步投入大量资产，会带来现金流和回本周期风险。"
+    },
+    {
+      "bucket_key": "project_delivery",
+      "bucket_name": "项目制交付型",
+      "risk_role": "risk",
+      "confidence": "low",
+      "evidence": "命中关键词：实施",
+      "why_it_matters": "如果每个项目都需要定制，规模化后交付和毛利可能承压。"
+    },
+    {
+      "bucket_key": "customer_concentration",
+      "bucket_name": "客户集中风险",
+      "risk_role": "risk",
+      "confidence": "medium",
+      "evidence": "命中关键词：大客户、前五大",
+      "why_it_matters": "如果收入依赖少数大客户，公司议价权和收入稳定性可能较弱。"
+    }
+  ],
+  "key_uncertainties": [
+    {
+      "uncertainty": "公司到底是客户买产品/设备，还是公司自投资产做运营？",
+      "why_it_matters": "这决定公司是偏轻资产产品销售型，还是重资产运营型，估值和现金流逻辑完全不同。",
+      "related_buckets": [
+        "manufacturing_product_sales",
+        "asset_heavy_operation"
+      ],
+      "discriminating_questions": [
+        "客户是否直接购买设备/车辆/产品？",
+        "是否存在公司自投资产并通过运营回收现金流？",
+        "资产由谁持有？折旧和维修由谁承担？",
+        "收入是一次性销售，还是按使用量/服务费持续收费？"
+      ]
+    },
+    {
+      "uncertainty": "项目交付是否标准化，还是每个客户都需要大量定制？",
+      "why_it_matters": "决定公司能否规模化复制，以及毛利率是否会被交付成本侵蚀。",
+      "related_buckets": [
+        "project_delivery"
+      ],
+      "discriminating_questions": [
+        "一个新项目中有多少模块可以复用？",
+        "单个项目从签约到验收回款需要多久？",
+        "每个项目需要多少实施人员？",
+        "不同项目毛利率差异大不大？"
+      ]
+    }
+  ],
+  "structure_summary": "系统初步识别该项目涉及行业：自动驾驶、工业物流/场内物流；主要业务线包括：无人重载车辆/无人集卡、项目制交付/场景解决方案、代运营服务；可能适用的投资逻辑包括：制造/产品销售型、项目制交付型、重资产运营型。该识别仅作为后续分析入口，不代表最终判断。"
+}

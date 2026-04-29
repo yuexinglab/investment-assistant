@@ -1,0 +1,126 @@
+{
+  "selected_buckets": [
+    "tech_barrier",
+    "customer_value",
+    "commercialization"
+  ],
+  "bucket_outputs": [
+    {
+      "bucket_key": "tech_barrier",
+      "bucket_label": "技术/壁垒是否成立",
+      "point": "支持：场景数据与运营经验构成真实壁垒",
+      "explanation": "【claim】BP宣称拥有行业第一的240台部署车辆和20+客户场景，积累了海量场景数据和运营knowhow。【reality】在封闭场景自动驾驶中，数据量和场景多样性是算法迭代和系统稳定性的关键，后来者难以短期复制。【gap】BP未披露具体数据指标（如MTBF、事故率）与竞争对手的量化对比，但规模本身是强信号。【结论】support。Step1判断“场景+运营”是核心壁垒，此点得到支持。",
+      "relation_to_step1": "support",
+      "certainty": "medium",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "tech_barrier",
+      "bucket_label": "技术/壁垒是否成立",
+      "point": "挑战：核心技术依赖外采，自研程度存疑",
+      "explanation": "【claim】BP强调全栈自研，包括域控、底盘、算法。【reality】BP明确列出域控短期采用英伟达芯片，长期才计划用国产芯片替代；激光雷达、摄像头等传感器均为外采。自研底盘和增材制造尚未有公开的第三方验证或大规模量产案例。【gap】“全栈自研”可能被过度包装，核心计算单元和关键传感器依赖外部供应链，一旦被限制，技术自主性将受冲击。【结论】contradict。Step1可能高估了技术壁垒的“自研”成分。",
+      "relation_to_step1": "contradict",
+      "certainty": "high",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "customer_value",
+      "bucket_label": "客户为什么付钱",
+      "point": "支持：客户为降本增效和安全付费，痛点明确",
+      "explanation": "【claim】BP指出人工和折旧占营业成本60%+，无人驾驶可降低80%事故率，效率与人工持平且增长趋势明显。【reality】港口、散杂货场区确实存在高昂人力成本和安全事故风险，无人化是刚需。【gap】BP未提供具体客户案例的成本节省数据，但行业共识支持这一价值主张。【结论】support。Step1判断“效率提升者”定位准确，客户价值清晰。",
+      "relation_to_step1": "support",
+      "certainty": "high",
+      "source_type": "common_sense"
+    },
+    {
+      "bucket_key": "customer_value",
+      "bucket_label": "客户为什么付钱",
+      "point": "挑战：代运营模式的客户粘性可能被高估",
+      "explanation": "【claim】BP提出代运营模式，与客户利益深度绑定。【reality】代运营模式下，客户将核心物流环节外包，对服务商的可靠性、成本透明度、合同条款极为敏感。如果斯年智驾的UE模型不健康，导致服务价格波动或服务质量下降，客户可能转向其他供应商或自建车队。【gap】BP未披露合同周期、客户更换成本、以及是否存在排他性条款。【结论】neutral。Step1对代运营模式的“颠覆性”判断可能过于乐观，客户粘性需要更长期的合同和数据验证。",
+      "relation_to_step1": "neutral",
+      "certainty": "medium",
+      "source_type": "common_sense"
+    },
+    {
+      "bucket_key": "commercialization",
+      "bucket_label": "商业化路径是否成立",
+      "point": "支持：已有真实订单和部署，商业化路径初步验证",
+      "explanation": "【claim】BP宣称已部署240台车辆，覆盖20+客户场景，包括厦门海润、宁波大榭等知名港口。【reality】这些项目案例表明公司已从概念验证进入小批量交付阶段，具备一定的商业化能力。【gap】BP未披露这些项目的合同金额、毛利率、回款周期等财务细节，但部署规模本身是积极信号。【结论】support。Step1判断“商业化路径清晰”得到初步验证。",
+      "relation_to_step1": "support",
+      "certainty": "medium",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "commercialization",
+      "bucket_label": "商业化路径是否成立",
+      "point": "挑战：产能扩张计划激进，交付瓶颈可能被低估",
+      "explanation": "【claim】BP计划建设华东制造运营中心，目标年产250台无人运输机器人、250台L2级智能集卡等。【reality】当前部署240台是多年累计结果，而新工厂计划在2026年底前达产，产能爬坡速度、供应链稳定性、人员招聘与培训都是巨大挑战。【gap】BP未提供现有产能利用率、供应链关键部件（如芯片、传感器）的供应保障计划。【结论】contradict。Step1可能低估了从“小批量”到“规模化量产”的交付瓶颈。",
+      "relation_to_step1": "contradict",
+      "certainty": "high",
+      "source_type": "bp"
+    }
+  ],
+  "publicly_resolvable": [
+    {
+      "bucket_key": "tech_barrier",
+      "item": "核心团队背景与行业地位",
+      "current_conclusion": "通过公开资料可确认核心团队来自百度、清华，且何贝曾主导全球首台无人集卡在天津港运营，团队经验真实。",
+      "confidence": "high"
+    },
+    {
+      "bucket_key": "customer_value",
+      "item": "港口无人驾驶行业痛点",
+      "current_conclusion": "通过公开资料可确认港口、散杂货场区确实存在高昂人力成本和安全事故风险，无人化是行业公认的刚需方向。",
+      "confidence": "high"
+    },
+    {
+      "bucket_key": "commercialization",
+      "item": "融资历史与股东背景",
+      "current_conclusion": "通过公开资料可确认公司获得字节跳动、浙江金控、广发信德等6轮融资，股东背景较强，但具体估值和财务数据未公开。",
+      "confidence": "medium"
+    }
+  ],
+  "still_unresolved": [
+    {
+      "bucket_key": "customer_value",
+      "question": "代运营模式的单位经济模型（UE）是否跑通？",
+      "why_unresolved": "BP未披露任何代运营项目的定价、成本结构、毛利率或回本周期。这是判断商业模式可持续性的核心，无法通过公开信息解决。",
+      "impact_level": "high"
+    },
+    {
+      "bucket_key": "tech_barrier",
+      "question": "增材制造（3D打印）是否已通过车规级验证并大规模量产？",
+      "why_unresolved": "BP宣称降本80%，但未提供任何第三方测试报告、车规认证或量产案例。该技术在前沿领域尚未成熟，需尽调验证。",
+      "impact_level": "high"
+    },
+    {
+      "bucket_key": "commercialization",
+      "question": "现有240台部署车辆的合同类型、回款周期和客户满意度如何？",
+      "why_unresolved": "BP未区分这些车辆是销售、代运营还是试用，也未提供客户续约率或NPS数据。这直接影响对商业化阶段和增长质量的判断。",
+      "impact_level": "high"
+    }
+  ],
+  "tensions": [
+    "技术壁垒：自研宣称 vs 核心部件外采依赖",
+    "客户价值：代运营模式深度绑定 vs 客户粘性可能被高估",
+    "商业化：已有部署规模 vs 产能扩张与交付瓶颈"
+  ],
+  "step1_adjustment_hints": {
+    "supported": [
+      "Step1判断“场景+运营”是核心壁垒，得到场景数据积累和运营经验的支持。",
+      "Step1判断客户为降本增效和安全付费，与行业痛点一致。",
+      "Step1判断商业化路径清晰，已有部署规模初步验证。"
+    ],
+    "caution": [
+      "Step1可能高估了技术壁垒的“自研”成分，核心域控和传感器依赖外采，需警惕供应链风险。",
+      "Step1对代运营模式的“颠覆性”判断可能过于乐观，客户粘性需更长期数据验证。",
+      "Step1可能低估了从“小批量”到“规模化量产”的交付瓶颈，产能扩张计划激进。"
+    ],
+    "to_step4": [
+      "代运营模式的单位经济模型（UE）是否跑通？",
+      "增材制造是否已通过车规级验证并大规模量产？",
+      "现有240台部署车辆的合同类型、回款周期和客户满意度如何？"
+    ]
+  },
+  "raw_text": "{\n  \"selected_buckets\": [\"tech_barrier\", \"customer_value\", \"commercialization\"],\n  \"bucket_outputs\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"bucket_label\": \"技术/壁垒是否成立\",\n      \"point\": \"支持：场景数据与运营经验构成真实壁垒\",\n      \"explanation\": \"【claim】BP宣称拥有行业第一的240台部署车辆和20+客户场景，积累了海量场景数据和运营knowhow。【reality】在封闭场景自动驾驶中，数据量和场景多样性是算法迭代和系统稳定性的关键，后来者难以短期复制。【gap】BP未披露具体数据指标（如MTBF、事故率）与竞争对手的量化对比，但规模本身是强信号。【结论】support。Step1判断“场景+运营”是核心壁垒，此点得到支持。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"bucket_label\": \"技术/壁垒是否成立\",\n      \"point\": \"挑战：核心技术依赖外采，自研程度存疑\",\n      \"explanation\": \"【claim】BP强调全栈自研，包括域控、底盘、算法。【reality】BP明确列出域控短期采用英伟达芯片，长期才计划用国产芯片替代；激光雷达、摄像头等传感器均为外采。自研底盘和增材制造尚未有公开的第三方验证或大规模量产案例。【gap】“全栈自研”可能被过度包装，核心计算单元和关键传感器依赖外部供应链，一旦被限制，技术自主性将受冲击。【结论】contradict。Step1可能高估了技术壁垒的“自研”成分。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"high\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"bucket_label\": \"客户为什么付钱\",\n      \"point\": \"支持：客户为降本增效和安全付费，痛点明确\",\n      \"explanation\": \"【claim】BP指出人工和折旧占营业成本60%+，无人驾驶可降低80%事故率，效率与人工持平且增长趋势明显。【reality】港口、散杂货场区确实存在高昂人力成本和安全事故风险，无人化是刚需。【gap】BP未提供具体客户案例的成本节省数据，但行业共识支持这一价值主张。【结论】support。Step1判断“效率提升者”定位准确，客户价值清晰。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"high\",\n      \"source_type\": \"common_sense\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"bucket_label\": \"客户为什么付钱\",\n      \"point\": \"挑战：代运营模式的客户粘性可能被高估\",\n      \"explanation\": \"【claim】BP提出代运营模式，与客户利益深度绑定。【reality】代运营模式下，客户将核心物流环节外包，对服务商的可靠性、成本透明度、合同条款极为敏感。如果斯年智驾的UE模型不健康，导致服务价格波动或服务质量下降，客户可能转向其他供应商或自建车队。【gap】BP未披露合同周期、客户更换成本、以及是否存在排他性条款。【结论】neutral。Step1对代运营模式的“颠覆性”判断可能过于乐观，客户粘性需要更长期的合同和数据验证。\",\n      \"relation_to_step1\": \"neutral\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"common_sense\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"bucket_label\": \"商业化路径是否成立\",\n      \"point\": \"支持：已有真实订单和部署，商业化路径初步验证\",\n      \"explanation\": \"【claim】BP宣称已部署240台车辆，覆盖20+客户场景，包括厦门海润、宁波大榭等知名港口。【reality】这些项目案例表明公司已从概念验证进入小批量交付阶段，具备一定的商业化能力。【gap】BP未披露这些项目的合同金额、毛利率、回款周期等财务细节，但部署规模本身是积极信号。【结论】support。Step1判断“商业化路径清晰”得到初步验证。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"bucket_label\": \"商业化路径是否成立\",\n      \"point\": \"挑战：产能扩张计划激进，交付瓶颈可能被低估\",\n      \"explanation\": \"【claim】BP计划建设华东制造运营中心，目标年产250台无人运输机器人、250台L2级智能集卡等。【reality】当前部署240台是多年累计结果，而新工厂计划在2026年底前达产，产能爬坡速度、供应链稳定性、人员招聘与培训都是巨大挑战。【gap】BP未提供现有产能利用率、供应链关键部件（如芯片、传感器）的供应保障计划。【结论】contradict。Step1可能低估了从“小批量”到“规模化量产”的交付瓶颈。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"high\",\n      \"source_type\": \"bp\"\n    }\n  ],\n  \"publicly_resolvable\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"item\": \"核心团队背景与行业地位\",\n      \"current_conclusion\": \"通过公开资料可确认核心团队来自百度、清华，且何贝曾主导全球首台无人集卡在天津港运营，团队经验真实。\",\n      \"confidence\": \"high\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"item\": \"港口无人驾驶行业痛点\",\n      \"current_conclusion\": \"通过公开资料可确认港口、散杂货场区确实存在高昂人力成本和安全事故风险，无人化是行业公认的刚需方向。\",\n      \"confidence\": \"high\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"item\": \"融资历史与股东背景\",\n      \"current_conclusion\": \"通过公开资料可确认公司获得字节跳动、浙江金控、广发信德等6轮融资，股东背景较强，但具体估值和财务数据未公开。\",\n      \"confidence\": \"medium\"\n    }\n  ],\n  \"still_unresolved\": [\n    {\n      \"bucket_key\": \"customer_value\",\n      \"question\": \"代运营模式的单位经济模型（UE）是否跑通？\",\n      \"why_unresolved\": \"BP未披露任何代运营项目的定价、成本结构、毛利率或回本周期。这是判断商业模式可持续性的核心，无法通过公开信息解决。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"question\": \"增材制造（3D打印）是否已通过车规级验证并大规模量产？\",\n      \"why_unresolved\": \"BP宣称降本80%，但未提供任何第三方测试报告、车规认证或量产案例。该技术在前沿领域尚未成熟，需尽调验证。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"question\": \"现有240台部署车辆的合同类型、回款周期和客户满意度如何？\",\n      \"why_unresolved\": \"BP未区分这些车辆是销售、代运营还是试用，也未提供客户续约率或NPS数据。这直接影响对商业化阶段和增长质量的判断。\",\n      \"impact_level\": \"high\"\n    }\n  ],\n  \"tensions\": [\n    \"技术壁垒：自研宣称 vs 核心部件外采依赖\",\n    \"客户价值：代运营模式深度绑定 vs 客户粘性可能被高估\",\n    \"商业化：已有部署规模 vs 产能扩张与交付瓶颈\"\n  ],\n  \"step1_adjustment_hints\": {\n    \"supported\": [\n      \"Step1判断“场景+运营”是核心壁垒，得到场景数据积累和运营经验的支持。\",\n      \"Step1判断客户为降本增效和安全付费，与行业痛点一致。\",\n      \"Step1判断商业化路径清晰，已有部署规模初步验证。\"\n    ],\n    \"caution\": [\n      \"Step1可能高估了技术壁垒的“自研”成分，核心域控和传感器依赖外采，需警惕供应链风险。\",\n      \"Step1对代运营模式的“颠覆性”判断可能过于乐观，客户粘性需更长期数据验证。\",\n      \"Step1可能低估了从“小批量”到“规模化量产”的交付瓶颈，产能扩张计划激进。\"\n    ],\n    \"to_step4\": [\n      \"代运营模式的单位经济模型（UE）是否跑通？\",\n      \"增材制造是否已通过车规级验证并大规模量产？\",\n      \"现有240台部署车辆的合同类型、回款周期和客户满意度如何？\"\n    ]\n  }\n}"
+}

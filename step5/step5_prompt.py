@@ -1,33 +1,36 @@
 # -*- coding: utf-8 -*-
 """
-Step5 Prompt - 探索型投资人版本 (v2)
+Step5 Prompt - 决策收敛版本
 
 核心变化：
-- 从"下结论" → "提出假设 + 设计验证"
-- 所有判断保留不确定性（可被推翻）
-- 强调"会前验证逻辑"而非"最终结论"
-
-参考 Step4 的深挖逻辑，生成可执行的会前验证框架。
+- 决策型（meet/pass/maybe），不是探索型（hypothesis）
+- 必须接入 step3b_json
+- must_ask_questions 必须来自 Step4 gaps，不允许重新发明
+- reasons_to_meet/pass 必须是影响决策的关键因素，不是优点/缺点罗列
 """
 
 from __future__ import annotations
 
 import json
-from typing import Dict, Any
+from typing import Dict, Any, List, Optional
 
 
 def build_step5_prompt(
     step1_text: str,
     step3_json: Dict[str, Any],
-    step4_internal: Dict[str, Any]
+    step3b_json: Dict[str, Any],
+    step4_output: Dict[str, Any],
+    investment_modules: Optional[List[Dict[str, Any]]] = None,
 ) -> str:
     """
-    构建 Step5 探索型 prompt
+    构建 Step5 决策收敛 prompt
 
     Args:
         step1_text: Step1 业务理解文本
-        step3_json: Step3 风险分桶结果
-        step4_internal: Step4 internal 层输出（深挖逻辑）
+        step3_json: Step3 完整输出（含 project_structure）
+        step3b_json: Step3B 完整输出（consistency_checks / tensions / packaging_signals）
+        step4_output: Step4 完整输出（包含 internal_json 和 meeting_brief_md）
+        investment_modules: 投资思维模块列表（可选）
 
     Returns:
         完整的 prompt 字符串
@@ -35,137 +38,232 @@ def build_step5_prompt(
 
     # JSON 序列化
     step3_str = json.dumps(step3_json, ensure_ascii=False, indent=2)
-    step4_str = json.dumps(step4_internal, ensure_ascii=False, indent=2)
+    step3b_str = json.dumps(step3b_json, ensure_ascii=False, indent=2)
+    step4_str = json.dumps(step4_output, ensure_ascii=False, indent=2)
 
-    # 计算截断点（如果需要）
-    # DeepSeek 最大输入约 128k tokens，我们保留足够空间
-    max_chars = 500000  # 安全上限
-
+    # 安全截断
+    max_chars = 80000
     if len(step3_str) > max_chars:
-        step3_str = step3_str[:max_chars] + "\n...(内容已截断)"
+        step3_str = step3_str[:max_chars] + "\n...(已截断)"
+    if len(step3b_str) > max_chars:
+        step3b_str = step3b_str[:max_chars] + "\n...(已截断)"
     if len(step4_str) > max_chars:
-        step4_str = step4_str[:max_chars] + "\n...(内容已截断)"
+        step4_str = step4_str[:max_chars] + "\n...(已截断)"
 
-    prompt = f"""你是一位资深投资人，现在处于"会前第一轮判断阶段（1.0）"。
+    # 格式化投资思维模块（如果有）
+    modules_text = ""
+    if investment_modules:
+        modules_text = """
 
-⚠️ 当前阶段定义（非常重要）：
-这不是 IC 决策，而是"初步接触后的假设形成阶段"。
-你的目标不是下结论，而是形成"可被验证的判断框架"。
+【投资思维模块库】
+
+以下模块是系统选出的、与本项目最相关的投资判断模块。
+你需要使用这些模块辅助形成最终投资判断。
+
+使用规则：
+1. core_judgement 必须体现 company_essence 模块。
+2. reasons_to_meet / reasons_to_pass 必须围绕模块中的核心判断，而不是泛泛优缺点。
+3. key_risks 优先来自模块 red_flags 与 Step3B tensions 的交集。
+4. investment_logic 需要结合 Step3 business_model_hypotheses 和模块判断，不要过早武断。
+5. 如果某个模块指出"待验证"，不要直接写成事实。
+
+"""
+        for i, m in enumerate(investment_modules, 1):
+            modules_text += f"""
+## 模块{i}: {m['module_name']} ({m['module_id']})
+定义: {m['definition']}
+Step3B用途: {m['step3b_usage']}
+Step5用途: {m['step5_usage']}
+核心问题: {', '.join(m['core_questions'])}
+"""
+        # 特别提示 company_essence
+        has_essence_module = any(m['module_id'] == 'company_essence' for m in investment_modules)
+        if has_essence_module:
+            modules_text += """
+
+【特别注意 - company_essence 模块】
+如果项目核心商业本质仍未验证，investment_logic.primary_type 不要强行单选。
+应写成："待验证：XX型 vs YY型"
+"""
+
+    # 投资逻辑类型提示
+    logic_hints = """
+【投资逻辑参考】
+
+primary_type 可选值：
+- 制造/产品销售型
+- 项目制交付型
+- 重资产运营型
+- 数据/AI模型驱动型
+- 混合型（需说明）
+
+如果公司本质不清晰，应写为"待验证：XX型 vs YY型"。
+"""
+
+    prompt = f"""你现在不是在分析项目，而是在做投资决策总结。
+
+请基于以下信息：
+- Step1：用户的直觉判断
+- Step3：公司结构（业务线、商业模式、风险、不确定性）
+- Step3B：一致性分析（claim/reality/gap）、关键矛盾（tensions）、包装信号
+- Step4：决策缺口（P1/P2/P3 gaps）、deep dive 路径、red flag 问题
+- 投资思维模块库（如有）{modules_text}{logic_hints}
+完成一个"是否继续推进该项目"的决策输出。
 
 ---
 
-【你的核心任务】
+【1. 一句话判断（core_judgement）】
 
-基于已有信息，输出一个"探索型判断框架"：
+必须包含：
+- 公司本质（是什么类型公司）
+- 当前最大问题（最关键不确定性/矛盾）
 
-不是结论，而是：
-- 当前假设是什么
-- 可能错在哪里（防止自信过度）
-- 需要验证的关键点是什么
-- 会前行动策略
+要求：
+- 不要空话
+- 不要重复BP
+- 必须体现 Step3 + Step3B 的综合理解
 
 ---
 
-【重要原则】
+【2. 决策（decision）】
 
-❗ 不要下最终结论（如"建议投资/不投资"）
-❗ 所有判断必须保留不确定性（用"可能/当前判断/需验证"等表达）
-❗ 必须明确说明：哪些地方你可能是错的
-❗ 输出必须能指导"下一步会议如何验证"
-❗ 要像真实的谨慎投资人，而不是自信的分析师
+给出：
+- meet / pass / maybe
+
+标准：
+- meet：存在明确值得验证的关键变量
+- pass：核心逻辑已经明显不成立或风险不可接受
+- maybe：方向可以，但信息不足
+
+---
+
+【3. 决策理由】
+
+生成：
+- reasons_to_meet（为什么值得继续看）
+- reasons_to_pass（为什么可能不投）
+
+注意：
+- 不是优点/缺点罗列
+- 必须是"影响投资决策的关键因素"
+- 优先使用 Step3B 的矛盾和 Step4 的 gaps
+
+---
+
+【4. 核心风险（key_risks）】
+
+来源优先级：
+1）Step3B tensions（优先）
+2）Step3B overpackaging_signals
+3）Step3 risk_buckets
+
+要求：
+- 不要泛化（如"市场竞争激烈"）
+- 必须具体到本项目
+
+---
+
+【5. 必问问题（must_ask_questions）】
+
+严格要求：
+- 必须来自 Step4 gaps（含 red_flag_question）
+- 不允许重新发明问题
+- 每个问题必须说明"验证目的"
+
+---
+
+【6. 投资逻辑归因（investment_logic）】
+
+请判断：
+- primary_type：公司最核心的投资逻辑（如 制造 / 项目制 / 运营 / AI平台）
+- secondary_types：次要逻辑
+- risk_type：主要风险类型（如 重资产 / 非标项目 / 政策驱动）
 
 ---
 
 【输入】
 
-Step1（初始判断 - 团队是怎么看这个项目的）:
+Step1（直觉判断）:
 ---
 {step1_text}
 ---
 
-Step3（背景信息 - 风险和业务细节）:
+Step3（公司结构）:
 ---
 {step3_str}
 ---
 
-Step4（深挖逻辑 - 关键缺口和验证路径，来自 Step4 internal）:
+Step3B（一致性 & 矛盾 & 包装）:
+---
+{step3b_str}
+---
+
+Step4（决策缺口 & 深挖路径）:
 ---
 {step4_str}
 ---
 
 ---
 
-【输出结构】
+【输出格式】
 
-请严格按以下JSON格式输出（不要输出JSON以外的内容）：
+必须输出合法 JSON，结构如下：
 
 {{
-  "current_hypothesis": "当前假设（不是结论，是初步判断）。必须用'可能/当前判断/需验证'等表达，不能过于确定。例如：'当前假设公司更接近XX，但需要验证YY'",
+  "core_judgement": {{
+    "one_liner": "一句话判断，必须包含公司本质 + 当前最大问题",
+    "essence": "公司本质",
+    "decision": "meet | pass | maybe",
+    "confidence": "high | medium | low",
+    "core_reason": "做这个决策的核心原因（一句话）"
+  }},
 
-  "why_this_might_be_wrong": [
-    "列出2-4个'你可能是错的地方'，这是防止AI自信过度的关键模块",
-    "例如：'AI可能比描述的更核心，只是BP没有充分体现'",
-    "例如：'核心客户可能已经形成技术依赖，只是没有明说'"
+  "reasons_to_meet": [
+    {{
+      "point": "理由点（要具体）",
+      "why_it_matters": "为什么影响决策"
+    }}
+  ],
+
+  "reasons_to_pass": [
+    {{
+      "point": "理由点（要具体）",
+      "why_it_matters": "为什么影响决策"
+    }}
+  ],
+
+  "key_risks": [
+    {{
+      "risk": "风险描述（必须具体到本项目）",
+      "severity": "high | medium | low",
+      "why_it_matters": "为什么这个风险重要"
+    }}
+  ],
+
+  "must_ask_questions": [
+    {{
+      "question": "问题本身（必须来自 Step4 gaps，含 red_flag_question）",
+      "purpose": "验证目的"
+    }}
   ],
 
   "investment_logic": {{
-    "bull_case": [
-      "如果XX成立，则支持投资的理由",
-      "至少2条，要具体"
-    ],
-    "bear_case": [
-      "如果XX成立，则不支持投资的理由",
-      "至少2条，要具体"
-    ]
-  }},
-
-  "key_validation_points": [
-    {{
-      "point": "验证点描述（要具体，来自Step4的核心问题）",
-      "why_it_matters": "为什么这个点重要",
-      "what_to_look_for": "会议上要观察/询问什么"
-    }},
-    {{
-      "point": "...",
-      "why_it_matters": "...",
-      "what_to_look_for": "..."
-    }}
-  ],
-
-  "deal_breaker_signals": [
-    {{
-      "signal": "一旦出现就放弃的信号（要具体、可观察）",
-      "implication": "出现后的含义"
-    }},
-    {{
-      "signal": "...",
-      "implication": "..."
-    }}
-  ],
-
-  "meeting_objective": "本次会议的核心目标（不是判断是否投资，而是验证假设）。应该明确说明要验证哪几个核心问题。",
-
-  "next_step_strategy": {{
-    "if_validated": "如果核心假设得到验证，下一步建议",
-    "if_not_validated": "如果核心假设被证伪，下一步建议",
-    "current_action": "当前阶段的行动建议（继续推进/暂停/带问题再看等）"
+    "primary_type": "公司最核心的投资逻辑",
+    "secondary_types": ["次要逻辑1", "次要逻辑2"],
+    "risk_type": ["主要风险类型1", "主要风险类型2"]
   }}
 }}
 
 ---
 
-【风格要求】
+【重要约束】
 
-- 像一个谨慎但有经验的投资人
-- 有判断，但不自信过度
-- 重点在"验证逻辑"，而不是"表达观点"
-- 要体现出"我现在是这么看的，但不一定对"
-
-【数量要求】
-
-- why_this_might_be_wrong: 至少2条，最多4条
-- key_validation_points: 至少2条，最多4条
-- deal_breaker_signals: 至少1条，最多3条
+1. 不要重复分析过程
+2. 不要生成泛泛而谈内容
+3. 一切围绕"是否继续推进"这个决策
+4. 如果信息不足，可以降低 confidence，但不能胡乱补充
+5. must_ask_questions 中的 question 字段必须直接来自 Step4 internal gaps 中的 opening / deepen / trap / red_flag_question 之一，不允许凭空发明
+6. reasons_to_meet 和 reasons_to_pass 必须和 Step3B 的核心矛盾强相关，不是罗列一般性优缺点
 """
 
     return prompt

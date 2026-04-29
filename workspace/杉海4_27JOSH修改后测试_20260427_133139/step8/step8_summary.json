@@ -1,0 +1,71 @@
+{
+  "executive_summary": "仍有5项关键不确定性。当前信息不足以支撑明确判断，建议补充材料。",
+  "decision_signals": {
+    "validated_positives": [],
+    "confirmed_negatives": [],
+    "key_uncertainties": [
+      {
+        "hypothesis_id": "h_1",
+        "point": "AI不成立",
+        "source_hypothesis": "假设1: 可能低估了AI建沐™矩阵的真实壁垒：如果其预测准确率和研发效率提升远超行业通用方法，则技术护城河可能比当前判断更深。...",
+        "change_type": "slightly_weakened",
+        "hypothesis_direction": "positive",
+        "required_material": "研发周期缩短的具体数据；AI预测结果与实验结果的对比案例"
+      },
+      {
+        "hypothesis_id": "h_2",
+        "point": "新能源待深入",
+        "source_hypothesis": "假设2: 可能高估了跨行业扩张的难度：如果美妆领域的成功经验（如客户关系、技术适配）能有效迁移至新能源，且团队已通过并购千沐等方式补齐产业经验，则商业化路径可能...",
+        "change_type": "slightly_weakened",
+        "hypothesis_direction": "positive",
+        "required_material": "食品业务负责人信息；新能源业务负责人信息；团队大规模生产经验证明"
+      },
+      {
+        "hypothesis_id": "h_3",
+        "point": "美妆不成立",
+        "source_hypothesis": "假设3: 可能忽略了客户粘性：如果欧莱雅、华熙生物等头部客户已将杉海技术视为核心依赖，并形成排他性合作，则其客户价值和收入稳定性可能被低估。...",
+        "change_type": "uncertain",
+        "hypothesis_direction": "positive",
+        "required_material": "头部客户合作深度信息；排他性协议证据；客户依赖度数据"
+      },
+      {
+        "hypothesis_id": "h_4",
+        "point": "新能源不成立",
+        "source_hypothesis": "假设4: 可能对新能源业务过于悲观：如果深共晶电解液在成本或安全性上具有颠覆性优势，且已通过头部电池厂验证，则其想象空间可能远超当前判断。...",
+        "change_type": "slightly_weakened",
+        "hypothesis_direction": "positive",
+        "required_material": "成本对比数据（与LiPF₆）；协鑫的客户意向书或合同；成本差异测算依据"
+      },
+      {
+        "hypothesis_id": "h_5",
+        "point": "AI不成立",
+        "source_hypothesis": "验证点1: 建沐™AI矩阵的预测准确率及研发效率提升的量化数据...",
+        "change_type": "slightly_weakened",
+        "hypothesis_direction": "positive",
+        "required_material": "研发周期缩短的具体数据；AI预测结果与实验结果的对比案例"
+      }
+    ]
+  },
+  "key_findings": [
+    "❓ 8项关键不确定性",
+    "🚨 7个新风险暴露"
+  ],
+  "validated_points": [],
+  "invalidated_points": [],
+  "uncertain_points": [
+    "AI不成立",
+    "新能源待深入",
+    "美妆不成立",
+    "新能源不成立",
+    "AI不成立"
+  ],
+  "_counts": {
+    "validated_positive": 0,
+    "confirmed_negative": 0,
+    "key_uncertainty": 8,
+    "total": 8,
+    "reinforced": 0,
+    "uncertain": 3,
+    "weakened": 0
+  }
+}

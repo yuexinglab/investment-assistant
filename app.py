@@ -31,6 +31,7 @@ if sys.platform == "win32":
 from flask import Flask, render_template, request, redirect, url_for, jsonify, send_file, Response, stream_with_context
 import os
 import json
+from datetime import datetime
 import threading
 import queue
 from config import WORKSPACE_DIR, SECRET_KEY, DEBUG, ALLOWED_EXTENSIONS
@@ -45,6 +46,11 @@ from services.pipeline_v1 import run_pipeline_v1, run_single_step, load_pipeline
 from services.profile import (
     DEFAULT_PROFILE_ID, list_fund_profiles, load_profile,
     load_project_profile, save_project_profile, get_profile_summary
+)
+from services.deepseek_service import call_deepseek
+from services.feedback import (
+    append_feedback_case, find_feedback_case, find_feedback_by_project,
+    generate_feedback_id, HumanNoteNormalizer, KnowledgeCandidateGenerator
 )
 
 app = Flask(__name__)
@@ -123,6 +129,9 @@ def project_detail(project_id):
     project_profile = load_project_profile(project_dir)
     profile_summary = get_profile_summary(project_profile)
 
+    # 加载反馈标注状态
+    feedback_case = find_feedback_by_project(project_id)
+
     return render_template(
         "project_detail.html",
         meta=meta, context=context,
@@ -130,7 +139,8 @@ def project_detail(project_id):
         project_id=project_id,
         results_available=results_available,
         project_profile=project_profile,
-        profile_summary=profile_summary
+        profile_summary=profile_summary,
+        feedback_case=feedback_case
     )
 
 
@@ -481,13 +491,15 @@ def result_new(project_id):
     meta = get_project_meta(project_dir)
     pipeline_results = load_pipeline_results(project_dir)
     project_profile = load_project_profile(project_dir)
+    feedback_case = find_feedback_by_project(project_id)
 
     return render_template(
         "result_1_0_new.html",
         meta=meta,
         project_id=project_id,
         results=pipeline_results,
-        project_profile=project_profile
+        project_profile=project_profile,
+        feedback_case=feedback_case
     )
 
 
@@ -1184,6 +1196,1047 @@ def get_project_profile_route(project_id):
         "profile": profile,
         "profile_summary": get_profile_summary(profile)
     })
+
+
+# ============================================================
+# 反馈标注模块（1.0 精修）
+# ============================================================
+
+# --- 自由输入自动整理 ---
+@app.route("/api/feedback/normalize-human-note", methods=["POST"])
+def normalize_human_note():
+    """将用户乱写的初判文字整理成结构化字段"""
+    payload = request.get_json(force=True)
+    raw_note = payload.get("raw_note", "").strip()
+
+    if not raw_note:
+        return jsonify({"error": "raw_note 不能为空"}), 400
+
+    try:
+        # HumanNoteNormalizer 期望 call_llm_func(prompt) -> str
+        # call_deepseek 需要 (system_prompt, user_prompt)，需要适配器
+        def llm_wrapper(prompt: str) -> str:
+            return call_deepseek(system_prompt="", user_prompt=prompt)
+        normalizer = HumanNoteNormalizer(call_llm_func=llm_wrapper)
+        result = normalizer.normalize(raw_note)
+        return jsonify(result)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+# --- 保存人工初判（Pre-AI）---
+@app.route("/api/feedback/save-pre-ai", methods=["POST"])
+def save_pre_ai_feedback():
+    """
+    保存人工初判数据。
+    可以覆盖同一 project_id 的旧记录。
+    """
+    payload = request.get_json(force=True)
+
+    required = ["project_id", "project_name", "profile_id", "human_pre_ai_judgement"]
+    for key in required:
+        if key not in payload:
+            return jsonify({"error": f"缺少必填字段: {key}"}), 400
+
+    judgement = payload["human_pre_ai_judgement"]
+
+    # ── Upsert 逻辑：按 project_id 查找现有记录 ──────────────────────
+    project_id = payload["project_id"]
+    existing = find_feedback_by_project(project_id)
+
+    if existing:
+        # 有记录 → 合并更新（保留旧记录中已填、但本次未提交的字段）
+        existing["project_name"] = payload.get("project_name", existing.get("project_name", ""))
+        existing["bp_source"] = payload.get("bp_source", existing.get("bp_source", ""))
+        existing["profile_id"] = payload["profile_id"]
+        existing["profile_type"] = payload.get("profile_type", existing.get("profile_type", "fund"))
+        existing["annotator"] = payload.get("annotator", existing.get("annotator", ""))
+
+        # 合并人工初判字段：新值为空时保留旧值
+        old_j = existing.get("human_pre_ai_judgement", {})
+        new_j = judgement
+        existing["human_pre_ai_judgement"] = {
+            "one_liner":         new_j.get("one_liner")         or old_j.get("one_liner", ""),
+            "current_business":  new_j.get("current_business")  or old_j.get("current_business", ""),
+            "future_story":      new_j.get("future_story")      or old_j.get("future_story", ""),
+            "real_customer":     new_j.get("real_customer")     or old_j.get("real_customer", ""),
+            "market_view":       new_j.get("market_view")       or old_j.get("market_view", ""),
+            "decision":          new_j.get("decision", "maybe_meet"),
+            "priority":          new_j.get("priority", "medium"),
+            "confidence":        new_j.get("confidence", "medium"),
+            "reasons_to_meet":   new_j.get("reasons_to_meet")   if new_j.get("reasons_to_meet") else old_j.get("reasons_to_meet", []),
+            "reasons_to_pass":   new_j.get("reasons_to_pass")   if new_j.get("reasons_to_pass") else old_j.get("reasons_to_pass", []),
+            "key_unknowns":      new_j.get("key_unknowns")     if new_j.get("key_unknowns") else old_j.get("key_unknowns", []),
+            "must_ask_questions":new_j.get("must_ask_questions")if new_j.get("must_ask_questions") else old_j.get("must_ask_questions", []),
+            "raw_note":          new_j.get("raw_note")          or old_j.get("raw_note", ""),
+        }
+        existing["updated_at"] = datetime.now().isoformat()
+        case = existing
+    else:
+        # 无记录 → 创建新 case
+        case = {
+            "project_id": project_id,
+            "project_name": payload.get("project_name", ""),
+            "industry": payload.get("industry", ""),
+            "bp_source": payload.get("bp_source", ""),
+            "profile_id": payload["profile_id"],
+            "profile_type": payload.get("profile_type", "fund"),
+            "annotator": payload.get("annotator", ""),
+            "human_pre_ai_judgement": {
+                "one_liner":         judgement.get("one_liner", ""),
+                "current_business":  judgement.get("current_business", ""),
+                "future_story":      judgement.get("future_story", ""),
+                "real_customer":     judgement.get("real_customer", ""),
+                "market_view":       judgement.get("market_view", ""),
+                "decision":          judgement.get("decision", "maybe_meet"),
+                "priority":          judgement.get("priority", "medium"),
+                "confidence":        judgement.get("confidence", "medium"),
+                "reasons_to_meet":   judgement.get("reasons_to_meet") or [],
+                "reasons_to_pass":   judgement.get("reasons_to_pass") or [],
+                "key_unknowns":      judgement.get("key_unknowns") or [],
+                "must_ask_questions": judgement.get("must_ask_questions") or [],
+                "raw_note":          judgement.get("raw_note", ""),
+            },
+            "system_1_0_snapshot": {},
+            "human_post_ai_feedback": {},
+            "knowledge_candidates": {},
+            "review_status": "pre_ai_saved",
+        }
+
+    saved = append_feedback_case(case)
+    return jsonify({"status": "ok", "feedback_id": saved["feedback_id"]})
+
+
+def _merge_raw_note(new_note: str, old_note: str) -> str:
+    """
+    raw_note 合并策略（零丢失原则）：
+    - 新值非空 且 与旧值相同 → 直接返回新值（幂等）
+    - 新值非空 且 与旧值不同 → 拼接（旧值在前，新值在后，分隔符标注时间戳）
+    - 新值为空 → 保留旧值，不覆盖
+    """
+    new_note = (new_note or "").strip()
+    old_note = (old_note or "").strip()
+
+    if not new_note:
+        # 前端没有传内容（空提交），保留已有内容
+        return old_note
+
+    if new_note == old_note:
+        # 内容一致，幂等保存
+        return new_note
+
+    if not old_note:
+        # 第一次写入
+        return new_note
+
+    # 新旧都有内容且不同：拼接保留，确保一字不丢
+    from datetime import datetime as _dt
+    separator = f"\n\n{'─' * 40}\n【追加更新 {_dt.now().strftime('%Y-%m-%d %H:%M')}】\n{'─' * 40}\n"
+    return old_note + separator + new_note
+
+
+# --- 保存第一直觉（Layer 1）---
+@app.route("/api/feedback/save-first-impression", methods=["POST"])
+def save_first_impression():
+    """
+    保存第一直觉，独立于深思层。
+    每次保存会合并（不覆盖已有直觉内容）。
+    """
+    payload = request.get_json(force=True)
+    project_id = payload.get("project_id")
+    if not project_id:
+        return jsonify({"error": "缺少 project_id"}), 400
+
+    fi = payload.get("first_impression", {})
+
+    existing = find_feedback_by_project(project_id)
+
+    def merge_field(new_val, old_val, default=""):
+        """新值非空则用新值，否则保留旧值"""
+        return new_val if new_val and new_val != default else (old_val or default)
+
+    if existing:
+        old_fi = existing.get("first_impression", {})
+        merged = {
+            # 基础信息
+            "one_liner":        merge_field(fi.get("one_liner"), old_fi.get("one_liner", "")),
+            "top_confusion":    merge_field(fi.get("top_confusion"), old_fi.get("top_confusion", "")),
+            "decision":         merge_field(fi.get("decision"), old_fi.get("decision", "")),
+            "priority":         merge_field(fi.get("priority"), old_fi.get("priority", "")),
+            "confidence":       merge_field(fi.get("confidence"), old_fi.get("confidence", "")),
+            # 深入分析
+            "current_business": merge_field(fi.get("current_business"), old_fi.get("current_business", "")),
+            "future_story":     merge_field(fi.get("future_story"), old_fi.get("future_story", "")),
+            "real_customer":    merge_field(fi.get("real_customer"), old_fi.get("real_customer", "")),
+            "market_view":      merge_field(fi.get("market_view"), old_fi.get("market_view", "")),
+            # 判断理由
+            "reasons_to_meet":  fi.get("reasons_to_meet") if fi.get("reasons_to_meet") else old_fi.get("reasons_to_meet", []),
+            "reasons_to_pass":  fi.get("reasons_to_pass") if fi.get("reasons_to_pass") else old_fi.get("reasons_to_pass", []),
+            "key_unknowns":     fi.get("key_unknowns") if fi.get("key_unknowns") else old_fi.get("key_unknowns", []),
+            "must_ask_questions": fi.get("must_ask_questions") if fi.get("must_ask_questions") else old_fi.get("must_ask_questions", []),
+            # 原始笔记（直接覆盖）
+            "raw_note":         fi.get("raw_note") or old_fi.get("raw_note", ""),
+        }
+        existing["first_impression"] = merged
+        # 升级状态
+        if existing.get("deep_reflection"):
+            existing["review_status"] = "deep_reflection_saved"
+        else:
+            existing["review_status"] = "first_impression_saved"
+        existing["updated_at"] = datetime.now().isoformat()
+        case = existing
+    else:
+        case = {
+            "project_id":   project_id,
+            "project_name": payload.get("project_name", ""),
+            "profile_id":   payload.get("profile_id", "neutral_investor"),
+            "profile_type": payload.get("profile_type", "fund"),
+            "bp_source":    "",
+            "first_impression": {
+                "one_liner":           fi.get("one_liner", ""),
+                "top_confusion":       fi.get("top_confusion", ""),
+                "decision":            fi.get("decision", ""),
+                "priority":            fi.get("priority", ""),
+                "confidence":          fi.get("confidence", ""),
+                "current_business":    fi.get("current_business", ""),
+                "future_story":        fi.get("future_story", ""),
+                "real_customer":       fi.get("real_customer", ""),
+                "market_view":         fi.get("market_view", ""),
+                "reasons_to_meet":     fi.get("reasons_to_meet", []),
+                "reasons_to_pass":     fi.get("reasons_to_pass", []),
+                "key_unknowns":        fi.get("key_unknowns", []),
+                "must_ask_questions":  fi.get("must_ask_questions", []),
+                "raw_note":            fi.get("raw_note", ""),
+            },
+            "deep_reflection": {},
+            "system_1_0_snapshot": {},
+            "human_post_ai_feedback": {},
+            "knowledge_candidates": {},
+            "review_status": "first_impression_saved",
+        }
+
+    saved = append_feedback_case(case)
+    return jsonify({"status": "ok", "feedback_id": saved["feedback_id"]})
+
+
+
+
+# --- AI 自动整理直觉层（Layer 1）---
+def _build_normalize_intuition_prompt(company_name, raw_note):
+    """构建 AI 整理直觉笔记的 prompt"""
+    return f"""你是一个专业的投资分析师，正在帮助整理投资人对项目的第一直觉判断。
+
+项目名称：{company_name}
+
+以下是投资人对这个项目的原始笔记（可能是碎片化的、随意的、甚至自相矛盾的判断）：
+
+---
+{raw_note}
+---
+
+请仔细阅读以上笔记，提取并结构化成以下字段。即使笔记中没有明确提到，也要基于内容合理推断：
+
+请以 JSON 格式输出：
+{{
+    "one_liner": "一句话理解这家公司是干什么的（30字以内）",
+    "top_confusion": "投资人最困惑或最不确定的一个点",
+    "decision": "判断：meet（建议约）/ maybe_meet（可以约）/ request_materials（先要材料）/ pass（直接pass）",
+    "priority": "优先级：高/中/低",
+    "confidence": "信心度：高/中/低（对这个判断有多大把握）",
+    "current_business": "当前真实业务是什么（只写现在的，不确定的写「不确定」）",
+    "future_story": "未来故事或包装叙事（BP里哪些可能是夸大的）",
+    "real_customer": "真正的客户是谁，谁会真的付钱",
+    "market_view": "对市场容量和机会的看法",
+    "reasons_to_meet": ["值得约见的一个理由"],
+    "reasons_to_pass": ["不值得约见的一个理由（如果有）"],
+    "key_unknowns": ["最需要搞清楚的一个问题"],
+    "must_ask_questions": ["见面时必须问的一个核心问题"]
+}}
+
+注意：
+- 如果笔记中某些信息确实没有提到，相关字段填空字符串
+- decision 字段必须从 meet/maybe_meet/request_materials/pass 中选择
+- reasons_to_meet 和 reasons_to_pass 应该是列表，即使只有一个也要用列表格式
+- 推理过程不要写在输出里，直接输出 JSON
+"""
+
+
+@app.route("/api/feedback/normalize-first-impression", methods=["POST"])
+def normalize_first_impression():
+    """
+    接收用户的自由书写笔记，AI 自动识别并填充各结构化字段。
+    """
+    from services.deepseek_service import deepseek_client
+
+    payload = request.get_json(force=True)
+    project_id = payload.get("project_id")
+    raw_note = payload.get("raw_note", "").strip()
+
+    if not project_id:
+        return jsonify({"error": "缺少 project_id"}), 400
+    if not raw_note:
+        return jsonify({"error": "请先填写原始笔记"}), 400
+
+    # 加载项目信息作为上下文
+    project_dir = os.path.join(WORKSPACE_DIR, project_id)
+    meta = get_project_meta(project_dir) if os.path.exists(project_dir) else {}
+    company_name = meta.get("company_name", "未知公司")
+
+    # 构建 prompt
+    prompt = _build_normalize_intuition_prompt(company_name, raw_note)
+
+    try:
+        result = deepseek_client.chat(
+            messages=[
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.3,
+        )
+        structured = json.loads(result["content"])
+
+        return jsonify({
+            "status": "ok",
+            "structured": {
+                "one_liner":           structured.get("one_liner", ""),
+                "top_confusion":       structured.get("top_confusion", ""),
+                "decision":           structured.get("decision", ""),
+                "priority":           structured.get("priority", ""),
+                "confidence":         structured.get("confidence", ""),
+                "current_business":   structured.get("current_business", ""),
+                "future_story":       structured.get("future_story", ""),
+                "real_customer":      structured.get("real_customer", ""),
+                "market_view":        structured.get("market_view", ""),
+                "reasons_to_meet":    structured.get("reasons_to_meet", []),
+                "reasons_to_pass":    structured.get("reasons_to_pass", []),
+                "key_unknowns":        structured.get("key_unknowns", []),
+                "must_ask_questions":  structured.get("must_ask_questions", []),
+            }
+        })
+    except json.JSONDecodeError:
+        return jsonify({"error": "AI 返回格式错误，请重试"}), 500
+    except Exception as e:
+        print(f"[normalize_first_impression] error: {e}", flush=True)
+        return jsonify({"error": f"整理失败: {str(e)}"}), 500
+
+
+
+
+
+# --- 保存深入判断（Layer 2）---
+@app.route("/api/feedback/save-deep-reflection", methods=["POST"])
+def save_deep_reflection():
+    """
+    保存深入判断，独立于直觉层。
+    每次保存会合并（不覆盖已有直觉层内容）。
+    """
+    payload = request.get_json(force=True)
+    project_id = payload.get("project_id")
+    if not project_id:
+        return jsonify({"error": "缺少 project_id"}), 400
+
+    dr = payload.get("deep_reflection", {})
+
+    existing = find_feedback_by_project(project_id)
+
+    if existing:
+        old_dr = existing.get("deep_reflection", {})
+        merged = {
+            "one_liner":          dr.get("one_liner")          or old_dr.get("one_liner", ""),
+            "current_business":   dr.get("current_business")   or old_dr.get("current_business", ""),
+            "future_story":       dr.get("future_story")       or old_dr.get("future_story", ""),
+            "real_customer":      dr.get("real_customer")      or old_dr.get("real_customer", ""),
+            "market_view":        dr.get("market_view")        or old_dr.get("market_view", ""),
+            "decision":           dr.get("decision")           or old_dr.get("decision", ""),
+            "priority":           dr.get("priority", "medium"),
+            "confidence":         dr.get("confidence", "medium"),
+            "reasons_to_meet":    dr.get("reasons_to_meet") if dr.get("reasons_to_meet") else old_dr.get("reasons_to_meet", []),
+            "reasons_to_pass":    dr.get("reasons_to_pass") if dr.get("reasons_to_pass") else old_dr.get("reasons_to_pass", []),
+            "key_unknowns":       dr.get("key_unknowns")      if dr.get("key_unknowns") else old_dr.get("key_unknowns", []),
+            "must_ask_questions": dr.get("must_ask_questions") if dr.get("must_ask_questions") else old_dr.get("must_ask_questions", []),
+            # ⚠️ raw_note 是原始输入源文件，用于规则蒸馏和认知回溯，绝对不能丢失或截断。
+            # 规则：新值非空 → 必须原文覆盖；新值为空 → 保留已有内容；
+            #       如果新旧都有内容且不同 → 用换行符拼接，确保不丢失任何内容。
+            "raw_note": _merge_raw_note(dr.get("raw_note", ""), old_dr.get("raw_note", "")),
+        }
+        existing["deep_reflection"] = merged
+        existing["bp_source"] = payload.get("bp_source") or existing.get("bp_source", "")
+        existing["profile_id"] = payload.get("profile_id") or existing.get("profile_id", "neutral_investor")
+        existing["review_status"] = "deep_reflection_saved"
+        existing["updated_at"] = datetime.now().isoformat()
+        case = existing
+    else:
+        case = {
+            "project_id":   project_id,
+            "project_name": payload.get("project_name", ""),
+            "profile_id":   payload.get("profile_id", "neutral_investor"),
+            "profile_type": payload.get("profile_type", "fund"),
+            "bp_source":    payload.get("bp_source", ""),
+            "first_impression": {},
+            "deep_reflection": {
+                "one_liner":          dr.get("one_liner", ""),
+                "current_business":   dr.get("current_business", ""),
+                "future_story":       dr.get("future_story", ""),
+                "real_customer":      dr.get("real_customer", ""),
+                "market_view":        dr.get("market_view", ""),
+                "decision":           dr.get("decision", ""),
+                "priority":           dr.get("priority", "medium"),
+                "confidence":         dr.get("confidence", "medium"),
+                "reasons_to_meet":    dr.get("reasons_to_meet") or [],
+                "reasons_to_pass":    dr.get("reasons_to_pass") or [],
+                "key_unknowns":       dr.get("key_unknowns") or [],
+                "must_ask_questions": dr.get("must_ask_questions") or [],
+                "raw_note":           dr.get("raw_note", ""),
+            },
+            "system_1_0_snapshot": {},
+            "human_post_ai_feedback": {},
+            "knowledge_candidates": {},
+            "review_status": "deep_reflection_saved",
+        }
+
+    saved = append_feedback_case(case)
+    return jsonify({"status": "ok", "feedback_id": saved["feedback_id"]})
+
+
+# --- 保存人机对比反馈（Post-AI）---
+@app.route("/api/feedback/save-post-ai", methods=["POST"])
+def save_post_ai_feedback():
+    """
+    保存人机对比反馈，覆盖同一 feedback_id 的旧记录。
+    """
+    payload = request.get_json(force=True)
+    feedback_id = payload.get("feedback_id")
+
+    if not feedback_id:
+        return jsonify({"error": "feedback_id 不能为空"}), 400
+
+    old_case = find_feedback_case(feedback_id)
+    if not old_case:
+        return jsonify({"error": "未找到对应的 feedback case，请先保存人工初判"}), 404
+
+    # 合并更新
+    old_case["system_1_0_snapshot"] = payload.get("system_1_0_snapshot") or {}
+    old_case["human_post_ai_feedback"] = payload.get("human_post_ai_feedback") or {}
+    old_case["review_status"] = "feedback_completed"
+
+    saved = append_feedback_case(old_case)
+    return jsonify({"status": "ok", "feedback_id": saved["feedback_id"]})
+
+
+# --- 生成候选知识 ---
+@app.route("/api/feedback/generate-knowledge-candidates", methods=["POST"])
+def generate_knowledge_candidates():
+    """从一条 feedback case 生成候选知识"""
+    payload = request.get_json(force=True)
+    feedback_id = payload.get("feedback_id")
+
+    if not feedback_id:
+        return jsonify({"error": "feedback_id 不能为空"}), 400
+
+    case = find_feedback_case(feedback_id)
+    if not case:
+        return jsonify({"error": "未找到对应的 feedback case"}), 404
+
+    if not case.get("human_pre_ai_judgement"):
+        return jsonify({"error": "该 case 还没有人工初判数据"}), 400
+
+    try:
+        generator = KnowledgeCandidateGenerator(call_llm=call_deepseek)
+        candidates = generator.generate(case)
+
+        # 保存候选知识
+        case["knowledge_candidates"] = candidates
+        case["review_status"] = "candidate_generated"
+        append_feedback_case(case)
+
+        return jsonify(candidates)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+# --- 分析自由备注并自动填表 ---
+@app.route("/api/feedback/analyze-free-note", methods=["POST"])
+def analyze_free_note():
+    """
+    接收用户的自由备注 + AI输出，分析后返回结构化数据用于自动填表
+    核心功能：训练数据采集
+    """
+    payload = request.get_json(force=True)
+    free_note = payload.get("free_note", "").strip()
+    ai_outputs = payload.get("ai_outputs", {})
+
+    if not free_note:
+        return jsonify({"error": "备注内容不能为空"}), 400
+
+    if len(free_note) < 10:
+        return jsonify({"error": "备注内容太短，请输入更多内容"}), 400
+
+    try:
+        import json as json_lib
+
+        # 构建更强大的分析 prompt
+        system_prompt = """你是一个专业的投资评审反馈分析助手。你的任务是把用户对AI判断的自由评价，解析成结构化人机对比反馈。
+
+输入包括：
+1. 用户自由评价 raw_human_feedback（最重要，不允许修改）
+2. AI输出结果，包括 Step3 / Step3B / Step4 / Step5
+
+请完成以下分析并输出 JSON：
+
+1. evaluation（评价字段）：
+   - essence_alignment: 本质理解一致程度，取值 "aligned" | "partially_aligned" | "misaligned" | "unclear"
+   - essence_score: 本质理解评分，1-5整数
+   - meeting_judgement_alignment: 约交流判断是否一致，取值 "aligned" | "partially_aligned" | "misaligned" | "unclear"
+   - reasoning_score: 理由覆盖评分，1-5整数
+   - question_coverage_score: 问题覆盖评分，1-5整数
+   - overall_usefulness_score: 总体有用性，1-5整数
+   - ai_bias_direction: AI判断偏差方向，取值 "too_optimistic" | "too_conservative" | "wrong_focus" | "too_generic" | "not_applicable"
+   - wrong_steps: AI主要错在哪一步，数组，取值 "step0_profile" | "step1_essence" | "step3_structure" | "step3b_consistency" | "step4_gap_ranking" | "step5_decision"
+   - error_types: 错误类型数组，取值 "missed_company_essence" | "treated_future_as_current" | "overestimated_tech_moat" | "underestimated_tech_moat" | "overestimated_market_size" | "underestimated_market_size" | "missed_packaging_story" | "missed_team_or_endorsement_packaging" | "ignored_fund_profile" | "questions_too_broad" | "missed_key_question" | "too_optimistic" | "too_conservative" | "wrong_priority" | "overweighted_secondary_issue"
+   - brief_error_summary: 简单说明AI哪里错了，50字以内字符串
+
+2. core_difference（核心差异记录区 - 最重要！）：
+   - ai_main_thesis: AI选的主线，字符串数组
+   - human_main_thesis: 用户认为正确的主线，字符串数组
+   - missed_key_issues: AI漏掉的关键问题，字符串数组
+   - overweighted_issues: AI过度提权的问题，字符串数组
+   - underweighted_issues: AI权重不足的问题，字符串数组
+   - priority_correction: 正确优先级修正，对象数组，格式 [{"rank": 1, "issue": "问题描述"}, ...]
+   - one_sentence_learning: 一句话学习，总结核心教训，80字以内
+
+重要规则：
+- 不要替用户新增没有表达过的观点
+- 如果用户没有明确提到某个字段，可以留空数组或空字符串
+- one_sentence_learning 必须从用户的评价中提炼，不能编造
+- 只输出 JSON，不要有任何其他内容"""
+
+        # 构建用户 prompt，包含 AI 输出供对比
+        ai_summary = ""
+        if ai_outputs:
+            if ai_outputs.get("step5"):
+                step5 = ai_outputs["step5"]
+                if isinstance(step5, dict):
+                    ai_summary += f"\n【AI Step5 决策】：\n"
+                    ai_summary += f"- 一句话判断：{step5.get('current_hypothesis', step5.get('one_liner', '无'))}\n"
+                    ai_summary += f"- 决策：{step5.get('decision', '无')}\n"
+            if ai_outputs.get("step4"):
+                step4 = ai_outputs["step4"]
+                if isinstance(step4, dict):
+                    meeting_brief = step4.get("meeting_brief_md", "")
+                    if meeting_brief:
+                        ai_summary += f"\n【AI Step4 开会问题】：\n"
+                        # 提取前500字
+                        ai_summary += meeting_brief[:500] + "..." if len(meeting_brief) > 500 else meeting_brief
+
+        user_prompt = f"""请分析以下用户对AI判断的评价，提取结构化评估信息：
+
+【用户原始评价】：
+{free_note}
+
+{ai_summary}
+
+只输出 JSON，不要有任何其他内容。"""
+
+        result = call_deepseek(system_prompt=system_prompt, user_prompt=user_prompt, max_retries=2)
+
+        # 尝试解析 JSON
+        import re
+
+        # 提取 JSON（可能有 markdown 包裹）
+        json_match = re.search(r'\{[\s\S]*\}', result)
+        if json_match:
+            parsed = json_lib.loads(json_match.group())
+            return jsonify({"status": "ok", "analysis": parsed})
+        else:
+            return jsonify({"error": "无法解析分析结果，请重试", "raw": result[:500]}), 500
+
+    except Exception as e:
+        return jsonify({"error": f"分析失败: {str(e)}"}), 500
+
+
+# --- 保存对比反馈 V2（训练数据采集） ---
+@app.route("/api/feedback/save-comparison-v2", methods=["POST"])
+def save_comparison_v2():
+    """
+    保存人机对比反馈（新版训练数据格式）
+    保存完整数据：原始文本 + evaluation + core_difference + ai_outputs_snapshot
+    """
+    import sys
+    print("[SAVE] ROUTE HIT", flush=True)
+    payload = request.get_json(force=True)
+    feedback_id = payload.get("feedback_id")
+    project_id = payload.get("project_id")
+    print(f"[SAVE] payload keys={list(payload.keys())}", flush=True)
+    print(f"[SAVE] evaluation payload keys={list(payload.get('evaluation', {}).keys())}", flush=True)
+    print(f"[SAVE] core_difference payload keys={list(payload.get('core_difference', {}).keys())}", flush=True)
+    print(f"[SAVE] core_diff payload content={payload.get('core_difference')}", flush=True)
+
+    print(f"[SAVE_COMPARISON] feedback_id={feedback_id}, project_id={project_id}", flush=True)
+    print(f"[SAVE_COMPARISON] payload keys={list(payload.keys())}", flush=True)
+    print(f"[SAVE_COMPARISON] evaluation fields: {list(payload.get('evaluation', {}).keys())}", flush=True)
+    print(f"[SAVE_COMPARISON] core_difference fields: {list(payload.get('core_difference', {}).keys())}", flush=True)
+
+    if not feedback_id:
+        return jsonify({"error": "feedback_id 不能为空"}), 400
+
+    # 查找现有记录
+    old_case = find_feedback_case(feedback_id)
+    if not old_case:
+        return jsonify({"error": "未找到对应的 feedback case，请先保存人工初判"}), 404
+
+    # 更新字段（写入两套字段名，保证兼容性）
+    # 新版字段（训练数据格式）
+    old_case["raw_human_feedback"] = payload.get("raw_human_feedback", "")
+    old_case["ai_outputs_snapshot"] = payload.get("ai_outputs_snapshot", {})
+    old_case["evaluation"] = payload.get("evaluation", {})
+    old_case["core_difference"] = payload.get("core_difference", {})
+
+    # 兼容下载接口 `_build_comparison_md` 期望的字段
+    # 把 evaluation/core_difference 映射到 human_post_ai_feedback 下
+    evaluation = payload.get("evaluation", {})
+    core_diff = payload.get("core_difference", {})
+    post_feedback = {
+        "system_alignment": {
+            "decision_match": evaluation.get("decision_match", False),
+            "core_understanding_alignment": evaluation.get("core_understanding_alignment", "未知"),
+            "core_understanding_score": evaluation.get("core_understanding_score", "未评分"),
+            "decision_bias": evaluation.get("decision_bias", ""),
+            "reason_match_score": evaluation.get("reason_match_score", "未评分"),
+            "question_coverage_score": evaluation.get("question_coverage_score", "未评分"),
+            "overall_usefulness_score": evaluation.get("overall_usefulness_score", "未评分"),
+        },
+        "error_analysis": core_diff,
+        "question_feedback": evaluation.get("key_questions", [])
+    }
+    old_case["human_post_ai_feedback"] = post_feedback
+    old_case["review_status"] = "comparison_saved"
+
+    # 保存
+    saved = append_feedback_case(old_case)
+    print(f"[SAVE] saved feedback_id={saved.get('feedback_id')}, review_status={saved.get('review_status')}", flush=True)
+    print(f"[SAVE] case keys={list(saved.keys())}", flush=True)
+    print(f"[SAVE] evaluation keys={list(saved.get('evaluation', {}).keys())}", flush=True)
+    print(f"[SAVE] core_difference keys={list(saved.get('core_difference', {}).keys())}", flush=True)
+    print(f"[SAVE] core_diff content={saved.get('core_difference')}", flush=True)
+    return jsonify({"status": "ok", "feedback_id": saved["feedback_id"]})
+
+
+# --- 获取项目当前反馈状态 ---
+@app.route("/api/feedback/status/<project_id>", methods=["GET"])
+def get_feedback_status(project_id):
+    """获取某项目的反馈标注状态"""
+    case = find_feedback_by_project(project_id)
+    if not case:
+        return jsonify({"has_feedback": False, "review_status": None})
+
+    return jsonify({
+        "has_feedback": True,
+        "feedback_id": case.get("feedback_id"),
+        "review_status": case.get("review_status"),
+        # 两层结构
+        "has_first_impression": bool(case.get("first_impression", {}).get("one_liner")),
+        "has_deep_reflection": bool(case.get("deep_reflection", {}).get("one_liner")),
+        # 兼容旧结构
+        "has_pre_ai": bool(case.get("human_pre_ai_judgement", {}).get("one_liner")),
+        "has_post_ai": bool(case.get("human_post_ai_feedback", {}).get("system_alignment")),
+        "has_knowledge_candidates": bool(case.get("knowledge_candidates")),
+    })
+
+
+# --- 下载完整对比文档 ---
+@app.route("/project/<project_id>/comparison-doc")
+def comparison_doc(project_id):
+    """生成并下载完整对比文档（人工初判 + AI报告 + 人机对比）"""
+    import sys
+    print(f"[DOWNLOAD] ROUTE HIT project_id={project_id}", flush=True)
+    from services.pipeline_v1 import load_pipeline_results
+    project_dir = os.path.join(WORKSPACE_DIR, project_id)
+    if not os.path.exists(project_dir):
+        return "项目不存在", 404
+
+    meta = get_project_meta(project_dir)
+    case = find_feedback_by_project(project_id)
+
+    print(f"[DOWNLOAD] project_id={project_id}, case found: {case is not None}", flush=True)
+    if case:
+        print(f"[DOWNLOAD] feedback_id={case.get('feedback_id')}, review_status={case.get('review_status')}", flush=True)
+        print(f"[DOWNLOAD] case keys={list(case.keys())}", flush=True)
+        print(f"[DOWNLOAD] core_diff keys={list(case.get('core_difference', {}).keys())}", flush=True)
+        print(f"[DOWNLOAD] evaluation keys={list(case.get('evaluation', {}).keys())}", flush=True)
+        print(f"[DOWNLOAD] core_diff content={case.get('core_difference')}", flush=True)
+
+    if not case:
+        return "该项目还没有反馈数据", 404
+
+    # 加载 1.0 AI 结果
+    pipeline_results = load_pipeline_results(project_dir)
+
+    # 生成 Markdown 文档
+    doc = _build_comparison_md(meta, case, pipeline_results)
+    print(f"[DOWNLOAD] generated doc length={len(doc)} chars", flush=True)
+    print(f"[DOWNLOAD] doc first 500 chars:\n{doc[:500]}", flush=True)
+
+    # 写入临时文件
+    tmp_file = os.path.join(project_dir, f"对比文档_{meta.get('company_name', project_id)}.md")
+    with open(tmp_file, "w", encoding="utf-8") as f:
+        f.write(doc)
+
+    return send_file(tmp_file, as_attachment=True,
+                    download_name=f"对比文档_{meta.get('company_name', project_id)}.md",
+                    mimetype="text/markdown; charset=utf-8")
+
+
+def _list_section(title, items):
+    """渲染一个列表 section"""
+    lines = [f"### {title}"]
+    if not items:
+        lines.append("- （未填写）")
+    elif isinstance(items, str):
+        lines.append(f"- {items}")
+    elif isinstance(items, list):
+        for item in items:
+            if isinstance(item, dict):
+                text = item.get("content", item.get("text", item.get("rule", str(item))))
+                lines.append(f"- {text}")
+            else:
+                lines.append(f"- {item}")
+    else:
+        lines.append(f"- {items}")
+    return "\n".join(lines) + "\n"
+
+
+def _build_comparison_md(meta, case, pipeline_results):
+    """构建对比 Markdown 文档（四段式：直觉层 → AI分析 → 深思层 → 人机对比）"""
+    # 展开新版字段
+    evaluation = case.get("evaluation", {})
+    core_diff = case.get("core_difference", {})
+    ai_snapshot = case.get("ai_outputs_snapshot", {})
+    raw_feedback = case.get("raw_human_feedback", "")
+
+    # 新版字段（直觉层 + 深思层）
+    first_impression = case.get("first_impression", {})
+    deep_reflection = case.get("deep_reflection", {})
+
+    # 旧版兼容字段
+    judgement = case.get("human_pre_ai_judgement", {})
+
+    step5 = pipeline_results.get("step5", {})
+    ai_decision = step5.get("meeting_decision", step5.get("decision", "未知"))
+    ai_must_ask = step5.get("must_ask_questions", [])
+
+    # 决策映射
+    decision_map = {
+        "meet": "建议约",
+        "maybe_meet": "可以约",
+        "request_materials": "先要材料",
+        "pass": "直接 Pass",
+    }
+
+    # 判断来源：优先用新版 first_impression，否则用旧版
+    if first_impression:
+        human_source = first_impression
+        human_dec = decision_map.get(first_impression.get("decision", ""), first_impression.get("decision", "未知"))
+    else:
+        human_source = judgement
+        human_dec = decision_map.get(judgement.get("decision", ""), judgement.get("decision", "未知"))
+
+    # 对齐判断（兼容实际存储的字段名，可能是布尔或字符串）
+    decision_match = evaluation.get("meeting_judgement_alignment") or evaluation.get("decision_match")
+    # 字符串 "一致"/"aligned" 或布尔 True 视为一致
+    if decision_match in (True, "一致", "aligned", "fully_aligned"):
+        match_text = "一致"
+    elif decision_match in (False, "不一致", "misaligned", "fully_misaligned"):
+        match_text = "不一致"
+    else:
+        # partially_aligned 等情况显示原始值
+        match_text = str(decision_match) if decision_match else "未填写"
+
+    lines = [
+        f"# {meta.get('company_name', '未知公司')} — BP研判对比文档",
+        "",
+        f"**项目ID**: {meta.get('project_id', '')}",
+        f"**BP来源**: {case.get('bp_source', '未知')}",
+        f"**投资人画像**: {case.get('profile_id', 'neutral_investor')}",
+        f"**标注时间**: {case.get('created_at', '')}",
+        "",
+        "---",
+        "",
+        "# 一、人工直觉层判断（30秒速判，不看AI）",
+        "",
+        "## 1.1 一句话理解",
+        human_source.get("one_liner", ""),
+        "",
+        "## 1.2 当前真实业务",
+        human_source.get("current_business", ""),
+        "",
+        "## 1.3 未来故事 / 包装叙事",
+        human_source.get("future_story", ""),
+        "",
+        "## 1.4 客户与付费逻辑",
+        human_source.get("real_customer", ""),
+        "",
+        "## 1.5 市场 / 容量判断",
+        human_source.get("market_view", ""),
+        "",
+        "## 1.6 是否约第一轮交流",
+        f"**判断**: {human_dec}（优先级: {human_source.get('priority', '未知')}，信心: {human_source.get('confidence', '未知')}）",
+        "",
+        "### 值得约的理由",
+    ]
+    for r in human_source.get("reasons_to_meet", []):
+        lines.append(f"- {r}")
+    if not human_source.get("reasons_to_meet"):
+        lines.append("- （未填写）")
+
+    lines += ["", "### 不值得约 / 暂不约的理由",]
+    for r in human_source.get("reasons_to_pass", []):
+        lines.append(f"- {r}")
+    if not human_source.get("reasons_to_pass"):
+        lines.append("- （未填写）")
+
+    lines += [
+        "",
+        "### 关键未知点",
+    ]
+    for u in human_source.get("key_unknowns", []):
+        lines.append(f"- {u}")
+    if not human_source.get("key_unknowns"):
+        lines.append("- （未填写）")
+
+    lines += [
+        "",
+        "### 必须问的问题",
+    ]
+    for q in human_source.get("must_ask_questions", []):
+        if isinstance(q, dict):
+            lines.append(f"- **{q.get('question', '')}**（{q.get('why_important', '')}）")
+        else:
+            lines.append(f"- {q}")
+    if not human_source.get("must_ask_questions"):
+        lines.append("- （未填写）")
+
+    # AI 结果
+    step1 = pipeline_results.get("step1", {})
+
+    lines += [
+        "",
+        "---",
+        "",
+        "# 二、AI 1.0 分析结果",
+        "",
+        "## 2.1 AI 对项目本质的理解",
+        step1 if isinstance(step1, str) else (step1.get("project_essence", step1.get("core_judgement", ""))),
+        "",
+        "## 2.2 AI 的约 / 不约判断",
+        f"**AI 判断**: {ai_decision}",
+        "",
+        "## 2.3 AI 理由",
+        step5.get("reason", step5.get("reasoning", "")),
+        "",
+        "## 2.4 AI 提出的问题清单",
+    ]
+    for q in ai_must_ask:
+        if isinstance(q, dict):
+            lines.append(f"- {q.get('question', q)}")
+        else:
+            lines.append(f"- {q}")
+    if not ai_must_ask:
+        lines.append("- （无）")
+
+    # ============ Step3B: BP 内部一致性检查 ============
+    step3b = pipeline_results.get("step3b", {})
+    if step3b:
+        lines += [
+            "",
+            "---",
+            "",
+            "# 三、Step3B — BP 内部一致性检查（AI 自动分析）",
+            "",
+            "## 3.1 一致性核查",
+        ]
+        consistency_checks = step3b.get("consistency_checks", [])
+        if consistency_checks:
+            judgement_icon = {"support": "✓", "contradict": "✗", "uncertain": "?"}
+            for item in consistency_checks:
+                icon = judgement_icon.get(item.get("judgement", ""), "?")
+                confidence = item.get("confidence", "")
+                lines += [
+                    f"**[{icon}] {item.get('topic', '未知维度')}**（置信度: {confidence}）",
+                    f"- BP说法: {item.get('claim', '')}",
+                    f"- 现实支撑: {item.get('reality', '')}",
+                    f"- 缺失/问题: {item.get('gap', '')}",
+                    "",
+                ]
+        else:
+            lines.append("- （未执行一致性检查）")
+
+        lines += ["", "## 3.2 关键矛盾", ""]
+        tensions = step3b.get("tensions", [])
+        if tensions:
+            severity_icon = {"high": "🔴", "medium": "🟡", "low": "🟢"}
+            for t in tensions:
+                icon = severity_icon.get(t.get("severity", ""), "⚪")
+                lines += [
+                    f"**{icon} {t.get('tension', '未知矛盾')}**",
+                    f"- 为什么重要: {t.get('why_it_matters', '')}",
+                    "",
+                ]
+        else:
+            lines.append("- （未发现关键矛盾）")
+
+        lines += ["", "## 3.3 过度包装信号", ""]
+        overpackaging = step3b.get("overpackaging_signals", [])
+        if overpackaging:
+            type_map = {
+                "tech_overstatement": "🔧 技术夸大",
+                "expansion_story": "📈 扩张故事",
+                "team_overuse": "👥 团队过度包装",
+                "vague_terms": "💭 模糊术语"
+            }
+            for sig in overpackaging:
+                sig_type = type_map.get(sig.get("type", ""), sig.get("type", ""))
+                severity = "🔴高" if sig.get("severity") == "high" else ("🟡中" if sig.get("severity") == "medium" else "🟢低")
+                lines += [
+                    f"**[{severity}] {sig_type}**",
+                    f"- {sig.get('signal', '')}",
+                    "",
+                ]
+        else:
+            lines.append("- （未发现明显过度包装）")
+
+        lines += [
+            "",
+            "## 3.4 AI 总结",
+            step3b.get("summary", "（未填写）"),
+        ]
+
+    # ============ 深思层判断 ============
+    # 深思层判断（如果存在）
+    if deep_reflection and (deep_reflection.get("one_liner") or deep_reflection.get("current_business") or deep_reflection.get("decision")):
+        deep_dec = decision_map.get(deep_reflection.get("decision", ""), deep_reflection.get("decision", "未知"))
+        lines += [
+            "",
+            "---",
+            "",
+            "# 三、人工深思层判断（看完AI后修正）",
+            "",
+            "## 3.1 一句话理解（修正版）",
+            deep_reflection.get("one_liner", ""),
+            "",
+            "## 3.2 当前真实业务（修正版）",
+            deep_reflection.get("current_business", ""),
+            "",
+            "## 3.3 未来故事 / 包装叙事（修正版）",
+            deep_reflection.get("future_story", ""),
+            "",
+            "## 3.4 客户与付费逻辑（修正版）",
+            deep_reflection.get("real_customer", ""),
+            "",
+            "## 3.5 市场 / 容量判断（修正版）",
+            deep_reflection.get("market_view", ""),
+            "",
+            "## 3.6 是否约第一轮交流（修正版）",
+            f"**判断**: {deep_dec}（优先级: {deep_reflection.get('priority', '未知')}，信心: {deep_reflection.get('confidence', '未知')}）",
+            "",
+            "### 值得约的理由",
+        ]
+        for r in deep_reflection.get("reasons_to_meet", []):
+            lines.append(f"- {r}")
+        if not deep_reflection.get("reasons_to_meet"):
+            lines.append("- （未填写）")
+
+        lines += ["", "### 不值得约 / 暂不约的理由",]
+        for r in deep_reflection.get("reasons_to_pass", []):
+            lines.append(f"- {r}")
+        if not deep_reflection.get("reasons_to_pass"):
+            lines.append("- （未填写）")
+
+        lines += [
+            "",
+            "### 关键未知点",
+        ]
+        for u in deep_reflection.get("key_unknowns", []):
+            lines.append(f"- {u}")
+        if not deep_reflection.get("key_unknowns"):
+            lines.append("- （未填写）")
+
+        lines += [
+            "",
+            "### 必须问的问题",
+        ]
+        for q in deep_reflection.get("must_ask_questions", []):
+            if isinstance(q, dict):
+                lines.append(f"- **{q.get('question', '')}**（{q.get('why_important', '')}）")
+            else:
+                lines.append(f"- {q}")
+        if not deep_reflection.get("must_ask_questions"):
+            lines.append("- （未填写）")
+
+        # 深思层总结
+        lines += [
+            "",
+            "### 看完AI后的认知变化",
+            deep_reflection.get("cognitive_change", "（未填写）"),
+            "",
+            "### AI帮我纠正了什么",
+            deep_reflection.get("ai_correction", "（未填写）"),
+        ]
+
+    # 人机对比（读取 evaluation + core_difference）
+    lines += [
+        "",
+        "---",
+        "",
+        "# 五、人机对比标注",
+        "",
+        "## 5.1 核心差异记录",
+        "",
+        _list_section("AI选的主线", core_diff.get("ai_main_thesis")),
+        _list_section("你认为正确的主线", core_diff.get("human_main_thesis")),
+        _list_section("AI漏掉的关键问题", core_diff.get("missed_key_issues")),
+        _list_section("AI过度提权的问题", core_diff.get("overweighted_issues")),
+        _list_section("AI权重不足的问题", core_diff.get("underweighted_issues")),
+        "",
+        "## 5.2 一句话学习",
+        core_diff.get("one_sentence_learning") or "（未填写）",
+        "",
+        "## 5.3 对齐评估",
+        f"本质理解对齐分: {evaluation.get('essence_score', '未评分')}/5",
+        f"判断是否一致: {match_text}",
+        f"AI偏差方向: {evaluation.get('ai_bias_direction', '（未填写）')}",
+        f"理由覆盖评分: {evaluation.get('reasoning_score', '未评分')}/5",
+        f"问题覆盖评分: {evaluation.get('question_coverage_score', '未评分')}/5",
+        f"总体有用性: {evaluation.get('overall_usefulness_score', '未评分')}/5",
+        "",
+        "## 5.4 错误归因",
+        f"错误类型: {', '.join(evaluation.get('error_types', [])) or '（未填写）'}",
+        f"错误所在步骤: {', '.join(evaluation.get('wrong_steps', [])) or '（未填写）'}",
+        f"简要总结: {evaluation.get('brief_error_summary', '（未填写）')}",
+        "",
+        "## 5.5 问题质量标注",
+    ]
+    key_qs = evaluation.get("key_questions", [])
+    if key_qs:
+        quality_map = {"critical": "关键", "useful": "有用", "generic": "泛泛", "useless": "没必要"}
+        for q in key_qs:
+            if isinstance(q, dict):
+                q_text = q.get("question", "")
+                q_qual = q.get("quality", "")
+                qual_text = quality_map.get(q_qual, q_qual)
+                lines.append(f"- [{qual_text}] {q_text}")
+            else:
+                lines.append(f"- {q}")
+    else:
+        lines.append("- （未填写）")
+
+    # 原始反馈原文
+    lines += [
+        "",
+        "---",
+        "",
+        f"*本文档由 AI 项目判断工作台自动生成 | {case.get('created_at', '')}*",
+    ]
+
+    return "\n".join(lines)
 
 
 # ============================================================

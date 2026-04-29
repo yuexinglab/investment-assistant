@@ -1,0 +1,461 @@
+{
+  "selected_buckets": [
+    "tech_barrier",
+    "customer_value",
+    "commercialization"
+  ],
+  "bucket_outputs": [
+    {
+      "bucket_key": "tech_barrier",
+      "bucket_label": "技术/壁垒是否成立",
+      "point": "支持Step1：技术壁垒在于场景深度理解与运营经验，而非通用算法。",
+      "explanation": "【claim】BP强调‘无须场地改造’、‘无须车路协同’，并拥有行业最大的物流场景大数据平台和仿真系统。【reality】在港口等封闭场景，环境相对可控，但混行、复杂天气等极端条件仍是行业难题。【gap】BP未提供极端条件下的具体性能数据（如雨雾天事故率、效率下降幅度），也未与竞品进行直接对比。【conclusion】support。Step1判断其壁垒在于‘场景+运营’而非通用算法，与BP中强调的‘无须改造’、‘数据积累’、‘仿真系统’一致，这些能力确实需要时间积累，构成一定壁垒。",
+      "relation_to_step1": "support",
+      "certainty": "medium",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "tech_barrier",
+      "bucket_label": "技术/壁垒是否成立",
+      "point": "反对Step1：核心算法和硬件依赖外部供应链，技术壁垒可能被高估。",
+      "explanation": "【claim】BP宣称自研域控、底盘、增材制造等。【reality】BP中明确列出域控制器使用英伟达芯片（短期）、禾赛/速腾激光雷达、和芯星通GNSS等，均为外采核心部件。自研部分更多是集成与适配。【gap】BP未说明自研域控中哪些是核心IP，哪些是通用硬件。增材制造降本80%的测算基于年产5000台，但当前部署仅240台，规模效应远未达到。【conclusion】contradict。Step1认为其壁垒在于‘全栈解决方案’，但核心传感器、芯片依赖外部，且自研底盘和增材制造尚未大规模验证，技术壁垒可能被高估，更接近系统集成商。",
+      "relation_to_step1": "contradict",
+      "certainty": "high",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "customer_value",
+      "bucket_label": "客户为什么付钱",
+      "point": "支持Step1：客户为降本、增效、安全等刚需付费。",
+      "explanation": "【claim】BP指出重载物流痛点：人工成本高、事故率高、效率提升空间大。【reality】港口、园区等场景确实存在这些痛点，无人驾驶方案能直接降低人工成本（减少司机）、提升安全（降低事故率）、提高效率（7x24小时作业）。【gap】BP未提供具体客户的ROI测算案例，但行业共识是这些价值点成立。【conclusion】support。Step1判断方向‘非常靠谱’，与BP中客户价值点一致。",
+      "relation_to_step1": "support",
+      "certainty": "high",
+      "source_type": "common_sense"
+    },
+    {
+      "bucket_key": "customer_value",
+      "bucket_label": "客户为什么付钱",
+      "point": "反对Step1：客户可能更多为政策驱动付费，而非纯商业ROI。",
+      "explanation": "【claim】BP强调‘新质生产力’、‘政策相继出台’、‘行业标准制定者’。【reality】港口、园区等场景的无人化改造，很多是政府示范项目或政策要求（如绿色港口、智慧港口建设）。客户采购可能受政策补贴、考核指标驱动，而非完全基于自身经济账。【gap】BP未区分政策驱动客户与纯商业ROI驱动客户的比例，也未提供无补贴情况下客户的复购案例。【conclusion】contradict。Step1认为客户为‘刚需’付费，但若需求主要由政策驱动，则商业可持续性存疑，客户付费意愿可能随政策变化而波动。",
+      "relation_to_step1": "contradict",
+      "certainty": "medium",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "commercialization",
+      "bucket_label": "商业化路径是否成立",
+      "point": "支持Step1：代运营模式是亮点，能深度绑定客户并形成数据飞轮。",
+      "explanation": "【claim】BP提出‘代运营’模式，在行业内首次提出且业绩领先。【reality】代运营模式将公司从一次性设备销售转变为持续服务提供商，收入更稳定，且能积累海量运营数据，优化算法，形成正向循环。【gap】BP未提供代运营的具体财务模型，但该模式逻辑上成立，且符合行业从‘卖产品’向‘卖服务’转型的趋势。【conclusion】support。Step1认为代运营是‘最具想象力的部分’，与BP中该模式的定位一致。",
+      "relation_to_step1": "support",
+      "certainty": "medium",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "commercialization",
+      "bucket_label": "商业化路径是否成立",
+      "point": "反对Step1：代运营模式重资产，现金流压力巨大，规模化路径存疑。",
+      "explanation": "【claim】BP宣称代运营业绩领先。【reality】代运营需要公司自投资产（车辆、系统），前期投入巨大，回本周期长。BP中‘供应链等业务垫资3000万’也印证了资金压力。当前部署240台车，若每台车成本数百万，则已占用大量资金。规模化扩张将成倍增加资金需求。【gap】BP未提供代运营项目的现金流模型、回本周期、资金周转率等关键财务数据。【conclusion】contradict。Step1认为代运营模式‘非常靠谱’，但忽略了其重资产属性带来的现金流风险。如果公司无法持续获得低成本融资，规模化将受阻。",
+      "relation_to_step1": "contradict",
+      "certainty": "high",
+      "source_type": "bp"
+    }
+  ],
+  "publicly_resolvable": [
+    {
+      "bucket_key": "tech_barrier",
+      "item": "核心传感器（激光雷达、摄像头）和芯片（英伟达）的供应商信息。",
+      "current_conclusion": "BP已明确列出主要供应商为禾赛、速腾、英伟达等，均为行业通用供应商，公司自研部分有限。",
+      "confidence": "high"
+    }
+  ],
+  "still_unresolved": [
+    {
+      "bucket_key": "commercialization",
+      "question": "代运营模式的真实财务模型是什么？单台车年收入、成本结构、回本周期、净利率分别是多少？",
+      "why_unresolved": "BP未提供任何代运营项目的财务数据，这是判断该模式是否可持续、可规模化的核心依据。无法通过公开信息获取。",
+      "impact_level": "high"
+    },
+    {
+      "bucket_key": "customer_value",
+      "question": "客户采购决策中，政策驱动因素和纯商业ROI驱动因素各占多大比例？是否有无补贴情况下的复购案例？",
+      "why_unresolved": "BP未区分客户类型，也未提供客户复购数据。这直接关系到公司收入的可持续性和抗政策风险能力。无法通过公开信息获取。",
+      "impact_level": "high"
+    },
+    {
+      "bucket_key": "tech_barrier",
+      "question": "增材制造降本80%的测算，是基于小批量试产还是年产5000台的大规模生产？当前良品率、生产节拍、材料成本具体是多少？",
+      "why_unresolved": "BP中降本80%的数据非常惊人，但缺乏工艺细节和规模假设。当前部署仅240台，远未达到测算规模。该数据是否可信，必须通过实地考察和工艺验证。",
+      "impact_level": "high"
+    }
+  ],
+  "tensions": [
+    "技术壁垒（场景经验） vs 技术可复制性（核心部件外采）",
+    "代运营模式（高粘性、持续收入） vs 重资产模式（现金流压力、规模化瓶颈）",
+    "客户价值（降本增效刚需） vs 客户动机（政策驱动、非纯商业ROI）"
+  ],
+  "step1_adjustment_hints": {
+    "supported": [
+      "Step1关于公司本质是‘场景+运营’而非通用技术公司的判断，与BP中强调的‘无须改造’、‘数据积累’、‘仿真系统’等能力一致。",
+      "Step1认为代运营模式是亮点，与BP中该模式作为核心商业模式的定位一致。"
+    ],
+    "caution": [
+      "Step1可能低估了技术壁垒的脆弱性：核心传感器、芯片依赖外部，自研底盘和增材制造尚未大规模验证，公司更接近系统集成商而非核心技术拥有者。",
+      "Step1可能高估了代运营模式的可行性：该模式重资产、现金流压力大，BP未提供任何财务模型，其可持续性和规模化路径存疑。",
+      "Step1可能忽略了政策驱动风险：客户采购可能更多受政策驱动，而非纯商业ROI，这会影响收入的稳定性和可持续性。"
+    ],
+    "to_step4": [
+      "代运营模式的真实财务模型（单台车年收入、成本结构、回本周期、净利率）是什么？",
+      "客户采购决策中，政策驱动和纯商业ROI驱动的比例是多少？是否有无补贴情况下的复购案例？",
+      "增材制造降本80%的测算假设和当前实际工艺参数（良品率、节拍、成本）是什么？"
+    ]
+  },
+  "project_structure": {
+    "industry_tags": [
+      {
+        "tag": "autonomous_driving",
+        "label": "自动驾驶",
+        "confidence": "high",
+        "evidence": "命中关键词：自动驾驶、无人驾驶、智能驾驶、智驾、无人集卡、L2、L4"
+      },
+      {
+        "tag": "industrial_logistics",
+        "label": "工业物流/场内物流",
+        "confidence": "high",
+        "evidence": "命中关键词：物流、运输、港口、园区、短驳、集装箱、TEU"
+      },
+      {
+        "tag": "commercial_vehicle",
+        "label": "商用车/重卡",
+        "confidence": "high",
+        "evidence": "命中关键词：重卡、集卡、自卸车、底盘、线控底盘、商用车"
+      },
+      {
+        "tag": "ai_application",
+        "label": "AI应用",
+        "confidence": "high",
+        "evidence": "命中关键词：AI、人工智能、算法、大模型、模型、数据"
+      },
+      {
+        "tag": "advanced_materials",
+        "label": "新材料",
+        "confidence": "low",
+        "evidence": "命中关键词：材料"
+      },
+      {
+        "tag": "new_energy",
+        "label": "新能源",
+        "confidence": "low",
+        "evidence": "命中关键词：电池"
+      }
+    ],
+    "business_lines": [
+      {
+        "name": "无人重载车辆/无人集卡",
+        "role": "current_business",
+        "status": "核心产品/已落地业务",
+        "revenue_status": "可能已有设备/整车/硬件收入，具体金额待确认",
+        "evidence": "命中关键词：无人集卡、无人重载、智能集卡、自卸车、重卡、集卡、商用车、运输机器人",
+        "confidence": "high"
+      },
+      {
+        "name": "项目制交付/场景解决方案",
+        "role": "current_business",
+        "status": "项目制落地/场景交付",
+        "revenue_status": "项目收入和毛利待确认",
+        "evidence": "命中关键词：项目、项目制、部署、实施、解决方案、港口项目、园区项目、改造",
+        "confidence": "high"
+      },
+      {
+        "name": "美妆/日化原料",
+        "role": "current_business",
+        "status": "当前收入底盘",
+        "revenue_status": "已有收入但金额需确认",
+        "evidence": "根据制造/产品销售型及新材料/美妆原料行业标签反推",
+        "confidence": "medium"
+      },
+      {
+        "name": "代运营服务",
+        "role": "growth_story",
+        "status": "持续收入模式待验证",
+        "revenue_status": "是否已经形成稳定持续收入待确认",
+        "evidence": "命中关键词：代运营、租赁、运营、托管、车辆、车队",
+        "confidence": "high"
+      },
+      {
+        "name": "自动驾驶系统/云端调度平台",
+        "role": "supporting_capability",
+        "status": "支撑主业务的技术/平台能力",
+        "revenue_status": "可能作为技术服务或软件服务收费，需确认",
+        "evidence": "命中关键词：云平台、调度、车队监管、自动驾驶系统、智能驾驶系统、远程控制、数字孪生、感知",
+        "confidence": "high"
+      },
+      {
+        "name": "AI研发平台",
+        "role": "supporting_capability",
+        "status": "研发工具/效率工具",
+        "revenue_status": "是否对外收费待确认",
+        "evidence": "命中关键词：AI、人工智能、算法、大模型、预测、研发、筛选",
+        "confidence": "high"
+      },
+      {
+        "name": "新能源材料/回收业务",
+        "role": "valuation_story",
+        "status": "远期故事/待验证业务",
+        "revenue_status": "是否已有收入待确认",
+        "evidence": "命中关键词：电池、新能源、锂电、材料、回收",
+        "confidence": "high"
+      }
+    ],
+    "business_model_hypotheses": [
+      {
+        "bucket_key": "manufacturing_product_sales",
+        "bucket_name": "制造/产品销售型",
+        "role": "primary",
+        "current_or_future": "current",
+        "confidence": "medium",
+        "evidence": "命中关键词：整车销售、销售、卖车",
+        "why_it_matters": "如果当前收入主要来自产品/设备/原料销售，则公司更接近制造/产品销售型公司。"
+      },
+      {
+        "bucket_key": "project_delivery",
+        "bucket_name": "项目制交付型",
+        "role": "secondary",
+        "current_or_future": "current",
+        "confidence": "high",
+        "evidence": "命中关键词：项目、部署、定制、实施、解决方案、集成、改造",
+        "why_it_matters": "如果收入依赖一个个项目交付，则需要重点验证标准化和毛利稳定性。"
+      },
+      {
+        "bucket_key": "asset_heavy_operation",
+        "bucket_name": "重资产运营型",
+        "role": "secondary",
+        "current_or_future": "mixed",
+        "confidence": "medium",
+        "evidence": "命中关键词：代运营、租赁",
+        "why_it_matters": "如果公司需要自投资产或长期运营回收现金流，则估值和风险更接近重资产运营公司。"
+      },
+      {
+        "bucket_key": "software_platform_saas",
+        "bucket_name": "软件/SaaS/平台型",
+        "role": "secondary",
+        "current_or_future": "mixed",
+        "confidence": "medium",
+        "evidence": "命中关键词：软件、云平台",
+        "why_it_matters": "如果软件收入标准化且可续费，才适合按软件/平台公司分析。"
+      },
+      {
+        "bucket_key": "data_ai_model",
+        "bucket_name": "数据/AI模型驱动型",
+        "role": "secondary",
+        "current_or_future": "narrative",
+        "confidence": "high",
+        "evidence": "命中关键词：AI、人工智能、算法、大模型、数据、模型、预测",
+        "why_it_matters": "如果AI只是内部效率工具，则不应按AI平台公司估值；如果形成数据闭环，才可能构成壁垒。"
+      },
+      {
+        "bucket_key": "hardtech_commercialization",
+        "bucket_name": "硬科技商业化型",
+        "role": "secondary",
+        "current_or_future": "mixed",
+        "confidence": "high",
+        "evidence": "命中关键词：技术、专利、研发、材料、自动驾驶、机器人、量产",
+        "why_it_matters": "硬科技项目重点不是技术先进，而是能否稳定量产并被真实客户持续采购。"
+      },
+      {
+        "bucket_key": "government_industrial_landing",
+        "bucket_name": "政府/产业落地型",
+        "role": "secondary",
+        "current_or_future": "mixed",
+        "confidence": "high",
+        "evidence": "命中关键词：政府、基金、落地、招商",
+        "why_it_matters": "对政府基金而言，需判断项目是否能真实落地产值、税收、就业和产业协同。"
+      },
+      {
+        "bucket_key": "expansion_story",
+        "bucket_name": "多业务扩张/第二曲线型",
+        "role": "narrative",
+        "current_or_future": "future",
+        "confidence": "low",
+        "evidence": "命中关键词：平台化",
+        "why_it_matters": "如果当前收入来自A业务，但估值故事来自B/C业务，需警惕扩张叙事。"
+      },
+      {
+        "bucket_key": "policy_driven",
+        "bucket_name": "政策驱动型",
+        "role": "risk",
+        "current_or_future": "mixed",
+        "confidence": "high",
+        "evidence": "命中关键词：政策、补贴、示范、新质生产力",
+        "why_it_matters": "如果需求主要来自政策/补贴/示范项目，需验证政策退坡后的商业可持续性。"
+      },
+      {
+        "bucket_key": "team_credibility_story",
+        "bucket_name": "团队/背书叙事型",
+        "role": "risk",
+        "current_or_future": "narrative",
+        "confidence": "medium",
+        "evidence": "命中关键词：博士、教授、专家",
+        "why_it_matters": "团队/背书需要验证是否转化为排他资源、成果转化或商业化能力。"
+      }
+    ],
+    "risk_buckets": [
+      {
+        "bucket_key": "asset_heavy_operation",
+        "bucket_name": "重资产运营型",
+        "risk_role": "risk",
+        "confidence": "high",
+        "evidence": "命中关键词：代运营、车队、固定资产、垫资、租赁",
+        "why_it_matters": "如果业务扩张需要同步投入大量资产，会带来现金流和回本周期风险。"
+      },
+      {
+        "bucket_key": "project_delivery",
+        "bucket_name": "项目制交付型",
+        "risk_role": "risk",
+        "confidence": "high",
+        "evidence": "命中关键词：定制、项目制、实施、改造、适配、非标",
+        "why_it_matters": "如果每个项目都需要定制，规模化后交付和毛利可能承压。"
+      },
+      {
+        "bucket_key": "policy_driven",
+        "bucket_name": "政策驱动型",
+        "risk_role": "risk",
+        "confidence": "high",
+        "evidence": "命中关键词：政策、政府、补贴、示范、新质生产力",
+        "why_it_matters": "如果需求由政策驱动，需要验证政策退坡后客户是否仍会付费。"
+      },
+      {
+        "bucket_key": "asset_heavy_operation_cashflow",
+        "bucket_name": "asset_heavy_operation_cashflow",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：垫资、现金流",
+        "why_it_matters": "如果回款慢或需要垫资，增长可能反而加剧资金压力。"
+      },
+      {
+        "bucket_key": "hardtech_commercialization",
+        "bucket_name": "硬科技商业化型",
+        "risk_role": "risk",
+        "confidence": "high",
+        "evidence": "命中关键词：芯片、激光雷达、传感器、第三方、量产",
+        "why_it_matters": "硬科技项目需要验证关键供应链、量产良率和工程化能力。"
+      },
+      {
+        "bucket_key": "customer_concentration",
+        "bucket_name": "客户集中风险",
+        "risk_role": "risk",
+        "confidence": "low",
+        "evidence": "命中关键词：港口",
+        "why_it_matters": "如果收入依赖少数大客户，公司议价权和收入稳定性可能较弱。"
+      },
+      {
+        "bucket_key": "expansion_story",
+        "bucket_name": "多业务扩张/第二曲线型",
+        "risk_role": "risk",
+        "confidence": "low",
+        "evidence": "命中关键词：平台化",
+        "why_it_matters": "多业务扩张可能是真增长，也可能只是扩大估值边界。"
+      },
+      {
+        "bucket_key": "team_credibility_story",
+        "bucket_name": "团队/背书叙事型",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：博士、教授",
+        "why_it_matters": "背书需要验证是否真正转化为公司壁垒。"
+      },
+      {
+        "bucket_key": "financing_valuation_story",
+        "bucket_name": "融资估值叙事型",
+        "risk_role": "risk",
+        "confidence": "low",
+        "evidence": "命中关键词：融资",
+        "why_it_matters": "融资用途和估值逻辑可能与真实业务阶段不匹配。"
+      }
+    ],
+    "key_uncertainties": [
+      {
+        "uncertainty": "公司到底是客户买产品/设备，还是公司自投资产做运营？",
+        "why_it_matters": "这决定公司是偏轻资产产品销售型，还是重资产运营型，估值和现金流逻辑完全不同。",
+        "related_buckets": [
+          "manufacturing_product_sales",
+          "asset_heavy_operation"
+        ],
+        "discriminating_questions": [
+          "客户是否直接购买设备/车辆/产品？",
+          "是否存在公司自投资产并通过运营回收现金流？",
+          "资产由谁持有？折旧和维修由谁承担？",
+          "收入是一次性销售，还是按使用量/服务费持续收费？"
+        ]
+      },
+      {
+        "uncertainty": "项目交付是否标准化，还是每个客户都需要大量定制？",
+        "why_it_matters": "决定公司能否规模化复制，以及毛利率是否会被交付成本侵蚀。",
+        "related_buckets": [
+          "project_delivery"
+        ],
+        "discriminating_questions": [
+          "一个新项目中有多少模块可以复用？",
+          "单个项目从签约到验收回款需要多久？",
+          "每个项目需要多少实施人员？",
+          "不同项目毛利率差异大不大？"
+        ]
+      },
+      {
+        "uncertainty": "AI/数据能力是核心壁垒，还是研发/交付效率工具？",
+        "why_it_matters": "如果AI只是内部工具，则不应按AI平台公司估值。",
+        "related_buckets": [
+          "data_ai_model"
+        ],
+        "discriminating_questions": [
+          "AI是否直接决定客户购买或产品性能？",
+          "AI相比传统方法带来什么量化提升？",
+          "数据是否独占并形成持续反馈闭环？",
+          "模型输出是否仍需要大量人工验证？"
+        ]
+      },
+      {
+        "uncertainty": "当前真实收入、增长业务和估值叙事是否错位？",
+        "why_it_matters": "如果当前收入来自小业务，但融资按平台/多行业故事估值，可能存在估值泡沫。",
+        "related_buckets": [
+          "expansion_story",
+          "financing_valuation_story"
+        ],
+        "discriminating_questions": [
+          "当前收入主要来自哪条业务线？",
+          "增长最快的业务线收入基数是多少？",
+          "估值主要依据当前收入还是未来平台故事？",
+          "新业务是否已有真实收入、复购和毛利？"
+        ]
+      },
+      {
+        "uncertainty": "客户需求是政策驱动，还是真实经济 ROI 驱动？",
+        "why_it_matters": "如果主要依赖政策/示范项目，政策退坡后收入可持续性存疑。",
+        "related_buckets": [
+          "policy_driven",
+          "government_industrial_landing"
+        ],
+        "discriminating_questions": [
+          "客户中有多少是纯商业ROI驱动？",
+          "如果没有补贴或政策要求，客户是否仍会采购？",
+          "客户是否有明确降本增效测算？",
+          "是否有非政策客户的复购案例？"
+        ]
+      },
+      {
+        "uncertainty": "团队/学术/名人背书是否真正转化为排他壁垒？",
+        "why_it_matters": "学历、奖项、名人、实验室背书本身不等于商业化能力。",
+        "related_buckets": [
+          "team_credibility_story"
+        ],
+        "discriminating_questions": [
+          "专家/实验室与公司的关系是全职、股东、顾问还是普通合作？",
+          "是否有排他性成果转化协议？",
+          "知识产权归属公司还是高校/实验室？",
+          "背书是否已经转化为产品、客户或收入？"
+        ]
+      }
+    ],
+    "structure_summary": "系统初步识别该项目涉及行业：自动驾驶、工业物流/场内物流、商用车/重卡；主要业务线包括：无人重载车辆/无人集卡、项目制交付/场景解决方案、美妆/日化原料；可能适用的投资逻辑包括：制造/产品销售型、项目制交付型、重资产运营型。该识别仅作为后续分析入口，不代表最终判断。"
+  },
+  "raw_text": "{\n  \"selected_buckets\": [\"tech_barrier\", \"customer_value\", \"commercialization\"],\n  \"bucket_outputs\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"bucket_label\": \"技术/壁垒是否成立\",\n      \"point\": \"支持Step1：技术壁垒在于场景深度理解与运营经验，而非通用算法。\",\n      \"explanation\": \"【claim】BP强调‘无须场地改造’、‘无须车路协同’，并拥有行业最大的物流场景大数据平台和仿真系统。【reality】在港口等封闭场景，环境相对可控，但混行、复杂天气等极端条件仍是行业难题。【gap】BP未提供极端条件下的具体性能数据（如雨雾天事故率、效率下降幅度），也未与竞品进行直接对比。【conclusion】support。Step1判断其壁垒在于‘场景+运营’而非通用算法，与BP中强调的‘无须改造’、‘数据积累’、‘仿真系统’一致，这些能力确实需要时间积累，构成一定壁垒。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"bucket_label\": \"技术/壁垒是否成立\",\n      \"point\": \"反对Step1：核心算法和硬件依赖外部供应链，技术壁垒可能被高估。\",\n      \"explanation\": \"【claim】BP宣称自研域控、底盘、增材制造等。【reality】BP中明确列出域控制器使用英伟达芯片（短期）、禾赛/速腾激光雷达、和芯星通GNSS等，均为外采核心部件。自研部分更多是集成与适配。【gap】BP未说明自研域控中哪些是核心IP，哪些是通用硬件。增材制造降本80%的测算基于年产5000台，但当前部署仅240台，规模效应远未达到。【conclusion】contradict。Step1认为其壁垒在于‘全栈解决方案’，但核心传感器、芯片依赖外部，且自研底盘和增材制造尚未大规模验证，技术壁垒可能被高估，更接近系统集成商。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"high\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"bucket_label\": \"客户为什么付钱\",\n      \"point\": \"支持Step1：客户为降本、增效、安全等刚需付费。\",\n      \"explanation\": \"【claim】BP指出重载物流痛点：人工成本高、事故率高、效率提升空间大。【reality】港口、园区等场景确实存在这些痛点，无人驾驶方案能直接降低人工成本（减少司机）、提升安全（降低事故率）、提高效率（7x24小时作业）。【gap】BP未提供具体客户的ROI测算案例，但行业共识是这些价值点成立。【conclusion】support。Step1判断方向‘非常靠谱’，与BP中客户价值点一致。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"high\",\n      \"source_type\": \"common_sense\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"bucket_label\": \"客户为什么付钱\",\n      \"point\": \"反对Step1：客户可能更多为政策驱动付费，而非纯商业ROI。\",\n      \"explanation\": \"【claim】BP强调‘新质生产力’、‘政策相继出台’、‘行业标准制定者’。【reality】港口、园区等场景的无人化改造，很多是政府示范项目或政策要求（如绿色港口、智慧港口建设）。客户采购可能受政策补贴、考核指标驱动，而非完全基于自身经济账。【gap】BP未区分政策驱动客户与纯商业ROI驱动客户的比例，也未提供无补贴情况下客户的复购案例。【conclusion】contradict。Step1认为客户为‘刚需’付费，但若需求主要由政策驱动，则商业可持续性存疑，客户付费意愿可能随政策变化而波动。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"bucket_label\": \"商业化路径是否成立\",\n      \"point\": \"支持Step1：代运营模式是亮点，能深度绑定客户并形成数据飞轮。\",\n      \"explanation\": \"【claim】BP提出‘代运营’模式，在行业内首次提出且业绩领先。【reality】代运营模式将公司从一次性设备销售转变为持续服务提供商，收入更稳定，且能积累海量运营数据，优化算法，形成正向循环。【gap】BP未提供代运营的具体财务模型，但该模式逻辑上成立，且符合行业从‘卖产品’向‘卖服务’转型的趋势。【conclusion】support。Step1认为代运营是‘最具想象力的部分’，与BP中该模式的定位一致。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"bucket_label\": \"商业化路径是否成立\",\n      \"point\": \"反对Step1：代运营模式重资产，现金流压力巨大，规模化路径存疑。\",\n      \"explanation\": \"【claim】BP宣称代运营业绩领先。【reality】代运营需要公司自投资产（车辆、系统），前期投入巨大，回本周期长。BP中‘供应链等业务垫资3000万’也印证了资金压力。当前部署240台车，若每台车成本数百万，则已占用大量资金。规模化扩张将成倍增加资金需求。【gap】BP未提供代运营项目的现金流模型、回本周期、资金周转率等关键财务数据。【conclusion】contradict。Step1认为代运营模式‘非常靠谱’，但忽略了其重资产属性带来的现金流风险。如果公司无法持续获得低成本融资，规模化将受阻。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"high\",\n      \"source_type\": \"bp\"\n    }\n  ],\n  \"publicly_resolvable\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"item\": \"核心传感器（激光雷达、摄像头）和芯片（英伟达）的供应商信息。\",\n      \"current_conclusion\": \"BP已明确列出主要供应商为禾赛、速腾、英伟达等，均为行业通用供应商，公司自研部分有限。\",\n      \"confidence\": \"high\"\n    }\n  ],\n  \"still_unresolved\": [\n    {\n      \"bucket_key\": \"commercialization\",\n      \"question\": \"代运营模式的真实财务模型是什么？单台车年收入、成本结构、回本周期、净利率分别是多少？\",\n      \"why_unresolved\": \"BP未提供任何代运营项目的财务数据，这是判断该模式是否可持续、可规模化的核心依据。无法通过公开信息获取。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"question\": \"客户采购决策中，政策驱动因素和纯商业ROI驱动因素各占多大比例？是否有无补贴情况下的复购案例？\",\n      \"why_unresolved\": \"BP未区分客户类型，也未提供客户复购数据。这直接关系到公司收入的可持续性和抗政策风险能力。无法通过公开信息获取。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"question\": \"增材制造降本80%的测算，是基于小批量试产还是年产5000台的大规模生产？当前良品率、生产节拍、材料成本具体是多少？\",\n      \"why_unresolved\": \"BP中降本80%的数据非常惊人，但缺乏工艺细节和规模假设。当前部署仅240台，远未达到测算规模。该数据是否可信，必须通过实地考察和工艺验证。\",\n      \"impact_level\": \"high\"\n    }\n  ],\n  \"tensions\": [\n    \"技术壁垒（场景经验） vs 技术可复制性（核心部件外采）\",\n    \"代运营模式（高粘性、持续收入） vs 重资产模式（现金流压力、规模化瓶颈）\",\n    \"客户价值（降本增效刚需） vs 客户动机（政策驱动、非纯商业ROI）\"\n  ],\n  \"step1_adjustment_hints\": {\n    \"supported\": [\n      \"Step1关于公司本质是‘场景+运营’而非通用技术公司的判断，与BP中强调的‘无须改造’、‘数据积累’、‘仿真系统’等能力一致。\",\n      \"Step1认为代运营模式是亮点，与BP中该模式作为核心商业模式的定位一致。\"\n    ],\n    \"caution\": [\n      \"Step1可能低估了技术壁垒的脆弱性：核心传感器、芯片依赖外部，自研底盘和增材制造尚未大规模验证，公司更接近系统集成商而非核心技术拥有者。\",\n      \"Step1可能高估了代运营模式的可行性：该模式重资产、现金流压力大，BP未提供任何财务模型，其可持续性和规模化路径存疑。\",\n      \"Step1可能忽略了政策驱动风险：客户采购可能更多受政策驱动，而非纯商业ROI，这会影响收入的稳定性和可持续性。\"\n    ],\n    \"to_step4\": [\n      \"代运营模式的真实财务模型（单台车年收入、成本结构、回本周期、净利率）是什么？\",\n      \"客户采购决策中，政策驱动和纯商业ROI驱动的比例是多少？是否有无补贴情况下的复购案例？\",\n      \"增材制造降本80%的测算假设和当前实际工艺参数（良品率、节拍、成本）是什么？\"\n    ]\n  }\n}"
+}

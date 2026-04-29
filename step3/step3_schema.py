@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import List, Literal, Optional
+from typing import Any, Dict, List, Literal, Optional
 from pydantic import BaseModel, Field
 
 Relation = Literal["support", "contradict", "neutral"]
@@ -45,4 +45,5 @@ class Step3Output(BaseModel):
     still_unresolved: List[Step3UnresolvedItem] = Field(default_factory=list)
     tensions: List[str] = Field(default_factory=list)
     step1_adjustment_hints: Step3AdjustmentHints
+    project_structure: Optional[Dict[str, Any]] = Field(default=None)
     raw_text: Optional[str] = None

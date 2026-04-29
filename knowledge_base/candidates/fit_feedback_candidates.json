@@ -270,5 +270,19 @@
     "status": "pending_review",
     "created_at": "2026-04-26T12:09:25.193549",
     "created_by": "Step10"
+  },
+  {
+    "project_name": "杉海4_27JOSH修改后测试_20260427_133139",
+    "project_judgement": "存在8项关键不确定性未验证，暂不进入投资决策。",
+    "fit_judgement": "partial_fit",
+    "final_decision": "request_materials",
+    "fit_reason": [
+      "中性投资人不对项目质量做判断",
+      "项目推进建议完全基于 Step9 双层决策"
+    ],
+    "source_profile": "neutral_investor",
+    "status": "pending_review",
+    "created_at": "2026-04-27T13:47:38.383364",
+    "created_by": "Step10"
   }
 ]

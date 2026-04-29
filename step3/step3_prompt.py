@@ -1,6 +1,7 @@
 from __future__ import annotations
 
-from typing import List, Optional
+import json
+from typing import Any, Dict, List, Optional
 
 from step3.bucket_registry import get_general_bucket
 from step3.industry_loader import load_industry_enhancements
@@ -42,6 +43,9 @@ PROMPT_TEMPLATE = """你现在处于 Step3：对抗型分析层。
 
 【项目材料（BP）】
 {bp_text}
+
+【项目结构识别结果（系统初判，仅作参考）】
+{project_structure_text}
 
 【外部补充信息（可为空）】
 {external_context}
@@ -175,15 +179,27 @@ def build_step3_prompt(
     industry: str,
     selected_buckets: List[str],
     external_context: Optional[str] = None,
+    project_structure: Optional[Dict[str, Any]] = None,
 ) -> str:
     selected_bucket_labels = []
     for bucket_key in selected_buckets:
         general = get_general_bucket(bucket_key)
         selected_bucket_labels.append(f"{bucket_key}: {general.label}")
 
+    # 格式化 project_structure
+    if project_structure:
+        project_structure_text = json.dumps(
+            project_structure,
+            ensure_ascii=False,
+            indent=2,
+        )
+    else:
+        project_structure_text = "（未提供）"
+
     return PROMPT_TEMPLATE.format(
         step1_text=step1_text[:6000],
         bp_text=bp_text[:12000],
+        project_structure_text=project_structure_text,
         external_context=(external_context or "无"),
         selected_bucket_labels="\n".join(f"- {x}" for x in selected_bucket_labels),
         bucket_specs=build_bucket_specs(industry, selected_buckets),
