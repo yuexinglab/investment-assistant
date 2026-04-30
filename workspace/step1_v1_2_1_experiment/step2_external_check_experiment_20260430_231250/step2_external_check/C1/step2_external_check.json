@@ -1,0 +1,165 @@
+{
+  "external_investment_logic": [
+    {
+      "bucket_key": "tech_barrier",
+      "validation": "weaken",
+      "reasoning": "Step1指出IGBT芯片依赖外部采购，SiC芯片仅设计未量产，这与行业常识中硬科技公司需具备核心芯片自主量产能力相悖。BP中虽提及IGBT芯片设计，但未提供量产证据，且公司历史荣誉多来自系统集成而非芯片突破。因此，技术壁垒被削弱。",
+      "knowledge_source": "general_bucket"
+    },
+    {
+      "bucket_key": "customer_value",
+      "validation": "needs_verification",
+      "reasoning": "Step1提到客户集中度高、政策驱动风险，但未深入分析客户真实购买动机。行业常识中，商用车电驱动客户可能因性能、成本或合规采购，需验证具体驱动因素。BP中客户案例未提供，故需进一步验证。",
+      "knowledge_source": "general_bucket"
+    },
+    {
+      "bucket_key": "commercialization",
+      "validation": "weaken",
+      "reasoning": "Step1指出收入仅1亿元（2025E）对应20万台套装车量，单价极低，且项目制交付为主。行业常识中，硬件供应商若未标准化，规模化后毛利承压。BP未提供收入拆分或客户复购数据，商业化路径存疑。",
+      "knowledge_source": "general_bucket"
+    },
+    {
+      "bucket_key": "expansion_story",
+      "validation": "weaken",
+      "reasoning": "Step1认为公司估值叙事超前于现实，BP中提及储能、光伏等新业务，但当前收入底盘薄弱。行业常识中，多业务扩张需核心业务扎实，否则易成故事。Step1已指出收入规模小，故扩张故事可信度低。",
+      "knowledge_source": "general_bucket"
+    },
+    {
+      "bucket_key": "team_credibility",
+      "validation": "needs_verification",
+      "reasoning": "Step1认可团队比亚迪背景，但未评估其商业化能力。行业常识中，技术背景团队可能缺乏销售和规模化经验。BP中创始人经验偏技术，商业团队描述笼统，需验证团队是否匹配当前阶段。",
+      "knowledge_source": "general_bucket"
+    }
+  ],
+  "step1_external_check": {
+    "checks": [
+      {
+        "step1_field": "company_essence.core_identity",
+        "check": "Step1判断公司本质为硬件供应商，与行业常识中'全产业链'需自主芯片量产相矛盾。BP中IGBT芯片依赖外部采购，SiC芯片仅设计，验证了Step1判断。",
+        "result": "reinforce",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "company_essence.not_identity",
+        "check": "Step1排除'全产业链系统方案提供商'和'芯片设计公司'，行业常识中，若芯片未自主量产，则不能称为芯片公司。BP中IGBT芯片采购、SiC芯片设计未量产，支持Step1排除。",
+        "result": "reinforce",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "business_structure.current_business",
+        "check": "Step1描述当前业务为电机控制器和功率模块，BP中产品列表包括这些，但BP也声称'全产业链'。行业常识中，硬件供应商若未标准化，项目制交付为主，与Step1一致。",
+        "result": "reinforce",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "key_judgement.stance",
+        "check": "Step1 stance为cautious_watch，基于收入规模小、芯片未自主量产。行业常识中，硬科技公司若核心部件依赖外部，估值应保守。BP未提供反驳证据，故stance合理。",
+        "result": "reinforce",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "red_flags",
+        "check": "Step1指出收入与装车量不匹配、芯片依赖外部。行业常识中，20万台套对应1亿元收入，单价约500元，远低于行业平均（数千元），需验证统计口径。BP未解释，故红警有效。",
+        "result": "reinforce",
+        "knowledge_source": "general_bucket"
+      }
+    ],
+    "overall_assessment": "Step1的核心判断（硬件供应商、芯片未自主量产、收入规模小）均得到行业常识和BP验证支持，无重大矛盾。但客户价值和团队商业化能力需进一步验证。",
+    "knowledge_source": "general_bucket"
+  },
+  "information_resolution": {
+    "questions": [
+      {
+        "question": "当前1亿元收入中，电机控制器和IGBT模块各占多少？前三大客户收入占比及回款周期？",
+        "source_step1": "must_ask_questions",
+        "priority": "high",
+        "reason": "验证收入结构和客户集中度，判断商业模式稳定性。"
+      },
+      {
+        "question": "IGBT芯片和SiC芯片的设计能力是否已转化为自主量产？若否，何时能实现？",
+        "source_step1": "must_ask_questions",
+        "priority": "high",
+        "reason": "验证技术壁垒真实性，判断是否依赖外部供应链。"
+      },
+      {
+        "question": "20万台套装车量的统计口径是什么？是否包含样品或小批量？对应收入为何仅1亿元？",
+        "source_step1": "must_ask_questions",
+        "priority": "high",
+        "reason": "澄清收入与装车量矛盾，判断数据可靠性。"
+      },
+      {
+        "question": "客户采购是政策驱动还是经济ROI驱动？若补贴退坡，客户是否会继续采购？",
+        "source_step1": "must_ask_questions",
+        "priority": "medium",
+        "reason": "评估政策风险，判断需求可持续性。"
+      },
+      {
+        "question": "融资6000-8000万元的具体用途？产能扩充后预计毛利率和产能利用率如何变化？",
+        "source_step1": "must_ask_questions",
+        "priority": "medium",
+        "reason": "验证融资用途合理性，判断估值支撑。"
+      }
+    ]
+  },
+  "tensions": [
+    {
+      "conflict": "Step1 stance为cautious_watch，但BP中公司自称'全产业链系统方案提供商'，行业常识中，若芯片未自主量产，此自称不成立。",
+      "step1_position": "cautious_watch",
+      "resolution": "reinforce Step1 stance，因BP未提供自主量产证据。"
+    },
+    {
+      "conflict": "Step1指出收入与装车量不匹配，BP未解释，行业常识中，20万台套对应收入应更高，可能统计口径不同。",
+      "step1_position": "cautious_watch",
+      "resolution": "reinforce Step1 red flag，需进一步验证。"
+    }
+  ],
+  "step1_adjustment_hints": {
+    "hints": [
+      "Step1对技术壁垒和商业化路径的判断已较充分，无需调整。",
+      "建议在客户价值和团队商业化能力方面增加验证，可参考external_investment_logic中needs_verification项。",
+      "Step1的red flags和must_ask_questions已覆盖关键风险点，建议保持。"
+    ],
+    "based_on": "step1_external_check中reinforce结果，以及external_investment_logic中weaken和needs_verification项。"
+  },
+  "bp_usage_audit": {
+    "usage_log": [
+      {
+        "bp_claim": "新能源汽车完整产业链系统方案产品提供商",
+        "usage": "用于验证Step1中'全产业链'声称是否与BP一致，发现BP自称为'全产业链'，但Step1指出芯片依赖外部，故用于削弱Step1判断。",
+        "forbidden_claim_type": "company_self_claimed_title"
+      },
+      {
+        "bp_claim": "IGBT芯片/IGBT/SIC模块/电机控制器及驱动系统研发生产供应商",
+        "usage": "用于验证Step1中业务结构描述，发现BP产品列表与Step1一致，支持Step1判断。",
+        "forbidden_claim_type": "company_self_claimed_title"
+      },
+      {
+        "bp_claim": "成功装车20万台套",
+        "usage": "用于验证Step1中收入与装车量不匹配的red flag，发现BP未提供收入数据，故无法解释矛盾，支持Step1。",
+        "forbidden_claim_type": "market_position"
+      },
+      {
+        "bp_claim": "核心研发人员来自比亚迪团队",
+        "usage": "用于验证Step1中团队背景，发现BP提及，但未提供商业化能力证据，故用于needs_verification。",
+        "forbidden_claim_type": "technical_capabilities"
+      },
+      {
+        "bp_claim": "股东国电投集团全方位赋能",
+        "usage": "用于验证Step1中客户集中度和政策风险，发现BP提及股东赋能，但未提供具体客户，故用于needs_verification。",
+        "forbidden_claim_type": "strategic_partnerships"
+      }
+    ],
+    "total_bp_usage_count": 5,
+    "forbidden_claims_used": 5
+  },
+  "meta": {
+    "knowledge_source_breakdown": {
+      "general_bucket": 10,
+      "industry_bucket": 0,
+      "llm_common_sense": 0
+    },
+    "total_external_logic_items": 5,
+    "total_step1_checks": 5,
+    "total_bp_usage": 5
+  }
+}

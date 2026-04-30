@@ -1,0 +1,37 @@
+{
+  "usage_log": [
+    {
+      "bp_claim": "减重40%、降低成本30%以上",
+      "usage": "用于验证Step1中技术指标是否可验证，发现无第三方证据",
+      "classification": "technical_capability"
+    },
+    {
+      "bp_claim": "北汽集团、华为汽车、广汽（祺迹）、金龙等客户",
+      "usage": "用于验证Step1中客户合作是否真实，发现仅列名称无合同",
+      "classification": "customer_relationship"
+    },
+    {
+      "bp_claim": "Frost & Sullivan报告预测2030年产值116.4亿美元",
+      "usage": "用于验证Step1中市场预测是否合理，发现基于远期假设",
+      "classification": "market_position"
+    },
+    {
+      "bp_claim": "汽车工程学会AITC2024最具投资价值项目等获奖",
+      "usage": "用于验证Step1中行业认可度，但奖项本身不构成商业化证据",
+      "classification": "strategic_partnership"
+    },
+    {
+      "bp_claim": "靳立强教授为吉林大学教授",
+      "usage": "用于验证Step1中知识产权归属风险，发现未明确全职关系",
+      "classification": "team_credibility"
+    }
+  ],
+  "forbidden_claims_used": [
+    "technical_capability",
+    "customer_relationship",
+    "market_position",
+    "strategic_partnership",
+    "team_credibility"
+  ],
+  "note": "所有BP使用均限于验证Step1 claims，未用于支持新结论。"
+}

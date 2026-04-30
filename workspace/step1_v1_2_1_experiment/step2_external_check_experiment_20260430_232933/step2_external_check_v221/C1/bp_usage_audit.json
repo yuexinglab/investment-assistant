@@ -1,0 +1,16 @@
+{
+  "bp_used_for": "claim_verification_only",
+  "bp_claims_checked": [
+    "BP claims 'full industry chain' - verified against Step1's identification of external chip sourcing",
+    "BP claims '200,000 units installed' - used to check revenue consistency",
+    "BP claims 'IGBT chip design' - used to verify Step1's assertion of no mass production"
+  ],
+  "bp_claims_not_used_as_fact": [
+    "BP claims 'full industry chain' - treated as unverified claim",
+    "BP claims 'strategic partnership with SPIC' - not used as fact",
+    "BP claims 'industry leader' - not used as fact"
+  ],
+  "violations": [],
+  "bp_text_tokens_used": 150,
+  "is_clean": true
+}

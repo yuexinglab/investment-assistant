@@ -1,0 +1,229 @@
+{
+  "schema_version": "step2_external_check_v2_2_2",
+  "external_investment_logic": [
+    {
+      "related_to_step1": "company_essence",
+      "bucket_key": "tech_barrier",
+      "knowledge_source": "industry_bucket",
+      "logic_statement": "For Step1 company_essence: '本质是新能源商用车电驱动系统及功率模块的硬件供应商，以项目制交付为主' - External logic: In automotive power electronics, true tech barrier requires in-house chip design and manufacturing, not just module packaging. Step1 correctly identifies that IGBT chip is externally sourced and SiC chip is only designed, not mass-produced. This aligns with industry knowledge that packaging alone is a low barrier.",
+      "implication": "support",
+      "why_it_matters": "Confirms that Step1's cautious assessment of the company's core identity as a hardware supplier rather than a full-chain solution provider is valid, preventing overvaluation based on claimed tech barrier."
+    },
+    {
+      "related_to_step1": "revenue_logic",
+      "bucket_key": "commercialization",
+      "knowledge_source": "general_bucket",
+      "logic_statement": "For Step1 revenue_logic: '收入仅1亿元（2025E），说明单价低或项目制交付' - External logic: In hard tech commercialization, revenue scale is a key indicator of market traction. 20k units installed but only 100M RMB revenue suggests low unit price (approx 5k/unit) or project-based revenue recognition. This is typical for early-stage automotive suppliers but raises questions about scalability and margin.",
+      "implication": "support",
+      "why_it_matters": "Reinforces Step1's caution about revenue quality and scalability, which is critical for investment decisions in hard tech projects."
+    },
+    {
+      "related_to_step1": "red_flags",
+      "bucket_key": "expansion_story",
+      "knowledge_source": "industry_bucket",
+      "logic_statement": "For Step1 red_flags: '声称全产业链但IGBT芯片依赖外部采购' - External logic: In automotive industry, 'full industry chain' claims are common but rarely true. True vertical integration (e.g., Tesla, BYD) requires massive capital and time. Step1 correctly flags this as a red flag. External logic supports that such packaging is a common signal of overclaiming.",
+      "implication": "support",
+      "why_it_matters": "Helps investors avoid being misled by narrative-driven valuation, focusing on actual capabilities."
+    },
+    {
+      "related_to_step1": "key_judgement",
+      "bucket_key": "team_credibility",
+      "knowledge_source": "general_bucket",
+      "logic_statement": "For Step1 key_judgement: '团队有比亚迪背景，产品已装车20万台套' - External logic: Team background from BYD is a positive signal for domain expertise, but does not guarantee commercial success. Many ex-BYD teams struggle with independent scaling. Step1's cautious stance is appropriate.",
+      "implication": "support",
+      "why_it_matters": "Prevents over-reliance on team pedigree as a substitute for business fundamentals."
+    },
+    {
+      "related_to_step1": "business_structure",
+      "bucket_key": "commercialization",
+      "knowledge_source": "industry_bucket",
+      "logic_statement": "For Step1 business_structure: '以项目制交付为主' - External logic: In automotive hard tech, project-based delivery is common for early-stage companies but limits scalability and margin. Standardization is key for growth. Step1 correctly identifies this as a current business model risk.",
+      "implication": "support",
+      "why_it_matters": "Highlights the need to verify if the company has a path to standardized products, which is critical for investment thesis."
+    },
+    {
+      "related_to_step1": "must_ask_questions",
+      "bucket_key": "customer_value",
+      "knowledge_source": "llm_common_sense",
+      "logic_statement": "For Step1 must_ask_questions: '客户采购是政策驱动还是经济ROI驱动？' - External logic: In commercial vehicle electrification, policy subsidies (e.g., China's NEV subsidies) significantly influence demand. Step1's question is essential to assess sustainability. External logic confirms that policy-driven demand is a risk factor.",
+      "implication": "support",
+      "why_it_matters": "Guides due diligence to focus on demand drivers, which directly impact revenue predictability."
+    }
+  ],
+  "step1_external_check": {
+    "checks": [
+      {
+        "step1_field": "company_essence",
+        "step1_claim": "本质是新能源商用车电驱动系统及功率模块的硬件供应商，以项目制交付为主",
+        "bucket_key": "tech_barrier",
+        "knowledge_source": "industry_bucket",
+        "external_logic": "In automotive power electronics, true tech barrier requires in-house chip design and manufacturing. Step1 correctly identifies that IGBT chip is externally sourced and SiC chip is only designed, not mass-produced. This aligns with industry knowledge that packaging alone is a low barrier. However, external logic requires further verification on engineering validation, automotive-grade certification, reliability testing, safety redundancy, and supply chain verification to confirm if any hidden barrier exists.",
+        "verdict": "caution",
+        "reasoning": "Step1's cautious judgment is correct. External logic demands specific evidence of engineering validation and certification before concluding no barrier.",
+        "evidence_source": "Industry knowledge",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "revenue_logic",
+        "step1_claim": "收入仅1亿元（2025E），说明单价低或项目制交付",
+        "bucket_key": "commercialization",
+        "knowledge_source": "industry_bucket",
+        "external_logic": "In hard tech commercialization, revenue scale is a key indicator of market traction. 20k units installed but only 100M RMB revenue suggests low unit price or project-based revenue recognition. External logic requires further verification on mass production readiness, OEM qualification, supply chain industrialization, production SOP, and automotive certification timeline to assess if the company can scale.",
+        "verdict": "caution",
+        "reasoning": "Step1's cautious judgment is correct. External logic demands specific evidence of mass production readiness and OEM qualification before concluding revenue scalability.",
+        "evidence_source": "Tech commercialization",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "red_flags",
+        "step1_claim": "声称'全产业链'但IGBT芯片依赖外部采购，SiC芯片仅设计未量产",
+        "bucket_key": "expansion_story",
+        "knowledge_source": "general_bucket",
+        "external_logic": "In investment logic, 'full industry chain' claims are common packaging signals. Step1 correctly flags this as a red flag. External logic supports that such packaging is a common signal of overclaiming.",
+        "verdict": "support",
+        "reasoning": "Step1's identification of this red flag is consistent with investment logic that such claims are often exaggerated.",
+        "evidence_source": "Investment logic",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "key_judgement",
+        "step1_claim": "公司是新能源商用车电驱动领域的硬件供应商，技术能力有积累，但商业模式尚未标准化，收入规模小，估值叙事超前于现实",
+        "bucket_key": "team_credibility",
+        "knowledge_source": "general_bucket",
+        "external_logic": "Team background from BYD is a positive signal for domain expertise, but does not guarantee commercial success. Step1's cautious stance is appropriate.",
+        "verdict": "support",
+        "reasoning": "Step1's judgment aligns with general investment logic that team pedigree alone is not sufficient for success.",
+        "evidence_source": "Investment logic",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "business_structure",
+        "step1_claim": "以项目制交付为主",
+        "bucket_key": "commercialization",
+        "knowledge_source": "general_bucket",
+        "external_logic": "In hard tech commercialization, project-based delivery is common for early-stage companies but limits scalability and margin. Step1 correctly identifies this as a current business model risk.",
+        "verdict": "support",
+        "reasoning": "Step1's assessment is consistent with general investment logic that project-based models face scalability challenges.",
+        "evidence_source": "Investment logic",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "must_ask_questions",
+        "step1_claim": "客户采购是政策驱动还是经济ROI驱动？",
+        "bucket_key": "customer_value",
+        "knowledge_source": "llm_common_sense",
+        "external_logic": "In commercial vehicle electrification, policy subsidies significantly influence demand. Step1's question is essential to assess sustainability.",
+        "verdict": "support",
+        "reasoning": "Step1's question is valid and important for due diligence.",
+        "evidence_source": "Industry knowledge",
+        "confidence": "medium"
+      }
+    ],
+    "summary": {
+      "support_count": 4,
+      "caution_count": 2,
+      "contradict_count": 0
+    }
+  },
+  "information_resolution": {
+    "publicly_resolvable": [
+      "IGBT chip sourcing details and SiC chip production status",
+      "Revenue breakdown by product line",
+      "Customer concentration and payment terms",
+      "Automotive-grade certifications (e.g., IATF 16949, ISO 26262)"
+    ],
+    "founder_needed": [
+      "Mass production timeline for SiC modules",
+      "OEM qualification status and timeline",
+      "Unit price and gross margin details",
+      "Policy dependency and customer retention strategy"
+    ],
+    "decision_blockers": [
+      "Lack of audited revenue data",
+      "Unclear path to standardized product revenue",
+      "No evidence of automotive-grade certification for key products"
+    ]
+  },
+  "tensions": [
+    "Step1 claims '收入仅1亿元' but BP mentions '成功装车20万台套' - tension between volume and revenue needs resolution.",
+    "Step1 identifies '项目制交付' as current business, but BP claims '全产业链系统方案' - tension between narrative and reality."
+  ],
+  "step1_adjustment_hints": {
+    "reinforce": [
+      "company_essence: reinforce the hardware supplier identity",
+      "red_flags: reinforce the 'full industry chain' red flag",
+      "key_judgement: reinforce cautious stance"
+    ],
+    "weaken": [],
+    "needs_verification": [
+      "revenue_logic: needs verification of unit price and revenue recognition",
+      "business_structure: needs verification of path to standardization",
+      "customer_value: needs verification of demand drivers"
+    ]
+  },
+  "bp_usage_audit": {
+    "bp_used_for": "claim_verification_only",
+    "bp_claims_checked": [
+      "BP claims '全产业链系统方案' - verified against Step1's red flag",
+      "BP claims 'IGBT芯片' and 'SiC芯片' - verified against Step1's company essence",
+      "BP claims '成功装车20万台套' - verified against Step1's revenue logic"
+    ],
+    "bp_claims_not_used_as_fact": [
+      "BP claims '全产业链' - not used as fact, only as claim to verify Step1",
+      "BP claims 'IGBT芯片' - not used as fact, only as claim to verify Step1",
+      "BP claims '成功装车20万台套' - not used as fact, only as claim to verify Step1"
+    ],
+    "violations": [],
+    "bp_text_tokens_used": 150,
+    "is_clean": true
+  },
+  "meta": {
+    "buckets_analyzed": [
+      "tech_barrier",
+      "customer_value",
+      "commercialization",
+      "expansion_story",
+      "team_credibility"
+    ],
+    "industry_tags_used": [
+      "vehicle",
+      "automotive",
+      "power_electronics"
+    ],
+    "bucket_as_checklist": true,
+    "knowledge_source_breakdown": {
+      "general_bucket": 3,
+      "industry_bucket": 3,
+      "llm_common_sense": 1
+    },
+    "knowledge_source_details": {
+      "general_bucket": [
+        "commercialization",
+        "expansion_story",
+        "team_credibility"
+      ],
+      "industry_bucket": [
+        "tech_barrier",
+        "commercialization",
+        "customer_value"
+      ],
+      "llm_common_sense": [
+        "customer_value"
+      ]
+    },
+    "external_logic_sources": [
+      "Industry knowledge",
+      "Investment logic",
+      "Tech commercialization"
+    ],
+    "new_conclusion_generated": false,
+    "step1_fields_covered": [
+      "company_essence",
+      "revenue_logic",
+      "red_flags",
+      "key_judgement",
+      "business_structure",
+      "must_ask_questions"
+    ]
+  }
+}

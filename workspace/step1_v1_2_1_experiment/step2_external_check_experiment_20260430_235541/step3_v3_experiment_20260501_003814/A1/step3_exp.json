@@ -1,0 +1,88 @@
+{
+  "consistency_checks": [
+    {
+      "topic": "技术壁垒与行业通用性",
+      "claim": "BP声称拥有全栈自研软硬件系统，包括感知、导航定位、规划调度等核心技术，并强调TransportAGI专用端到端范式和大模型能力，作为技术壁垒。",
+      "reality": "外部约束指出，这些技术（感知、导航、规划）在自动驾驶行业是通用的，许多竞争对手（如Inceptio、TuSimple）具备类似能力。'TransportAGI'和'端到端'是行业流行词，真正的壁垒在于特定场景的集成和运营经验，而非技术本身。",
+      "gap": "BP将行业通用技术包装为独特壁垒，未充分说明其技术相对于竞争对手的具体差异化优势（如算法效率、数据闭环的独特性）。",
+      "judgement": "contradict",
+      "confidence": "high",
+      "related_step2_check": "company_essence",
+      "external_constraint": "The project's claimed technical advantages (perception, navigation, planning) are common in the autonomous driving industry. Many competitors have similar capabilities. The real barrier is not the technology itself but the integration and operational experience in specific ports/industrial sites.",
+      "bp_claim_checked": "感知、导航定位、规划调度和系统架构积累的技术优势；TransportAGI专用端到端范式；专用大模型"
+    },
+    {
+      "topic": "商业化路径与项目制向运营转型",
+      "claim": "BP提出代运营和技术服务是行业内首次提出且业绩领先，暗示已成功从项目制销售转向高价值、可复用的运营服务模式。",
+      "reality": "外部约束指出，从项目制向经常性收入（运营）转型是出了名的困难，许多公司（如Embark、TuSimple）都曾挣扎。BP声称'首次提出'并不独特，其他公司也尝试过。BP未提供代运营业务的单位经济模型（如每吨成本、维护成本）或盈利时间表。",
+      "gap": "BP未提供代运营业务的财务细节（收入占比、毛利率、客户合同期限），也未说明如何解决重资产运营带来的现金流压力。",
+      "judgement": "contradict",
+      "confidence": "high",
+      "related_step2_check": "red_flags",
+      "external_constraint": "The project's commercialization path is typical for autonomous driving system integrators. The transition from project to recurring revenue is notoriously difficult. The BP's claim of 'first to propose operations' is not unique; others have tried.",
+      "bp_claim_checked": "商业模式落地经验丰富，包括整车销售、技术服务以及代运营。其中代运营和技术服务在行业内首次提出且业绩领先。"
+    },
+    {
+      "topic": "扩张故事与核心业务聚焦",
+      "claim": "BP描绘了从集装箱港口扩展到散杂货场区、工厂基地、场间短驳、干线编队，甚至海外市场的宏大扩张路径。",
+      "reality": "外部约束指出，扩张故事往往稀释焦点并消耗现金。在硬科技领域，成功扩张需要每个新垂直领域的深厚领域知识和监管批准。公司目前对港口的关注是狭窄的；扩展到工厂（不同的布局、安全标准）和海外（不同的法规）将需要大量投资和时间。BP未提供清晰的、分阶段的扩张计划，也未说明核心港口业务是否已盈利以支持扩张。",
+      "gap": "BP未提供任何海外市场或新场景的已签约客户或试点项目证据，也未分析新场景与港口场景在技术、运营和法规上的具体差异。",
+      "judgement": "contradict",
+      "confidence": "high",
+      "related_step2_check": "business_structure",
+      "external_constraint": "The project's expansion story is ambitious. In hard tech, successful expansion requires deep domain expertise and regulatory approvals in each new vertical. Expansion stories often dilute focus and burn cash.",
+      "bp_claim_checked": "从集装箱港口起步，覆盖到更多的物流场景，包括散杂货场区、工厂基地、场间短驳、干线编队等；公司规划设立华东总装制造运营中心"
+    }
+  ],
+  "tensions": [
+    {
+      "tension": "BP声称'全链条'和'AI平台' vs 外部约束指出其本质是项目制系统集成商",
+      "why_it_matters": "这种叙事错位可能导致投资者高估公司的技术壁垒和商业模式的可扩展性，低估其资产密集度和项目制风险。",
+      "severity": "high",
+      "related_step2_logic": "The BP claims 'full chain' and 'AI platform', but the business is project-based system integration. This narrative mismatch is a tension.",
+      "conflict_type": "external_vs_bp"
+    },
+    {
+      "tension": "BP强调团队技术背景（清华/百度）和规模优势 vs 外部约束指出技术壁垒低，真正的壁垒在于运营和客户粘性",
+      "why_it_matters": "投资者可能被团队光环和早期规模所吸引，但忽略了技术同质化带来的竞争压力和利润率侵蚀风险。公司的护城河是运营规模，而非技术，但运营规模本身是资本密集且可复制的。",
+      "severity": "high",
+      "related_step2_logic": "The company has a strong team and early scale, but the technology is not unique. The tension is between execution and moat.",
+      "conflict_type": "external_vs_bp"
+    },
+    {
+      "tension": "BP以代运营和AI平台叙事支撑高估值 vs 外部约束指出其当前业务是重资产、项目制，且代运营模式资本密集、现金流压力大",
+      "why_it_matters": "估值叙事与业务现实严重错位。如果公司无法证明代运营业务的单位经济模型优于项目制销售，或无法实现轻资产化，其高估值将难以持续。",
+      "severity": "high",
+      "related_step2_logic": "The operations model is promising but capital-intensive. The tension is between growth and cash flow.",
+      "conflict_type": "step1_vs_bp"
+    }
+  ],
+  "overpackaging_signals": [
+    {
+      "signal": "BP将'TransportAGI'、'端到端大模型'等行业流行词作为核心技术壁垒，但外部约束指出这些技术是行业通用，真正的壁垒在于集成和运营经验。",
+      "type": "tech_overstatement",
+      "severity": "high",
+      "related_step2_constraint": "约束1：技术壁垒",
+      "packaging_type": "tech_overstatement"
+    },
+    {
+      "signal": "BP声称'代运营和技术服务在行业内首次提出且业绩领先'，但外部约束指出这并非独特，且未提供任何财务数据或客户合同来证明其领先地位。",
+      "type": "future_as_present",
+      "severity": "high",
+      "related_step2_constraint": "约束3：商业化路径",
+      "packaging_type": "future_as_present"
+    },
+    {
+      "signal": "BP描绘了从港口到工厂、海外、新能源材料的宏大扩张故事，但未提供任何具体的时间表、客户意向或试点项目证据，核心业务（港口）的盈利能力也未明确。",
+      "type": "expansion_story",
+      "severity": "high",
+      "related_step2_constraint": "约束4：扩张故事",
+      "packaging_type": "expansion_story"
+    }
+  ],
+  "summary": "该项目最大的认知问题是：将行业通用的自动驾驶技术包装为独特壁垒，并用尚未验证的代运营模式和宏大的扩张故事来支撑高估值，而实际业务本质是重资产、项目制的系统集成，其护城河在于运营规模而非技术，且面临巨大的现金流压力和商业化转型风险。",
+  "step2_constraints_used": 3,
+  "step2_caution_references": 3,
+  "step2_contradict_references": 3,
+  "step2_version": "step2_external_check_v2_2_2"
+}

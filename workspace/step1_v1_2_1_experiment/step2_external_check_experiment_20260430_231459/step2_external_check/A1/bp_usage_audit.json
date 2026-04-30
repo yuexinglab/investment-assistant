@@ -1,0 +1,32 @@
+[
+  {
+    "bp_claim": "全链条竞争优势",
+    "usage": "用于验证Step1对业务结构的判断，未用于新结论",
+    "category": "company_self_claimed_title"
+  },
+  {
+    "bp_claim": "行业第一（部署240台）",
+    "usage": "用于验证Step1对规模壁垒的判断，未用于新结论",
+    "category": "market_position"
+  },
+  {
+    "bp_claim": "增材制造降本80%",
+    "usage": "用于验证Step1对技术壁垒的怀疑，未用于新结论",
+    "category": "technical_capability"
+  },
+  {
+    "bp_claim": "代运营和技术服务在行业内首次提出且业绩领先",
+    "usage": "用于验证Step1对代运营未规模化的判断，未用于新结论",
+    "category": "market_position"
+  },
+  {
+    "bp_claim": "全球首台无人集卡在天津港运营",
+    "usage": "用于验证团队背书，未用于新结论",
+    "category": "strategic_partnership"
+  },
+  {
+    "bp_claim": "多项行业标准和国际标准的制定者",
+    "usage": "用于验证Step1对先发优势的判断，未用于新结论",
+    "category": "market_position"
+  }
+]

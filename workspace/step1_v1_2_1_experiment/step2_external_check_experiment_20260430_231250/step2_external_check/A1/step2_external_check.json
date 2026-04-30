@@ -1,0 +1,185 @@
+{
+  "external_investment_logic": [
+    {
+      "bucket_key": "tech_barrier",
+      "validation": "weakens",
+      "reasoning": "Step1认为AI能力更多是研发效率工具而非独立变现产品。从行业常识看，自动驾驶行业的技术壁垒通常体现在数据闭环、场景覆盖和工程化能力，而非单一算法。BP中提到的TransportAGI专用大模型、感知算法比赛第一等，属于技术包装，但未证明这些能力转化为客户可感知的差异化价值。此外，百度、主线科技等团队背景意味着技术路线可能并非独有，而是行业通用工程实践。",
+      "knowledge_source": "llm_common_sense"
+    },
+    {
+      "bucket_key": "customer_value",
+      "validation": "reinforces",
+      "reasoning": "Step1指出客户逻辑部分依赖政策。从行业常识看，港口无人驾驶的客户价值主要在于降低人工成本、提升安全性和效率，但BP中提到的'降低80%事故发生率'和'效率持平'等说法，未提供独立第三方验证。客户采购决策中，政策示范项目占比高，纯商业ROI驱动的案例较少，这与Step1的判断一致。",
+      "knowledge_source": "llm_common_sense"
+    },
+    {
+      "bucket_key": "commercialization",
+      "validation": "reinforces",
+      "reasoning": "Step1认为商业模式本质是重资产制造/集成，而非轻资产平台。从行业常识看，自动驾驶商用车项目制交付模式通常面临回款周期长、垫资压力大、标准化程度低等问题。BP中提到的240台部署和20+客户，但未说明收入结构，代运营服务是否产生稳定收入存疑。这与Step1的判断一致。",
+      "knowledge_source": "llm_common_sense"
+    },
+    {
+      "bucket_key": "expansion_story",
+      "validation": "weakens",
+      "reasoning": "Step1认为代运营虽提出但未证明规模化。从行业常识看，从项目制交付扩展到代运营服务需要验证运营效率、资产周转率和客户续约率。BP中提到的代运营和技术服务'在行业内首次提出且业绩领先'，但未提供具体数据支撑，属于典型的故事包装。",
+      "knowledge_source": "llm_common_sense"
+    },
+    {
+      "bucket_key": "team_credibility",
+      "validation": "needs_verification",
+      "reasoning": "Step1未直接评估团队，但BP中强调清华/百度背景、17年经验、多项荣誉。从行业常识看，团队背景在自动驾驶领域较为常见，需要验证这些背书是否转化为排他性资源或客户关系。例如，何贝曾主导全球首台无人集卡在天津港运营，但需确认该案例是否带来持续商业合作。",
+      "knowledge_source": "llm_common_sense"
+    }
+  ],
+  "step1_external_check": [
+    {
+      "step1_field": "company_essence.core_identity",
+      "check": "reinforces",
+      "reasoning": "Step1判断公司本质是重载物流场景的自动驾驶系统集成商和车辆改装/制造商。从行业常识看，自动驾驶商用车公司通常需要自建产线或与车企深度合作，BP中提到的自研域控、增材制造、自建产线等，均指向制造/集成型业务，而非轻资产平台。",
+      "knowledge_source": "llm_common_sense"
+    },
+    {
+      "step1_field": "company_essence.not_identity",
+      "check": "reinforces",
+      "reasoning": "Step1认为公司不是全产业链平台公司、不是AI大模型公司、不是轻资产运营服务商。从行业常识看，BP中提到的AI能力更多是内部效率工具，代运营服务未规模化，自建产线和重资产投入表明是制造/集成型业务，与Step1判断一致。",
+      "knowledge_source": "llm_common_sense"
+    },
+    {
+      "step1_field": "business_structure.current_business",
+      "check": "reinforces",
+      "reasoning": "Step1指出当前业务是无人集卡/自卸车销售、自动驾驶系统套件销售、项目制交付。BP中明确提到'商业模式落地经验丰富，包括整车销售、技术服务以及代运营'，但代运营是否已产生稳定收入未说明，与Step1判断一致。",
+      "knowledge_source": "llm_common_sense"
+    },
+    {
+      "step1_field": "business_structure.narrative_business",
+      "check": "weakens",
+      "reasoning": "Step1指出代运营服务、新能源材料/回收、增材制造降本等属于叙事业务。从行业常识看，代运营服务需要验证运营效率和客户续约率，新能源材料/回收与主业协同性存疑，增材制造降本80%未在实际产品中验证。BP中提到的'降本幅度可达80%'和'降本幅度可达30%'缺乏具体案例支撑，属于典型的故事包装。",
+      "knowledge_source": "llm_common_sense"
+    },
+    {
+      "step1_field": "key_judgement.statement",
+      "check": "reinforces",
+      "reasoning": "Step1认为斯年智驾在港口无人驾驶领域有先发优势和规模壁垒，但商业模式本质是重资产制造/集成，估值叙事与当前业务结构存在错位。从行业常识看，240台部署和20+客户在港口无人驾驶领域确实构成一定规模优势，但收入结构以车辆销售和项目制为主，代运营未验证，估值逻辑应更接近制造/集成公司而非AI平台。",
+      "knowledge_source": "llm_common_sense"
+    },
+    {
+      "step1_field": "red_flags.flags",
+      "check": "reinforces",
+      "reasoning": "Step1列出的重资产运营风险、客户逻辑依赖政策、估值叙事与现实错位等红警，从行业常识看均成立。BP中提到的自建产线、垫资采购、政策驱动等，均与这些风险一致。",
+      "knowledge_source": "llm_common_sense"
+    }
+  ],
+  "information_resolution": {
+    "questions": [
+      {
+        "question": "当前收入中，整车销售、技术服务、代运营各占多少比例？代运营是否已产生稳定收入？",
+        "source": "step1_must_ask_questions",
+        "priority": "high"
+      },
+      {
+        "question": "单个项目从签约到验收回款的平均周期是多少？是否需要公司垫资？",
+        "source": "step1_must_ask_questions",
+        "priority": "high"
+      },
+      {
+        "question": "客户采购决策中，政策补贴或示范要求占比多少？是否有纯商业ROI驱动的客户案例？",
+        "source": "step1_must_ask_questions",
+        "priority": "high"
+      },
+      {
+        "question": "自建产线的产能利用率如何？增材制造降本80%是否已在实际产品中验证？",
+        "source": "step1_must_ask_questions",
+        "priority": "medium"
+      },
+      {
+        "question": "代运营服务的定价模式和客户续约率如何？是否已实现正向现金流？",
+        "source": "step1_must_ask_questions",
+        "priority": "medium"
+      }
+    ]
+  },
+  "tensions": [
+    {
+      "conflict": "Step1认为公司本质是重资产制造/集成，但BP强调全链条、AI平台和代运营叙事，估值逻辑与业务结构存在错位。",
+      "step1_position": "cautious_watch",
+      "severity": "high"
+    },
+    {
+      "conflict": "Step1指出客户逻辑部分依赖政策，但BP中未提供纯商业ROI驱动的客户案例，政策退坡风险未充分披露。",
+      "step1_position": "cautious_watch",
+      "severity": "medium"
+    }
+  ],
+  "step1_adjustment_hints": [
+    {
+      "step1_field": "company_essence.confidence",
+      "hint": "可维持high，外部逻辑验证一致。",
+      "reasoning": "step1_external_check中company_essence相关检查均reinforces，无矛盾。"
+    },
+    {
+      "step1_field": "key_judgement.stance",
+      "hint": "可维持cautious_watch，但需关注代运营服务是否产生稳定收入。",
+      "reasoning": "step1_external_check中key_judgement相关检查均reinforces，但expansion_story验证为weakens，需进一步验证。"
+    },
+    {
+      "step1_field": "red_flags.flags",
+      "hint": "可维持现有红警，无需调整。",
+      "reasoning": "step1_external_check中red_flags相关检查均reinforces。"
+    }
+  ],
+  "bp_usage_audit": [
+    {
+      "bp_claim": "无人重载物流行业领军者",
+      "usage": "用于验证Step1中'行业第一'的表述，但未作为事实接受。",
+      "category": "market_position"
+    },
+    {
+      "bp_claim": "全栈软硬件系统自研",
+      "usage": "用于验证Step1中'自建产线'和'重资产投入'的判断，但未作为技术壁垒的独立证据。",
+      "category": "technical_capabilities"
+    },
+    {
+      "bp_claim": "代运营和技术服务在行业内首次提出且业绩领先",
+      "usage": "用于验证Step1中'代运营未规模化'的判断，但未作为事实接受。",
+      "category": "market_position"
+    },
+    {
+      "bp_claim": "降本幅度可达80%",
+      "usage": "用于验证Step1中'增材制造降本80%是否已在实际产品中验证'的疑问，但未作为事实接受。",
+      "category": "technical_capabilities"
+    },
+    {
+      "bp_claim": "已获得包括字节跳动、浙江金控、广发信德等在内的6轮融资",
+      "usage": "用于验证Step1中'融资估值叙事'的风险，但未作为公司价值的直接证据。",
+      "category": "strategic_partnerships"
+    },
+    {
+      "bp_claim": "何贝曾主导全球首台无人集卡在天津港运营",
+      "usage": "用于验证Step1中'团队/背书叙事'的风险，但未作为商业化能力的独立证据。",
+      "category": "team_credibility"
+    }
+  ],
+  "meta": {
+    "knowledge_source_breakdown": {
+      "general_bucket": [
+        "tech_barrier",
+        "customer_value",
+        "commercialization",
+        "expansion_story",
+        "team_credibility"
+      ],
+      "industry_bucket": [],
+      "llm_common_sense": [
+        "tech_barrier",
+        "customer_value",
+        "commercialization",
+        "expansion_story",
+        "team_credibility",
+        "company_essence",
+        "business_structure",
+        "key_judgement",
+        "red_flags"
+      ]
+    }
+  }
+}

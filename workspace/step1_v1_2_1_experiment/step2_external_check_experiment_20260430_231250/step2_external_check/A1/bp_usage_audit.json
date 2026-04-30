@@ -1,0 +1,32 @@
+[
+  {
+    "bp_claim": "无人重载物流行业领军者",
+    "usage": "用于验证Step1中'行业第一'的表述，但未作为事实接受。",
+    "category": "market_position"
+  },
+  {
+    "bp_claim": "全栈软硬件系统自研",
+    "usage": "用于验证Step1中'自建产线'和'重资产投入'的判断，但未作为技术壁垒的独立证据。",
+    "category": "technical_capabilities"
+  },
+  {
+    "bp_claim": "代运营和技术服务在行业内首次提出且业绩领先",
+    "usage": "用于验证Step1中'代运营未规模化'的判断，但未作为事实接受。",
+    "category": "market_position"
+  },
+  {
+    "bp_claim": "降本幅度可达80%",
+    "usage": "用于验证Step1中'增材制造降本80%是否已在实际产品中验证'的疑问，但未作为事实接受。",
+    "category": "technical_capabilities"
+  },
+  {
+    "bp_claim": "已获得包括字节跳动、浙江金控、广发信德等在内的6轮融资",
+    "usage": "用于验证Step1中'融资估值叙事'的风险，但未作为公司价值的直接证据。",
+    "category": "strategic_partnerships"
+  },
+  {
+    "bp_claim": "何贝曾主导全球首台无人集卡在天津港运营",
+    "usage": "用于验证Step1中'团队/背书叙事'的风险，但未作为商业化能力的独立证据。",
+    "category": "team_credibility"
+  }
+]

@@ -1,0 +1,31 @@
+{
+  "usage_log": [
+    {
+      "bp_claim": "新能源汽车完整产业链系统方案产品提供商",
+      "usage": "用于验证Step1中business_structure.narrative_business的准确性",
+      "compliance": "compliant"
+    },
+    {
+      "bp_claim": "IGBT芯片/IGBT/SIC模块/电机控制器及驱动系统研发生产供应商",
+      "usage": "用于验证Step1中business_structure.current_business的准确性",
+      "compliance": "compliant"
+    },
+    {
+      "bp_claim": "成功装车20万台套",
+      "usage": "用于验证Step1中red_flags关于收入与装车量不匹配的质疑",
+      "compliance": "compliant"
+    },
+    {
+      "bp_claim": "核心研发人员来自比亚迪团队",
+      "usage": "用于验证Step1中团队背景，但未用于新结论",
+      "compliance": "compliant"
+    },
+    {
+      "bp_claim": "全产业链系统供应商",
+      "usage": "用于验证Step1中company_essence.not_identity的合理性",
+      "compliance": "compliant"
+    }
+  ],
+  "violations": [],
+  "note": "所有BP使用均限于验证Step1 claims，未用于生成新结论。"
+}

@@ -1,0 +1,189 @@
+{
+  "external_investment_logic": [
+    {
+      "bucket_key": "tech_barrier",
+      "validation": "weaken",
+      "reasoning": "Step1认为AI能力更多是研发效率工具而非独立变现产品。从行业常识看，港口自动驾驶的技术壁垒主要在于工程化落地和场景适配，而非算法本身。BP中提到的TransportAGI、大模型等概念，在港口无人驾驶领域尚未形成独立商业价值，更多是技术包装。因此，Step1的判断符合行业认知。",
+      "knowledge_source": "general_bucket"
+    },
+    {
+      "bucket_key": "customer_value",
+      "validation": "weaken",
+      "reasoning": "Step1指出客户逻辑部分依赖政策，经济ROI未独立验证。从行业经验看，港口无人驾驶的客户价值主要在于降本增效，但BP中提到的‘降低人工成本’和‘提升作业安全’是行业通用价值主张，缺乏具体客户案例验证。客户更换现有方案的动力取决于ROI是否明确，而BP未提供独立数据。因此，Step1的谨慎态度合理。",
+      "knowledge_source": "industry_bucket"
+    },
+    {
+      "bucket_key": "commercialization",
+      "validation": "weaken",
+      "reasoning": "Step1认为商业模式本质是重资产制造/集成，而非轻资产平台。从行业常识看，港口无人驾驶项目制交付模式普遍存在回款周期长、垫资压力大的问题。BP中提到的‘代运营和技术服务在行业内首次提出且业绩领先’是公司自述，缺乏第三方验证。Step1对商业化路径的质疑符合行业常见失败模式。",
+      "knowledge_source": "general_bucket"
+    },
+    {
+      "bucket_key": "expansion_story",
+      "validation": "weaken",
+      "reasoning": "Step1指出代运营未验证，估值叙事与当前业务结构存在错位。从行业经验看，从港口向散杂货场区、工厂基地等场景扩张，面临不同的法规、供应链和客户需求，BP中提到的‘覆盖到更多的物流场景’缺乏具体落地证据。Step1认为扩张故事提前，符合行业认知。",
+      "knowledge_source": "industry_bucket"
+    },
+    {
+      "bucket_key": "team_credibility",
+      "validation": "needs_verification",
+      "reasoning": "Step1未直接评价团队，但BP中强调团队背景（清华、百度、博士等）。从行业常识看，团队背书需要验证是否转化为商业化能力。BP中提到的‘核心团队磨合接近10年’和‘国内最早一批从事商用车无人驾驶的技术专家’是公司自述，需验证团队在工程化、销售和管理方面的实际表现。",
+      "knowledge_source": "general_bucket"
+    }
+  ],
+  "step1_external_check": {
+    "checks": [
+      {
+        "step1_field": "company_essence.core_identity",
+        "check": "reinforce",
+        "reasoning": "Step1认为公司本质是重载物流场景的自动驾驶系统集成商和车辆改装/制造商。从行业常识看，港口无人驾驶公司普遍采用项目制交付和车辆销售模式，BP中提到的‘整车销售、技术服务以及代运营’中，代运营尚未验证，因此Step1的判断符合行业主流模式。",
+        "knowledge_source": "industry_bucket"
+      },
+      {
+        "step1_field": "company_essence.not_identity",
+        "check": "reinforce",
+        "reasoning": "Step1指出公司不是全产业链平台公司、不是AI大模型公司、不是轻资产运营服务商。从行业常识看，港口无人驾驶公司需要重资产投入（车辆、产线），AI能力多为内部工具，BP中提到的‘全链条竞争优势’和‘AI平台’是常见包装信号。Step1的判断准确。",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "business_structure.current_business",
+        "check": "needs_verification",
+        "reasoning": "Step1提到已部署240台车辆，覆盖20+客户。BP中同样提到‘累积部署240台无人重载运输车辆’和‘打造超过20个客户的业务场景’。但BP未提供客户名称、合同金额或收入确认方式，需验证这些数字的真实性和收入贡献。",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "business_structure.narrative_business",
+        "check": "weaken",
+        "reasoning": "Step1指出代运营服务、新能源材料/回收等是叙事业务。从行业常识看，港口无人驾驶的代运营模式需要大量资产投入和长期运营，BP中提到的‘代运营和技术服务在行业内首次提出且业绩领先’缺乏证据。新能源材料/回收与核心业务关联度低，常见于估值故事。Step1的判断合理。",
+        "knowledge_source": "industry_bucket"
+      },
+      {
+        "step1_field": "key_judgement.statement",
+        "check": "reinforce",
+        "reasoning": "Step1认为公司有先发优势和规模壁垒，但商业模式本质是重资产制造/集成。从行业经验看，港口无人驾驶领域先发优势体现在项目经验和数据积累，但规模壁垒需要验证客户粘性和复购率。BP中提到的‘行业第一’和‘最大物流场景大数据平台’是公司自述，Step1的谨慎态度符合行业认知。",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "red_flags.flags",
+        "check": "reinforce",
+        "reasoning": "Step1列出的重资产运营风险、客户逻辑依赖政策、估值叙事与现实错位，均符合行业常见失败模式。BP中提到的‘政策相继出台’和‘新质生产力’暗示政策驱动，但未提供政策退坡后的商业可持续性证据。Step1的红色预警合理。",
+        "knowledge_source": "industry_bucket"
+      }
+    ]
+  },
+  "information_resolution": {
+    "questions": [
+      {
+        "question": "当前收入中，整车销售、技术服务、代运营各占多少比例？代运营是否已产生稳定收入？",
+        "source": "step1_must_ask_questions"
+      },
+      {
+        "question": "单个项目从签约到验收回款的平均周期是多少？是否需要公司垫资？",
+        "source": "step1_must_ask_questions"
+      },
+      {
+        "question": "客户采购决策中，政策补贴或示范要求占比多少？是否有纯商业ROI驱动的客户案例？",
+        "source": "step1_must_ask_questions"
+      },
+      {
+        "question": "自建产线的产能利用率如何？增材制造降本80%是否已在实际产品中验证？",
+        "source": "step1_must_ask_questions"
+      },
+      {
+        "question": "代运营服务的定价模式和客户续约率如何？是否已实现正向现金流？",
+        "source": "step1_must_ask_questions"
+      }
+    ]
+  },
+  "tensions": [
+    {
+      "conflict": "Step1认为公司是重资产制造/集成型，但BP强调‘全链条’和‘AI平台’，估值叙事与业务实质存在错位。",
+      "position": "cautious_watch",
+      "resolution": "需验证代运营是否已产生稳定收入，以及AI能力是否独立变现。"
+    },
+    {
+      "conflict": "Step1指出客户逻辑依赖政策，但BP声称‘无人驾驶解决行业刚需’，未提供纯商业ROI案例。",
+      "position": "cautious_watch",
+      "resolution": "需获取客户采购决策中政策驱动与商业驱动的比例。"
+    }
+  ],
+  "step1_adjustment_hints": [
+    {
+      "step1_field": "company_essence.confidence",
+      "hint": "当前为high，外部验证reinforce，可维持high。",
+      "based_on": "step1_external_check中company_essence相关检查均为reinforce"
+    },
+    {
+      "step1_field": "business_structure.current_business",
+      "hint": "当前confidence为high，但外部验证needs_verification，建议降低至medium，待客户和收入数据验证。",
+      "based_on": "step1_external_check中business_structure.current_business检查为needs_verification"
+    },
+    {
+      "step1_field": "key_judgement.stance",
+      "hint": "当前为cautious_watch，外部验证reinforce，可维持。",
+      "based_on": "step1_external_check中key_judgement检查为reinforce"
+    }
+  ],
+  "bp_usage_audit": [
+    {
+      "bp_claim": "累积部署240台无人重载运输车辆，为行业第一",
+      "usage": "用于验证Step1中‘已部署240台车辆’的匹配性，未用于新结论",
+      "category": "market_position"
+    },
+    {
+      "bp_claim": "打造超过20个客户的业务场景",
+      "usage": "用于验证Step1中‘覆盖20+客户’的匹配性，未用于新结论",
+      "category": "customer_relationship"
+    },
+    {
+      "bp_claim": "代运营和技术服务在行业内首次提出且业绩领先",
+      "usage": "用于验证Step1中‘代运营未验证’的判断，未用于新结论",
+      "category": "strategic_partnership"
+    },
+    {
+      "bp_claim": "全栈软硬件系统自研，包括车、路、云、底盘等",
+      "usage": "用于验证Step1中‘全链条’包装信号的识别，未用于新结论",
+      "category": "technical_capability"
+    },
+    {
+      "bp_claim": "增材制造降本幅度可达80%",
+      "usage": "用于验证Step1中‘增材制造降本80%是否已在实际产品中验证’的疑问，未用于新结论",
+      "category": "technical_capability"
+    },
+    {
+      "bp_claim": "TransportAGI专用端到端范式、专用大模型",
+      "usage": "用于验证Step1中‘AI能力更多是研发效率工具’的判断，未用于新结论",
+      "category": "technical_capability"
+    },
+    {
+      "bp_claim": "获得包括字节跳动、浙江金控、广发信德等在内的6轮融资",
+      "usage": "用于验证Step1中融资相关背景，未用于新结论",
+      "category": "strategic_partnership"
+    },
+    {
+      "bp_claim": "习近平总书记在天津港考察调研，何贝曾主导全球首台无人集卡在天津港运营",
+      "usage": "用于验证Step1中团队背书相关判断，未用于新结论",
+      "category": "team_credibility"
+    }
+  ],
+  "meta": {
+    "knowledge_source_breakdown": {
+      "general_bucket": [
+        "tech_barrier",
+        "commercialization",
+        "team_credibility",
+        "company_essence.not_identity",
+        "business_structure.current_business",
+        "key_judgement.statement"
+      ],
+      "industry_bucket": [
+        "customer_value",
+        "expansion_story",
+        "company_essence.core_identity",
+        "business_structure.narrative_business",
+        "red_flags.flags"
+      ],
+      "llm_common_sense": []
+    }
+  }
+}

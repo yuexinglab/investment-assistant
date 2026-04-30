@@ -1,0 +1,548 @@
+You are in Step2: External Industry/Investment Logic Validation Layer.
+
+
+Your task:
+NOT to analyze the project, but to use the "how should this type of project be evaluated" external perspective
+to validate whether Step1's judgments are sound.
+
+[Core Constraints]
+- BP text = unverified company claims, NOT facts
+- Your judgment basis = industry common sense, investment logic, tech commercialization patterns
+- Step1 = your INPUT, not your OUTPUT
+- You CANNOT override Step1, only reinforce / weaken / needs_verification
+
+[Hard Constraint - NO New Conclusions]
+- PROHIBITED: output any new "company essence judgment"
+- PROHIBITED: write "this company is X" or "essentially belongs to X"
+- All judgments MUST cite: specific Step1 fields, or external logic
+- Your output is "validation result", NOT "new company analysis"
+
+[BP Usage Rules]
+BP text = unverified company claims, NOT facts.
+BP text can ONLY be used for: verifying if Step1 claims match BP.
+PROHIBITED: re-analyze project, support new conclusions.
+
+[Forbidden BP Claims (MUST track in bp_usage_audit)]
+- Company self-claimed titles (e.g., "full industry chain", "chip manufacturer", "platform")
+- Customer relationships ("already partnered with XX leading customer")
+- Technical capabilities ("achieved XX technical breakthrough")
+- Market position ("only one in China", "industry leader")
+- Strategic partnerships ("established strategic partnership with XX")
+
+[Bucket Usage Rules]
+Buckets are NOT "reference knowledge" but "mandatory checklist".
+For each bucket_key, you MUST check:
+1. Whether key validation points are satisfied
+2. Whether common failure modes are triggered
+3. Whether common packaging signals appear
+
+Write results to external_investment_logic and step1_external_check.
+
+[knowledge_source Labeling Requirement]
+Each external_investment_logic and step1_external_check.checks MUST label knowledge source:
+- general_bucket: from general bucket (general.py)
+- industry_bucket: from industry enhancement bucket (industries/*.py)
+- llm_common_sense: only from LLM general knowledge
+
+============================================
+[Input 1: Step1 v1.2.1 Output]
+============================================
+
+[Step1 v1.2.1 Output]
+
+company_essence:
+{
+  "core_identity": "本质是吉林大学靳立强教授团队的底盘技术研发型初创公司，以自动轮智行底盘为核心技术，当前主要收入来自技术开发和定制底盘项目",
+  "not_identity": [
+    "不是已量产的底盘供应商",
+    "不是全产业链平台型企业",
+    "不是已商业化的自动轮模块产品公司"
+  ],
+  "why_not": "BP中未披露任何量产交付记录或规模化收入，所有业务描述均为技术开发、定制底盘和专利授权，且市场预测基于Frost&Sullivan的远期报告，缺乏当前商业化验证",
+  "confidence": "high"
+}
+
+business_structure:
+{
+  "current_business": "技术开发服务（整车控制技术开发、定制底盘开发）、自动轮总成及部件总成销售、专利授权",
+  "narrative_business": "自动轮智行底盘模块的大规模量产供应，覆盖商用车、乘用车、微车平台，以及基于自动轮的自行走可重构技术生态"
+}
+
+key_judgement:
+{
+  "statement": "该项目技术有亮点（自动轮智行底盘），但商业化处于极早期，收入来源不清晰，客户合作多为意向而非合同，估值叙事严重超前于现实",
+  "reasoning": "BP强调技术突破和专利布局，但未提供任何收入数据、量产计划或客户签约证据；市场预测基于Frost&Sullivan的远期报告，且渗透率假设过于乐观；团队背景（吉林大学教授）是双刃剑，可能带来技术深度但缺乏商业化经验",
+  "stance": "cautious_watch"
+}
+
+red_flags:
+{
+  "flags": [
+    "收入数据完全缺失，客户合作仅列出名称未披露合同或收入，存在'假好项目'红旗风险",
+    "市场预测基于2030年远期假设，且渗透率计算（1%）缺乏现实依据，估值叙事严重超前",
+    "创始人靳立强教授为吉林大学在职教授，公司与其关系未明确（全职/顾问/专利排他性），存在知识产权归属和利益冲突风险"
+  ]
+}
+
+must_ask_questions:
+{
+  "questions": [
+    "公司当前的实际收入是多少？来自哪些客户？是否有已签约的合同或订单？",
+    "靳立强教授与公司的关系是全职CEO还是兼职顾问？吉林大学的专利是否已排他性授权给公司？",
+    "自动轮智行底盘是否已有量产客户？预计何时实现规模化交付？",
+    "客户名单中的北汽、华为等是否已签署正式合同？合作模式是技术开发还是产品采购？",
+    "公司目前的现金流状况如何？是否需要外部融资来支撑研发和运营？"
+  ]
+}
+
+============================================
+[Input 2: Project Structure Summary]
+============================================
+
+[Project Structure Summary]
+
+Industry: 商用车/重卡, AI应用, 新能源
+
+Business Lines:
+[
+  {
+    "name": "无人重载车辆/无人集卡",
+    "role": "current_business",
+    "status": "核心产品/已落地业务",
+    "revenue_status": "可能已有设备/整车/硬件收入，具体金额待确认",
+    "evidence": "命中关键词：商用车",
+    "confidence": "low"
+  },
+  {
+    "name": "项目制交付/场景解决方案",
+    "role": "current_business",
+    "status": "项目制落地/场景交付",
+    "revenue_status": "项目收入和毛利待确认",
+    "evidence": "命中关键词：项目",
+    "confidence": "low"
+  },
+  {
+    "name": "自动驾驶系统/云端调度平台",
+    "role": "supporting_capability",
+    "status": "支撑主业务的技术/平台能力",
+    "revenue_status": "可能作为技术服务或软件服务收费，需确认",
+    "evidence": "命中关键词：控制",
+    "confidence": "low"
+  },
+  {
+    "name": "AI研发平台",
+    "role": "supporting_capability",
+    "status": "研发工具/效率工具",
+    "revenue_status": "是否对外收费待确认",
+    "evidence": "命中关键词：AI、预测、人工智能、研发、筛选",
+    "confidence": "high"
+  },
+  {
+    "name": "新能源材料/回收业务",
+    "role": "valuation_story",
+    "status": "远期故事/待验证业务",
+    "revenue_status": "是否已有收入待确认",
+    "evidence": "命中关键词：电池、新能源、锂电、材料、回收",
+    "confidence": "high"
+  }
+]
+
+Business Model Hypotheses:
+[
+  {
+    "bucket_key": "project_delivery",
+    "bucket_name": "项目制交付型",
+    "role": "secondary",
+    "current_or_future": "current",
+    "confidence": "medium",
+    "evidence": "命中关键词：项目、定制",
+    "why_it_matters": "如果收入依赖一个个项目交付，则需要重点验证标准化和毛利稳定性。"
+  },
+  {
+    "bucket_key": "data_ai_model",
+    "bucket_name": "数据/AI模型驱动型",
+    "role": "secondary",
+    "current_or_future": "narrative",
+    "confidence": "medium",
+    "evidence": "命中关键词：AI、预测",
+    "why_it_matters": "如果AI只是内部效率工具，则不应按AI平台公司估值；如果形成数据闭环，才可能构成壁垒。"
+  },
+  {
+    "bucket_key": "hardtech_commercialization",
+    "bucket_name": "硬科技商业化型",
+    "role": "secondary",
+    "current_or_future": "mixed",
+    "confidence": "medium",
+    "evidence": "命中关键词：技术、专利、量产",
+    "why_it_matters": "硬科技项目重点不是技术先进，而是能否稳定量产并被真实客户持续采购。"
+  },
+  {
+    "bucket_key": "policy_driven",
+    "bucket_name": "政策驱动型",
+    "role": "risk",
+    "current_or_future": "mixed",
+    "confidence": "low",
+    "evidence": "命中关键词：政策",
+    "why_it_matters": "如果需求主要来自政策/补贴/示范项目，需验证政策退坡后的商业可持续性。"
+  },
+  {
+    "bucket_key": "team_credibility_story",
+    "bucket_name": "团队/背书叙事型",
+    "role": "risk",
+    "current_or_future": "narrative",
+    "confidence": "low",
+    "evidence": "命中关键词：教授",
+    "why_it_matters": "团队/背书需要验证是否转化为排他资源、成果转化或商业化能力。"
+  }
+]
+
+Risk Buckets:
+[
+  {
+    "bucket_key": "project_delivery",
+    "bucket_name": "项目制交付型",
+    "risk_role": "risk",
+    "confidence": "low",
+    "evidence": "命中关键词：定制",
+    "why_it_matters": "如果每个项目都需要定制，规模化后交付和毛利可能承压。"
+  },
+  {
+    "bucket_key": "policy_driven",
+    "bucket_name": "政策驱动型",
+    "risk_role": "risk",
+    "confidence": "low",
+    "evidence": "命中关键词：政策",
+    "why_it_matters": "如果需求由政策驱动，需要验证政策退坡后客户是否仍会付费。"
+  },
+  {
+    "bucket_key": "hardtech_commercialization",
+    "bucket_name": "硬科技商业化型",
+    "risk_role": "risk",
+    "confidence": "low",
+    "evidence": "命中关键词：量产",
+    "why_it_matters": "硬科技项目需要验证关键供应链、量产良率和工程化能力。"
+  },
+  {
+    "bucket_key": "team_credibility_story",
+    "bucket_name": "团队/背书叙事型",
+    "risk_role": "risk",
+    "confidence": "low",
+    "evidence": "命中关键词：教授",
+    "why_it_matters": "背书需要验证是否真正转化为公司壁垒。"
+  }
+]
+
+============================================
+[Input 3: Bucket/Industry Knowhow (Mandatory Checklist)]
+============================================
+[General Investment Framework Buckets]
+
+[bucket_key: tech_barrier]
+label: 技术/壁垒是否成立
+description: 判断技术是不是行业通用、是否形成真实壁垒、是否容易被复制，AI/平台是否只是工具包装。
+Required checks:
+  - 这项技术是行业通用技术、工程常规，还是公司独有核心能力？
+  - 技术优势是概念优势、实验优势，还是已落入真实产品与客户验证？
+  - 如果去掉公司自述，这项技术是否仍然成立为壁垒？
+  - AI/算法/平台在这里是核心护城河，还是效率工具？
+
+[bucket_key: customer_value]
+label: 客户为什么付钱
+description: 判断客户真实购买动机、付费点与替代动机，不看技术炫耀，只看客户价值。
+Required checks:
+  - 客户到底为哪个具体价值付钱：性能、成本、合规、效率还是卖点？
+  - 该价值是可有可无，还是会影响客户收入、产品力或生产稳定性？
+  - 客户更换现有方案的动力强不强？
+  - 公司讲的技术指标，是否真的对应客户订单与采购动作？
+
+[bucket_key: commercialization]
+label: 商业化路径是否成立
+description: 判断从实验室到客户验证到交付放量的路径是否真实、节奏是否合理。
+Required checks:
+  - 当前处于什么阶段：概念、实验室、中试、客户验证、小批量、量产？
+  - 真正卡住商业化的瓶颈是什么？
+  - 交付、良率、验证周期、供应链是否构成增长限制？
+  - 增长来自新客户、新产品，还是老客户放量？
+
+[bucket_key: expansion_story]
+label: 扩张/故事是否合理
+description: 判断多行业、多场景、第二曲线等扩张叙事是否真实可落地，还是提前讲故事。
+Required checks:
+  - 公司当前业务底盘是否足够扎实，能够支撑新故事？
+  - 新业务是已验证增长点，还是论文、合作、概念和规划？
+  - 跨行业扩张是否会遇到完全不同的验证体系、法规、供应链和销售逻辑？
+  - 历史上该行业类似扩张通常成功还是失败？
+
+[bucket_key: team_credibility]
+label: 团队/背书是否被高估
+description: 判断诺奖、院士、博士、名校、顾问等背书是否真的转化为商业化能力，而不是人设包装。
+Required checks:
+  - 团队强项更偏科研、工程、销售还是管理？
+  - 背书是否转化为排他性技术、实际产品或客户资源？
+  - 高学历/强学术是否被误当成可规模化商业能力？
+  - 团队能力与当前阶段是否匹配，而不是只看履历好不好看？
+
+============================================
+[Input 4: BP Text (Strictly Limited)]
+============================================
+自动轮智行底盘产业化先行者
+汽车横行时代 自动轮智行底盘
+AUTOMATIC WHEEL
+INTELLIGENT CHASSIS
+
+市场前景
+竞争力分析
+MARKET
+PROSPECT
+
+40 ， 30 3 0
+减少减量对比：减少 %以上物料 减重 %，降低成本 %以上。
+现
+有
+方
+案
+EXISTING
+SCHEME
+自
+动
+轮
+AUTOMATIC
+WHEEL
+市场前景—竞争力分析
+103Kg
+电驱动系统 制动系统 转向系统
+72Kg
+轮毂电机 轮毂电机
+36Kg 36Kg
+等同于轮毂电机系统 线控制动 线控独立转向
+*本PPT资料版权属吉林大学靳立强教授所有，未经授权禁止传播
+
+180.00
+160.00
+140.00
+120.00
+100.00
+80.00
+60.00
+40.00
+20.00
+0.00
+2024 2025 2026 2027 2028 2029 2030
+）辆万（模规场市
+低速作业车辆市场预测
+120.00
+100.00
+80.00
+60.00
+40.00
+20.00
+0.00
+2024 2025 2026 2027 2028 2029 2030
+）辆万（模规场市
+市场前景—行业分析
+·政策导向明确、终端需求升级和智能化驱动，线控底盘发展提速。
+·面临成本与安全的巨大挑战
+美国Frost&Sullivan公司在2021年推出一份关于电动角模块的报告
+《Global Electric Corner Module Market Growth Opportunities》，
+预测2028年会实现量产，2030年产值约为116.4亿美元。
+以1%市场渗透率计算初期有5万辆规模，
+乘用车市场预测
+以未来5年年增长率100%计算形成600万套
+自动轮模块需求，市值400亿以上。
+以2027年1%渗透率计算每年有近12万辆需求，
+按100%增长计算，至2030年有100万辆近400万
+套自动轮模块需求，市值2千亿以上。
+*本PPT资料版权属吉林大学靳立强教授所有，未经授权禁止传播
+
+市场前景—产品亮点
+超级稳定性 超高机动性
+超低成本 极简底盘系统
+超级节能 个性化需求
+超大电池 超大空间
+超级安全性
+*本PPT资料版权属吉林大学靳立强教授所有，未经授权禁止传播
+
+技术展示
+智行红旗平台
+TECHNOLOGY
+DEMONSTRATION
+
+创始人—靳立强教授介绍
+*本PPT资料版权属吉林大学靳立强教授所有，未经授权禁止传播
+
+技术展示—自动轮智行底盘介绍
+技术突破
+TECHNOLOGICAL BREAKTHROUGH
+*本PPT资料版权属吉林大学靳立强教授所有，未经授权禁止传播
+
+技术展示—自动轮智行底盘介绍
+技术突破
+变道 90°转向
+TECHNOLOGICAL BREAKTHROUGH
+40 ， 40 ，
+减少部件 % 节能 %
+30
+减重 %
+50 ，
+操控性提升 % 原地调头 最小转弯半径
+30
+降低成本 %
+° °
+90 — 35
+自动轮可实现 转角范围
+*本PPT资料版权属吉林大学靳立强教授所有，未经授权禁止传播
+
+高价值专利产品—专利布局
+一体式行星滚轴EMB
+（专利）
+主销转向器
+*本PPT资料版权属吉林大学靳立强教授所有，未经授权禁止传播
+
+项目情况
+行业认可
+STATUS OF
+THE PROJECT
+
+项目情况—行业认可
+汽车工程学会举办的AITC2024
+最具投资价值项目
+The most valuable investment
+project
+中国汽车产业高价值专利培育大赛
+一等奖
+First prize
+2025年首届吉林省创新创意大赛
+一等奖
+First prize
+*本PPT资料版权属吉林大学靳立强教授所有，未经授权禁止传播
+
+项目情况—公司业务与产品
+底盘域多系统
+线控总成 一体化控制
+控制器、软硬件系统技术服务
+自动轮 电驱动底盘控制
+模块产品 开发咨询
+自动轮 底盘电控系统
+智行底盘 标定匹配测试
+智行业务模块 智控业务模块
+长春市麦迪克智行汽车科技有限公司
+Changchun Madick Zhixing Automobile Technology Co., LTD *本PPT资料版权属吉林大学靳立强教授所有，未经授权禁止传播
+
+项目情况—公司业务与产品
+商用车产品 乘用车产品 微车平台产品
+*本PPT资料版权属吉林大学靳立强教授所有，未经授权禁止传播
+
+项目情况—产品系列
+凌 波 智 行 底 盘 金 刚 智 行 底 盘
+*本PPT资料版权属吉林大学靳立强教授所有，未经授权禁止传播
+
+项目情况—产品系列
+梅花底盘 旋风底盘 龙门移步底盘
+720mmx1000mm 1100mmx4000mm 1100mmx4000mm
+总重<170kg 总重<1800kg 总重<4000kg
+*本PPT资料版权属吉林大学靳立强教授所有，未经授权禁止传播
+
+经营状况—业务进展
+品牌营销：
+BRAND MARKETING
+· 媒体 · 展会 · 行业
+· 靳立强教授
+市场开拓：
+MARKET DEVELOPMENT
+·北汽集团、华为汽车、 广汽（祺迹）、
+金龙……
+· LOTUS、和正、精超力……
+· 军工领域，移动靶车、后轮转向、
+全轮转向……
+· 无人车（各头部企业）
+合作模式：
+PROFIT MODEL
+· 整车控制技术开发
+· 定制底盘开发
+· 自动轮总成&部件总成
+· 专利授权
+*本PPT资料版权属吉林大学靳立强教授所有，未经授权禁止传播
+
+未来的电动汽车会成为人类生产和生活的基础设施，现有“板结化”的底盘架构终将被淘汰。
+以自动轮为基础的自行走可重构技术，将完美实现人类梦想的“进化”。
+麦迪克智行的初心和使命
+让安全行驶成为车的智慧 让汽车驾驶成为一件简单的事 给全球汽车植入中国基因
+[Usage constraint: only for verifying Step1 claims, NOT for reasoning]
+============================================
+[Required JSON Output Format]
+============================================
+
+MUST output complete JSON with ALL these fields:
+
+{
+  "schema_version": "step2_external_check_v2_2_1",
+  "external_investment_logic": [
+    {
+      "related_to_step1": "company_essence | revenue_logic | customer_logic | red_flags | key_judgement | business_structure",
+      "bucket_key": "tech_barrier | customer_value | commercialization | expansion_story | team_credibility",
+      "knowledge_source": "general_bucket | industry_bucket | llm_common_sense",
+      "logic_statement": "For Step1 field XXX, external logic is YYY...",
+      "implication": "support | caution | contradict",
+      "why_it_matters": "Why this matters for investment decision"
+    }
+  ],
+  "step1_external_check": {
+    "checks": [
+      {
+        "step1_field": "company_essence | revenue_logic | ...",
+        "step1_claim": "Step1 claim content",
+        "bucket_key": "tech_barrier | ...",
+        "knowledge_source": "general_bucket | industry_bucket | llm_common_sense",
+        "external_logic": "External logic for this claim",
+        "verdict": "support | caution | contradict",
+        "reasoning": "Reasoning",
+        "evidence_source": "Industry knowledge | Investment logic | Tech commercialization",
+        "confidence": "high | medium | low"
+      }
+    ],
+    "summary": {
+      "support_count": 0,
+      "caution_count": 0,
+      "contradict_count": 0
+    }
+  },
+  "information_resolution": {
+    "publicly_resolvable": [],
+    "founder_needed": [],
+    "decision_blockers": []
+  },
+  "tensions": [],
+  "step1_adjustment_hints": {
+    "reinforce": [],
+    "weaken": [],
+    "needs_verification": []
+  },
+  "bp_usage_audit": {
+    "bp_used_for": "claim_verification_only | not_used",
+    "bp_claims_checked": [],
+    "bp_claims_not_used_as_fact": [],
+    "violations": [],
+    "bp_text_tokens_used": 0,
+    "is_clean": true
+  },
+  "meta": {
+    "buckets_analyzed": [],
+    "industry_tags_used": [],
+    "bucket_as_checklist": true,
+    "knowledge_source_breakdown": {
+      "general_bucket": 0,
+      "industry_bucket": 0,
+      "llm_common_sense": 0
+    },
+    "knowledge_source_details": {
+      "general_bucket": [],
+      "industry_bucket": [],
+      "llm_common_sense": []
+    },
+    "external_logic_sources": ["Industry knowledge", "Investment logic", "Tech commercialization"],
+    "new_conclusion_generated": false,
+    "step1_fields_covered": []
+  }
+}
+
+JSON Output:

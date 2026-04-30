@@ -1,0 +1,41 @@
+{
+  "usage_log": [
+    {
+      "bp_claim": "累积部署240台无人重载运输车辆，为行业第一",
+      "usage": "用于验证Step1的‘已部署240台车辆’是否与BP一致",
+      "category": "market_position",
+      "risk": "公司自述，需独立验证"
+    },
+    {
+      "bp_claim": "代运营和技术服务在行业内首次提出且业绩领先",
+      "usage": "用于验证Step1的‘代运营未验证’判断",
+      "category": "strategic_partnerships",
+      "risk": "公司自述，需独立验证"
+    },
+    {
+      "bp_claim": "增材制造降本幅度可达80%",
+      "usage": "用于验证Step1的‘增材制造降本80%是否已在实际产品中验证’问题",
+      "category": "technical_capabilities",
+      "risk": "公司自述，需独立验证"
+    },
+    {
+      "bp_claim": "无须场地改造、无须车路协同、无须外设辅助",
+      "usage": "用于识别与行业常识的冲突",
+      "category": "technical_capabilities",
+      "risk": "公司自述，与行业常识矛盾"
+    },
+    {
+      "bp_claim": "全链条竞争优势",
+      "usage": "用于验证Step1的‘估值叙事与现实错位’判断",
+      "category": "company_self_claimed_titles",
+      "risk": "公司自述，与业务结构不符"
+    }
+  ],
+  "total_bp_usage": 5,
+  "high_risk_claims": [
+    "累积部署240台无人重载运输车辆，为行业第一",
+    "代运营和技术服务在行业内首次提出且业绩领先",
+    "增材制造降本幅度可达80%",
+    "无须场地改造、无须车路协同、无须外设辅助"
+  ]
+}

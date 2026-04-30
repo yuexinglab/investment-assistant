@@ -165,10 +165,25 @@ primary_type 可选值：
 
 【5. 必问问题（must_ask_questions）】
 
-严格要求：
-- 必须来自 Step4 gaps（含 red_flag_question）
-- 不允许重新发明问题
+来源规则（必须遵守）：
+- 来自 Step4 internal.gaps → source = "internal_gap"，source_detail = gap_id
+- 来自 Step4 scan_questions → source = "scan_question"，source_detail = "模块名.opening/deepening/trap"
+- 合并了两个来源 → source = "merged"，source_detail = "gap_id + 模块名"
+- 仅改写但保留原意 → source = "rewritten_from_step4"，source_detail = "原始字段名"
+
+内容规则：
+- 必须优先来自 Step4 internal.gaps 中的 opening / deepen / trap / red_flag_question
+- 同时必须参考 Step4 scan_questions 中的 opening_question / deepening_questions / trap_questions
+- 不允许脱离 Step4 重新发明问题
 - 每个问题必须说明"验证目的"
+- 如果 internal.gaps 和 scan_questions 指向同一个问题，应合并成一个更清晰的问题
+- 如果二者冲突，优先选择最能改变 meet / pass / maybe 决策的问题
+
+输出要求：
+- 至少包含 3 个问题，最多 8 个问题
+- 问题要按优先级排序
+- 每个问题都要能验证一个关键投资判断，而不是普通信息补全
+- 每个问题必须标注 source 和 source_detail，不得省略
 
 ---
 
@@ -178,6 +193,25 @@ primary_type 可选值：
 - primary_type：公司最核心的投资逻辑（如 制造 / 项目制 / 运营 / AI平台）
 - secondary_types：次要逻辑
 - risk_type：主要风险类型（如 重资产 / 非标项目 / 政策驱动）
+
+【重要：不得写死未验证判断】
+
+这是 1.0 会前判断阶段。核心商业模式、公司类型、估值逻辑尚未经过尽调验证。
+如果 primary_type 仍有多种可能，不得强行单选，必须写成：
+
+"待验证：A型 vs B型"
+
+示例：
+- ❌ "primary_type": "重资产运营型"
+- ✅ "primary_type": "待验证：重资产运营型 vs 轻资产平台型"
+
+- ❌ "primary_type": "制造/产品销售型"
+- ✅ "primary_type": "待验证：制造/产品销售型 vs 项目制交付型"
+
+判断写死的条件（满足任意一条才允许写死）：
+1. BP 中已有明确的收入分类数据，不同业务线可以清晰区分
+2. 历史上已有 3 家以上同类公司的明确分类可参照
+3. 核心技术/产品已被大客户验证且商业模式完全清晰
 
 ---
 
@@ -242,8 +276,10 @@ Step4（决策缺口 & 深挖路径）:
 
   "must_ask_questions": [
     {{
-      "question": "问题本身（必须来自 Step4 gaps，含 red_flag_question）",
-      "purpose": "验证目的"
+      "question": "问题本身（必须来自 Step4 internal.gaps 或 scan_questions）",
+      "purpose": "验证目的",
+      "source": "internal_gap | scan_question | merged | rewritten_from_step4",
+      "source_detail": "来源详情：internal_gap时写gap_id；scan_question时写模块名+字段；merged时写明两个来源；rewritten_from_step4时写原始字段名"
     }}
   ],
 
@@ -262,7 +298,7 @@ Step4（决策缺口 & 深挖路径）:
 2. 不要生成泛泛而谈内容
 3. 一切围绕"是否继续推进"这个决策
 4. 如果信息不足，可以降低 confidence，但不能胡乱补充
-5. must_ask_questions 中的 question 字段必须直接来自 Step4 internal gaps 中的 opening / deepen / trap / red_flag_question 之一，不允许凭空发明
+5. must_ask_questions 的 source/source_detail 必须准确填写；禁止凭空新增 Step4 没有覆盖的问题；禁止在 source_detail 中写"未知"或留空。
 6. reasons_to_meet 和 reasons_to_pass 必须和 Step3B 的核心矛盾强相关，不是罗列一般性优缺点
 """
 

@@ -1466,7 +1466,7 @@ def normalize_first_impression():
     """
     接收用户的自由书写笔记，AI 自动识别并填充各结构化字段。
     """
-    from services.deepseek_service import deepseek_client
+    from services.deepseek_service import call_deepseek
 
     payload = request.get_json(force=True)
     project_id = payload.get("project_id")
@@ -1483,16 +1483,24 @@ def normalize_first_impression():
     company_name = meta.get("company_name", "未知公司")
 
     # 构建 prompt
-    prompt = _build_normalize_intuition_prompt(company_name, raw_note)
+    system_prompt = "你是一个专业的投资分析师。你会严格以 JSON 格式输出，不要包含任何其他文字。"
+    user_prompt = _build_normalize_intuition_prompt(company_name, raw_note)
 
     try:
-        result = deepseek_client.chat(
-            messages=[
-                {"role": "user", "content": prompt}
-            ],
-            temperature=0.3,
-        )
-        structured = json.loads(result["content"])
+        content = call_deepseek(system_prompt, user_prompt, temperature=0.3, max_tokens=4096)
+        print(f"[normalize_first_impression] raw response: {content[:200]}...", flush=True)
+
+        # 清理可能的 markdown 代码块
+        content = content.strip()
+        if content.startswith("```"):
+            # 去掉 ```json 或 ``` 等前缀和 ``` 后缀
+            lines = content.split("\n")
+            content = "\n".join(lines[1:])  # 去掉第一行
+            if content.endswith("```"):
+                content = content[:-3]
+        content = content.strip()
+
+        structured = json.loads(content)
 
         return jsonify({
             "status": "ok",
@@ -1512,7 +1520,8 @@ def normalize_first_impression():
                 "must_ask_questions":  structured.get("must_ask_questions", []),
             }
         })
-    except json.JSONDecodeError:
+    except json.JSONDecodeError as e:
+        print(f"[normalize_first_impression] JSON parse error: {e}, content: {content[:500] if 'content' in dir() else 'N/A'}", flush=True)
         return jsonify({"error": "AI 返回格式错误，请重试"}), 500
     except Exception as e:
         print(f"[normalize_first_impression] error: {e}", flush=True)

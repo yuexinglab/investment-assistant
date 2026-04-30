@@ -1,0 +1,16 @@
+{
+  "bp_used_for": "claim_verification_only",
+  "bp_claims_checked": [
+    "BP claims 'full industry chain system solution provider' - checked against Step1's red flag",
+    "BP claims 'IGBT chip/SiC chip design' - checked against Step1's company essence",
+    "BP claims '200k units installed' - checked against Step1's revenue logic"
+  ],
+  "bp_claims_not_used_as_fact": [
+    "BP claims 'full industry chain' - not used as fact, only as a claim to verify Step1",
+    "BP claims 'chip design' - not used as fact, only as a claim to verify Step1",
+    "BP claims '200k units installed' - not used as fact, only as a claim to verify Step1"
+  ],
+  "violations": [],
+  "bp_text_tokens_used": 150,
+  "is_clean": true
+}

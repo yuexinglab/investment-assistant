@@ -1,0 +1,217 @@
+{
+  "schema_version": "step2_external_check_v2_2_1",
+  "external_investment_logic": [
+    {
+      "related_to_step1": "company_essence",
+      "bucket_key": "tech_barrier",
+      "knowledge_source": "general_bucket",
+      "logic_statement": "For Step1 company_essence claim that the company is a chassis technology R&D startup with automatic wheel smart chassis as core tech, external logic from tech_barrier bucket: technology advantage must be validated by real products and customer adoption, not just concept or lab results. The BP shows technical specs (e.g., 40% fewer parts, 30% weight reduction) but no evidence of production or customer use.",
+      "implication": "support",
+      "why_it_matters": "Without product validation, the technology barrier remains unproven, increasing investment risk."
+    },
+    {
+      "related_to_step1": "key_judgement",
+      "bucket_key": "commercialization",
+      "knowledge_source": "general_bucket",
+      "logic_statement": "For Step1 key_judgement that commercialization is very early, external logic from commercialization bucket: the stage is concept/lab to customer validation; the bottleneck is likely manufacturing scale-up and customer qualification. BP mentions no revenue data or signed contracts, consistent with early stage.",
+      "implication": "support",
+      "why_it_matters": "Early stage means high uncertainty and long time to revenue, affecting valuation and exit timeline."
+    },
+    {
+      "related_to_step1": "red_flags",
+      "bucket_key": "expansion_story",
+      "knowledge_source": "general_bucket",
+      "logic_statement": "For Step1 red flag about market forecast based on 2030 assumptions, external logic from expansion_story bucket: expansion narratives must be grounded in current business. The BP's market projections (1% penetration, 100% annual growth) are typical of early-stage hype and lack realistic basis.",
+      "implication": "support",
+      "why_it_matters": "Unrealistic projections can mislead investors about the company's true growth potential and risk profile."
+    },
+    {
+      "related_to_step1": "must_ask_questions",
+      "bucket_key": "team_credibility",
+      "knowledge_source": "general_bucket",
+      "logic_statement": "For Step1 question about founder relationship with Jilin University, external logic from team_credibility bucket: academic founders often have unclear IP ownership and part-time commitment, which can hinder commercialization. BP shows 'copyright belongs to Professor Jin' indicating potential IP issues.",
+      "implication": "support",
+      "why_it_matters": "IP and founder commitment are critical for long-term value creation and risk mitigation."
+    },
+    {
+      "related_to_step1": "business_structure",
+      "bucket_key": "customer_value",
+      "knowledge_source": "general_bucket",
+      "logic_statement": "For Step1 business_structure showing current business as tech development services, external logic from customer_value bucket: customers pay for specific value (performance, cost, compliance). The BP claims cost reduction and weight savings, but without customer orders, the value proposition is unvalidated.",
+      "implication": "support",
+      "why_it_matters": "Unvalidated value proposition increases risk that customers may not adopt the technology."
+    },
+    {
+      "related_to_step1": "red_flags",
+      "bucket_key": "commercialization",
+      "knowledge_source": "industry_bucket",
+      "logic_statement": "For Step1 red flag about missing revenue data, external logic from industry_bucket (hardtech_commercialization): hardtech startups typically require long validation cycles with automotive OEMs (2-5 years). BP lists potential customers (BAIC, Huawei) but no contracts, consistent with early stage.",
+      "implication": "support",
+      "why_it_matters": "Long sales cycles increase cash burn and require significant funding before revenue materializes."
+    }
+  ],
+  "step1_external_check": {
+    "checks": [
+      {
+        "step1_field": "company_essence",
+        "step1_claim": "核心是吉林大学靳立强教授团队的底盘技术研发型初创公司",
+        "bucket_key": "tech_barrier",
+        "knowledge_source": "general_bucket",
+        "external_logic": "Tech barrier must be validated by real products and customer adoption. BP shows technical specs but no production or customer use.",
+        "verdict": "support",
+        "reasoning": "Step1 correctly identifies the company as R&D stage; external logic confirms lack of product validation.",
+        "evidence_source": "Industry knowledge",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "key_judgement",
+        "step1_claim": "商业化处于极早期，收入来源不清晰",
+        "bucket_key": "commercialization",
+        "knowledge_source": "general_bucket",
+        "external_logic": "Stage is concept/lab to customer validation; bottleneck is manufacturing scale-up. BP has no revenue data or signed contracts.",
+        "verdict": "support",
+        "reasoning": "External logic reinforces Step1's assessment of early commercialization stage.",
+        "evidence_source": "Investment logic",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "red_flags",
+        "step1_claim": "市场预测基于2030年远期假设，估值叙事严重超前",
+        "bucket_key": "expansion_story",
+        "knowledge_source": "general_bucket",
+        "external_logic": "Expansion narratives must be grounded in current business. BP's projections (1% penetration, 100% growth) are typical hype.",
+        "verdict": "support",
+        "reasoning": "External logic confirms that such projections are unrealistic and a red flag.",
+        "evidence_source": "Investment logic",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "must_ask_questions",
+        "step1_claim": "靳立强教授与公司的关系是全职CEO还是兼职顾问？",
+        "bucket_key": "team_credibility",
+        "knowledge_source": "general_bucket",
+        "external_logic": "Academic founders often have unclear IP ownership and part-time commitment. BP shows 'copyright belongs to Professor Jin'.",
+        "verdict": "support",
+        "reasoning": "External logic supports the need to clarify founder commitment and IP ownership.",
+        "evidence_source": "Tech commercialization",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "business_structure",
+        "step1_claim": "当前业务是技术开发服务、定制底盘开发、自动轮总成销售、专利授权",
+        "bucket_key": "customer_value",
+        "knowledge_source": "general_bucket",
+        "external_logic": "Customers pay for specific value (performance, cost, compliance). BP claims cost reduction but no customer orders.",
+        "verdict": "support",
+        "reasoning": "External logic confirms that without customer orders, the value proposition is unvalidated.",
+        "evidence_source": "Industry knowledge",
+        "confidence": "medium"
+      },
+      {
+        "step1_field": "red_flags",
+        "step1_claim": "收入数据完全缺失，客户合作仅列出名称未披露合同或收入",
+        "bucket_key": "commercialization",
+        "knowledge_source": "industry_bucket",
+        "external_logic": "Hardtech startups require long validation cycles with automotive OEMs (2-5 years). BP lists potential customers but no contracts.",
+        "verdict": "support",
+        "reasoning": "External logic reinforces that missing revenue data is a significant red flag given long sales cycles.",
+        "evidence_source": "Industry knowledge",
+        "confidence": "high"
+      }
+    ],
+    "summary": {
+      "support_count": 6,
+      "caution_count": 0,
+      "contradict_count": 0
+    }
+  },
+  "information_resolution": {
+    "publicly_resolvable": [
+      "Check if Jilin University has publicly disclosed patent licensing agreements with the company.",
+      "Search for any press releases or news about the company's partnerships with BAIC, Huawei, etc."
+    ],
+    "founder_needed": [
+      "Clarify Professor Jin's role (full-time CEO vs. part-time advisor) and IP ownership.",
+      "Request current revenue breakdown and signed customer contracts.",
+      "Ask about manufacturing plans and timeline for volume production."
+    ],
+    "decision_blockers": [
+      "Lack of revenue data and signed contracts makes it impossible to assess current business viability.",
+      "Unclear IP ownership and founder commitment could lead to future disputes."
+    ]
+  },
+  "tensions": [],
+  "step1_adjustment_hints": {
+    "reinforce": [
+      "company_essence: core identity as R&D startup is well-supported by external logic.",
+      "key_judgement: cautious stance is appropriate given early stage and lack of validation.",
+      "red_flags: all red flags are valid and should be emphasized."
+    ],
+    "weaken": [],
+    "needs_verification": [
+      "Verify if any of the listed customers (BAIC, Huawei) have signed contracts or made payments.",
+      "Verify the status of patents: are they owned by the company or licensed from Jilin University?",
+      "Verify the company's cash position and burn rate."
+    ]
+  },
+  "bp_usage_audit": {
+    "bp_used_for": "claim_verification_only",
+    "bp_claims_checked": [
+      "BP claims technical specs (40% fewer parts, 30% weight reduction) - used to verify Step1's assessment of technology stage.",
+      "BP lists potential customers (BAIC, Huawei) - used to verify Step1's red flag about missing contracts.",
+      "BP shows market projections (1% penetration, 100% growth) - used to verify Step1's red flag about unrealistic forecasts.",
+      "BP states 'copyright belongs to Professor Jin' - used to verify Step1's question about IP ownership."
+    ],
+    "bp_claims_not_used_as_fact": [
+      "BP claims 'most valuable investment project' award - not used as fact, only as evidence of packaging.",
+      "BP claims 'industry leader' - not used as fact, only as a red flag."
+    ],
+    "violations": [],
+    "bp_text_tokens_used": 150,
+    "is_clean": true
+  },
+  "meta": {
+    "buckets_analyzed": [
+      "tech_barrier",
+      "customer_value",
+      "commercialization",
+      "expansion_story",
+      "team_credibility"
+    ],
+    "industry_tags_used": [
+      "hardtech_commercialization"
+    ],
+    "bucket_as_checklist": true,
+    "knowledge_source_breakdown": {
+      "general_bucket": 5,
+      "industry_bucket": 1,
+      "llm_common_sense": 0
+    },
+    "knowledge_source_details": {
+      "general_bucket": [
+        "tech_barrier: technology must be validated by real products and customer adoption",
+        "commercialization: stage is concept/lab to customer validation; bottleneck is manufacturing scale-up",
+        "expansion_story: expansion narratives must be grounded in current business",
+        "team_credibility: academic founders often have unclear IP ownership and part-time commitment",
+        "customer_value: customers pay for specific value (performance, cost, compliance)"
+      ],
+      "industry_bucket": [
+        "hardtech_commercialization: hardtech startups require long validation cycles with automotive OEMs (2-5 years)"
+      ],
+      "llm_common_sense": []
+    },
+    "external_logic_sources": [
+      "Industry knowledge",
+      "Investment logic",
+      "Tech commercialization"
+    ],
+    "new_conclusion_generated": false,
+    "step1_fields_covered": [
+      "company_essence",
+      "key_judgement",
+      "red_flags",
+      "must_ask_questions",
+      "business_structure"
+    ]
+  }
+}

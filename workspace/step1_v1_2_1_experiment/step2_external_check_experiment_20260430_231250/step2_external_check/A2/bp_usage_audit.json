@@ -1,0 +1,34 @@
+{
+  "usage_log": [
+    {
+      "bp_claim": "公司业务包括底盘域多系统线控总成、自动轮模块产品、智行底盘等",
+      "usage": "用于验证Step1中business_structure.current_business的准确性",
+      "forbidden_claim": false
+    },
+    {
+      "bp_claim": "客户包括北汽集团、华为汽车、广汽等",
+      "usage": "用于验证Step1中red_flags.flags[0]（客户合作仅列名称）",
+      "forbidden_claim": true,
+      "note": "BP声称客户关系，但未提供合同证据，Step1已指出此风险。"
+    },
+    {
+      "bp_claim": "市场预测引用Frost&Sullivan报告，2030年产值116.4亿美元，1%渗透率计算",
+      "usage": "用于验证Step1中red_flags.flags[1]（市场预测基于远期假设）",
+      "forbidden_claim": true,
+      "note": "BP引用第三方报告但渗透率计算是公司自述，Step1已指出缺乏依据。"
+    },
+    {
+      "bp_claim": "创始人靳立强教授，版权声明为'吉林大学靳立强教授所有'",
+      "usage": "用于验证Step1中red_flags.flags[2]（知识产权归属风险）",
+      "forbidden_claim": false
+    },
+    {
+      "bp_claim": "技术突破：减少部件40%、减重30%、降低成本30%等",
+      "usage": "用于验证Step1中key_judgement（技术有亮点但未验证）",
+      "forbidden_claim": true,
+      "note": "BP声称技术指标，但未提供第三方验证，Step1已指出需谨慎。"
+    }
+  ],
+  "total_bp_usage": 5,
+  "forbidden_claims_used": 3
+}

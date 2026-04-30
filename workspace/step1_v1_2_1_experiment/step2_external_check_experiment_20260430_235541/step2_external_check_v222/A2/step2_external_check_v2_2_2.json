@@ -1,0 +1,196 @@
+{
+  "schema_version": "step2_external_check_v2_2_2",
+  "external_investment_logic": [
+    {
+      "related_to_step1": "company_essence",
+      "bucket_key": "tech_barrier",
+      "knowledge_source": "general_bucket",
+      "logic_statement": "For Step1 company_essence, external logic is that a university professor-led startup with patented technology but no production track record must be evaluated on whether the technology is a true barrier or a lab prototype. The BP claims 40% fewer parts, 30% weight reduction, 30% cost reduction, but these are self-reported and not verified by third-party testing or automotive-grade certification.",
+      "implication": "caution",
+      "why_it_matters": "Without independent validation, the claimed technical advantages may not translate into real-world performance or cost savings, making the company's core identity as a technology leader unproven."
+    },
+    {
+      "related_to_step1": "key_judgement",
+      "bucket_key": "commercialization",
+      "knowledge_source": "general_bucket",
+      "logic_statement": "For Step1 key_judgement, external logic is that hard-tech automotive projects typically require 5-10 years from lab to mass production, with significant capital expenditure for tooling, testing, and certification. The BP's market forecast based on Frost & Sullivan 2021 report and 1% penetration assumption is highly speculative and ignores real-world adoption barriers.",
+      "implication": "caution",
+      "why_it_matters": "The valuation narrative is likely premature; investors should expect a long, capital-intensive path to revenue and require evidence of customer traction and production readiness."
+    },
+    {
+      "related_to_step1": "red_flags",
+      "bucket_key": "customer_value",
+      "knowledge_source": "general_bucket",
+      "logic_statement": "For Step1 red_flags, external logic is that customer names (BAIC, Huawei, GAC) listed without contracts or revenue are common packaging signals. Real customer value is demonstrated by purchase orders, not by names in a slide.",
+      "implication": "support",
+      "why_it_matters": "The absence of contractual evidence confirms Step1's red flag; the company's customer relationships are unverified and may be aspirational."
+    },
+    {
+      "related_to_step1": "business_structure",
+      "bucket_key": "expansion_story",
+      "knowledge_source": "general_bucket",
+      "logic_statement": "For Step1 business_structure, external logic is that the company's narrative business (mass production of automatic wheel modules for multiple vehicle platforms) is far ahead of its current business (technology development and custom chassis). Such expansion stories are common in early-stage hard-tech and often fail due to lack of focus and resources.",
+      "implication": "caution",
+      "why_it_matters": "Investors should discount the expansion story heavily and focus on the current business's viability and scalability."
+    },
+    {
+      "related_to_step1": "must_ask_questions",
+      "bucket_key": "team_credibility",
+      "knowledge_source": "general_bucket",
+      "logic_statement": "For Step1 must_ask_questions, external logic is that professor-led startups often face IP ownership and conflict-of-interest issues. The BP explicitly states '版权属吉林大学靳立强教授所有', indicating patents may belong to the university, not the company.",
+      "implication": "support",
+      "why_it_matters": "This reinforces Step1's concern about IP ownership; without exclusive licensing, the company's core technology may not be proprietary."
+    }
+  ],
+  "step1_external_check": {
+    "checks": [
+      {
+        "step1_field": "company_essence",
+        "step1_claim": "本质是吉林大学靳立强教授团队的底盘技术研发型初创公司，以自动轮智行底盘为核心技术，当前主要收入来自技术开发和定制底盘项目",
+        "bucket_key": "tech_barrier",
+        "knowledge_source": "general_bucket",
+        "external_logic": "Step1's cautious judgment is correct. External logic requires further verification on: engineering validation, automotive-grade certification, reliability testing, safety redundancy, supply chain verification. The BP claims 40% fewer parts, 30% weight reduction, 30% cost reduction, but these are self-reported and not verified by third-party testing or automotive-grade certification.",
+        "verdict": "caution",
+        "reasoning": "The technology claims are unverified; automotive-grade certification and reliability testing are mandatory for chassis components. Without such evidence, the technology barrier is unproven.",
+        "evidence_source": "Industry knowledge",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "key_judgement",
+        "step1_claim": "该项目技术有亮点（自动轮智行底盘），但商业化处于极早期，收入来源不清晰，客户合作多为意向而非合同，估值叙事严重超前于现实",
+        "bucket_key": "commercialization",
+        "knowledge_source": "general_bucket",
+        "external_logic": "Step1's cautious judgment is correct. External logic requires further verification on: mass production readiness, OEM qualification, supply chain industrialization, production SOP, automotive certification timeline. The BP shows no evidence of production capability or customer contracts.",
+        "verdict": "caution",
+        "reasoning": "Hard-tech automotive projects require extensive validation before mass production. The absence of any production or sales data confirms Step1's caution.",
+        "evidence_source": "Investment logic",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "red_flags",
+        "step1_claim": "收入数据完全缺失，客户合作仅列出名称未披露合同或收入，存在'假好项目'红旗风险",
+        "bucket_key": "customer_value",
+        "knowledge_source": "general_bucket",
+        "external_logic": "Step1's red flag is valid. External logic confirms that listing customer names without contracts is a common packaging signal. Real customer value is demonstrated by purchase orders, not by names in a slide.",
+        "verdict": "support",
+        "reasoning": "The BP lists BAIC, Huawei, GAC, etc., but no contracts or revenue. This is a classic red flag.",
+        "evidence_source": "Investment logic",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "red_flags",
+        "step1_claim": "市场预测基于2030年远期假设，且渗透率计算（1%）缺乏现实依据，估值叙事严重超前",
+        "bucket_key": "expansion_story",
+        "knowledge_source": "general_bucket",
+        "external_logic": "Step1's red flag is valid. External logic confirms that market forecasts based on 2030 assumptions and 1% penetration are highly speculative and ignore real-world adoption barriers.",
+        "verdict": "support",
+        "reasoning": "The BP uses Frost & Sullivan 2021 report and 1% penetration to derive huge market sizes, which is not credible for early-stage investment.",
+        "evidence_source": "Investment logic",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "must_ask_questions",
+        "step1_claim": "创始人靳立强教授为吉林大学在职教授，公司与其关系未明确（全职/顾问/专利排他性），存在知识产权归属和利益冲突风险",
+        "bucket_key": "team_credibility",
+        "knowledge_source": "general_bucket",
+        "external_logic": "Step1's concern is valid. External logic confirms that professor-led startups often face IP ownership issues. The BP states '版权属吉林大学靳立强教授所有', indicating patents may belong to the university.",
+        "verdict": "support",
+        "reasoning": "The BP explicitly attributes copyright to Jilin University and Professor Jin, not to the company. This is a significant IP risk.",
+        "evidence_source": "Industry knowledge",
+        "confidence": "high"
+      }
+    ],
+    "summary": {
+      "support_count": 3,
+      "caution_count": 2,
+      "contradict_count": 0
+    }
+  },
+  "information_resolution": {
+    "publicly_resolvable": [
+      "Check if the company has any publicly disclosed contracts or revenue (e.g., from government databases or news).",
+      "Verify if Professor Jin is listed as a full-time employee or advisor on the company's registration.",
+      "Search for any third-party testing or certification of the automatic wheel chassis."
+    ],
+    "founder_needed": [
+      "What is the current revenue breakdown? Which customers have signed contracts?",
+      "Is Professor Jin full-time CEO? What is the IP licensing agreement with Jilin University?",
+      "What is the timeline for mass production and automotive-grade certification?"
+    ],
+    "decision_blockers": [
+      "Lack of any revenue or contract evidence makes investment decision impossible without further verification.",
+      "IP ownership ambiguity is a potential deal-breaker."
+    ]
+  },
+  "tensions": [],
+  "step1_adjustment_hints": {
+    "reinforce": [
+      "red_flags: The absence of revenue and contracts is a critical red flag that should be emphasized.",
+      "must_ask_questions: The IP ownership question is even more critical given the BP's copyright notice."
+    ],
+    "weaken": [],
+    "needs_verification": [
+      "company_essence: Need to verify if the company has any third-party testing or automotive-grade certification.",
+      "key_judgement: Need to verify if any customer has placed a purchase order or signed a development contract."
+    ]
+  },
+  "bp_usage_audit": {
+    "bp_used_for": "claim_verification_only",
+    "bp_claims_checked": [
+      "BP claims 40% fewer parts, 30% weight reduction, 30% cost reduction",
+      "BP lists BAIC, Huawei, GAC as customers",
+      "BP states copyright belongs to Jilin University and Professor Jin"
+    ],
+    "bp_claims_not_used_as_fact": [
+      "BP claims of technical performance (40% fewer parts, etc.) are not used as fact.",
+      "BP customer names are not used as evidence of actual business relationships."
+    ],
+    "violations": [],
+    "bp_text_tokens_used": 150,
+    "is_clean": true
+  },
+  "meta": {
+    "buckets_analyzed": [
+      "tech_barrier",
+      "customer_value",
+      "commercialization",
+      "expansion_story",
+      "team_credibility"
+    ],
+    "industry_tags_used": [
+      "vehicle",
+      "autonomous_driving",
+      "hardtech_commercialization"
+    ],
+    "bucket_as_checklist": true,
+    "knowledge_source_breakdown": {
+      "general_bucket": 5,
+      "industry_bucket": 0,
+      "llm_common_sense": 0
+    },
+    "knowledge_source_details": {
+      "general_bucket": [
+        "tech_barrier: engineering validation, certification, reliability testing",
+        "commercialization: mass production readiness, OEM qualification, supply chain",
+        "customer_value: real customer value from purchase orders, not names",
+        "expansion_story: speculative market forecasts",
+        "team_credibility: professor IP ownership issues"
+      ],
+      "industry_bucket": [],
+      "llm_common_sense": []
+    },
+    "external_logic_sources": [
+      "Industry knowledge",
+      "Investment logic",
+      "Tech commercialization"
+    ],
+    "new_conclusion_generated": false,
+    "step1_fields_covered": [
+      "company_essence",
+      "key_judgement",
+      "red_flags",
+      "must_ask_questions",
+      "business_structure"
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "bp_used_for": "claim_verification_only",
+  "bp_claims_checked": [
+    "Full-stack self-developed software and hardware",
+    "240 vehicles deployed, 20+ customers",
+    "Self-built production lines",
+    "Operation services as a business line",
+    "Policy support and government recognition"
+  ],
+  "bp_claims_not_used_as_fact": [
+    "Company self-claimed titles: 'industry leader', 'first in industry'",
+    "Technical capabilities: 'reducing costs by 80%' via additive manufacturing",
+    "Customer relationships: 'partnered with XX leading customer' (not specific)",
+    "Market position: 'industry first' in deployment scale",
+    "Strategic partnerships: 'strategic partnership with XX' (not specific)"
+  ],
+  "violations": [],
+  "bp_text_tokens_used": 120,
+  "is_clean": true
+}

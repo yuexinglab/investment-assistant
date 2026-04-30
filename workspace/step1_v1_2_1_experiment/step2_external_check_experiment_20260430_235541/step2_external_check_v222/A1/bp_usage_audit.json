@@ -1,0 +1,16 @@
+{
+  "bp_used_for": "claim_verification_only",
+  "bp_claims_checked": [
+    "BP claims 'full chain' and 'AI platform' - used to verify Step1's 'not a platform' conclusion.",
+    "BP claims '240 vehicles deployed' - used to verify Step1's scale claim.",
+    "BP claims 'first to propose operations' - used to verify Step1's caution on operations model."
+  ],
+  "bp_claims_not_used_as_fact": [
+    "BP claims 'industry leader' and 'only one in China' - not used as fact, only as packaging signals.",
+    "BP claims '80% cost reduction' - not used as fact, only as a claim to be verified.",
+    "BP claims 'strategic partnerships' - not used as fact, only as a claim to be verified."
+  ],
+  "violations": [],
+  "bp_text_tokens_used": 0,
+  "is_clean": true
+}

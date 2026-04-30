@@ -1,0 +1,31 @@
+{
+  "usage_log": [
+    {
+      "bp_claim": "新能源汽车完整产业链系统方案产品提供商",
+      "usage": "用于验证Step1中'全产业链'声称是否与BP一致，发现BP自称为'全产业链'，但Step1指出芯片依赖外部，故用于削弱Step1判断。",
+      "forbidden_claim_type": "company_self_claimed_title"
+    },
+    {
+      "bp_claim": "IGBT芯片/IGBT/SIC模块/电机控制器及驱动系统研发生产供应商",
+      "usage": "用于验证Step1中业务结构描述，发现BP产品列表与Step1一致，支持Step1判断。",
+      "forbidden_claim_type": "company_self_claimed_title"
+    },
+    {
+      "bp_claim": "成功装车20万台套",
+      "usage": "用于验证Step1中收入与装车量不匹配的red flag，发现BP未提供收入数据，故无法解释矛盾，支持Step1。",
+      "forbidden_claim_type": "market_position"
+    },
+    {
+      "bp_claim": "核心研发人员来自比亚迪团队",
+      "usage": "用于验证Step1中团队背景，发现BP提及，但未提供商业化能力证据，故用于needs_verification。",
+      "forbidden_claim_type": "technical_capabilities"
+    },
+    {
+      "bp_claim": "股东国电投集团全方位赋能",
+      "usage": "用于验证Step1中客户集中度和政策风险，发现BP提及股东赋能，但未提供具体客户，故用于needs_verification。",
+      "forbidden_claim_type": "strategic_partnerships"
+    }
+  ],
+  "total_bp_usage_count": 5,
+  "forbidden_claims_used": 5
+}

@@ -1,0 +1,13 @@
+{
+  "valid": false,
+  "errors": [
+    "Missing required field: schema_version",
+    "external_investment_logic[0] missing related_to_step1",
+    "external_investment_logic[1] missing related_to_step1",
+    "external_investment_logic[2] missing related_to_step1",
+    "external_investment_logic[3] missing related_to_step1",
+    "external_investment_logic[4] missing related_to_step1",
+    "bp_usage_audit missing is_clean field"
+  ],
+  "checked_at": "2026-04-30T23:14:27.760472"
+}

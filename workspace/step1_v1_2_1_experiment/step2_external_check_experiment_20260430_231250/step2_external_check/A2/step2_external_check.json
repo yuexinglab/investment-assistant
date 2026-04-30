@@ -1,0 +1,223 @@
+{
+  "external_investment_logic": {
+    "tech_barrier": {
+      "validation": "weaken",
+      "reasoning": "从通用投资逻辑看，自动轮智行底盘技术（轮毂电机+线控制动+线控转向集成）在行业中存在多个竞争对手（如Protean、Elaphe、REE Automotive等），并非独有。BP中展示的专利和奖项属于早期技术验证，但未提供与竞品的量化对比或客户验证。技术优势是否真正形成壁垒，取决于量产能力和成本控制，而非概念优势。",
+      "knowledge_source": "general_bucket"
+    },
+    "customer_value": {
+      "validation": "weaken",
+      "reasoning": "BP声称客户包括北汽、华为等，但未披露任何合同或采购订单。客户价值（如减重40%、降成本30%）是公司自述，缺乏第三方验证。行业常识：汽车零部件采购决策周期长，客户更换供应商动力弱，除非有明确性能或成本优势且经过严格验证。当前阶段客户价值尚未被市场确认。",
+      "knowledge_source": "general_bucket"
+    },
+    "commercialization": {
+      "validation": "weaken",
+      "reasoning": "BP显示公司处于技术开发、定制底盘和专利授权阶段，无量产交付记录。行业常识：硬科技从实验室到量产通常需要5-10年，且面临良率、供应链、验证周期等瓶颈。公司声称的2027年1%渗透率假设过于乐观，缺乏现实依据。商业化路径不清晰。",
+      "knowledge_source": "general_bucket"
+    },
+    "expansion_story": {
+      "validation": "weaken",
+      "reasoning": "BP中提及商用车、乘用车、微车平台等多场景扩张，但当前业务底盘（技术开发服务）不足以支撑如此广泛的叙事。行业常识：跨行业扩张需要不同的法规认证、销售渠道和客户关系，历史上类似项目（如REE Automotive）也面临商业化挑战。扩张故事超前于现实。",
+      "knowledge_source": "general_bucket"
+    },
+    "team_credibility": {
+      "validation": "weaken",
+      "reasoning": "创始人靳立强教授是吉林大学在职教授，BP中未明确其与公司的全职关系或专利排他性。行业常识：教授创业常见知识产权归属风险，且学术背景不直接等同于商业化能力。团队缺乏量产和销售经验，与当前阶段（需要工程化和市场拓展）不匹配。",
+      "knowledge_source": "general_bucket"
+    }
+  },
+  "step1_external_check": {
+    "checks": [
+      {
+        "step1_field": "company_essence.core_identity",
+        "check": "Step1判断公司本质是底盘技术研发型初创公司，与BP内容一致（BP强调技术开发、定制底盘、专利授权，无量产）。外部逻辑验证：该判断合理，符合行业早期阶段特征。",
+        "result": "reinforce",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "company_essence.not_identity",
+        "check": "Step1指出公司不是已量产的底盘供应商、不是全产业链平台型企业、不是已商业化的自动轮模块产品公司。BP中未提供任何量产证据，且业务描述均为技术开发。外部逻辑验证：该判断合理，符合行业常识。",
+        "result": "reinforce",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "business_structure.current_business",
+        "check": "Step1列出当前业务为技术开发服务、自动轮总成销售、专利授权。BP中业务描述一致（底盘域多系统线控总成、技术服务、自动轮模块产品等）。外部逻辑验证：该判断准确。",
+        "result": "reinforce",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "business_structure.narrative_business",
+        "check": "Step1指出叙事业务为大规模量产供应和自行走可重构技术生态。BP中提及未来电动汽车基础设施、自行走可重构技术，但无具体量产计划。外部逻辑验证：叙事超前，符合行业常见包装模式。",
+        "result": "reinforce",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "key_judgement.statement",
+        "check": "Step1判断技术有亮点但商业化极早期，收入来源不清晰，估值叙事超前。外部逻辑验证：该判断与行业投资逻辑一致（硬科技项目需验证量产和客户）。",
+        "result": "reinforce",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "red_flags.flags[0]",
+        "check": "Step1指出收入数据缺失，客户合作仅列名称。BP中客户列表（北汽、华为等）无合同或收入证据。外部逻辑验证：这是典型'假好项目'红旗，符合行业常见风险。",
+        "result": "reinforce",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "red_flags.flags[1]",
+        "check": "Step1指出市场预测基于2030年远期假设，渗透率1%缺乏依据。BP中引用Frost&Sullivan报告，但渗透率计算是公司自述。外部逻辑验证：该判断合理，行业常见包装手法。",
+        "result": "reinforce",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "red_flags.flags[2]",
+        "check": "Step1指出创始人靳立强教授为在职教授，知识产权归属风险。BP中未明确公司关系，且版权声明为'吉林大学靳立强教授所有'。外部逻辑验证：该风险真实存在，需进一步验证。",
+        "result": "reinforce",
+        "knowledge_source": "general_bucket"
+      }
+    ]
+  },
+  "information_resolution": {
+    "questions": [
+      {
+        "question": "公司当前的实际收入是多少？来自哪些客户？是否有已签约的合同或订单？",
+        "source": "step1.must_ask_questions",
+        "priority": "high"
+      },
+      {
+        "question": "靳立强教授与公司的关系是全职CEO还是兼职顾问？吉林大学的专利是否已排他性授权给公司？",
+        "source": "step1.must_ask_questions",
+        "priority": "high"
+      },
+      {
+        "question": "自动轮智行底盘是否已有量产客户？预计何时实现规模化交付？",
+        "source": "step1.must_ask_questions",
+        "priority": "high"
+      },
+      {
+        "question": "客户名单中的北汽、华为等是否已签署正式合同？合作模式是技术开发还是产品采购？",
+        "source": "step1.must_ask_questions",
+        "priority": "high"
+      },
+      {
+        "question": "公司目前的现金流状况如何？是否需要外部融资来支撑研发和运营？",
+        "source": "step1.must_ask_questions",
+        "priority": "medium"
+      }
+    ]
+  },
+  "tensions": [
+    {
+      "tension": "Step1判断公司处于极早期，但项目结构摘要中提及'无人重载车辆/无人集卡'为已落地业务，存在矛盾。",
+      "conflict_with": "step1.key_judgement.stance",
+      "resolution": "needs_verification",
+      "note": "项目结构摘要基于关键词匹配，但Step1未确认该业务有收入。需验证无人重载车辆是否实际产生收入。"
+    },
+    {
+      "tension": "Step1认为估值叙事严重超前，但项目结构摘要中'新能源材料/回收业务'被标记为远期故事，两者一致。",
+      "conflict_with": "step1.key_judgement.statement",
+      "resolution": "consistent",
+      "note": "无冲突，Step1判断与项目结构摘要一致。"
+    }
+  ],
+  "step1_adjustment_hints": {
+    "hints": [
+      {
+        "step1_field": "company_essence.core_identity",
+        "hint": "reinforce",
+        "reasoning": "外部逻辑验证支持Step1判断，无需调整。",
+        "based_on": "step1_external_check.checks[0]"
+      },
+      {
+        "step1_field": "company_essence.not_identity",
+        "hint": "reinforce",
+        "reasoning": "外部逻辑验证支持Step1判断，无需调整。",
+        "based_on": "step1_external_check.checks[1]"
+      },
+      {
+        "step1_field": "business_structure.current_business",
+        "hint": "reinforce",
+        "reasoning": "外部逻辑验证支持Step1判断，无需调整。",
+        "based_on": "step1_external_check.checks[2]"
+      },
+      {
+        "step1_field": "business_structure.narrative_business",
+        "hint": "reinforce",
+        "reasoning": "外部逻辑验证支持Step1判断，无需调整。",
+        "based_on": "step1_external_check.checks[3]"
+      },
+      {
+        "step1_field": "key_judgement.statement",
+        "hint": "reinforce",
+        "reasoning": "外部逻辑验证支持Step1判断，无需调整。",
+        "based_on": "step1_external_check.checks[4]"
+      },
+      {
+        "step1_field": "red_flags.flags[0]",
+        "hint": "reinforce",
+        "reasoning": "外部逻辑验证支持Step1判断，无需调整。",
+        "based_on": "step1_external_check.checks[5]"
+      },
+      {
+        "step1_field": "red_flags.flags[1]",
+        "hint": "reinforce",
+        "reasoning": "外部逻辑验证支持Step1判断，无需调整。",
+        "based_on": "step1_external_check.checks[6]"
+      },
+      {
+        "step1_field": "red_flags.flags[2]",
+        "hint": "reinforce",
+        "reasoning": "外部逻辑验证支持Step1判断，无需调整。",
+        "based_on": "step1_external_check.checks[7]"
+      }
+    ]
+  },
+  "bp_usage_audit": {
+    "usage_log": [
+      {
+        "bp_claim": "公司业务包括底盘域多系统线控总成、自动轮模块产品、智行底盘等",
+        "usage": "用于验证Step1中business_structure.current_business的准确性",
+        "forbidden_claim": false
+      },
+      {
+        "bp_claim": "客户包括北汽集团、华为汽车、广汽等",
+        "usage": "用于验证Step1中red_flags.flags[0]（客户合作仅列名称）",
+        "forbidden_claim": true,
+        "note": "BP声称客户关系，但未提供合同证据，Step1已指出此风险。"
+      },
+      {
+        "bp_claim": "市场预测引用Frost&Sullivan报告，2030年产值116.4亿美元，1%渗透率计算",
+        "usage": "用于验证Step1中red_flags.flags[1]（市场预测基于远期假设）",
+        "forbidden_claim": true,
+        "note": "BP引用第三方报告但渗透率计算是公司自述，Step1已指出缺乏依据。"
+      },
+      {
+        "bp_claim": "创始人靳立强教授，版权声明为'吉林大学靳立强教授所有'",
+        "usage": "用于验证Step1中red_flags.flags[2]（知识产权归属风险）",
+        "forbidden_claim": false
+      },
+      {
+        "bp_claim": "技术突破：减少部件40%、减重30%、降低成本30%等",
+        "usage": "用于验证Step1中key_judgement（技术有亮点但未验证）",
+        "forbidden_claim": true,
+        "note": "BP声称技术指标，但未提供第三方验证，Step1已指出需谨慎。"
+      }
+    ],
+    "total_bp_usage": 5,
+    "forbidden_claims_used": 3
+  },
+  "meta": {
+    "knowledge_source_breakdown": {
+      "general_bucket": [
+        "tech_barrier",
+        "customer_value",
+        "commercialization",
+        "expansion_story",
+        "team_credibility"
+      ],
+      "industry_bucket": [],
+      "llm_common_sense": []
+    }
+  }
+}

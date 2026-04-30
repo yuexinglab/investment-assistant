@@ -1,0 +1,42 @@
+[
+  {
+    "bp_claim": "累积部署240台无人重载运输车辆，为行业第一",
+    "usage": "用于验证Step1中‘已部署240台车辆’的匹配性，未用于新结论",
+    "category": "market_position"
+  },
+  {
+    "bp_claim": "打造超过20个客户的业务场景",
+    "usage": "用于验证Step1中‘覆盖20+客户’的匹配性，未用于新结论",
+    "category": "customer_relationship"
+  },
+  {
+    "bp_claim": "代运营和技术服务在行业内首次提出且业绩领先",
+    "usage": "用于验证Step1中‘代运营未验证’的判断，未用于新结论",
+    "category": "strategic_partnership"
+  },
+  {
+    "bp_claim": "全栈软硬件系统自研，包括车、路、云、底盘等",
+    "usage": "用于验证Step1中‘全链条’包装信号的识别，未用于新结论",
+    "category": "technical_capability"
+  },
+  {
+    "bp_claim": "增材制造降本幅度可达80%",
+    "usage": "用于验证Step1中‘增材制造降本80%是否已在实际产品中验证’的疑问，未用于新结论",
+    "category": "technical_capability"
+  },
+  {
+    "bp_claim": "TransportAGI专用端到端范式、专用大模型",
+    "usage": "用于验证Step1中‘AI能力更多是研发效率工具’的判断，未用于新结论",
+    "category": "technical_capability"
+  },
+  {
+    "bp_claim": "获得包括字节跳动、浙江金控、广发信德等在内的6轮融资",
+    "usage": "用于验证Step1中融资相关背景，未用于新结论",
+    "category": "strategic_partnership"
+  },
+  {
+    "bp_claim": "习近平总书记在天津港考察调研，何贝曾主导全球首台无人集卡在天津港运营",
+    "usage": "用于验证Step1中团队背书相关判断，未用于新结论",
+    "category": "team_credibility"
+  }
+]

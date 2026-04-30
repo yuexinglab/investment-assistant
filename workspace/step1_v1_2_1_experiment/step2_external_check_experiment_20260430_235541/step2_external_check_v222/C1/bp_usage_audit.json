@@ -1,0 +1,16 @@
+{
+  "bp_used_for": "claim_verification_only",
+  "bp_claims_checked": [
+    "BP claims '全产业链系统方案' - verified against Step1's red flag",
+    "BP claims 'IGBT芯片' and 'SiC芯片' - verified against Step1's company essence",
+    "BP claims '成功装车20万台套' - verified against Step1's revenue logic"
+  ],
+  "bp_claims_not_used_as_fact": [
+    "BP claims '全产业链' - not used as fact, only as claim to verify Step1",
+    "BP claims 'IGBT芯片' - not used as fact, only as claim to verify Step1",
+    "BP claims '成功装车20万台套' - not used as fact, only as claim to verify Step1"
+  ],
+  "violations": [],
+  "bp_text_tokens_used": 150,
+  "is_clean": true
+}

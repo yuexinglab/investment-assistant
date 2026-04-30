@@ -1,0 +1,177 @@
+{
+  "external_investment_logic": [
+    {
+      "bucket_key": "tech_barrier",
+      "validation": "weakens",
+      "reasoning": "Step1认为AI能力是研发效率工具而非独立变现产品。从外部逻辑看，BP中提到的TransportAGI专用大模型、感知算法等，在港口/物流自动驾驶领域属于行业通用技术路线（多家公司如主线科技、西井科技、图森未来等均采用类似方案），且BP未提供与竞品的量化对比（如精度、效率提升百分比）。因此，技术壁垒的独特性存疑，Step1的判断得到强化。",
+      "knowledge_source": "general_bucket"
+    },
+    {
+      "bucket_key": "customer_value",
+      "validation": "reinforces",
+      "reasoning": "Step1指出客户逻辑部分依赖政策。外部逻辑看，BP强调降低人工成本、提升安全、提高效率，这些是行业通用痛点，但客户采购决策中，政策补贴或示范要求占比多少未说明。BP提到'政策相继出台，驱动行业快速发展'，暗示政策驱动性。因此，客户价值的真实付费动机需进一步验证，Step1的谨慎立场合理。",
+      "knowledge_source": "general_bucket"
+    },
+    {
+      "bucket_key": "commercialization",
+      "validation": "reinforces",
+      "reasoning": "Step1认为商业模式本质是重资产制造/集成。外部逻辑看，BP声称已部署240台车辆、20+客户，但未提供收入结构、毛利率、回款周期等关键数据。代运营服务虽提出但未证明规模化，这与Step1的判断一致。商业化路径中，从项目制到代运营的转型需要大量资本投入和运营能力验证，风险较高。",
+      "knowledge_source": "general_bucket"
+    },
+    {
+      "bucket_key": "expansion_story",
+      "validation": "weakens",
+      "reasoning": "Step1指出估值叙事与当前业务结构存在错位。外部逻辑看，BP提到从港口扩展到散杂货场区、工厂基地、干线编队等，但未提供各场景的验证数据或客户案例。跨场景扩张在自动驾驶领域通常面临法规、场景适配、客户验证等不同挑战，历史上类似扩张（如图森未来从干线物流到港口）并不顺利。因此，扩张故事的可信度较低，Step1的谨慎立场得到强化。",
+      "knowledge_source": "general_bucket"
+    },
+    {
+      "bucket_key": "team_credibility",
+      "validation": "needs_verification",
+      "reasoning": "Step1未直接评估团队，但BP强调清华/百度背景、博士团队、行业专家等。外部逻辑看，团队背景与自动驾驶商业化能力相关，但需验证是否转化为实际客户资源、技术壁垒或运营效率。BP中提到的'全球首台无人集卡在天津港运营'等背书，需核实是否为公司独立完成。因此，团队背书的价值需进一步验证。",
+      "knowledge_source": "general_bucket"
+    }
+  ],
+  "step1_external_check": {
+    "checks": [
+      {
+        "step1_field": "company_essence.core_identity",
+        "check": "reinforces",
+        "reasoning": "Step1判断公司本质是重载物流场景的自动驾驶系统集成商和车辆改装/制造商。外部逻辑看，BP强调全链条（自研车、路、云、底盘）、自建产线、增材制造等，均指向制造/集成型业务，而非轻资产平台。BP中'无须客户对场地做任何改造和适配'也暗示项目制交付特点。因此，Step1的判断得到强化。",
+        "knowledge_source": "industry_bucket"
+      },
+      {
+        "step1_field": "company_essence.not_identity",
+        "check": "reinforces",
+        "reasoning": "Step1认为公司不是全产业链平台公司、不是AI大模型公司、不是轻资产运营服务商。外部逻辑看，BP中AI能力（TransportAGI大模型）被描述为内部效率工具，未独立变现；代运营服务虽提出但未提供收入数据；自建产线和重资产投入与轻资产运营矛盾。因此，Step1的判断合理。",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "business_structure.current_business",
+        "check": "reinforces",
+        "reasoning": "Step1指出当前业务是无人集卡/自卸车销售、自动驾驶系统套件销售、项目制交付。BP中明确提到'商业模式落地经验丰富，包括整车销售、技术服务以及代运营'，且部署240台车辆、20+客户，与Step1描述一致。但BP未提供收入比例，需进一步验证。",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "business_structure.narrative_business",
+        "check": "weakens",
+        "reasoning": "Step1列出代运营服务、新能源材料/回收、增材制造降本、L2级智能集卡量产、海外市场拓展等叙事业务。外部逻辑看，BP中代运营被提及但无数据支撑；新能源材料/回收未在BP中出现；增材制造降本80%是BP中明确声称的，但未提供实际产品验证；海外市场拓展未提及。因此，叙事业务的可信度较低，Step1的谨慎立场合理。",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "key_judgement.statement",
+        "check": "reinforces",
+        "reasoning": "Step1判断公司有先发优势和规模壁垒，但商业模式本质是重资产制造/集成，估值叙事错位。外部逻辑看，BP中240台部署量、20+客户、行业标准制定者等表明先发优势，但收入来源未明确，代运营未验证，自建产线带来重资产风险。因此，Step1的判断得到强化。",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "red_flags.flags",
+        "check": "reinforces",
+        "reasoning": "Step1列出重资产运营风险、客户逻辑依赖政策、估值叙事与现实错位。外部逻辑看，BP中自建产线、增材制造、自研域控等暗示重资产投入；政策驱动性在BP中明确提及；估值叙事（AI平台、代运营）与当前业务（车辆销售、项目制）不匹配。因此，Step1的风险判断合理。",
+        "knowledge_source": "general_bucket"
+      }
+    ]
+  },
+  "information_resolution": {
+    "must_ask_questions": [
+      {
+        "question": "当前收入中，整车销售、技术服务、代运营各占多少比例？代运营是否已产生稳定收入？",
+        "source": "step1_must_ask_questions",
+        "priority": "high"
+      },
+      {
+        "question": "单个项目从签约到验收回款的平均周期是多少？是否需要公司垫资？",
+        "source": "step1_must_ask_questions",
+        "priority": "high"
+      },
+      {
+        "question": "客户采购决策中，政策补贴或示范要求占比多少？是否有纯商业ROI驱动的客户案例？",
+        "source": "step1_must_ask_questions",
+        "priority": "high"
+      },
+      {
+        "question": "自建产线的产能利用率如何？增材制造降本80%是否已在实际产品中验证？",
+        "source": "step1_must_ask_questions",
+        "priority": "high"
+      },
+      {
+        "question": "代运营服务的定价模式和客户续约率如何？是否已实现正向现金流？",
+        "source": "step1_must_ask_questions",
+        "priority": "high"
+      }
+    ]
+  },
+  "tensions": [
+    {
+      "conflict": "Step1认为公司是重资产制造/集成，但BP叙事强调AI平台和代运营，估值逻辑可能不匹配。",
+      "step1_position": "cautious_watch",
+      "severity": "high"
+    },
+    {
+      "conflict": "BP声称增材制造降本80%，但未提供实际产品验证，与Step1对技术壁垒的怀疑一致。",
+      "step1_position": "cautious_watch",
+      "severity": "medium"
+    },
+    {
+      "conflict": "BP提到代运营和技术服务在行业内首次提出且业绩领先，但Step1认为代运营未规模化，需验证。",
+      "step1_position": "cautious_watch",
+      "severity": "high"
+    }
+  ],
+  "step1_adjustment_hints": [
+    {
+      "hint": "Step1对技术壁垒的判断（AI是效率工具）得到强化，无需调整。",
+      "based_on": "step1_external_check.checks[0]"
+    },
+    {
+      "hint": "Step1对商业化路径的判断（重资产制造/集成）得到强化，但需补充验证代运营的可行性。",
+      "based_on": "step1_external_check.checks[2]"
+    },
+    {
+      "hint": "Step1对扩张故事的怀疑得到强化，建议在must_ask_questions中增加跨场景验证的具体问题。",
+      "based_on": "external_investment_logic[3]"
+    },
+    {
+      "hint": "Step1未充分评估团队背书，建议在后续分析中增加团队商业化能力验证。",
+      "based_on": "external_investment_logic[4]"
+    }
+  ],
+  "bp_usage_audit": [
+    {
+      "bp_claim": "全链条竞争优势",
+      "usage": "用于验证Step1对业务结构的判断，未用于新结论",
+      "category": "company_self_claimed_title"
+    },
+    {
+      "bp_claim": "行业第一（部署240台）",
+      "usage": "用于验证Step1对规模壁垒的判断，未用于新结论",
+      "category": "market_position"
+    },
+    {
+      "bp_claim": "增材制造降本80%",
+      "usage": "用于验证Step1对技术壁垒的怀疑，未用于新结论",
+      "category": "technical_capability"
+    },
+    {
+      "bp_claim": "代运营和技术服务在行业内首次提出且业绩领先",
+      "usage": "用于验证Step1对代运营未规模化的判断，未用于新结论",
+      "category": "market_position"
+    },
+    {
+      "bp_claim": "全球首台无人集卡在天津港运营",
+      "usage": "用于验证团队背书，未用于新结论",
+      "category": "strategic_partnership"
+    },
+    {
+      "bp_claim": "多项行业标准和国际标准的制定者",
+      "usage": "用于验证Step1对先发优势的判断，未用于新结论",
+      "category": "market_position"
+    }
+  ],
+  "meta": {
+    "knowledge_source_breakdown": {
+      "general_bucket": 5,
+      "industry_bucket": 1,
+      "llm_common_sense": 0
+    }
+  }
+}

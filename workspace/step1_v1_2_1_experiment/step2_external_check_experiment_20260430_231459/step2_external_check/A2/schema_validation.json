@@ -1,0 +1,9 @@
+{
+  "valid": false,
+  "errors": [
+    "Missing required field: schema_version",
+    "external_investment_logic must be an array",
+    "bp_usage_audit missing is_clean field"
+  ],
+  "checked_at": "2026-04-30T23:15:59.635743"
+}

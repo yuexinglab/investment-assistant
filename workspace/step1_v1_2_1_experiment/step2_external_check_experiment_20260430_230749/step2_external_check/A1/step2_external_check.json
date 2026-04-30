@@ -1,0 +1,249 @@
+{
+  "external_investment_logic": [
+    {
+      "bucket_key": "tech_barrier",
+      "label": "技术/壁垒是否成立",
+      "validation": "needs_verification",
+      "reasoning": "Step1认为技术壁垒（数据、仿真）可复制性待观察。从行业常识看，港口无人驾驶技术门槛并不在于感知或规划算法本身，而在于场景适配、系统集成和工程化能力。BP中提到的TransportAGI专用大模型、Multi-Task PerceptionFormer等，属于行业通用技术方向，多家公司（如主线科技、西井科技）均有类似能力。真正的壁垒可能在于已部署的240台车辆积累的场景数据和运营经验，但数据壁垒的持续性取决于场景多样性和数据闭环效率。此外，BP声称的‘无须场地改造’与行业普遍认知（港口无人驾驶通常需要一定程度的基础设施适配）存在矛盾，需验证。",
+      "knowledge_source": "industry_bucket"
+    },
+    {
+      "bucket_key": "customer_value",
+      "label": "客户为什么付钱",
+      "validation": "weaken",
+      "reasoning": "Step1指出客户逻辑部分依赖政策。从行业常识看，港口无人驾驶的客户价值主要在于降低人工成本、提升安全性和运营效率，但当前阶段，客户采购决策往往受政策示范要求、补贴或政府考核驱动，而非纯商业ROI。BP中提到的‘降低80%事故发生率’和‘效率增长趋势明显’是行业通用宣传话术，缺乏独立第三方验证。Step1的‘客户逻辑依赖政策’判断符合行业现状，但需进一步验证是否存在纯商业ROI驱动的客户案例。",
+      "knowledge_source": "general_bucket"
+    },
+    {
+      "bucket_key": "commercialization",
+      "label": "商业化路径是否成立",
+      "validation": "reinforce",
+      "reasoning": "Step1判断商业模式本质是重资产制造/集成，而非轻资产平台。从行业常识看，港口无人驾驶公司通常以项目制交付和车辆销售起步，代运营模式需要大量前期资产投入和长期运营经验，规模化验证周期长。BP中提到的‘代运营和技术服务在行业内首次提出且业绩领先’是公司自述，缺乏独立证据。Step1的‘代运营未验证’判断合理，且与行业常见商业化路径一致。",
+      "knowledge_source": "industry_bucket"
+    },
+    {
+      "bucket_key": "expansion_story",
+      "label": "扩张/故事是否合理",
+      "validation": "weaken",
+      "reasoning": "Step1指出估值叙事与当前业务结构存在错位。从行业常识看，从港口场景向散杂货场区、工厂基地、干线编队等扩张，会面临完全不同的作业环境、法规要求和客户验证体系，历史上类似扩张（如从港口到干线）成功案例有限。BP中提到的‘覆盖到更多的物流场景’是常见扩张叙事，但缺乏具体落地时间表和客户验证。Step1的‘叙事与业务错位’判断合理。",
+      "knowledge_source": "general_bucket"
+    },
+    {
+      "bucket_key": "team_credibility",
+      "label": "团队/背书是否被高估",
+      "validation": "needs_verification",
+      "reasoning": "Step1未直接评估团队背书。从行业常识看，团队背景（清华、百度、博士等）在自动驾驶领域较为常见，但关键问题在于这些背书是否转化为排他性技术或客户资源。BP中提到的‘核心团队磨合接近10年’和‘多项行业标准和国际标准的制定者’是公司自述，需验证团队在商业化落地中的实际作用，而非仅看履历。",
+      "knowledge_source": "llm_common_sense"
+    }
+  ],
+  "step1_external_check": {
+    "checks": [
+      {
+        "step1_field": "company_essence.core_identity",
+        "step1_claim": "本质是重载物流场景的自动驾驶系统集成商和车辆改装/制造商",
+        "external_validation": "reinforce",
+        "reasoning": "从行业常识看，港口无人驾驶公司通常以项目制交付和车辆销售为主，代运营模式需要大量资产投入和长期运营经验，当前阶段更接近集成商和制造商。BP中提到的‘全栈软硬件系统自研’和‘自建产线’进一步支持这一判断。",
+        "knowledge_source": "industry_bucket"
+      },
+      {
+        "step1_field": "company_essence.not_identity",
+        "step1_claim": "不是全产业链平台公司",
+        "external_validation": "reinforce",
+        "reasoning": "从行业常识看，全产业链平台公司需要覆盖从技术研发到运营服务的所有环节，且各环节均能独立变现。当前公司收入主要来自车辆销售和项目交付，代运营未规模化，不符合平台公司特征。",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "company_essence.not_identity",
+        "step1_claim": "不是AI大模型公司",
+        "external_validation": "reinforce",
+        "reasoning": "从行业常识看，AI大模型公司应以模型或算法作为核心产品并独立变现。BP中提到的AI能力（如TransportAGI）更多是内部效率工具，而非对外收费产品，符合Step1判断。",
+        "knowledge_source": "llm_common_sense"
+      },
+      {
+        "step1_field": "company_essence.not_identity",
+        "step1_claim": "不是轻资产运营服务商",
+        "external_validation": "reinforce",
+        "reasoning": "从行业常识看，轻资产运营服务商应避免大量固定资产投入。BP中提到的‘自建产线’和‘垫资采购’表明公司属于重资产模式，与Step1判断一致。",
+        "knowledge_source": "industry_bucket"
+      },
+      {
+        "step1_field": "business_structure.current_business",
+        "step1_claim": "无人集卡/自卸车销售、自动驾驶系统套件销售、项目制交付",
+        "external_validation": "reinforce",
+        "reasoning": "从行业常识看，港口无人驾驶公司的收入结构通常以车辆销售和项目交付为主，BP中提到的‘整车销售、技术服务以及代运营’中，代运营被列为‘首次提出且业绩领先’，但缺乏具体收入数据，符合Step1判断。",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "business_structure.narrative_business",
+        "step1_claim": "代运营服务、新能源材料/回收、增材制造降本、L2级智能集卡量产、海外市场拓展",
+        "external_validation": "weaken",
+        "reasoning": "从行业常识看，代运营服务需要大量前期资产投入和长期运营经验，新能源材料/回收与公司核心能力关联度低，增材制造降本80%缺乏行业验证。BP中提到的‘增材制造降本幅度可达80%’和‘自研域控降本30%’是公司自述，需独立验证。这些叙事在当前阶段可信度较低。",
+        "knowledge_source": "industry_bucket"
+      },
+      {
+        "step1_field": "key_judgement.statement",
+        "step1_claim": "斯年智驾在港口无人驾驶领域有先发优势和规模壁垒",
+        "external_validation": "needs_verification",
+        "reasoning": "从行业常识看，先发优势在港口无人驾驶领域可能体现在客户关系和运营经验上，但技术壁垒不高。BP中提到的‘累积部署240台无人重载运输车辆，为行业第一’是公司自述，需独立验证。规模壁垒的持续性取决于场景多样性和数据闭环效率。",
+        "knowledge_source": "industry_bucket"
+      },
+      {
+        "step1_field": "key_judgement.statement",
+        "step1_claim": "商业模式本质是重资产制造/集成，而非轻资产平台",
+        "external_validation": "reinforce",
+        "reasoning": "从行业常识看，港口无人驾驶公司通常需要自建产线、垫资采购，属于重资产模式。BP中提到的‘自建产线’和‘垫资采购’进一步支持这一判断。",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "key_judgement.statement",
+        "step1_claim": "估值叙事与当前业务结构存在错位",
+        "external_validation": "reinforce",
+        "reasoning": "从行业常识看，以AI平台和代运营叙事支撑估值，但当前收入来自车辆销售和项目制，是典型的估值叙事错位。BP中提到的‘全链条竞争优势’和‘AI平台’是公司自述，与当前业务结构不符。",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "red_flags.flags",
+        "step1_claim": "重资产运营风险：自建产线、垫资采购、土地基建，现金流压力大",
+        "external_validation": "reinforce",
+        "reasoning": "从行业常识看，自建产线和垫资采购会带来现金流压力，回款周期长是行业常见问题。BP中提到的‘自建产线’和‘垫资采购’进一步支持这一风险判断。",
+        "knowledge_source": "industry_bucket"
+      },
+      {
+        "step1_field": "red_flags.flags",
+        "step1_claim": "客户逻辑依赖政策：部分客户需求可能受政策驱动",
+        "external_validation": "reinforce",
+        "reasoning": "从行业常识看，港口无人驾驶项目往往受政策示范要求或补贴驱动，纯商业ROI驱动的客户案例较少。BP中提到的‘政策相继出台，驱动行业快速发展’进一步支持这一判断。",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "red_flags.flags",
+        "step1_claim": "估值叙事与现实错位：BP以AI平台和代运营叙事支撑估值",
+        "external_validation": "reinforce",
+        "reasoning": "从行业常识看，以AI平台和代运营叙事支撑估值，但当前收入来自车辆销售和项目制，是典型的估值叙事错位。BP中提到的‘全链条竞争优势’和‘AI平台’是公司自述，与当前业务结构不符。",
+        "knowledge_source": "general_bucket"
+      }
+    ],
+    "overall_validation": "reinforce",
+    "summary": "Step1的判断在外部投资逻辑验证下整体得到强化。公司本质是重资产制造/集成商，而非轻资产平台或AI公司，估值叙事与业务结构存在错位。客户逻辑依赖政策，代运营模式未验证，技术壁垒可复制性待观察。需重点关注商业化路径和客户真实购买动机。"
+  },
+  "information_resolution": {
+    "questions": [
+      {
+        "question": "当前收入中，整车销售、技术服务、代运营各占多少比例？代运营是否已产生稳定收入？",
+        "source": "step1",
+        "step1_field": "must_ask_questions.questions[0]",
+        "urgency": "high"
+      },
+      {
+        "question": "单个项目从签约到验收回款的平均周期是多少？是否需要公司垫资？",
+        "source": "step1",
+        "step1_field": "must_ask_questions.questions[1]",
+        "urgency": "high"
+      },
+      {
+        "question": "客户采购决策中，政策补贴或示范要求占比多少？是否有纯商业ROI驱动的客户案例？",
+        "source": "step1",
+        "step1_field": "must_ask_questions.questions[2]",
+        "urgency": "high"
+      },
+      {
+        "question": "自建产线的产能利用率如何？增材制造降本80%是否已在实际产品中验证？",
+        "source": "step1",
+        "step1_field": "must_ask_questions.questions[3]",
+        "urgency": "medium"
+      },
+      {
+        "question": "代运营服务的定价模式和客户续约率如何？是否已实现正向现金流？",
+        "source": "step1",
+        "step1_field": "must_ask_questions.questions[4]",
+        "urgency": "high"
+      }
+    ]
+  },
+  "tensions": [
+    {
+      "conflict": "BP声称‘无须场地改造’，但行业常识表明港口无人驾驶通常需要一定程度的基础设施适配",
+      "step1_position": "未直接提及，但Step1的‘客户逻辑依赖政策’暗示客户可能接受一定改造",
+      "resolution": "需验证BP声称的‘无须改造’是否真实，以及是否适用于所有场景"
+    },
+    {
+      "conflict": "BP声称‘代运营和技术服务在行业内首次提出且业绩领先’，但Step1认为代运营未验证",
+      "step1_position": "代运营未验证",
+      "resolution": "需获取代运营的具体收入数据和客户案例"
+    },
+    {
+      "conflict": "BP声称‘增材制造降本幅度可达80%’，但行业常识中增材制造在重卡领域的应用尚不成熟",
+      "step1_position": "未直接提及，但Step1的‘重资产运营风险’暗示成本压力",
+      "resolution": "需验证增材制造的实际应用和降本效果"
+    }
+  ],
+  "step1_adjustment_hints": {
+    "adjustments": [
+      {
+        "step1_field": "company_essence.core_identity",
+        "hint": "可考虑进一步明确‘系统集成商’和‘车辆改装/制造商’的具体比例，以反映当前业务重心",
+        "reason": "step1_external_check显示reinforce，但外部逻辑建议更精确描述"
+      },
+      {
+        "step1_field": "key_judgement.statement",
+        "hint": "可考虑增加对‘技术壁垒可复制性’的详细分析，引用行业通用技术方向",
+        "reason": "step1_external_check显示needs_verification，外部逻辑指出技术壁垒不高"
+      },
+      {
+        "step1_field": "red_flags.flags",
+        "hint": "可考虑增加‘增材制造降本80%缺乏验证’作为新的风险点",
+        "reason": "tensions中识别出BP声称与行业常识的矛盾"
+      }
+    ]
+  },
+  "bp_usage_audit": {
+    "usage_log": [
+      {
+        "bp_claim": "累积部署240台无人重载运输车辆，为行业第一",
+        "usage": "用于验证Step1的‘已部署240台车辆’是否与BP一致",
+        "category": "market_position",
+        "risk": "公司自述，需独立验证"
+      },
+      {
+        "bp_claim": "代运营和技术服务在行业内首次提出且业绩领先",
+        "usage": "用于验证Step1的‘代运营未验证’判断",
+        "category": "strategic_partnerships",
+        "risk": "公司自述，需独立验证"
+      },
+      {
+        "bp_claim": "增材制造降本幅度可达80%",
+        "usage": "用于验证Step1的‘增材制造降本80%是否已在实际产品中验证’问题",
+        "category": "technical_capabilities",
+        "risk": "公司自述，需独立验证"
+      },
+      {
+        "bp_claim": "无须场地改造、无须车路协同、无须外设辅助",
+        "usage": "用于识别与行业常识的冲突",
+        "category": "technical_capabilities",
+        "risk": "公司自述，与行业常识矛盾"
+      },
+      {
+        "bp_claim": "全链条竞争优势",
+        "usage": "用于验证Step1的‘估值叙事与现实错位’判断",
+        "category": "company_self_claimed_titles",
+        "risk": "公司自述，与业务结构不符"
+      }
+    ],
+    "total_bp_usage": 5,
+    "high_risk_claims": [
+      "累积部署240台无人重载运输车辆，为行业第一",
+      "代运营和技术服务在行业内首次提出且业绩领先",
+      "增材制造降本幅度可达80%",
+      "无须场地改造、无须车路协同、无须外设辅助"
+    ]
+  },
+  "meta": {
+    "knowledge_source_breakdown": {
+      "general_bucket": 7,
+      "industry_bucket": 6,
+      "llm_common_sense": 3
+    },
+    "total_external_checks": 16,
+    "validation_summary": "Step1判断整体得到强化，但需重点关注技术壁垒可复制性和客户真实购买动机。"
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "consistency_checks": [
+    {
+      "topic": "全产业链叙事 vs 实际能力",
+      "claim": "BP声称是‘新能源汽车完整产业链系统方案产品提供商’和‘行业中掌握全产业链的系统供应商’",
+      "reality": "Step2外部约束指出，IGBT芯片依赖外部采购，SiC芯片仅设计未量产，真正的全产业链需要自研芯片并量产，封装环节壁垒低。",
+      "gap": "BP将‘全产业链’作为核心叙事，但实际核心芯片依赖外购，未提供自研芯片量产证据。",
+      "judgement": "contradict",
+      "confidence": "high",
+      "related_step2_check": "company_essence",
+      "external_constraint": "True tech barrier requires in-house chip design and manufacturing, not just module packaging. Packaging alone is a low barrier.",
+      "bp_claim_checked": "BP封面：‘新能源汽车完整产业链系统方案产品提供商’；产业布局：‘行业中掌握全产业链的系统供应商’"
+    },
+    {
+      "topic": "装车量 vs 收入规模",
+      "claim": "BP声称‘成功装车20万台套’，暗示市场认可度高",
+      "reality": "Step2外部约束指出，收入仅1亿元（2025E），装车20万台套但收入低，说明单价低（约5000元/台）或项目制交付，收入质量存疑。",
+      "gap": "高装车量未转化为相应收入规模，存在叙事包装嫌疑，可能将‘装车’等同于‘确认收入’。",
+      "judgement": "contradict",
+      "confidence": "high",
+      "related_step2_check": "revenue_logic",
+      "external_constraint": "20k units installed but only 100M RMB revenue suggests low unit price (approx 5k/unit) or project-based revenue recognition.",
+      "bp_claim_checked": "公司介绍：‘成功装车20万台套’；财务预测：‘2025E收入1亿元’"
+    },
+    {
+      "topic": "项目制交付 vs 标准化产品叙事",
+      "claim": "BP展示多款标准化产品（如I70控制器、T08双电机控制器），暗示标准化能力",
+      "reality": "Step2外部约束指出，BP以项目制交付为主，标准化是增长关键但未验证。BP展示的产品参数和客户案例多为定制化应用（如陕汽汉德车桥、京深深向），缺乏标准化产品批量销售证据。",
+      "gap": "产品列表看似标准化，但实际客户案例显示为定制化项目，标准化程度存疑。",
+      "judgement": "uncertain",
+      "confidence": "medium",
+      "related_step2_check": "business_structure",
+      "external_constraint": "Project-based delivery limits scalability and margin. Standardization is key for growth.",
+      "bp_claim_checked": "产品介绍：列出I70、T08、T15等控制器，标注‘应用车型’和‘客户装车应用’"
+    }
+  ],
+  "tensions": [
+    {
+      "tension": "BP声称‘全产业链系统方案’ vs Step2外部约束指出‘IGBT芯片依赖外购，SiC芯片未量产’",
+      "why_it_matters": "全产业链叙事是BP估值核心，若实际依赖外购芯片，则技术壁垒和议价能力被高估，投资风险上升。",
+      "severity": "high",
+      "related_step2_logic": "Step2验证3：声称‘全产业链’但IGBT芯片依赖外部采购，SiC芯片仅设计未量产",
+      "conflict_type": "external_vs_bp"
+    },
+    {
+      "tension": "BP展示‘成功装车20万台套’ vs Step2外部约束指出‘收入仅1亿元，单价低或项目制交付’",
+      "why_it_matters": "装车量是市场验证信号，但收入规模不匹配，可能意味着低价值项目或收入确认延迟，影响增长预期。",
+      "severity": "high",
+      "related_step2_logic": "Step2验证2：收入仅1亿元（2025E），说明单价低或项目制交付",
+      "conflict_type": "external_vs_bp"
+    },
+    {
+      "tension": "Step1判断‘以项目制交付为主’ vs BP叙事‘全产业链系统方案产品提供商’",
+      "why_it_matters": "项目制交付限制可扩展性和利润率，与‘系统方案’的标准化、高价值定位冲突，影响商业模式评估。",
+      "severity": "medium",
+      "related_step2_logic": "Step2验证5：以项目制交付为主",
+      "conflict_type": "step1_vs_bp"
+    }
+  ],
+  "overpackaging_signals": [
+    {
+      "signal": "BP将‘全产业链’作为核心标签，但实际芯片依赖外购，封装环节壁垒低",
+      "type": "tech_overstatement",
+      "severity": "high",
+      "related_step2_constraint": "Step2约束1：tech_barrier",
+      "packaging_type": "tech_as_capability"
+    },
+    {
+      "signal": "BP强调‘成功装车20万台套’，但收入仅1亿元，暗示将‘装车’包装为‘市场成功’",
+      "type": "future_as_present",
+      "severity": "high",
+      "related_step2_constraint": "Step2约束2：commercialization",
+      "packaging_type": "future_as_present"
+    },
+    {
+      "signal": "BP展示多款产品（IGBT模块、SiC模块、控制器、动力总成等），暗示平台化能力，但实际以项目制交付为主",
+      "type": "platform_narrative",
+      "severity": "medium",
+      "related_step2_constraint": "Step2约束5：commercialization",
+      "packaging_type": "platform_narrative"
+    }
+  ],
+  "summary": "从Step1/Step2判断看，该项目更应按‘项目制硬件供应商’审查，而不是按‘全产业链系统方案提供商’叙事理解，核心错位在于将外购芯片的封装能力包装为全产业链壁垒，并将低单价项目制交付的装车量包装为规模化市场验证。",
+  "step2_constraints_used": 3,
+  "step2_caution_references": 4,
+  "step2_contradict_references": 2,
+  "step2_version": "step2_external_check_v2_2_2"
+}

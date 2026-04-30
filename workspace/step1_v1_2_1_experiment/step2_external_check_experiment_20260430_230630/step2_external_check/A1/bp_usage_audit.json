@@ -1,0 +1,51 @@
+{
+  "usage_log": [
+    {
+      "bp_claim": "全链条竞争优势",
+      "usage": "用于验证Step1对估值叙事与业务结构错位的判断",
+      "category": "company_self_claimed_title"
+    },
+    {
+      "bp_claim": "AI平台",
+      "usage": "用于验证Step1对AI能力是效率工具而非独立变现产品的判断",
+      "category": "company_self_claimed_title"
+    },
+    {
+      "bp_claim": "代运营和技术服务在行业内首次提出且业绩领先",
+      "usage": "用于验证Step1对代运营未验证规模化的判断",
+      "category": "market_position"
+    },
+    {
+      "bp_claim": "增材制造降本80%",
+      "usage": "用于验证Step1对该宣称未在实际产品中验证的判断",
+      "category": "technical_capability"
+    },
+    {
+      "bp_claim": "行业第一（部署240台车辆）",
+      "usage": "用于验证Step1对先发优势和规模壁垒的判断",
+      "category": "market_position"
+    },
+    {
+      "bp_claim": "无须场地改造",
+      "usage": "用于验证Step1对技术壁垒可复制性的担忧",
+      "category": "technical_capability"
+    },
+    {
+      "bp_claim": "全球首台无人集卡在天津港运营",
+      "usage": "用于验证Step1对团队背书转化为商业化能力的判断",
+      "category": "strategic_partnership"
+    },
+    {
+      "bp_claim": "多项行业标准和国际标准的制定者",
+      "usage": "用于验证Step1对团队背书价值的判断",
+      "category": "company_self_claimed_title"
+    }
+  ],
+  "total_usage_count": 8,
+  "forbidden_claims_used": [
+    "company_self_claimed_title",
+    "market_position",
+    "technical_capability",
+    "strategic_partnership"
+  ]
+}

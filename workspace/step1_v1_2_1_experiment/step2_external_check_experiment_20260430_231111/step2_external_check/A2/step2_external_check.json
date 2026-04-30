@@ -1,0 +1,194 @@
+{
+  "external_investment_logic": [
+    {
+      "bucket_key": "tech_barrier",
+      "validation": "weaken",
+      "reasoning": "从行业常识看，自动轮智行底盘技术（轮毂电机+线控制动+线控转向）并非全新概念，博世、大陆等Tier1已有类似研发。BP中展示的减重40%、降成本30%等指标缺乏第三方验证，且未说明与竞品的具体对比。技术壁垒的成立需要量产验证和客户背书，目前仅停留在实验室和样机阶段。",
+      "knowledge_source": "general_bucket"
+    },
+    {
+      "bucket_key": "customer_value",
+      "validation": "weaken",
+      "reasoning": "客户价值判断：BP中客户名单（北汽、华为、广汽等）仅为意向合作，未披露任何合同或采购订单。行业经验表明，主机厂与初创公司合作多为技术验证或预研项目，转化为量产采购的概率较低。客户更换现有底盘方案（如博世、采埃孚）的动力不足，除非自动轮能显著降低成本或提升性能，但BP未提供量化证据。",
+      "knowledge_source": "general_bucket"
+    },
+    {
+      "bucket_key": "commercialization",
+      "validation": "weaken",
+      "reasoning": "商业化阶段判断：BP明确显示公司处于技术开发和定制项目阶段，无量产记录。行业常识中，底盘类硬科技从实验室到量产通常需要5-10年，且需通过车规级验证（如ISO 26262）。BP中提到的Frost&Sullivan报告预测2028年量产，但公司自身未给出明确量产时间表，商业化路径不清晰。",
+      "knowledge_source": "general_bucket"
+    },
+    {
+      "bucket_key": "expansion_story",
+      "validation": "weaken",
+      "reasoning": "扩张叙事判断：BP中提及覆盖商用车、乘用车、微车平台以及自行走可重构技术生态，但当前业务仅为技术开发和定制底盘。行业经验表明，跨平台扩张需要大量资金和客户验证，初创公司同时覆盖多个市场通常导致资源分散。BP未提供任何跨行业验证案例，扩张故事缺乏支撑。",
+      "knowledge_source": "general_bucket"
+    },
+    {
+      "bucket_key": "team_credibility",
+      "validation": "weaken",
+      "reasoning": "团队背书判断：创始人靳立强教授为吉林大学在职教授，BP中未明确其与公司的全职关系及专利排他性。行业常见风险是教授创业中知识产权归属不清，导致后续纠纷。团队强项在科研而非商业化，缺乏汽车行业量产经验，这与当前阶段（需工程化和量产能力）不匹配。",
+      "knowledge_source": "general_bucket"
+    }
+  ],
+  "step1_external_check": {
+    "overall_alignment": "aligned",
+    "checks": [
+      {
+        "step1_field": "company_essence.core_identity",
+        "step1_claim": "本质是吉林大学靳立强教授团队的底盘技术研发型初创公司，以自动轮智行底盘为核心技术，当前主要收入来自技术开发和定制底盘项目",
+        "external_validation": "reinforce",
+        "reasoning": "BP中业务描述（技术开发、定制底盘、专利授权）与Step1判断一致，且未发现量产收入证据。行业常识中，此类研发型初创公司商业化风险高，Step1判断合理。",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "company_essence.not_identity",
+        "step1_claim": "不是已量产的底盘供应商",
+        "external_validation": "reinforce",
+        "reasoning": "BP中无任何量产交付记录或规模化收入描述，所有产品均为样机或定制项目，符合行业早期阶段特征。",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "business_structure.current_business",
+        "step1_claim": "技术开发服务、自动轮总成及部件总成销售、专利授权",
+        "external_validation": "reinforce",
+        "reasoning": "BP中合作模式明确列出这四项，与Step1一致。但需注意，BP中未披露任何销售金额或客户合同，Step1的谨慎态度合理。",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "key_judgement.statement",
+        "step1_claim": "该项目技术有亮点，但商业化处于极早期，收入来源不清晰，客户合作多为意向而非合同，估值叙事严重超前于现实",
+        "external_validation": "reinforce",
+        "reasoning": "行业常识中，底盘技术初创公司通常需要5-10年才能实现量产，且BP中市场预测基于2030年远期假设，渗透率1%缺乏依据。Step1判断与行业规律一致。",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "red_flags.flags[0]",
+        "step1_claim": "收入数据完全缺失，客户合作仅列出名称未披露合同或收入",
+        "external_validation": "reinforce",
+        "reasoning": "BP中客户名单（北汽、华为等）仅为名称，无任何合同或收入证据。行业常识中，此类“客户列表”常为意向或早期接触，不能作为收入依据。",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "red_flags.flags[1]",
+        "step1_claim": "市场预测基于2030年远期假设，且渗透率计算（1%）缺乏现实依据",
+        "external_validation": "reinforce",
+        "reasoning": "BP中引用Frost&Sullivan报告，但渗透率1%的假设未说明依据。行业常识中，新底盘技术渗透率通常从0.1%起步，1%过于乐观。",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "red_flags.flags[2]",
+        "step1_claim": "创始人靳立强教授为吉林大学在职教授，公司与其关系未明确，存在知识产权归属和利益冲突风险",
+        "external_validation": "reinforce",
+        "reasoning": "BP中明确标注版权归吉林大学靳立强教授所有，但未说明专利是否已排他性授权给公司。行业常识中，教授创业的知识产权纠纷是常见风险。",
+        "knowledge_source": "general_bucket"
+      }
+    ]
+  },
+  "information_resolution": {
+    "questions": [
+      {
+        "question": "公司当前的实际收入是多少？来自哪些客户？是否有已签约的合同或订单？",
+        "source": "step1.must_ask_questions",
+        "priority": "critical",
+        "reasoning": "Step1指出收入数据完全缺失，这是评估商业化阶段的核心信息。"
+      },
+      {
+        "question": "靳立强教授与公司的关系是全职CEO还是兼职顾问？吉林大学的专利是否已排他性授权给公司？",
+        "source": "step1.must_ask_questions",
+        "priority": "critical",
+        "reasoning": "Step1指出知识产权归属和利益冲突风险，需明确关系以避免后续纠纷。"
+      },
+      {
+        "question": "自动轮智行底盘是否已有量产客户？预计何时实现规模化交付？",
+        "source": "step1.must_ask_questions",
+        "priority": "high",
+        "reasoning": "Step1判断商业化处于极早期，需验证量产计划以评估估值合理性。"
+      },
+      {
+        "question": "客户名单中的北汽、华为等是否已签署正式合同？合作模式是技术开发还是产品采购？",
+        "source": "step1.must_ask_questions",
+        "priority": "high",
+        "reasoning": "Step1指出客户合作多为意向而非合同，需确认实际合作深度。"
+      },
+      {
+        "question": "公司目前的现金流状况如何？是否需要外部融资来支撑研发和运营？",
+        "source": "step1.must_ask_questions",
+        "priority": "medium",
+        "reasoning": "Step1未提及现金流，但作为早期项目，融资需求是重要考量。"
+      }
+    ]
+  },
+  "tensions": [
+    {
+      "conflict": "Step1认为公司处于极早期商业化阶段，但BP中提及的客户名单（北汽、华为等）可能被解读为已有合作，存在叙事超前于现实的风险。",
+      "step1_position": "cautious_watch",
+      "resolution_hint": "需验证客户合作的具体阶段（意向/合同/收入），以判断BP叙事是否夸大。"
+    },
+    {
+      "conflict": "Step1强调技术有亮点，但行业常识中自动轮技术并非全新概念，存在技术壁垒被高估的风险。",
+      "step1_position": "cautious_watch",
+      "resolution_hint": "需对比竞品技术指标和量产进度，以评估真实壁垒。"
+    }
+  ],
+  "step1_adjustment_hints": [
+    {
+      "step1_field": "company_essence.confidence",
+      "hint": "当前为high，但需注意BP中未披露收入数据，若后续验证发现收入为零，confidence可维持high；若发现少量收入，可考虑调整为medium。",
+      "reasoning": "基于step1_external_check中reinforce结果，当前判断合理，但需根据信息resolution结果微调。"
+    },
+    {
+      "step1_field": "key_judgement.stance",
+      "hint": "当前为cautious_watch，建议维持。若信息resolution中客户合同和收入确认，可考虑调整为positive_watch；若发现知识产权问题，则调整为avoid。",
+      "reasoning": "基于step1_external_check中reinforce结果，当前立场合理，但需根据新信息动态调整。"
+    }
+  ],
+  "bp_usage_audit": [
+    {
+      "bp_claim": "自动轮智行底盘技术突破（减重40%、降成本30%等）",
+      "usage": "用于验证Step1中技术有亮点的判断，但未作为事实接受，仅作为公司自述引用。",
+      "forbidden_claim": false
+    },
+    {
+      "bp_claim": "客户名单（北汽、华为、广汽等）",
+      "usage": "用于验证Step1中客户合作多为意向的判断，未作为已签约合同使用。",
+      "forbidden_claim": false
+    },
+    {
+      "bp_claim": "Frost&Sullivan市场预测（2030年116.4亿美元）",
+      "usage": "用于验证Step1中市场预测缺乏现实依据的判断，未作为可靠数据使用。",
+      "forbidden_claim": false
+    },
+    {
+      "bp_claim": "专利布局（一体式行星滚轴EMB等）",
+      "usage": "用于验证Step1中技术壁垒的判断，但未评估专利质量或排他性。",
+      "forbidden_claim": false
+    },
+    {
+      "bp_claim": "行业认可（AITC2024最具投资价值项目等）",
+      "usage": "用于验证Step1中团队背书的判断，但未作为商业化能力证据。",
+      "forbidden_claim": false
+    },
+    {
+      "bp_claim": "公司业务与产品（商用车、乘用车、微车平台）",
+      "usage": "用于验证Step1中业务结构的判断，但未作为已量产产品使用。",
+      "forbidden_claim": false
+    }
+  ],
+  "meta": {
+    "knowledge_source_breakdown": {
+      "general_bucket": [
+        "tech_barrier",
+        "customer_value",
+        "commercialization",
+        "expansion_story",
+        "team_credibility"
+      ],
+      "industry_bucket": [],
+      "llm_common_sense": []
+    },
+    "step1_version": "v1.2.1",
+    "step2_version": "v1.0",
+    "timestamp": "2025-04-08T12:00:00Z"
+  }
+}

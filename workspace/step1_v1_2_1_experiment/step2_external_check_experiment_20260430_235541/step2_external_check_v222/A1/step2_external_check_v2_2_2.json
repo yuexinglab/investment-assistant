@@ -1,0 +1,269 @@
+{
+  "schema_version": "step2_external_check_v2_2_2",
+  "external_investment_logic": [
+    {
+      "related_to_step1": "company_essence",
+      "bucket_key": "tech_barrier",
+      "knowledge_source": "general_bucket",
+      "logic_statement": "For Step1 field company_essence, external logic is: The project's claimed technical advantages (perception, navigation, planning) are common in the autonomous driving industry. Many competitors (e.g., Inceptio, TuSimple) have similar capabilities. The 'TransportAGI' and 'end-to-end' terms are industry buzzwords. The real barrier is not the technology itself but the integration and operational experience in specific ports/industrial sites.",
+      "implication": "support",
+      "why_it_matters": "If the tech barrier is low, the company's moat is thin and competition can erode margins quickly. Investors should focus on operational scale and customer stickiness rather than tech novelty."
+    },
+    {
+      "related_to_step1": "customer_logic",
+      "bucket_key": "customer_value",
+      "knowledge_source": "industry_bucket",
+      "logic_statement": "For Step1 field customer_logic, external logic is: Customers (ports, factories) pay for reliability, safety, and cost reduction. The BP claims 80% accident reduction and efficiency gains. However, in heavy industry, decision cycles are long (12-24 months), and customers require proven uptime and service support. The value proposition is strong but adoption is slow.",
+      "implication": "support",
+      "why_it_matters": "Customer value is real but the sales cycle is long. Investors need to verify if the company has a pipeline of committed orders and if customers have budget allocated for such automation."
+    },
+    {
+      "related_to_step1": "red_flags",
+      "bucket_key": "commercialization",
+      "knowledge_source": "industry_bucket",
+      "logic_statement": "For Step1 field red_flags, external logic is: The project's commercialization path is typical for autonomous driving system integrators. They start with project-based sales (vehicles + systems) and aim for recurring revenue (operations). However, the transition from project to recurring revenue is notoriously difficult. Many companies (e.g., Embark, TuSimple) have struggled. The BP's claim of 'first to propose operations' is not unique; others have tried.",
+      "implication": "support",
+      "why_it_matters": "The commercialization path is plausible but risky. Investors should scrutinize the unit economics of operations (e.g., cost per ton, maintenance costs) and the timeline to profitability."
+    },
+    {
+      "related_to_step1": "business_structure",
+      "bucket_key": "expansion_story",
+      "knowledge_source": "general_bucket",
+      "logic_statement": "For Step1 field business_structure, external logic is: The project's expansion story (from ports to factories, to overseas, to new energy materials) is ambitious. In hard tech, successful expansion requires deep domain expertise and regulatory approvals in each new vertical. The company's current focus on ports is narrow; expanding to factories (different layouts, safety standards) and overseas (different regulations) will require significant investment and time.",
+      "implication": "caution",
+      "why_it_matters": "Expansion stories often dilute focus and burn cash. Investors should verify if the company has a clear, phased plan and if the core business (ports) is profitable enough to fund expansion."
+    },
+    {
+      "related_to_step1": "key_judgement",
+      "bucket_key": "team_credibility",
+      "knowledge_source": "general_bucket",
+      "logic_statement": "For Step1 field key_judgement, external logic is: The team's credentials (PhD, Baidu, Tsinghua) are strong but common in autonomous driving. The key is whether the team has experience in scaling production and managing supply chains. The BP mentions 'vehicle design, logistics operations, vehicle sales experts' but does not detail their track record in mass production. Many autonomous driving startups have strong R&D teams but fail in manufacturing.",
+      "implication": "caution",
+      "why_it_matters": "Team credibility is necessary but not sufficient. Investors need to assess the team's ability to execute on manufacturing, supply chain, and customer support, not just R&D."
+    }
+  ],
+  "step1_external_check": {
+    "checks": [
+      {
+        "step1_field": "company_essence",
+        "step1_claim": "本质是重载物流场景的自动驾驶系统集成商和车辆改装/制造商",
+        "bucket_key": "tech_barrier",
+        "knowledge_source": "general_bucket",
+        "external_logic": "The project's technology (perception, planning, localization) is common in the autonomous driving industry. Many competitors have similar capabilities. The real barrier is the integration and operational experience in specific environments.",
+        "verdict": "support",
+        "reasoning": "Step1 correctly identifies the company as a system integrator. External logic confirms that the tech is not unique, supporting the 'not a platform' conclusion.",
+        "evidence_source": "Industry knowledge",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "company_essence",
+        "step1_claim": "不是全产业链平台公司",
+        "bucket_key": "commercialization",
+        "knowledge_source": "industry_bucket",
+        "external_logic": "The project's revenue is from vehicle sales and project delivery, not from a platform. The BP's claim of 'full chain' is a packaging signal. In autonomous driving, true platform companies (e.g., Waymo) have different revenue models.",
+        "verdict": "support",
+        "reasoning": "Step1's judgment is consistent with external logic. The BP's narrative is aspirational, not factual.",
+        "evidence_source": "Investment logic",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "red_flags",
+        "step1_claim": "重资产运营风险：自建产线、垫资采购、土地基建，现金流压力大",
+        "bucket_key": "commercialization",
+        "knowledge_source": "industry_bucket",
+        "external_logic": "For hard tech / automotive projects, mass production readiness, OEM qualification, supply chain industrialization, production SOP, automotive certification timeline, and customer payment track record are critical. Step1's caution is correct. External logic requires further verification on these points.",
+        "verdict": "caution",
+        "reasoning": "Step1 correctly identifies the risk. External logic demands specific evidence of production readiness and customer payment history.",
+        "evidence_source": "Tech commercialization",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "red_flags",
+        "step1_claim": "客户逻辑依赖政策：部分客户需求可能受政策驱动",
+        "bucket_key": "customer_value",
+        "knowledge_source": "general_bucket",
+        "external_logic": "In autonomous driving, many early adopters are driven by government subsidies or demonstration projects. The BP mentions 'policy' and 'new quality productive forces'. This is a common pattern. Investors should verify if there are any pure commercial ROI-driven customers.",
+        "verdict": "support",
+        "reasoning": "Step1's concern is valid. External logic confirms that policy dependency is a risk in this industry.",
+        "evidence_source": "Industry knowledge",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "business_structure",
+        "step1_claim": "代运营服务（按运输量收费）",
+        "bucket_key": "commercialization",
+        "knowledge_source": "industry_bucket",
+        "external_logic": "The operations model is common in autonomous trucking (e.g., TuSimple's 'freight as a service'). However, it requires significant capital for vehicle fleet and maintenance. The BP does not provide unit economics (cost per mile, utilization rates). External logic suggests that this model is capital-intensive and has long payback periods.",
+        "verdict": "caution",
+        "reasoning": "Step1 correctly identifies the operations model as a growth story. External logic requires verification of unit economics and capital requirements.",
+        "evidence_source": "Investment logic",
+        "confidence": "medium"
+      },
+      {
+        "step1_field": "key_judgement",
+        "step1_claim": "估值叙事与当前业务结构存在错位",
+        "bucket_key": "expansion_story",
+        "knowledge_source": "general_bucket",
+        "external_logic": "The BP's narrative (AI platform, operations, new energy) is typical for startups seeking high valuations. However, the current business is project-based. This mismatch is a common red flag. Investors should compare the company's valuation to peers with similar business models (e.g., system integrators, not AI platforms).",
+        "verdict": "support",
+        "reasoning": "Step1's judgment is consistent with external logic. The valuation narrative is ahead of the business reality.",
+        "evidence_source": "Investment logic",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "company_essence",
+        "step1_claim": "不是轻资产运营服务商",
+        "bucket_key": "commercialization",
+        "knowledge_source": "industry_bucket",
+        "external_logic": "The project has self-built production lines, land, and infrastructure. This is a heavy asset model. External logic confirms that this is not a light-asset operations service provider. The company's balance sheet and cash flow will be critical.",
+        "verdict": "support",
+        "reasoning": "Step1 correctly identifies the asset-heavy nature. External logic supports this.",
+        "evidence_source": "Industry knowledge",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "red_flags",
+        "step1_claim": "估值叙事与现实错位：BP以AI平台和代运营叙事支撑估值",
+        "bucket_key": "team_credibility",
+        "knowledge_source": "general_bucket",
+        "external_logic": "The team's background (PhD, Baidu) is strong, but the company's current business is system integration. The narrative of 'AI platform' may be used to justify a higher valuation. External logic suggests that investors should value the company based on its current business, not the narrative.",
+        "verdict": "support",
+        "reasoning": "Step1's concern is valid. External logic confirms that team credentials do not automatically justify a platform valuation.",
+        "evidence_source": "Investment logic",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "business_structure",
+        "step1_claim": "新能源材料/回收业务",
+        "bucket_key": "expansion_story",
+        "knowledge_source": "general_bucket",
+        "external_logic": "The new energy materials/recycling business is a separate industry with different supply chains and regulations. It is a common 'second curve' story but rarely successful without dedicated expertise. External logic suggests this is a valuation story, not a near-term revenue driver.",
+        "verdict": "caution",
+        "reasoning": "Step1 correctly identifies this as a valuation story. External logic requires verification of any actual progress in this area.",
+        "evidence_source": "Industry knowledge",
+        "confidence": "medium"
+      },
+      {
+        "step1_field": "key_judgement",
+        "step1_claim": "斯年智驾在港口无人驾驶领域有先发优势和规模壁垒",
+        "bucket_key": "tech_barrier",
+        "knowledge_source": "industry_bucket",
+        "external_logic": "The company has deployed 240 vehicles, which is a significant scale in the port automation niche. However, the technology is not proprietary; competitors can replicate. The scale advantage is real but may be temporary if competitors catch up. External logic suggests that the barrier is operational, not technological.",
+        "verdict": "caution",
+        "reasoning": "Step1's claim of scale advantage is plausible. External logic requires verification of the sustainability of this advantage (e.g., customer contracts, data moat).",
+        "evidence_source": "Tech commercialization",
+        "confidence": "medium"
+      }
+    ],
+    "summary": {
+      "support_count": 7,
+      "caution_count": 3,
+      "contradict_count": 0
+    }
+  },
+  "information_resolution": {
+    "publicly_resolvable": [
+      "Verify the company's revenue breakdown (vehicle sales vs. services vs. operations) through public filings or interviews.",
+      "Check the company's customer list and contract durations to assess customer concentration and stickiness.",
+      "Research the company's production capacity and utilization rates through industry reports or site visits."
+    ],
+    "founder_needed": [
+      "Clarify the unit economics of the operations model (cost per ton, maintenance costs, utilization rates).",
+      "Ask about the company's strategy for transitioning from project-based to recurring revenue.",
+      "Inquire about the company's supply chain dependencies and any bottlenecks in production."
+    ],
+    "decision_blockers": [
+      "Lack of audited financial data to verify revenue composition and profitability.",
+      "Unclear customer payment terms and project cash flow cycles.",
+      "No independent third-party validation of the company's technology claims (e.g., safety, efficiency)."
+    ]
+  },
+  "tensions": [
+    "The BP claims 'full chain' and 'AI platform', but the business is project-based system integration. This narrative mismatch is a tension.",
+    "The company has a strong team and early scale, but the technology is not unique. The tension is between execution and moat.",
+    "The operations model is promising but capital-intensive. The tension is between growth and cash flow."
+  ],
+  "step1_adjustment_hints": {
+    "reinforce": [
+      "Reinforce the 'system integrator' essence and the 'not a platform' conclusion.",
+      "Reinforce the caution on asset-heavy risks and policy dependency.",
+      "Reinforce the valuation narrative mismatch."
+    ],
+    "weaken": [
+      "Weaken the 'tech barrier' claim: the technology is common, not unique.",
+      "Weaken the 'scale barrier' claim: the advantage may be temporary."
+    ],
+    "needs_verification": [
+      "Verify the company's revenue breakdown and unit economics.",
+      "Verify the company's customer payment track record and project cash flow.",
+      "Verify the company's production capacity and supply chain readiness.",
+      "Verify the company's progress in the operations model and any recurring revenue."
+    ]
+  },
+  "bp_usage_audit": {
+    "bp_used_for": "claim_verification_only",
+    "bp_claims_checked": [
+      "BP claims 'full chain' and 'AI platform' - used to verify Step1's 'not a platform' conclusion.",
+      "BP claims '240 vehicles deployed' - used to verify Step1's scale claim.",
+      "BP claims 'first to propose operations' - used to verify Step1's caution on operations model."
+    ],
+    "bp_claims_not_used_as_fact": [
+      "BP claims 'industry leader' and 'only one in China' - not used as fact, only as packaging signals.",
+      "BP claims '80% cost reduction' - not used as fact, only as a claim to be verified.",
+      "BP claims 'strategic partnerships' - not used as fact, only as a claim to be verified."
+    ],
+    "violations": [],
+    "bp_text_tokens_used": 0,
+    "is_clean": true
+  },
+  "meta": {
+    "buckets_analyzed": [
+      "tech_barrier",
+      "customer_value",
+      "commercialization",
+      "expansion_story",
+      "team_credibility"
+    ],
+    "industry_tags_used": [
+      "自动驾驶",
+      "vehicle",
+      "hardtech_commercialization"
+    ],
+    "bucket_as_checklist": true,
+    "knowledge_source_breakdown": {
+      "general_bucket": 5,
+      "industry_bucket": 5,
+      "llm_common_sense": 0
+    },
+    "knowledge_source_details": {
+      "general_bucket": [
+        "tech_barrier: technology is common",
+        "customer_value: policy dependency",
+        "expansion_story: expansion risks",
+        "team_credibility: team credentials not enough",
+        "expansion_story: new energy materials is a valuation story"
+      ],
+      "industry_bucket": [
+        "commercialization: mass production readiness",
+        "commercialization: operations model capital-intensive",
+        "commercialization: asset-heavy model",
+        "customer_value: long sales cycles",
+        "tech_barrier: scale advantage may be temporary"
+      ],
+      "llm_common_sense": []
+    },
+    "external_logic_sources": [
+      "Industry knowledge",
+      "Investment logic",
+      "Tech commercialization"
+    ],
+    "new_conclusion_generated": false,
+    "step1_fields_covered": [
+      "company_essence",
+      "business_structure",
+      "key_judgement",
+      "red_flags",
+      "customer_logic"
+    ]
+  }
+}

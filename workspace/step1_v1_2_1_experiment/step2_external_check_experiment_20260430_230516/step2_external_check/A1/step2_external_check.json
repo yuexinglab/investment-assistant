@@ -1,0 +1,191 @@
+{
+  "external_investment_logic": {
+    "tech_barrier": {
+      "validation": "weaken",
+      "reasoning": "从行业常识看，港口/园区无人驾驶技术壁垒主要在于工程化落地和场景适配，而非底层算法创新。Step1认为技术壁垒（数据、仿真）可复制性待观察，这与行业认知一致。BP中提到的感知、导航定位、规划调度等能力，在自动驾驶行业属于通用技术栈，多家公司（如主线科技、西井科技）已具备类似能力。TransportAGI专用大模型等概念属于包装性表述，未在BP中提供独立验证证据。",
+      "knowledge_source": "general_bucket"
+    },
+    "customer_value": {
+      "validation": "reinforce",
+      "reasoning": "Step1指出客户逻辑部分依赖政策，BP中客户案例包括天津港、唐山港等，这些港口无人驾驶项目多与政策示范相关。行业常识表明，港口客户采购无人驾驶方案的核心驱动力是政策合规和示范效应，而非纯商业ROI。BP声称降低人工成本、提升安全等价值，但未提供客户因经济ROI主动采购的案例。",
+      "knowledge_source": "industry_bucket"
+    },
+    "commercialization": {
+      "validation": "reinforce",
+      "reasoning": "Step1判断商业模式本质是重资产制造/集成，与行业常识一致。港口无人驾驶项目制交付模式普遍需要垫资、长回款周期，且标准化程度低。BP声称部署240台车辆、20+客户，但未说明收入结构（整车销售 vs 代运营），代运营模式在行业内尚未验证规模化。",
+      "knowledge_source": "general_bucket"
+    },
+    "expansion_story": {
+      "validation": "weaken",
+      "reasoning": "Step1认为代运营、新能源材料等扩张叙事未验证。行业常识表明，从港口向散杂货、工厂基地等场景扩张面临不同的作业流程、法规和客户验证体系，难度较大。BP中提到的增材制造降本80%和自研域控降本30%属于公司自述，缺乏行业第三方验证。",
+      "knowledge_source": "industry_bucket"
+    },
+    "team_credibility": {
+      "validation": "needs_verification",
+      "reasoning": "Step1未明确评估团队。行业常识中，团队背景（百度、清华）在自动驾驶领域常见，但需验证是否转化为实际商业化能力。BP中团队介绍强调学术和工程背景，但缺少销售和运营经验突出的成员，这与重资产制造/集成业务所需的能力匹配度需验证。",
+      "knowledge_source": "general_bucket"
+    }
+  },
+  "step1_external_check": {
+    "checks": [
+      {
+        "step1_field": "company_essence.core_identity",
+        "external_validation": "reinforce",
+        "reasoning": "行业常识中，港口无人驾驶公司普遍采用项目制交付和车辆销售模式，轻资产代运营尚未验证。Step1判断为'重载物流场景的自动驾驶系统集成商和车辆改装/制造商'，与行业模式一致。",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "company_essence.not_identity",
+        "external_validation": "reinforce",
+        "reasoning": "BP中强调全链条、AI平台，但行业常识中，此类公司AI能力多为内部效率工具，非独立变现产品。Step1排除'AI大模型公司'和'轻资产运营服务商'，符合行业认知。",
+        "knowledge_source": "industry_bucket"
+      },
+      {
+        "step1_field": "business_structure.current_business",
+        "external_validation": "needs_verification",
+        "reasoning": "BP声称部署240台车辆、20+客户，但行业常识中，项目制交付的客户数和车辆数可能包含重复计算或小批量订单。需验证客户是否均为独立付费主体，以及车辆是否全部在运营。",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "business_structure.narrative_business",
+        "external_validation": "weaken",
+        "reasoning": "代运营服务在港口无人驾驶行业尚未出现规模化成功案例，BP中代运营和技术服务'业绩领先'缺乏行业数据支撑。新能源材料/回收业务与主业关联度低，扩张逻辑不清晰。",
+        "knowledge_source": "industry_bucket"
+      },
+      {
+        "step1_field": "key_judgement.statement",
+        "external_validation": "reinforce",
+        "reasoning": "Step1指出'估值叙事与当前业务结构存在错位'，行业常识中，项目制公司通常按PS或资产价值估值，而非按AI平台估值。BP以AI和代运营叙事支撑估值，与行业惯例不符。",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "red_flags.flags[0]",
+        "external_validation": "reinforce",
+        "reasoning": "重资产运营风险在港口无人驾驶行业普遍存在，自建产线和垫资模式会占用大量现金流。BP未提及现金流状况，行业常识中此类公司常面临回款周期长的问题。",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "red_flags.flags[1]",
+        "external_validation": "reinforce",
+        "reasoning": "政策驱动风险在行业中被广泛讨论，BP中客户案例多与政府示范项目相关，纯商业ROI驱动的客户案例缺失。",
+        "knowledge_source": "industry_bucket"
+      },
+      {
+        "step1_field": "red_flags.flags[2]",
+        "external_validation": "reinforce",
+        "reasoning": "估值叙事与现实错位是行业常见问题，BP以AI平台和代运营叙事支撑估值，但行业常识中，项目制公司估值通常较低。",
+        "knowledge_source": "general_bucket"
+      }
+    ]
+  },
+  "information_resolution": {
+    "questions": [
+      {
+        "question": "当前收入中，整车销售、技术服务、代运营各占多少比例？代运营是否已产生稳定收入？",
+        "source": "step1_must_ask_questions",
+        "priority": "high"
+      },
+      {
+        "question": "单个项目从签约到验收回款的平均周期是多少？是否需要公司垫资？",
+        "source": "step1_must_ask_questions",
+        "priority": "high"
+      },
+      {
+        "question": "客户采购决策中，政策补贴或示范要求占比多少？是否有纯商业ROI驱动的客户案例？",
+        "source": "step1_must_ask_questions",
+        "priority": "high"
+      },
+      {
+        "question": "自建产线的产能利用率如何？增材制造降本80%是否已在实际产品中验证？",
+        "source": "step1_must_ask_questions",
+        "priority": "medium"
+      },
+      {
+        "question": "代运营服务的定价模式和客户续约率如何？是否已实现正向现金流？",
+        "source": "step1_must_ask_questions",
+        "priority": "medium"
+      }
+    ]
+  },
+  "tensions": [
+    {
+      "conflict": "Step1判断公司为'重资产制造/集成'，但BP以'AI平台'和'代运营'叙事支撑估值，行业常识中这两种模式估值逻辑冲突。",
+      "step1_position": "cautious_watch"
+    },
+    {
+      "conflict": "Step1认为客户逻辑依赖政策，但BP声称解决行业刚需（成本、安全、效率），行业常识中政策驱动与商业ROI驱动在客户决策中权重不同。",
+      "step1_position": "cautious_watch"
+    }
+  ],
+  "step1_adjustment_hints": {
+    "hints": [
+      "基于external_investment_logic中tech_barrier的weaken结果，建议Step1在技术壁垒判断上增加'可复制性'的权重。",
+      "基于step1_external_check中business_structure.current_business的needs_verification，建议Step1要求公司提供客户名单和车辆运营数据。",
+      "基于step1_external_check中business_structure.narrative_business的weaken，建议Step1降低代运营和新能源材料业务的估值权重。"
+    ]
+  },
+  "bp_usage_audit": {
+    "usage_log": [
+      {
+        "bp_claim": "公司是'无人重载物流行业领军者'",
+        "usage": "用于验证Step1中'先发优势和规模壁垒'的表述是否与BP一致，未用于新结论。",
+        "forbidden_claim_type": "company_self_claimed_title"
+      },
+      {
+        "bp_claim": "累积部署240台无人重载运输车辆，为行业第一",
+        "usage": "用于验证Step1中'已部署240台车辆'的表述是否与BP一致，未用于新结论。",
+        "forbidden_claim_type": "market_position"
+      },
+      {
+        "bp_claim": "打造超过20个客户的业务场景",
+        "usage": "用于验证Step1中'覆盖20+客户'的表述是否与BP一致，未用于新结论。",
+        "forbidden_claim_type": "customer_relationships"
+      },
+      {
+        "bp_claim": "增材制造降本幅度可达80%",
+        "usage": "用于验证Step1中'增材制造降本80%'的表述是否与BP一致，未用于新结论。",
+        "forbidden_claim_type": "technical_capabilities"
+      },
+      {
+        "bp_claim": "代运营和技术服务在行业内首次提出且业绩领先",
+        "usage": "用于验证Step1中'代运营未验证'的判断，BP声称领先但未提供数据，支持Step1的质疑。",
+        "forbidden_claim_type": "market_position"
+      },
+      {
+        "bp_claim": "获得包括字节跳动、浙江金控、广发信德等在内的6轮融资",
+        "usage": "用于验证Step1中融资背景，未用于新结论。",
+        "forbidden_claim_type": "strategic_partnerships"
+      }
+    ],
+    "total_bp_usage_count": 6,
+    "forbidden_claims_used": [
+      "company_self_claimed_title",
+      "market_position",
+      "customer_relationships",
+      "technical_capabilities",
+      "strategic_partnerships"
+    ]
+  },
+  "meta": {
+    "knowledge_source_breakdown": {
+      "general_bucket": [
+        "tech_barrier",
+        "commercialization",
+        "team_credibility",
+        "company_essence.core_identity",
+        "business_structure.current_business",
+        "key_judgement.statement",
+        "red_flags.flags[0]",
+        "red_flags.flags[2]"
+      ],
+      "industry_bucket": [
+        "customer_value",
+        "expansion_story",
+        "company_essence.not_identity",
+        "business_structure.narrative_business",
+        "red_flags.flags[1]"
+      ],
+      "llm_common_sense": []
+    }
+  }
+}

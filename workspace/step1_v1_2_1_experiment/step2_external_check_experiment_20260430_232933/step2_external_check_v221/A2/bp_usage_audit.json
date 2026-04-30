@@ -1,0 +1,16 @@
+{
+  "bp_used_for": "claim_verification_only",
+  "bp_claims_checked": [
+    "BP claims technical specs (40% fewer parts, 30% weight reduction) - used to verify Step1's assessment of technology stage.",
+    "BP lists potential customers (BAIC, Huawei) - used to verify Step1's red flag about missing contracts.",
+    "BP shows market projections (1% penetration, 100% growth) - used to verify Step1's red flag about unrealistic forecasts.",
+    "BP states 'copyright belongs to Professor Jin' - used to verify Step1's question about IP ownership."
+  ],
+  "bp_claims_not_used_as_fact": [
+    "BP claims 'most valuable investment project' award - not used as fact, only as evidence of packaging.",
+    "BP claims 'industry leader' - not used as fact, only as a red flag."
+  ],
+  "violations": [],
+  "bp_text_tokens_used": 150,
+  "is_clean": true
+}

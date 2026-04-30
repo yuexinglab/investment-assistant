@@ -1,0 +1,586 @@
+You are in Step2: External Industry/Investment Logic Validation Layer.
+
+
+Your task:
+NOT to analyze the project, but to use the "how should this type of project be evaluated" external perspective
+to validate whether Step1's judgments are sound.
+
+[Core Constraints]
+- BP text = unverified company claims, NOT facts
+- Your judgment basis = industry common sense, investment logic, tech commercialization patterns
+- Step1 = your INPUT, not your OUTPUT
+- You CANNOT override Step1, only reinforce / weaken / needs_verification
+
+[Hard Constraint - NO New Conclusions]
+- PROHIBITED: output any new "company essence judgment"
+- PROHIBITED: write "this company is X" or "essentially belongs to X"
+- All judgments MUST cite: specific Step1 fields, or external logic
+- Your output is "validation result", NOT "new company analysis"
+
+[BP Usage Rules]
+BP text = unverified company claims, NOT facts.
+BP text can ONLY be used for: verifying if Step1 claims match BP.
+PROHIBITED: re-analyze project, support new conclusions.
+
+[Forbidden BP Claims (MUST track in bp_usage_audit)]
+- Company self-claimed titles (e.g., "full industry chain", "chip manufacturer", "platform")
+- Customer relationships ("already partnered with XX leading customer")
+- Technical capabilities ("achieved XX technical breakthrough")
+- Market position ("only one in China", "industry leader")
+- Strategic partnerships ("established strategic partnership with XX")
+
+[Bucket Usage Rules]
+Buckets are NOT "reference knowledge" but "mandatory checklist".
+For each bucket_key, you MUST check:
+1. Whether key validation points are satisfied
+2. Whether common failure modes are triggered
+3. Whether common packaging signals appear
+
+Write results to external_investment_logic and step1_external_check.
+
+[knowledge_source Labeling Requirement]
+Each external_investment_logic and step1_external_check.checks MUST label knowledge source:
+- general_bucket: from general bucket (general.py)
+- industry_bucket: from industry enhancement bucket (industries/*.py)
+- llm_common_sense: only from LLM general knowledge
+
+============================================
+[Input 1: Step1 v1.2.1 Output]
+============================================
+
+[Step1 v1.2.1 Output]
+
+company_essence:
+{
+  "core_identity": "本质是重载物流场景的自动驾驶系统集成商和车辆改装/制造商，以项目制交付和车辆销售为主要收入来源",
+  "not_identity": [
+    "不是全产业链平台公司",
+    "不是AI大模型公司",
+    "不是轻资产运营服务商"
+  ],
+  "why_not": "BP声称全链条、AI平台，但实际收入来自整车销售和技术服务，代运营虽提出但未证明规模化；AI能力更多是研发效率工具而非独立变现产品；自建产线和重资产投入表明是制造/集成型业务",
+  "confidence": "high"
+}
+
+business_structure:
+{
+  "current_business": "无人集卡/自卸车销售、自动驾驶系统套件销售、项目制交付（港口/园区无人运输方案），已部署240台车辆，覆盖20+客户",
+  "narrative_business": "代运营服务（按运输量收费）、新能源材料/回收、增材制造降本、L2级智能集卡量产、海外市场拓展"
+}
+
+key_judgement:
+{
+  "statement": "斯年智驾在港口无人驾驶领域有先发优势和规模壁垒，但商业模式本质是重资产制造/集成，而非轻资产平台，估值叙事与当前业务结构存在错位",
+  "reasoning": "BP强调全链条和AI，但收入来源是车辆销售和项目交付，代运营未验证；自建产线、垫资模式带来现金流风险；客户逻辑部分依赖政策；技术壁垒（数据、仿真）可复制性待观察",
+  "stance": "cautious_watch"
+}
+
+red_flags:
+{
+  "flags": [
+    "重资产运营风险：自建产线、垫资采购、土地基建，现金流压力大，回款周期未知",
+    "客户逻辑依赖政策：部分客户需求可能受政策驱动，经济ROI未独立验证，政策退坡风险",
+    "估值叙事与现实错位：BP以AI平台和代运营叙事支撑估值，但当前收入来自车辆销售和项目制，代运营未规模化"
+  ]
+}
+
+must_ask_questions:
+{
+  "questions": [
+    "当前收入中，整车销售、技术服务、代运营各占多少比例？代运营是否已产生稳定收入？",
+    "单个项目从签约到验收回款的平均周期是多少？是否需要公司垫资？",
+    "客户采购决策中，政策补贴或示范要求占比多少？是否有纯商业ROI驱动的客户案例？",
+    "自建产线的产能利用率如何？增材制造降本80%是否已在实际产品中验证？",
+    "代运营服务的定价模式和客户续约率如何？是否已实现正向现金流？"
+  ]
+}
+
+============================================
+[Input 2: Project Structure Summary]
+============================================
+
+[Project Structure Summary]
+
+Industry: 自动驾驶, 工业物流/场内物流, 商用车/重卡, AI应用, 新材料
+
+Business Lines:
+[
+  {
+    "name": "无人重载车辆/无人集卡",
+    "role": "current_business",
+    "status": "核心产品/已落地业务",
+    "revenue_status": "可能已有设备/整车/硬件收入，具体金额待确认",
+    "evidence": "命中关键词：无人集卡、无人重载、智能集卡、自卸车、重卡、集卡、商用车、运输机器人",
+    "confidence": "high"
+  },
+  {
+    "name": "项目制交付/场景解决方案",
+    "role": "current_business",
+    "status": "项目制落地/场景交付",
+    "revenue_status": "项目收入和毛利待确认",
+    "evidence": "命中关键词：项目、部署、实施、解决方案、园区项目、改造、适配、港口",
+    "confidence": "high"
+  },
+  {
+    "name": "美妆/日化原料",
+    "role": "current_business",
+    "status": "当前收入底盘",
+    "revenue_status": "已有收入但金额需确认",
+    "evidence": "根据制造/产品销售型及新材料/美妆原料行业标签反推",
+    "confidence": "medium"
+  },
+  {
+    "name": "代运营服务",
+    "role": "growth_story",
+    "status": "持续收入模式待验证",
+    "revenue_status": "是否已经形成稳定持续收入待确认",
+    "evidence": "命中关键词：代运营、租赁、运营、托管、车辆、车队",
+    "confidence": "high"
+  },
+  {
+    "name": "自动驾驶系统/云端调度平台",
+    "role": "supporting_capability",
+    "status": "支撑主业务的技术/平台能力",
+    "revenue_status": "可能作为技术服务或软件服务收费，需确认",
+    "evidence": "命中关键词：云平台、调度、车队监管、自动驾驶系统、智能驾驶系统、远程控制、数字孪生、感知",
+    "confidence": "high"
+  },
+  {
+    "name": "AI研发平台",
+    "role": "supporting_capability",
+    "status": "研发工具/效率工具",
+    "revenue_status": "是否对外收费待确认",
+    "evidence": "命中关键词：AI、人工智能、算法、大模型、预测、研发、筛选",
+    "confidence": "high"
+  },
+  {
+    "name": "新能源材料/回收业务",
+    "role": "valuation_story",
+    "status": "远期故事/待验证业务",
+    "revenue_status": "是否已有收入待确认",
+    "evidence": "命中关键词：电池、新能源、锂电、材料、回收",
+    "confidence": "high"
+  }
+]
+
+Business Model Hypotheses:
+[
+  {
+    "bucket_key": "manufacturing_product_sales",
+    "bucket_name": "制造/产品销售型",
+    "role": "primary",
+    "current_or_future": "current",
+    "confidence": "low",
+    "evidence": "命中关键词：销售",
+    "why_it_matters": "如果当前收入主要来自产品/设备/原料销售，则公司更接近制造/产品销售型公司。"
+  },
+  {
+    "bucket_key": "project_delivery",
+    "bucket_name": "项目制交付型",
+    "role": "secondary",
+    "current_or_future": "current",
+    "confidence": "high",
+    "evidence": "命中关键词：项目、部署、定制、实施、解决方案、集成、改造",
+    "why_it_matters": "如果收入依赖一个个项目交付，则需要重点验证标准化和毛利稳定性。"
+  },
+  {
+    "bucket_key": "asset_heavy_operation",
+    "bucket_name": "重资产运营型",
+    "role": "secondary",
+    "current_or_future": "mixed",
+    "confidence": "medium",
+    "evidence": "命中关键词：代运营、租赁",
+    "why_it_matters": "如果公司需要自投资产或长期运营回收现金流，则估值和风险更接近重资产运营公司。"
+  },
+  {
+    "bucket_key": "software_platform_saas",
+    "bucket_name": "软件/SaaS/平台型",
+    "role": "secondary",
+    "current_or_future": "mixed",
+    "confidence": "medium",
+    "evidence": "命中关键词：软件、云平台",
+    "why_it_matters": "如果软件收入标准化且可续费，才适合按软件/平台公司分析。"
+  },
+  {
+    "bucket_key": "data_ai_model",
+    "bucket_name": "数据/AI模型驱动型",
+    "role": "secondary",
+    "current_or_future": "narrative",
+    "confidence": "high",
+    "evidence": "命中关键词：AI、人工智能、算法、大模型、数据、模型、预测",
+    "why_it_matters": "如果AI只是内部效率工具，则不应按AI平台公司估值；如果形成数据闭环，才可能构成壁垒。"
+  },
+  {
+    "bucket_key": "hardtech_commercialization",
+    "bucket_name": "硬科技商业化型",
+    "role": "secondary",
+    "current_or_future": "mixed",
+    "confidence": "high",
+    "evidence": "命中关键词：技术、专利、研发、材料、自动驾驶、机器人、量产",
+    "why_it_matters": "硬科技项目重点不是技术先进，而是能否稳定量产并被真实客户持续采购。"
+  },
+  {
+    "bucket_key": "government_industrial_landing",
+    "bucket_name": "政府/产业落地型",
+    "role": "secondary",
+    "current_or_future": "mixed",
+    "confidence": "high",
+    "evidence": "命中关键词：政府、基金、落地、招商",
+    "why_it_matters": "对政府基金而言，需判断项目是否能真实落地产值、税收、就业和产业协同。"
+  },
+  {
+    "bucket_key": "policy_driven",
+    "bucket_name": "政策驱动型",
+    "role": "risk",
+    "current_or_future": "mixed",
+    "confidence": "high",
+    "evidence": "命中关键词：政策、补贴、示范、新质生产力",
+    "why_it_matters": "如果需求主要来自政策/补贴/示范项目，需验证政策退坡后的商业可持续性。"
+  },
+  {
+    "bucket_key": "team_credibility_story",
+    "bucket_name": "团队/背书叙事型",
+    "role": "risk",
+    "current_or_future": "narrative",
+    "confidence": "medium",
+    "evidence": "命中关键词：博士、教授、专家",
+    "why_it_matters": "团队/背书需要验证是否转化为排他资源、成果转化或商业化能力。"
+  },
+  {
+    "bucket_key": "financing_valuation_story",
+    "bucket_name": "融资估值叙事型",
+    "role": "risk",
+    "current_or_future": "narrative",
+    "confidence": "low",
+    "evidence": "命中关键词：融资",
+    "why_it_matters": "需验证融资用途和估值逻辑是否匹配真实业务阶段。"
+  }
+]
+
+Risk Buckets:
+[
+  {
+    "bucket_key": "asset_heavy_operation",
+    "bucket_name": "重资产运营型",
+    "risk_role": "risk",
+    "confidence": "high",
+    "evidence": "命中关键词：代运营、车队、固定资产、垫资、租赁",
+    "why_it_matters": "如果业务扩张需要同步投入大量资产，会带来现金流和回本周期风险。"
+  },
+  {
+    "bucket_key": "project_delivery",
+    "bucket_name": "项目制交付型",
+    "risk_role": "risk",
+    "confidence": "high",
+    "evidence": "命中关键词：定制、实施、改造、适配、非标",
+    "why_it_matters": "如果每个项目都需要定制，规模化后交付和毛利可能承压。"
+  },
+  {
+    "bucket_key": "policy_driven",
+    "bucket_name": "政策驱动型",
+    "risk_role": "risk",
+    "confidence": "high",
+    "evidence": "命中关键词：政策、政府、补贴、示范、新质生产力",
+    "why_it_matters": "如果需求由政策驱动，需要验证政策退坡后客户是否仍会付费。"
+  },
+  {
+    "bucket_key": "asset_heavy_operation_cashflow",
+    "bucket_name": "asset_heavy_operation_cashflow",
+    "risk_role": "risk",
+    "confidence": "low",
+    "evidence": "命中关键词：垫资",
+    "why_it_matters": "如果回款慢或需要垫资，增长可能反而加剧资金压力。"
+  },
+  {
+    "bucket_key": "hardtech_commercialization",
+    "bucket_name": "硬科技商业化型",
+    "risk_role": "risk",
+    "confidence": "high",
+    "evidence": "命中关键词：芯片、激光雷达、传感器、第三方、量产",
+    "why_it_matters": "硬科技项目需要验证关键供应链、量产良率和工程化能力。"
+  },
+  {
+    "bucket_key": "customer_concentration",
+    "bucket_name": "客户集中风险",
+    "risk_role": "risk",
+    "confidence": "low",
+    "evidence": "命中关键词：港口",
+    "why_it_matters": "如果收入依赖少数大客户，公司议价权和收入稳定性可能较弱。"
+  },
+  {
+    "bucket_key": "team_credibility_story",
+    "bucket_name": "团队/背书叙事型",
+    "risk_role": "risk",
+    "confidence": "medium",
+    "evidence": "命中关键词：博士、教授",
+    "why_it_matters": "背书需要验证是否真正转化为公司壁垒。"
+  },
+  {
+    "bucket_key": "financing_valuation_story",
+    "bucket_name": "融资估值叙事型",
+    "risk_role": "risk",
+    "confidence": "low",
+    "evidence": "命中关键词：融资",
+    "why_it_matters": "融资用途和估值逻辑可能与真实业务阶段不匹配。"
+  }
+]
+
+============================================
+[Input 3: Bucket/Industry Knowhow (Mandatory Checklist)]
+============================================
+[General Investment Framework Buckets]
+
+[bucket_key: tech_barrier]
+label: 技术/壁垒是否成立
+description: 判断技术是不是行业通用、是否形成真实壁垒、是否容易被复制，AI/平台是否只是工具包装。
+Required checks:
+  - 这项技术是行业通用技术、工程常规，还是公司独有核心能力？
+  - 技术优势是概念优势、实验优势，还是已落入真实产品与客户验证？
+  - 如果去掉公司自述，这项技术是否仍然成立为壁垒？
+  - AI/算法/平台在这里是核心护城河，还是效率工具？
+
+[bucket_key: customer_value]
+label: 客户为什么付钱
+description: 判断客户真实购买动机、付费点与替代动机，不看技术炫耀，只看客户价值。
+Required checks:
+  - 客户到底为哪个具体价值付钱：性能、成本、合规、效率还是卖点？
+  - 该价值是可有可无，还是会影响客户收入、产品力或生产稳定性？
+  - 客户更换现有方案的动力强不强？
+  - 公司讲的技术指标，是否真的对应客户订单与采购动作？
+
+[bucket_key: commercialization]
+label: 商业化路径是否成立
+description: 判断从实验室到客户验证到交付放量的路径是否真实、节奏是否合理。
+Required checks:
+  - 当前处于什么阶段：概念、实验室、中试、客户验证、小批量、量产？
+  - 真正卡住商业化的瓶颈是什么？
+  - 交付、良率、验证周期、供应链是否构成增长限制？
+  - 增长来自新客户、新产品，还是老客户放量？
+
+[bucket_key: expansion_story]
+label: 扩张/故事是否合理
+description: 判断多行业、多场景、第二曲线等扩张叙事是否真实可落地，还是提前讲故事。
+Required checks:
+  - 公司当前业务底盘是否足够扎实，能够支撑新故事？
+  - 新业务是已验证增长点，还是论文、合作、概念和规划？
+  - 跨行业扩张是否会遇到完全不同的验证体系、法规、供应链和销售逻辑？
+  - 历史上该行业类似扩张通常成功还是失败？
+
+[bucket_key: team_credibility]
+label: 团队/背书是否被高估
+description: 判断诺奖、院士、博士、名校、顾问等背书是否真的转化为商业化能力，而不是人设包装。
+Required checks:
+  - 团队强项更偏科研、工程、销售还是管理？
+  - 背书是否转化为排他性技术、实际产品或客户资源？
+  - 高学历/强学术是否被误当成可规模化商业能力？
+  - 团队能力与当前阶段是否匹配，而不是只看履历好不好看？
+
+============================================
+[Input 4: BP Text (Strictly Limited)]
+============================================
+斯 年 智 驾
+/ S E N I O R A U T O
+无人重载物流运输机器人 | 行业解决方案领军者
+
+● 无人重载物流行业领军者
+• 2020年4月成立于北京，已获得“国家高新”、“专精特新”、“小巨人”等荣誉资质。
+• 获得包括字节跳动、浙江金控、广发信德等在内的6轮融资。
+• 针对重载物流行业的无人驾驶技术进行产品化和商业化，包括核心智驾算法、
+软件数据平台、边缘计算硬件系统、线控底盘和智能机器人等。
+核心产品
+无人集卡/自卸车、无人重载机器人、智能增材重卡、车路云协同、充电机器人等
+应用场景
+集装箱港口、散杂货场区、工厂基地、场间短驳、干线编队等
+
+从技术、生产、运营到商业化，构筑全链条竞争优势
+• 全栈软硬件系统自研，包括车、 • 核心团队磨合接近10年，是国内最 • 在行业内成立最晚，但成长速度最 • 减少大型冲压设备，通过使用增材
+路、云、底盘等，具有显著的稳 早一批从事商用车无人驾驶的技术 快，当前累积部署240台无人重载 打印来完成大型部件的生产，降低
+定、安全以及高效特性。无须客 专家和科学家，经验丰富 运输车辆，为行业第一 模具的使用，同时又减少焊装的工
+户对场地做任何改造和适配，支 艺/工时。降本幅度可达80%
+• 多位车辆设计、物流运营、车辆销 • 从集装箱港口起步，覆盖到更多的
+持快速部署和智能升级
+售专家的加盟，保证公司和车队运 物流场景，包括散杂货场区、工厂 • 自研域控和关键核心零部件，保证
+• 打造超过20个客户的业务场景， 营管理的完整性 基地、场间短驳、干线编队等 系统性能的同时，提升稳定性和可
+单体部署规模超过50台，拥有行 控度，降本幅度可达30%
+• 多项行业标准和国际标准的制定者， • 商业模式落地经验丰富，包括整车
+业最大的物流场景的大数据平台，
+通过欧盟CE、ISO等多项认证，减 销售、技术服务以及代运营。其中
+具备持续优化和技术领先能力
+少系统和管理的风险和不稳定度 代运营和技术服务在行业内首次提
+出且业绩领先
+
+L2-L4级智能驾驶方案，覆盖多种物流场景
+
+针对安全、成本及效率三大痛点，无人驾驶解决行业刚需
+降低人工成本 提升作业安全 提高运营效率 社会效益明显
+重载物流的营业成本中，人工和折 设备事故、人员管理严重影响生产 现阶段人工驾驶与无人驾驶效率持 政策相继出台，驱动行业快速发展。
+旧是主要支出项。人工和折旧合计 安全，无人驾驶可降低80%的事故 平，但无人驾驶效率增长趋势明显， 新质生产力剑指无人驾驶，重载物
+占营业成本的60%+。 发生率 呈超越趋势 流运输难题亟待突破
+
+规模快速增长，万亿重载物流市场目前已解锁千亿
+集装箱港口 散杂货场区 工厂基地
+国内 国外 国内 国外 国内 国外 ……
+应用场景
+在港口/物流园区/堆场进行集装箱运输 干散货、件杂货、滚装等非标货物运输 用于生产的原材料运输、成品短倒等 ……
+2.66亿
+TEU/年
+6亿
+TEU/年
+165亿
+吨/年
+140亿
+吨/年
+60万
+/辆
+吞吐量 吞吐量 吞吐量 吞吐量 单车收入
+规模测算
+20 40 1.65 3.3
+元/TEU 元/TEU 元/吨 元/吨 8万
+注
+运费单价 运费单价 单车收入 单车收入
+注：场内短倒运输车保有量
+TAM 53亿元/年 240亿元/年 272亿元/年 462亿元/年 480亿元/年 …… ……
+
+清华/百度双属性，17年智能驾驶从业经验
+习近平总书记在天津港考察调研，
+何贝曾主导全球首台无人集卡在天津港运营
+李强总理赴上海临港调研无人驾驶项目，
+何贝陪同讲解
+何 贝
+河北省委书记、省人大常委会主任倪岳峰在
+创始人&董事长
+唐山港调研并参观斯年智驾无人作业
+央视《朝闻天下》报道斯年智驾
+• 人工智能/无人驾驶领域博士，原百度无人车科学家 在青岛港纸浆码头无人驾驶作业
+• 无人驾驶全栈工程师，发表相关论文30余篇、专利100余件
+• 最受航运界关注的100位中国人，中国科技出行产业青年创新者
+央视新闻频道报道
+TOP10，全球港航创新创业大赛二等奖，招商杯创意创新创业
+大赛三等奖，博士后创新创业大赛铜奖，清华三创大赛二等奖 斯年智驾集卡潍坊港无人化作业
+
+团队磨合约10年，第一批无人驾驶商用车专家
+120 70 90 80
++
+% % %
+团队规模 研发团队 研发团队硕博比例 研发团队985比例
+刘 羿 / 技术副总裁 王贵锦 / 首席科学家 赵绍兴 / 首席顾问
+• 北理工硕士 • 清华大学博士，清华大学教授 • 山东大学本科
+• 原主线科技技术副总裁
+• 2019年国家科技进步二等奖，发 • 原陕汽商用车研究所所长，福田
+• 10年智能交通领域经验，自动驾驶国际挑战赛第一名 表论文百余篇 商用车副总工
+• 20余种车型自动驾驶系统架构设计和工程化落地，主导完成全球首个全混行
+自动驾驶无人运输系统建设
+Ivan Wu / 整车规划 Philip Song / 整车供应链
+刘鹤云 / 市场副总裁 • 新西兰奥克兰大学本科 • 意大利米兰理工本科
+• 原沃尔沃/克莱斯勒战略总监 • 原菲亚特汽车S.P.A副总裁
+• 地质大学硕士
+• 原京东数科市场总监，超过10年政府关系和市场拓展经验，主导多项国家重
+点自动驾驶科技项目开展，推动无人驾驶标准和法规落地
+徐化兵 / 市场销售 陈 冉 / 规控云端
+• 中国航运界十大杰出女性
+• 同济本科 • 北航博士
+赵雪江 / 工程副总裁 • 原ABB全球港口业务负责人 • 原中国运载火箭型号总体设计
+• 清华硕士
+• 原主线科技技术副总裁，近10年地图定位研发经验 兰晓松 / 端到端和大模型 唐 晓 / 感知地图
+• 近10年地图定位研发经验
+• 主导多款复杂场景多源融合定位方案的设计、研发及落地 • 中科院博士 • 中国科大博士
+• 主导宁波港、厦门港、青岛港等20个港口无人驾驶项目的全流程设计与实施 • 原微软亚研院高级算法工程师 • 原三一感知算法点云负责人
+
+感知、导航定位、规划调度和系统架构积累的技术优势
+环境感知
+规划调度
+Multi-Task PerceptionFormer
+TransportAGI专用端到端范式
+专用大模型
+• 综合理解复杂生产环境中的业务场景 / 作业流程 / 自动驾驶 / 自动交互等，在混行
+• 高效准确的运输场景理解专用大模型，完成道路分割 / 物体检测 / 深度估计等
+条件下实现安全行驶，协同云端调度达到超过人工的效率
+多任务，为实现智能决策灵活规划提供支撑
+• 结合高精地图、车辆动力学和运动学模型、历史信息进行全局优化，完成环境目标
+• 多项AI和计算机视觉比赛世界第一，包括alphamatting、kitti等
+的未来预测和动态路径规划
+导航定位 系统架构
+前装超融合系统， 端到端 / 传统范式并行，
+保证高精度和鲁棒性 智能及安全并重
+• 即从硬件层面融合GNSS、IMU、轮速计、激光SLAM、视觉SLAM，精度高、 • LiDAR 3D目标检测 / 弱算法安全功能 / 高可靠融合定位等传统范式与端到端范式并
+健壮性强 行，为AI运输机器人提供更多安全防护，防止生产事故
+• 无须场地改造、无须车路协同、无须外设辅助。局部定位精度可达±3
+[Usage constraint: only for verifying Step1 claims, NOT for reasoning]
+============================================
+[Required JSON Output Format]
+============================================
+
+MUST output complete JSON with ALL these fields:
+
+{
+  "schema_version": "step2_external_check_v2_2_1",
+  "external_investment_logic": [
+    {
+      "related_to_step1": "company_essence | revenue_logic | customer_logic | red_flags | key_judgement | business_structure",
+      "bucket_key": "tech_barrier | customer_value | commercialization | expansion_story | team_credibility",
+      "knowledge_source": "general_bucket | industry_bucket | llm_common_sense",
+      "logic_statement": "For Step1 field XXX, external logic is YYY...",
+      "implication": "support | caution | contradict",
+      "why_it_matters": "Why this matters for investment decision"
+    }
+  ],
+  "step1_external_check": {
+    "checks": [
+      {
+        "step1_field": "company_essence | revenue_logic | ...",
+        "step1_claim": "Step1 claim content",
+        "bucket_key": "tech_barrier | ...",
+        "knowledge_source": "general_bucket | industry_bucket | llm_common_sense",
+        "external_logic": "External logic for this claim",
+        "verdict": "support | caution | contradict",
+        "reasoning": "Reasoning",
+        "evidence_source": "Industry knowledge | Investment logic | Tech commercialization",
+        "confidence": "high | medium | low"
+      }
+    ],
+    "summary": {
+      "support_count": 0,
+      "caution_count": 0,
+      "contradict_count": 0
+    }
+  },
+  "information_resolution": {
+    "publicly_resolvable": [],
+    "founder_needed": [],
+    "decision_blockers": []
+  },
+  "tensions": [],
+  "step1_adjustment_hints": {
+    "reinforce": [],
+    "weaken": [],
+    "needs_verification": []
+  },
+  "bp_usage_audit": {
+    "bp_used_for": "claim_verification_only | not_used",
+    "bp_claims_checked": [],
+    "bp_claims_not_used_as_fact": [],
+    "violations": [],
+    "bp_text_tokens_used": 0,
+    "is_clean": true
+  },
+  "meta": {
+    "buckets_analyzed": [],
+    "industry_tags_used": [],
+    "bucket_as_checklist": true,
+    "knowledge_source_breakdown": {
+      "general_bucket": 0,
+      "industry_bucket": 0,
+      "llm_common_sense": 0
+    },
+    "knowledge_source_details": {
+      "general_bucket": [],
+      "industry_bucket": [],
+      "llm_common_sense": []
+    },
+    "external_logic_sources": ["Industry knowledge", "Investment logic", "Tech commercialization"],
+    "new_conclusion_generated": false,
+    "step1_fields_covered": []
+  }
+}
+
+JSON Output:

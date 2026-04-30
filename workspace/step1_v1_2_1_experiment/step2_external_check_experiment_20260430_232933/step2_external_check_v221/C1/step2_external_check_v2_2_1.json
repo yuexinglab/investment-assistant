@@ -1,0 +1,216 @@
+{
+  "schema_version": "step2_external_check_v2_2_1",
+  "external_investment_logic": [
+    {
+      "related_to_step1": "company_essence",
+      "bucket_key": "tech_barrier",
+      "knowledge_source": "general_bucket",
+      "logic_statement": "For Step1 field company_essence, external logic: In the power module industry, claiming 'full industry chain' while relying on external IGBT chip procurement is a common packaging signal. The real barrier is in chip design and mass production, not module packaging.",
+      "implication": "support",
+      "why_it_matters": "Validates Step1's identification of core identity as hardware supplier, not full-chain provider."
+    },
+    {
+      "related_to_step1": "key_judgement",
+      "bucket_key": "commercialization",
+      "knowledge_source": "general_bucket",
+      "logic_statement": "For Step1 field key_judgement, external logic: A company with 200,000 units installed but only 100M RMB revenue suggests either very low unit price (likely <5000 RMB/unit) or project-based revenue recognition. This is typical for component suppliers, not system solution providers.",
+      "implication": "support",
+      "why_it_matters": "Reinforces Step1's cautious stance on revenue scale vs. installation claims."
+    },
+    {
+      "related_to_step1": "red_flags",
+      "bucket_key": "expansion_story",
+      "knowledge_source": "general_bucket",
+      "logic_statement": "For Step1 field red_flags, external logic: Multi-business expansion (IGBT modules, SiC, motor controllers, energy storage, PV) without a dominant core business is a common pattern for companies trying to inflate valuation. Each new vertical requires different supply chains, certifications, and sales channels.",
+      "implication": "support",
+      "why_it_matters": "Highlights the risk of over-diversification before core business maturity."
+    },
+    {
+      "related_to_step1": "must_ask_questions",
+      "bucket_key": "customer_value",
+      "knowledge_source": "general_bucket",
+      "logic_statement": "For Step1 field must_ask_questions, external logic: Customer purchase motivation in commercial vehicle electrification is often policy-driven (subsidies, emission regulations) rather than pure economic ROI. If subsidies phase out, demand may drop significantly.",
+      "implication": "support",
+      "why_it_matters": "Validates the need to ask about policy dependence in Step1 questions."
+    },
+    {
+      "related_to_step1": "business_structure",
+      "bucket_key": "team_credibility",
+      "knowledge_source": "general_bucket",
+      "logic_statement": "For Step1 field business_structure, external logic: Founder's background at BYD IGBT factory is relevant but does not guarantee commercial success. Many ex-BYD teams have strong engineering but struggle with business scaling and customer acquisition outside the BYD ecosystem.",
+      "implication": "caution",
+      "why_it_matters": "Suggests Step1's confidence in team credibility may need tempering."
+    }
+  ],
+  "step1_external_check": {
+    "checks": [
+      {
+        "step1_field": "company_essence",
+        "step1_claim": "核心身份是硬件供应商，不是全产业链系统方案提供商",
+        "bucket_key": "tech_barrier",
+        "knowledge_source": "general_bucket",
+        "external_logic": "In power electronics, 'full industry chain' typically requires in-house chip design and mass production. Claiming this while sourcing IGBT chips externally is a known packaging tactic.",
+        "verdict": "support",
+        "reasoning": "Step1 correctly identifies the gap between narrative and reality. External logic confirms this is a common red flag.",
+        "evidence_source": "Industry knowledge",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "key_judgement",
+        "step1_claim": "公司是硬件供应商，技术有积累但商业模式未标准化，收入规模小",
+        "bucket_key": "commercialization",
+        "knowledge_source": "general_bucket",
+        "external_logic": "200,000 units installed with 100M RMB revenue implies average unit price ~500 RMB, which is extremely low for motor controllers or power modules. This suggests either very low-cost products or revenue recognition issues.",
+        "verdict": "support",
+        "reasoning": "Step1's cautious stance is justified by the revenue-to-volume mismatch.",
+        "evidence_source": "Investment logic",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "red_flags",
+        "step1_claim": "声称全产业链但IGBT芯片依赖外部采购",
+        "bucket_key": "tech_barrier",
+        "knowledge_source": "general_bucket",
+        "external_logic": "In the power semiconductor industry, chip design and mass production are the true barriers. Module packaging is a lower-value, competitive segment.",
+        "verdict": "support",
+        "reasoning": "Step1 correctly flags this as a red flag. External logic confirms packaging alone does not constitute a full-chain capability.",
+        "evidence_source": "Industry knowledge",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "red_flags",
+        "step1_claim": "收入规模与装车量不匹配",
+        "bucket_key": "commercialization",
+        "knowledge_source": "general_bucket",
+        "external_logic": "Typical motor controller unit price for commercial vehicles is 5000-15000 RMB. 200,000 units should generate 1-3B RMB revenue. The 100M RMB figure suggests either very low unit price or non-standard revenue recognition.",
+        "verdict": "support",
+        "reasoning": "Step1's suspicion is well-founded. The mismatch is a major red flag.",
+        "evidence_source": "Investment logic",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "must_ask_questions",
+        "step1_claim": "客户采购是政策驱动还是经济ROI驱动？",
+        "bucket_key": "customer_value",
+        "knowledge_source": "general_bucket",
+        "external_logic": "Commercial vehicle electrification in China is heavily policy-driven (subsidies, emission standards, dual-credit policy). Pure economic ROI is often negative without subsidies.",
+        "verdict": "support",
+        "reasoning": "Step1's question is critical. External logic confirms policy dependence is a key risk.",
+        "evidence_source": "Industry knowledge",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "business_structure",
+        "step1_claim": "当前业务是电机控制器、IGBT/SiC模块的研发生产和销售",
+        "bucket_key": "commercialization",
+        "knowledge_source": "general_bucket",
+        "external_logic": "Companies with multiple product lines (modules, controllers, systems) often face challenges in focusing resources and achieving scale in any single line.",
+        "verdict": "caution",
+        "reasoning": "Step1's description is accurate but the breadth of product lines may dilute focus.",
+        "evidence_source": "Investment logic",
+        "confidence": "medium"
+      }
+    ],
+    "summary": {
+      "support_count": 5,
+      "caution_count": 1,
+      "contradict_count": 0
+    }
+  },
+  "information_resolution": {
+    "publicly_resolvable": [
+      "Verify IGBT chip procurement source and SiC chip design status",
+      "Check revenue breakdown by product line",
+      "Confirm customer concentration and policy dependence"
+    ],
+    "founder_needed": [
+      "Clarify unit price and revenue recognition for 200,000 units",
+      "Explain multi-business expansion strategy and resource allocation"
+    ],
+    "decision_blockers": [
+      "Revenue-to-volume mismatch needs resolution before investment decision"
+    ]
+  },
+  "tensions": [
+    {
+      "between": "company_essence and business_structure",
+      "description": "Step1 says core identity is hardware supplier, but business structure shows multiple product lines including systems and modules, which may indicate a broader scope than pure component supplier."
+    }
+  ],
+  "step1_adjustment_hints": {
+    "reinforce": [
+      "company_essence: core identity as hardware supplier",
+      "key_judgement: cautious stance on revenue scale",
+      "red_flags: all three flags are well-justified"
+    ],
+    "weaken": [
+      "team_credibility: Step1 may overestimate team credibility from BYD background; external logic suggests ex-BYD teams often struggle with scaling"
+    ],
+    "needs_verification": [
+      "business_structure: verify if the company truly has multiple revenue streams or if narrative is inflated",
+      "must_ask_questions: all questions are valid and need answers"
+    ]
+  },
+  "bp_usage_audit": {
+    "bp_used_for": "claim_verification_only",
+    "bp_claims_checked": [
+      "BP claims 'full industry chain' - verified against Step1's identification of external chip sourcing",
+      "BP claims '200,000 units installed' - used to check revenue consistency",
+      "BP claims 'IGBT chip design' - used to verify Step1's assertion of no mass production"
+    ],
+    "bp_claims_not_used_as_fact": [
+      "BP claims 'full industry chain' - treated as unverified claim",
+      "BP claims 'strategic partnership with SPIC' - not used as fact",
+      "BP claims 'industry leader' - not used as fact"
+    ],
+    "violations": [],
+    "bp_text_tokens_used": 150,
+    "is_clean": true
+  },
+  "meta": {
+    "buckets_analyzed": [
+      "tech_barrier",
+      "customer_value",
+      "commercialization",
+      "expansion_story",
+      "team_credibility"
+    ],
+    "industry_tags_used": [
+      "新能源",
+      "商用车/重卡",
+      "新材料",
+      "AI应用",
+      "工业物流/场内物流"
+    ],
+    "bucket_as_checklist": true,
+    "knowledge_source_breakdown": {
+      "general_bucket": 6,
+      "industry_bucket": 0,
+      "llm_common_sense": 0
+    },
+    "knowledge_source_details": {
+      "general_bucket": [
+        "tech_barrier",
+        "customer_value",
+        "commercialization",
+        "expansion_story",
+        "team_credibility"
+      ],
+      "industry_bucket": [],
+      "llm_common_sense": []
+    },
+    "external_logic_sources": [
+      "Industry knowledge",
+      "Investment logic",
+      "Tech commercialization"
+    ],
+    "new_conclusion_generated": false,
+    "step1_fields_covered": [
+      "company_essence",
+      "key_judgement",
+      "red_flags",
+      "must_ask_questions",
+      "business_structure"
+    ]
+  }
+}

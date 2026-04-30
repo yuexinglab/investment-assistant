@@ -1,0 +1,208 @@
+{
+  "schema_version": "step2_external_check_v2_2_1",
+  "external_investment_logic": [
+    {
+      "related_to_step1": "company_essence",
+      "bucket_key": "tech_barrier",
+      "knowledge_source": "general_bucket",
+      "logic_statement": "For Step1 company_essence, external logic: In autonomous driving, full-stack self-developed software and hardware (as claimed) is common among startups; the real barrier is not the tech itself but the ability to achieve reliable, safe, and cost-effective mass production and deployment. Step1's judgment that the company is a system integrator/vehicle modifier aligns with this logic.",
+      "implication": "support",
+      "why_it_matters": "Confirms that the company's technical claims are not unique and the core value lies in integration and deployment, not breakthrough AI."
+    },
+    {
+      "related_to_step1": "key_judgement",
+      "bucket_key": "customer_value",
+      "knowledge_source": "industry_bucket",
+      "logic_statement": "For Step1 key_judgement, external logic: In port/industrial logistics, customers (port operators, factories) primarily pay for reduced labor cost, improved safety, and operational efficiency. The BP claims these benefits, but the key question is whether the ROI is compelling enough without policy subsidies. Step1's cautious stance is justified.",
+      "implication": "support",
+      "why_it_matters": "Validates that the customer value proposition is real but dependent on economic justification, which may not be proven yet."
+    },
+    {
+      "related_to_step1": "red_flags",
+      "bucket_key": "commercialization",
+      "knowledge_source": "general_bucket",
+      "logic_statement": "For Step1 red_flags, external logic: In hardware-heavy autonomous driving, scaling requires significant capital for vehicles, sensors, and deployment teams. The BP mentions 240 vehicles deployed, but the path to profitability is unclear. Step1's flag on asset-heavy risk is consistent with industry patterns.",
+      "implication": "support",
+      "why_it_matters": "Reinforces that the company's growth may be capital-intensive and cash flow negative for a long time."
+    },
+    {
+      "related_to_step1": "business_structure",
+      "bucket_key": "expansion_story",
+      "knowledge_source": "industry_bucket",
+      "logic_statement": "For Step1 business_structure, external logic: Expanding from ports to factories, short-haul, and overseas is a common narrative in autonomous driving. However, each new vertical requires different vehicle configurations, regulations, and customer relationships. Step1's identification of narrative vs. current business is prudent.",
+      "implication": "support",
+      "why_it_matters": "Highlights the risk that the expansion story may be premature and distract from core business challenges."
+    },
+    {
+      "related_to_step1": "company_essence",
+      "bucket_key": "team_credibility",
+      "knowledge_source": "general_bucket",
+      "logic_statement": "For Step1 company_essence, external logic: The team has strong academic and industry backgrounds (Tsinghua, Baidu, etc.), but in autonomous driving, such credentials are common. The real test is whether the team can execute on commercialization, not just technology. Step1's focus on execution over pedigree is sound.",
+      "implication": "support",
+      "why_it_matters": "Prevents overvaluing the team's academic credentials without evidence of commercial success."
+    }
+  ],
+  "step1_external_check": {
+    "checks": [
+      {
+        "step1_field": "company_essence",
+        "step1_claim": "本质是重载物流场景的自动驾驶系统集成商和车辆改装/制造商",
+        "bucket_key": "tech_barrier",
+        "knowledge_source": "general_bucket",
+        "external_logic": "In autonomous driving, most startups are system integrators; true differentiation comes from proprietary hardware or software that is hard to replicate. The BP claims full-stack self-development, but the industry norm is to integrate off-the-shelf components. Step1's classification is consistent with industry reality.",
+        "verdict": "support",
+        "reasoning": "The BP's claims of full-stack development are common; the actual business model (vehicle sales, project delivery) matches a system integrator profile.",
+        "evidence_source": "Industry knowledge",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "key_judgement",
+        "step1_claim": "商业模式本质是重资产制造/集成，而非轻资产平台",
+        "bucket_key": "commercialization",
+        "knowledge_source": "general_bucket",
+        "external_logic": "In autonomous vehicle deployment, companies often need to own or finance vehicles, leading to heavy asset models. The BP mentions self-built production lines and vehicle sales, confirming asset-heavy operations. Step1's judgment aligns with investment logic.",
+        "verdict": "support",
+        "reasoning": "The BP explicitly states self-built production lines and vehicle sales, which are capital-intensive. The narrative of 'asset-light platform' is contradicted by the business model.",
+        "evidence_source": "Investment logic",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "red_flags",
+        "step1_claim": "客户逻辑依赖政策",
+        "bucket_key": "customer_value",
+        "knowledge_source": "industry_bucket",
+        "external_logic": "In port automation, many projects are driven by government initiatives (e.g., smart port pilots). The BP mentions policy support and 'new quality productive forces'. Step1's flag is valid; the sustainability of demand without policy is uncertain.",
+        "verdict": "support",
+        "reasoning": "The BP itself references policy drivers, and industry knowledge confirms that port automation often relies on government mandates or subsidies.",
+        "evidence_source": "Industry knowledge",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "red_flags",
+        "step1_claim": "估值叙事与现实错位",
+        "bucket_key": "expansion_story",
+        "knowledge_source": "general_bucket",
+        "external_logic": "Startups often pitch a platform narrative to justify high valuations, but if revenue is from project-based vehicle sales, the valuation should reflect a hardware/integration multiple, not a SaaS multiple. Step1's identification of this mismatch is critical.",
+        "verdict": "support",
+        "reasoning": "The BP emphasizes AI platform and full-chain capabilities, but the revenue model (vehicle sales, project delivery) is typical of a hardware company. This mismatch is a common red flag.",
+        "evidence_source": "Investment logic",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "must_ask_questions",
+        "step1_claim": "代运营是否已产生稳定收入？",
+        "bucket_key": "commercialization",
+        "knowledge_source": "industry_bucket",
+        "external_logic": "In autonomous vehicle-as-a-service models, proving recurring revenue from operations is key. The BP claims 'first in industry' for operation services, but without evidence of scale or profitability, this is a critical question. Step1's question is essential.",
+        "verdict": "support",
+        "reasoning": "The BP mentions operation services but provides no metrics on revenue or customer contracts. This is a common area where startups overpromise.",
+        "evidence_source": "Industry knowledge",
+        "confidence": "high"
+      }
+    ],
+    "summary": {
+      "support_count": 5,
+      "caution_count": 0,
+      "contradict_count": 0
+    }
+  },
+  "information_resolution": {
+    "publicly_resolvable": [
+      "Revenue breakdown (vehicle sales vs. services vs. operations) - may be in financial filings or press releases",
+      "Customer list and contract sizes - may be disclosed in case studies or news",
+      "Policy dependency - can be checked via government smart port pilot lists"
+    ],
+    "founder_needed": [
+      "Detailed unit economics of a typical project (capex, opex, payback period)",
+      "Current utilization rate of self-built production line",
+      "Customer renewal rates for operation services"
+    ],
+    "decision_blockers": [
+      "Lack of audited financials to verify revenue mix and profitability",
+      "No independent third-party validation of claimed 240 vehicles deployed and 20+ customers"
+    ]
+  },
+  "tensions": [
+    "BP claims 'full-chain competitive advantage' but Step1 identifies as system integrator - tension between narrative and reality",
+    "BP emphasizes AI platform but revenue is from hardware sales - tension in valuation logic"
+  ],
+  "step1_adjustment_hints": {
+    "reinforce": [
+      "company_essence: core identity as system integrator/vehicle modifier",
+      "key_judgement: cautious stance on business model mismatch",
+      "red_flags: asset-heavy risk and policy dependency"
+    ],
+    "weaken": [],
+    "needs_verification": [
+      "Revenue breakdown (vehicle sales vs. services vs. operations)",
+      "Customer concentration and contract terms",
+      "Actual ROI for customers without policy subsidies"
+    ]
+  },
+  "bp_usage_audit": {
+    "bp_used_for": "claim_verification_only",
+    "bp_claims_checked": [
+      "Full-stack self-developed software and hardware",
+      "240 vehicles deployed, 20+ customers",
+      "Self-built production lines",
+      "Operation services as a business line",
+      "Policy support and government recognition"
+    ],
+    "bp_claims_not_used_as_fact": [
+      "Company self-claimed titles: 'industry leader', 'first in industry'",
+      "Technical capabilities: 'reducing costs by 80%' via additive manufacturing",
+      "Customer relationships: 'partnered with XX leading customer' (not specific)",
+      "Market position: 'industry first' in deployment scale",
+      "Strategic partnerships: 'strategic partnership with XX' (not specific)"
+    ],
+    "violations": [],
+    "bp_text_tokens_used": 120,
+    "is_clean": true
+  },
+  "meta": {
+    "buckets_analyzed": [
+      "tech_barrier",
+      "customer_value",
+      "commercialization",
+      "expansion_story",
+      "team_credibility"
+    ],
+    "industry_tags_used": [
+      "自动驾驶",
+      "工业物流",
+      "商用车",
+      "港口自动化"
+    ],
+    "bucket_as_checklist": true,
+    "knowledge_source_breakdown": {
+      "general_bucket": 3,
+      "industry_bucket": 2,
+      "llm_common_sense": 0
+    },
+    "knowledge_source_details": {
+      "general_bucket": [
+        "tech_barrier",
+        "commercialization",
+        "expansion_story"
+      ],
+      "industry_bucket": [
+        "customer_value",
+        "commercialization"
+      ],
+      "llm_common_sense": []
+    },
+    "external_logic_sources": [
+      "Industry knowledge",
+      "Investment logic",
+      "Tech commercialization"
+    ],
+    "new_conclusion_generated": false,
+    "step1_fields_covered": [
+      "company_essence",
+      "key_judgement",
+      "red_flags",
+      "business_structure",
+      "must_ask_questions"
+    ]
+  }
+}

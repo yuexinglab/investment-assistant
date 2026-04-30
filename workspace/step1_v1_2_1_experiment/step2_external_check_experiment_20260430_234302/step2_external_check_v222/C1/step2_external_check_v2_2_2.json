@@ -1,0 +1,234 @@
+{
+  "schema_version": "step2_external_check_v2_2_2",
+  "external_investment_logic": [
+    {
+      "related_to_step1": "company_essence",
+      "bucket_key": "tech_barrier",
+      "knowledge_source": "industry_bucket",
+      "logic_statement": "Step1 identifies the company as a hardware supplier with IGBT/SiC module packaging but not chip design. External logic: In automotive power electronics, the true barrier is chip-level design and manufacturing, not module packaging. Many packaging companies exist, but chip-level IP is rare. Step1's cautious stance is supported.",
+      "implication": "support",
+      "why_it_matters": "If the company lacks chip-level differentiation, its long-term barrier is low, and valuation should not assume chip-level margins."
+    },
+    {
+      "related_to_step1": "key_judgement",
+      "bucket_key": "commercialization",
+      "knowledge_source": "general_bucket",
+      "logic_statement": "Step1 notes revenue of only 1 billion RMB with 200k units installed, implying low unit price or project-based delivery. External logic: For automotive-grade power modules, typical unit price is $50-200. 200k units should yield >10M USD revenue. The mismatch suggests either low-value products or accounting issues. This reinforces Step1's caution.",
+      "implication": "support",
+      "why_it_matters": "Revenue per unit is a key sanity check. If the company cannot explain the gap, it indicates either low pricing power or revenue recognition problems."
+    },
+    {
+      "related_to_step1": "red_flags",
+      "bucket_key": "expansion_story",
+      "knowledge_source": "industry_bucket",
+      "logic_statement": "Step1 flags 'full industry chain' claim as inconsistent with chip sourcing. External logic: In the power semiconductor industry, true full-chain players (e.g., Infineon, ON Semi) own wafer fabs. Claiming full chain without fab is a common red flag. This supports Step1's red flag identification.",
+      "implication": "support",
+      "why_it_matters": "Investors should discount any narrative that implies vertical integration without evidence of chip manufacturing."
+    },
+    {
+      "related_to_step1": "must_ask_questions",
+      "bucket_key": "customer_value",
+      "knowledge_source": "general_bucket",
+      "logic_statement": "Step1 asks whether customer purchases are policy-driven or ROI-driven. External logic: In commercial vehicle electrification, many purchases are driven by subsidies or regulatory mandates (e.g., China's NEV credit policy). If customers are not saving money, the market is fragile. This reinforces the need for verification.",
+      "implication": "support",
+      "why_it_matters": "Policy-driven demand can vanish quickly. Investors need to assess the company's ability to survive subsidy phase-out."
+    },
+    {
+      "related_to_step1": "company_essence",
+      "bucket_key": "team_credibility",
+      "knowledge_source": "industry_bucket",
+      "logic_statement": "Step1 notes the founder's background at BYD and IGBT factory management. External logic: BYD is a strong reference in power electronics, but factory management experience does not guarantee chip design capability. The team's strength is in manufacturing, not innovation. This supports Step1's cautious view.",
+      "implication": "support",
+      "why_it_matters": "Team background should be matched to the company's actual business model. A manufacturing team may struggle to execute a chip design narrative."
+    }
+  ],
+  "step1_external_check": {
+    "checks": [
+      {
+        "step1_field": "company_essence",
+        "step1_claim": "公司本质是硬件供应商，不是芯片设计公司",
+        "bucket_key": "tech_barrier",
+        "knowledge_source": "industry_bucket",
+        "external_logic": "In the power module industry, packaging is a lower-barrier business. Many Chinese companies can package IGBT/SiC modules. The real barrier is chip design and wafer fabrication. Step1's classification is correct.",
+        "verdict": "support",
+        "reasoning": "The company's own BP shows chip sourcing from external suppliers. No evidence of in-house wafer fab. Therefore, the company is a module packager, not a chip designer.",
+        "evidence_source": "Industry knowledge",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "key_judgement",
+        "step1_claim": "收入规模小，估值叙事超前于现实",
+        "bucket_key": "commercialization",
+        "knowledge_source": "general_bucket",
+        "external_logic": "For a company claiming 200k units installed, revenue of 1 billion RMB is extremely low. Typical automotive power module revenue per unit is $50-200. This implies either very low ASP or non-recurring project revenue. Step1's caution is warranted.",
+        "verdict": "support",
+        "reasoning": "The revenue-to-volume ratio is a red flag. Either the units are low-value (e.g., small modules) or the revenue is not from those units. Both scenarios weaken the growth story.",
+        "evidence_source": "Investment logic",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "red_flags",
+        "step1_claim": "声称全产业链但IGBT芯片依赖外部采购",
+        "bucket_key": "expansion_story",
+        "knowledge_source": "industry_bucket",
+        "external_logic": "In the power semiconductor industry, 'full industry chain' typically means owning wafer fabrication. Without a fab, the claim is misleading. This is a common red flag in Chinese hard-tech startups.",
+        "verdict": "support",
+        "reasoning": "BP mentions 'full industry chain' but also lists chip sourcing from external suppliers. The contradiction is clear. Investors should discount the narrative.",
+        "evidence_source": "Industry knowledge",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "company_essence",
+        "step1_claim": "公司是硬件供应商，以项目制交付为主",
+        "bucket_key": "commercialization",
+        "knowledge_source": "industry_bucket",
+        "external_logic": "For automotive-grade power modules, the typical sales model is B2B with long qualification cycles (12-24 months). Project-based delivery is common for early-stage companies but limits scalability. Step1's identification is correct.",
+        "verdict": "support",
+        "reasoning": "BP mentions '项目制' and '定制化' which align with project-based delivery. This model has lower margins and slower growth than standardized product sales.",
+        "evidence_source": "Industry knowledge",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "must_ask_questions",
+        "step1_claim": "客户采购是政策驱动还是经济ROI驱动？",
+        "bucket_key": "customer_value",
+        "knowledge_source": "general_bucket",
+        "external_logic": "In China's commercial vehicle electrification, many purchases are driven by government subsidies or regulatory mandates (e.g., NEV credit requirements). If the company's customers are mainly state-owned or policy-driven, the demand is fragile. Step1's question is critical.",
+        "verdict": "support",
+        "reasoning": "Without evidence of economic ROI, the company's revenue is at risk of policy changes. Investors must verify customer motivation.",
+        "evidence_source": "Investment logic",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "key_judgement",
+        "step1_claim": "技术能力有积累，但商业模式尚未标准化",
+        "bucket_key": "tech_barrier",
+        "knowledge_source": "industry_bucket",
+        "external_logic": "Step1's cautious judgment is correct. External logic requires further verification on: engineering validation, automotive-grade certification, reliability testing, safety redundancy, supply chain verification. The company's 200k units installed suggests some validation, but without third-party certification (e.g., AEC-Q101, IATF 16949), the barrier is unproven.",
+        "verdict": "caution",
+        "reasoning": "The company has some track record, but automotive-grade certification is a key gate. Without it, the technology may not be accepted by Tier-1 OEMs. This is a common bottleneck for Chinese power module startups.",
+        "evidence_source": "Tech commercialization",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "key_judgement",
+        "step1_claim": "收入规模小，商业模式尚未标准化",
+        "bucket_key": "commercialization",
+        "knowledge_source": "industry_bucket",
+        "external_logic": "Step1's cautious judgment is correct. External logic requires further verification on: mass production readiness, OEM qualification, supply chain industrialization, production SOP, automotive certification timeline. The company's revenue of 1 billion RMB suggests early stage. Without audited revenue from automotive OEMs, the commercialization path is unverified.",
+        "verdict": "caution",
+        "reasoning": "The company claims 200k units installed, but revenue is low. This could mean the units are low-value or not from automotive OEMs. Investors need to see audited revenue from qualified customers.",
+        "evidence_source": "Tech commercialization",
+        "confidence": "high"
+      }
+    ],
+    "summary": {
+      "support_count": 5,
+      "caution_count": 2,
+      "contradict_count": 0
+    }
+  },
+  "information_resolution": {
+    "publicly_resolvable": [
+      "Check if the company has AEC-Q101 or IATF 16949 certification",
+      "Verify the company's customer list and whether they are Tier-1 OEMs",
+      "Check the company's patent portfolio for chip-level patents vs. packaging patents"
+    ],
+    "founder_needed": [
+      "Ask for breakdown of revenue by product line (motor controller vs. IGBT module)",
+      "Ask for the unit price of the 200k units installed",
+      "Ask for the company's automotive-grade certification status and timeline"
+    ],
+    "decision_blockers": [
+      "Lack of audited revenue from automotive OEMs",
+      "No evidence of chip-level manufacturing capability",
+      "Unclear customer motivation (policy vs. ROI)"
+    ]
+  },
+  "tensions": [
+    {
+      "tension": "Company claims 200k units installed but revenue is only 1 billion RMB. This is inconsistent with typical automotive power module pricing.",
+      "step1_relevant": "key_judgement",
+      "resolution_needed": "Founder must explain the unit price and revenue recognition method."
+    },
+    {
+      "tension": "Company claims 'full industry chain' but sources chips externally. This is a narrative vs. reality gap.",
+      "step1_relevant": "red_flags",
+      "resolution_needed": "Investors should verify the company's chip design capability and whether they have any in-house wafer production."
+    }
+  ],
+  "step1_adjustment_hints": {
+    "reinforce": [
+      "company_essence: The classification as a hardware supplier is strongly supported by external logic.",
+      "key_judgement: The cautious stance on revenue and valuation is reinforced by the revenue-to-volume mismatch.",
+      "red_flags: The 'full industry chain' red flag is a common pattern in Chinese hard-tech startups."
+    ],
+    "weaken": [],
+    "needs_verification": [
+      "customer_value: Need to verify whether customers are policy-driven or ROI-driven.",
+      "commercialization: Need to verify automotive-grade certification and OEM qualification.",
+      "tech_barrier: Need to verify chip-level IP and manufacturing capability."
+    ]
+  },
+  "bp_usage_audit": {
+    "bp_used_for": "claim_verification_only",
+    "bp_claims_checked": [
+      "BP claims 'full industry chain system solution provider' - checked against Step1's red flag",
+      "BP claims 'IGBT chip/SiC chip design' - checked against Step1's company essence",
+      "BP claims '200k units installed' - checked against Step1's revenue logic"
+    ],
+    "bp_claims_not_used_as_fact": [
+      "BP claims 'full industry chain' - not used as fact, only as a claim to verify Step1",
+      "BP claims 'chip design' - not used as fact, only as a claim to verify Step1",
+      "BP claims '200k units installed' - not used as fact, only as a claim to verify Step1"
+    ],
+    "violations": [],
+    "bp_text_tokens_used": 150,
+    "is_clean": true
+  },
+  "meta": {
+    "buckets_analyzed": [
+      "tech_barrier",
+      "customer_value",
+      "commercialization",
+      "expansion_story",
+      "team_credibility"
+    ],
+    "industry_tags_used": [
+      "vehicle",
+      "hardtech_commercialization"
+    ],
+    "bucket_as_checklist": true,
+    "knowledge_source_breakdown": {
+      "general_bucket": 2,
+      "industry_bucket": 5,
+      "llm_common_sense": 0
+    },
+    "knowledge_source_details": {
+      "general_bucket": [
+        "For a company claiming 200k units installed, revenue of 1 billion RMB is extremely low.",
+        "In China's commercial vehicle electrification, many purchases are driven by government subsidies or regulatory mandates."
+      ],
+      "industry_bucket": [
+        "In automotive power electronics, the true barrier is chip-level design and manufacturing.",
+        "In the power semiconductor industry, true full-chain players own wafer fabs.",
+        "BYD is a strong reference in power electronics, but factory management experience does not guarantee chip design capability.",
+        "For automotive-grade power modules, the typical sales model is B2B with long qualification cycles.",
+        "Step1's cautious judgment is correct. External logic requires further verification on engineering validation, automotive-grade certification, reliability testing, safety redundancy, supply chain verification."
+      ],
+      "llm_common_sense": []
+    },
+    "external_logic_sources": [
+      "Industry knowledge",
+      "Investment logic",
+      "Tech commercialization"
+    ],
+    "new_conclusion_generated": false,
+    "step1_fields_covered": [
+      "company_essence",
+      "key_judgement",
+      "red_flags",
+      "must_ask_questions"
+    ]
+  }
+}

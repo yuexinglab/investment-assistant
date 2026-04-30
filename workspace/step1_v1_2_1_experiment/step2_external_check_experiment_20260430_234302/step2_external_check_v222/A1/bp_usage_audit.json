@@ -1,0 +1,18 @@
+{
+  "bp_used_for": "claim_verification_only",
+  "bp_claims_checked": [
+    "BP声称全链条、AI平台",
+    "BP声称代运营和技术服务在行业内首次提出且业绩领先",
+    "BP声称增材制造降本80%",
+    "BP声称自研域控和关键核心零部件降本30%"
+  ],
+  "bp_claims_not_used_as_fact": [
+    "BP声称全链条、AI平台",
+    "BP声称代运营和技术服务在行业内首次提出且业绩领先",
+    "BP声称增材制造降本80%",
+    "BP声称自研域控和关键核心零部件降本30%"
+  ],
+  "violations": [],
+  "bp_text_tokens_used": 0,
+  "is_clean": true
+}

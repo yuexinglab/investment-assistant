@@ -1,0 +1,99 @@
+{
+  "consistency_checks": [
+    {
+      "topic": "技术壁垒验证",
+      "claim": "BP声称自动轮智行底盘可实现40%部件减少、30%减重、30%成本降低、50%操控性提升",
+      "reality": "这些数据为自报，未经第三方测试或车规级认证，外部约束要求验证技术是否为真正壁垒或实验室原型",
+      "gap": "BP未提供任何第三方验证、车规认证或量产测试数据，技术优势停留在理论层面",
+      "judgement": "contradict",
+      "confidence": "high",
+      "related_step2_check": "company_essence",
+      "external_constraint": "大学教授领导的初创公司，专利技术但无生产记录，需评估技术是否为真正壁垒或实验室原型",
+      "bp_claim_checked": "技术展示—自动轮智行底盘介绍：'40%减少部件，30%减重，30%降低成本，50%操控性提升'"
+    },
+    {
+      "topic": "商业化阶段与市场预测",
+      "claim": "BP引用Frost & Sullivan 2021报告，以1%渗透率预测2028年量产、2030年产值116.4亿美元，并推算乘用车市场2027年12万辆需求",
+      "reality": "硬科技汽车项目通常需5-10年从实验室到量产，且需大量资本投入，BP的预测高度投机，忽略实际采用障碍",
+      "gap": "BP未提供任何生产数据、销售数据或客户合同，市场预测基于远期假设，缺乏现实依据",
+      "judgement": "contradict",
+      "confidence": "high",
+      "related_step2_check": "key_judgement",
+      "external_constraint": "硬科技汽车项目通常需5-10年从实验室到量产，市场预测基于1%渗透率高度投机，忽略实际采用障碍",
+      "bp_claim_checked": "市场前景—行业分析：'以1%市场渗透率计算初期有5万辆规模...至2030年有100万辆近400万套自动轮模块需求，市值2千亿以上'"
+    },
+    {
+      "topic": "客户合作真实性",
+      "claim": "BP列出北汽集团、华为汽车、广汽（祺迹）、金龙等客户名称",
+      "reality": "外部约束指出，客户名称未附合同或收入，是常见包装信号，真实客户价值需采购订单证明",
+      "gap": "BP未披露任何合同、收入或采购订单，客户关系未经验证",
+      "judgement": "contradict",
+      "confidence": "high",
+      "related_step2_check": "red_flags",
+      "external_constraint": "客户名称未附合同或收入是常见包装信号，真实客户价值需采购订单证明",
+      "bp_claim_checked": "经营状况—业务进展：'北汽集团、华为汽车、广汽（祺迹）、金龙……'"
+    },
+    {
+      "topic": "知识产权归属",
+      "claim": "BP每页标注'版权属吉林大学靳立强教授所有'",
+      "reality": "外部约束指出，教授初创公司常面临知识产权归属和利益冲突问题，专利可能属于大学而非公司",
+      "gap": "BP未说明公司是否拥有专利排他性授权，IP所有权模糊",
+      "judgement": "contradict",
+      "confidence": "high",
+      "related_step2_check": "must_ask_questions",
+      "external_constraint": "教授初创公司常面临IP归属和利益冲突问题，BP标注版权属吉林大学靳立强教授所有，专利可能不属于公司",
+      "bp_claim_checked": "每页底部：'本PPT资料版权属吉林大学靳立强教授所有，未经授权禁止传播'"
+    }
+  ],
+  "tensions": [
+    {
+      "tension": "BP声称自动轮智行底盘技术已突破（技术展示） vs 外部约束要求验证技术壁垒和量产可行性（未提供任何生产或认证证据）",
+      "why_it_matters": "技术突破叙事与商业化现实严重脱节，投资者无法判断技术是否可落地",
+      "severity": "high",
+      "related_step2_logic": "Step2验证1：技术壁垒未经验证",
+      "conflict_type": "external_vs_bp"
+    },
+    {
+      "tension": "BP以2030年千亿市值叙事吸引投资 vs Step1判断该项目处于极早期、收入来源不清晰、估值叙事超前",
+      "why_it_matters": "估值叙事与当前业务阶段严重错位，可能导致投资决策基于虚假预期",
+      "severity": "high",
+      "related_step2_logic": "Step2验证2：商业化处于极早期，市场预测投机",
+      "conflict_type": "step1_vs_bp"
+    },
+    {
+      "tension": "BP列出多家知名客户（北汽、华为等）暗示市场认可 vs 外部约束指出无合同或收入证据，客户关系未经验证",
+      "why_it_matters": "客户列表可能为意向而非实际合作，误导投资者认为已有市场 traction",
+      "severity": "high",
+      "related_step2_logic": "Step2验证3：客户名称未附合同是包装信号",
+      "conflict_type": "external_vs_bp"
+    }
+  ],
+  "overpackaging_signals": [
+    {
+      "signal": "BP将未来量产计划（2028年量产）描述为当前技术能力，并展示多款产品系列（凌波、金刚、梅花等），但无任何生产数据",
+      "type": "future_as_present",
+      "severity": "high",
+      "related_step2_constraint": "Step2验证4：扩张故事大于当前业务",
+      "packaging_type": "future_as_present"
+    },
+    {
+      "signal": "BP列出北汽、华为、广汽等客户名称，但未附任何合同或收入，暗示合作已达成",
+      "type": "cooperation_as_revenue",
+      "severity": "high",
+      "related_step2_constraint": "Step2验证3：客户名称未附合同是包装信号",
+      "packaging_type": "cooperation_as_revenue"
+    },
+    {
+      "signal": "BP过度依赖创始人靳立强教授和吉林大学背书，每页标注版权归属，但未说明公司对技术的独立所有权",
+      "type": "team_overuse",
+      "severity": "high",
+      "related_step2_constraint": "Step2验证5：IP归属风险",
+      "packaging_type": "team_overuse"
+    }
+  ],
+  "summary": "从Step1/Step2判断看，该项目更应按实验室技术验证阶段审查，而不是按已突破技术壁垒的产业化先行者叙事理解，BP最大认知问题是将未经验证的技术优势、投机性市场预测和意向客户包装为现实能力，导致估值叙事严重超前于商业化实际。",
+  "step2_constraints_used": 4,
+  "step2_caution_references": 3,
+  "step2_contradict_references": 4,
+  "step2_version": "step2_external_check_v2_2_2"
+}

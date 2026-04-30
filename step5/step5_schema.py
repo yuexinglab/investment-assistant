@@ -52,6 +52,12 @@ class QuestionItem(BaseModel):
     """必问问题"""
     question: str = Field(description="问题本身")
     purpose: str = Field(description="这个问题是为了验证什么")
+    source: Literal["internal_gap", "scan_question", "merged", "rewritten_from_step4"] = Field(
+        description="问题来源：internal_gap=来自Step4 internal.gaps / scan_question=来自Step4 scan_questions / merged=合并了两个来源 / rewritten_from_step4=改写但保留原意"
+    )
+    source_detail: str = Field(
+        description="来源详情：internal_gap时写gap_id或gap_title；scan_question时写模块名+opening/deepening/trap；merged时写明合并了哪两个来源；rewritten_from_step4时写原始字段名"
+    )
 
 
 class InvestmentLogic(BaseModel):
@@ -88,7 +94,7 @@ class Step5Output(BaseModel):
     )
 
     must_ask_questions: List[QuestionItem] = Field(
-        description="必问问题，必须来自 Step4 gaps（含 red_flag_question），不允许重新发明"
+        description="必问问题，必须来自 Step4 internal.gaps 或 scan_questions；每个问题必须标注 source 和 source_detail"
     )
 
     investment_logic: InvestmentLogic = Field(
@@ -129,9 +135,12 @@ class Step5Output(BaseModel):
 
         # 必问问题
         lines.append("\n## 必问问题\n")
+        source_label = {"internal_gap": "[内部分析]", "scan_question": "[扫描层]", "merged": "[合并]", "rewritten_from_step4": "[改写]"}
         for i, q in enumerate(self.must_ask_questions, 1):
-            lines.append(f"{i}. {q.question}")
-            lines.append(f"   目的：{q.purpose}\n")
+            sl = source_label.get(q.source, q.source)
+            lines.append(f"{i}. {q.question} {sl}")
+            lines.append(f"   目的：{q.purpose}")
+            lines.append(f"   来源：{q.source} | {q.source_detail}\n")
 
         # 投资逻辑
         lines.append("\n## 投资逻辑归因\n")

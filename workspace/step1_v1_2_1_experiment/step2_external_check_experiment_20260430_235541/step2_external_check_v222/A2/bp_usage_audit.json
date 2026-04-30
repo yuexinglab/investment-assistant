@@ -1,0 +1,15 @@
+{
+  "bp_used_for": "claim_verification_only",
+  "bp_claims_checked": [
+    "BP claims 40% fewer parts, 30% weight reduction, 30% cost reduction",
+    "BP lists BAIC, Huawei, GAC as customers",
+    "BP states copyright belongs to Jilin University and Professor Jin"
+  ],
+  "bp_claims_not_used_as_fact": [
+    "BP claims of technical performance (40% fewer parts, etc.) are not used as fact.",
+    "BP customer names are not used as evidence of actual business relationships."
+  ],
+  "violations": [],
+  "bp_text_tokens_used": 150,
+  "is_clean": true
+}

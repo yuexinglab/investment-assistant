@@ -1,0 +1,340 @@
+{
+  "industry_tags": [
+    {
+      "tag": "autonomous_driving",
+      "label": "自动驾驶",
+      "confidence": "high",
+      "evidence": "命中关键词：自动驾驶、无人驾驶、智能驾驶、智驾、无人集卡、L2、L4"
+    },
+    {
+      "tag": "industrial_logistics",
+      "label": "工业物流/场内物流",
+      "confidence": "high",
+      "evidence": "命中关键词：物流、运输、港口、园区、短驳、集装箱、TEU"
+    },
+    {
+      "tag": "commercial_vehicle",
+      "label": "商用车/重卡",
+      "confidence": "high",
+      "evidence": "命中关键词：重卡、集卡、自卸车、底盘、线控底盘、商用车"
+    },
+    {
+      "tag": "ai_application",
+      "label": "AI应用",
+      "confidence": "high",
+      "evidence": "命中关键词：AI、人工智能、算法、大模型、模型、数据"
+    },
+    {
+      "tag": "advanced_materials",
+      "label": "新材料",
+      "confidence": "low",
+      "evidence": "命中关键词：材料"
+    },
+    {
+      "tag": "new_energy",
+      "label": "新能源",
+      "confidence": "low",
+      "evidence": "命中关键词：电池"
+    }
+  ],
+  "business_lines": [
+    {
+      "name": "无人重载车辆/无人集卡",
+      "role": "current_business",
+      "status": "核心产品/已落地业务",
+      "revenue_status": "可能已有设备/整车/硬件收入，具体金额待确认",
+      "evidence": "命中关键词：无人集卡、无人重载、智能集卡、自卸车、重卡、集卡、商用车、运输机器人",
+      "confidence": "high"
+    },
+    {
+      "name": "项目制交付/场景解决方案",
+      "role": "current_business",
+      "status": "项目制落地/场景交付",
+      "revenue_status": "项目收入和毛利待确认",
+      "evidence": "命中关键词：项目、部署、实施、解决方案、园区项目、改造、适配、港口",
+      "confidence": "high"
+    },
+    {
+      "name": "美妆/日化原料",
+      "role": "current_business",
+      "status": "当前收入底盘",
+      "revenue_status": "已有收入但金额需确认",
+      "evidence": "根据制造/产品销售型及新材料/美妆原料行业标签反推",
+      "confidence": "medium"
+    },
+    {
+      "name": "代运营服务",
+      "role": "growth_story",
+      "status": "持续收入模式待验证",
+      "revenue_status": "是否已经形成稳定持续收入待确认",
+      "evidence": "命中关键词：代运营、租赁、运营、托管、车辆、车队",
+      "confidence": "high"
+    },
+    {
+      "name": "自动驾驶系统/云端调度平台",
+      "role": "supporting_capability",
+      "status": "支撑主业务的技术/平台能力",
+      "revenue_status": "可能作为技术服务或软件服务收费，需确认",
+      "evidence": "命中关键词：云平台、调度、车队监管、自动驾驶系统、智能驾驶系统、远程控制、数字孪生、感知",
+      "confidence": "high"
+    },
+    {
+      "name": "AI研发平台",
+      "role": "supporting_capability",
+      "status": "研发工具/效率工具",
+      "revenue_status": "是否对外收费待确认",
+      "evidence": "命中关键词：AI、人工智能、算法、大模型、预测、研发、筛选",
+      "confidence": "high"
+    },
+    {
+      "name": "新能源材料/回收业务",
+      "role": "valuation_story",
+      "status": "远期故事/待验证业务",
+      "revenue_status": "是否已有收入待确认",
+      "evidence": "命中关键词：电池、新能源、锂电、材料、回收",
+      "confidence": "high"
+    }
+  ],
+  "business_model_hypotheses": [
+    {
+      "bucket_key": "manufacturing_product_sales",
+      "bucket_name": "制造/产品销售型",
+      "role": "primary",
+      "current_or_future": "current",
+      "confidence": "low",
+      "evidence": "命中关键词：销售",
+      "why_it_matters": "如果当前收入主要来自产品/设备/原料销售，则公司更接近制造/产品销售型公司。"
+    },
+    {
+      "bucket_key": "project_delivery",
+      "bucket_name": "项目制交付型",
+      "role": "secondary",
+      "current_or_future": "current",
+      "confidence": "high",
+      "evidence": "命中关键词：项目、部署、定制、实施、解决方案、集成、改造",
+      "why_it_matters": "如果收入依赖一个个项目交付，则需要重点验证标准化和毛利稳定性。"
+    },
+    {
+      "bucket_key": "asset_heavy_operation",
+      "bucket_name": "重资产运营型",
+      "role": "secondary",
+      "current_or_future": "mixed",
+      "confidence": "medium",
+      "evidence": "命中关键词：代运营、租赁",
+      "why_it_matters": "如果公司需要自投资产或长期运营回收现金流，则估值和风险更接近重资产运营公司。"
+    },
+    {
+      "bucket_key": "software_platform_saas",
+      "bucket_name": "软件/SaaS/平台型",
+      "role": "secondary",
+      "current_or_future": "mixed",
+      "confidence": "medium",
+      "evidence": "命中关键词：软件、云平台",
+      "why_it_matters": "如果软件收入标准化且可续费，才适合按软件/平台公司分析。"
+    },
+    {
+      "bucket_key": "data_ai_model",
+      "bucket_name": "数据/AI模型驱动型",
+      "role": "secondary",
+      "current_or_future": "narrative",
+      "confidence": "high",
+      "evidence": "命中关键词：AI、人工智能、算法、大模型、数据、模型、预测",
+      "why_it_matters": "如果AI只是内部效率工具，则不应按AI平台公司估值；如果形成数据闭环，才可能构成壁垒。"
+    },
+    {
+      "bucket_key": "hardtech_commercialization",
+      "bucket_name": "硬科技商业化型",
+      "role": "secondary",
+      "current_or_future": "mixed",
+      "confidence": "high",
+      "evidence": "命中关键词：技术、专利、研发、材料、自动驾驶、机器人、量产",
+      "why_it_matters": "硬科技项目重点不是技术先进，而是能否稳定量产并被真实客户持续采购。"
+    },
+    {
+      "bucket_key": "government_industrial_landing",
+      "bucket_name": "政府/产业落地型",
+      "role": "secondary",
+      "current_or_future": "mixed",
+      "confidence": "high",
+      "evidence": "命中关键词：政府、基金、落地、招商",
+      "why_it_matters": "对政府基金而言，需判断项目是否能真实落地产值、税收、就业和产业协同。"
+    },
+    {
+      "bucket_key": "policy_driven",
+      "bucket_name": "政策驱动型",
+      "role": "risk",
+      "current_or_future": "mixed",
+      "confidence": "high",
+      "evidence": "命中关键词：政策、补贴、示范、新质生产力",
+      "why_it_matters": "如果需求主要来自政策/补贴/示范项目，需验证政策退坡后的商业可持续性。"
+    },
+    {
+      "bucket_key": "team_credibility_story",
+      "bucket_name": "团队/背书叙事型",
+      "role": "risk",
+      "current_or_future": "narrative",
+      "confidence": "medium",
+      "evidence": "命中关键词：博士、教授、专家",
+      "why_it_matters": "团队/背书需要验证是否转化为排他资源、成果转化或商业化能力。"
+    },
+    {
+      "bucket_key": "financing_valuation_story",
+      "bucket_name": "融资估值叙事型",
+      "role": "risk",
+      "current_or_future": "narrative",
+      "confidence": "low",
+      "evidence": "命中关键词：融资",
+      "why_it_matters": "需验证融资用途和估值逻辑是否匹配真实业务阶段。"
+    }
+  ],
+  "risk_buckets": [
+    {
+      "bucket_key": "asset_heavy_operation",
+      "bucket_name": "重资产运营型",
+      "risk_role": "risk",
+      "confidence": "high",
+      "evidence": "命中关键词：代运营、车队、固定资产、垫资、租赁",
+      "why_it_matters": "如果业务扩张需要同步投入大量资产，会带来现金流和回本周期风险。"
+    },
+    {
+      "bucket_key": "project_delivery",
+      "bucket_name": "项目制交付型",
+      "risk_role": "risk",
+      "confidence": "high",
+      "evidence": "命中关键词：定制、实施、改造、适配、非标",
+      "why_it_matters": "如果每个项目都需要定制，规模化后交付和毛利可能承压。"
+    },
+    {
+      "bucket_key": "policy_driven",
+      "bucket_name": "政策驱动型",
+      "risk_role": "risk",
+      "confidence": "high",
+      "evidence": "命中关键词：政策、政府、补贴、示范、新质生产力",
+      "why_it_matters": "如果需求由政策驱动，需要验证政策退坡后客户是否仍会付费。"
+    },
+    {
+      "bucket_key": "asset_heavy_operation_cashflow",
+      "bucket_name": "asset_heavy_operation_cashflow",
+      "risk_role": "risk",
+      "confidence": "low",
+      "evidence": "命中关键词：垫资",
+      "why_it_matters": "如果回款慢或需要垫资，增长可能反而加剧资金压力。"
+    },
+    {
+      "bucket_key": "hardtech_commercialization",
+      "bucket_name": "硬科技商业化型",
+      "risk_role": "risk",
+      "confidence": "high",
+      "evidence": "命中关键词：芯片、激光雷达、传感器、第三方、量产",
+      "why_it_matters": "硬科技项目需要验证关键供应链、量产良率和工程化能力。"
+    },
+    {
+      "bucket_key": "customer_concentration",
+      "bucket_name": "客户集中风险",
+      "risk_role": "risk",
+      "confidence": "low",
+      "evidence": "命中关键词：港口",
+      "why_it_matters": "如果收入依赖少数大客户，公司议价权和收入稳定性可能较弱。"
+    },
+    {
+      "bucket_key": "team_credibility_story",
+      "bucket_name": "团队/背书叙事型",
+      "risk_role": "risk",
+      "confidence": "medium",
+      "evidence": "命中关键词：博士、教授",
+      "why_it_matters": "背书需要验证是否真正转化为公司壁垒。"
+    },
+    {
+      "bucket_key": "financing_valuation_story",
+      "bucket_name": "融资估值叙事型",
+      "risk_role": "risk",
+      "confidence": "low",
+      "evidence": "命中关键词：融资",
+      "why_it_matters": "融资用途和估值逻辑可能与真实业务阶段不匹配。"
+    }
+  ],
+  "key_uncertainties": [
+    {
+      "uncertainty": "公司到底是客户买产品/设备，还是公司自投资产做运营？",
+      "why_it_matters": "这决定公司是偏轻资产产品销售型，还是重资产运营型，估值和现金流逻辑完全不同。",
+      "related_buckets": [
+        "manufacturing_product_sales",
+        "asset_heavy_operation"
+      ],
+      "discriminating_questions": [
+        "客户是否直接购买设备/车辆/产品？",
+        "是否存在公司自投资产并通过运营回收现金流？",
+        "资产由谁持有？折旧和维修由谁承担？",
+        "收入是一次性销售，还是按使用量/服务费持续收费？"
+      ]
+    },
+    {
+      "uncertainty": "项目交付是否标准化，还是每个客户都需要大量定制？",
+      "why_it_matters": "决定公司能否规模化复制，以及毛利率是否会被交付成本侵蚀。",
+      "related_buckets": [
+        "project_delivery"
+      ],
+      "discriminating_questions": [
+        "一个新项目中有多少模块可以复用？",
+        "单个项目从签约到验收回款需要多久？",
+        "每个项目需要多少实施人员？",
+        "不同项目毛利率差异大不大？"
+      ]
+    },
+    {
+      "uncertainty": "AI/数据能力是核心壁垒，还是研发/交付效率工具？",
+      "why_it_matters": "如果AI只是内部工具，则不应按AI平台公司估值。",
+      "related_buckets": [
+        "data_ai_model"
+      ],
+      "discriminating_questions": [
+        "AI是否直接决定客户购买或产品性能？",
+        "AI相比传统方法带来什么量化提升？",
+        "数据是否独占并形成持续反馈闭环？",
+        "模型输出是否仍需要大量人工验证？"
+      ]
+    },
+    {
+      "uncertainty": "当前真实收入、增长业务和估值叙事是否错位？",
+      "why_it_matters": "如果当前收入来自小业务，但融资按平台/多行业故事估值，可能存在估值泡沫。",
+      "related_buckets": [
+        "expansion_story",
+        "financing_valuation_story"
+      ],
+      "discriminating_questions": [
+        "当前收入主要来自哪条业务线？",
+        "增长最快的业务线收入基数是多少？",
+        "估值主要依据当前收入还是未来平台故事？",
+        "新业务是否已有真实收入、复购和毛利？"
+      ]
+    },
+    {
+      "uncertainty": "客户需求是政策驱动，还是真实经济 ROI 驱动？",
+      "why_it_matters": "如果主要依赖政策/示范项目，政策退坡后收入可持续性存疑。",
+      "related_buckets": [
+        "policy_driven",
+        "government_industrial_landing"
+      ],
+      "discriminating_questions": [
+        "客户中有多少是纯商业ROI驱动？",
+        "如果没有补贴或政策要求，客户是否仍会采购？",
+        "客户是否有明确降本增效测算？",
+        "是否有非政策客户的复购案例？"
+      ]
+    },
+    {
+      "uncertainty": "团队/学术/名人背书是否真正转化为排他壁垒？",
+      "why_it_matters": "学历、奖项、名人、实验室背书本身不等于商业化能力。",
+      "related_buckets": [
+        "team_credibility_story"
+      ],
+      "discriminating_questions": [
+        "专家/实验室与公司的关系是全职、股东、顾问还是普通合作？",
+        "是否有排他性成果转化协议？",
+        "知识产权归属公司还是高校/实验室？",
+        "背书是否已经转化为产品、客户或收入？"
+      ]
+    }
+  ],
+  "structure_summary": "系统初步识别该项目涉及行业：自动驾驶、工业物流/场内物流、商用车/重卡；主要业务线包括：无人重载车辆/无人集卡、项目制交付/场景解决方案、美妆/日化原料；可能适用的投资逻辑包括：制造/产品销售型、项目制交付型、重资产运营型。该识别仅作为后续分析入口，不代表最终判断。"
+}

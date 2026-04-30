@@ -1,0 +1,252 @@
+{
+  "schema_version": "step2_external_check_v2_2_2",
+  "external_investment_logic": [
+    {
+      "related_to_step1": "company_essence",
+      "bucket_key": "tech_barrier",
+      "knowledge_source": "general_bucket",
+      "logic_statement": "For Step1 field company_essence, external logic is: The claim that the company is a system integrator and vehicle modifier is consistent with the tech_barrier bucket's required check: '这项技术是行业通用技术、工程常规，还是公司独有核心能力？' The BP mentions self-developed full-stack software and hardware, but the core technology (autonomous driving for heavy trucks) is being pursued by many players (e.g., TuSimple, Inceptio, Plus). The barrier from data and simulation is replicable, as Step1 notes. External logic supports Step1's cautious view.",
+      "implication": "support",
+      "why_it_matters": "Confirms that the company's technical moat is not unique, supporting the cautious stance on valuation."
+    },
+    {
+      "related_to_step1": "revenue_logic",
+      "bucket_key": "commercialization",
+      "knowledge_source": "general_bucket",
+      "logic_statement": "For Step1 field revenue_logic, external logic is: The commercialization bucket requires checking '当前处于什么阶段：概念、实验室、中试、客户验证、小批量、量产？' Step1 notes revenue from vehicle sales and project delivery, which indicates early commercialization (small batch). The BP claims 240 vehicles deployed, but external logic suggests that scaling to mass production requires automotive-grade certification, supply chain industrialization, and OEM qualification, which are not yet evidenced. This weakens the narrative of a scalable platform.",
+      "implication": "caution",
+      "why_it_matters": "Highlights that the current revenue model (vehicle sales + project delivery) is not yet a scalable, high-margin business, which is critical for valuation."
+    },
+    {
+      "related_to_step1": "customer_logic",
+      "bucket_key": "customer_value",
+      "knowledge_source": "industry_bucket",
+      "logic_statement": "For Step1 field customer_logic, external logic is: The customer_value bucket asks '客户到底为哪个具体价值付钱：性能、成本、合规、效率还是卖点？' Step1 flags policy-driven demand. External logic from the autonomous driving industry shows that port and mining customers often adopt autonomous trucks due to government mandates or subsidies, not purely economic ROI. This supports Step1's caution about policy dependency.",
+      "implication": "support",
+      "why_it_matters": "Reinforces the risk that customer demand may not be sustainable without policy support."
+    },
+    {
+      "related_to_step1": "red_flags",
+      "bucket_key": "expansion_story",
+      "knowledge_source": "industry_bucket",
+      "logic_statement": "For Step1 field red_flags, external logic is: The expansion_story bucket requires checking '公司当前业务底盘是否足够扎实，能够支撑新故事？' Step1 flags the mismatch between narrative (AI platform, asset-light) and reality (heavy asset, manufacturing). External logic from the autonomous driving industry shows that many companies claiming 'full-stack' or 'platform' are actually system integrators. This supports Step1's red flag on valuation narrative mismatch.",
+      "implication": "support",
+      "why_it_matters": "Confirms that the expansion story (e.g., new energy materials, overseas) is premature and may distract from core challenges."
+    },
+    {
+      "related_to_step1": "key_judgement",
+      "bucket_key": "team_credibility",
+      "knowledge_source": "llm_common_sense",
+      "logic_statement": "For Step1 field key_judgement, external logic is: The team_credibility bucket asks '团队强项更偏科研、工程、销售还是管理？' Step1 notes the team has strong technical background (PhD, former Baidu). External logic suggests that while technical expertise is valuable, the key challenge for autonomous driving commercialization is engineering and supply chain management, not just algorithms. The team's experience in vehicle design and sales is a positive, but the lack of automotive OEM background may be a gap.",
+      "implication": "caution",
+      "why_it_matters": "Indicates that the team's strengths may not fully address the commercialization hurdles, supporting a cautious view."
+    }
+  ],
+  "step1_external_check": {
+    "checks": [
+      {
+        "step1_field": "company_essence",
+        "step1_claim": "本质是重载物流场景的自动驾驶系统集成商和车辆改装/制造商",
+        "bucket_key": "tech_barrier",
+        "knowledge_source": "general_bucket",
+        "external_logic": "External logic from tech_barrier bucket: The technology (autonomous driving for heavy trucks) is being developed by many competitors. The BP claims self-developed full-stack, but the barrier from data and simulation is replicable. Step1's judgment that the company is a system integrator is consistent with industry patterns.",
+        "verdict": "support",
+        "reasoning": "The claim aligns with the bucket's check that the technology is not unique; many players have similar capabilities.",
+        "evidence_source": "Industry knowledge",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "revenue_logic",
+        "step1_claim": "收入来自整车销售和技术服务，代运营未验证",
+        "bucket_key": "commercialization",
+        "knowledge_source": "general_bucket",
+        "external_logic": "External logic from commercialization bucket: The company is at early commercialization stage (small batch). The BP claims 240 vehicles deployed, but external logic requires evidence of mass production readiness, OEM qualification, and supply chain industrialization. Step1's caution is correct.",
+        "verdict": "caution",
+        "reasoning": "Step1 is right, but external logic demands further verification on: mass production readiness, OEM qualification, supply chain industrialization, production SOP, automotive certification timeline.",
+        "evidence_source": "Tech commercialization",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "customer_logic",
+        "step1_claim": "客户逻辑部分依赖政策",
+        "bucket_key": "customer_value",
+        "knowledge_source": "industry_bucket",
+        "external_logic": "External logic from customer_value bucket: Port and mining customers often adopt autonomous trucks due to government mandates or subsidies. The BP mentions '政策相继出台' and '新质生产力', indicating policy-driven demand. Step1's caution is supported.",
+        "verdict": "support",
+        "reasoning": "The claim is consistent with industry knowledge that early adopters are often policy-driven.",
+        "evidence_source": "Industry knowledge",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "red_flags",
+        "step1_claim": "重资产运营风险：自建产线、垫资采购、土地基建",
+        "bucket_key": "commercialization",
+        "knowledge_source": "general_bucket",
+        "external_logic": "External logic from commercialization bucket: The company's self-built production line and capex-intensive model are typical of hard tech commercialization. Step1's flag is valid, but external logic requires further verification on: engineering validation, automotive-grade certification, reliability testing, safety redundancy, supply chain verification.",
+        "verdict": "caution",
+        "reasoning": "Step1 is correct, but external logic demands specific evidence on engineering and certification to assess the risk.",
+        "evidence_source": "Tech commercialization",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "key_judgement",
+        "step1_claim": "估值叙事与当前业务结构存在错位",
+        "bucket_key": "expansion_story",
+        "knowledge_source": "industry_bucket",
+        "external_logic": "External logic from expansion_story bucket: Many autonomous driving companies claim 'full-stack' or 'platform' but are actually system integrators. Step1's judgment is consistent with industry patterns.",
+        "verdict": "support",
+        "reasoning": "The claim aligns with the bucket's check that expansion stories are often premature.",
+        "evidence_source": "Industry knowledge",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "must_ask_questions",
+        "step1_claim": "代运营是否已产生稳定收入？",
+        "bucket_key": "commercialization",
+        "knowledge_source": "general_bucket",
+        "external_logic": "External logic from commercialization bucket: The transition from project delivery to recurring revenue (e.g., operations) is a critical milestone. Step1's question is essential.",
+        "verdict": "support",
+        "reasoning": "The question directly addresses a key commercialization validation point.",
+        "evidence_source": "Investment logic",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "company_essence",
+        "step1_claim": "不是AI大模型公司",
+        "bucket_key": "tech_barrier",
+        "knowledge_source": "general_bucket",
+        "external_logic": "External logic from tech_barrier bucket: The BP mentions 'TransportAGI专用端到端范式' and '专用大模型', but these are likely efficiency tools, not independent products. Step1's judgment is supported.",
+        "verdict": "support",
+        "reasoning": "The claim is consistent with the bucket's check that AI/algorithm is a tool, not a moat.",
+        "evidence_source": "Industry knowledge",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "business_structure",
+        "step1_claim": "代运营服务（按运输量收费）是叙事业务",
+        "bucket_key": "commercialization",
+        "knowledge_source": "general_bucket",
+        "external_logic": "External logic from commercialization bucket: The BP claims '代运营和技术服务在行业内首次提出且业绩领先', but no evidence of recurring revenue. Step1's caution is correct.",
+        "verdict": "caution",
+        "reasoning": "Step1 is right, but external logic requires verification of actual revenue from operations.",
+        "evidence_source": "Investment logic",
+        "confidence": "medium"
+      }
+    ],
+    "summary": {
+      "support_count": 5,
+      "caution_count": 3,
+      "contradict_count": 0
+    }
+  },
+  "information_resolution": {
+    "publicly_resolvable": [
+      "代运营收入占比和稳定性",
+      "单个项目回款周期和垫资情况",
+      "客户采购决策中政策补贴占比",
+      "自建产线产能利用率",
+      "增材制造降本80%是否已在实际产品中验证"
+    ],
+    "founder_needed": [
+      "代运营服务的定价模式和客户续约率",
+      "是否已实现正向现金流",
+      "OEM qualification status and timeline",
+      "供应链关键零部件来源和替代方案"
+    ],
+    "decision_blockers": [
+      "缺乏代运营稳定收入的证据",
+      "缺乏汽车级认证和量产验证",
+      "政策退坡风险未量化"
+    ]
+  },
+  "tensions": [
+    "BP声称全链条、AI平台，但实际收入来自车辆销售和项目交付，代运营未验证",
+    "BP强调技术领先，但外部逻辑显示技术壁垒可复制",
+    "BP提及增材制造降本80%，但未说明是否已用于量产产品"
+  ],
+  "step1_adjustment_hints": {
+    "reinforce": [
+      "company_essence: 系统集成商和车辆改装/制造商的定位",
+      "red_flags: 重资产运营风险和估值叙事错位",
+      "customer_logic: 政策依赖风险"
+    ],
+    "weaken": [
+      "key_judgement: 先发优势和规模壁垒的强度（需更多证据）"
+    ],
+    "needs_verification": [
+      "代运营收入是否已产生稳定收入",
+      "增材制造降本80%是否已在实际产品中验证",
+      "OEM qualification status",
+      "供应链关键零部件来源和替代方案"
+    ]
+  },
+  "bp_usage_audit": {
+    "bp_used_for": "claim_verification_only",
+    "bp_claims_checked": [
+      "BP声称全链条、AI平台",
+      "BP声称代运营和技术服务在行业内首次提出且业绩领先",
+      "BP声称增材制造降本80%",
+      "BP声称自研域控和关键核心零部件降本30%"
+    ],
+    "bp_claims_not_used_as_fact": [
+      "BP声称全链条、AI平台",
+      "BP声称代运营和技术服务在行业内首次提出且业绩领先",
+      "BP声称增材制造降本80%",
+      "BP声称自研域控和关键核心零部件降本30%"
+    ],
+    "violations": [],
+    "bp_text_tokens_used": 0,
+    "is_clean": true
+  },
+  "meta": {
+    "buckets_analyzed": [
+      "tech_barrier",
+      "customer_value",
+      "commercialization",
+      "expansion_story",
+      "team_credibility"
+    ],
+    "industry_tags_used": [
+      "自动驾驶",
+      "vehicle",
+      "hardtech_commercialization"
+    ],
+    "bucket_as_checklist": true,
+    "knowledge_source_breakdown": {
+      "general_bucket": 4,
+      "industry_bucket": 3,
+      "llm_common_sense": 1
+    },
+    "knowledge_source_details": {
+      "general_bucket": [
+        "tech_barrier",
+        "commercialization",
+        "customer_value",
+        "expansion_story"
+      ],
+      "industry_bucket": [
+        "customer_value",
+        "expansion_story",
+        "team_credibility"
+      ],
+      "llm_common_sense": [
+        "team_credibility"
+      ]
+    },
+    "external_logic_sources": [
+      "Industry knowledge",
+      "Investment logic",
+      "Tech commercialization"
+    ],
+    "new_conclusion_generated": false,
+    "step1_fields_covered": [
+      "company_essence",
+      "revenue_logic",
+      "customer_logic",
+      "red_flags",
+      "key_judgement",
+      "business_structure",
+      "must_ask_questions"
+    ]
+  }
+}

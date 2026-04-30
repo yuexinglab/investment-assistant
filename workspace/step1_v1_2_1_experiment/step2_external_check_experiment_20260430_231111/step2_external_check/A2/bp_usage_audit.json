@@ -1,0 +1,32 @@
+[
+  {
+    "bp_claim": "自动轮智行底盘技术突破（减重40%、降成本30%等）",
+    "usage": "用于验证Step1中技术有亮点的判断，但未作为事实接受，仅作为公司自述引用。",
+    "forbidden_claim": false
+  },
+  {
+    "bp_claim": "客户名单（北汽、华为、广汽等）",
+    "usage": "用于验证Step1中客户合作多为意向的判断，未作为已签约合同使用。",
+    "forbidden_claim": false
+  },
+  {
+    "bp_claim": "Frost&Sullivan市场预测（2030年116.4亿美元）",
+    "usage": "用于验证Step1中市场预测缺乏现实依据的判断，未作为可靠数据使用。",
+    "forbidden_claim": false
+  },
+  {
+    "bp_claim": "专利布局（一体式行星滚轴EMB等）",
+    "usage": "用于验证Step1中技术壁垒的判断，但未评估专利质量或排他性。",
+    "forbidden_claim": false
+  },
+  {
+    "bp_claim": "行业认可（AITC2024最具投资价值项目等）",
+    "usage": "用于验证Step1中团队背书的判断，但未作为商业化能力证据。",
+    "forbidden_claim": false
+  },
+  {
+    "bp_claim": "公司业务与产品（商用车、乘用车、微车平台）",
+    "usage": "用于验证Step1中业务结构的判断，但未作为已量产产品使用。",
+    "forbidden_claim": false
+  }
+]

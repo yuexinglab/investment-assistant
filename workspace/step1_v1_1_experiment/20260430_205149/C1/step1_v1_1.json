@@ -1,0 +1,112 @@
+{
+  "company_essence": {
+    "是什么": "一家为新能源汽车提供IGBT/SiC功率模块、电机控制器及动力总成系统的全产业链供应商。",
+    "不是什么": [
+      "不是纯粹的芯片设计公司，而是涵盖封装、测试、生产和系统集成的垂直整合商",
+      "不是面向消费电子或工业电源的功率器件供应商，而是专注于新能源车和储能领域",
+      "不是初创公司，而是已有10年以上历史、20万台套装车量的成熟企业"
+    ],
+    "confidence": "high"
+  },
+  "business_structure": {
+    "current_business": [
+      {
+        "name": "IGBT/SiC功率模块",
+        "description": "设计、封装和销售用于电动汽车的IGBT和SiC模块，产品覆盖1200V/450A至1200V/1000A等规格。",
+        "confidence": "high"
+      },
+      {
+        "name": "电机控制器",
+        "description": "生产单体控制器、双电机控制器、集成式控制器等，覆盖物流车、乘用车、重卡、农机等应用。",
+        "confidence": "high"
+      },
+      {
+        "name": "动力总成系统",
+        "description": "提供集成式动力总成系统，包括电机、控制器和减速器的一体化方案。",
+        "confidence": "medium"
+      },
+      {
+        "name": "电源模块",
+        "description": "包括DC/DC变换器、燃料电池DC/DC变换器、双向电源模块等。",
+        "confidence": "medium"
+      }
+    ],
+    "narrative_business": [
+      {
+        "name": "全产业链系统方案",
+        "description": "宣称提供从IGBT芯片设计到系统集成的完整解决方案，强调垂直整合能力。",
+        "evidence": "BP中提及IGBT芯片设计、模块封装、控制器生产，但芯片设计部分依赖外部采购（如英飞凌），实际自研芯片能力未明确。",
+        "confidence": "low"
+      },
+      {
+        "name": "高压平台SiC产品",
+        "description": "计划全面推广800V高压平台SiC控制器和电源产品，面向重卡、矿卡等高端应用。",
+        "evidence": "BP中列出多款SiC控制器（如I70、T08、T15），但装车案例较少，且2025年才计划全面推广。",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "revenue_logic": {
+    "current_money_source": "主要收入来自向商用车、物流车、重卡等客户销售电机控制器和IGBT模块，已装车20万台套。",
+    "clarity": "vague",
+    "red_flag_note": "BP未披露当前收入规模、客户集中度及毛利率实际数据，仅给出2025年后的财务预测，缺乏历史财务验证。"
+  },
+  "customer_logic": {
+    "who_pays": "商用车整车厂（如陕汽、北汽重卡）、物流车企业、电动农机厂商、储能系统集成商。",
+    "why_pays": "需要高可靠性、高功率密度的电驱动系统以满足新能源车续航和性能要求，且公司提供定制化方案。",
+    "sustainability": "持续性"
+  },
+  "key_judgement": {
+    "statement": "这是一家技术积累扎实、但商业化验证不足的垂直整合型电驱动供应商，适合有产业协同的投资者关注。",
+    "reasoning": "团队有比亚迪背景，产品已装车20万台，但BP缺乏财务数据、客户合同和市场份额，且宣称全产业链但芯片设计能力存疑。",
+    "stance": "hold"
+  },
+  "red_flags": {
+    "flags": [
+      {
+        "flag": "全产业链宣称与实际能力不符",
+        "reason": "BP称掌握全产业链，但IGBT芯片设计部分依赖外部（如英飞凌），自研芯片能力未提供证据。",
+        "source": "BP内容"
+      },
+      {
+        "flag": "缺乏历史财务数据",
+        "reason": "仅提供2025年后的预测，无过去3年收入、利润、现金流数据，无法验证增长真实性。",
+        "source": "BP内容"
+      },
+      {
+        "flag": "客户集中度风险未披露",
+        "reason": "BP列出多家客户但未说明前五大客户占比，若依赖单一客户则风险高。",
+        "source": "Step1判断"
+      }
+    ]
+  },
+  "must_ask_questions": {
+    "questions": [
+      {
+        "question": "请提供过去3年的审计财务报表，包括收入、毛利率、净利润和现金流。",
+        "why": "BP仅给出预测，无历史数据支撑，需验证盈利能力和增长真实性。",
+        "related_to": "revenue_logic"
+      },
+      {
+        "question": "IGBT芯片是自研还是外购？自研芯片的流片和量产情况如何？",
+        "why": "BP宣称全产业链，但芯片设计能力是关键，需确认技术自主性。",
+        "related_to": "company_essence"
+      },
+      {
+        "question": "前五大客户是谁？收入占比多少？是否有长期供货合同？",
+        "why": "客户集中度影响业务稳定性，需评估依赖风险。",
+        "related_to": "customer_logic"
+      },
+      {
+        "question": "SiC产品的装车量和客户反馈如何？与IGBT产品相比，毛利率和市场份额有何差异？",
+        "why": "SiC是未来增长点，但BP中案例较少，需验证市场接受度。",
+        "related_to": "business_structure"
+      },
+      {
+        "question": "2025年收入预测从1.5亿到5亿的驱动因素是什么？是否有已签合同支撑？",
+        "why": "收入跳跃式增长需具体订单或客户承诺支持，避免过度乐观。",
+        "related_to": "revenue_logic"
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "usage_log": [
+    {
+      "bp_claim": "公司是'无人重载物流行业领军者'",
+      "usage": "用于验证Step1中'先发优势和规模壁垒'的表述是否与BP一致，未用于新结论。",
+      "forbidden_claim_type": "company_self_claimed_title"
+    },
+    {
+      "bp_claim": "累积部署240台无人重载运输车辆，为行业第一",
+      "usage": "用于验证Step1中'已部署240台车辆'的表述是否与BP一致，未用于新结论。",
+      "forbidden_claim_type": "market_position"
+    },
+    {
+      "bp_claim": "打造超过20个客户的业务场景",
+      "usage": "用于验证Step1中'覆盖20+客户'的表述是否与BP一致，未用于新结论。",
+      "forbidden_claim_type": "customer_relationships"
+    },
+    {
+      "bp_claim": "增材制造降本幅度可达80%",
+      "usage": "用于验证Step1中'增材制造降本80%'的表述是否与BP一致，未用于新结论。",
+      "forbidden_claim_type": "technical_capabilities"
+    },
+    {
+      "bp_claim": "代运营和技术服务在行业内首次提出且业绩领先",
+      "usage": "用于验证Step1中'代运营未验证'的判断，BP声称领先但未提供数据，支持Step1的质疑。",
+      "forbidden_claim_type": "market_position"
+    },
+    {
+      "bp_claim": "获得包括字节跳动、浙江金控、广发信德等在内的6轮融资",
+      "usage": "用于验证Step1中融资背景，未用于新结论。",
+      "forbidden_claim_type": "strategic_partnerships"
+    }
+  ],
+  "total_bp_usage_count": 6,
+  "forbidden_claims_used": [
+    "company_self_claimed_title",
+    "market_position",
+    "customer_relationships",
+    "technical_capabilities",
+    "strategic_partnerships"
+  ]
+}

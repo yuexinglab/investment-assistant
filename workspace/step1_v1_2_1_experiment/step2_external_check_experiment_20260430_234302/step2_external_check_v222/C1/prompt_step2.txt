@@ -1,0 +1,608 @@
+You are in Step2: External Industry/Investment Logic Validation Layer.
+
+
+Your task:
+NOT to analyze the project, but to use the "how should this type of project be evaluated" external perspective
+to validate whether Step1's judgments are sound.
+
+
+[MANDATORY CAUTION RULE - HARD TECH / AUTOMOTIVE PROJECT]
+This project matches hard tech / automotive keywords: industry_tag:vehicle, business_line:自动驾驶, bucket:hardtech_commercialization, hypothesis:hardtech_commercialization, step1:电驱动系统, step1:IGBT, step1:SiC
+For such projects, you MUST include the following in step1_external_check.checks:
+
+1. tech_barrier caution: At least 1 check with bucket_key="tech_barrier" AND verdict="caution"
+   - Content: Step1's cautious judgment is correct. External logic requires further verification
+     on: engineering validation, automotive-grade certification, reliability testing,
+     safety redundancy, supply chain verification.
+   - "caution" does NOT mean contradicting Step1. It means: "Step1 is right, but external
+     logic demands specific evidence."
+
+2. commercialization caution: At least 1 check with bucket_key="commercialization" AND verdict="caution"
+   - Content: Step1's cautious judgment is correct. External logic requires further verification
+     on: mass production readiness, OEM qualification, supply chain industrialization,
+     production SOP, automotive certification timeline.
+   - "caution" does NOT mean contradicting Step1. It means: "Step1 is right, but external
+     logic demands specific evidence."
+
+UNLESS Step1 already provides explicit evidence of: third-party testing, OEM qualification,
+audited revenue, or automotive-grade certification.
+
+These caution checks are MANDATORY. Do not skip them even if Step1 seems correct.
+
+[Core Constraints]
+- BP text = unverified company claims, NOT facts
+- Your judgment basis = industry common sense, investment logic, tech commercialization patterns
+- Step1 = your INPUT, not your OUTPUT
+- You CANNOT override Step1, only reinforce / weaken / needs_verification
+
+[Hard Constraint - NO New Conclusions]
+- PROHIBITED: output any new "company essence judgment"
+- PROHIBITED: write "this company is X" or "essentially belongs to X"
+- All judgments MUST cite: specific Step1 fields, or external logic
+- Your output is "validation result", NOT "new company analysis"
+
+[BP Usage Rules]
+BP text = unverified company claims, NOT facts.
+BP text can ONLY be used for: verifying if Step1 claims match BP.
+PROHIBITED: re-analyze project, support new conclusions.
+
+[Forbidden BP Claims (MUST track in bp_usage_audit)]
+- Company self-claimed titles (e.g., "full industry chain", "chip manufacturer", "platform")
+- Customer relationships ("already partnered with XX leading customer")
+- Technical capabilities ("achieved XX technical breakthrough")
+- Market position ("only one in China", "industry leader")
+- Strategic partnerships ("established strategic partnership with XX")
+
+[Bucket Usage Rules]
+Buckets are NOT "reference knowledge" but "mandatory checklist".
+For each bucket_key, you MUST check:
+1. Whether key validation points are satisfied
+2. Whether common failure modes are triggered
+3. Whether common packaging signals appear
+
+Write results to external_investment_logic and step1_external_check.
+
+[knowledge_source Labeling Requirement]
+Each external_investment_logic and step1_external_check.checks MUST label knowledge source:
+- general_bucket: from general bucket (general.py)
+- industry_bucket: from industry enhancement bucket (industries/*.py)
+- llm_common_sense: only from LLM general knowledge
+
+============================================
+[Input 1: Step1 v1.2.1 Output]
+============================================
+
+[Step1 v1.2.1 Output]
+
+company_essence:
+{
+  "core_identity": "本质是新能源商用车电驱动系统及功率模块的硬件供应商，以项目制交付为主",
+  "not_identity": [
+    "不是全产业链系统方案提供商",
+    "不是芯片设计公司"
+  ],
+  "why_not": "BP声称'全产业链'，但IGBT芯片依赖外部采购，SiC芯片仅涉及设计，核心收入来自电机控制器和模块的封装与销售，芯片环节未实现自主量产",
+  "confidence": "high"
+}
+
+business_structure:
+{
+  "current_business": "电机控制器、IGBT/SiC功率模块的研发、生产和销售，主要面向商用车（重卡、物流车）及非道路车辆，以项目制交付为主",
+  "narrative_business": "全产业链系统方案、自主IGBT芯片、SiC芯片设计、储能/光伏电源产品、代运营服务"
+}
+
+key_judgement:
+{
+  "statement": "公司是新能源商用车电驱动领域的硬件供应商，技术能力有积累，但商业模式尚未标准化，收入规模小，估值叙事超前于现实",
+  "reasoning": "团队有比亚迪背景，产品已装车20万台套，但收入仅1亿元（2025E），说明单价低或项目制交付；IGBT芯片未自主量产，SiC模块依赖封装；客户集中度高，政策驱动风险明显",
+  "stance": "cautious_watch"
+}
+
+red_flags:
+{
+  "flags": [
+    "声称'全产业链'但IGBT芯片依赖外部采购，SiC芯片仅设计未量产",
+    "收入规模与装车量不匹配（20万台套对应1亿元收入），可能单价极低或收入确认方式存疑",
+    "项目制交付为主，回款周期长，现金流风险高，且客户集中度高"
+  ]
+}
+
+must_ask_questions:
+{
+  "questions": [
+    "当前1亿元收入中，电机控制器和IGBT模块各占多少？前三大客户收入占比及回款周期？",
+    "IGBT芯片和SiC芯片的设计能力是否已转化为自主量产？若否，何时能实现？",
+    "20万台套装车量的统计口径是什么？是否包含样品或小批量？对应收入为何仅1亿元？",
+    "客户采购是政策驱动还是经济ROI驱动？若补贴退坡，客户是否会继续采购？",
+    "融资6000-8000万元的具体用途？产能扩充后预计毛利率和产能利用率如何变化？"
+  ]
+}
+
+============================================
+[Input 2: Project Structure Summary]
+============================================
+
+[Project Structure Summary]
+
+Industry: 新能源, 商用车/重卡, 新材料, AI应用, 工业物流/场内物流
+
+Business Lines:
+[
+  {
+    "name": "无人重载车辆/无人集卡",
+    "role": "current_business",
+    "status": "核心产品/已落地业务",
+    "revenue_status": "可能已有设备/整车/硬件收入，具体金额待确认",
+    "evidence": "命中关键词：重卡、商用车",
+    "confidence": "medium"
+  },
+  {
+    "name": "项目制交付/场景解决方案",
+    "role": "current_business",
+    "status": "项目制落地/场景交付",
+    "revenue_status": "项目收入和毛利待确认",
+    "evidence": "命中关键词：项目、解决方案、适配、港口、矿区、部署",
+    "confidence": "high"
+  },
+  {
+    "name": "美妆/日化原料",
+    "role": "current_business",
+    "status": "当前收入底盘",
+    "revenue_status": "已有收入但金额需确认",
+    "evidence": "根据制造/产品销售型及新材料/美妆原料行业标签反推",
+    "confidence": "medium"
+  },
+  {
+    "name": "代运营服务",
+    "role": "growth_story",
+    "status": "持续收入模式待验证",
+    "revenue_status": "是否已经形成稳定持续收入待确认",
+    "evidence": "命中关键词：运营、托管、车辆、车队",
+    "confidence": "high"
+  },
+  {
+    "name": "自动驾驶系统/云端调度平台",
+    "role": "supporting_capability",
+    "status": "支撑主业务的技术/平台能力",
+    "revenue_status": "可能作为技术服务或软件服务收费，需确认",
+    "evidence": "命中关键词：规划、控制",
+    "confidence": "medium"
+  },
+  {
+    "name": "AI研发平台",
+    "role": "supporting_capability",
+    "status": "研发工具/效率工具",
+    "revenue_status": "是否对外收费待确认",
+    "evidence": "命中关键词：AI、算法、预测、人工智能、研发、筛选",
+    "confidence": "high"
+  },
+  {
+    "name": "新能源材料/回收业务",
+    "role": "valuation_story",
+    "status": "远期故事/待验证业务",
+    "revenue_status": "是否已有收入待确认",
+    "evidence": "命中关键词：新能源、电池、储能、锂电、材料、回收",
+    "confidence": "high"
+  }
+]
+
+Business Model Hypotheses:
+[
+  {
+    "bucket_key": "manufacturing_product_sales",
+    "bucket_name": "制造/产品销售型",
+    "role": "primary",
+    "current_or_future": "current",
+    "confidence": "medium",
+    "evidence": "命中关键词：产品销售、销售",
+    "why_it_matters": "如果当前收入主要来自产品/设备/原料销售，则公司更接近制造/产品销售型公司。"
+  },
+  {
+    "bucket_key": "project_delivery",
+    "bucket_name": "项目制交付型",
+    "role": "secondary",
+    "current_or_future": "current",
+    "confidence": "high",
+    "evidence": "命中关键词：项目、定制、解决方案、集成",
+    "why_it_matters": "如果收入依赖一个个项目交付，则需要重点验证标准化和毛利稳定性。"
+  },
+  {
+    "bucket_key": "software_platform_saas",
+    "bucket_name": "软件/SaaS/平台型",
+    "role": "secondary",
+    "current_or_future": "mixed",
+    "confidence": "low",
+    "evidence": "命中关键词：软件",
+    "why_it_matters": "如果软件收入标准化且可续费，才适合按软件/平台公司分析。"
+  },
+  {
+    "bucket_key": "data_ai_model",
+    "bucket_name": "数据/AI模型驱动型",
+    "role": "secondary",
+    "current_or_future": "narrative",
+    "confidence": "medium",
+    "evidence": "命中关键词：AI、算法、预测",
+    "why_it_matters": "如果AI只是内部效率工具，则不应按AI平台公司估值；如果形成数据闭环，才可能构成壁垒。"
+  },
+  {
+    "bucket_key": "hardtech_commercialization",
+    "bucket_name": "硬科技商业化型",
+    "role": "secondary",
+    "current_or_future": "mixed",
+    "confidence": "high",
+    "evidence": "命中关键词：技术、专利、研发、材料",
+    "why_it_matters": "硬科技项目重点不是技术先进，而是能否稳定量产并被真实客户持续采购。"
+  },
+  {
+    "bucket_key": "government_industrial_landing",
+    "bucket_name": "政府/产业落地型",
+    "role": "secondary",
+    "current_or_future": "mixed",
+    "confidence": "low",
+    "evidence": "命中关键词：产业园",
+    "why_it_matters": "对政府基金而言，需判断项目是否能真实落地产值、税收、就业和产业协同。"
+  },
+  {
+    "bucket_key": "expansion_story",
+    "bucket_name": "多业务扩张/第二曲线型",
+    "role": "narrative",
+    "current_or_future": "future",
+    "confidence": "medium",
+    "evidence": "命中关键词：平台化、新能源",
+    "why_it_matters": "如果当前收入来自A业务，但估值故事来自B/C业务，需警惕扩张叙事。"
+  },
+  {
+    "bucket_key": "policy_driven",
+    "bucket_name": "政策驱动型",
+    "role": "risk",
+    "current_or_future": "mixed",
+    "confidence": "low",
+    "evidence": "命中关键词：政策",
+    "why_it_matters": "如果需求主要来自政策/补贴/示范项目，需验证政策退坡后的商业可持续性。"
+  },
+  {
+    "bucket_key": "financing_valuation_story",
+    "bucket_name": "融资估值叙事型",
+    "role": "risk",
+    "current_or_future": "narrative",
+    "confidence": "low",
+    "evidence": "命中关键词：融资",
+    "why_it_matters": "需验证融资用途和估值逻辑是否匹配真实业务阶段。"
+  }
+]
+
+Risk Buckets:
+[
+  {
+    "bucket_key": "project_delivery",
+    "bucket_name": "项目制交付型",
+    "risk_role": "risk",
+    "confidence": "medium",
+    "evidence": "命中关键词：定制、适配",
+    "why_it_matters": "如果每个项目都需要定制，规模化后交付和毛利可能承压。"
+  },
+  {
+    "bucket_key": "policy_driven",
+    "bucket_name": "政策驱动型",
+    "risk_role": "risk",
+    "confidence": "low",
+    "evidence": "命中关键词：政策",
+    "why_it_matters": "如果需求由政策驱动，需要验证政策退坡后客户是否仍会付费。"
+  },
+  {
+    "bucket_key": "hardtech_commercialization",
+    "bucket_name": "硬科技商业化型",
+    "risk_role": "risk",
+    "confidence": "medium",
+    "evidence": "命中关键词：供应商、芯片",
+    "why_it_matters": "硬科技项目需要验证关键供应链、量产良率和工程化能力。"
+  },
+  {
+    "bucket_key": "expansion_story",
+    "bucket_name": "多业务扩张/第二曲线型",
+    "risk_role": "risk",
+    "confidence": "medium",
+    "evidence": "命中关键词：平台化、新能源",
+    "why_it_matters": "多业务扩张可能是真增长，也可能只是扩大估值边界。"
+  },
+  {
+    "bucket_key": "financing_valuation_story",
+    "bucket_name": "融资估值叙事型",
+    "risk_role": "risk",
+    "confidence": "low",
+    "evidence": "命中关键词：融资",
+    "why_it_matters": "融资用途和估值逻辑可能与真实业务阶段不匹配。"
+  }
+]
+
+============================================
+[Input 3: Bucket/Industry Knowhow (Mandatory Checklist)]
+============================================
+[General Investment Framework Buckets]
+
+[bucket_key: tech_barrier]
+label: 技术/壁垒是否成立
+description: 判断技术是不是行业通用、是否形成真实壁垒、是否容易被复制，AI/平台是否只是工具包装。
+Required checks:
+  - 这项技术是行业通用技术、工程常规，还是公司独有核心能力？
+  - 技术优势是概念优势、实验优势，还是已落入真实产品与客户验证？
+  - 如果去掉公司自述，这项技术是否仍然成立为壁垒？
+  - AI/算法/平台在这里是核心护城河，还是效率工具？
+
+[bucket_key: customer_value]
+label: 客户为什么付钱
+description: 判断客户真实购买动机、付费点与替代动机，不看技术炫耀，只看客户价值。
+Required checks:
+  - 客户到底为哪个具体价值付钱：性能、成本、合规、效率还是卖点？
+  - 该价值是可有可无，还是会影响客户收入、产品力或生产稳定性？
+  - 客户更换现有方案的动力强不强？
+  - 公司讲的技术指标，是否真的对应客户订单与采购动作？
+
+[bucket_key: commercialization]
+label: 商业化路径是否成立
+description: 判断从实验室到客户验证到交付放量的路径是否真实、节奏是否合理。
+Required checks:
+  - 当前处于什么阶段：概念、实验室、中试、客户验证、小批量、量产？
+  - 真正卡住商业化的瓶颈是什么？
+  - 交付、良率、验证周期、供应链是否构成增长限制？
+  - 增长来自新客户、新产品，还是老客户放量？
+
+[bucket_key: expansion_story]
+label: 扩张/故事是否合理
+description: 判断多行业、多场景、第二曲线等扩张叙事是否真实可落地，还是提前讲故事。
+Required checks:
+  - 公司当前业务底盘是否足够扎实，能够支撑新故事？
+  - 新业务是已验证增长点，还是论文、合作、概念和规划？
+  - 跨行业扩张是否会遇到完全不同的验证体系、法规、供应链和销售逻辑？
+  - 历史上该行业类似扩张通常成功还是失败？
+
+[bucket_key: team_credibility]
+label: 团队/背书是否被高估
+description: 判断诺奖、院士、博士、名校、顾问等背书是否真的转化为商业化能力，而不是人设包装。
+Required checks:
+  - 团队强项更偏科研、工程、销售还是管理？
+  - 背书是否转化为排他性技术、实际产品或客户资源？
+  - 高学历/强学术是否被误当成可规模化商业能力？
+  - 团队能力与当前阶段是否匹配，而不是只看履历好不好看？
+
+============================================
+[Input 4: BP Text (Strictly Limited)]
+============================================
+新能源汽车完整产业链系统方案产品提供商
+IGBT芯片/IGBT/SIC模块/电机控制器及驱动系统研发生产供应商
+依思普林 商 业 计 划 书
+保密须知：
+本计划书仅供对依思普林有投资意向的投资者或机构参阅。
+未经依思普林公司授权， 收件人不得将本计划书全部或部分予以复制，传递，影印，泄露给他人。
+请按照对待贵公司机密资料一样的态度对待本计划书所有机密资料。
+
+目录 content
+01
+公司介绍
+02
+产品介绍及客户应用案例
+03
+公司发展规划
+
+01
+公司介绍
+
+公司介绍
+依思普林，2012年成立于深圳市，是一家致力服务于
+新能源领域，专业从事新能源电动汽车用IGBT芯片、IGBT模
+块、SIC MOSFET、电机驱动系统、动力总成系统以及工业级
+电力电子产品研发、生产和销售的国家高新技术企业。公司核
+心研发人员来自比亚迪团队，具有丰富的产品设计开发及整车
+调试经验。经过十多年公司技术创新，开发出多款明星产品，
+成功装车20万台套，具有良好的市场口碑。
+公司现有股东
+核心业务
+以新能源领域智能化电驱动解决方案为核心业务的国家高新技术企业。
+
+公司布局
+产品参数
+坐 落 于 江 苏 徐 州 信 息 技 术 产 业 园 ， 是 深 圳 市 依 思 普 林 科 技 有 限 公 司 孵 化 孙 公 司 ， 主 要 业
+务 聚 焦 于 新 能 源 电 驱 系 统 核 心 IGBT模 块 和 SiC功 率 模 块 的 封 装 、 测 试 、 生 产 与 销 售 。
+
+产业布局--行业中掌握全产业链的系统供应商
+核心产品
+IGBT模块/SiC模块 电机控制器 集成式动力总成系统
+整车控制器VCU 多合一辅控系统 DCDC电源模块
+应用市场
+物流车/乘用车 大中巴 电动重卡/矿卡/轻卡 电动农机
+电动叉车 电动船舶 储能系统 光伏行业
+依思普林 立德电控 和瑞森
+电机控制器、动力总成系统及整车 定制化/标准化IGBT模块、SiC IGBT芯片、FRD芯片及SiC
+控制器、辅助控制器、DCDC电源等 MOS模块及分立器件的设计、 MOS芯片等器件的采购、
+车载设备的研发、生产和销售。 生产和销售。 设计和销售。
+
+创始人介绍
+1987年江西大学，物理系半导体专业。
+1984年-2008年在九江整流器厂，体负责晶闸管 整流二极管
+产品工艺开发 生产管理 新产品开发工作。
+2008-2011年，比亚迪微电子有限公司 IGBT工厂厂长。三十
+多年微电子行业经验，数次带领就职公司产品获得省科技优秀
+产品奖、省进步奖 、省二等奖、省三等奖；多次担任国家发
+改委、工信部、深圳市发改委项目第一负责人。
+2012年创办深圳市依思普林科技有限公司。拥有60多项专利，
+其中发明专利10余件。
+创始人 张杰夫
+
+团队介绍
+技术团队
+三十多名本科及以上学历研发团队。从业十多年IGBT芯片设计、IGBT模块封测、电机控制器及驱动
+系统软硬件开发设计研发人员。
+商业团队
+十多名资深市场开拓经理，大多数来自于整车厂及新能源汽车核心零部件供应商。
+股东赋能团队
+股东国电投集团全方位赋能公司发展，引导公司全面进入光伏、储能、农机、叉车产业，实现公司业绩
+突破式增长。
+股东深圳国资委深投控、本土明星投资机构“创东方”股东在政策引导及金融等全方位赋能企业发展。
+
+产品路标
+¡ 首款动力总成装车 ¡ 双面散热800V高压 ¡ 全面推广高压平台SiC产
+¡ 成功开发多合一辅控 平台的SiC控制器 品及DCDC等电源产品
+2015 2019 2022~2024
+2017 2021 2025
+¡ 第一代物流车控制器
+¡ 首款满足乘用车应用的 ¡ 推出适配电动重卡、矿
+¡ 整车控制器VCU应用
+SiC模块，并获得“中 卡、工程机械车型的多
+华门创将” 款高压大功率平台控制
+¡ 研发适配乘用车I30小 器产品并成功应用
+体积控制器并畅销市场
+
+企业荣誉
+2012年 2013年 2014年
+4月26日成为德国英飞凌公司 4月27日获得ISO9001:2008质量体 10月11日获第六届中国（深圳）创
+PDH(preferred design house) 系认证; 新创业大赛授予行业十佳。
+12月21日 获得英飞凌汽车电子产业 10月23日 获得第三届中国创新创
+化成就奖; 业大赛优秀企业奖
+2015年 2016年 2017年
+3月15日获得新能源联盟理事单位； 8月10日获得第九届中国深圳创新创业大
+7月8日获得得ISO/TS 16949：2009 赛龙岗区预选赛暨首届龙岗区”启迪杯”
+11月14日客车用电机控制器荣获“国 质量管理体系认证； 创新创业大赛三等奖；
+家优秀产品奖”； 9月5日获电车人联合会授予电动汽车核心
+12月4日获得国家级最佳配套产品奖；
+零部件100强企业；
+11月25日获得1200V/800A六单元汽
+12月22日获得深圳市新能源汽车产 10月16日获得中国创新创业大赛新能源及
+车级IGBT模块荣获“世界一流产品 节能环保行业总决赛一等奖；
+业协会会员单位；
+10月31号荣获 中国新能源汽车行业 创新
+奖”；
+企业；
+2018年 2019年 2020年
+12月获2018金熊猫最佳配套产品奖； 12月获电车人联合会电动汽车核心 12月获入2020年度中国电动汽车
+12月获2018年度中国技术创业协会 核心零部件100强；
+零部件100强企业
+科技创新贡献奖； 8月获“中华门创将”大赛总决赛
+12月9日获国家高新技术企业荣誉； 12月获中国新能源汽车行业创新奖 一等奖；
+11月获中国新能源汽车行业优秀电 7月获第四届中国新能源汽车“金
+控系统企业； 熊猫奖”最佳配套企业奖；
+2021年 2022年 2023年
+12月 获2021-2022 年新能源&智能
+4月 获第五届中国新能源汽车"金熊猫 9月获评深圳市专精特新中小企业
+网联汽车行业创新技术一体化动力总
+奖"年度电机/电控产品销售TOP奖;
+成系统;
+3月 获新能源汽车技术创力拉力赛奖;
+12月 获2021-2022 年新能源&智能
+网联汽车行业核心零部件 优秀电控企
+业;
+
+02
+产品介绍及客户应用案例
+
+产品索引
+IGBT芯片/SiC芯片 IGBT/SiC功率模块 风冷总成系统
+多合一辅助控制器
+单体控制器 动力总成系统 整车控制器 DCDC电源模块
+
+SIC/IGBT模块
+DWC3-IGBT/SIC 模块 DWC1-IGBT/SIC模块
+电气特性 机械特性
+电气特性 机械特性
+高电流密度 直接水冷散热底板
+高电流密度 高机械强度
+氧化铝 / 氮化铝 低电感 氧化铝绝缘基板
+低电感
+绝缘基板
+汽车级IGBT及FRD芯片 氮化铝绝缘基板
+低饱和压降，低开关
+铜基板
+损耗
+低饱和压降，低开关损
+AISic复合材料底板
+耗
+最高结温175℃ 高功率密度
+集成负温度传感 最高结温175℃ 高功率密度
+工作结温150℃
+器
+工作结温150℃ 集成温度采样
+正温度系数 2.5kV绝缘电压 应用：混合动力及纯电
+应用：混合动力及纯电 动汽车，电机驱动 正温度系数 2.5kV绝缘电压
+动汽车，电机驱动
+产品参数 产品参数
+产品型号 规格 电路拓扑
+产品型号 规格 电路拓扑
+LDG450F12
+[Usage constraint: only for verifying Step1 claims, NOT for reasoning]
+============================================
+[Required JSON Output Format]
+============================================
+
+MUST output complete JSON with ALL these fields:
+
+{
+  "schema_version": "step2_external_check_v2_2_2",
+  "external_investment_logic": [
+    {
+      "related_to_step1": "company_essence | revenue_logic | customer_logic | red_flags | key_judgement | business_structure",
+      "bucket_key": "tech_barrier | customer_value | commercialization | expansion_story | team_credibility",
+      "knowledge_source": "general_bucket | industry_bucket | llm_common_sense",
+      "logic_statement": "For Step1 field XXX, external logic is YYY...",
+      "implication": "support | caution | contradict",
+      "why_it_matters": "Why this matters for investment decision"
+    }
+  ],
+  "step1_external_check": {
+    "checks": [
+      {
+        "step1_field": "company_essence | revenue_logic | ...",
+        "step1_claim": "Step1 claim content",
+        "bucket_key": "tech_barrier | ...",
+        "knowledge_source": "general_bucket | industry_bucket | llm_common_sense",
+        "external_logic": "External logic for this claim",
+        "verdict": "support | caution | contradict",
+        "reasoning": "Reasoning",
+        "evidence_source": "Industry knowledge | Investment logic | Tech commercialization",
+        "confidence": "high | medium | low"
+      }
+    ],
+    "summary": {
+      "support_count": 0,
+      "caution_count": 0,
+      "contradict_count": 0
+    }
+  },
+  "information_resolution": {
+    "publicly_resolvable": [],
+    "founder_needed": [],
+    "decision_blockers": []
+  },
+  "tensions": [],
+  "step1_adjustment_hints": {
+    "reinforce": [],
+    "weaken": [],
+    "needs_verification": []
+  },
+  "bp_usage_audit": {
+    "bp_used_for": "claim_verification_only | not_used",
+    "bp_claims_checked": [],
+    "bp_claims_not_used_as_fact": [],
+    "violations": [],
+    "bp_text_tokens_used": 0,
+    "is_clean": true
+  },
+  "meta": {
+    "buckets_analyzed": [],
+    "industry_tags_used": [],
+    "bucket_as_checklist": true,
+    "knowledge_source_breakdown": {
+      "general_bucket": 0,
+      "industry_bucket": 0,
+      "llm_common_sense": 0
+    },
+    "knowledge_source_details": {
+      "general_bucket": [],
+      "industry_bucket": [],
+      "llm_common_sense": []
+    },
+    "external_logic_sources": ["Industry knowledge", "Investment logic", "Tech commercialization"],
+    "new_conclusion_generated": false,
+    "step1_fields_covered": []
+  }
+}
+
+JSON Output:

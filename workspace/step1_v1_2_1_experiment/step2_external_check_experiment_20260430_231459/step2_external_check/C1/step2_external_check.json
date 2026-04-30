@@ -1,0 +1,177 @@
+{
+  "external_investment_logic": [
+    {
+      "bucket_key": "tech_barrier",
+      "validation_result": "weaken",
+      "reasoning": "Step1认为公司本质是硬件供应商，IGBT芯片依赖外部采购，SiC芯片仅设计未量产。从行业常识看，功率模块封装技术虽有一定门槛，但并非不可复制，多家国内厂商（如斯达半导、中车时代电气）已实现规模化量产。公司声称的‘全产业链’在芯片环节缺失，技术壁垒实际集中在封装和系统集成，而非芯片设计或制造。因此，Step1关于技术壁垒不高的判断得到外部逻辑支持。",
+      "knowledge_source": "general_bucket"
+    },
+    {
+      "bucket_key": "customer_value",
+      "validation_result": "reinforce",
+      "reasoning": "Step1指出客户采购可能是政策驱动。从行业逻辑看，新能源商用车电驱动系统当前主要受‘双碳’政策、路权优惠等政策推动，客户（如物流车队、港口）采购决策中政策合规性权重高。若补贴退坡或政策转向，客户更换动力可能减弱。Step1的判断符合行业常识。",
+      "knowledge_source": "general_bucket"
+    },
+    {
+      "bucket_key": "commercialization",
+      "validation_result": "reinforce",
+      "reasoning": "Step1认为公司商业模式尚未标准化，收入规模小。从商业化路径看，项目制交付模式导致收入确认周期长、毛利率不稳定，且20万台套装车量与1亿元收入不匹配，暗示单价极低或收入确认方式存疑。外部逻辑支持Step1对商业化阶段偏早期的判断。",
+      "knowledge_source": "general_bucket"
+    },
+    {
+      "bucket_key": "expansion_story",
+      "validation_result": "weaken",
+      "reasoning": "Step1指出公司声称‘全产业链’但芯片环节缺失。从行业逻辑看，功率半导体产业链从芯片设计、制造到封装测试，每个环节都需要大量资本和长期技术积累。公司当前收入主要来自模块封装和控制器，却宣称‘全产业链系统方案’，这种叙事在硬科技领域常见于融资包装。Step1的质疑有外部逻辑支撑。",
+      "knowledge_source": "general_bucket"
+    },
+    {
+      "bucket_key": "team_credibility",
+      "validation_result": "needs_verification",
+      "reasoning": "Step1未直接评估团队，但BP显示创始人来自比亚迪IGBT工厂厂长，技术团队有多年经验。从行业逻辑看，比亚迪背景在新能源电驱动领域有较强背书，但需验证团队是否具备从研发到规模化量产的全链条能力，以及是否过度依赖单一技术路线。",
+      "knowledge_source": "general_bucket"
+    }
+  ],
+  "step1_external_check": {
+    "checks": [
+      {
+        "step1_field": "company_essence.core_identity",
+        "check": "Step1判断公司本质是硬件供应商，以项目制交付为主。外部逻辑验证：功率模块封装和电机控制器生产属于典型硬件制造，项目制交付模式在商用车电驱动领域常见（如汇川技术早期）。该判断合理。",
+        "result": "reinforce",
+        "knowledge_source": "industry_bucket"
+      },
+      {
+        "step1_field": "company_essence.not_identity",
+        "check": "Step1认为公司不是全产业链系统方案提供商，不是芯片设计公司。外部逻辑验证：BP中IGBT芯片和SiC芯片均标注‘采购’或‘设计’，未提及自主制造，且公司收入主要来自模块和控制器，芯片设计能力未转化为量产。该判断合理。",
+        "result": "reinforce",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "business_structure.current_business",
+        "check": "Step1列出当前业务为电机控制器、IGBT/SiC功率模块的研发、生产和销售。外部逻辑验证：BP产品索引明确列出IGBT模块、SiC模块、电机控制器等，与Step1一致。",
+        "result": "reinforce",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "business_structure.narrative_business",
+        "check": "Step1指出公司叙事业务包括全产业链系统方案、自主IGBT芯片等。外部逻辑验证：BP首页声称‘新能源汽车完整产业链系统方案产品提供商’，并列出IGBT芯片设计，但芯片环节实际未自主量产。Step1的区分合理。",
+        "result": "reinforce",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "key_judgement.stance",
+        "check": "Step1 stance为cautious_watch。外部逻辑验证：收入规模小、项目制交付、芯片依赖外部采购、政策驱动风险，这些因素在投资逻辑中均指向谨慎观望。该stance合理。",
+        "result": "reinforce",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "red_flags",
+        "check": "Step1列出三个red flags。外部逻辑验证：1) 声称全产业链但芯片依赖外部采购，符合行业常见包装；2) 20万台套与1亿元收入不匹配，可能单价极低或收入确认问题；3) 项目制交付回款周期长，客户集中度高。这些风险在硬科技项目中常见。",
+        "result": "reinforce",
+        "knowledge_source": "general_bucket"
+      }
+    ],
+    "overall_validation": "Step1的核心判断（公司是硬件供应商，芯片依赖外部，商业模式未标准化）得到外部逻辑的reinforce。仅团队评估需进一步验证。",
+    "knowledge_source": "general_bucket"
+  },
+  "information_resolution": {
+    "questions": [
+      {
+        "question": "当前1亿元收入中，电机控制器和IGBT模块各占多少？前三大客户收入占比及回款周期？",
+        "source": "step1",
+        "priority": "high",
+        "rationale": "验证收入结构是否与Step1判断一致，以及客户集中度和回款风险。"
+      },
+      {
+        "question": "IGBT芯片和SiC芯片的设计能力是否已转化为自主量产？若否，何时能实现？",
+        "source": "step1",
+        "priority": "high",
+        "rationale": "验证芯片自主化进度，这是判断技术壁垒和全产业链叙事的关键。"
+      },
+      {
+        "question": "20万台套装车量的统计口径是什么？是否包含样品或小批量？对应收入为何仅1亿元？",
+        "source": "step1",
+        "priority": "high",
+        "rationale": "验证装车量与收入匹配性，排除数据包装。"
+      },
+      {
+        "question": "客户采购是政策驱动还是经济ROI驱动？若补贴退坡，客户是否会继续采购？",
+        "source": "step1",
+        "priority": "high",
+        "rationale": "验证政策依赖性，判断长期商业可持续性。"
+      },
+      {
+        "question": "融资6000-8000万元的具体用途？产能扩充后预计毛利率和产能利用率如何变化？",
+        "source": "step1",
+        "priority": "medium",
+        "rationale": "验证融资用途合理性及产能扩张的经济性。"
+      }
+    ]
+  },
+  "tensions": [
+    {
+      "conflict": "Step1 stance为cautious_watch，但BP声称‘全产业链系统方案’和‘自主IGBT芯片’，两者存在显著叙事差距。",
+      "source": "step1 vs bp",
+      "severity": "high",
+      "implication": "公司估值叙事可能超前于实际业务阶段，需警惕融资估值风险。"
+    },
+    {
+      "conflict": "Step1认为收入规模小（1亿元），但BP强调‘成功装车20万台套’，若数据属实，则单价极低（约500元/台套），与行业常识（电驱动系统单价数千元）不符。",
+      "source": "step1 vs bp",
+      "severity": "high",
+      "implication": "可能收入确认方式不同，或装车量包含非付费样品/小批量，需进一步核实。"
+    }
+  ],
+  "step1_adjustment_hints": {
+    "adjustments": [],
+    "reasoning": "Step1的核心判断（公司是硬件供应商，芯片依赖外部，商业模式未标准化）得到外部逻辑的reinforce，无需调整。仅团队评估需补充验证，但Step1未涉及，故不调整。",
+    "cite": "step1_external_check.overall_validation"
+  },
+  "bp_usage_audit": {
+    "usage_log": [
+      {
+        "bp_claim": "新能源汽车完整产业链系统方案产品提供商",
+        "usage": "用于验证Step1中business_structure.narrative_business的准确性",
+        "compliance": "compliant"
+      },
+      {
+        "bp_claim": "IGBT芯片/IGBT/SIC模块/电机控制器及驱动系统研发生产供应商",
+        "usage": "用于验证Step1中business_structure.current_business的准确性",
+        "compliance": "compliant"
+      },
+      {
+        "bp_claim": "成功装车20万台套",
+        "usage": "用于验证Step1中red_flags关于收入与装车量不匹配的质疑",
+        "compliance": "compliant"
+      },
+      {
+        "bp_claim": "核心研发人员来自比亚迪团队",
+        "usage": "用于验证Step1中团队背景，但未用于新结论",
+        "compliance": "compliant"
+      },
+      {
+        "bp_claim": "全产业链系统供应商",
+        "usage": "用于验证Step1中company_essence.not_identity的合理性",
+        "compliance": "compliant"
+      }
+    ],
+    "violations": [],
+    "note": "所有BP使用均限于验证Step1 claims，未用于生成新结论。"
+  },
+  "meta": {
+    "knowledge_source_breakdown": {
+      "general_bucket": [
+        "tech_barrier",
+        "customer_value",
+        "commercialization",
+        "expansion_story",
+        "team_credibility",
+        "step1_external_check.checks[1-6]",
+        "step1_external_check.overall_validation"
+      ],
+      "industry_bucket": [
+        "step1_external_check.checks[0]"
+      ],
+      "llm_common_sense": []
+    }
+  }
+}

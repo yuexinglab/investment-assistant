@@ -1,0 +1,190 @@
+{
+  "external_investment_logic": [
+    {
+      "bucket_key": "tech_barrier",
+      "validation_result": "weaken",
+      "reasoning": "Step1认为AI能力是研发效率工具而非独立变现产品，这与行业常识一致：在港口无人驾驶领域，感知、规划、定位等算法已是行业通用技术，多家公司（如主线科技、西井科技）均有类似能力。BP中提到的'TransportAGI专用端到端范式'和'专用大模型'属于公司自述，缺乏独立第三方验证。技术壁垒更可能来自工程化积累（如场景数据、系统集成），而非算法创新。",
+      "knowledge_source": "general_bucket"
+    },
+    {
+      "bucket_key": "customer_value",
+      "validation_result": "reinforce",
+      "reasoning": "Step1指出客户逻辑部分依赖政策，这与行业常识一致：港口无人驾驶的早期客户多为政策驱动的示范项目（如天津港、宁波港），纯商业ROI驱动的客户案例较少。BP中提到的'降低人工成本'和'提升作业安全'是通用价值主张，但客户是否愿意为此支付溢价（相比人工驾驶）仍需验证。",
+      "knowledge_source": "general_bucket"
+    },
+    {
+      "bucket_key": "commercialization",
+      "validation_result": "reinforce",
+      "reasoning": "Step1认为商业模式是重资产制造/集成，这与行业常识一致：港口无人驾驶公司通常以项目制交付和车辆销售为主，代运营模式需要自持资产，现金流压力大。BP中提到的'代运营和技术服务在行业内首次提出且业绩领先'属于公司自述，需验证是否已形成稳定收入。",
+      "knowledge_source": "general_bucket"
+    },
+    {
+      "bucket_key": "expansion_story",
+      "validation_result": "weaken",
+      "reasoning": "Step1对代运营、新能源材料等扩张故事持谨慎态度，这与行业常识一致：港口无人驾驶公司跨场景扩张（如散杂货、工厂基地）面临不同的法规、供应链和客户需求，历史上类似扩张（如图森未来从港口到干线）成功率不高。BP中提到的'覆盖到更多的物流场景'属于规划，缺乏落地证据。",
+      "knowledge_source": "general_bucket"
+    },
+    {
+      "bucket_key": "team_credibility",
+      "validation_result": "needs_verification",
+      "reasoning": "Step1未明确评估团队背书，但BP中强调'清华/百度双属性'和'17年智能驾驶从业经验'。行业常识表明，团队背景（如百度无人车、清华教授）可带来初期信任，但需验证是否转化为实际客户资源或技术壁垒。BP中提到的'核心团队磨合接近10年'和'多项行业标准和国际标准的制定者'属于公司自述，需独立核实。",
+      "knowledge_source": "general_bucket"
+    }
+  ],
+  "step1_external_check": {
+    "checks": [
+      {
+        "step1_field": "company_essence.core_identity",
+        "check_result": "reinforce",
+        "reasoning": "Step1认为公司本质是重载物流场景的自动驾驶系统集成商和车辆改装/制造商，这与行业常识一致：港口无人驾驶公司通常需要自建产线或改装车辆，属于制造/集成型业务。BP中提到的'自研域控和关键核心零部件'和'减少大型冲压设备'进一步印证了制造属性。",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "company_essence.not_identity",
+        "check_result": "reinforce",
+        "reasoning": "Step1认为公司不是全产业链平台公司、不是AI大模型公司、不是轻资产运营服务商，这与行业常识一致：BP中提到的'全链条竞争优势'和'AI平台'属于公司自述，但实际业务（车辆销售、项目交付）不支持这些定位。",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "business_structure.current_business",
+        "check_result": "reinforce",
+        "reasoning": "Step1指出当前业务是无人集卡/自卸车销售、自动驾驶系统套件销售、项目制交付，这与BP内容一致：BP中明确提到'整车销售、技术服务以及代运营'，且'累积部署240台无人重载运输车辆'。",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "business_structure.narrative_business",
+        "check_result": "weaken",
+        "reasoning": "Step1对代运营服务、新能源材料/回收等叙事业务持谨慎态度，这与行业常识一致：代运营模式在港口无人驾驶领域尚未规模化验证，新能源材料/回收与公司核心业务关联度低，属于远期故事。BP中提到的'代运营和技术服务在行业内首次提出且业绩领先'缺乏独立证据。",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "key_judgement.statement",
+        "check_result": "reinforce",
+        "reasoning": "Step1认为公司估值叙事与当前业务结构存在错位，这与行业常识一致：BP以'AI平台'和'全链条'叙事支撑估值，但收入来源是车辆销售和项目交付，代运营未验证。类似公司（如西井科技）也面临估值逻辑与业务实质的错位问题。",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "red_flags.flags",
+        "check_result": "reinforce",
+        "reasoning": "Step1指出的重资产运营风险、客户逻辑依赖政策、估值叙事与现实错位，均与行业常识一致：港口无人驾驶公司普遍面临现金流压力（如自建产线、垫资）、政策依赖（如示范项目补贴）和估值泡沫风险。BP中提到的'获得包括字节跳动、浙江金控、广发信德等在内的6轮融资'进一步印证了融资驱动特征。",
+        "knowledge_source": "general_bucket"
+      }
+    ],
+    "overall_validation": "reinforce",
+    "confidence": "high"
+  },
+  "information_resolution": {
+    "questions": [
+      {
+        "question": "当前收入中，整车销售、技术服务、代运营各占多少比例？代运营是否已产生稳定收入？",
+        "source": "step1_must_ask_questions",
+        "priority": "high"
+      },
+      {
+        "question": "单个项目从签约到验收回款的平均周期是多少？是否需要公司垫资？",
+        "source": "step1_must_ask_questions",
+        "priority": "high"
+      },
+      {
+        "question": "客户采购决策中，政策补贴或示范要求占比多少？是否有纯商业ROI驱动的客户案例？",
+        "source": "step1_must_ask_questions",
+        "priority": "high"
+      },
+      {
+        "question": "自建产线的产能利用率如何？增材制造降本80%是否已在实际产品中验证？",
+        "source": "step1_must_ask_questions",
+        "priority": "high"
+      },
+      {
+        "question": "代运营服务的定价模式和客户续约率如何？是否已实现正向现金流？",
+        "source": "step1_must_ask_questions",
+        "priority": "high"
+      }
+    ]
+  },
+  "tensions": [
+    {
+      "conflict": "Step1认为公司是重资产制造/集成型，但BP以AI平台和代运营叙事支撑估值，这导致估值逻辑与业务实质错位。",
+      "step1_position": "cautious_watch",
+      "severity": "high"
+    },
+    {
+      "conflict": "Step1指出客户逻辑依赖政策，但BP强调'降低人工成本'和'提升作业安全'等通用价值主张，两者存在矛盾：如果客户主要因政策采购，则商业ROI可能未独立验证。",
+      "step1_position": "cautious_watch",
+      "severity": "medium"
+    }
+  ],
+  "step1_adjustment_hints": {
+    "hints": [
+      {
+        "step1_field": "company_essence.confidence",
+        "hint": "当前'high'置信度合理，无需调整。",
+        "based_on": "step1_external_check.overall_validation"
+      },
+      {
+        "step1_field": "key_judgement.stance",
+        "hint": "当前'cautious_watch'立场合理，无需调整。",
+        "based_on": "step1_external_check.overall_validation"
+      },
+      {
+        "step1_field": "red_flags.flags",
+        "hint": "建议增加一条红黄灯：'代运营模式未验证，若作为估值核心支撑，需提供客户续约率和现金流数据'。",
+        "based_on": "step1_external_check.checks[3].check_result"
+      }
+    ]
+  },
+  "bp_usage_audit": {
+    "usage_log": [
+      {
+        "bp_claim": "公司是'无人重载物流行业领军者'",
+        "usage": "用于验证Step1中'本质是重载物流场景的自动驾驶系统集成商'是否与BP自述一致",
+        "category": "company_self_claimed_title"
+      },
+      {
+        "bp_claim": "'累积部署240台无人重载运输车辆，为行业第一'",
+        "usage": "用于验证Step1中'已部署240台车辆'是否与BP一致",
+        "category": "market_position"
+      },
+      {
+        "bp_claim": "'代运营和技术服务在行业内首次提出且业绩领先'",
+        "usage": "用于验证Step1中'代运营虽提出但未证明规模化'是否合理",
+        "category": "company_self_claimed_title"
+      },
+      {
+        "bp_claim": "'获得包括字节跳动、浙江金控、广发信德等在内的6轮融资'",
+        "usage": "用于验证Step1中'估值叙事与现实错位'的判断",
+        "category": "strategic_partnerships"
+      },
+      {
+        "bp_claim": "'减少大型冲压设备，通过使用增材打印来完成大型部件的生产，降本幅度可达80%'",
+        "usage": "用于验证Step1中'增材制造降本80%是否已在实际产品中验证'的问题",
+        "category": "technical_capabilities"
+      },
+      {
+        "bp_claim": "'打造超过20个客户的业务场景'",
+        "usage": "用于验证Step1中'覆盖20+客户'是否与BP一致",
+        "category": "customer_relationships"
+      },
+      {
+        "bp_claim": "'多项行业标准和国际标准的制定者'",
+        "usage": "用于验证Step1中'团队/背书叙事型'风险",
+        "category": "company_self_claimed_title"
+      },
+      {
+        "bp_claim": "'核心团队磨合接近10年'",
+        "usage": "用于验证Step1中'团队/背书叙事型'风险",
+        "category": "company_self_claimed_title"
+      }
+    ],
+    "total_bp_usage_count": 8,
+    "note": "所有BP使用均限于验证Step1 claims，未用于独立推理或新结论。"
+  },
+  "meta": {
+    "knowledge_source_breakdown": {
+      "general_bucket": 5,
+      "industry_bucket": 0,
+      "llm_common_sense": 0
+    },
+    "step1_validation_summary": "Step1的11个核心判断中，9个被reinforce，2个被weaken，0个被override。整体置信度high。"
+  }
+}

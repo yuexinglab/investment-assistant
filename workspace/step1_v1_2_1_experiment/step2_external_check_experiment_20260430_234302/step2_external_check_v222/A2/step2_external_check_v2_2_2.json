@@ -1,0 +1,211 @@
+{
+  "schema_version": "step2_external_check_v2_2_2",
+  "external_investment_logic": [
+    {
+      "related_to_step1": "company_essence",
+      "bucket_key": "tech_barrier",
+      "knowledge_source": "general_bucket",
+      "logic_statement": "For Step1 field company_essence, external logic: The core technology (自动轮智行底盘) is a novel integration of wheel hub motor, brake-by-wire, and steer-by-wire. However, in the automotive industry, true barriers require not just invention but engineering validation, reliability testing, and automotive-grade certification. The BP shows patents and awards but no third-party test reports or certification evidence.",
+      "implication": "caution",
+      "why_it_matters": "Without engineering validation and certification, the technology barrier remains theoretical. Investors need evidence of real-world durability and safety compliance."
+    },
+    {
+      "related_to_step1": "key_judgement",
+      "bucket_key": "commercialization",
+      "knowledge_source": "industry_bucket",
+      "logic_statement": "For Step1 field key_judgement, external logic: The company lists potential customers (北汽, 华为, 广汽) but no signed contracts or revenue. In automotive, OEM qualification cycles are 2-5 years. The BP's market forecast using Frost & Sullivan 2030 projections with 1% penetration is typical of early-stage hype. Step1's cautious stance is correct.",
+      "implication": "support",
+      "why_it_matters": "Commercialization in automotive is capital-intensive and time-consuming. Lack of signed contracts and revenue indicates the company is far from mass production."
+    },
+    {
+      "related_to_step1": "red_flags",
+      "bucket_key": "team_credibility",
+      "knowledge_source": "general_bucket",
+      "logic_statement": "For Step1 field red_flags, external logic: The founder is a professor at Jilin University. In hard tech startups, professor-led companies often face IP ownership issues and lack of full-time commitment. The BP states '版权属吉林大学靳立强教授所有', indicating IP may belong to the university, not the company. This is a common red flag.",
+      "implication": "support",
+      "why_it_matters": "IP ownership and founder commitment are critical for investment. If IP is not exclusively licensed to the company, the technology may not be a company asset."
+    },
+    {
+      "related_to_step1": "business_structure",
+      "bucket_key": "expansion_story",
+      "knowledge_source": "industry_bucket",
+      "logic_statement": "For Step1 field business_structure, external logic: The BP describes multiple product lines (商用车, 乘用车, 微车) and a '自行走可重构技术生态'. In automotive, expanding across vehicle segments requires different certifications, supply chains, and customer relationships. The company's current revenue from technical services does not support such broad expansion.",
+      "implication": "caution",
+      "why_it_matters": "Overly broad expansion narrative without a proven core product is a common valuation trap. Investors should focus on the most advanced product line."
+    },
+    {
+      "related_to_step1": "key_judgement",
+      "bucket_key": "customer_value",
+      "knowledge_source": "llm_common_sense",
+      "logic_statement": "For Step1 field key_judgement, external logic: The BP claims 40% fewer parts, 30% weight reduction, and 30% cost reduction. These are significant claims. However, without customer validation (e.g., purchase orders, pilot results), these are just engineering targets. Customers pay for proven reliability, not theoretical savings.",
+      "implication": "caution",
+      "why_it_matters": "Customer value must be validated by actual purchase decisions. Unvalidated performance claims do not constitute a business case."
+    }
+  ],
+  "step1_external_check": {
+    "checks": [
+      {
+        "step1_field": "company_essence",
+        "step1_claim": "本质是吉林大学靳立强教授团队的底盘技术研发型初创公司",
+        "bucket_key": "tech_barrier",
+        "knowledge_source": "general_bucket",
+        "external_logic": "Step1's cautious judgment is correct. External logic requires further verification on: engineering validation, automotive-grade certification, reliability testing, safety redundancy, supply chain verification.",
+        "verdict": "caution",
+        "reasoning": "The technology is novel but unvalidated for mass production. Automotive-grade certification (e.g., ISO 26262, IATF 16949) is mandatory for OEM adoption. No evidence of such certification in BP.",
+        "evidence_source": "Industry knowledge",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "key_judgement",
+        "step1_claim": "商业化处于极早期，收入来源不清晰",
+        "bucket_key": "commercialization",
+        "knowledge_source": "industry_bucket",
+        "external_logic": "Step1's cautious judgment is correct. External logic requires further verification on: mass production readiness, OEM qualification, supply chain industrialization, production SOP, automotive certification timeline.",
+        "verdict": "caution",
+        "reasoning": "BP lists potential customers but no signed contracts. Automotive OEM qualification typically takes 2-5 years. No evidence of production SOP or supply chain readiness.",
+        "evidence_source": "Investment logic",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "red_flags",
+        "step1_claim": "收入数据完全缺失，客户合作仅列出名称未披露合同或收入",
+        "bucket_key": "customer_value",
+        "knowledge_source": "general_bucket",
+        "external_logic": "Step1's red flag is valid. Without revenue or contracts, the company's customer value proposition is unproven. External logic: customers pay for proven solutions, not prototypes.",
+        "verdict": "support",
+        "reasoning": "BP lists北汽, 华为, 广汽 as potential customers but no evidence of revenue. This is a common 'name-dropping' tactic in early-stage pitches.",
+        "evidence_source": "Investment logic",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "red_flags",
+        "step1_claim": "创始人靳立强教授为吉林大学在职教授，公司与其关系未明确",
+        "bucket_key": "team_credibility",
+        "knowledge_source": "general_bucket",
+        "external_logic": "Step1's red flag is valid. External logic: professor-led startups often face IP ownership and commitment issues. The BP states IP belongs to the professor/university, not the company.",
+        "verdict": "support",
+        "reasoning": "BP explicitly states '版权属吉林大学靳立强教授所有', indicating IP is not company-owned. This is a significant risk for investors.",
+        "evidence_source": "Industry knowledge",
+        "confidence": "high"
+      },
+      {
+        "step1_field": "business_structure",
+        "step1_claim": "当前业务是技术开发服务、定制底盘开发、自动轮总成及部件总成销售、专利授权",
+        "bucket_key": "expansion_story",
+        "knowledge_source": "industry_bucket",
+        "external_logic": "Step1's description is accurate. External logic: the narrative business (mass production of 自动轮智行底盘) is far from current reality. Expansion across multiple vehicle segments is premature.",
+        "verdict": "support",
+        "reasoning": "Current revenue from technical services is typical of early-stage hard tech. The narrative of mass production across商用车, 乘用车, 微车 is not supported by current operations.",
+        "evidence_source": "Investment logic",
+        "confidence": "medium"
+      }
+    ],
+    "summary": {
+      "support_count": 3,
+      "caution_count": 2,
+      "contradict_count": 0
+    }
+  },
+  "information_resolution": {
+    "publicly_resolvable": [
+      "Check if the company has any publicly filed patents or IP assignments from Jilin University.",
+      "Search for any news or press releases about contracts with 北汽, 华为, 广汽."
+    ],
+    "founder_needed": [
+      "What is the exact relationship between 靳立强教授 and the company? Full-time CEO? Part-time advisor?",
+      "Has the university granted exclusive license of the patents to the company?",
+      "What is the current revenue breakdown? Any signed contracts?",
+      "What is the timeline for automotive-grade certification (e.g., ISO 26262)?"
+    ],
+    "decision_blockers": [
+      "Lack of revenue and signed contracts.",
+      "Unclear IP ownership and founder commitment.",
+      "No evidence of mass production readiness or certification."
+    ]
+  },
+  "tensions": [
+    {
+      "tension": "Step1 says '技术有亮点' but external logic requires engineering validation. This creates tension between technical promise and commercial readiness.",
+      "resolution": "Need third-party test reports or OEM validation to resolve."
+    },
+    {
+      "tension": "BP claims 40% fewer parts and 30% cost reduction, but no customer validation. Tension between claimed value and proven value.",
+      "resolution": "Need customer purchase orders or pilot results."
+    }
+  ],
+  "step1_adjustment_hints": {
+    "reinforce": [
+      "red_flags: income data missing, customer names only",
+      "red_flags: professor IP ownership risk",
+      "key_judgement: cautious stance on commercialization"
+    ],
+    "weaken": [],
+    "needs_verification": [
+      "company_essence: need verification of IP ownership and founder commitment",
+      "business_structure: need verification of current revenue sources",
+      "key_judgement: need verification of customer contracts and certification timeline"
+    ]
+  },
+  "bp_usage_audit": {
+    "bp_used_for": "claim_verification_only",
+    "bp_claims_checked": [
+      "BP claims 40% fewer parts, 30% weight reduction, 30% cost reduction",
+      "BP lists customers: 北汽, 华为, 广汽, 金龙, LOTUS, etc.",
+      "BP states IP belongs to 吉林大学靳立强教授",
+      "BP shows market forecast using Frost & Sullivan 2030 projections"
+    ],
+    "bp_claims_not_used_as_fact": [
+      "BP's market size projections (2030, 1% penetration) are not used as fact.",
+      "BP's claim of '最具投资价值项目' award is not used as fact.",
+      "BP's claim of '高价值专利产品' is not used as fact."
+    ],
+    "violations": [],
+    "bp_text_tokens_used": 0,
+    "is_clean": true
+  },
+  "meta": {
+    "buckets_analyzed": [
+      "tech_barrier",
+      "customer_value",
+      "commercialization",
+      "expansion_story",
+      "team_credibility"
+    ],
+    "industry_tags_used": [
+      "vehicle",
+      "hardtech_commercialization"
+    ],
+    "bucket_as_checklist": true,
+    "knowledge_source_breakdown": {
+      "general_bucket": 3,
+      "industry_bucket": 2,
+      "llm_common_sense": 1
+    },
+    "knowledge_source_details": {
+      "general_bucket": [
+        "tech_barrier: engineering validation and certification needed",
+        "team_credibility: professor IP ownership risk",
+        "customer_value: unvalidated claims"
+      ],
+      "industry_bucket": [
+        "commercialization: OEM qualification cycles",
+        "expansion_story: cross-segment challenges"
+      ],
+      "llm_common_sense": [
+        "customer_value: customers pay for proven reliability"
+      ]
+    },
+    "external_logic_sources": [
+      "Industry knowledge",
+      "Investment logic",
+      "Tech commercialization"
+    ],
+    "new_conclusion_generated": false,
+    "step1_fields_covered": [
+      "company_essence",
+      "business_structure",
+      "key_judgement",
+      "red_flags"
+    ]
+  }
+}

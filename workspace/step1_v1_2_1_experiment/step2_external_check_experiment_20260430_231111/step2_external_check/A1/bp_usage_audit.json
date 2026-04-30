@@ -1,0 +1,46 @@
+{
+  "usage_log": [
+    {
+      "bp_claim": "公司是'无人重载物流行业领军者'",
+      "usage": "用于验证Step1中'本质是重载物流场景的自动驾驶系统集成商'是否与BP自述一致",
+      "category": "company_self_claimed_title"
+    },
+    {
+      "bp_claim": "'累积部署240台无人重载运输车辆，为行业第一'",
+      "usage": "用于验证Step1中'已部署240台车辆'是否与BP一致",
+      "category": "market_position"
+    },
+    {
+      "bp_claim": "'代运营和技术服务在行业内首次提出且业绩领先'",
+      "usage": "用于验证Step1中'代运营虽提出但未证明规模化'是否合理",
+      "category": "company_self_claimed_title"
+    },
+    {
+      "bp_claim": "'获得包括字节跳动、浙江金控、广发信德等在内的6轮融资'",
+      "usage": "用于验证Step1中'估值叙事与现实错位'的判断",
+      "category": "strategic_partnerships"
+    },
+    {
+      "bp_claim": "'减少大型冲压设备，通过使用增材打印来完成大型部件的生产，降本幅度可达80%'",
+      "usage": "用于验证Step1中'增材制造降本80%是否已在实际产品中验证'的问题",
+      "category": "technical_capabilities"
+    },
+    {
+      "bp_claim": "'打造超过20个客户的业务场景'",
+      "usage": "用于验证Step1中'覆盖20+客户'是否与BP一致",
+      "category": "customer_relationships"
+    },
+    {
+      "bp_claim": "'多项行业标准和国际标准的制定者'",
+      "usage": "用于验证Step1中'团队/背书叙事型'风险",
+      "category": "company_self_claimed_title"
+    },
+    {
+      "bp_claim": "'核心团队磨合接近10年'",
+      "usage": "用于验证Step1中'团队/背书叙事型'风险",
+      "category": "company_self_claimed_title"
+    }
+  ],
+  "total_bp_usage_count": 8,
+  "note": "所有BP使用均限于验证Step1 claims，未用于独立推理或新结论。"
+}

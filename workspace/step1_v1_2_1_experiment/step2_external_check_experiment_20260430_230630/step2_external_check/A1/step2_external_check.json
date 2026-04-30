@@ -1,0 +1,214 @@
+{
+  "external_investment_logic": [
+    {
+      "bucket_key": "tech_barrier",
+      "validation": "weaken",
+      "reasoning": "从行业常识看，港口无人驾驶的核心技术（感知、定位、规划）已有多家公司在做，如主线科技、西井科技、图森未来等。BP中提到的感知、定位、规划等技术描述属于行业通用技术范畴，并未展示出不可替代的独有壁垒。特别是‘TransportAGI专用端到端范式’和‘专用大模型’等概念，在自动驾驶行业属于前沿探索，尚未在港口场景被验证为成熟壁垒。此外，BP中提到的‘无须场地改造’等宣称，在行业实践中往往需要大量适配工作，属于常见包装信号。因此，Step1中关于技术壁垒可复制性的担忧是合理的，该逻辑被削弱。",
+      "knowledge_source": "general_bucket"
+    },
+    {
+      "bucket_key": "customer_value",
+      "validation": "needs_verification",
+      "reasoning": "BP声称客户为‘降低人工成本’、‘提升作业安全’、‘提高运营效率’付费，这符合行业常识。但Step1指出客户逻辑依赖政策，且未验证纯商业ROI驱动的客户案例。从投资逻辑看，港口无人驾驶的客户价值在政策补贴和示范项目下可能被高估，需要验证在无政策支持时，客户是否仍愿意为无人驾驶方案支付溢价。因此，客户价值的真实性和可持续性需要进一步验证。",
+      "knowledge_source": "general_bucket"
+    },
+    {
+      "bucket_key": "commercialization",
+      "validation": "weaken",
+      "reasoning": "BP声称已部署240台车辆，覆盖20+客户，但Step1指出商业模式本质是重资产制造/集成，而非轻资产平台。从行业常识看，项目制交付模式在港口无人驾驶领域常见，但规模化放量受限于项目周期、客户定制需求和回款周期。BP中提到的‘代运营’模式在行业内首次提出，但未提供规模化验证证据，属于常见的故事包装。因此，商业化路径的可持续性和规模化潜力被削弱。",
+      "knowledge_source": "general_bucket"
+    },
+    {
+      "bucket_key": "expansion_story",
+      "validation": "weaken",
+      "reasoning": "BP声称从集装箱港口扩展到散杂货场区、工厂基地、场间短驳、干线编队等场景，但Step1指出当前业务底盘是项目制交付和车辆销售，代运营未验证。从行业常识看，跨场景扩张需要面对不同的法规、供应链和客户验证体系，历史上类似扩张（如港口到干线）成功案例有限。BP中提到的‘新能源材料/回收’、‘增材制造降本’等故事属于远期概念，缺乏落地证据。因此，扩张故事的可信度被削弱。",
+      "knowledge_source": "general_bucket"
+    },
+    {
+      "bucket_key": "team_credibility",
+      "validation": "needs_verification",
+      "reasoning": "BP强调团队来自清华、百度，拥有博士学历和多年经验，这符合行业常见背书。但Step1指出团队/背书需要验证是否转化为排他性资源或商业化能力。从投资逻辑看，高学历团队在硬科技领域常见，但商业化能力需要看实际产品落地和客户获取。BP中提到的‘全球首台无人集卡’、‘主导多个港口项目’等宣称，需要验证是否真实转化为公司壁垒。因此，团队背书的实际价值需要进一步验证。",
+      "knowledge_source": "general_bucket"
+    }
+  ],
+  "step1_external_check": {
+    "checks": [
+      {
+        "step1_field": "company_essence.core_identity",
+        "check": "reinforce",
+        "reasoning": "Step1判断公司本质是重载物流场景的自动驾驶系统集成商和车辆改装/制造商，这与行业常识一致。港口无人驾驶公司通常需要整合车辆、传感器、软件，并进行项目制交付，属于典型的系统集成和制造型业务。BP中提到的‘全链条’、‘AI平台’等宣称，在行业实践中往往被用于包装，实际收入来源仍是硬件销售和项目交付。因此，Step1的判断被强化。",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "company_essence.not_identity",
+        "check": "reinforce",
+        "reasoning": "Step1指出公司不是全产业链平台公司、不是AI大模型公司、不是轻资产运营服务商，这符合行业常识。从BP内容看，公司自建产线、销售车辆、项目制交付，这些特征与平台、AI大模型、轻资产运营不符。行业中的类似公司（如主线科技、西井科技）也以项目制交付为主，并未转型为平台。因此，Step1的判断被强化。",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "business_structure.current_business",
+        "check": "reinforce",
+        "reasoning": "Step1指出当前业务是无人集卡/自卸车销售、自动驾驶系统套件销售、项目制交付，这与BP中‘核心产品’和‘应用场景’描述一致。BP中提到的‘代运营’、‘新能源材料/回收’等属于叙事业务，未在BP中提供具体收入或客户案例。因此，Step1对当前业务结构的判断被强化。",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "business_structure.narrative_business",
+        "check": "reinforce",
+        "reasoning": "Step1指出代运营服务、新能源材料/回收、增材制造降本等属于叙事业务，这与BP中这些内容缺乏具体数据支撑的情况一致。BP中‘代运营’仅被提及一次，且未提供收入或客户案例；‘增材制造降本80%’宣称缺乏验证；‘新能源材料/回收’未在BP中出现。因此，Step1的判断被强化。",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "key_judgement.statement",
+        "check": "reinforce",
+        "reasoning": "Step1判断公司有先发优势和规模壁垒，但商业模式本质是重资产制造/集成，估值叙事与业务结构错位。从行业常识看，港口无人驾驶领域先发优势确实存在（如部署车辆数、客户案例），但壁垒并非不可复制。BP中宣称‘行业第一’、‘240台车辆’等，但未提供客户续约率、毛利率等关键指标。估值叙事（AI平台、代运营）与当前业务（车辆销售、项目制）的错位是常见风险。因此，Step1的判断被强化。",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "red_flags.flags[0]",
+        "check": "reinforce",
+        "reasoning": "Step1指出重资产运营风险：自建产线、垫资采购、土地基建，现金流压力大。从行业常识看，港口无人驾驶项目通常需要公司垫资采购车辆和传感器，回款周期长（6-12个月常见），自建产线进一步加重资金压力。BP中未提及回款周期或现金流状况，因此该风险被强化。",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "red_flags.flags[1]",
+        "check": "reinforce",
+        "reasoning": "Step1指出客户逻辑依赖政策，经济ROI未独立验证。从行业常识看，港口无人驾驶的早期客户多为政策驱动的示范项目，如天津港、宁波港等。BP中提到的‘政策相继出台’、‘新质生产力’等，暗示政策依赖性。因此，该风险被强化。",
+        "knowledge_source": "general_bucket"
+      },
+      {
+        "step1_field": "red_flags.flags[2]",
+        "check": "reinforce",
+        "reasoning": "Step1指出估值叙事与现实错位：BP以AI平台和代运营叙事支撑估值，但当前收入来自车辆销售和项目制。从行业常识看，类似公司（如图森未来）曾因估值叙事与业务不匹配而面临市场质疑。BP中‘全链条’、‘AI平台’等宣称与‘整车销售’、‘项目交付’的实际业务不符，因此该风险被强化。",
+        "knowledge_source": "general_bucket"
+      }
+    ]
+  },
+  "information_resolution": {
+    "questions": [
+      {
+        "question": "当前收入中，整车销售、技术服务、代运营各占多少比例？代运营是否已产生稳定收入？",
+        "source": "Step1 must_ask_questions[0]",
+        "priority": "high",
+        "rationale": "验证Step1对收入结构的判断，确认代运营是否已规模化。"
+      },
+      {
+        "question": "单个项目从签约到验收回款的平均周期是多少？是否需要公司垫资？",
+        "source": "Step1 must_ask_questions[1]",
+        "priority": "high",
+        "rationale": "验证Step1对重资产运营风险和现金流压力的判断。"
+      },
+      {
+        "question": "客户采购决策中，政策补贴或示范要求占比多少？是否有纯商业ROI驱动的客户案例？",
+        "source": "Step1 must_ask_questions[2]",
+        "priority": "high",
+        "rationale": "验证Step1对客户逻辑依赖政策的判断。"
+      },
+      {
+        "question": "自建产线的产能利用率如何？增材制造降本80%是否已在实际产品中验证？",
+        "source": "Step1 must_ask_questions[3]",
+        "priority": "medium",
+        "rationale": "验证Step1对制造能力和成本宣称的质疑。"
+      },
+      {
+        "question": "代运营服务的定价模式和客户续约率如何？是否已实现正向现金流？",
+        "source": "Step1 must_ask_questions[4]",
+        "priority": "medium",
+        "rationale": "验证Step1对代运营模式可持续性的判断。"
+      }
+    ]
+  },
+  "tensions": [
+    {
+      "conflict": "BP宣称‘全链条竞争优势’、‘AI平台’，但Step1判断公司本质是系统集成商和制造商，估值叙事与业务结构错位。",
+      "step1_position": "cautious_watch",
+      "resolution": "reinforce_step1",
+      "reasoning": "从行业常识看，港口无人驾驶公司通常以项目制交付为主，BP中的‘全链条’、‘AI平台’属于常见包装，实际业务难以支撑平台估值。因此，Step1的谨慎立场被强化。"
+    },
+    {
+      "conflict": "BP宣称‘代运营和技术服务在行业内首次提出且业绩领先’，但Step1指出代运营未验证规模化。",
+      "step1_position": "cautious_watch",
+      "resolution": "reinforce_step1",
+      "reasoning": "从行业常识看，代运营模式在港口无人驾驶领域尚未被广泛验证，BP中未提供收入或客户案例，属于常见的故事包装。因此，Step1的谨慎立场被强化。"
+    },
+    {
+      "conflict": "BP宣称‘增材制造降本80%’，但Step1指出该宣称未在实际产品中验证。",
+      "step1_position": "cautious_watch",
+      "resolution": "reinforce_step1",
+      "reasoning": "从行业常识看，增材制造在汽车零部件领域降本幅度通常有限，80%的降本宣称缺乏行业先例，属于常见的技术包装信号。因此，Step1的谨慎立场被强化。"
+    }
+  ],
+  "step1_adjustment_hints": {
+    "adjustments": [],
+    "reasoning": "Step1的所有关键判断均被外部投资逻辑和行业常识强化，未发现需要调整的领域。Step1对公司的本质判断、业务结构、风险识别和立场均与行业实践一致。"
+  },
+  "bp_usage_audit": {
+    "usage_log": [
+      {
+        "bp_claim": "全链条竞争优势",
+        "usage": "用于验证Step1对估值叙事与业务结构错位的判断",
+        "category": "company_self_claimed_title"
+      },
+      {
+        "bp_claim": "AI平台",
+        "usage": "用于验证Step1对AI能力是效率工具而非独立变现产品的判断",
+        "category": "company_self_claimed_title"
+      },
+      {
+        "bp_claim": "代运营和技术服务在行业内首次提出且业绩领先",
+        "usage": "用于验证Step1对代运营未验证规模化的判断",
+        "category": "market_position"
+      },
+      {
+        "bp_claim": "增材制造降本80%",
+        "usage": "用于验证Step1对该宣称未在实际产品中验证的判断",
+        "category": "technical_capability"
+      },
+      {
+        "bp_claim": "行业第一（部署240台车辆）",
+        "usage": "用于验证Step1对先发优势和规模壁垒的判断",
+        "category": "market_position"
+      },
+      {
+        "bp_claim": "无须场地改造",
+        "usage": "用于验证Step1对技术壁垒可复制性的担忧",
+        "category": "technical_capability"
+      },
+      {
+        "bp_claim": "全球首台无人集卡在天津港运营",
+        "usage": "用于验证Step1对团队背书转化为商业化能力的判断",
+        "category": "strategic_partnership"
+      },
+      {
+        "bp_claim": "多项行业标准和国际标准的制定者",
+        "usage": "用于验证Step1对团队背书价值的判断",
+        "category": "company_self_claimed_title"
+      }
+    ],
+    "total_usage_count": 8,
+    "forbidden_claims_used": [
+      "company_self_claimed_title",
+      "market_position",
+      "technical_capability",
+      "strategic_partnership"
+    ]
+  },
+  "meta": {
+    "knowledge_source_breakdown": {
+      "general_bucket": [
+        "tech_barrier",
+        "customer_value",
+        "commercialization",
+        "expansion_story",
+        "team_credibility"
+      ],
+      "industry_bucket": [],
+      "llm_common_sense": []
+    },
+    "step1_validation_summary": {
+      "reinforce_count": 8,
+      "weaken_count": 4,
+      "needs_verification_count": 2,
+      "override_count": 0
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "consistency_checks": [
+    {
+      "topic": "系统解析",
+      "claim": "Step3 未能成功解析",
+      "reality": "解析失败",
+      "gap": "请检查 BP 内容或重试",
+      "judgement": "uncertain",
+      "confidence": "low",
+      "related_step2_check": "",
+      "external_constraint": "",
+      "bp_claim_checked": ""
+    }
+  ],
+  "tensions": [],
+  "overpackaging_signals": [],
+  "summary": "Step3 解析失败，请重试",
+  "step2_constraints_used": 0,
+  "step2_caution_references": 0,
+  "step2_contradict_references": 0,
+  "step2_version": "step2_external_check_v2_2_2"
+}
