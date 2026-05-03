@@ -8,8 +8,8 @@
     {
       "bucket_key": "tech_barrier",
       "bucket_label": "技术/壁垒是否成立",
-      "point": "支持：工程化能力和量产经验构成真实壁垒",
-      "explanation": "【claim】BP强调20万台套装车量、创始人30年半导体经验、团队来自比亚迪和整车厂。【reality】商用车电控对可靠性要求极高，客户验证周期长，一旦通过认证，替换成本高。20万台套的装车量是工程化能力和客户信任的直接证据，难以短期复制。【gap】BP未披露具体良率、失效率和客户认证周期，但装车量本身是强有力的间接证据。【结论】support。",
+      "point": "支持Step1：公司工程化能力构成真实壁垒",
+      "explanation": "【claim】BP称核心团队来自比亚迪，有丰富量产和整车调试经验，成功装车20万台套。【reality】商用车电控系统对可靠性、环境适应性要求极高，工程化经验（如封装工艺、热管理、整车匹配）是行业公认的壁垒，非短期可复制。【gap】BP未提供具体良率、失效数据，但装车量本身是工程化能力的强信号。【结论】support。",
       "relation_to_step1": "support",
       "certainty": "high",
       "source_type": "bp"
@@ -17,17 +17,17 @@
     {
       "bucket_key": "tech_barrier",
       "bucket_label": "技术/壁垒是否成立",
-      "point": "挑战：IGBT/SiC模块封装和电控系统集成是行业通用技术，并非公司独有",
-      "explanation": "【claim】BP自称掌握全产业链，从芯片设计到系统集成。【reality】IGBT模块封装和电机控制器集成是成熟技术，汇川技术、英威腾、斯达半导等均有类似产品线。公司芯片设计能力描述模糊（如‘基于代工厂标准工艺优化’），未提供自研芯片流片、IP或性能对比数据。【gap】BP未说明其模块封装工艺与英飞凌、斯达等有何本质差异，也未提供与竞品在效率、功率密度、可靠性上的量化对比。【结论】contradict。",
+      "point": "挑战Step1：IGBT/SiC芯片自研能力存疑，核心壁垒可能被高估",
+      "explanation": "【claim】BP自称‘全产业链系统供应商’，包含IGBT芯片设计。【reality】创始人背景是厂长，非芯片设计专家；BP中IGBT芯片仅提及‘采购、设计和销售’，未说明流片平台、良率、性能对比。【gap】若芯片为外购，则公司本质是封装+系统集成商，技术壁垒大幅降低。【结论】contradict。",
       "relation_to_step1": "contradict",
       "certainty": "medium",
-      "source_type": "common_sense"
+      "source_type": "bp"
     },
     {
       "bucket_key": "customer_value",
       "bucket_label": "客户为什么付钱",
-      "point": "支持：客户为‘一站式解决方案’和‘可靠性’付费",
-      "explanation": "【claim】BP提供模块+电控+动力总成一体化方案，客户包括陕汽、北汽重卡等。【reality】商用车客户倾向于减少供应商数量，降低系统集成风险。依思普林的一站式方案符合这一采购逻辑。20万台套装车量表明客户认可其产品可靠性。【gap】BP未披露单个客户采购额、合作年限和复购率，但装车量是客户价值的强信号。【结论】support。",
+      "point": "支持Step1：客户为‘国产替代+定制化服务’付费",
+      "explanation": "【claim】BP列出陕汽、北汽重卡、京深深向等客户，装车20万台套。【reality】商用车市场对成本敏感，国产替代动力强；同时非道路车辆（矿卡、农机）需要高度定制化，国际巨头响应慢。【gap】BP未披露单个客户收入占比和复购率，但客户名单本身验证了付费意愿。【结论】support。",
       "relation_to_step1": "support",
       "certainty": "high",
       "source_type": "bp"
@@ -35,17 +35,17 @@
     {
       "bucket_key": "customer_value",
       "bucket_label": "客户为什么付钱",
-      "point": "挑战：客户可能主要因‘缺芯’和‘国产替代’政策而采购，而非公司产品独有价值",
-      "explanation": "【claim】BP强调产品性能和技术优势。【reality】过去几年IGBT严重缺货，商用车客户为保供被迫接受国产替代方案。随着IGBT产能过剩（如斯达、中车时代等扩产），价格竞争加剧。客户可能因价格更低或供货稳定而选择依思普林，而非其技术独特性。BP未提供客户主动选择而非被动替代的证据。【gap】BP未披露客户在缺芯前后的采购动机变化，也未提供客户满意度或主动推荐案例。【结论】contradict。",
-      "relation_to_step1": "contradict",
+      "point": "挑战Step1：客户可能为‘政策合规’而非‘性能价值’付费",
+      "explanation": "【claim】BP强调商用车电动化趋势和国产替代。【reality】商用车电动化目前仍高度依赖政策（如路权、补贴、双积分），若政策退坡，客户采购动力可能减弱。【gap】BP未区分政策驱动客户与纯商业ROI驱动客户，也未提供客户降本增效的量化测算。【结论】neutral。",
+      "relation_to_step1": "neutral",
       "certainty": "medium",
       "source_type": "common_sense"
     },
     {
       "bucket_key": "commercialization",
       "bucket_label": "商业化路径是否成立",
-      "point": "支持：从模块到电控到动力总成的产品延伸路径清晰，且已有落地案例",
-      "explanation": "【claim】BP展示从IGBT模块到电机控制器再到集成式动力总成的产品路线图，并列举了重卡、矿卡、农机等场景的装车案例。【reality】这种‘从部件到系统’的延伸是Tier 1供应商的典型成长路径，汇川技术等已验证其可行性。公司已实现20万台套装车，说明其产品已从实验室走向量产。【gap】BP未披露各产品线的收入占比和毛利率，但整体路径逻辑自洽。【结论】support。",
+      "point": "支持Step1：从模块到系统的延伸路径清晰，价值量提升",
+      "explanation": "【claim】BP展示从IGBT模块→电机控制器→集成式动力总成的产品路线，并已实现装车。【reality】行业趋势确实是部件向系统集成演进，单车价值量从几百元（模块）提升至数千元（控制器）甚至上万元（总成）。【gap】BP未披露各产品线的收入占比和毛利率，但路径逻辑成立。【结论】support。",
       "relation_to_step1": "support",
       "certainty": "high",
       "source_type": "bp"
@@ -53,8 +53,8 @@
     {
       "bucket_key": "commercialization",
       "bucket_label": "商业化路径是否成立",
-      "point": "挑战：财务预测过于乐观，增长假设缺乏支撑",
-      "explanation": "【claim】BP预测2025年收入1.5亿，2029年6.5亿，CAGR>40%，净利率从8%升至17%。【reality】商用车电动化渗透率虽在提升，但增速并非线性。公司现有客户（陕汽、北汽重卡等）的电动化车型销量存在不确定性。净利率从8%升至17%需要显著的规模效应或产品结构升级，但BP未提供具体驱动因素（如SiC产品溢价、成本下降路径）。【gap】BP未提供新客户/新场景的明确订单或框架协议，增长假设缺乏底层支撑。【结论】contradict。",
+      "point": "挑战Step1：财务预测过于激进，增长假设缺乏支撑",
+      "explanation": "【claim】BP预测收入从2025年1亿暴增至2029年6.5亿，CAGR约45%。【reality】商用车电控市场增长稳健但非爆发式，且公司当前收入基数低（2025年1亿），需大量新客户/新市场突破。【gap】BP未提供任何客户订单、意向书或框架协议来支撑预测，增长驱动力模糊。【结论】contradict。",
       "relation_to_step1": "contradict",
       "certainty": "medium",
       "source_type": "bp"
@@ -63,49 +63,52 @@
   "publicly_resolvable": [
     {
       "bucket_key": "tech_barrier",
-      "item": "公司IGBT/SiC模块封装工艺与行业主流（如英飞凌、斯达半导）的差异",
-      "current_conclusion": "通过公开资料可确认，IGBT模块封装是成熟技术，公司工艺属于行业通用范畴，无明显独创性。",
-      "confidence": "high"
+      "item": "IGBT/SiC芯片自研还是外购？",
+      "current_conclusion": "通过公开信息（如专利、官网、招聘）可初步判断。若公司无芯片设计相关专利或招聘芯片设计人才，则大概率外购。",
+      "confidence": "medium"
     }
   ],
   "still_unresolved": [
     {
       "bucket_key": "customer_value",
-      "question": "客户在缺芯潮消退后，是否仍会因技术或服务优势持续采购依思普林产品？",
-      "why_unresolved": "BP未提供客户在缺芯前后的采购动机对比，也未提供客户满意度或主动推荐案例。该问题无法通过公开信息解决，必须通过客户访谈或尽调确认。",
+      "question": "客户复购率和订单可见性如何？",
+      "why_unresolved": "BP仅列出客户名单和装车量，未披露单个客户收入占比、合作年限、复购率或未来订单。这些数据只能通过尽调或客户访谈获取。",
       "impact_level": "high"
     },
     {
       "bucket_key": "commercialization",
-      "question": "公司2025-2029年收入增长的具体客户和订单支撑是什么？",
-      "why_unresolved": "BP仅给出财务预测数字，未列出支撑增长的新客户、新场景或框架协议。该问题无法通过公开信息验证，必须通过尽调获取客户合同或意向书。",
+      "question": "2025-2029年财务预测的具体订单支撑是什么？",
+      "why_unresolved": "BP未提供任何客户订单、意向书或框架协议来支撑收入预测。增长驱动力（现有客户放量 vs 新客户突破 vs 新市场）完全未知。",
       "impact_level": "high"
     },
     {
       "bucket_key": "tech_barrier",
-      "question": "公司自研IGBT芯片的真实能力（是否自主流片、IP归属、自供率）如何？",
-      "why_unresolved": "BP对芯片设计能力描述模糊，未提供流片记录、IP授权或性能对比数据。该问题无法通过公开信息确认，必须通过技术尽调或与代工厂沟通验证。",
+      "question": "SiC产品的真实装车量和良率如何？",
+      "why_unresolved": "BP多次提及SiC模块和控制器，但未披露具体装车数量、应用车型、良率或成本数据。SiC量产难度高，需验证是否已大规模量产。",
       "impact_level": "high"
     }
   ],
   "tensions": [
-    "技术壁垒弱（通用封装技术） vs 商业化已成立（20万台套装车量）",
-    "客户价值可能来自缺芯红利（短期） vs 公司定位为长期技术集成商",
-    "财务预测高增长（CAGR>40%） vs 增长假设缺乏明确客户支撑"
+    "技术壁垒：工程化能力强 vs 芯片自研能力弱，核心壁垒可能被高估",
+    "客户价值：国产替代+定制化需求真实 vs 可能依赖政策驱动，商业可持续性存疑",
+    "商业化路径：从模块到系统的延伸逻辑清晰 vs 财务预测激进且缺乏订单支撑"
   ],
   "step1_adjustment_hints": {
     "supported": [
-      "Step1判断公司为‘系统集成商’而非‘芯片设计公司’得到支持，BP中工程化和集成能力是核心壁垒。",
-      "Step1判断公司聚焦商用车及特种车领域，避开乘用车红海，得到支持。"
+      "公司工程化能力和客户装车量是真实壁垒",
+      "商用车及非道路车辆电动化趋势确定，国产替代空间大",
+      "从模块到系统的延伸路径符合行业趋势"
     ],
     "caution": [
-      "Step1对‘装车20万台套’作为核心护城河的判断需谨慎：该数据可能更多反映缺芯潮下的国产替代红利，而非长期客户粘性。",
-      "Step1对‘市场+技术双轮驱动’的判断需补充：技术壁垒可能被高估，公司核心技术（模块封装、电控集成）是行业通用技术。"
+      "‘全产业链’含金量需谨慎：芯片自研能力存疑，若外购则壁垒大幅降低",
+      "财务预测过于激进，增长假设缺乏订单支撑，需警惕估值泡沫",
+      "客户付费动机可能部分来自政策合规，需验证纯商业ROI驱动客户比例"
     ],
     "to_step4": [
-      "客户在缺芯红利消退后的采购动机和粘性如何？",
-      "公司2025-2029年高增长的具体客户和订单支撑是什么？",
-      "公司自研IGBT芯片的真实能力和自供率如何？"
+      "核心芯片来源（自研 vs 外购）及对壁垒的影响",
+      "客户复购率和订单可见性（尽调重点）",
+      "财务预测的订单支撑和增长驱动力",
+      "SiC产品的真实量产阶段和良率"
     ]
   },
   "project_structure": {
@@ -115,12 +118,6 @@
         "label": "新能源",
         "confidence": "high",
         "evidence": "命中关键词：新能源、储能、电池、光伏"
-      },
-      {
-        "tag": "industrial_logistics",
-        "label": "工业物流/场内物流",
-        "confidence": "medium",
-        "evidence": "命中关键词：物流、港口"
       },
       {
         "tag": "commercial_vehicle",
@@ -138,7 +135,13 @@
         "tag": "ai_application",
         "label": "AI应用",
         "confidence": "medium",
-        "evidence": "命中关键词：AI、算法、数据"
+        "evidence": "命中关键词：AI、算法"
+      },
+      {
+        "tag": "industrial_logistics",
+        "label": "工业物流/场内物流",
+        "confidence": "low",
+        "evidence": "命中关键词：物流"
       }
     ],
     "business_lines": [
@@ -232,8 +235,8 @@
         "bucket_name": "数据/AI模型驱动型",
         "role": "secondary",
         "current_or_future": "narrative",
-        "confidence": "high",
-        "evidence": "命中关键词：AI、算法、数据、预测",
+        "confidence": "medium",
+        "evidence": "命中关键词：AI、算法、预测",
         "why_it_matters": "如果AI只是内部效率工具，则不应按AI平台公司估值；如果形成数据闭环，才可能构成壁垒。"
       },
       {
@@ -278,7 +281,7 @@
         "role": "risk",
         "current_or_future": "narrative",
         "confidence": "medium",
-        "evidence": "命中关键词：融资、并购",
+        "evidence": "命中关键词：融资、估值、扩产",
         "why_it_matters": "需验证融资用途和估值逻辑是否匹配真实业务阶段。"
       }
     ],
@@ -303,16 +306,16 @@
         "bucket_key": "hardtech_commercialization",
         "bucket_name": "硬科技商业化型",
         "risk_role": "risk",
-        "confidence": "medium",
-        "evidence": "命中关键词：供应商、芯片、量产",
+        "confidence": "high",
+        "evidence": "命中关键词：供应商、芯片、良率、量产",
         "why_it_matters": "硬科技项目需要验证关键供应链、量产良率和工程化能力。"
       },
       {
         "bucket_key": "customer_concentration",
         "bucket_name": "客户集中风险",
         "risk_role": "risk",
-        "confidence": "medium",
-        "evidence": "命中关键词：大客户、前五大、港口",
+        "confidence": "low",
+        "evidence": "命中关键词：大客户",
         "why_it_matters": "如果收入依赖少数大客户，公司议价权和收入稳定性可能较弱。"
       },
       {
@@ -328,7 +331,7 @@
         "bucket_name": "融资估值叙事型",
         "risk_role": "risk",
         "confidence": "medium",
-        "evidence": "命中关键词：融资、并购",
+        "evidence": "命中关键词：融资、估值、扩产",
         "why_it_matters": "融资用途和估值逻辑可能与真实业务阶段不匹配。"
       }
     ],
@@ -388,7 +391,7 @@
         ]
       }
     ],
-    "structure_summary": "系统初步识别该项目涉及行业：新能源、工业物流/场内物流、商用车/重卡；主要业务线包括：无人重载车辆/无人集卡、项目制交付/场景解决方案、美妆/日化原料；可能适用的投资逻辑包括：制造/产品销售型、项目制交付型、软件/SaaS/平台型。该识别仅作为后续分析入口，不代表最终判断。"
+    "structure_summary": "系统初步识别该项目涉及行业：新能源、商用车/重卡、新材料；主要业务线包括：无人重载车辆/无人集卡、项目制交付/场景解决方案、美妆/日化原料；可能适用的投资逻辑包括：制造/产品销售型、项目制交付型、软件/SaaS/平台型。该识别仅作为后续分析入口，不代表最终判断。"
   },
-  "raw_text": "{\n  \"selected_buckets\": [\"tech_barrier\", \"customer_value\", \"commercialization\"],\n  \"bucket_outputs\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"bucket_label\": \"技术/壁垒是否成立\",\n      \"point\": \"支持：工程化能力和量产经验构成真实壁垒\",\n      \"explanation\": \"【claim】BP强调20万台套装车量、创始人30年半导体经验、团队来自比亚迪和整车厂。【reality】商用车电控对可靠性要求极高，客户验证周期长，一旦通过认证，替换成本高。20万台套的装车量是工程化能力和客户信任的直接证据，难以短期复制。【gap】BP未披露具体良率、失效率和客户认证周期，但装车量本身是强有力的间接证据。【结论】support。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"high\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"bucket_label\": \"技术/壁垒是否成立\",\n      \"point\": \"挑战：IGBT/SiC模块封装和电控系统集成是行业通用技术，并非公司独有\",\n      \"explanation\": \"【claim】BP自称掌握全产业链，从芯片设计到系统集成。【reality】IGBT模块封装和电机控制器集成是成熟技术，汇川技术、英威腾、斯达半导等均有类似产品线。公司芯片设计能力描述模糊（如‘基于代工厂标准工艺优化’），未提供自研芯片流片、IP或性能对比数据。【gap】BP未说明其模块封装工艺与英飞凌、斯达等有何本质差异，也未提供与竞品在效率、功率密度、可靠性上的量化对比。【结论】contradict。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"common_sense\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"bucket_label\": \"客户为什么付钱\",\n      \"point\": \"支持：客户为‘一站式解决方案’和‘可靠性’付费\",\n      \"explanation\": \"【claim】BP提供模块+电控+动力总成一体化方案，客户包括陕汽、北汽重卡等。【reality】商用车客户倾向于减少供应商数量，降低系统集成风险。依思普林的一站式方案符合这一采购逻辑。20万台套装车量表明客户认可其产品可靠性。【gap】BP未披露单个客户采购额、合作年限和复购率，但装车量是客户价值的强信号。【结论】support。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"high\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"bucket_label\": \"客户为什么付钱\",\n      \"point\": \"挑战：客户可能主要因‘缺芯’和‘国产替代’政策而采购，而非公司产品独有价值\",\n      \"explanation\": \"【claim】BP强调产品性能和技术优势。【reality】过去几年IGBT严重缺货，商用车客户为保供被迫接受国产替代方案。随着IGBT产能过剩（如斯达、中车时代等扩产），价格竞争加剧。客户可能因价格更低或供货稳定而选择依思普林，而非其技术独特性。BP未提供客户主动选择而非被动替代的证据。【gap】BP未披露客户在缺芯前后的采购动机变化，也未提供客户满意度或主动推荐案例。【结论】contradict。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"common_sense\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"bucket_label\": \"商业化路径是否成立\",\n      \"point\": \"支持：从模块到电控到动力总成的产品延伸路径清晰，且已有落地案例\",\n      \"explanation\": \"【claim】BP展示从IGBT模块到电机控制器再到集成式动力总成的产品路线图，并列举了重卡、矿卡、农机等场景的装车案例。【reality】这种‘从部件到系统’的延伸是Tier 1供应商的典型成长路径，汇川技术等已验证其可行性。公司已实现20万台套装车，说明其产品已从实验室走向量产。【gap】BP未披露各产品线的收入占比和毛利率，但整体路径逻辑自洽。【结论】support。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"high\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"bucket_label\": \"商业化路径是否成立\",\n      \"point\": \"挑战：财务预测过于乐观，增长假设缺乏支撑\",\n      \"explanation\": \"【claim】BP预测2025年收入1.5亿，2029年6.5亿，CAGR>40%，净利率从8%升至17%。【reality】商用车电动化渗透率虽在提升，但增速并非线性。公司现有客户（陕汽、北汽重卡等）的电动化车型销量存在不确定性。净利率从8%升至17%需要显著的规模效应或产品结构升级，但BP未提供具体驱动因素（如SiC产品溢价、成本下降路径）。【gap】BP未提供新客户/新场景的明确订单或框架协议，增长假设缺乏底层支撑。【结论】contradict。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    }\n  ],\n  \"publicly_resolvable\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"item\": \"公司IGBT/SiC模块封装工艺与行业主流（如英飞凌、斯达半导）的差异\",\n      \"current_conclusion\": \"通过公开资料可确认，IGBT模块封装是成熟技术，公司工艺属于行业通用范畴，无明显独创性。\",\n      \"confidence\": \"high\"\n    }\n  ],\n  \"still_unresolved\": [\n    {\n      \"bucket_key\": \"customer_value\",\n      \"question\": \"客户在缺芯潮消退后，是否仍会因技术或服务优势持续采购依思普林产品？\",\n      \"why_unresolved\": \"BP未提供客户在缺芯前后的采购动机对比，也未提供客户满意度或主动推荐案例。该问题无法通过公开信息解决，必须通过客户访谈或尽调确认。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"question\": \"公司2025-2029年收入增长的具体客户和订单支撑是什么？\",\n      \"why_unresolved\": \"BP仅给出财务预测数字，未列出支撑增长的新客户、新场景或框架协议。该问题无法通过公开信息验证，必须通过尽调获取客户合同或意向书。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"question\": \"公司自研IGBT芯片的真实能力（是否自主流片、IP归属、自供率）如何？\",\n      \"why_unresolved\": \"BP对芯片设计能力描述模糊，未提供流片记录、IP授权或性能对比数据。该问题无法通过公开信息确认，必须通过技术尽调或与代工厂沟通验证。\",\n      \"impact_level\": \"high\"\n    }\n  ],\n  \"tensions\": [\n    \"技术壁垒弱（通用封装技术） vs 商业化已成立（20万台套装车量）\",\n    \"客户价值可能来自缺芯红利（短期） vs 公司定位为长期技术集成商\",\n    \"财务预测高增长（CAGR>40%） vs 增长假设缺乏明确客户支撑\"\n  ],\n  \"step1_adjustment_hints\": {\n    \"supported\": [\n      \"Step1判断公司为‘系统集成商’而非‘芯片设计公司’得到支持，BP中工程化和集成能力是核心壁垒。\",\n      \"Step1判断公司聚焦商用车及特种车领域，避开乘用车红海，得到支持。\"\n    ],\n    \"caution\": [\n      \"Step1对‘装车20万台套’作为核心护城河的判断需谨慎：该数据可能更多反映缺芯潮下的国产替代红利，而非长期客户粘性。\",\n      \"Step1对‘市场+技术双轮驱动’的判断需补充：技术壁垒可能被高估，公司核心技术（模块封装、电控集成）是行业通用技术。\"\n    ],\n    \"to_step4\": [\n      \"客户在缺芯红利消退后的采购动机和粘性如何？\",\n      \"公司2025-2029年高增长的具体客户和订单支撑是什么？\",\n      \"公司自研IGBT芯片的真实能力和自供率如何？\"\n    ]\n  }\n}"
+  "raw_text": "{\n  \"selected_buckets\": [\"tech_barrier\", \"customer_value\", \"commercialization\"],\n  \"bucket_outputs\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"bucket_label\": \"技术/壁垒是否成立\",\n      \"point\": \"支持Step1：公司工程化能力构成真实壁垒\",\n      \"explanation\": \"【claim】BP称核心团队来自比亚迪，有丰富量产和整车调试经验，成功装车20万台套。【reality】商用车电控系统对可靠性、环境适应性要求极高，工程化经验（如封装工艺、热管理、整车匹配）是行业公认的壁垒，非短期可复制。【gap】BP未提供具体良率、失效数据，但装车量本身是工程化能力的强信号。【结论】support。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"high\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"bucket_label\": \"技术/壁垒是否成立\",\n      \"point\": \"挑战Step1：IGBT/SiC芯片自研能力存疑，核心壁垒可能被高估\",\n      \"explanation\": \"【claim】BP自称‘全产业链系统供应商’，包含IGBT芯片设计。【reality】创始人背景是厂长，非芯片设计专家；BP中IGBT芯片仅提及‘采购、设计和销售’，未说明流片平台、良率、性能对比。【gap】若芯片为外购，则公司本质是封装+系统集成商，技术壁垒大幅降低。【结论】contradict。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"bucket_label\": \"客户为什么付钱\",\n      \"point\": \"支持Step1：客户为‘国产替代+定制化服务’付费\",\n      \"explanation\": \"【claim】BP列出陕汽、北汽重卡、京深深向等客户，装车20万台套。【reality】商用车市场对成本敏感，国产替代动力强；同时非道路车辆（矿卡、农机）需要高度定制化，国际巨头响应慢。【gap】BP未披露单个客户收入占比和复购率，但客户名单本身验证了付费意愿。【结论】support。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"high\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"bucket_label\": \"客户为什么付钱\",\n      \"point\": \"挑战Step1：客户可能为‘政策合规’而非‘性能价值’付费\",\n      \"explanation\": \"【claim】BP强调商用车电动化趋势和国产替代。【reality】商用车电动化目前仍高度依赖政策（如路权、补贴、双积分），若政策退坡，客户采购动力可能减弱。【gap】BP未区分政策驱动客户与纯商业ROI驱动客户，也未提供客户降本增效的量化测算。【结论】neutral。\",\n      \"relation_to_step1\": \"neutral\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"common_sense\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"bucket_label\": \"商业化路径是否成立\",\n      \"point\": \"支持Step1：从模块到系统的延伸路径清晰，价值量提升\",\n      \"explanation\": \"【claim】BP展示从IGBT模块→电机控制器→集成式动力总成的产品路线，并已实现装车。【reality】行业趋势确实是部件向系统集成演进，单车价值量从几百元（模块）提升至数千元（控制器）甚至上万元（总成）。【gap】BP未披露各产品线的收入占比和毛利率，但路径逻辑成立。【结论】support。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"high\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"bucket_label\": \"商业化路径是否成立\",\n      \"point\": \"挑战Step1：财务预测过于激进，增长假设缺乏支撑\",\n      \"explanation\": \"【claim】BP预测收入从2025年1亿暴增至2029年6.5亿，CAGR约45%。【reality】商用车电控市场增长稳健但非爆发式，且公司当前收入基数低（2025年1亿），需大量新客户/新市场突破。【gap】BP未提供任何客户订单、意向书或框架协议来支撑预测，增长驱动力模糊。【结论】contradict。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    }\n  ],\n  \"publicly_resolvable\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"item\": \"IGBT/SiC芯片自研还是外购？\",\n      \"current_conclusion\": \"通过公开信息（如专利、官网、招聘）可初步判断。若公司无芯片设计相关专利或招聘芯片设计人才，则大概率外购。\",\n      \"confidence\": \"medium\"\n    }\n  ],\n  \"still_unresolved\": [\n    {\n      \"bucket_key\": \"customer_value\",\n      \"question\": \"客户复购率和订单可见性如何？\",\n      \"why_unresolved\": \"BP仅列出客户名单和装车量，未披露单个客户收入占比、合作年限、复购率或未来订单。这些数据只能通过尽调或客户访谈获取。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"question\": \"2025-2029年财务预测的具体订单支撑是什么？\",\n      \"why_unresolved\": \"BP未提供任何客户订单、意向书或框架协议来支撑收入预测。增长驱动力（现有客户放量 vs 新客户突破 vs 新市场）完全未知。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"question\": \"SiC产品的真实装车量和良率如何？\",\n      \"why_unresolved\": \"BP多次提及SiC模块和控制器，但未披露具体装车数量、应用车型、良率或成本数据。SiC量产难度高，需验证是否已大规模量产。\",\n      \"impact_level\": \"high\"\n    }\n  ],\n  \"tensions\": [\n    \"技术壁垒：工程化能力强 vs 芯片自研能力弱，核心壁垒可能被高估\",\n    \"客户价值：国产替代+定制化需求真实 vs 可能依赖政策驱动，商业可持续性存疑\",\n    \"商业化路径：从模块到系统的延伸逻辑清晰 vs 财务预测激进且缺乏订单支撑\"\n  ],\n  \"step1_adjustment_hints\": {\n    \"supported\": [\n      \"公司工程化能力和客户装车量是真实壁垒\",\n      \"商用车及非道路车辆电动化趋势确定，国产替代空间大\",\n      \"从模块到系统的延伸路径符合行业趋势\"\n    ],\n    \"caution\": [\n      \"‘全产业链’含金量需谨慎：芯片自研能力存疑，若外购则壁垒大幅降低\",\n      \"财务预测过于激进，增长假设缺乏订单支撑，需警惕估值泡沫\",\n      \"客户付费动机可能部分来自政策合规，需验证纯商业ROI驱动客户比例\"\n    ],\n    \"to_step4\": [\n      \"核心芯片来源（自研 vs 外购）及对壁垒的影响\",\n      \"客户复购率和订单可见性（尽调重点）\",\n      \"财务预测的订单支撑和增长驱动力\",\n      \"SiC产品的真实量产阶段和良率\"\n    ]\n  }\n}"
 }

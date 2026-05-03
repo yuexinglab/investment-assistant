@@ -1304,6 +1304,7 @@ def save_pre_ai_feedback():
         }
 
     saved = append_feedback_case(case)
+    _sync_feedback_to_workspace(saved)
     return jsonify({"status": "ok", "feedback_id": saved["feedback_id"]})
 
 
@@ -1333,6 +1334,24 @@ def _merge_raw_note(new_note: str, old_note: str) -> str:
     from datetime import datetime as _dt
     separator = f"\n\n{'─' * 40}\n【追加更新 {_dt.now().strftime('%Y-%m-%d %H:%M')}】\n{'─' * 40}\n"
     return old_note + separator + new_note
+
+
+def _sync_feedback_to_workspace(case):
+    """
+    将 feedback case 同步写入项目 workspace 目录下的 feedback.json，
+    与其他步骤（step1/step3/...）的存储方式保持一致。
+    """
+    import json
+    project_id = case.get("project_id")
+    if not project_id:
+        print("[SYNC_FEEDBACK] WARNING: case has no project_id, skipping workspace sync", flush=True)
+        return
+    workspace_dir = os.path.join(WORKSPACE_DIR, project_id)
+    os.makedirs(workspace_dir, exist_ok=True)
+    feedback_path = os.path.join(workspace_dir, "feedback.json")
+    with open(feedback_path, "w", encoding="utf-8") as f:
+        json.dump(case, f, ensure_ascii=False, indent=2)
+    print(f"[SYNC_FEEDBACK] Synced feedback for {project_id} -> {feedback_path}", flush=True)
 
 
 # --- 保存第一直觉（Layer 1）---
@@ -1416,6 +1435,7 @@ def save_first_impression():
         }
 
     saved = append_feedback_case(case)
+    _sync_feedback_to_workspace(saved)
     return jsonify({"status": "ok", "feedback_id": saved["feedback_id"]})
 
 
@@ -1466,7 +1486,7 @@ def normalize_first_impression():
     """
     接收用户的自由书写笔记，AI 自动识别并填充各结构化字段。
     """
-    from services.deepseek_service import deepseek_client
+    from services.deepseek_service import call_deepseek
 
     payload = request.get_json(force=True)
     project_id = payload.get("project_id")
@@ -1486,13 +1506,19 @@ def normalize_first_impression():
     prompt = _build_normalize_intuition_prompt(company_name, raw_note)
 
     try:
-        result = deepseek_client.chat(
-            messages=[
-                {"role": "user", "content": prompt}
-            ],
+        raw_result = call_deepseek(
+            system_prompt="你是一个专业的投资分析师助手，只输出 JSON，不输出任何其他内容。",
+            user_prompt=prompt,
             temperature=0.3,
         )
-        structured = json.loads(result["content"])
+        # 去掉可能的 markdown 代码块包装
+        clean = raw_result.strip()
+        if clean.startswith("```"):
+            clean = clean.split("```", 2)[1]
+            if clean.startswith("json"):
+                clean = clean[4:]
+            clean = clean.rsplit("```", 1)[0].strip()
+        structured = json.loads(clean)
 
         return jsonify({
             "status": "ok",
@@ -1594,6 +1620,7 @@ def save_deep_reflection():
         }
 
     saved = append_feedback_case(case)
+    _sync_feedback_to_workspace(saved)
     return jsonify({"status": "ok", "feedback_id": saved["feedback_id"]})
 
 
@@ -1619,6 +1646,7 @@ def save_post_ai_feedback():
     old_case["review_status"] = "feedback_completed"
 
     saved = append_feedback_case(old_case)
+    _sync_feedback_to_workspace(saved)
     return jsonify({"status": "ok", "feedback_id": saved["feedback_id"]})
 
 
@@ -1812,6 +1840,7 @@ def save_comparison_v2():
 
     # 保存
     saved = append_feedback_case(old_case)
+    _sync_feedback_to_workspace(saved)
     print(f"[SAVE] saved feedback_id={saved.get('feedback_id')}, review_status={saved.get('review_status')}", flush=True)
     print(f"[SAVE] case keys={list(saved.keys())}", flush=True)
     print(f"[SAVE] evaluation keys={list(saved.get('evaluation', {}).keys())}", flush=True)

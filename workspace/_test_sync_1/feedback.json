@@ -1,0 +1,30 @@
+{
+  "project_id": "_test_sync_1",
+  "project_name": "",
+  "profile_id": "neutral_investor",
+  "profile_type": "fund",
+  "bp_source": "",
+  "first_impression": {
+    "one_liner": "测试",
+    "top_confusion": "",
+    "decision": "",
+    "priority": "",
+    "confidence": "",
+    "current_business": "",
+    "future_story": "",
+    "real_customer": "",
+    "market_view": "",
+    "reasons_to_meet": [],
+    "reasons_to_pass": [],
+    "key_unknowns": [],
+    "must_ask_questions": [],
+    "raw_note": ""
+  },
+  "deep_reflection": {},
+  "system_1_0_snapshot": {},
+  "human_post_ai_feedback": {},
+  "knowledge_candidates": {},
+  "review_status": "first_impression_saved",
+  "feedback_id": "fb_20260503_165712_45b2a8c4",
+  "created_at": "2026-05-03T16:57:12.465488"
+}

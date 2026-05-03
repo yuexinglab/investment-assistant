@@ -1,0 +1,2 @@
+200
+{"status":"ok","structured":{"confidence":"中","current_business":"不确定","decision":"pass","future_story":"不确定","key_unknowns":["项目具体业务是什么？"],"market_view":"不确定","must_ask_questions":["请用一句话说清楚你们公司到底在做什么？"],"one_liner":"不确定，可能是一个概念模糊的早期项目","priority":"低","real_customer":"不确定","reasons_to_meet":[],"reasons_to_pass":["笔记中仅有负面评价“感觉很虚”，缺乏任何实质信息或亮点"],"top_confusion":"项目具体做什么，商业模式和产品形态完全不清晰"}}
