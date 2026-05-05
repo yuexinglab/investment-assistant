@@ -1,0 +1,472 @@
+{
+  "selected_buckets": [
+    "tech_barrier",
+    "customer_value",
+    "commercialization"
+  ],
+  "bucket_outputs": [
+    {
+      "bucket_key": "tech_barrier",
+      "bucket_label": "技术/壁垒是否成立",
+      "point": "支持：S1的滑板底盘和多温区智能分控技术具有差异化，且已提交101项专利，形成一定技术壁垒。",
+      "explanation": "【claim】BP声称S1具备滑板底盘设计、多温区智能分控、快速降温等独特技术，并已提交101项专利。【reality】滑板底盘在乘用车领域已较成熟（如Rivian），但在商用车尤其是冷藏车领域应用较少，多温区控制对制冷系统和隔热材料要求高，确实有技术门槛。【gap】专利数量不等于技术壁垒强度，需验证专利是否为核心发明专利，而非外观或实用新型专利。同时，供应链伙伴（如易德冷链）可能掌握关键制冷技术，公司自身技术深度存疑。【conclusion】support（存在差异化，但壁垒强度待验证）。",
+      "relation_to_step1": "support",
+      "certainty": "medium",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "tech_barrier",
+      "bucket_label": "技术/壁垒是否成立",
+      "point": "反对：核心技术依赖供应链伙伴，公司更像系统集成商，而非技术原创者。",
+      "explanation": "【claim】BP展示的供应链伙伴包括易德冷链（制冷）、电池供应商、智驾系统供应商等。【reality】在新能源商用车领域，电池、电驱、智驾系统多为第三方成熟方案，公司若仅做集成和适配，技术壁垒极低，容易被比亚迪、吉利等拥有全产业链能力的巨头复制。【gap】BP未明确哪些技术是自研、哪些是外购。若核心部件均来自供应商，则公司技术护城河薄弱。【conclusion】contradict（技术壁垒可能被高估）。",
+      "relation_to_step1": "contradict",
+      "certainty": "high",
+      "source_type": "common_sense"
+    },
+    {
+      "bucket_key": "customer_value",
+      "bucket_label": "客户为什么付钱",
+      "point": "支持：客户为“高温+清真”场景下的专用冷藏车付费，该价值直接影响客户业务合规性和运营效率。",
+      "explanation": "【claim】BP强调产品针对中东和东南亚的极端高温和清真认证需求，具备多温区、快速降温、断电保温等特性。【reality】清真冷链对防止交叉污染和温度监控有严格要求，普通冷藏车难以满足；高温环境下制冷效率是关键痛点。因此，专用车辆能帮助客户获得清真认证、降低货物损耗，直接影响客户收入和合规性。【gap】需验证产品是否已获得权威清真认证（如JAKIM、ESMA），以及实际降温性能是否达到BP宣称的指标。【conclusion】support（价值点明确，但需验证）。",
+      "relation_to_step1": "support",
+      "certainty": "medium",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "customer_value",
+      "bucket_label": "客户为什么付钱",
+      "point": "反对：客户可能更看重价格和路权，而非技术差异化，导致公司产品溢价能力有限。",
+      "explanation": "【claim】BP认为客户为技术特性付费。【reality】在东南亚和中东市场，价格和路权（如新能源车免限行、免牌照费）往往是更直接的购买驱动力。若竞争对手（如比亚迪T5、吉利远程）推出类似配置但价格更低的产品，客户可能轻易转向。【gap】BP未提供客户采购决策的权重分析，也未对比竞品价格。若客户主要因价格和路权购买，则公司技术差异化价值被削弱。【conclusion】neutral（客户价值可能被高估）。",
+      "relation_to_step1": "neutral",
+      "certainty": "medium",
+      "source_type": "common_sense"
+    },
+    {
+      "bucket_key": "commercialization",
+      "bucket_label": "商业化路径是否成立",
+      "point": "支持：意向订单和现金预订单（3510台）表明商业化已起步，且客户包括鲜生活、马来西亚物流巨头等，验证了市场需求。",
+      "explanation": "【claim】BP显示已获得14030台意向订单和3510台现金预订单，客户包括鲜生活（关联1650台意向订单）、马来西亚最大物流公司等。【reality】意向订单和现金预订单是商业化早期的重要验证，尤其是现金预订单表明客户有真实支付意愿。鲜生活作为冷链物流龙头，其订单具有行业标杆意义。【gap】需确认现金预订单的约束力（是否可撤销）、交付时间表以及客户是否已支付定金。意向订单可能仅为框架协议，转化率存疑。【conclusion】support（商业化有初步验证，但需深挖订单质量）。",
+      "relation_to_step1": "support",
+      "certainty": "medium",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "commercialization",
+      "bucket_label": "商业化路径是否成立",
+      "point": "反对：财务预测过于激进，从823台到9.2万台的增长路径缺乏现实支撑，商业化节奏可能严重滞后。",
+      "explanation": "【claim】BP预测2026年销售823台，2032年达到9.2万台，7年增长超100倍，全球市占率从1%升至24%。【reality】汽车行业产能爬坡、认证周期、渠道建设通常需要3-5年。新亚计划在2026年同时在中国、阿联酋、韩国、马来西亚投产，产能爬坡风险极高。此外，全球新能源冷藏车市场2024年仅3.7万辆，2030年预计26.8万辆，新亚要在6年内占据15%份额，需击败比亚迪、Rivian等巨头，难度极大。【gap】BP未提供产能建设进度、认证时间表、渠道覆盖计划等关键细节。财务预测更像是融资模型，而非可执行的商业计划。【conclusion】contradict（商业化路径过于乐观）。",
+      "relation_to_step1": "contradict",
+      "certainty": "high",
+      "source_type": "bp"
+    }
+  ],
+  "publicly_resolvable": [
+    {
+      "bucket_key": "tech_barrier",
+      "item": "新亚科技已授权和公布的专利数量及类型（发明专利 vs 实用新型）",
+      "current_conclusion": "BP称已提交101项专利，已授权71项。通过公开专利数据库（如WIPO、CNIPA）可核实专利类型和核心程度。若多为实用新型，则技术壁垒较低。",
+      "confidence": "high"
+    },
+    {
+      "bucket_key": "customer_value",
+      "item": "S1冷藏车是否已获得主要目标市场（如马来西亚JAKIM、阿联酋ESMA）的清真认证",
+      "current_conclusion": "BP未提及认证状态。通过公开信息可查询认证进度。若尚未获得，则客户价值中的清真合规性存疑。",
+      "confidence": "medium"
+    },
+    {
+      "bucket_key": "commercialization",
+      "item": "鲜生活冷链物流与公司的具体合作细节（如投资、订单约束力）",
+      "current_conclusion": "BP称鲜生活旗下7家供应商签署1650台意向订单。通过公开新闻、鲜生活年报或行业报道，可验证合作深度和订单真实性。",
+      "confidence": "medium"
+    }
+  ],
+  "still_unresolved": [
+    {
+      "bucket_key": "commercialization",
+      "question": "现金预订单（3510台）的具体客户名单、金额、交付时间表以及订单的约束力（是否可撤销、是否已支付定金）？",
+      "why_unresolved": "BP仅给出总数，未提供明细。订单质量是验证市场需求真实性的核心，无法通过公开信息确认。",
+      "impact_level": "high"
+    },
+    {
+      "bucket_key": "tech_barrier",
+      "question": "S1的核心技术（如滑板底盘、多温区控制）中，哪些是公司自研并拥有核心专利，哪些是依赖供应商（如易德冷链）的成熟方案？",
+      "why_unresolved": "BP未明确技术归属。若核心部件均为外购，则技术壁垒极低。需通过尽调访谈和专利分析确认。",
+      "impact_level": "high"
+    },
+    {
+      "bucket_key": "commercialization",
+      "question": "公司在阿联酋、韩国、马来西亚的KD工厂建设进度如何？预计总投资额和资金来源是否已落实？",
+      "why_unresolved": "BP仅给出投产时间（2026年），但未提供建设进度、资金安排和产能爬坡计划。工厂建设是商业化的关键瓶颈，无法通过公开信息验证。",
+      "impact_level": "high"
+    }
+  ],
+  "tensions": [
+    "技术壁垒弱（依赖供应链） vs 商业化已获现金预订单（市场认可）",
+    "财务预测极度乐观（7年100倍增长） vs 产能建设和认证周期长（现实瓶颈）",
+    "客户价值强调技术差异化 vs 实际购买可能更看重价格和路权"
+  ],
+  "step1_adjustment_hints": {
+    "supported": [
+      "Step1判断公司为'产品公司'和'市场套利者'，与桶内支持信息一致：产品差异化（多温区、清真合规）和供应链整合能力是核心。",
+      "Step1指出的'订单真实性与含金量'是最大疑问，桶内反对信息进一步强化了该疑问的必要性。"
+    ],
+    "caution": [
+      "Step1认为公司是'资本驱动型项目'，但桶内反对信息显示商业化路径可能过于乐观，需警惕财务预测脱离现实，导致资本驱动失效。",
+      "Step1认为技术壁垒是'市场套利'而非'技术颠覆'，桶内反对信息进一步提示技术壁垒可能比预期更弱，需重新评估护城河。"
+    ],
+    "to_step4": [
+      "订单质量（现金预订单的约束力和客户真实性）是验证市场需求的关键缺口，需在尽调中优先确认。",
+      "技术壁垒的真实性（自研 vs 集成）决定公司是否具备长期竞争力，需通过专利分析和供应商访谈确认。",
+      "产能建设和认证进度是商业化的现实瓶颈，需评估公司是否有足够资金和管理能力应对多国同时投产的风险。"
+    ]
+  },
+  "project_structure": {
+    "industry_tags": [
+      {
+        "tag": "autonomous_driving",
+        "label": "自动驾驶",
+        "confidence": "high",
+        "evidence": "命中关键词：自动驾驶、无人驾驶、智驾、L2、L4"
+      },
+      {
+        "tag": "ai_application",
+        "label": "AI应用",
+        "confidence": "high",
+        "evidence": "命中关键词：AI、人工智能、算法、模型、数据"
+      },
+      {
+        "tag": "industrial_logistics",
+        "label": "工业物流/场内物流",
+        "confidence": "medium",
+        "evidence": "命中关键词：物流、运输、园区"
+      },
+      {
+        "tag": "commercial_vehicle",
+        "label": "商用车/重卡",
+        "confidence": "medium",
+        "evidence": "命中关键词：底盘、线控底盘、商用车"
+      },
+      {
+        "tag": "new_energy",
+        "label": "新能源",
+        "confidence": "medium",
+        "evidence": "命中关键词：新能源、储能、电池"
+      },
+      {
+        "tag": "advanced_materials",
+        "label": "新材料",
+        "confidence": "low",
+        "evidence": "命中关键词：材料"
+      }
+    ],
+    "business_lines": [
+      {
+        "name": "无人重载车辆/无人集卡",
+        "role": "current_business",
+        "status": "核心产品/已落地业务",
+        "revenue_status": "可能已有设备/整车/硬件收入，具体金额待确认",
+        "evidence": "命中关键词：商用车、自动驾驶、无人驾驶、车辆、重卡",
+        "confidence": "high"
+      },
+      {
+        "name": "项目制交付/场景解决方案",
+        "role": "current_business",
+        "status": "项目制落地/场景交付",
+        "revenue_status": "项目收入和毛利待确认",
+        "evidence": "命中关键词：项目、交付、部署、解决方案、适配、港口、矿区",
+        "confidence": "high"
+      },
+      {
+        "name": "美妆/日化原料",
+        "role": "current_business",
+        "status": "当前收入底盘",
+        "revenue_status": "已有收入但金额需确认",
+        "evidence": "根据制造/产品销售型及新材料/美妆原料行业标签反推",
+        "confidence": "medium"
+      },
+      {
+        "name": "代运营服务",
+        "role": "growth_story",
+        "status": "持续收入模式待验证",
+        "revenue_status": "是否已经形成稳定持续收入待确认",
+        "evidence": "命中关键词：租赁、运营、托管、车辆、车队",
+        "confidence": "high"
+      },
+      {
+        "name": "食品/营养原料",
+        "role": "growth_story",
+        "status": "增长业务",
+        "revenue_status": "收入基数和复购待确认",
+        "evidence": "命中关键词：食品",
+        "confidence": "low"
+      },
+      {
+        "name": "自动驾驶系统/云端调度平台",
+        "role": "supporting_capability",
+        "status": "支撑主业务的技术/平台能力",
+        "revenue_status": "可能作为技术服务或软件服务收费，需确认",
+        "evidence": "命中关键词：云平台、调度、车队管理、数字孪生、规划、控制、自动驾驶、无人驾驶",
+        "confidence": "high"
+      },
+      {
+        "name": "AI研发平台",
+        "role": "supporting_capability",
+        "status": "研发工具/效率工具",
+        "revenue_status": "是否对外收费待确认",
+        "evidence": "命中关键词：AI、人工智能、算法、筛选、预测、研发",
+        "confidence": "high"
+      },
+      {
+        "name": "新能源材料/回收业务",
+        "role": "valuation_story",
+        "status": "远期故事/待验证业务",
+        "revenue_status": "是否已有收入待确认",
+        "evidence": "命中关键词：新能源、电池、储能、锂电、材料、回收",
+        "confidence": "high"
+      }
+    ],
+    "business_model_hypotheses": [
+      {
+        "bucket_key": "manufacturing_product_sales",
+        "bucket_name": "制造/产品销售型",
+        "role": "primary",
+        "current_or_future": "current",
+        "confidence": "medium",
+        "evidence": "命中关键词：销售、卖车",
+        "why_it_matters": "如果当前收入主要来自产品/设备/原料销售，则公司更接近制造/产品销售型公司。"
+      },
+      {
+        "bucket_key": "project_delivery",
+        "bucket_name": "项目制交付型",
+        "role": "secondary",
+        "current_or_future": "current",
+        "confidence": "high",
+        "evidence": "命中关键词：项目、交付、部署、定制、解决方案、集成",
+        "why_it_matters": "如果收入依赖一个个项目交付，则需要重点验证标准化和毛利稳定性。"
+      },
+      {
+        "bucket_key": "asset_heavy_operation",
+        "bucket_name": "重资产运营型",
+        "role": "secondary",
+        "current_or_future": "mixed",
+        "confidence": "low",
+        "evidence": "命中关键词：租赁",
+        "why_it_matters": "如果公司需要自投资产或长期运营回收现金流，则估值和风险更接近重资产运营公司。"
+      },
+      {
+        "bucket_key": "software_platform_saas",
+        "bucket_name": "软件/SaaS/平台型",
+        "role": "secondary",
+        "current_or_future": "mixed",
+        "confidence": "medium",
+        "evidence": "命中关键词：软件、云平台",
+        "why_it_matters": "如果软件收入标准化且可续费，才适合按软件/平台公司分析。"
+      },
+      {
+        "bucket_key": "data_ai_model",
+        "bucket_name": "数据/AI模型驱动型",
+        "role": "secondary",
+        "current_or_future": "narrative",
+        "confidence": "high",
+        "evidence": "命中关键词：AI、人工智能、算法、数据、模型、筛选、预测",
+        "why_it_matters": "如果AI只是内部效率工具，则不应按AI平台公司估值；如果形成数据闭环，才可能构成壁垒。"
+      },
+      {
+        "bucket_key": "hardtech_commercialization",
+        "bucket_name": "硬科技商业化型",
+        "role": "secondary",
+        "current_or_future": "mixed",
+        "confidence": "high",
+        "evidence": "命中关键词：技术、专利、研发、材料、自动驾驶、量产",
+        "why_it_matters": "硬科技项目重点不是技术先进，而是能否稳定量产并被真实客户持续采购。"
+      },
+      {
+        "bucket_key": "government_industrial_landing",
+        "bucket_name": "政府/产业落地型",
+        "role": "secondary",
+        "current_or_future": "mixed",
+        "confidence": "medium",
+        "evidence": "命中关键词：政府、本地",
+        "why_it_matters": "对政府基金而言，需判断项目是否能真实落地产值、税收、就业和产业协同。"
+      },
+      {
+        "bucket_key": "expansion_story",
+        "bucket_name": "多业务扩张/第二曲线型",
+        "role": "narrative",
+        "current_or_future": "future",
+        "confidence": "high",
+        "evidence": "命中关键词：生态、跨行业、新能源、农业、医药、食品",
+        "why_it_matters": "如果当前收入来自A业务，但估值故事来自B/C业务，需警惕扩张叙事。"
+      },
+      {
+        "bucket_key": "policy_driven",
+        "bucket_name": "政策驱动型",
+        "role": "risk",
+        "current_or_future": "mixed",
+        "confidence": "medium",
+        "evidence": "命中关键词：政策、补贴",
+        "why_it_matters": "如果需求主要来自政策/补贴/示范项目，需验证政策退坡后的商业可持续性。"
+      },
+      {
+        "bucket_key": "team_credibility_story",
+        "bucket_name": "团队/背书叙事型",
+        "role": "risk",
+        "current_or_future": "narrative",
+        "confidence": "low",
+        "evidence": "命中关键词：实验室",
+        "why_it_matters": "团队/背书需要验证是否转化为排他资源、成果转化或商业化能力。"
+      }
+    ],
+    "risk_buckets": [
+      {
+        "bucket_key": "asset_heavy_operation",
+        "bucket_name": "重资产运营型",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：车队、租赁、重资产",
+        "why_it_matters": "如果业务扩张需要同步投入大量资产，会带来现金流和回本周期风险。"
+      },
+      {
+        "bucket_key": "project_delivery",
+        "bucket_name": "项目制交付型",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：定制、交付、适配",
+        "why_it_matters": "如果每个项目都需要定制，规模化后交付和毛利可能承压。"
+      },
+      {
+        "bucket_key": "policy_driven",
+        "bucket_name": "政策驱动型",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：政策、政府、补贴",
+        "why_it_matters": "如果需求由政策驱动，需要验证政策退坡后客户是否仍会付费。"
+      },
+      {
+        "bucket_key": "asset_heavy_operation_cashflow",
+        "bucket_name": "asset_heavy_operation_cashflow",
+        "risk_role": "risk",
+        "confidence": "low",
+        "evidence": "命中关键词：现金流",
+        "why_it_matters": "如果回款慢或需要垫资，增长可能反而加剧资金压力。"
+      },
+      {
+        "bucket_key": "hardtech_commercialization",
+        "bucket_name": "硬科技商业化型",
+        "risk_role": "risk",
+        "confidence": "high",
+        "evidence": "命中关键词：供应商、传感器、第三方、量产",
+        "why_it_matters": "硬科技项目需要验证关键供应链、量产良率和工程化能力。"
+      },
+      {
+        "bucket_key": "expansion_story",
+        "bucket_name": "多业务扩张/第二曲线型",
+        "risk_role": "risk",
+        "confidence": "high",
+        "evidence": "命中关键词：生态、新能源、农业、医药",
+        "why_it_matters": "多业务扩张可能是真增长，也可能只是扩大估值边界。"
+      },
+      {
+        "bucket_key": "team_credibility_story",
+        "bucket_name": "团队/背书叙事型",
+        "risk_role": "risk",
+        "confidence": "low",
+        "evidence": "命中关键词：实验室",
+        "why_it_matters": "背书需要验证是否真正转化为公司壁垒。"
+      },
+      {
+        "bucket_key": "financing_valuation_story",
+        "bucket_name": "融资估值叙事型",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：融资、估值、并购",
+        "why_it_matters": "融资用途和估值逻辑可能与真实业务阶段不匹配。"
+      }
+    ],
+    "key_uncertainties": [
+      {
+        "uncertainty": "公司到底是客户买产品/设备，还是公司自投资产做运营？",
+        "why_it_matters": "这决定公司是偏轻资产产品销售型，还是重资产运营型，估值和现金流逻辑完全不同。",
+        "related_buckets": [
+          "manufacturing_product_sales",
+          "asset_heavy_operation"
+        ],
+        "discriminating_questions": [
+          "客户是否直接购买设备/车辆/产品？",
+          "是否存在公司自投资产并通过运营回收现金流？",
+          "资产由谁持有？折旧和维修由谁承担？",
+          "收入是一次性销售，还是按使用量/服务费持续收费？"
+        ]
+      },
+      {
+        "uncertainty": "项目交付是否标准化，还是每个客户都需要大量定制？",
+        "why_it_matters": "决定公司能否规模化复制，以及毛利率是否会被交付成本侵蚀。",
+        "related_buckets": [
+          "project_delivery"
+        ],
+        "discriminating_questions": [
+          "一个新项目中有多少模块可以复用？",
+          "单个项目从签约到验收回款需要多久？",
+          "每个项目需要多少实施人员？",
+          "不同项目毛利率差异大不大？"
+        ]
+      },
+      {
+        "uncertainty": "AI/数据能力是核心壁垒，还是研发/交付效率工具？",
+        "why_it_matters": "如果AI只是内部工具，则不应按AI平台公司估值。",
+        "related_buckets": [
+          "data_ai_model"
+        ],
+        "discriminating_questions": [
+          "AI是否直接决定客户购买或产品性能？",
+          "AI相比传统方法带来什么量化提升？",
+          "数据是否独占并形成持续反馈闭环？",
+          "模型输出是否仍需要大量人工验证？"
+        ]
+      },
+      {
+        "uncertainty": "当前真实收入、增长业务和估值叙事是否错位？",
+        "why_it_matters": "如果当前收入来自小业务，但融资按平台/多行业故事估值，可能存在估值泡沫。",
+        "related_buckets": [
+          "expansion_story",
+          "financing_valuation_story"
+        ],
+        "discriminating_questions": [
+          "当前收入主要来自哪条业务线？",
+          "增长最快的业务线收入基数是多少？",
+          "估值主要依据当前收入还是未来平台故事？",
+          "新业务是否已有真实收入、复购和毛利？"
+        ]
+      },
+      {
+        "uncertainty": "客户需求是政策驱动，还是真实经济 ROI 驱动？",
+        "why_it_matters": "如果主要依赖政策/示范项目，政策退坡后收入可持续性存疑。",
+        "related_buckets": [
+          "policy_driven",
+          "government_industrial_landing"
+        ],
+        "discriminating_questions": [
+          "客户中有多少是纯商业ROI驱动？",
+          "如果没有补贴或政策要求，客户是否仍会采购？",
+          "客户是否有明确降本增效测算？",
+          "是否有非政策客户的复购案例？"
+        ]
+      },
+      {
+        "uncertainty": "团队/学术/名人背书是否真正转化为排他壁垒？",
+        "why_it_matters": "学历、奖项、名人、实验室背书本身不等于商业化能力。",
+        "related_buckets": [
+          "team_credibility_story"
+        ],
+        "discriminating_questions": [
+          "专家/实验室与公司的关系是全职、股东、顾问还是普通合作？",
+          "是否有排他性成果转化协议？",
+          "知识产权归属公司还是高校/实验室？",
+          "背书是否已经转化为产品、客户或收入？"
+        ]
+      }
+    ],
+    "structure_summary": "系统初步识别该项目涉及行业：自动驾驶、AI应用、工业物流/场内物流；主要业务线包括：无人重载车辆/无人集卡、项目制交付/场景解决方案、美妆/日化原料；可能适用的投资逻辑包括：制造/产品销售型、项目制交付型、重资产运营型。该识别仅作为后续分析入口，不代表最终判断。"
+  },
+  "raw_text": "{\n  \"selected_buckets\": [\"tech_barrier\", \"customer_value\", \"commercialization\"],\n  \"bucket_outputs\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"bucket_label\": \"技术/壁垒是否成立\",\n      \"point\": \"支持：S1的滑板底盘和多温区智能分控技术具有差异化，且已提交101项专利，形成一定技术壁垒。\",\n      \"explanation\": \"【claim】BP声称S1具备滑板底盘设计、多温区智能分控、快速降温等独特技术，并已提交101项专利。【reality】滑板底盘在乘用车领域已较成熟（如Rivian），但在商用车尤其是冷藏车领域应用较少，多温区控制对制冷系统和隔热材料要求高，确实有技术门槛。【gap】专利数量不等于技术壁垒强度，需验证专利是否为核心发明专利，而非外观或实用新型专利。同时，供应链伙伴（如易德冷链）可能掌握关键制冷技术，公司自身技术深度存疑。【conclusion】support（存在差异化，但壁垒强度待验证）。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"bucket_label\": \"技术/壁垒是否成立\",\n      \"point\": \"反对：核心技术依赖供应链伙伴，公司更像系统集成商，而非技术原创者。\",\n      \"explanation\": \"【claim】BP展示的供应链伙伴包括易德冷链（制冷）、电池供应商、智驾系统供应商等。【reality】在新能源商用车领域，电池、电驱、智驾系统多为第三方成熟方案，公司若仅做集成和适配，技术壁垒极低，容易被比亚迪、吉利等拥有全产业链能力的巨头复制。【gap】BP未明确哪些技术是自研、哪些是外购。若核心部件均来自供应商，则公司技术护城河薄弱。【conclusion】contradict（技术壁垒可能被高估）。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"high\",\n      \"source_type\": \"common_sense\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"bucket_label\": \"客户为什么付钱\",\n      \"point\": \"支持：客户为“高温+清真”场景下的专用冷藏车付费，该价值直接影响客户业务合规性和运营效率。\",\n      \"explanation\": \"【claim】BP强调产品针对中东和东南亚的极端高温和清真认证需求，具备多温区、快速降温、断电保温等特性。【reality】清真冷链对防止交叉污染和温度监控有严格要求，普通冷藏车难以满足；高温环境下制冷效率是关键痛点。因此，专用车辆能帮助客户获得清真认证、降低货物损耗，直接影响客户收入和合规性。【gap】需验证产品是否已获得权威清真认证（如JAKIM、ESMA），以及实际降温性能是否达到BP宣称的指标。【conclusion】support（价值点明确，但需验证）。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"bucket_label\": \"客户为什么付钱\",\n      \"point\": \"反对：客户可能更看重价格和路权，而非技术差异化，导致公司产品溢价能力有限。\",\n      \"explanation\": \"【claim】BP认为客户为技术特性付费。【reality】在东南亚和中东市场，价格和路权（如新能源车免限行、免牌照费）往往是更直接的购买驱动力。若竞争对手（如比亚迪T5、吉利远程）推出类似配置但价格更低的产品，客户可能轻易转向。【gap】BP未提供客户采购决策的权重分析，也未对比竞品价格。若客户主要因价格和路权购买，则公司技术差异化价值被削弱。【conclusion】neutral（客户价值可能被高估）。\",\n      \"relation_to_step1\": \"neutral\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"common_sense\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"bucket_label\": \"商业化路径是否成立\",\n      \"point\": \"支持：意向订单和现金预订单（3510台）表明商业化已起步，且客户包括鲜生活、马来西亚物流巨头等，验证了市场需求。\",\n      \"explanation\": \"【claim】BP显示已获得14030台意向订单和3510台现金预订单，客户包括鲜生活（关联1650台意向订单）、马来西亚最大物流公司等。【reality】意向订单和现金预订单是商业化早期的重要验证，尤其是现金预订单表明客户有真实支付意愿。鲜生活作为冷链物流龙头，其订单具有行业标杆意义。【gap】需确认现金预订单的约束力（是否可撤销）、交付时间表以及客户是否已支付定金。意向订单可能仅为框架协议，转化率存疑。【conclusion】support（商业化有初步验证，但需深挖订单质量）。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"bucket_label\": \"商业化路径是否成立\",\n      \"point\": \"反对：财务预测过于激进，从823台到9.2万台的增长路径缺乏现实支撑，商业化节奏可能严重滞后。\",\n      \"explanation\": \"【claim】BP预测2026年销售823台，2032年达到9.2万台，7年增长超100倍，全球市占率从1%升至24%。【reality】汽车行业产能爬坡、认证周期、渠道建设通常需要3-5年。新亚计划在2026年同时在中国、阿联酋、韩国、马来西亚投产，产能爬坡风险极高。此外，全球新能源冷藏车市场2024年仅3.7万辆，2030年预计26.8万辆，新亚要在6年内占据15%份额，需击败比亚迪、Rivian等巨头，难度极大。【gap】BP未提供产能建设进度、认证时间表、渠道覆盖计划等关键细节。财务预测更像是融资模型，而非可执行的商业计划。【conclusion】contradict（商业化路径过于乐观）。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"high\",\n      \"source_type\": \"bp\"\n    }\n  ],\n  \"publicly_resolvable\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"item\": \"新亚科技已授权和公布的专利数量及类型（发明专利 vs 实用新型）\",\n      \"current_conclusion\": \"BP称已提交101项专利，已授权71项。通过公开专利数据库（如WIPO、CNIPA）可核实专利类型和核心程度。若多为实用新型，则技术壁垒较低。\",\n      \"confidence\": \"high\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"item\": \"S1冷藏车是否已获得主要目标市场（如马来西亚JAKIM、阿联酋ESMA）的清真认证\",\n      \"current_conclusion\": \"BP未提及认证状态。通过公开信息可查询认证进度。若尚未获得，则客户价值中的清真合规性存疑。\",\n      \"confidence\": \"medium\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"item\": \"鲜生活冷链物流与公司的具体合作细节（如投资、订单约束力）\",\n      \"current_conclusion\": \"BP称鲜生活旗下7家供应商签署1650台意向订单。通过公开新闻、鲜生活年报或行业报道，可验证合作深度和订单真实性。\",\n      \"confidence\": \"medium\"\n    }\n  ],\n  \"still_unresolved\": [\n    {\n      \"bucket_key\": \"commercialization\",\n      \"question\": \"现金预订单（3510台）的具体客户名单、金额、交付时间表以及订单的约束力（是否可撤销、是否已支付定金）？\",\n      \"why_unresolved\": \"BP仅给出总数，未提供明细。订单质量是验证市场需求真实性的核心，无法通过公开信息确认。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"question\": \"S1的核心技术（如滑板底盘、多温区控制）中，哪些是公司自研并拥有核心专利，哪些是依赖供应商（如易德冷链）的成熟方案？\",\n      \"why_unresolved\": \"BP未明确技术归属。若核心部件均为外购，则技术壁垒极低。需通过尽调访谈和专利分析确认。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"question\": \"公司在阿联酋、韩国、马来西亚的KD工厂建设进度如何？预计总投资额和资金来源是否已落实？\",\n      \"why_unresolved\": \"BP仅给出投产时间（2026年），但未提供建设进度、资金安排和产能爬坡计划。工厂建设是商业化的关键瓶颈，无法通过公开信息验证。\",\n      \"impact_level\": \"high\"\n    }\n  ],\n  \"tensions\": [\n    \"技术壁垒弱（依赖供应链） vs 商业化已获现金预订单（市场认可）\",\n    \"财务预测极度乐观（7年100倍增长） vs 产能建设和认证周期长（现实瓶颈）\",\n    \"客户价值强调技术差异化 vs 实际购买可能更看重价格和路权\"\n  ],\n  \"step1_adjustment_hints\": {\n    \"supported\": [\n      \"Step1判断公司为'产品公司'和'市场套利者'，与桶内支持信息一致：产品差异化（多温区、清真合规）和供应链整合能力是核心。\",\n      \"Step1指出的'订单真实性与含金量'是最大疑问，桶内反对信息进一步强化了该疑问的必要性。\"\n    ],\n    \"caution\": [\n      \"Step1认为公司是'资本驱动型项目'，但桶内反对信息显示商业化路径可能过于乐观，需警惕财务预测脱离现实，导致资本驱动失效。\",\n      \"Step1认为技术壁垒是'市场套利'而非'技术颠覆'，桶内反对信息进一步提示技术壁垒可能比预期更弱，需重新评估护城河。\"\n    ],\n    \"to_step4\": [\n      \"订单质量（现金预订单的约束力和客户真实性）是验证市场需求的关键缺口，需在尽调中优先确认。\",\n      \"技术壁垒的真实性（自研 vs 集成）决定公司是否具备长期竞争力，需通过专利分析和供应商访谈确认。\",\n      \"产能建设和认证进度是商业化的现实瓶颈，需评估公司是否有足够资金和管理能力应对多国同时投产的风险。\"\n    ]\n  }\n}"
+}

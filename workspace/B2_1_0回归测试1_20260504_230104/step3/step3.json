@@ -1,0 +1,459 @@
+{
+  "selected_buckets": [
+    "tech_barrier",
+    "customer_value",
+    "commercialization"
+  ],
+  "bucket_outputs": [
+    {
+      "bucket_key": "tech_barrier",
+      "bucket_label": "技术/壁垒是否成立",
+      "point": "轴向磁通电机是下一代高性能机器人的必然趋势，自研电机在扭矩密度、功率密度、体积重量上显著优于传统无框力矩电机，且成本更低。",
+      "explanation": "【claim】BP声称轴向磁通电机性能全面领先，扭矩密度达240N.m/kg，峰值扭矩596N.m。【reality】轴向磁通电机在学术界和工业界已被广泛研究，并非全新概念。宇树、波士顿动力等竞品目前主要采用无框力矩电机，但并非不能切换。自研电机若仅停留在实验室性能，未经过大规模量产验证，其成本优势可能被良率问题抵消。【gap】BP未提供与竞品在相同工况下的直接对比数据，也未说明自研电机的良率和成本数据。【结论】support：轴向磁通电机在理论上确实具有性能优势，是真实的技术方向。",
+      "relation_to_step1": "support",
+      "certainty": "medium",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "tech_barrier",
+      "bucket_label": "技术/壁垒是否成立",
+      "point": "自研轴向磁通电机可能并非不可复制的壁垒，竞争对手可通过外购或自研快速追赶。",
+      "explanation": "【claim】BP强调自研电机是核心壁垒。【reality】轴向磁通电机并非璇玑独有技术，国内外多家企业（如YASA、Koenigsegg、国内部分电机厂商）已实现量产。宇树等竞争对手若选择外购或自研，可能快速缩小差距。此外，电机仅是机器人关节的一部分，运动控制算法、系统集成能力同样关键。【gap】BP未说明自研电机是否拥有核心专利保护，也未展示电机供应链的排他性。【结论】contradict：自研电机作为壁垒的可持续性存疑，竞争对手有替代路径。",
+      "relation_to_step1": "contradict",
+      "certainty": "medium",
+      "source_type": "common_sense"
+    },
+    {
+      "bucket_key": "customer_value",
+      "bucket_label": "客户为什么付钱",
+      "point": "客户为四足机器人的实际作业能力付费，如电力巡检中的负载能力、续航、地形适应性，这些指标直接对应客户降本增效需求。",
+      "explanation": "【claim】BP称与南方电网联合打造电力巡检机器人，解决地形适应差、负载低、稳定性弱等痛点。【reality】电力巡检是四足机器人已验证的刚性场景，客户愿意为替代人工巡检、降低安全风险、提升效率付费。璇玑产品在负载和续航上显著优于竞品，直接转化为客户价值。【gap】BP未提供客户ROI测算，如替代人工巡检的具体成本节省数据。【结论】support：客户价值清晰，性能优势直接对应付费意愿。",
+      "relation_to_step1": "support",
+      "certainty": "high",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "customer_value",
+      "bucket_label": "客户为什么付钱",
+      "point": "手办机器人产品线的客户价值不清晰，与核心四足机器人业务协同性弱，可能分散资源。",
+      "explanation": "【claim】BP称手办机器人面向潮玩、教育、创客市场，需求超百亿。【reality】手办机器人与行业级四足机器人在技术、供应链、客户、渠道上差异巨大。潮玩市场依赖IP、品牌、渠道能力，与团队大疆背景的B端能力不匹配。教育市场虽大，但竞争激烈，且客户决策链长。BP未提供手办机器人的具体定价、目标用户验证数据。【gap】手办机器人的客户价值假设（情感价值、可玩性）未经过市场验证。【结论】neutral：手办机器人的客户价值存在不确定性，需进一步验证。",
+      "relation_to_step1": "neutral",
+      "certainty": "medium",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "commercialization",
+      "bucket_label": "商业化路径是否成立",
+      "point": "团队具备大疆体系的产品工程化和量产经验，商业化路径清晰，已有近亿元意向订单。",
+      "explanation": "【claim】BP称团队拥有Inspire系列0-1-100成功经验，核心零部件自研，供应链深度绑定，已有近亿元意向订单。【reality】大疆背景团队在无人机领域已验证了从产品定义到量产交付的全链路能力，迁移到四足机器人领域具有合理性。意向订单来自南方电网等头部客户，验证了市场需求。【gap】意向订单是否已转化为正式合同、预付款、交付计划？近亿元订单的具体构成和交付周期未披露。【结论】support：商业化路径基于已验证的团队能力，意向订单提供了初步验证。",
+      "relation_to_step1": "support",
+      "certainty": "high",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "commercialization",
+      "bucket_label": "商业化路径是否成立",
+      "point": "手办机器人产品线可能分散资源，导致核心四足机器人业务商业化节奏放缓。",
+      "explanation": "【claim】BP同时推进行业级四足机器人和手办机器人两条产品线。【reality】在四足机器人市场尚未大规模放量时，同时投入资源开发手办机器人，可能分散团队精力、资金和供应链资源。手办机器人的研发、生产、渠道建设与行业级产品差异大，可能导致核心业务商业化进度不及预期。【gap】BP未说明两条产品线的资源分配比例和优先级。【结论】contradict：多线作战可能拖累核心业务的商业化速度。",
+      "relation_to_step1": "contradict",
+      "certainty": "medium",
+      "source_type": "bp"
+    }
+  ],
+  "publicly_resolvable": [
+    {
+      "bucket_key": "tech_barrier",
+      "item": "轴向磁通电机是否为行业通用技术？",
+      "current_conclusion": "轴向磁通电机是已知技术路线，多家企业已实现量产，并非璇玑独有。",
+      "confidence": "high"
+    },
+    {
+      "bucket_key": "customer_value",
+      "item": "四足机器人在电力巡检中的客户价值是否被验证？",
+      "current_conclusion": "是，国网、南网等已采购四足机器人用于巡检，市场已被验证。",
+      "confidence": "high"
+    },
+    {
+      "bucket_key": "commercialization",
+      "item": "大疆背景团队是否具备机器人产品量产经验？",
+      "current_conclusion": "团队核心成员来自大疆，具备复杂产品量产经验，但四足机器人量产与无人机存在差异。",
+      "confidence": "medium"
+    }
+  ],
+  "still_unresolved": [
+    {
+      "bucket_key": "tech_barrier",
+      "question": "自研轴向磁通电机的良率、成本、产能爬坡数据如何？与竞品在相同工况下的直接对比数据？",
+      "why_unresolved": "BP未提供具体数据，这些信息无法通过公开资料获取，必须通过尽调或与公司沟通确认。",
+      "impact_level": "high"
+    },
+    {
+      "bucket_key": "commercialization",
+      "question": "近亿元意向订单的具体构成（客户、产品、交付周期、合同类型）？是否已转化为正式合同和预付款？",
+      "why_unresolved": "BP仅提及意向订单，未提供详细清单和合同状态，需尽调验证。",
+      "impact_level": "high"
+    },
+    {
+      "bucket_key": "commercialization",
+      "question": "手办机器人产品线的资源分配比例和优先级？是否已有明确的产品定义、定价和渠道策略？",
+      "why_unresolved": "BP对手办机器人的描述较为模糊，缺乏具体执行计划，需与团队沟通确认。",
+      "impact_level": "high"
+    }
+  ],
+  "tensions": [
+    "自研轴向磁通电机技术壁垒高 vs 竞争对手可通过外购或自研快速追赶",
+    "核心四足机器人商业化路径清晰 vs 手办机器人产品线可能分散资源",
+    "团队大疆背景的工程化能力已验证 vs 四足机器人量产与无人机存在差异"
+  ],
+  "step1_adjustment_hints": {
+    "supported": [
+      "Step1判断‘本质上是“大疆模式”的复刻与迁移’得到支持，团队背景和商业化路径均指向这一点。",
+      "Step1判断‘核心壁垒是轴向磁通电机’得到支持，但需注意壁垒的可持续性。",
+      "Step1判断‘商业化路径清晰’得到支持，意向订单提供了初步验证。"
+    ],
+    "caution": [
+      "Step1判断‘轴向磁通电机是真正的护城河’需谨慎，竞争对手有替代路径，壁垒的可持续性存疑。",
+      "Step1判断‘手办机器人产品线协同性存疑’得到强化，需警惕多线作战风险。"
+    ],
+    "to_step4": [
+      "自研电机的良率、成本、产能数据是否支撑其作为核心壁垒？",
+      "意向订单的真实性和转化率如何？",
+      "手办机器人产品线的资源分配和优先级是否合理？是否会拖累核心业务？"
+    ]
+  },
+  "project_structure": {
+    "industry_tags": [
+      {
+        "tag": "ai_application",
+        "label": "AI应用",
+        "confidence": "high",
+        "evidence": "命中关键词：AI、人工智能、算法、数据"
+      },
+      {
+        "tag": "autonomous_driving",
+        "label": "自动驾驶",
+        "confidence": "low",
+        "evidence": "命中关键词：自动驾驶"
+      },
+      {
+        "tag": "industrial_logistics",
+        "label": "工业物流/场内物流",
+        "confidence": "low",
+        "evidence": "命中关键词：运输"
+      },
+      {
+        "tag": "advanced_materials",
+        "label": "新材料",
+        "confidence": "low",
+        "evidence": "命中关键词：材料"
+      },
+      {
+        "tag": "new_energy",
+        "label": "新能源",
+        "confidence": "low",
+        "evidence": "命中关键词：新能源"
+      }
+    ],
+    "business_lines": [
+      {
+        "name": "无人重载车辆/无人集卡",
+        "role": "current_business",
+        "status": "核心产品/已落地业务",
+        "revenue_status": "可能已有设备/整车/硬件收入，具体金额待确认",
+        "evidence": "命中关键词：自动驾驶、无人驾驶、车辆、重卡",
+        "confidence": "high"
+      },
+      {
+        "name": "项目制交付/场景解决方案",
+        "role": "current_business",
+        "status": "项目制落地/场景交付",
+        "revenue_status": "项目收入和毛利待确认",
+        "evidence": "命中关键词：项目、项目制、交付、解决方案、系统集成、港口、矿区、部署",
+        "confidence": "high"
+      },
+      {
+        "name": "美妆/日化原料",
+        "role": "current_business",
+        "status": "当前收入底盘",
+        "revenue_status": "已有收入但金额需确认",
+        "evidence": "根据制造/产品销售型及新材料/美妆原料行业标签反推",
+        "confidence": "medium"
+      },
+      {
+        "name": "代运营服务",
+        "role": "growth_story",
+        "status": "持续收入模式待验证",
+        "revenue_status": "是否已经形成稳定持续收入待确认",
+        "evidence": "命中关键词：租赁、运营、托管、车辆、车队",
+        "confidence": "high"
+      },
+      {
+        "name": "自动驾驶系统/云端调度平台",
+        "role": "supporting_capability",
+        "status": "支撑主业务的技术/平台能力",
+        "revenue_status": "可能作为技术服务或软件服务收费，需确认",
+        "evidence": "命中关键词：感知、控制、自动驾驶、无人驾驶、系统、平台",
+        "confidence": "high"
+      },
+      {
+        "name": "AI研发平台",
+        "role": "supporting_capability",
+        "status": "研发工具/效率工具",
+        "revenue_status": "是否对外收费待确认",
+        "evidence": "命中关键词：AI、人工智能、算法、研发、筛选",
+        "confidence": "high"
+      },
+      {
+        "name": "新能源材料/回收业务",
+        "role": "valuation_story",
+        "status": "远期故事/待验证业务",
+        "revenue_status": "是否已有收入待确认",
+        "evidence": "命中关键词：新能源、锂电、材料、回收",
+        "confidence": "high"
+      }
+    ],
+    "business_model_hypotheses": [
+      {
+        "bucket_key": "manufacturing_product_sales",
+        "bucket_name": "制造/产品销售型",
+        "role": "primary",
+        "current_or_future": "current",
+        "confidence": "low",
+        "evidence": "命中关键词：销售",
+        "why_it_matters": "如果当前收入主要来自产品/设备/原料销售，则公司更接近制造/产品销售型公司。"
+      },
+      {
+        "bucket_key": "project_delivery",
+        "bucket_name": "项目制交付型",
+        "role": "secondary",
+        "current_or_future": "current",
+        "confidence": "high",
+        "evidence": "命中关键词：项目、交付、定制、解决方案、集成",
+        "why_it_matters": "如果收入依赖一个个项目交付，则需要重点验证标准化和毛利稳定性。"
+      },
+      {
+        "bucket_key": "asset_heavy_operation",
+        "bucket_name": "重资产运营型",
+        "role": "secondary",
+        "current_or_future": "mixed",
+        "confidence": "low",
+        "evidence": "命中关键词：租赁",
+        "why_it_matters": "如果公司需要自投资产或长期运营回收现金流，则估值和风险更接近重资产运营公司。"
+      },
+      {
+        "bucket_key": "software_platform_saas",
+        "bucket_name": "软件/SaaS/平台型",
+        "role": "secondary",
+        "current_or_future": "mixed",
+        "confidence": "low",
+        "evidence": "命中关键词：软件",
+        "why_it_matters": "如果软件收入标准化且可续费，才适合按软件/平台公司分析。"
+      },
+      {
+        "bucket_key": "data_ai_model",
+        "bucket_name": "数据/AI模型驱动型",
+        "role": "secondary",
+        "current_or_future": "narrative",
+        "confidence": "high",
+        "evidence": "命中关键词：AI、人工智能、算法、数据",
+        "why_it_matters": "如果AI只是内部效率工具，则不应按AI平台公司估值；如果形成数据闭环，才可能构成壁垒。"
+      },
+      {
+        "bucket_key": "hardtech_commercialization",
+        "bucket_name": "硬科技商业化型",
+        "role": "secondary",
+        "current_or_future": "mixed",
+        "confidence": "high",
+        "evidence": "命中关键词：技术、研发、材料、自动驾驶、机器人、量产",
+        "why_it_matters": "硬科技项目重点不是技术先进，而是能否稳定量产并被真实客户持续采购。"
+      },
+      {
+        "bucket_key": "government_industrial_landing",
+        "bucket_name": "政府/产业落地型",
+        "role": "secondary",
+        "current_or_future": "mixed",
+        "confidence": "medium",
+        "evidence": "命中关键词：政府、基金、落地",
+        "why_it_matters": "对政府基金而言，需判断项目是否能真实落地产值、税收、就业和产业协同。"
+      },
+      {
+        "bucket_key": "expansion_story",
+        "bucket_name": "多业务扩张/第二曲线型",
+        "role": "narrative",
+        "current_or_future": "future",
+        "confidence": "medium",
+        "evidence": "命中关键词：生态、新能源",
+        "why_it_matters": "如果当前收入来自A业务，但估值故事来自B/C业务，需警惕扩张叙事。"
+      },
+      {
+        "bucket_key": "policy_driven",
+        "bucket_name": "政策驱动型",
+        "role": "risk",
+        "current_or_future": "mixed",
+        "confidence": "medium",
+        "evidence": "命中关键词：政策、补贴",
+        "why_it_matters": "如果需求主要来自政策/补贴/示范项目，需验证政策退坡后的商业可持续性。"
+      },
+      {
+        "bucket_key": "team_credibility_story",
+        "bucket_name": "团队/背书叙事型",
+        "role": "risk",
+        "current_or_future": "narrative",
+        "confidence": "medium",
+        "evidence": "命中关键词：实验室、专家",
+        "why_it_matters": "团队/背书需要验证是否转化为排他资源、成果转化或商业化能力。"
+      }
+    ],
+    "risk_buckets": [
+      {
+        "bucket_key": "asset_heavy_operation",
+        "bucket_name": "重资产运营型",
+        "risk_role": "risk",
+        "confidence": "low",
+        "evidence": "命中关键词：租赁",
+        "why_it_matters": "如果业务扩张需要同步投入大量资产，会带来现金流和回本周期风险。"
+      },
+      {
+        "bucket_key": "project_delivery",
+        "bucket_name": "项目制交付型",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：定制、项目制、交付",
+        "why_it_matters": "如果每个项目都需要定制，规模化后交付和毛利可能承压。"
+      },
+      {
+        "bucket_key": "policy_driven",
+        "bucket_name": "政策驱动型",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：政策、政府、补贴",
+        "why_it_matters": "如果需求由政策驱动，需要验证政策退坡后客户是否仍会付费。"
+      },
+      {
+        "bucket_key": "hardtech_commercialization",
+        "bucket_name": "硬科技商业化型",
+        "risk_role": "risk",
+        "confidence": "high",
+        "evidence": "命中关键词：供应商、芯片、传感器、良率、量产",
+        "why_it_matters": "硬科技项目需要验证关键供应链、量产良率和工程化能力。"
+      },
+      {
+        "bucket_key": "customer_concentration",
+        "bucket_name": "客户集中风险",
+        "risk_role": "risk",
+        "confidence": "low",
+        "evidence": "命中关键词：头部客户",
+        "why_it_matters": "如果收入依赖少数大客户，公司议价权和收入稳定性可能较弱。"
+      },
+      {
+        "bucket_key": "expansion_story",
+        "bucket_name": "多业务扩张/第二曲线型",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：生态、新能源",
+        "why_it_matters": "多业务扩张可能是真增长，也可能只是扩大估值边界。"
+      },
+      {
+        "bucket_key": "team_credibility_story",
+        "bucket_name": "团队/背书叙事型",
+        "risk_role": "risk",
+        "confidence": "low",
+        "evidence": "命中关键词：实验室",
+        "why_it_matters": "背书需要验证是否真正转化为公司壁垒。"
+      },
+      {
+        "bucket_key": "financing_valuation_story",
+        "bucket_name": "融资估值叙事型",
+        "risk_role": "risk",
+        "confidence": "low",
+        "evidence": "命中关键词：融资",
+        "why_it_matters": "融资用途和估值逻辑可能与真实业务阶段不匹配。"
+      }
+    ],
+    "key_uncertainties": [
+      {
+        "uncertainty": "公司到底是客户买产品/设备，还是公司自投资产做运营？",
+        "why_it_matters": "这决定公司是偏轻资产产品销售型，还是重资产运营型，估值和现金流逻辑完全不同。",
+        "related_buckets": [
+          "manufacturing_product_sales",
+          "asset_heavy_operation"
+        ],
+        "discriminating_questions": [
+          "客户是否直接购买设备/车辆/产品？",
+          "是否存在公司自投资产并通过运营回收现金流？",
+          "资产由谁持有？折旧和维修由谁承担？",
+          "收入是一次性销售，还是按使用量/服务费持续收费？"
+        ]
+      },
+      {
+        "uncertainty": "项目交付是否标准化，还是每个客户都需要大量定制？",
+        "why_it_matters": "决定公司能否规模化复制，以及毛利率是否会被交付成本侵蚀。",
+        "related_buckets": [
+          "project_delivery"
+        ],
+        "discriminating_questions": [
+          "一个新项目中有多少模块可以复用？",
+          "单个项目从签约到验收回款需要多久？",
+          "每个项目需要多少实施人员？",
+          "不同项目毛利率差异大不大？"
+        ]
+      },
+      {
+        "uncertainty": "AI/数据能力是核心壁垒，还是研发/交付效率工具？",
+        "why_it_matters": "如果AI只是内部工具，则不应按AI平台公司估值。",
+        "related_buckets": [
+          "data_ai_model"
+        ],
+        "discriminating_questions": [
+          "AI是否直接决定客户购买或产品性能？",
+          "AI相比传统方法带来什么量化提升？",
+          "数据是否独占并形成持续反馈闭环？",
+          "模型输出是否仍需要大量人工验证？"
+        ]
+      },
+      {
+        "uncertainty": "当前真实收入、增长业务和估值叙事是否错位？",
+        "why_it_matters": "如果当前收入来自小业务，但融资按平台/多行业故事估值，可能存在估值泡沫。",
+        "related_buckets": [
+          "expansion_story",
+          "financing_valuation_story"
+        ],
+        "discriminating_questions": [
+          "当前收入主要来自哪条业务线？",
+          "增长最快的业务线收入基数是多少？",
+          "估值主要依据当前收入还是未来平台故事？",
+          "新业务是否已有真实收入、复购和毛利？"
+        ]
+      },
+      {
+        "uncertainty": "客户需求是政策驱动，还是真实经济 ROI 驱动？",
+        "why_it_matters": "如果主要依赖政策/示范项目，政策退坡后收入可持续性存疑。",
+        "related_buckets": [
+          "policy_driven",
+          "government_industrial_landing"
+        ],
+        "discriminating_questions": [
+          "客户中有多少是纯商业ROI驱动？",
+          "如果没有补贴或政策要求，客户是否仍会采购？",
+          "客户是否有明确降本增效测算？",
+          "是否有非政策客户的复购案例？"
+        ]
+      },
+      {
+        "uncertainty": "团队/学术/名人背书是否真正转化为排他壁垒？",
+        "why_it_matters": "学历、奖项、名人、实验室背书本身不等于商业化能力。",
+        "related_buckets": [
+          "team_credibility_story"
+        ],
+        "discriminating_questions": [
+          "专家/实验室与公司的关系是全职、股东、顾问还是普通合作？",
+          "是否有排他性成果转化协议？",
+          "知识产权归属公司还是高校/实验室？",
+          "背书是否已经转化为产品、客户或收入？"
+        ]
+      }
+    ],
+    "structure_summary": "系统初步识别该项目涉及行业：AI应用、自动驾驶、工业物流/场内物流；主要业务线包括：无人重载车辆/无人集卡、项目制交付/场景解决方案、美妆/日化原料；可能适用的投资逻辑包括：制造/产品销售型、项目制交付型、重资产运营型。该识别仅作为后续分析入口，不代表最终判断。"
+  },
+  "raw_text": "{\n  \"selected_buckets\": [\"tech_barrier\", \"customer_value\", \"commercialization\"],\n  \"bucket_outputs\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"bucket_label\": \"技术/壁垒是否成立\",\n      \"point\": \"轴向磁通电机是下一代高性能机器人的必然趋势，自研电机在扭矩密度、功率密度、体积重量上显著优于传统无框力矩电机，且成本更低。\",\n      \"explanation\": \"【claim】BP声称轴向磁通电机性能全面领先，扭矩密度达240N.m/kg，峰值扭矩596N.m。【reality】轴向磁通电机在学术界和工业界已被广泛研究，并非全新概念。宇树、波士顿动力等竞品目前主要采用无框力矩电机，但并非不能切换。自研电机若仅停留在实验室性能，未经过大规模量产验证，其成本优势可能被良率问题抵消。【gap】BP未提供与竞品在相同工况下的直接对比数据，也未说明自研电机的良率和成本数据。【结论】support：轴向磁通电机在理论上确实具有性能优势，是真实的技术方向。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"bucket_label\": \"技术/壁垒是否成立\",\n      \"point\": \"自研轴向磁通电机可能并非不可复制的壁垒，竞争对手可通过外购或自研快速追赶。\",\n      \"explanation\": \"【claim】BP强调自研电机是核心壁垒。【reality】轴向磁通电机并非璇玑独有技术，国内外多家企业（如YASA、Koenigsegg、国内部分电机厂商）已实现量产。宇树等竞争对手若选择外购或自研，可能快速缩小差距。此外，电机仅是机器人关节的一部分，运动控制算法、系统集成能力同样关键。【gap】BP未说明自研电机是否拥有核心专利保护，也未展示电机供应链的排他性。【结论】contradict：自研电机作为壁垒的可持续性存疑，竞争对手有替代路径。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"common_sense\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"bucket_label\": \"客户为什么付钱\",\n      \"point\": \"客户为四足机器人的实际作业能力付费，如电力巡检中的负载能力、续航、地形适应性，这些指标直接对应客户降本增效需求。\",\n      \"explanation\": \"【claim】BP称与南方电网联合打造电力巡检机器人，解决地形适应差、负载低、稳定性弱等痛点。【reality】电力巡检是四足机器人已验证的刚性场景，客户愿意为替代人工巡检、降低安全风险、提升效率付费。璇玑产品在负载和续航上显著优于竞品，直接转化为客户价值。【gap】BP未提供客户ROI测算，如替代人工巡检的具体成本节省数据。【结论】support：客户价值清晰，性能优势直接对应付费意愿。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"high\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"bucket_label\": \"客户为什么付钱\",\n      \"point\": \"手办机器人产品线的客户价值不清晰，与核心四足机器人业务协同性弱，可能分散资源。\",\n      \"explanation\": \"【claim】BP称手办机器人面向潮玩、教育、创客市场，需求超百亿。【reality】手办机器人与行业级四足机器人在技术、供应链、客户、渠道上差异巨大。潮玩市场依赖IP、品牌、渠道能力，与团队大疆背景的B端能力不匹配。教育市场虽大，但竞争激烈，且客户决策链长。BP未提供手办机器人的具体定价、目标用户验证数据。【gap】手办机器人的客户价值假设（情感价值、可玩性）未经过市场验证。【结论】neutral：手办机器人的客户价值存在不确定性，需进一步验证。\",\n      \"relation_to_step1\": \"neutral\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"bucket_label\": \"商业化路径是否成立\",\n      \"point\": \"团队具备大疆体系的产品工程化和量产经验，商业化路径清晰，已有近亿元意向订单。\",\n      \"explanation\": \"【claim】BP称团队拥有Inspire系列0-1-100成功经验，核心零部件自研，供应链深度绑定，已有近亿元意向订单。【reality】大疆背景团队在无人机领域已验证了从产品定义到量产交付的全链路能力，迁移到四足机器人领域具有合理性。意向订单来自南方电网等头部客户，验证了市场需求。【gap】意向订单是否已转化为正式合同、预付款、交付计划？近亿元订单的具体构成和交付周期未披露。【结论】support：商业化路径基于已验证的团队能力，意向订单提供了初步验证。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"high\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"bucket_label\": \"商业化路径是否成立\",\n      \"point\": \"手办机器人产品线可能分散资源，导致核心四足机器人业务商业化节奏放缓。\",\n      \"explanation\": \"【claim】BP同时推进行业级四足机器人和手办机器人两条产品线。【reality】在四足机器人市场尚未大规模放量时，同时投入资源开发手办机器人，可能分散团队精力、资金和供应链资源。手办机器人的研发、生产、渠道建设与行业级产品差异大，可能导致核心业务商业化进度不及预期。【gap】BP未说明两条产品线的资源分配比例和优先级。【结论】contradict：多线作战可能拖累核心业务的商业化速度。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    }\n  ],\n  \"publicly_resolvable\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"item\": \"轴向磁通电机是否为行业通用技术？\",\n      \"current_conclusion\": \"轴向磁通电机是已知技术路线，多家企业已实现量产，并非璇玑独有。\",\n      \"confidence\": \"high\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"item\": \"四足机器人在电力巡检中的客户价值是否被验证？\",\n      \"current_conclusion\": \"是，国网、南网等已采购四足机器人用于巡检，市场已被验证。\",\n      \"confidence\": \"high\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"item\": \"大疆背景团队是否具备机器人产品量产经验？\",\n      \"current_conclusion\": \"团队核心成员来自大疆，具备复杂产品量产经验，但四足机器人量产与无人机存在差异。\",\n      \"confidence\": \"medium\"\n    }\n  ],\n  \"still_unresolved\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"question\": \"自研轴向磁通电机的良率、成本、产能爬坡数据如何？与竞品在相同工况下的直接对比数据？\",\n      \"why_unresolved\": \"BP未提供具体数据，这些信息无法通过公开资料获取，必须通过尽调或与公司沟通确认。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"question\": \"近亿元意向订单的具体构成（客户、产品、交付周期、合同类型）？是否已转化为正式合同和预付款？\",\n      \"why_unresolved\": \"BP仅提及意向订单，未提供详细清单和合同状态，需尽调验证。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"question\": \"手办机器人产品线的资源分配比例和优先级？是否已有明确的产品定义、定价和渠道策略？\",\n      \"why_unresolved\": \"BP对手办机器人的描述较为模糊，缺乏具体执行计划，需与团队沟通确认。\",\n      \"impact_level\": \"high\"\n    }\n  ],\n  \"tensions\": [\n    \"自研轴向磁通电机技术壁垒高 vs 竞争对手可通过外购或自研快速追赶\",\n    \"核心四足机器人商业化路径清晰 vs 手办机器人产品线可能分散资源\",\n    \"团队大疆背景的工程化能力已验证 vs 四足机器人量产与无人机存在差异\"\n  ],\n  \"step1_adjustment_hints\": {\n    \"supported\": [\n      \"Step1判断‘本质上是“大疆模式”的复刻与迁移’得到支持，团队背景和商业化路径均指向这一点。\",\n      \"Step1判断‘核心壁垒是轴向磁通电机’得到支持，但需注意壁垒的可持续性。\",\n      \"Step1判断‘商业化路径清晰’得到支持，意向订单提供了初步验证。\"\n    ],\n    \"caution\": [\n      \"Step1判断‘轴向磁通电机是真正的护城河’需谨慎，竞争对手有替代路径，壁垒的可持续性存疑。\",\n      \"Step1判断‘手办机器人产品线协同性存疑’得到强化，需警惕多线作战风险。\"\n    ],\n    \"to_step4\": [\n      \"自研电机的良率、成本、产能数据是否支撑其作为核心壁垒？\",\n      \"意向订单的真实性和转化率如何？\",\n      \"手办机器人产品线的资源分配和优先级是否合理？是否会拖累核心业务？\"\n    ]\n  }\n}"
+}

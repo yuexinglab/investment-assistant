@@ -1,0 +1,395 @@
+{
+  "selected_buckets": [
+    "tech_barrier",
+    "customer_value",
+    "commercialization"
+  ],
+  "bucket_outputs": [
+    {
+      "bucket_key": "tech_barrier",
+      "bucket_label": "技术/壁垒是否成立",
+      "point": "支持：模块化平台和全面集成国产芯片构成技术壁垒",
+      "explanation": "【claim】BP声称硬件器件复用率70%+，软件复用率80%+，且是唯一实现全面集成国产芯片并跑通测试的公司。【reality】在商用车电控领域，模块化平台是头部供应商的常规做法，但全面集成国产芯片并实现车规级可靠性确实少见，因为国产芯片在极端工况下的长期稳定性尚未被广泛验证。【gap】BP未提供国产芯片的具体型号、供应商、长期可靠性测试数据，也未与竞品（如英飞凌方案）做直接对比。【结论】support，但需要更多数据支撑。",
+      "relation_to_step1": "support",
+      "certainty": "medium",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "tech_barrier",
+      "bucket_label": "技术/壁垒是否成立",
+      "point": "反对：集成BDU多合一方案并非独创，行业已有先例",
+      "explanation": "【claim】BP称xPower900是“业内首次完全集成BDU多合一方案”。【reality】实际上，汇川技术、比亚迪等头部企业已在乘用车领域实现类似集成方案，商用车领域也有其他供应商在推进，并非完全空白。【gap】BP未提供与现有竞品的详细对比，也未说明其集成方案在技术指标（如功率密度、散热效率）上的具体优势。【conclusion】contradict，该技术领先性可能被夸大。",
+      "relation_to_step1": "contradict",
+      "certainty": "high",
+      "source_type": "common_sense"
+    },
+    {
+      "bucket_key": "customer_value",
+      "bucket_label": "客户为什么付钱",
+      "point": "支持：成本降低2000-3000元是核心付费点",
+      "explanation": "【claim】BP强调xPower900能为整车厂直接降低2000-3000元成本。【reality】商用车对成本极度敏感，2000-3000元在重卡电控系统中是显著的成本优势，足以驱动客户切换供应商。【gap】BP未说明这2000-3000元是相对于何种基准（如传统分体方案还是竞品集成方案），也未验证该成本优势是否可持续（如国产芯片价格波动）。【conclusion】support，但需确认成本优势的基准和可持续性。",
+      "relation_to_step1": "support",
+      "certainty": "medium",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "customer_value",
+      "bucket_label": "客户为什么付钱",
+      "point": "反对：客户可能更看重可靠性和服务，而非单纯成本",
+      "explanation": "【claim】BP认为成本降低是核心卖点。【reality】商用车（尤其是重卡）工况极端，电控系统的可靠性直接影响车辆出勤率和安全，客户可能更愿意为经过验证的可靠方案支付溢价，而非单纯追求低成本。国产芯片的长期可靠性存疑，可能成为客户顾虑。【gap】BP未提供客户关于可靠性、服务响应速度的反馈，也未说明其售后服务体系如何支撑极端工况下的快速响应。【conclusion】contradict，客户价值主张可能过于单一。",
+      "relation_to_step1": "contradict",
+      "certainty": "medium",
+      "source_type": "common_sense"
+    },
+    {
+      "bucket_key": "commercialization",
+      "bucket_label": "商业化路径是否成立",
+      "point": "支持：已进入头部主机厂供应链，业务处于爆发期",
+      "explanation": "【claim】BP显示已切入中国重汽等头部主机厂，2024年发货金额超5000万，且收入预测快速增长。【reality】进入头部主机厂供应链是商业化的重要里程碑，表明产品通过了初步验证。发货金额和收入预测也显示业务正在放量。【gap】BP未披露客户渗透率、订单转化率、复购率等关键指标，收入预测的假设（如客户定点、渗透率）也未详细说明。【conclusion】support，但需验证增长假设的合理性。",
+      "relation_to_step1": "support",
+      "certainty": "medium",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "commercialization",
+      "bucket_label": "商业化路径是否成立",
+      "point": "反对：工控业务和全球化战略尚处早期，第二曲线存疑",
+      "explanation": "【claim】BP提出“车规级技术下放至工控”和“全球化战略”作为第二增长曲线。【reality】工控业务（iFAST ePlus）和海外客户（如印度Montra Electric）在BP中缺乏具体营收数据、客户名单和订单细节，表明这些业务仍处于早期验证阶段，尚未形成实质性收入贡献。【gap】BP未披露工控业务的毛利率、客户验证周期、海外认证进展等关键信息。【conclusion】contradict，第二曲线可能只是叙事，商业化路径存在不确定性。",
+      "relation_to_step1": "contradict",
+      "certainty": "high",
+      "source_type": "bp"
+    }
+  ],
+  "publicly_resolvable": [
+    {
+      "bucket_key": "tech_barrier",
+      "item": "集成BDU多合一方案在商用车领域的竞品情况",
+      "current_conclusion": "通过公开资料可确认，汇川技术、比亚迪等已有类似集成方案，但商用车领域具体竞品较少，硅山技术有一定先发优势。",
+      "confidence": "medium"
+    }
+  ],
+  "still_unresolved": [
+    {
+      "bucket_key": "tech_barrier",
+      "question": "全面集成国产芯片在商用车极端工况下的长期可靠性数据如何？与使用国际大厂芯片的方案相比，成本优势具体是多少？",
+      "why_unresolved": "BP未提供国产芯片的具体型号、供应商、长期测试数据，也未与竞品做直接成本对比。这些数据只能通过尽调或客户验证获得。",
+      "impact_level": "high"
+    },
+    {
+      "bucket_key": "customer_value",
+      "question": "客户（如中国重汽）的真实购买决策中，成本降低、可靠性、服务响应各占多大权重？是否有客户因可靠性问题拒绝或减少采购？",
+      "why_unresolved": "BP仅从成本角度阐述客户价值，但未提供客户访谈、满意度调查或流失率数据。客户真实动机需要通过尽调或客户沟通才能确认。",
+      "impact_level": "high"
+    },
+    {
+      "bucket_key": "commercialization",
+      "question": "2025-2027年收入预测（从1.6亿到数亿）的核心假设是什么？前五大客户的当前渗透率和目标渗透率是多少？",
+      "why_unresolved": "BP未披露收入预测的详细假设（如客户定点、渗透率、单价），也未提供前五大客户的具体渗透率数据。这些信息只能通过尽调或管理层访谈获得。",
+      "impact_level": "high"
+    }
+  ],
+  "tensions": [
+    "技术壁垒（全面集成国产芯片）与客户价值（可靠性优先）之间的张力：国产芯片的成本优势可能被可靠性风险抵消。",
+    "商业化已初步验证（进入头部主机厂）与第二曲线（工控、全球化）尚处早期之间的张力：当前增长依赖单一业务，扩张叙事可能超前。",
+    "成本降低2000-3000元是核心卖点，但该成本优势的可持续性（国产芯片价格波动）与客户长期合作意愿之间存在张力。"
+  ],
+  "step1_adjustment_hints": {
+    "supported": [
+      "Step1关于“技术平台型公司”和“爆发增长期”的判断得到支持，BP显示模块化平台和头部客户切入确实构成初步验证。"
+    ],
+    "caution": [
+      "Step1对“全面集成国产芯片”作为核心壁垒的判断需要谨慎，其长期可靠性和成本优势尚未被充分验证，可能被夸大。",
+      "Step1对“工控第二曲线”的乐观预期需要收缩，该业务目前缺乏实质性收入和数据支撑，可能只是叙事。"
+    ],
+    "to_step4": [
+      "国产芯片的长期可靠性数据和成本优势具体数值是什么？",
+      "客户真实购买决策中，成本、可靠性、服务的权重如何？",
+      "收入预测的核心假设（客户渗透率、订单转化率）是否合理？"
+    ]
+  },
+  "project_structure": {
+    "industry_tags": [
+      {
+        "tag": "commercial_vehicle",
+        "label": "商用车/重卡",
+        "confidence": "medium",
+        "evidence": "命中关键词：重卡、商用车"
+      },
+      {
+        "tag": "ai_application",
+        "label": "AI应用",
+        "confidence": "medium",
+        "evidence": "命中关键词：算法、模型、数据"
+      },
+      {
+        "tag": "new_energy",
+        "label": "新能源",
+        "confidence": "medium",
+        "evidence": "命中关键词：新能源、电池"
+      }
+    ],
+    "business_lines": [
+      {
+        "name": "无人重载车辆/无人集卡",
+        "role": "current_business",
+        "status": "核心产品/已落地业务",
+        "revenue_status": "可能已有设备/整车/硬件收入，具体金额待确认",
+        "evidence": "命中关键词：重卡、商用车",
+        "confidence": "medium"
+      },
+      {
+        "name": "项目制交付/场景解决方案",
+        "role": "current_business",
+        "status": "项目制落地/场景交付",
+        "revenue_status": "项目收入和毛利待确认",
+        "evidence": "命中关键词：项目、交付、部署、解决方案、系统集成、适配",
+        "confidence": "high"
+      },
+      {
+        "name": "代运营服务",
+        "role": "growth_story",
+        "status": "持续收入模式待验证",
+        "revenue_status": "是否已经形成稳定持续收入待确认",
+        "evidence": "命中关键词：运营、托管、车辆、车队",
+        "confidence": "high"
+      },
+      {
+        "name": "自动驾驶系统/云端调度平台",
+        "role": "supporting_capability",
+        "status": "支撑主业务的技术/平台能力",
+        "revenue_status": "可能作为技术服务或软件服务收费，需确认",
+        "evidence": "命中关键词：感知、规划、控制",
+        "confidence": "medium"
+      },
+      {
+        "name": "AI研发平台",
+        "role": "supporting_capability",
+        "status": "研发工具/效率工具",
+        "revenue_status": "是否对外收费待确认",
+        "evidence": "命中关键词：算法、预测、研发平台、AI、人工智能、研发、筛选",
+        "confidence": "high"
+      },
+      {
+        "name": "新能源材料/回收业务",
+        "role": "valuation_story",
+        "status": "远期故事/待验证业务",
+        "revenue_status": "是否已有收入待确认",
+        "evidence": "命中关键词：新能源、电池、锂电、材料、回收",
+        "confidence": "high"
+      }
+    ],
+    "business_model_hypotheses": [
+      {
+        "bucket_key": "manufacturing_product_sales",
+        "bucket_name": "制造/产品销售型",
+        "role": "primary",
+        "current_or_future": "current",
+        "confidence": "low",
+        "evidence": "命中关键词：销售",
+        "why_it_matters": "如果当前收入主要来自产品/设备/原料销售，则公司更接近制造/产品销售型公司。"
+      },
+      {
+        "bucket_key": "project_delivery",
+        "bucket_name": "项目制交付型",
+        "role": "secondary",
+        "current_or_future": "current",
+        "confidence": "high",
+        "evidence": "命中关键词：项目、交付、部署、定制、解决方案、集成",
+        "why_it_matters": "如果收入依赖一个个项目交付，则需要重点验证标准化和毛利稳定性。"
+      },
+      {
+        "bucket_key": "software_platform_saas",
+        "bucket_name": "软件/SaaS/平台型",
+        "role": "secondary",
+        "current_or_future": "mixed",
+        "confidence": "low",
+        "evidence": "命中关键词：软件",
+        "why_it_matters": "如果软件收入标准化且可续费，才适合按软件/平台公司分析。"
+      },
+      {
+        "bucket_key": "data_ai_model",
+        "bucket_name": "数据/AI模型驱动型",
+        "role": "secondary",
+        "current_or_future": "narrative",
+        "confidence": "high",
+        "evidence": "命中关键词：算法、数据、模型、预测",
+        "why_it_matters": "如果AI只是内部效率工具，则不应按AI平台公司估值；如果形成数据闭环，才可能构成壁垒。"
+      },
+      {
+        "bucket_key": "hardtech_commercialization",
+        "bucket_name": "硬科技商业化型",
+        "role": "secondary",
+        "current_or_future": "mixed",
+        "confidence": "medium",
+        "evidence": "命中关键词：技术、研发、量产",
+        "why_it_matters": "硬科技项目重点不是技术先进，而是能否稳定量产并被真实客户持续采购。"
+      },
+      {
+        "bucket_key": "government_industrial_landing",
+        "bucket_name": "政府/产业落地型",
+        "role": "secondary",
+        "current_or_future": "mixed",
+        "confidence": "medium",
+        "evidence": "命中关键词：政府、落地、本地",
+        "why_it_matters": "对政府基金而言，需判断项目是否能真实落地产值、税收、就业和产业协同。"
+      },
+      {
+        "bucket_key": "expansion_story",
+        "bucket_name": "多业务扩张/第二曲线型",
+        "role": "narrative",
+        "current_or_future": "future",
+        "confidence": "medium",
+        "evidence": "命中关键词：多行业、平台化、新能源",
+        "why_it_matters": "如果当前收入来自A业务，但估值故事来自B/C业务，需警惕扩张叙事。"
+      },
+      {
+        "bucket_key": "policy_driven",
+        "bucket_name": "政策驱动型",
+        "role": "risk",
+        "current_or_future": "mixed",
+        "confidence": "medium",
+        "evidence": "命中关键词：政策、补贴、国产替代",
+        "why_it_matters": "如果需求主要来自政策/补贴/示范项目，需验证政策退坡后的商业可持续性。"
+      },
+      {
+        "bucket_key": "team_credibility_story",
+        "bucket_name": "团队/背书叙事型",
+        "role": "risk",
+        "current_or_future": "narrative",
+        "confidence": "low",
+        "evidence": "命中关键词：专家",
+        "why_it_matters": "团队/背书需要验证是否转化为排他资源、成果转化或商业化能力。"
+      },
+      {
+        "bucket_key": "financing_valuation_story",
+        "bucket_name": "融资估值叙事型",
+        "role": "risk",
+        "current_or_future": "narrative",
+        "confidence": "low",
+        "evidence": "命中关键词：融资",
+        "why_it_matters": "需验证融资用途和估值逻辑是否匹配真实业务阶段。"
+      }
+    ],
+    "risk_buckets": [
+      {
+        "bucket_key": "project_delivery",
+        "bucket_name": "项目制交付型",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：定制、交付、适配",
+        "why_it_matters": "如果每个项目都需要定制，规模化后交付和毛利可能承压。"
+      },
+      {
+        "bucket_key": "policy_driven",
+        "bucket_name": "政策驱动型",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：政策、政府、补贴",
+        "why_it_matters": "如果需求由政策驱动，需要验证政策退坡后客户是否仍会付费。"
+      },
+      {
+        "bucket_key": "hardtech_commercialization",
+        "bucket_name": "硬科技商业化型",
+        "risk_role": "risk",
+        "confidence": "high",
+        "evidence": "命中关键词：供应商、芯片、良率、量产",
+        "why_it_matters": "硬科技项目需要验证关键供应链、量产良率和工程化能力。"
+      },
+      {
+        "bucket_key": "customer_concentration",
+        "bucket_name": "客户集中风险",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：大客户、前五大",
+        "why_it_matters": "如果收入依赖少数大客户，公司议价权和收入稳定性可能较弱。"
+      },
+      {
+        "bucket_key": "expansion_story",
+        "bucket_name": "多业务扩张/第二曲线型",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：多行业、平台化、新能源",
+        "why_it_matters": "多业务扩张可能是真增长，也可能只是扩大估值边界。"
+      },
+      {
+        "bucket_key": "financing_valuation_story",
+        "bucket_name": "融资估值叙事型",
+        "risk_role": "risk",
+        "confidence": "low",
+        "evidence": "命中关键词：融资",
+        "why_it_matters": "融资用途和估值逻辑可能与真实业务阶段不匹配。"
+      }
+    ],
+    "key_uncertainties": [
+      {
+        "uncertainty": "项目交付是否标准化，还是每个客户都需要大量定制？",
+        "why_it_matters": "决定公司能否规模化复制，以及毛利率是否会被交付成本侵蚀。",
+        "related_buckets": [
+          "project_delivery"
+        ],
+        "discriminating_questions": [
+          "一个新项目中有多少模块可以复用？",
+          "单个项目从签约到验收回款需要多久？",
+          "每个项目需要多少实施人员？",
+          "不同项目毛利率差异大不大？"
+        ]
+      },
+      {
+        "uncertainty": "AI/数据能力是核心壁垒，还是研发/交付效率工具？",
+        "why_it_matters": "如果AI只是内部工具，则不应按AI平台公司估值。",
+        "related_buckets": [
+          "data_ai_model"
+        ],
+        "discriminating_questions": [
+          "AI是否直接决定客户购买或产品性能？",
+          "AI相比传统方法带来什么量化提升？",
+          "数据是否独占并形成持续反馈闭环？",
+          "模型输出是否仍需要大量人工验证？"
+        ]
+      },
+      {
+        "uncertainty": "当前真实收入、增长业务和估值叙事是否错位？",
+        "why_it_matters": "如果当前收入来自小业务，但融资按平台/多行业故事估值，可能存在估值泡沫。",
+        "related_buckets": [
+          "expansion_story",
+          "financing_valuation_story"
+        ],
+        "discriminating_questions": [
+          "当前收入主要来自哪条业务线？",
+          "增长最快的业务线收入基数是多少？",
+          "估值主要依据当前收入还是未来平台故事？",
+          "新业务是否已有真实收入、复购和毛利？"
+        ]
+      },
+      {
+        "uncertainty": "客户需求是政策驱动，还是真实经济 ROI 驱动？",
+        "why_it_matters": "如果主要依赖政策/示范项目，政策退坡后收入可持续性存疑。",
+        "related_buckets": [
+          "policy_driven",
+          "government_industrial_landing"
+        ],
+        "discriminating_questions": [
+          "客户中有多少是纯商业ROI驱动？",
+          "如果没有补贴或政策要求，客户是否仍会采购？",
+          "客户是否有明确降本增效测算？",
+          "是否有非政策客户的复购案例？"
+        ]
+      },
+      {
+        "uncertainty": "团队/学术/名人背书是否真正转化为排他壁垒？",
+        "why_it_matters": "学历、奖项、名人、实验室背书本身不等于商业化能力。",
+        "related_buckets": [
+          "team_credibility_story"
+        ],
+        "discriminating_questions": [
+          "专家/实验室与公司的关系是全职、股东、顾问还是普通合作？",
+          "是否有排他性成果转化协议？",
+          "知识产权归属公司还是高校/实验室？",
+          "背书是否已经转化为产品、客户或收入？"
+        ]
+      }
+    ],
+    "structure_summary": "系统初步识别该项目涉及行业：商用车/重卡、AI应用、新能源；主要业务线包括：无人重载车辆/无人集卡、项目制交付/场景解决方案、代运营服务；可能适用的投资逻辑包括：制造/产品销售型、项目制交付型、软件/SaaS/平台型。该识别仅作为后续分析入口，不代表最终判断。"
+  },
+  "raw_text": "{\n  \"selected_buckets\": [\"tech_barrier\", \"customer_value\", \"commercialization\"],\n  \"bucket_outputs\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"bucket_label\": \"技术/壁垒是否成立\",\n      \"point\": \"支持：模块化平台和全面集成国产芯片构成技术壁垒\",\n      \"explanation\": \"【claim】BP声称硬件器件复用率70%+，软件复用率80%+，且是唯一实现全面集成国产芯片并跑通测试的公司。【reality】在商用车电控领域，模块化平台是头部供应商的常规做法，但全面集成国产芯片并实现车规级可靠性确实少见，因为国产芯片在极端工况下的长期稳定性尚未被广泛验证。【gap】BP未提供国产芯片的具体型号、供应商、长期可靠性测试数据，也未与竞品（如英飞凌方案）做直接对比。【结论】support，但需要更多数据支撑。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"bucket_label\": \"技术/壁垒是否成立\",\n      \"point\": \"反对：集成BDU多合一方案并非独创，行业已有先例\",\n      \"explanation\": \"【claim】BP称xPower900是“业内首次完全集成BDU多合一方案”。【reality】实际上，汇川技术、比亚迪等头部企业已在乘用车领域实现类似集成方案，商用车领域也有其他供应商在推进，并非完全空白。【gap】BP未提供与现有竞品的详细对比，也未说明其集成方案在技术指标（如功率密度、散热效率）上的具体优势。【conclusion】contradict，该技术领先性可能被夸大。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"high\",\n      \"source_type\": \"common_sense\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"bucket_label\": \"客户为什么付钱\",\n      \"point\": \"支持：成本降低2000-3000元是核心付费点\",\n      \"explanation\": \"【claim】BP强调xPower900能为整车厂直接降低2000-3000元成本。【reality】商用车对成本极度敏感，2000-3000元在重卡电控系统中是显著的成本优势，足以驱动客户切换供应商。【gap】BP未说明这2000-3000元是相对于何种基准（如传统分体方案还是竞品集成方案），也未验证该成本优势是否可持续（如国产芯片价格波动）。【conclusion】support，但需确认成本优势的基准和可持续性。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"bucket_label\": \"客户为什么付钱\",\n      \"point\": \"反对：客户可能更看重可靠性和服务，而非单纯成本\",\n      \"explanation\": \"【claim】BP认为成本降低是核心卖点。【reality】商用车（尤其是重卡）工况极端，电控系统的可靠性直接影响车辆出勤率和安全，客户可能更愿意为经过验证的可靠方案支付溢价，而非单纯追求低成本。国产芯片的长期可靠性存疑，可能成为客户顾虑。【gap】BP未提供客户关于可靠性、服务响应速度的反馈，也未说明其售后服务体系如何支撑极端工况下的快速响应。【conclusion】contradict，客户价值主张可能过于单一。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"common_sense\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"bucket_label\": \"商业化路径是否成立\",\n      \"point\": \"支持：已进入头部主机厂供应链，业务处于爆发期\",\n      \"explanation\": \"【claim】BP显示已切入中国重汽等头部主机厂，2024年发货金额超5000万，且收入预测快速增长。【reality】进入头部主机厂供应链是商业化的重要里程碑，表明产品通过了初步验证。发货金额和收入预测也显示业务正在放量。【gap】BP未披露客户渗透率、订单转化率、复购率等关键指标，收入预测的假设（如客户定点、渗透率）也未详细说明。【conclusion】support，但需验证增长假设的合理性。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"bucket_label\": \"商业化路径是否成立\",\n      \"point\": \"反对：工控业务和全球化战略尚处早期，第二曲线存疑\",\n      \"explanation\": \"【claim】BP提出“车规级技术下放至工控”和“全球化战略”作为第二增长曲线。【reality】工控业务（iFAST ePlus）和海外客户（如印度Montra Electric）在BP中缺乏具体营收数据、客户名单和订单细节，表明这些业务仍处于早期验证阶段，尚未形成实质性收入贡献。【gap】BP未披露工控业务的毛利率、客户验证周期、海外认证进展等关键信息。【conclusion】contradict，第二曲线可能只是叙事，商业化路径存在不确定性。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"high\",\n      \"source_type\": \"bp\"\n    }\n  ],\n  \"publicly_resolvable\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"item\": \"集成BDU多合一方案在商用车领域的竞品情况\",\n      \"current_conclusion\": \"通过公开资料可确认，汇川技术、比亚迪等已有类似集成方案，但商用车领域具体竞品较少，硅山技术有一定先发优势。\",\n      \"confidence\": \"medium\"\n    }\n  ],\n  \"still_unresolved\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"question\": \"全面集成国产芯片在商用车极端工况下的长期可靠性数据如何？与使用国际大厂芯片的方案相比，成本优势具体是多少？\",\n      \"why_unresolved\": \"BP未提供国产芯片的具体型号、供应商、长期测试数据，也未与竞品做直接成本对比。这些数据只能通过尽调或客户验证获得。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"question\": \"客户（如中国重汽）的真实购买决策中，成本降低、可靠性、服务响应各占多大权重？是否有客户因可靠性问题拒绝或减少采购？\",\n      \"why_unresolved\": \"BP仅从成本角度阐述客户价值，但未提供客户访谈、满意度调查或流失率数据。客户真实动机需要通过尽调或客户沟通才能确认。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"question\": \"2025-2027年收入预测（从1.6亿到数亿）的核心假设是什么？前五大客户的当前渗透率和目标渗透率是多少？\",\n      \"why_unresolved\": \"BP未披露收入预测的详细假设（如客户定点、渗透率、单价），也未提供前五大客户的具体渗透率数据。这些信息只能通过尽调或管理层访谈获得。\",\n      \"impact_level\": \"high\"\n    }\n  ],\n  \"tensions\": [\n    \"技术壁垒（全面集成国产芯片）与客户价值（可靠性优先）之间的张力：国产芯片的成本优势可能被可靠性风险抵消。\",\n    \"商业化已初步验证（进入头部主机厂）与第二曲线（工控、全球化）尚处早期之间的张力：当前增长依赖单一业务，扩张叙事可能超前。\",\n    \"成本降低2000-3000元是核心卖点，但该成本优势的可持续性（国产芯片价格波动）与客户长期合作意愿之间存在张力。\"\n  ],\n  \"step1_adjustment_hints\": {\n    \"supported\": [\n      \"Step1关于“技术平台型公司”和“爆发增长期”的判断得到支持，BP显示模块化平台和头部客户切入确实构成初步验证。\"\n    ],\n    \"caution\": [\n      \"Step1对“全面集成国产芯片”作为核心壁垒的判断需要谨慎，其长期可靠性和成本优势尚未被充分验证，可能被夸大。\",\n      \"Step1对“工控第二曲线”的乐观预期需要收缩，该业务目前缺乏实质性收入和数据支撑，可能只是叙事。\"\n    ],\n    \"to_step4\": [\n      \"国产芯片的长期可靠性数据和成本优势具体数值是什么？\",\n      \"客户真实购买决策中，成本、可靠性、服务的权重如何？\",\n      \"收入预测的核心假设（客户渗透率、订单转化率）是否合理？\"\n    ]\n  }\n}"
+}

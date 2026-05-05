@@ -1,0 +1,402 @@
+{
+  "selected_buckets": [
+    "tech_barrier",
+    "customer_value",
+    "commercialization"
+  ],
+  "bucket_outputs": [
+    {
+      "bucket_key": "tech_barrier",
+      "bucket_label": "技术/壁垒是否成立",
+      "point": "稳定性世界纪录构成真实技术壁垒",
+      "explanation": "【claim】BP宣称保持持续光照稳定性超过50000小时（室外35年）和模组稳定性超过43000小时（室外25年）的世界纪录，并发表于Science顶刊。【reality】钙钛矿行业公认稳定性是产业化最大瓶颈，多数竞品（如协鑫光电、纤纳光电）尚未公开达到类似水平的量产模组数据。【gap】BP未明确该纪录是在多大面积、何种测试条件下获得，也未提供第三方权威认证（如NREL）报告。【结论】support：该数据若经第三方验证且可复现，则构成显著技术壁垒。",
+      "relation_to_step1": "support",
+      "certainty": "medium",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "tech_barrier",
+      "bucket_label": "技术/壁垒是否成立",
+      "point": "实验室数据与量产模组性能差距巨大，技术壁垒可能被高估",
+      "explanation": "【claim】BP展示1cm²电池效率25.2%，但1m²柔性模组效率仅16%，效率衰减超过35%。【reality】行业普遍规律：从小面积到大面积制备，效率损失不可避免，但35%的衰减幅度远高于行业头部公司（如纤纳光电宣称从实验室到量产模组效率损失<15%）。【gap】BP未解释为何大面积制备效率损失如此之大，也未提供300x300mm模组（19.6%）到1m²模组（16%）的工艺一致性数据。【结论】contradict：大面积制备的工程化瓶颈可能比BP暗示的严重得多，核心稳定性优势能否在量产模组上复现存疑。",
+      "relation_to_step1": "contradict",
+      "certainty": "high",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "customer_value",
+      "bucket_label": "客户为什么付钱",
+      "point": "智能项圈等场景对稳定性要求高，客户愿意为超长寿命付费",
+      "explanation": "【claim】BP将智能项圈作为首个量产产品，强调其柔性、轻薄、美观、弱光性好，且寿命25年媲美晶硅。【reality】畜牧养殖和宠物定位市场对光伏组件的寿命和可靠性有刚性需求，因为更换困难。晶硅组件脆性、弱光性差，钙钛矿的柔性特性可解决佩戴舒适性问题。【gap】BP未提供智能项圈产品的具体成本、定价和客户验证数据，也未说明如何说服牧民/宠物主为新技术买单。【结论】support：从场景需求看，超长寿命和柔性确实是差异化价值，客户有付费动机。",
+      "relation_to_step1": "support",
+      "certainty": "medium",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "customer_value",
+      "bucket_label": "客户为什么付钱",
+      "point": "客户付费点可能不是稳定性，而是成本或政策合规",
+      "explanation": "【claim】BP强调稳定性是核心卖点，但在地面电站、BIPV等大场景中，客户更关注度电成本（LCOE）和初始投资回报。【reality】当前晶硅组件成本已降至约0.15美元/W，钙钛矿模组成本即使达到BP宣称的1/3，也需考虑系统平衡成本（BOS）和长期可靠性。如果稳定性数据未被第三方认证，电站投资方不会仅凭实验室数据替换成熟晶硅方案。【gap】BP未提供任何客户采购订单或意向书，也未说明客户对稳定性的具体验证要求。【结论】contradict：客户付费动机可能被BP过度简化为稳定性，实际决策更复杂。",
+      "relation_to_step1": "contradict",
+      "certainty": "high",
+      "source_type": "common_sense"
+    },
+    {
+      "bucket_key": "commercialization",
+      "bucket_label": "商业化路径是否成立",
+      "point": "从智能项圈等小场景切入的策略务实，可更快产生收入",
+      "explanation": "【claim】BP规划从智能项圈、室内光伏、BIPV等对成本不敏感、对柔性/美观有特殊要求的场景切入，再走向地面电站。【reality】这种'非主流'路径在硬科技初创公司中常见，可降低早期烧钱风险，积累客户和工艺经验。智能项圈市场（近百亿）虽小但真实，且BP已与内蒙古畜牧企业有合作意向。【gap】BP未提供智能项圈产品的具体开发进度、成本结构和客户验证结果，合作意向是否已转化为订单存疑。【结论】support：路径设计合理，但执行细节缺失。",
+      "relation_to_step1": "support",
+      "certainty": "medium",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "commercialization",
+      "bucket_label": "商业化路径是否成立",
+      "point": "从20MW中试线到GW级产线的节奏过于激进，商业化风险极高",
+      "explanation": "【claim】BP规划2024年建成20MW中试线，2025年启动200MW产线，2026年启动GW产线，2027年实现5亿元销售收入。【reality】钙钛矿行业从百兆瓦到GW级通常需要3-5年，且需要大量资本投入（GW级产线投资约10-20亿元）。BP目前仅完成天使轮2000万融资，后续资金缺口巨大。【gap】BP未说明200MW和GW产线的资金来源、设备供应商、工艺验证计划，也未提供任何客户订单支撑收入预测。【结论】contradict：商业化节奏严重脱离现实，是典型的'PPT规划'。",
+      "relation_to_step1": "contradict",
+      "certainty": "high",
+      "source_type": "common_sense"
+    }
+  ],
+  "publicly_resolvable": [
+    {
+      "bucket_key": "tech_barrier",
+      "item": "稳定性世界纪录的第三方认证情况",
+      "current_conclusion": "BP未提供第三方认证报告，仅提及发表于Science顶刊。通过公开检索，可确认该团队确实在Science上发表过相关论文，但论文中的测试条件（面积、环境）与量产模组是否一致需进一步核实。",
+      "confidence": "medium"
+    }
+  ],
+  "still_unresolved": [
+    {
+      "bucket_key": "tech_barrier",
+      "question": "宣称的50000小时稳定性世界纪录是在多大面积、何种测试条件下获得的？是否有第三方权威机构（如NREL）的认证报告？",
+      "why_unresolved": "BP仅提及发表于Science，未提供具体测试条件和认证信息。该数据是公司最核心的壁垒，但无法通过公开资料验证其真实性和可量产性。",
+      "impact_level": "high"
+    },
+    {
+      "bucket_key": "commercialization",
+      "question": "从20MW中试线到200MW再到GW级产线，核心工程化难点是什么？公司是否有明确的工艺参数固化方案和良率数据？",
+      "why_unresolved": "BP未提供任何量产良率、工艺参数或工程化计划。钙钛矿大面积制备的均匀性、缺陷控制、封装技术是公认难点，公司是否已解决这些瓶颈无法从公开信息判断。",
+      "impact_level": "high"
+    },
+    {
+      "bucket_key": "customer_value",
+      "question": "智能项圈等产品的客户验证结果如何？是否有真实订单或意向书？客户对钙钛矿新技术的接受度和付费意愿如何？",
+      "why_unresolved": "BP仅提及与内蒙古畜牧企业有合作意向，但未提供任何客户验证数据、订单或意向书。智能项圈作为首个量产产品，其市场验证情况是判断商业化可行性的关键。",
+      "impact_level": "high"
+    }
+  ],
+  "tensions": [
+    "实验室稳定性世界纪录 vs 量产模组效率大幅衰减（技术壁垒可能被高估）",
+    "从智能项圈切入的务实策略 vs 2027年5亿收入的激进规划（商业化节奏矛盾）",
+    "稳定性是核心卖点 vs 客户实际付费动机可能更关注成本和政策合规（客户价值错位）"
+  ],
+  "step1_adjustment_hints": {
+    "supported": [
+      "Step1判断'本质是稳定性技术公司'得到支持：稳定性数据确实是公司最核心的差异化资产。",
+      "Step1判断'场景驱动策略务实'得到支持：从智能项圈等小场景切入的路径设计合理。"
+    ],
+    "caution": [
+      "Step1对'稳定性数据真实性和可量产性'的疑问需要升级为最高优先级：实验室数据与量产模组效率差距过大，技术壁垒可能被高估。",
+      "Step1对'百兆瓦产线明年开启过于乐观'的判断需要强化：商业化节奏严重脱离现实，资金缺口巨大，2027年5亿收入预测置信度极低。",
+      "Step1对'客户付费动机'的分析需要补充：客户可能更关注成本和政策合规，而非单纯稳定性。"
+    ],
+    "to_step4": [
+      "必须验证稳定性世界纪录的测试条件和第三方认证情况。",
+      "必须评估从20MW到GW级的工程化难点和资金需求。",
+      "必须获取智能项圈等产品的客户验证数据和订单情况。"
+    ]
+  },
+  "project_structure": {
+    "industry_tags": [
+      {
+        "tag": "advanced_materials",
+        "label": "新材料",
+        "confidence": "medium",
+        "evidence": "命中关键词：材料、分子、原料"
+      },
+      {
+        "tag": "ai_application",
+        "label": "AI应用",
+        "confidence": "medium",
+        "evidence": "命中关键词：AI、模型、数据"
+      },
+      {
+        "tag": "new_energy",
+        "label": "新能源",
+        "confidence": "medium",
+        "evidence": "命中关键词：新能源、电池、光伏"
+      },
+      {
+        "tag": "beauty_ingredients",
+        "label": "美妆/日化原料",
+        "confidence": "low",
+        "evidence": "命中关键词：原料"
+      }
+    ],
+    "business_lines": [
+      {
+        "name": "项目制交付/场景解决方案",
+        "role": "current_business",
+        "status": "项目制落地/场景交付",
+        "revenue_status": "项目收入和毛利待确认",
+        "evidence": "命中关键词：项目、实施、解决方案、港口、矿区、部署",
+        "confidence": "high"
+      },
+      {
+        "name": "美妆/日化原料",
+        "role": "current_business",
+        "status": "当前收入底盘",
+        "revenue_status": "已有收入但金额需确认",
+        "evidence": "命中关键词：原料",
+        "confidence": "low"
+      },
+      {
+        "name": "代运营服务",
+        "role": "growth_story",
+        "status": "持续收入模式待验证",
+        "revenue_status": "是否已经形成稳定持续收入待确认",
+        "evidence": "命中关键词：运营、托管、车辆、车队",
+        "confidence": "high"
+      },
+      {
+        "name": "自动驾驶系统/云端调度平台",
+        "role": "supporting_capability",
+        "status": "支撑主业务的技术/平台能力",
+        "revenue_status": "可能作为技术服务或软件服务收费，需确认",
+        "evidence": "命中关键词：规划、控制",
+        "confidence": "medium"
+      },
+      {
+        "name": "AI研发平台",
+        "role": "supporting_capability",
+        "status": "研发工具/效率工具",
+        "revenue_status": "是否对外收费待确认",
+        "evidence": "命中关键词：AI、预测、人工智能、研发、筛选",
+        "confidence": "high"
+      },
+      {
+        "name": "新能源材料/回收业务",
+        "role": "valuation_story",
+        "status": "远期故事/待验证业务",
+        "revenue_status": "是否已有收入待确认",
+        "evidence": "命中关键词：新能源、电池、锂电、材料、回收",
+        "confidence": "high"
+      }
+    ],
+    "business_model_hypotheses": [
+      {
+        "bucket_key": "manufacturing_product_sales",
+        "bucket_name": "制造/产品销售型",
+        "role": "primary",
+        "current_or_future": "current",
+        "confidence": "low",
+        "evidence": "命中关键词：销售",
+        "why_it_matters": "如果当前收入主要来自产品/设备/原料销售，则公司更接近制造/产品销售型公司。"
+      },
+      {
+        "bucket_key": "project_delivery",
+        "bucket_name": "项目制交付型",
+        "role": "secondary",
+        "current_or_future": "current",
+        "confidence": "high",
+        "evidence": "命中关键词：项目、定制、实施、解决方案",
+        "why_it_matters": "如果收入依赖一个个项目交付，则需要重点验证标准化和毛利稳定性。"
+      },
+      {
+        "bucket_key": "data_ai_model",
+        "bucket_name": "数据/AI模型驱动型",
+        "role": "secondary",
+        "current_or_future": "narrative",
+        "confidence": "high",
+        "evidence": "命中关键词：AI、数据、模型、预测",
+        "why_it_matters": "如果AI只是内部效率工具，则不应按AI平台公司估值；如果形成数据闭环，才可能构成壁垒。"
+      },
+      {
+        "bucket_key": "hardtech_commercialization",
+        "bucket_name": "硬科技商业化型",
+        "role": "secondary",
+        "current_or_future": "mixed",
+        "confidence": "high",
+        "evidence": "命中关键词：技术、专利、研发、材料、量产、中试",
+        "why_it_matters": "硬科技项目重点不是技术先进，而是能否稳定量产并被真实客户持续采购。"
+      },
+      {
+        "bucket_key": "government_industrial_landing",
+        "bucket_name": "政府/产业落地型",
+        "role": "secondary",
+        "current_or_future": "mixed",
+        "confidence": "medium",
+        "evidence": "命中关键词：基金、落地",
+        "why_it_matters": "对政府基金而言，需判断项目是否能真实落地产值、税收、就业和产业协同。"
+      },
+      {
+        "bucket_key": "expansion_story",
+        "bucket_name": "多业务扩张/第二曲线型",
+        "role": "narrative",
+        "current_or_future": "future",
+        "confidence": "low",
+        "evidence": "命中关键词：新能源",
+        "why_it_matters": "如果当前收入来自A业务，但估值故事来自B/C业务，需警惕扩张叙事。"
+      },
+      {
+        "bucket_key": "policy_driven",
+        "bucket_name": "政策驱动型",
+        "role": "risk",
+        "current_or_future": "mixed",
+        "confidence": "medium",
+        "evidence": "命中关键词：示范、双碳",
+        "why_it_matters": "如果需求主要来自政策/补贴/示范项目，需验证政策退坡后的商业可持续性。"
+      },
+      {
+        "bucket_key": "team_credibility_story",
+        "bucket_name": "团队/背书叙事型",
+        "role": "risk",
+        "current_or_future": "narrative",
+        "confidence": "high",
+        "evidence": "命中关键词：院士、博士、实验室、教授",
+        "why_it_matters": "团队/背书需要验证是否转化为排他资源、成果转化或商业化能力。"
+      },
+      {
+        "bucket_key": "financing_valuation_story",
+        "bucket_name": "融资估值叙事型",
+        "role": "risk",
+        "current_or_future": "narrative",
+        "confidence": "medium",
+        "evidence": "命中关键词：融资、估值",
+        "why_it_matters": "需验证融资用途和估值逻辑是否匹配真实业务阶段。"
+      }
+    ],
+    "risk_buckets": [
+      {
+        "bucket_key": "project_delivery",
+        "bucket_name": "项目制交付型",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：定制、实施",
+        "why_it_matters": "如果每个项目都需要定制，规模化后交付和毛利可能承压。"
+      },
+      {
+        "bucket_key": "policy_driven",
+        "bucket_name": "政策驱动型",
+        "risk_role": "risk",
+        "confidence": "low",
+        "evidence": "命中关键词：示范",
+        "why_it_matters": "如果需求由政策驱动，需要验证政策退坡后客户是否仍会付费。"
+      },
+      {
+        "bucket_key": "asset_heavy_operation_cashflow",
+        "bucket_name": "asset_heavy_operation_cashflow",
+        "risk_role": "risk",
+        "confidence": "low",
+        "evidence": "命中关键词：现金流",
+        "why_it_matters": "如果回款慢或需要垫资，增长可能反而加剧资金压力。"
+      },
+      {
+        "bucket_key": "hardtech_commercialization",
+        "bucket_name": "硬科技商业化型",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：传感器、第三方、量产",
+        "why_it_matters": "硬科技项目需要验证关键供应链、量产良率和工程化能力。"
+      },
+      {
+        "bucket_key": "expansion_story",
+        "bucket_name": "多业务扩张/第二曲线型",
+        "risk_role": "risk",
+        "confidence": "low",
+        "evidence": "命中关键词：新能源",
+        "why_it_matters": "多业务扩张可能是真增长，也可能只是扩大估值边界。"
+      },
+      {
+        "bucket_key": "team_credibility_story",
+        "bucket_name": "团队/背书叙事型",
+        "risk_role": "risk",
+        "confidence": "high",
+        "evidence": "命中关键词：院士、博士、实验室、教授",
+        "why_it_matters": "背书需要验证是否真正转化为公司壁垒。"
+      },
+      {
+        "bucket_key": "financing_valuation_story",
+        "bucket_name": "融资估值叙事型",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：融资、估值",
+        "why_it_matters": "融资用途和估值逻辑可能与真实业务阶段不匹配。"
+      }
+    ],
+    "key_uncertainties": [
+      {
+        "uncertainty": "项目交付是否标准化，还是每个客户都需要大量定制？",
+        "why_it_matters": "决定公司能否规模化复制，以及毛利率是否会被交付成本侵蚀。",
+        "related_buckets": [
+          "project_delivery"
+        ],
+        "discriminating_questions": [
+          "一个新项目中有多少模块可以复用？",
+          "单个项目从签约到验收回款需要多久？",
+          "每个项目需要多少实施人员？",
+          "不同项目毛利率差异大不大？"
+        ]
+      },
+      {
+        "uncertainty": "AI/数据能力是核心壁垒，还是研发/交付效率工具？",
+        "why_it_matters": "如果AI只是内部工具，则不应按AI平台公司估值。",
+        "related_buckets": [
+          "data_ai_model"
+        ],
+        "discriminating_questions": [
+          "AI是否直接决定客户购买或产品性能？",
+          "AI相比传统方法带来什么量化提升？",
+          "数据是否独占并形成持续反馈闭环？",
+          "模型输出是否仍需要大量人工验证？"
+        ]
+      },
+      {
+        "uncertainty": "当前真实收入、增长业务和估值叙事是否错位？",
+        "why_it_matters": "如果当前收入来自小业务，但融资按平台/多行业故事估值，可能存在估值泡沫。",
+        "related_buckets": [
+          "expansion_story",
+          "financing_valuation_story"
+        ],
+        "discriminating_questions": [
+          "当前收入主要来自哪条业务线？",
+          "增长最快的业务线收入基数是多少？",
+          "估值主要依据当前收入还是未来平台故事？",
+          "新业务是否已有真实收入、复购和毛利？"
+        ]
+      },
+      {
+        "uncertainty": "客户需求是政策驱动，还是真实经济 ROI 驱动？",
+        "why_it_matters": "如果主要依赖政策/示范项目，政策退坡后收入可持续性存疑。",
+        "related_buckets": [
+          "policy_driven",
+          "government_industrial_landing"
+        ],
+        "discriminating_questions": [
+          "客户中有多少是纯商业ROI驱动？",
+          "如果没有补贴或政策要求，客户是否仍会采购？",
+          "客户是否有明确降本增效测算？",
+          "是否有非政策客户的复购案例？"
+        ]
+      },
+      {
+        "uncertainty": "团队/学术/名人背书是否真正转化为排他壁垒？",
+        "why_it_matters": "学历、奖项、名人、实验室背书本身不等于商业化能力。",
+        "related_buckets": [
+          "team_credibility_story"
+        ],
+        "discriminating_questions": [
+          "专家/实验室与公司的关系是全职、股东、顾问还是普通合作？",
+          "是否有排他性成果转化协议？",
+          "知识产权归属公司还是高校/实验室？",
+          "背书是否已经转化为产品、客户或收入？"
+        ]
+      }
+    ],
+    "structure_summary": "系统初步识别该项目涉及行业：新材料、AI应用、新能源；主要业务线包括：项目制交付/场景解决方案、美妆/日化原料、代运营服务；可能适用的投资逻辑包括：制造/产品销售型、项目制交付型、数据/AI模型驱动型。该识别仅作为后续分析入口，不代表最终判断。"
+  },
+  "raw_text": "{\n  \"selected_buckets\": [\"tech_barrier\", \"customer_value\", \"commercialization\"],\n  \"bucket_outputs\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"bucket_label\": \"技术/壁垒是否成立\",\n      \"point\": \"稳定性世界纪录构成真实技术壁垒\",\n      \"explanation\": \"【claim】BP宣称保持持续光照稳定性超过50000小时（室外35年）和模组稳定性超过43000小时（室外25年）的世界纪录，并发表于Science顶刊。【reality】钙钛矿行业公认稳定性是产业化最大瓶颈，多数竞品（如协鑫光电、纤纳光电）尚未公开达到类似水平的量产模组数据。【gap】BP未明确该纪录是在多大面积、何种测试条件下获得，也未提供第三方权威认证（如NREL）报告。【结论】support：该数据若经第三方验证且可复现，则构成显著技术壁垒。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"bucket_label\": \"技术/壁垒是否成立\",\n      \"point\": \"实验室数据与量产模组性能差距巨大，技术壁垒可能被高估\",\n      \"explanation\": \"【claim】BP展示1cm²电池效率25.2%，但1m²柔性模组效率仅16%，效率衰减超过35%。【reality】行业普遍规律：从小面积到大面积制备，效率损失不可避免，但35%的衰减幅度远高于行业头部公司（如纤纳光电宣称从实验室到量产模组效率损失<15%）。【gap】BP未解释为何大面积制备效率损失如此之大，也未提供300x300mm模组（19.6%）到1m²模组（16%）的工艺一致性数据。【结论】contradict：大面积制备的工程化瓶颈可能比BP暗示的严重得多，核心稳定性优势能否在量产模组上复现存疑。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"high\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"bucket_label\": \"客户为什么付钱\",\n      \"point\": \"智能项圈等场景对稳定性要求高，客户愿意为超长寿命付费\",\n      \"explanation\": \"【claim】BP将智能项圈作为首个量产产品，强调其柔性、轻薄、美观、弱光性好，且寿命25年媲美晶硅。【reality】畜牧养殖和宠物定位市场对光伏组件的寿命和可靠性有刚性需求，因为更换困难。晶硅组件脆性、弱光性差，钙钛矿的柔性特性可解决佩戴舒适性问题。【gap】BP未提供智能项圈产品的具体成本、定价和客户验证数据，也未说明如何说服牧民/宠物主为新技术买单。【结论】support：从场景需求看，超长寿命和柔性确实是差异化价值，客户有付费动机。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"bucket_label\": \"客户为什么付钱\",\n      \"point\": \"客户付费点可能不是稳定性，而是成本或政策合规\",\n      \"explanation\": \"【claim】BP强调稳定性是核心卖点，但在地面电站、BIPV等大场景中，客户更关注度电成本（LCOE）和初始投资回报。【reality】当前晶硅组件成本已降至约0.15美元/W，钙钛矿模组成本即使达到BP宣称的1/3，也需考虑系统平衡成本（BOS）和长期可靠性。如果稳定性数据未被第三方认证，电站投资方不会仅凭实验室数据替换成熟晶硅方案。【gap】BP未提供任何客户采购订单或意向书，也未说明客户对稳定性的具体验证要求。【结论】contradict：客户付费动机可能被BP过度简化为稳定性，实际决策更复杂。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"high\",\n      \"source_type\": \"common_sense\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"bucket_label\": \"商业化路径是否成立\",\n      \"point\": \"从智能项圈等小场景切入的策略务实，可更快产生收入\",\n      \"explanation\": \"【claim】BP规划从智能项圈、室内光伏、BIPV等对成本不敏感、对柔性/美观有特殊要求的场景切入，再走向地面电站。【reality】这种'非主流'路径在硬科技初创公司中常见，可降低早期烧钱风险，积累客户和工艺经验。智能项圈市场（近百亿）虽小但真实，且BP已与内蒙古畜牧企业有合作意向。【gap】BP未提供智能项圈产品的具体开发进度、成本结构和客户验证结果，合作意向是否已转化为订单存疑。【结论】support：路径设计合理，但执行细节缺失。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"bucket_label\": \"商业化路径是否成立\",\n      \"point\": \"从20MW中试线到GW级产线的节奏过于激进，商业化风险极高\",\n      \"explanation\": \"【claim】BP规划2024年建成20MW中试线，2025年启动200MW产线，2026年启动GW产线，2027年实现5亿元销售收入。【reality】钙钛矿行业从百兆瓦到GW级通常需要3-5年，且需要大量资本投入（GW级产线投资约10-20亿元）。BP目前仅完成天使轮2000万融资，后续资金缺口巨大。【gap】BP未说明200MW和GW产线的资金来源、设备供应商、工艺验证计划，也未提供任何客户订单支撑收入预测。【结论】contradict：商业化节奏严重脱离现实，是典型的'PPT规划'。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"high\",\n      \"source_type\": \"common_sense\"\n    }\n  ],\n  \"publicly_resolvable\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"item\": \"稳定性世界纪录的第三方认证情况\",\n      \"current_conclusion\": \"BP未提供第三方认证报告，仅提及发表于Science顶刊。通过公开检索，可确认该团队确实在Science上发表过相关论文，但论文中的测试条件（面积、环境）与量产模组是否一致需进一步核实。\",\n      \"confidence\": \"medium\"\n    }\n  ],\n  \"still_unresolved\": [\n    {\n      \"bucket_key\": \"tech_barrier\",\n      \"question\": \"宣称的50000小时稳定性世界纪录是在多大面积、何种测试条件下获得的？是否有第三方权威机构（如NREL）的认证报告？\",\n      \"why_unresolved\": \"BP仅提及发表于Science，未提供具体测试条件和认证信息。该数据是公司最核心的壁垒，但无法通过公开资料验证其真实性和可量产性。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"commercialization\",\n      \"question\": \"从20MW中试线到200MW再到GW级产线，核心工程化难点是什么？公司是否有明确的工艺参数固化方案和良率数据？\",\n      \"why_unresolved\": \"BP未提供任何量产良率、工艺参数或工程化计划。钙钛矿大面积制备的均匀性、缺陷控制、封装技术是公认难点，公司是否已解决这些瓶颈无法从公开信息判断。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"customer_value\",\n      \"question\": \"智能项圈等产品的客户验证结果如何？是否有真实订单或意向书？客户对钙钛矿新技术的接受度和付费意愿如何？\",\n      \"why_unresolved\": \"BP仅提及与内蒙古畜牧企业有合作意向，但未提供任何客户验证数据、订单或意向书。智能项圈作为首个量产产品，其市场验证情况是判断商业化可行性的关键。\",\n      \"impact_level\": \"high\"\n    }\n  ],\n  \"tensions\": [\n    \"实验室稳定性世界纪录 vs 量产模组效率大幅衰减（技术壁垒可能被高估）\",\n    \"从智能项圈切入的务实策略 vs 2027年5亿收入的激进规划（商业化节奏矛盾）\",\n    \"稳定性是核心卖点 vs 客户实际付费动机可能更关注成本和政策合规（客户价值错位）\"\n  ],\n  \"step1_adjustment_hints\": {\n    \"supported\": [\n      \"Step1判断'本质是稳定性技术公司'得到支持：稳定性数据确实是公司最核心的差异化资产。\",\n      \"Step1判断'场景驱动策略务实'得到支持：从智能项圈等小场景切入的路径设计合理。\"\n    ],\n    \"caution\": [\n      \"Step1对'稳定性数据真实性和可量产性'的疑问需要升级为最高优先级：实验室数据与量产模组效率差距过大，技术壁垒可能被高估。\",\n      \"Step1对'百兆瓦产线明年开启过于乐观'的判断需要强化：商业化节奏严重脱离现实，资金缺口巨大，2027年5亿收入预测置信度极低。\",\n      \"Step1对'客户付费动机'的分析需要补充：客户可能更关注成本和政策合规，而非单纯稳定性。\"\n    ],\n    \"to_step4\": [\n      \"必须验证稳定性世界纪录的测试条件和第三方认证情况。\",\n      \"必须评估从20MW到GW级的工程化难点和资金需求。\",\n      \"必须获取智能项圈等产品的客户验证数据和订单情况。\"\n    ]\n  }\n}"
+}

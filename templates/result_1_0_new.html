@@ -431,81 +431,8 @@
 
   <!-- ════ ④ 会前判断 ════ -->
   <div class="tab-content" id="tab-step5">
-    {% if results.step5 %}
-      {# 当前假设 #}
-      {% if results.step5.current_hypothesis %}
-      <div class="step5-hypothesis">
-        <strong style="font-size:12px;color:#1d4ed8">🧭 当前假设（可被推翻）</strong>
-        <p style="margin:6px 0 0;line-height:1.6">{{ results.step5.current_hypothesis }}</p>
-      </div>
-      {% endif %}
-
-      {# 为什么可能是错的 #}
-      {% if results.step5.why_this_might_be_wrong %}
-      <div class="content-card" style="border-left:4px solid #eab308">
-        <h3>⚠️ 为什么这个假设可能是错的</h3>
-        {% for r in results.step5.why_this_might_be_wrong %}
-          <div class="item-block" style="border-left:3px solid #eab308">{{ r }}</div>
-        {% endfor %}
-      </div>
-      {% endif %}
-
-      {# 关键验证点 #}
-      {% if results.step5.key_validation_points %}
-      <div class="content-card">
-        <h3>🎯 关键验证点</h3>
-        {% for vp in results.step5.key_validation_points %}
-        <div class="step5-validate">
-          <strong>{{ vp.point }}</strong>
-          <div style="font-size:12px;color:#374151;margin-top:4px">为什么重要：{{ vp.why_it_matters }}</div>
-          <div style="font-size:12px;color:#059669;margin-top:2px">要观察什么：{{ vp.what_to_look_for }}</div>
-        </div>
-        {% endfor %}
-      </div>
-      {% endif %}
-
-      {# 放弃信号 #}
-      {% if results.step5.deal_breaker_signals %}
-      <div class="content-card">
-        <h3>🚫 放弃信号（一旦出现就停止跟进）</h3>
-        {% for db in results.step5.deal_breaker_signals %}
-        <div class="step5-breaker">
-          <strong>{{ db.signal }}</strong>
-          <div style="font-size:12px;color:#6b7280;margin-top:2px">→ {{ db.implication }}</div>
-        </div>
-        {% endfor %}
-      </div>
-      {% endif %}
-
-      {# 会前目标 #}
-      {% if results.step5.meeting_objective %}
-      <div class="content-card" style="border-left:4px solid #2563eb">
-        <h3>📋 会前目标</h3>
-        <p style="line-height:1.6">{{ results.step5.meeting_objective }}</p>
-      </div>
-      {% endif %}
-
-      {# 下一步策略 #}
-      {% if results.step5.next_step_strategy %}
-      <div class="content-card">
-        <h3>🔀 下一步策略</h3>
-        <table style="width:100%;border-collapse:collapse;font-size:13px">
-          <tr style="background:#f9fafb">
-            <td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:600;width:28%">✅ 验证通过</td>
-            <td style="padding:8px 12px;border:1px solid #e5e7eb">{{ results.step5.next_step_strategy.if_validated }}</td>
-          </tr>
-          <tr>
-            <td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:600">❌ 验证不通过</td>
-            <td style="padding:8px 12px;border:1px solid #e5e7eb">{{ results.step5.next_step_strategy.if_not_validated }}</td>
-          </tr>
-          <tr style="background:#eff6ff">
-            <td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:600;color:#2563eb">📌 当前建议</td>
-            <td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:600">{{ results.step5.next_step_strategy.current_action }}</td>
-          </tr>
-        </table>
-      </div>
-      {% endif %}
-
+    {% if results.step5 and results.step5.decision_md %}
+      <div class="md-body" style="font-size:13px">{{ results.step5.decision_md | replace('\n','<br>') | safe }}</div>
       <div class="download-zone">
         <a href="{{ url_for('download_step_file', project_id=project_id, step_name='step5', file_name='step5_decision.md') }}"
            class="download-primary">⭐ 下载会前判断总结</a>
@@ -513,6 +440,10 @@
            class="download-secondary">📄 step5_output.json（原始）</a>
         <a href="{{ url_for('download_step_file', project_id=project_id, step_name='step0', file_name='step0.json') }}"
            class="download-secondary">👤 step0.json（当前画像）</a>
+      </div>
+    {% elif results.step5 %}
+      <div class="content-card">
+        <p style="color:#9ca3af">Step5 已输出，但 decision_md 为空，请检查 Step5 运行结果。</p>
       </div>
     {% else %}
       <div class="content-card">
