@@ -61,6 +61,14 @@ class InvestmentLogic(BaseModel):
     risk_type: List[str] = Field(description="主要风险类型，如 重资产/非标项目/政策驱动")
 
 
+class FundFit(BaseModel):
+    """项目与当前基金/Profile的匹配度判断"""
+    fit_summary: str = Field(description="一句话说明该项目与当前基金/Profile的匹配度")
+    matched_points: List[str] = Field(description="与当前基金/Profile匹配的点")
+    mismatch_or_uncertain_points: List[str] = Field(description="不匹配或尚未验证的点")
+    required_verifications: List[str] = Field(description="下一轮必须验证的基金匹配问题")
+
+
 class Step5Output(BaseModel):
     """
     Step5 决策收敛输出
@@ -87,6 +95,10 @@ class Step5Output(BaseModel):
         description="核心风险，来源优先级：Step3B tensions > Step3B packaging > Step3 risk_buckets"
     )
 
+    fund_fit: FundFit = Field(
+        description="项目与当前基金/Profile的匹配度判断"
+    )
+
     must_ask_questions: List[QuestionItem] = Field(
         description="必问问题，必须来自 Step4 gaps（含 red_flag_question），不允许重新发明"
     )
@@ -98,45 +110,72 @@ class Step5Output(BaseModel):
     def to_markdown(self) -> str:
         """转换为可读 Markdown"""
         lines = []
-
-        # 核心判断
-        lines.append("# 投资决策框架\n")
-        lines.append("## 核心判断\n")
         j = self.core_judgement
+
+        # 标题
+        lines.append("# 会前初步判断\n")
+
+        # 1. 我现在对公司的定性
+        lines.append("## 1. 我现在对公司的定性\n")
         lines.append(f"**一句话判断**：{j.one_liner}\n")
         lines.append(f"**公司本质**：{j.essence}\n")
         lines.append(f"**决策**：`{j.decision}`（信心度：{j.confidence}）\n")
         lines.append(f"**核心原因**：{j.core_reason}\n")
 
-        # 继续看
-        lines.append("\n## 值得继续看\n")
+        # 2. 为什么还值得继续看
+        lines.append("\n## 2. 为什么还值得继续看（优势 & 相对确定性）\n")
         for i, r in enumerate(self.reasons_to_meet, 1):
             lines.append(f"{i}. **{r.point}**")
             lines.append(f"   → {r.why_it_matters}\n")
 
-        # 不投
-        lines.append("\n## 为什么不投\n")
+        # 3. 我最担心的几个问题
+        lines.append("\n## 3. 我最担心的几个问题（核心不确定性）\n")
         for i, r in enumerate(self.reasons_to_pass, 1):
             lines.append(f"{i}. **{r.point}**")
             lines.append(f"   → {r.why_it_matters}\n")
 
-        # 核心风险
-        lines.append("\n## 核心风险\n")
+        # 3 后半：主要风险（合并 key_risks）
+        lines.append("\n### 主要风险\n")
         sev_emoji = {"high": "[P1]", "medium": "[P2]", "low": "[P3]"}
         for r in self.key_risks:
             lines.append(f"- {sev_emoji.get(r.severity, '')} **{r.risk}**")
             lines.append(f"  → {r.why_it_matters}\n")
 
-        # 必问问题
-        lines.append("\n## 必问问题\n")
+        # 4. 和基金匹配度怎么看
+        lines.append("\n## 4. 和基金匹配度怎么看\n")
+        f = self.fund_fit
+        lines.append(f"**匹配结论**：{f.fit_summary}\n")
+        if f.matched_points:
+            lines.append("**匹配点**：")
+            for p in f.matched_points:
+                lines.append(f"- {p}")
+            lines.append("")
+        if f.mismatch_or_uncertain_points:
+            lines.append("**不匹配/未验证点**：")
+            for p in f.mismatch_or_uncertain_points:
+                lines.append(f"- {p}")
+            lines.append("")
+        if f.required_verifications:
+            lines.append("**下一轮必须验证**：")
+            for v in f.required_verifications:
+                lines.append(f"- {v}")
+            lines.append("")
+
+        # 5. 下一轮必须验证的问题
+        lines.append("\n## 5. 下一轮必须验证的问题\n")
         for i, q in enumerate(self.must_ask_questions, 1):
             lines.append(f"{i}. {q.question}")
             lines.append(f"   目的：{q.purpose}\n")
 
-        # 投资逻辑
-        lines.append("\n## 投资逻辑归因\n")
-        lines.append(f"**核心逻辑**：{self.investment_logic.primary_type}\n")
-        lines.append(f"**次要逻辑**：{', '.join(self.investment_logic.secondary_types)}\n")
-        lines.append(f"**风险类型**：{', '.join(self.investment_logic.risk_type)}\n")
+        # 6. 当前推进建议
+        lines.append("\n## 6. 当前推进建议\n")
+        lines.append(f"**决策**：`{j.decision}`（信心度：{j.confidence}）\n")
+        lines.append(f"**核心原因**：{j.core_reason}\n")
+        decision_explain = {
+            "meet": "建议继续约第一轮交流",
+            "maybe": "可以谨慎推进，但必须围绕关键问题验证",
+            "pass": "当前不建议推进",
+        }
+        lines.append(f"**中文解释**：{decision_explain.get(j.decision, j.decision)}\n")
 
         return "\n".join(lines)

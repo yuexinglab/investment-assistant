@@ -62,6 +62,7 @@ def run_step5(
     step4_output: Dict[str, Any],
     call_llm: Callable[[str, str], str],
     investment_modules: Optional[List[Dict[str, Any]]] = None,
+    profile: Optional[Dict[str, Any]] = None,
     max_retries: int = 2,
 ) -> Step5Output:
     """
@@ -89,6 +90,7 @@ def run_step5(
             step3b_json=step3b_json,
             step4_output=step4_output,
             investment_modules=investment_modules,
+            profile=profile,
         )
 
         # System prompt
@@ -137,6 +139,7 @@ class Step5Service:
         step3_json: Dict[str, Any],
         step4_internal: Dict[str, Any],
         step3b_json: Dict[str, Any] = None,
+        profile: Optional[Dict[str, Any]] = None,
     ) -> Step5Output:
         """
         兼容旧接口（step4_internal），内部会包装成 step4_output
@@ -151,5 +154,6 @@ class Step5Service:
             step3b_json=step3b_json,
             step4_output={"internal_json": step4_output},
             call_llm=self.call_llm,
+            profile=profile,
             max_retries=self.max_retries,
         )

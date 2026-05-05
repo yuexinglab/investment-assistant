@@ -256,6 +256,8 @@ def run_step5(
     step3b_json: dict = None,
     step4_output_full: dict = None,
     investment_modules: list = None,
+    profile: dict = None,
+    project_dir: str = None,
 ) -> dict:
     """运行 Step5，返回 dict"""
     import sys
@@ -273,6 +275,13 @@ def run_step5(
     # 使用完整 step4_output（包含 meeting_brief_md）传给 Step5
     step4_out = step4_output_full if step4_output_full is not None else step4_internal
 
+    # [DEBUG] 写 debug 文件到项目目录
+    if project_dir:
+        debug_path = os.path.join(project_dir, "debug_profile_check.txt")
+        with open(debug_path, "a", encoding="utf-8") as f:
+            profile_id = profile.get('profile_id') if profile else None
+            f.write(f"[DEBUG] Step5 service received profile: {profile_id}\n")
+
     result = _run_step5(
         step1_text=step1_text,
         step3_json=step3_json,
@@ -280,6 +289,7 @@ def run_step5(
         step4_output={"internal_json": step4_internal, "meeting_brief_md": step4_out.get("meeting_brief_md", "")} if isinstance(step4_out, dict) else {"internal_json": step4_internal},
         call_llm=_call_llm,
         investment_modules=investment_modules,
+        profile=profile,
     )
 
     if hasattr(result, "model_dump"):
@@ -401,6 +411,8 @@ def run_pipeline_v1(
             step3b_json=results.get("step3b"),
             step4_output_full=step4_result,
             investment_modules=investment_modules,
+            profile=profile,
+            project_dir=project_dir,
         )
         results["step5"] = step5_result
         _save_step(project_dir, "step5", "step5_decision.md", step5_result.get("decision_md", ""))
@@ -471,7 +483,25 @@ def run_single_step(step_name: str, project_dir: str) -> dict:
         raise FileNotFoundError("未找到 Step4 internal，请先运行 Step4")
 
     if step_name == "step5":
-        result = run_step5(step1_text, step3_json, step4_internal)
+        # 单独运行 step5 时也需要加载 profile 和 step3b
+        step3b_json = _load_step_json(project_dir, "step3b", "step3b.json")
+        if not step3b_json:
+            step3b_json = {}
+            print("[DEBUG] 单独运行Step5，未找到 step3b.json，使用空字典")
+
+        try:
+            from services.profile.profile_loader import load_project_profile
+            profile = load_project_profile(project_dir)
+            print(f"[DEBUG] 单独运行Step5，加载 profile: {profile.get('profile_id')}")
+        except Exception as e:
+            print(f"[DEBUG] 单独运行Step5，profile 加载失败: {e}")
+            profile = None
+
+        result = run_step5(step1_text, step3_json, step4_internal,
+                           step3b_json=step3b_json,
+                           step4_output_full={"internal_json": step4_internal},
+                           profile=profile,
+                           project_dir=project_dir)
         _save_step(project_dir, "step5", "step5_decision.md", result.get("decision_md", ""))
         _save_step(project_dir, "step5", "step5_output.json",
                    json.dumps(result, ensure_ascii=False, indent=2))

@@ -1,0 +1,409 @@
+{
+  "selected_buckets": [
+    "商业模式与收入结构",
+    "产业链与价值层级",
+    "客户购买驱动",
+    "竞争格局与替代方案",
+    "关键成功要素",
+    "常见投资误判"
+  ],
+  "bucket_outputs": [
+    {
+      "bucket_key": "商业模式与收入结构",
+      "bucket_label": "商业模式与收入结构",
+      "point": "当前收入模式为项目制交付与产品销售混合，但主要收入来源尚未明确。",
+      "explanation": "BP显示公司处于20MW中试阶段，产品包括刚性/柔性模组，但未披露真实收入。规划中2025年销售收入1500万元，2026年5000万元，2027年5亿元，但缺乏现有订单支撑。商业模式本质是‘技术授权+产品销售’，而非平台或订阅。",
+      "relation_to_step1": "support",
+      "certainty": "high",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "产业链与价值层级",
+      "bucket_label": "产业链与价值层级",
+      "point": "公司处于钙钛矿光伏产业链中游的组件制造环节，价值中等，受上游材料与下游应用双重挤压。",
+      "explanation": "产业链分为：上游材料（钙钛矿前驱体、封装材料）、中游组件制造（黑冕所在）、下游应用（电站、BIPV、车载等）。中游制造环节竞争激烈，价值受制于量产良率和成本，而非技术独特性。黑冕宣称的‘成本仅为晶硅1/3’在20MW规模下不具经济性。",
+      "relation_to_step1": "neutral",
+      "certainty": "high",
+      "source_type": "common_sense"
+    },
+    {
+      "bucket_key": "客户购买驱动",
+      "bucket_label": "客户购买驱动",
+      "point": "客户购买核心驱动力是性能（稳定性、柔性、弱光性）和差异化应用，但当前缺乏真实付费验证。",
+      "explanation": "BP列举了BIPV、车载、畜牧、室内光伏等场景，但合作意向仅停留在‘战略协议’或‘意向订单’，未转化为真实采购。客户决策因素中，价格（相比晶硅）和可靠性（稳定性）是关键，但黑冕尚未证明量产模组能同时满足这两点。",
+      "relation_to_step1": "support",
+      "certainty": "medium",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "竞争格局与替代方案",
+      "bucket_label": "竞争格局与替代方案",
+      "point": "行业头部企业（协鑫、纤纳）已进入百兆瓦级量产，黑冕在规模和进度上明显落后。",
+      "explanation": "主要竞争对手包括协鑫光电（100MW产线）、纤纳光电（GW级规划）、极电光能等。替代方案包括晶硅组件（成熟、低成本）和薄膜电池（CIGS、碲化镉）。黑冕的‘稳定性’优势若无法在量产中复现，将难以与头部企业竞争。",
+      "relation_to_step1": "support",
+      "certainty": "high",
+      "source_type": "common_sense"
+    },
+    {
+      "bucket_key": "关键成功要素",
+      "bucket_label": "关键成功要素",
+      "point": "决定成败的关键是‘从实验室稳定性到量产稳定性的转化能力’，而非单纯技术指标。",
+      "explanation": "行业关键成功要素包括：量产良率、成本控制、客户验证周期、供应链管理。黑冕团队为纯学术背景，缺乏产业制造经验，这是最大短板。BP中未提及良率、节拍、单片成本等关键量产数据。",
+      "relation_to_step1": "support",
+      "certainty": "high",
+      "source_type": "common_sense"
+    },
+    {
+      "bucket_key": "常见投资误判",
+      "bucket_label": "常见投资误判",
+      "point": "最容易误判的是将‘实验室世界纪录’等同于‘量产竞争力’，以及将‘意向合作’等同于‘真实订单’。",
+      "explanation": "投资人常高估技术壁垒，低估量产难度。黑冕的稳定性世界纪录基于小面积器件，而非大面积模组。此外，BP中‘某头部车企’等合作未披露具体进展，容易误导投资人认为已获客户验证。",
+      "relation_to_step1": "support",
+      "certainty": "high",
+      "source_type": "common_sense"
+    }
+  ],
+  "publicly_resolvable": [
+    {
+      "bucket_key": "商业模式与收入结构",
+      "item": "当前是否有真实收入？收入来源是产品销售还是项目制？",
+      "current_conclusion": "BP未披露真实收入，规划中2025年才有1500万元销售收入，目前可能无收入或仅少量测试收入。",
+      "confidence": "high"
+    },
+    {
+      "bucket_key": "竞争格局与替代方案",
+      "item": "头部企业（协鑫、纤纳）的稳定性数据如何？",
+      "current_conclusion": "公开信息显示协鑫、纤纳已实现百兆瓦级量产，但稳定性数据未公开。黑冕的50000小时稳定性若未获第三方认证，则无法直接对比。",
+      "confidence": "medium"
+    }
+  ],
+  "still_unresolved": [
+    {
+      "bucket_key": "客户购买驱动",
+      "question": "BP中提到的‘某头部新能源车企’和‘某头部玻璃企业’的合作，是否已签署正式采购合同或联合开发协议？具体进展如何？",
+      "why_unresolved": "这些合作是公司市场策略的核心支撑，但BP仅提及‘战略合作协议’或‘合作意向’，未提供任何细节。如果只是意向，则商业化路径存在重大不确定性。",
+      "impact_level": "high"
+    },
+    {
+      "bucket_key": "关键成功要素",
+      "question": "在20MW中试线上，300mm*300mm模组的稳定性数据、良率、节拍和单片成本是多少？能否提供第三方认证报告？",
+      "why_unresolved": "这是判断‘实验室稳定性能否转化为量产稳定性’的关键。如果中试线数据远低于实验室数据，则公司技术优势无法商业化。",
+      "impact_level": "high"
+    },
+    {
+      "bucket_key": "商业模式与收入结构",
+      "question": "公司当前是否有真实收入？如果有，收入来源是产品销售还是项目制？毛利率和现金流状况如何？",
+      "why_unresolved": "BP未披露任何收入数据，规划中2025年才有1500万元收入。如果当前无收入，则公司处于纯研发阶段，估值应基于技术阶段而非商业化阶段。",
+      "impact_level": "high"
+    },
+    {
+      "bucket_key": "竞争格局与替代方案",
+      "question": "公司宣称的‘成本仅为晶硅1/3’是基于什么规模的计算？在20MW中试线上，模组成本是否已低于晶硅？",
+      "why_unresolved": "成本优势是公司核心卖点之一，但若仅基于理论推算而非实际产线数据，则可能严重高估。如果当前成本远高于晶硅，则市场策略需重新评估。",
+      "impact_level": "high"
+    },
+    {
+      "bucket_key": "关键成功要素",
+      "question": "创始团队均为学术背景，是否有计划引入具备光伏产业大规模制造经验的COO或销售VP？目前团队中是否有产业背景成员？",
+      "why_unresolved": "钙钛矿量产需要深厚的工程化经验，纯学术团队在良率、供应链、客户导入方面存在明显短板。如果团队无产业经验，则商业化风险极高。",
+      "impact_level": "high"
+    }
+  ],
+  "tensions": [
+    "当前公司定位为‘中试阶段的技术型公司’，但BP叙事为‘即将规模化量产的组件供应商’，存在阶段错位。",
+    "BP强调‘稳定性世界纪录’和‘成本仅为晶硅1/3’，但缺乏量产验证和真实客户订单，技术优势与商业现实之间存在张力。",
+    "公司宣称‘多功能、高稳定性钙钛矿光伏模组技术引领者’，但实际处于20MW中试线，与头部企业百兆瓦级量产存在规模差距。"
+  ],
+  "step1_adjustment_hints": {
+    "supported": [
+      "Step1判断公司为‘技术型公司’而非‘量产型公司’，与行业校准一致。",
+      "Step1指出的‘稳定性验证细节’和‘量产工艺成本’是核心问题，与行业关键成功要素吻合。"
+    ],
+    "caution": [
+      "Step1中‘成本仅为晶硅1/3’的引用需谨慎，BP中未提供实际产线成本数据，可能为理论推算。"
+    ],
+    "to_step4": []
+  },
+  "project_structure": {
+    "industry_tags": [
+      {
+        "tag": "advanced_materials",
+        "label": "新材料",
+        "confidence": "medium",
+        "evidence": "命中关键词：材料、分子、原料"
+      },
+      {
+        "tag": "ai_application",
+        "label": "AI应用",
+        "confidence": "medium",
+        "evidence": "命中关键词：AI、模型、数据"
+      },
+      {
+        "tag": "new_energy",
+        "label": "新能源",
+        "confidence": "medium",
+        "evidence": "命中关键词：新能源、电池、光伏"
+      },
+      {
+        "tag": "beauty_ingredients",
+        "label": "美妆/日化原料",
+        "confidence": "low",
+        "evidence": "命中关键词：原料"
+      }
+    ],
+    "business_lines": [
+      {
+        "name": "项目制交付/场景解决方案",
+        "role": "current_business",
+        "status": "项目制落地/场景交付",
+        "revenue_status": "项目收入和毛利待确认",
+        "evidence": "命中关键词：项目、实施、解决方案、港口、矿区、部署",
+        "confidence": "high"
+      },
+      {
+        "name": "美妆/日化原料",
+        "role": "current_business",
+        "status": "当前收入底盘",
+        "revenue_status": "已有收入但金额需确认",
+        "evidence": "命中关键词：原料",
+        "confidence": "low"
+      },
+      {
+        "name": "代运营服务",
+        "role": "growth_story",
+        "status": "持续收入模式待验证",
+        "revenue_status": "是否已经形成稳定持续收入待确认",
+        "evidence": "命中关键词：运营、托管、车辆、车队",
+        "confidence": "high"
+      },
+      {
+        "name": "自动驾驶系统/云端调度平台",
+        "role": "supporting_capability",
+        "status": "支撑主业务的技术/平台能力",
+        "revenue_status": "可能作为技术服务或软件服务收费，需确认",
+        "evidence": "命中关键词：规划、控制",
+        "confidence": "medium"
+      },
+      {
+        "name": "AI研发平台",
+        "role": "supporting_capability",
+        "status": "研发工具/效率工具",
+        "revenue_status": "是否对外收费待确认",
+        "evidence": "命中关键词：AI、预测、人工智能、研发、筛选",
+        "confidence": "high"
+      },
+      {
+        "name": "新能源材料/回收业务",
+        "role": "valuation_story",
+        "status": "远期故事/待验证业务",
+        "revenue_status": "是否已有收入待确认",
+        "evidence": "命中关键词：新能源、电池、锂电、材料、回收",
+        "confidence": "high"
+      }
+    ],
+    "business_model_hypotheses": [
+      {
+        "bucket_key": "manufacturing_product_sales",
+        "bucket_name": "制造/产品销售型",
+        "role": "primary",
+        "current_or_future": "current",
+        "confidence": "low",
+        "evidence": "命中关键词：销售",
+        "why_it_matters": "如果当前收入主要来自产品/设备/原料销售，则公司更接近制造/产品销售型公司。"
+      },
+      {
+        "bucket_key": "project_delivery",
+        "bucket_name": "项目制交付型",
+        "role": "secondary",
+        "current_or_future": "current",
+        "confidence": "high",
+        "evidence": "命中关键词：项目、定制、实施、解决方案",
+        "why_it_matters": "如果收入依赖一个个项目交付，则需要重点验证标准化和毛利稳定性。"
+      },
+      {
+        "bucket_key": "data_ai_model",
+        "bucket_name": "数据/AI模型驱动型",
+        "role": "secondary",
+        "current_or_future": "narrative",
+        "confidence": "high",
+        "evidence": "命中关键词：AI、数据、模型、预测",
+        "why_it_matters": "如果AI只是内部效率工具，则不应按AI平台公司估值；如果形成数据闭环，才可能构成壁垒。"
+      },
+      {
+        "bucket_key": "hardtech_commercialization",
+        "bucket_name": "硬科技商业化型",
+        "role": "secondary",
+        "current_or_future": "mixed",
+        "confidence": "high",
+        "evidence": "命中关键词：技术、专利、研发、材料、量产、中试",
+        "why_it_matters": "硬科技项目重点不是技术先进，而是能否稳定量产并被真实客户持续采购。"
+      },
+      {
+        "bucket_key": "government_industrial_landing",
+        "bucket_name": "政府/产业落地型",
+        "role": "secondary",
+        "current_or_future": "mixed",
+        "confidence": "medium",
+        "evidence": "命中关键词：基金、落地",
+        "why_it_matters": "对政府基金而言，需判断项目是否能真实落地产值、税收、就业和产业协同。"
+      },
+      {
+        "bucket_key": "expansion_story",
+        "bucket_name": "多业务扩张/第二曲线型",
+        "role": "narrative",
+        "current_or_future": "future",
+        "confidence": "low",
+        "evidence": "命中关键词：新能源",
+        "why_it_matters": "如果当前收入来自A业务，但估值故事来自B/C业务，需警惕扩张叙事。"
+      },
+      {
+        "bucket_key": "policy_driven",
+        "bucket_name": "政策驱动型",
+        "role": "risk",
+        "current_or_future": "mixed",
+        "confidence": "medium",
+        "evidence": "命中关键词：示范、双碳",
+        "why_it_matters": "如果需求主要来自政策/补贴/示范项目，需验证政策退坡后的商业可持续性。"
+      },
+      {
+        "bucket_key": "team_credibility_story",
+        "bucket_name": "团队/背书叙事型",
+        "role": "risk",
+        "current_or_future": "narrative",
+        "confidence": "high",
+        "evidence": "命中关键词：院士、博士、实验室、教授",
+        "why_it_matters": "团队/背书需要验证是否转化为排他资源、成果转化或商业化能力。"
+      },
+      {
+        "bucket_key": "financing_valuation_story",
+        "bucket_name": "融资估值叙事型",
+        "role": "risk",
+        "current_or_future": "narrative",
+        "confidence": "medium",
+        "evidence": "命中关键词：融资、估值、扩产",
+        "why_it_matters": "需验证融资用途和估值逻辑是否匹配真实业务阶段。"
+      }
+    ],
+    "risk_buckets": [
+      {
+        "bucket_key": "project_delivery",
+        "bucket_name": "项目制交付型",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：定制、实施",
+        "why_it_matters": "如果每个项目都需要定制，规模化后交付和毛利可能承压。"
+      },
+      {
+        "bucket_key": "policy_driven",
+        "bucket_name": "政策驱动型",
+        "risk_role": "risk",
+        "confidence": "low",
+        "evidence": "命中关键词：示范",
+        "why_it_matters": "如果需求由政策驱动，需要验证政策退坡后客户是否仍会付费。"
+      },
+      {
+        "bucket_key": "hardtech_commercialization",
+        "bucket_name": "硬科技商业化型",
+        "risk_role": "risk",
+        "confidence": "high",
+        "evidence": "命中关键词：供应商、传感器、第三方、良率、量产",
+        "why_it_matters": "硬科技项目需要验证关键供应链、量产良率和工程化能力。"
+      },
+      {
+        "bucket_key": "expansion_story",
+        "bucket_name": "多业务扩张/第二曲线型",
+        "risk_role": "risk",
+        "confidence": "low",
+        "evidence": "命中关键词：新能源",
+        "why_it_matters": "多业务扩张可能是真增长，也可能只是扩大估值边界。"
+      },
+      {
+        "bucket_key": "team_credibility_story",
+        "bucket_name": "团队/背书叙事型",
+        "risk_role": "risk",
+        "confidence": "high",
+        "evidence": "命中关键词：院士、博士、实验室、教授",
+        "why_it_matters": "背书需要验证是否真正转化为公司壁垒。"
+      },
+      {
+        "bucket_key": "financing_valuation_story",
+        "bucket_name": "融资估值叙事型",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：融资、估值、扩产",
+        "why_it_matters": "融资用途和估值逻辑可能与真实业务阶段不匹配。"
+      }
+    ],
+    "key_uncertainties": [
+      {
+        "uncertainty": "项目交付是否标准化，还是每个客户都需要大量定制？",
+        "why_it_matters": "决定公司能否规模化复制，以及毛利率是否会被交付成本侵蚀。",
+        "related_buckets": [
+          "project_delivery"
+        ],
+        "discriminating_questions": [
+          "一个新项目中有多少模块可以复用？",
+          "单个项目从签约到验收回款需要多久？",
+          "每个项目需要多少实施人员？",
+          "不同项目毛利率差异大不大？"
+        ]
+      },
+      {
+        "uncertainty": "AI/数据能力是核心壁垒，还是研发/交付效率工具？",
+        "why_it_matters": "如果AI只是内部工具，则不应按AI平台公司估值。",
+        "related_buckets": [
+          "data_ai_model"
+        ],
+        "discriminating_questions": [
+          "AI是否直接决定客户购买或产品性能？",
+          "AI相比传统方法带来什么量化提升？",
+          "数据是否独占并形成持续反馈闭环？",
+          "模型输出是否仍需要大量人工验证？"
+        ]
+      },
+      {
+        "uncertainty": "当前真实收入、增长业务和估值叙事是否错位？",
+        "why_it_matters": "如果当前收入来自小业务，但融资按平台/多行业故事估值，可能存在估值泡沫。",
+        "related_buckets": [
+          "expansion_story",
+          "financing_valuation_story"
+        ],
+        "discriminating_questions": [
+          "当前收入主要来自哪条业务线？",
+          "增长最快的业务线收入基数是多少？",
+          "估值主要依据当前收入还是未来平台故事？",
+          "新业务是否已有真实收入、复购和毛利？"
+        ]
+      },
+      {
+        "uncertainty": "客户需求是政策驱动，还是真实经济 ROI 驱动？",
+        "why_it_matters": "如果主要依赖政策/示范项目，政策退坡后收入可持续性存疑。",
+        "related_buckets": [
+          "policy_driven",
+          "government_industrial_landing"
+        ],
+        "discriminating_questions": [
+          "客户中有多少是纯商业ROI驱动？",
+          "如果没有补贴或政策要求，客户是否仍会采购？",
+          "客户是否有明确降本增效测算？",
+          "是否有非政策客户的复购案例？"
+        ]
+      },
+      {
+        "uncertainty": "团队/学术/名人背书是否真正转化为排他壁垒？",
+        "why_it_matters": "学历、奖项、名人、实验室背书本身不等于商业化能力。",
+        "related_buckets": [
+          "team_credibility_story"
+        ],
+        "discriminating_questions": [
+          "专家/实验室与公司的关系是全职、股东、顾问还是普通合作？",
+          "是否有排他性成果转化协议？",
+          "知识产权归属公司还是高校/实验室？",
+          "背书是否已经转化为产品、客户或收入？"
+        ]
+      }
+    ],
+    "structure_summary": "系统初步识别该项目涉及行业：新材料、AI应用、新能源；主要业务线包括：项目制交付/场景解决方案、美妆/日化原料、代运营服务；可能适用的投资逻辑包括：制造/产品销售型、项目制交付型、数据/AI模型驱动型。该识别仅作为后续分析入口，不代表最终判断。"
+  },
+  "raw_text": "{\n  \"selected_buckets\": [\n    \"商业模式与收入结构\",\n    \"产业链与价值层级\",\n    \"客户购买驱动\",\n    \"竞争格局与替代方案\",\n    \"关键成功要素\",\n    \"常见投资误判\"\n  ],\n  \"bucket_outputs\": [\n    {\n      \"bucket_key\": \"商业模式与收入结构\",\n      \"bucket_label\": \"商业模式与收入结构\",\n      \"point\": \"当前收入模式为项目制交付与产品销售混合，但主要收入来源尚未明确。\",\n      \"explanation\": \"BP显示公司处于20MW中试阶段，产品包括刚性/柔性模组，但未披露真实收入。规划中2025年销售收入1500万元，2026年5000万元，2027年5亿元，但缺乏现有订单支撑。商业模式本质是‘技术授权+产品销售’，而非平台或订阅。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"high\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"产业链与价值层级\",\n      \"bucket_label\": \"产业链与价值层级\",\n      \"point\": \"公司处于钙钛矿光伏产业链中游的组件制造环节，价值中等，受上游材料与下游应用双重挤压。\",\n      \"explanation\": \"产业链分为：上游材料（钙钛矿前驱体、封装材料）、中游组件制造（黑冕所在）、下游应用（电站、BIPV、车载等）。中游制造环节竞争激烈，价值受制于量产良率和成本，而非技术独特性。黑冕宣称的‘成本仅为晶硅1/3’在20MW规模下不具经济性。\",\n      \"relation_to_step1\": \"neutral\",\n      \"certainty\": \"high\",\n      \"source_type\": \"common_sense\"\n    },\n    {\n      \"bucket_key\": \"客户购买驱动\",\n      \"bucket_label\": \"客户购买驱动\",\n      \"point\": \"客户购买核心驱动力是性能（稳定性、柔性、弱光性）和差异化应用，但当前缺乏真实付费验证。\",\n      \"explanation\": \"BP列举了BIPV、车载、畜牧、室内光伏等场景，但合作意向仅停留在‘战略协议’或‘意向订单’，未转化为真实采购。客户决策因素中，价格（相比晶硅）和可靠性（稳定性）是关键，但黑冕尚未证明量产模组能同时满足这两点。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"竞争格局与替代方案\",\n      \"bucket_label\": \"竞争格局与替代方案\",\n      \"point\": \"行业头部企业（协鑫、纤纳）已进入百兆瓦级量产，黑冕在规模和进度上明显落后。\",\n      \"explanation\": \"主要竞争对手包括协鑫光电（100MW产线）、纤纳光电（GW级规划）、极电光能等。替代方案包括晶硅组件（成熟、低成本）和薄膜电池（CIGS、碲化镉）。黑冕的‘稳定性’优势若无法在量产中复现，将难以与头部企业竞争。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"high\",\n      \"source_type\": \"common_sense\"\n    },\n    {\n      \"bucket_key\": \"关键成功要素\",\n      \"bucket_label\": \"关键成功要素\",\n      \"point\": \"决定成败的关键是‘从实验室稳定性到量产稳定性的转化能力’，而非单纯技术指标。\",\n      \"explanation\": \"行业关键成功要素包括：量产良率、成本控制、客户验证周期、供应链管理。黑冕团队为纯学术背景，缺乏产业制造经验，这是最大短板。BP中未提及良率、节拍、单片成本等关键量产数据。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"high\",\n      \"source_type\": \"common_sense\"\n    },\n    {\n      \"bucket_key\": \"常见投资误判\",\n      \"bucket_label\": \"常见投资误判\",\n      \"point\": \"最容易误判的是将‘实验室世界纪录’等同于‘量产竞争力’，以及将‘意向合作’等同于‘真实订单’。\",\n      \"explanation\": \"投资人常高估技术壁垒，低估量产难度。黑冕的稳定性世界纪录基于小面积器件，而非大面积模组。此外，BP中‘某头部车企’等合作未披露具体进展，容易误导投资人认为已获客户验证。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"high\",\n      \"source_type\": \"common_sense\"\n    }\n  ],\n  \"publicly_resolvable\": [\n    {\n      \"bucket_key\": \"商业模式与收入结构\",\n      \"item\": \"当前是否有真实收入？收入来源是产品销售还是项目制？\",\n      \"current_conclusion\": \"BP未披露真实收入，规划中2025年才有1500万元销售收入，目前可能无收入或仅少量测试收入。\",\n      \"confidence\": \"high\"\n    },\n    {\n      \"bucket_key\": \"竞争格局与替代方案\",\n      \"item\": \"头部企业（协鑫、纤纳）的稳定性数据如何？\",\n      \"current_conclusion\": \"公开信息显示协鑫、纤纳已实现百兆瓦级量产，但稳定性数据未公开。黑冕的50000小时稳定性若未获第三方认证，则无法直接对比。\",\n      \"confidence\": \"medium\"\n    }\n  ],\n  \"still_unresolved\": [\n    {\n      \"bucket_key\": \"客户购买驱动\",\n      \"question\": \"BP中提到的‘某头部新能源车企’和‘某头部玻璃企业’的合作，是否已签署正式采购合同或联合开发协议？具体进展如何？\",\n      \"why_unresolved\": \"这些合作是公司市场策略的核心支撑，但BP仅提及‘战略合作协议’或‘合作意向’，未提供任何细节。如果只是意向，则商业化路径存在重大不确定性。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"关键成功要素\",\n      \"question\": \"在20MW中试线上，300mm*300mm模组的稳定性数据、良率、节拍和单片成本是多少？能否提供第三方认证报告？\",\n      \"why_unresolved\": \"这是判断‘实验室稳定性能否转化为量产稳定性’的关键。如果中试线数据远低于实验室数据，则公司技术优势无法商业化。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"商业模式与收入结构\",\n      \"question\": \"公司当前是否有真实收入？如果有，收入来源是产品销售还是项目制？毛利率和现金流状况如何？\",\n      \"why_unresolved\": \"BP未披露任何收入数据，规划中2025年才有1500万元收入。如果当前无收入，则公司处于纯研发阶段，估值应基于技术阶段而非商业化阶段。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"竞争格局与替代方案\",\n      \"question\": \"公司宣称的‘成本仅为晶硅1/3’是基于什么规模的计算？在20MW中试线上，模组成本是否已低于晶硅？\",\n      \"why_unresolved\": \"成本优势是公司核心卖点之一，但若仅基于理论推算而非实际产线数据，则可能严重高估。如果当前成本远高于晶硅，则市场策略需重新评估。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"关键成功要素\",\n      \"question\": \"创始团队均为学术背景，是否有计划引入具备光伏产业大规模制造经验的COO或销售VP？目前团队中是否有产业背景成员？\",\n      \"why_unresolved\": \"钙钛矿量产需要深厚的工程化经验，纯学术团队在良率、供应链、客户导入方面存在明显短板。如果团队无产业经验，则商业化风险极高。\",\n      \"impact_level\": \"high\"\n    }\n  ],\n  \"tensions\": [\n    \"当前公司定位为‘中试阶段的技术型公司’，但BP叙事为‘即将规模化量产的组件供应商’，存在阶段错位。\",\n    \"BP强调‘稳定性世界纪录’和‘成本仅为晶硅1/3’，但缺乏量产验证和真实客户订单，技术优势与商业现实之间存在张力。\",\n    \"公司宣称‘多功能、高稳定性钙钛矿光伏模组技术引领者’，但实际处于20MW中试线，与头部企业百兆瓦级量产存在规模差距。\"\n  ],\n  \"step1_adjustment_hints\": {\n    \"supported\": [\n      \"Step1判断公司为‘技术型公司’而非‘量产型公司’，与行业校准一致。\",\n      \"Step1指出的‘稳定性验证细节’和‘量产工艺成本’是核心问题，与行业关键成功要素吻合。\"\n    ],\n    \"caution\": [\n      \"Step1中‘成本仅为晶硅1/3’的引用需谨慎，BP中未提供实际产线成本数据，可能为理论推算。\"\n    ],\n    \"to_step4\": []\n  }\n}"
+}
