@@ -1,0 +1,425 @@
+{
+  "selected_buckets": [
+    "商业模式与收入结构",
+    "产业链与价值层级",
+    "客户购买驱动",
+    "竞争格局与替代方案",
+    "关键成功要素",
+    "常见投资误判"
+  ],
+  "bucket_outputs": [
+    {
+      "bucket_key": "商业模式与收入结构",
+      "bucket_label": "商业模式与收入结构",
+      "point": "该公司当前收入模式为硬件产品销售，而非平台或服务订阅。",
+      "explanation": "BP显示收入来自xPower系列多合一电控系统、eBox辅助电源系统等硬件产品的销售，发货金额和订单金额是核心指标。工控业务（iFAST、ePlus）也属于硬件一体机销售。没有订阅、平台抽成或持续服务费模式。",
+      "relation_to_step1": "support",
+      "certainty": "high",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "产业链与价值层级",
+      "bucket_label": "产业链与价值层级",
+      "point": "该公司处于新能源商用车产业链的中游，即动力域电控系统集成商，价值较高但竞争激烈。",
+      "explanation": "上游是功率器件（IGBT/SiC）、芯片、被动元件等供应商；中游是电控系统集成商（如硅山技术、汇川技术）；下游是整车厂（中国重汽、三一）。中游的价值在于集成能力、定制化能力和可靠性验证，但面临上游成本波动和下游压价压力。",
+      "relation_to_step1": "support",
+      "certainty": "high",
+      "source_type": "common_sense"
+    },
+    {
+      "bucket_key": "客户购买驱动",
+      "bucket_label": "客户购买驱动",
+      "point": "客户购买的核心驱动力是降本、减重、简化BOM，以及政策合规。",
+      "explanation": "BP明确提到xPower900可降低整车成本2000-3000元，节省布置空间。新能源商用车渗透率提升受政策（换新补贴、路权优先）驱动，但客户选择供应商时，性价比和可靠性是关键。关系（与头部主机厂深度绑定）也是重要因素。",
+      "relation_to_step1": "support",
+      "certainty": "high",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "竞争格局与替代方案",
+      "bucket_label": "竞争格局与替代方案",
+      "point": "主要竞争对手包括汇川技术、英威腾等，替代方案是主机厂自研或传统分体式方案。",
+      "explanation": "汇川技术在商用车电控领域份额领先，英威腾在工控领域有布局。客户若不采用硅山方案，可选择竞品产品，或自研电控系统（如比亚迪商用车），或继续使用分体式方案（成本高、集成度低）。硅山的差异化在于高集成度和国产芯片方案。",
+      "relation_to_step1": "neutral",
+      "certainty": "medium",
+      "source_type": "common_sense"
+    },
+    {
+      "bucket_key": "关键成功要素",
+      "bucket_label": "关键成功要素",
+      "point": "决定成败的关键能力是：头部客户验证、供应链成本控制、规模化量产能力。",
+      "explanation": "进入头部主机厂供应链（如中国重汽）是通行证，但后续需要持续获得新客户和复购。全面集成国产芯片是成本优势，但需验证供应链稳定性和良率。从C+轮融资看，公司尚未大规模盈利，规模化量产后的毛利率和现金流是核心。",
+      "relation_to_step1": "support",
+      "certainty": "high",
+      "source_type": "common_sense"
+    },
+    {
+      "bucket_key": "常见投资误判",
+      "bucket_label": "常见投资误判",
+      "point": "最容易误判的是将硬件公司视为平台型公司，高估其可复制性和估值天花板。",
+      "explanation": "BP强调平台化技术、多场景落地，但当前收入100%来自硬件销售。工控业务（iFAST、ePlus）尚在早期，无收入占比数据。投资人容易将“技术平台”等同于“商业模式平台”，从而给予高估值，但实际是重资产、重客户的硬件生意。",
+      "relation_to_step1": "contradict",
+      "certainty": "high",
+      "source_type": "common_sense"
+    }
+  ],
+  "publicly_resolvable": [
+    {
+      "bucket_key": "商业模式与收入结构",
+      "item": "当前收入是否100%来自硬件产品销售？",
+      "current_conclusion": "是，BP中收入预测和发货金额均指向硬件销售。",
+      "confidence": "high"
+    },
+    {
+      "bucket_key": "竞争格局与替代方案",
+      "item": "汇川技术在商用车电控的市场份额？",
+      "current_conclusion": "汇川技术是龙头，但具体份额需外部数据确认。",
+      "confidence": "medium"
+    }
+  ],
+  "still_unresolved": [
+    {
+      "bucket_key": "商业模式与收入结构",
+      "question": "公司综合毛利率是多少？与汇川技术、英威腾等竞品相比如何？",
+      "why_unresolved": "BP未披露任何毛利率数据，无法判断其成本优势和盈利可持续性。",
+      "impact_level": "high"
+    },
+    {
+      "bucket_key": "客户购买驱动",
+      "question": "除中国重汽外，其他头部客户（三一、陕汽）的渗透率和复购情况如何？",
+      "why_unresolved": "BP展示了客户logo，但未提供渗透率、订单金额或复购率数据，无法判断客户粘性。",
+      "impact_level": "high"
+    },
+    {
+      "bucket_key": "竞争格局与替代方案",
+      "question": "工控业务（iFAST、ePlus）是否有真实收入？收入占比和标杆客户是谁？",
+      "why_unresolved": "BP将工控作为第二增长曲线，但未提供任何收入数据或客户验证案例。",
+      "impact_level": "high"
+    }
+  ],
+  "tensions": [
+    "当前定位为硬件产品销售公司，但BP叙事为平台化技术公司，估值逻辑可能错位。",
+    "工控业务被描述为第二增长曲线，但无收入证据，存在扩张叙事风险。"
+  ],
+  "step1_adjustment_hints": {
+    "supported": [
+      "Step1判断该公司本质是硬件供应商，符合行业常识。",
+      "Step1指出盈利能力和规模化能力是最大疑问，符合行业关键成功要素。"
+    ],
+    "caution": [
+      "Step1中'车规技术下放工控'的战略逻辑需谨慎，工控业务尚无收入验证。",
+      "Step1提到的'全球化战略'在BP中仅展示合作意向，无实际订单，需收缩预期。"
+    ],
+    "to_step4": [
+      "该公司当前定位为硬件产品销售公司，非平台型公司，建议Step4重点验证平台叙事的真实性。",
+      "建议Step4要求公司提供分业务线的收入占比和毛利率数据，以判断盈利模型。"
+    ]
+  },
+  "project_structure": {
+    "industry_tags": [
+      {
+        "tag": "commercial_vehicle",
+        "label": "商用车/重卡",
+        "confidence": "medium",
+        "evidence": "命中关键词：重卡、商用车"
+      },
+      {
+        "tag": "ai_application",
+        "label": "AI应用",
+        "confidence": "medium",
+        "evidence": "命中关键词：算法、模型、数据"
+      },
+      {
+        "tag": "new_energy",
+        "label": "新能源",
+        "confidence": "medium",
+        "evidence": "命中关键词：新能源、电池"
+      }
+    ],
+    "business_lines": [
+      {
+        "name": "无人重载车辆/无人集卡",
+        "role": "current_business",
+        "status": "核心产品/已落地业务",
+        "revenue_status": "可能已有设备/整车/硬件收入，具体金额待确认",
+        "evidence": "命中关键词：重卡、商用车",
+        "confidence": "medium"
+      },
+      {
+        "name": "项目制交付/场景解决方案",
+        "role": "current_business",
+        "status": "项目制落地/场景交付",
+        "revenue_status": "项目收入和毛利待确认",
+        "evidence": "命中关键词：项目、交付、部署、解决方案、系统集成、适配",
+        "confidence": "high"
+      },
+      {
+        "name": "代运营服务",
+        "role": "growth_story",
+        "status": "持续收入模式待验证",
+        "revenue_status": "是否已经形成稳定持续收入待确认",
+        "evidence": "命中关键词：运营、托管、车辆、车队",
+        "confidence": "high"
+      },
+      {
+        "name": "自动驾驶系统/云端调度平台",
+        "role": "supporting_capability",
+        "status": "支撑主业务的技术/平台能力",
+        "revenue_status": "可能作为技术服务或软件服务收费，需确认",
+        "evidence": "命中关键词：规划、控制",
+        "confidence": "medium"
+      },
+      {
+        "name": "AI研发平台",
+        "role": "supporting_capability",
+        "status": "研发工具/效率工具",
+        "revenue_status": "是否对外收费待确认",
+        "evidence": "命中关键词：算法、预测、研发平台、AI、人工智能、研发、筛选",
+        "confidence": "high"
+      },
+      {
+        "name": "新能源材料/回收业务",
+        "role": "valuation_story",
+        "status": "远期故事/待验证业务",
+        "revenue_status": "是否已有收入待确认",
+        "evidence": "命中关键词：新能源、电池、锂电、材料、回收",
+        "confidence": "high"
+      }
+    ],
+    "business_model_hypotheses": [
+      {
+        "bucket_key": "manufacturing_product_sales",
+        "bucket_name": "制造/产品销售型",
+        "role": "primary",
+        "current_or_future": "current",
+        "confidence": "low",
+        "evidence": "命中关键词：销售",
+        "why_it_matters": "如果当前收入主要来自产品/设备/原料销售，则公司更接近制造/产品销售型公司。"
+      },
+      {
+        "bucket_key": "project_delivery",
+        "bucket_name": "项目制交付型",
+        "role": "secondary",
+        "current_or_future": "current",
+        "confidence": "high",
+        "evidence": "命中关键词：项目、交付、部署、定制、解决方案、集成",
+        "why_it_matters": "如果收入依赖一个个项目交付，则需要重点验证标准化和毛利稳定性。"
+      },
+      {
+        "bucket_key": "software_platform_saas",
+        "bucket_name": "软件/SaaS/平台型",
+        "role": "secondary",
+        "current_or_future": "mixed",
+        "confidence": "low",
+        "evidence": "命中关键词：软件",
+        "why_it_matters": "如果软件收入标准化且可续费，才适合按软件/平台公司分析。"
+      },
+      {
+        "bucket_key": "data_ai_model",
+        "bucket_name": "数据/AI模型驱动型",
+        "role": "secondary",
+        "current_or_future": "narrative",
+        "confidence": "high",
+        "evidence": "命中关键词：算法、数据、模型、预测",
+        "why_it_matters": "如果AI只是内部效率工具，则不应按AI平台公司估值；如果形成数据闭环，才可能构成壁垒。"
+      },
+      {
+        "bucket_key": "hardtech_commercialization",
+        "bucket_name": "硬科技商业化型",
+        "role": "secondary",
+        "current_or_future": "mixed",
+        "confidence": "medium",
+        "evidence": "命中关键词：技术、研发、量产",
+        "why_it_matters": "硬科技项目重点不是技术先进，而是能否稳定量产并被真实客户持续采购。"
+      },
+      {
+        "bucket_key": "government_industrial_landing",
+        "bucket_name": "政府/产业落地型",
+        "role": "secondary",
+        "current_or_future": "mixed",
+        "confidence": "medium",
+        "evidence": "命中关键词：政府、落地",
+        "why_it_matters": "对政府基金而言，需判断项目是否能真实落地产值、税收、就业和产业协同。"
+      },
+      {
+        "bucket_key": "expansion_story",
+        "bucket_name": "多业务扩张/第二曲线型",
+        "role": "narrative",
+        "current_or_future": "future",
+        "confidence": "medium",
+        "evidence": "命中关键词：多行业、平台化、新能源",
+        "why_it_matters": "如果当前收入来自A业务，但估值故事来自B/C业务，需警惕扩张叙事。"
+      },
+      {
+        "bucket_key": "policy_driven",
+        "bucket_name": "政策驱动型",
+        "role": "risk",
+        "current_or_future": "mixed",
+        "confidence": "medium",
+        "evidence": "命中关键词：政策、补贴",
+        "why_it_matters": "如果需求主要来自政策/补贴/示范项目，需验证政策退坡后的商业可持续性。"
+      },
+      {
+        "bucket_key": "team_credibility_story",
+        "bucket_name": "团队/背书叙事型",
+        "role": "risk",
+        "current_or_future": "narrative",
+        "confidence": "low",
+        "evidence": "命中关键词：专家",
+        "why_it_matters": "团队/背书需要验证是否转化为排他资源、成果转化或商业化能力。"
+      },
+      {
+        "bucket_key": "financing_valuation_story",
+        "bucket_name": "融资估值叙事型",
+        "role": "risk",
+        "current_or_future": "narrative",
+        "confidence": "low",
+        "evidence": "命中关键词：融资",
+        "why_it_matters": "需验证融资用途和估值逻辑是否匹配真实业务阶段。"
+      }
+    ],
+    "risk_buckets": [
+      {
+        "bucket_key": "asset_heavy_operation",
+        "bucket_name": "重资产运营型",
+        "risk_role": "risk",
+        "confidence": "low",
+        "evidence": "命中关键词：重资产",
+        "why_it_matters": "如果业务扩张需要同步投入大量资产，会带来现金流和回本周期风险。"
+      },
+      {
+        "bucket_key": "project_delivery",
+        "bucket_name": "项目制交付型",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：定制、交付、适配",
+        "why_it_matters": "如果每个项目都需要定制，规模化后交付和毛利可能承压。"
+      },
+      {
+        "bucket_key": "policy_driven",
+        "bucket_name": "政策驱动型",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：政策、政府、补贴",
+        "why_it_matters": "如果需求由政策驱动，需要验证政策退坡后客户是否仍会付费。"
+      },
+      {
+        "bucket_key": "hardtech_commercialization",
+        "bucket_name": "硬科技商业化型",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：供应商、芯片、量产",
+        "why_it_matters": "硬科技项目需要验证关键供应链、量产良率和工程化能力。"
+      },
+      {
+        "bucket_key": "customer_concentration",
+        "bucket_name": "客户集中风险",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：大客户、头部客户",
+        "why_it_matters": "如果收入依赖少数大客户，公司议价权和收入稳定性可能较弱。"
+      },
+      {
+        "bucket_key": "expansion_story",
+        "bucket_name": "多业务扩张/第二曲线型",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：多行业、平台化、新能源",
+        "why_it_matters": "多业务扩张可能是真增长，也可能只是扩大估值边界。"
+      },
+      {
+        "bucket_key": "financing_valuation_story",
+        "bucket_name": "融资估值叙事型",
+        "risk_role": "risk",
+        "confidence": "low",
+        "evidence": "命中关键词：融资",
+        "why_it_matters": "融资用途和估值逻辑可能与真实业务阶段不匹配。"
+      }
+    ],
+    "key_uncertainties": [
+      {
+        "uncertainty": "公司到底是客户买产品/设备，还是公司自投资产做运营？",
+        "why_it_matters": "这决定公司是偏轻资产产品销售型，还是重资产运营型，估值和现金流逻辑完全不同。",
+        "related_buckets": [
+          "manufacturing_product_sales",
+          "asset_heavy_operation"
+        ],
+        "discriminating_questions": [
+          "客户是否直接购买设备/车辆/产品？",
+          "是否存在公司自投资产并通过运营回收现金流？",
+          "资产由谁持有？折旧和维修由谁承担？",
+          "收入是一次性销售，还是按使用量/服务费持续收费？"
+        ]
+      },
+      {
+        "uncertainty": "项目交付是否标准化，还是每个客户都需要大量定制？",
+        "why_it_matters": "决定公司能否规模化复制，以及毛利率是否会被交付成本侵蚀。",
+        "related_buckets": [
+          "project_delivery"
+        ],
+        "discriminating_questions": [
+          "一个新项目中有多少模块可以复用？",
+          "单个项目从签约到验收回款需要多久？",
+          "每个项目需要多少实施人员？",
+          "不同项目毛利率差异大不大？"
+        ]
+      },
+      {
+        "uncertainty": "AI/数据能力是核心壁垒，还是研发/交付效率工具？",
+        "why_it_matters": "如果AI只是内部工具，则不应按AI平台公司估值。",
+        "related_buckets": [
+          "data_ai_model"
+        ],
+        "discriminating_questions": [
+          "AI是否直接决定客户购买或产品性能？",
+          "AI相比传统方法带来什么量化提升？",
+          "数据是否独占并形成持续反馈闭环？",
+          "模型输出是否仍需要大量人工验证？"
+        ]
+      },
+      {
+        "uncertainty": "当前真实收入、增长业务和估值叙事是否错位？",
+        "why_it_matters": "如果当前收入来自小业务，但融资按平台/多行业故事估值，可能存在估值泡沫。",
+        "related_buckets": [
+          "expansion_story",
+          "financing_valuation_story"
+        ],
+        "discriminating_questions": [
+          "当前收入主要来自哪条业务线？",
+          "增长最快的业务线收入基数是多少？",
+          "估值主要依据当前收入还是未来平台故事？",
+          "新业务是否已有真实收入、复购和毛利？"
+        ]
+      },
+      {
+        "uncertainty": "客户需求是政策驱动，还是真实经济 ROI 驱动？",
+        "why_it_matters": "如果主要依赖政策/示范项目，政策退坡后收入可持续性存疑。",
+        "related_buckets": [
+          "policy_driven",
+          "government_industrial_landing"
+        ],
+        "discriminating_questions": [
+          "客户中有多少是纯商业ROI驱动？",
+          "如果没有补贴或政策要求，客户是否仍会采购？",
+          "客户是否有明确降本增效测算？",
+          "是否有非政策客户的复购案例？"
+        ]
+      },
+      {
+        "uncertainty": "团队/学术/名人背书是否真正转化为排他壁垒？",
+        "why_it_matters": "学历、奖项、名人、实验室背书本身不等于商业化能力。",
+        "related_buckets": [
+          "team_credibility_story"
+        ],
+        "discriminating_questions": [
+          "专家/实验室与公司的关系是全职、股东、顾问还是普通合作？",
+          "是否有排他性成果转化协议？",
+          "知识产权归属公司还是高校/实验室？",
+          "背书是否已经转化为产品、客户或收入？"
+        ]
+      }
+    ],
+    "structure_summary": "系统初步识别该项目涉及行业：商用车/重卡、AI应用、新能源；主要业务线包括：无人重载车辆/无人集卡、项目制交付/场景解决方案、代运营服务；可能适用的投资逻辑包括：制造/产品销售型、项目制交付型、软件/SaaS/平台型。该识别仅作为后续分析入口，不代表最终判断。"
+  },
+  "raw_text": "{\n  \"selected_buckets\": [\n    \"商业模式与收入结构\",\n    \"产业链与价值层级\",\n    \"客户购买驱动\",\n    \"竞争格局与替代方案\",\n    \"关键成功要素\",\n    \"常见投资误判\"\n  ],\n  \"bucket_outputs\": [\n    {\n      \"bucket_key\": \"商业模式与收入结构\",\n      \"bucket_label\": \"商业模式与收入结构\",\n      \"point\": \"该公司当前收入模式为硬件产品销售，而非平台或服务订阅。\",\n      \"explanation\": \"BP显示收入来自xPower系列多合一电控系统、eBox辅助电源系统等硬件产品的销售，发货金额和订单金额是核心指标。工控业务（iFAST、ePlus）也属于硬件一体机销售。没有订阅、平台抽成或持续服务费模式。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"high\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"产业链与价值层级\",\n      \"bucket_label\": \"产业链与价值层级\",\n      \"point\": \"该公司处于新能源商用车产业链的中游，即动力域电控系统集成商，价值较高但竞争激烈。\",\n      \"explanation\": \"上游是功率器件（IGBT/SiC）、芯片、被动元件等供应商；中游是电控系统集成商（如硅山技术、汇川技术）；下游是整车厂（中国重汽、三一）。中游的价值在于集成能力、定制化能力和可靠性验证，但面临上游成本波动和下游压价压力。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"high\",\n      \"source_type\": \"common_sense\"\n    },\n    {\n      \"bucket_key\": \"客户购买驱动\",\n      \"bucket_label\": \"客户购买驱动\",\n      \"point\": \"客户购买的核心驱动力是降本、减重、简化BOM，以及政策合规。\",\n      \"explanation\": \"BP明确提到xPower900可降低整车成本2000-3000元，节省布置空间。新能源商用车渗透率提升受政策（换新补贴、路权优先）驱动，但客户选择供应商时，性价比和可靠性是关键。关系（与头部主机厂深度绑定）也是重要因素。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"high\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"竞争格局与替代方案\",\n      \"bucket_label\": \"竞争格局与替代方案\",\n      \"point\": \"主要竞争对手包括汇川技术、英威腾等，替代方案是主机厂自研或传统分体式方案。\",\n      \"explanation\": \"汇川技术在商用车电控领域份额领先，英威腾在工控领域有布局。客户若不采用硅山方案，可选择竞品产品，或自研电控系统（如比亚迪商用车），或继续使用分体式方案（成本高、集成度低）。硅山的差异化在于高集成度和国产芯片方案。\",\n      \"relation_to_step1\": \"neutral\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"common_sense\"\n    },\n    {\n      \"bucket_key\": \"关键成功要素\",\n      \"bucket_label\": \"关键成功要素\",\n      \"point\": \"决定成败的关键能力是：头部客户验证、供应链成本控制、规模化量产能力。\",\n      \"explanation\": \"进入头部主机厂供应链（如中国重汽）是通行证，但后续需要持续获得新客户和复购。全面集成国产芯片是成本优势，但需验证供应链稳定性和良率。从C+轮融资看，公司尚未大规模盈利，规模化量产后的毛利率和现金流是核心。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"high\",\n      \"source_type\": \"common_sense\"\n    },\n    {\n      \"bucket_key\": \"常见投资误判\",\n      \"bucket_label\": \"常见投资误判\",\n      \"point\": \"最容易误判的是将硬件公司视为平台型公司，高估其可复制性和估值天花板。\",\n      \"explanation\": \"BP强调平台化技术、多场景落地，但当前收入100%来自硬件销售。工控业务（iFAST、ePlus）尚在早期，无收入占比数据。投资人容易将“技术平台”等同于“商业模式平台”，从而给予高估值，但实际是重资产、重客户的硬件生意。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"high\",\n      \"source_type\": \"common_sense\"\n    }\n  ],\n  \"publicly_resolvable\": [\n    {\n      \"bucket_key\": \"商业模式与收入结构\",\n      \"item\": \"当前收入是否100%来自硬件产品销售？\",\n      \"current_conclusion\": \"是，BP中收入预测和发货金额均指向硬件销售。\",\n      \"confidence\": \"high\"\n    },\n    {\n      \"bucket_key\": \"竞争格局与替代方案\",\n      \"item\": \"汇川技术在商用车电控的市场份额？\",\n      \"current_conclusion\": \"汇川技术是龙头，但具体份额需外部数据确认。\",\n      \"confidence\": \"medium\"\n    }\n  ],\n  \"still_unresolved\": [\n    {\n      \"bucket_key\": \"商业模式与收入结构\",\n      \"question\": \"公司综合毛利率是多少？与汇川技术、英威腾等竞品相比如何？\",\n      \"why_unresolved\": \"BP未披露任何毛利率数据，无法判断其成本优势和盈利可持续性。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"客户购买驱动\",\n      \"question\": \"除中国重汽外，其他头部客户（三一、陕汽）的渗透率和复购情况如何？\",\n      \"why_unresolved\": \"BP展示了客户logo，但未提供渗透率、订单金额或复购率数据，无法判断客户粘性。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"竞争格局与替代方案\",\n      \"question\": \"工控业务（iFAST、ePlus）是否有真实收入？收入占比和标杆客户是谁？\",\n      \"why_unresolved\": \"BP将工控作为第二增长曲线，但未提供任何收入数据或客户验证案例。\",\n      \"impact_level\": \"high\"\n    }\n  ],\n  \"tensions\": [\n    \"当前定位为硬件产品销售公司，但BP叙事为平台化技术公司，估值逻辑可能错位。\",\n    \"工控业务被描述为第二增长曲线，但无收入证据，存在扩张叙事风险。\"\n  ],\n  \"step1_adjustment_hints\": {\n    \"supported\": [\n      \"Step1判断该公司本质是硬件供应商，符合行业常识。\",\n      \"Step1指出盈利能力和规模化能力是最大疑问，符合行业关键成功要素。\"\n    ],\n    \"caution\": [\n      \"Step1中'车规技术下放工控'的战略逻辑需谨慎，工控业务尚无收入验证。\",\n      \"Step1提到的'全球化战略'在BP中仅展示合作意向，无实际订单，需收缩预期。\"\n    ],\n    \"to_step4\": [\n      \"该公司当前定位为硬件产品销售公司，非平台型公司，建议Step4重点验证平台叙事的真实性。\",\n      \"建议Step4要求公司提供分业务线的收入占比和毛利率数据，以判断盈利模型。\"\n    ]\n  }\n}"
+}
