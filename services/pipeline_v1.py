@@ -384,6 +384,15 @@ def run_pipeline_v1(
     # ── Step5 ────────────────────────────────────────────────
     emit("step5", "running", 80, "正在整理判断逻辑...")
     try:
+        # [DEBUG] Step5 阶段1A：验证 profile 是否被加载
+        from services.profile.profile_loader import load_project_profile
+        profile = load_project_profile(project_dir)
+        print("===== STEP5 PROFILE LOADED =====")
+        print(f"[DEBUG] 当前使用 profile: {profile.get('profile_id')}")
+        debug_path = os.path.join(project_dir, "debug_profile_check.txt")
+        with open(debug_path, "a", encoding="utf-8") as f:
+            f.write(f"[DEBUG] 当前使用 profile: {profile.get('profile_id')}\n")
+
         step4_internal = step4_result.get("internal", {})
         step5_result = run_step5(
             step1_text,
