@@ -1,0 +1,424 @@
+{
+  "selected_buckets": [
+    "商业模式",
+    "产业链与价值层级",
+    "客户购买驱动",
+    "竞争格局",
+    "关键成功要素",
+    "常见投资误判"
+  ],
+  "bucket_outputs": [
+    {
+      "bucket_key": "商业模式",
+      "bucket_label": "行业如何赚钱",
+      "point": "该行业核心收入来源为产品销售（硬件+软件），辅以项目制交付，订阅模式尚未普及。毛利结构呈两极分化：底层硬件毛利率约20-30%，上层软件/平台毛利率可达60-80%。",
+      "explanation": "从投资视角看，若项目仅依赖硬件销售，则毛利低、可复制性差；若已形成软件订阅或平台抽成，则估值逻辑可提升。需判断其收入结构中软件/服务占比。",
+      "relation_to_step1": "neutral",
+      "certainty": "high",
+      "source_type": "common_sense"
+    },
+    {
+      "bucket_key": "产业链与价值层级",
+      "bucket_label": "产业链与价值层级",
+      "point": "行业分为三层：底层（核心零部件/芯片）、中层（系统集成/整机）、上层（应用软件/平台）。价值最高的是上层（软件定义能力），竞争最激烈的是中层（集成商众多）。该公司通常处于中层偏上，需警惕被上下挤压。",
+      "explanation": "若Step1认为公司处于高价值层，但实际业务以集成/组装为主，则估值可能被高估。需确认其是否拥有不可替代的上层软件或数据闭环。",
+      "relation_to_step1": "support",
+      "certainty": "high",
+      "source_type": "common_sense"
+    },
+    {
+      "bucket_key": "客户购买驱动",
+      "bucket_label": "客户为什么购买",
+      "point": "客户核心决策因素为性能可靠性（尤其是工业场景）和替代进口（政策驱动），价格敏感度中等。属于刚需，但采购周期长、决策链复杂。",
+      "explanation": "若Step1强调价格优势或快速放量，可能低估了客户验证周期和替换成本。需确认客户是否因政策强制或性能刚需而采购，而非单纯性价比。",
+      "relation_to_step1": "contradict",
+      "certainty": "medium",
+      "source_type": "common_sense"
+    },
+    {
+      "bucket_key": "竞争格局与替代方案",
+      "bucket_label": "竞争格局与替代方案",
+      "point": "主要竞争对手包括国际龙头（如西门子、霍尼韦尔）和国内新锐（如部分AI公司）。客户不用它，可选用竞品、自研或传统技术路径（如PLC替代）。行业集中度低，但头部效应明显。",
+      "explanation": "若Step1认为公司无直接竞争对手，可能忽略了国际巨头下沉或客户自研风险。需确认其技术壁垒是否足以抵御大厂复制。",
+      "relation_to_step1": "contradict",
+      "certainty": "medium",
+      "source_type": "common_sense"
+    },
+    {
+      "bucket_key": "关键成功要素",
+      "bucket_label": "行业关键成功要素",
+      "point": "关键能力依次为：技术认证（如防爆、功能安全）、渠道关系（行业大客户）、产能稳定性、资金储备。技术本身虽重要，但非唯一。",
+      "explanation": "若Step1只强调技术领先，可能忽略认证和渠道的隐性门槛。需确认公司是否已获得关键行业认证，以及大客户复购率。",
+      "relation_to_step1": "neutral",
+      "certainty": "high",
+      "source_type": "common_sense"
+    },
+    {
+      "bucket_key": "常见投资误判",
+      "bucket_label": "常见投资误判",
+      "point": "投资人最易误判：将项目制收入误认为产品化收入、将供应链整合误认为平台能力、将政策红利误认为内生增长。叙事高估点：'工业互联网平台''AI赋能'等概念。",
+      "explanation": "Step1若使用类似叙事，需警惕。应区分其收入中一次性项目与持续性订阅的比例。",
+      "relation_to_step1": "contradict",
+      "certainty": "high",
+      "source_type": "common_sense"
+    }
+  ],
+  "publicly_resolvable": [
+    {
+      "bucket_key": "商业模式",
+      "item": "收入结构（硬件vs软件/服务占比）",
+      "current_conclusion": "Step1未明确区分，需从BP或公开数据确认",
+      "confidence": "low"
+    },
+    {
+      "bucket_key": "竞争格局",
+      "item": "主要竞争对手名单及市场份额",
+      "current_conclusion": "Step1未提及具体竞品，需行业报告验证",
+      "confidence": "low"
+    },
+    {
+      "bucket_key": "关键成功要素",
+      "item": "是否获得关键行业认证（如CE、UL、防爆）",
+      "current_conclusion": "Step1未提及，需BP或官网确认",
+      "confidence": "low"
+    }
+  ],
+  "still_unresolved": [
+    {
+      "bucket_key": "客户购买驱动",
+      "question": "客户采购该产品，是出于政策强制替代进口，还是性能确实优于现有方案？",
+      "why_unresolved": "Step1未提供客户访谈或第三方验证，仅依赖BP表述。若为政策驱动，则可持续性存疑；若为性能驱动，则壁垒更高。",
+      "impact_level": "high"
+    },
+    {
+      "bucket_key": "商业模式",
+      "question": "公司收入中，一次性项目收入与持续性订阅/服务收入的比例是多少？未来3年目标比例？",
+      "why_unresolved": "直接影响估值模型（PS倍数）和可预测性。若项目制占比>80%，则增长不可预测，估值应折价。",
+      "impact_level": "high"
+    },
+    {
+      "bucket_key": "竞争格局",
+      "question": "如果国际龙头（如西门子）推出类似产品，公司的护城河是什么？客户切换成本多高？",
+      "why_unresolved": "Step1未分析大厂进入风险。若护城河仅为先发优势，则投资风险极高。",
+      "impact_level": "high"
+    },
+    {
+      "bucket_key": "关键成功要素",
+      "question": "公司是否已获得目标行业（如石化、矿山）的必备安全认证？认证周期和成本如何？",
+      "why_unresolved": "认证是行业准入门槛，缺失则无法销售。Step1未提及，可能严重低估销售周期。",
+      "impact_level": "high"
+    },
+    {
+      "bucket_key": "常见投资误判",
+      "question": "公司宣称的'平台能力'，实际是自研软件平台，还是基于开源/第三方框架的二次开发？",
+      "why_unresolved": "区分真平台与伪平台。若为二次开发，则技术壁垒低，易被复制。Step1未深究。",
+      "impact_level": "high"
+    }
+  ],
+  "tensions": [
+    "Step1强调技术领先，但行业常识显示认证和渠道同样关键，需验证技术是否已转化为市场准入。",
+    "Step1可能高估产品化程度，但行业普遍为项目制，需确认收入可预测性。",
+    "Step1未提及大厂竞争，但行业龙头资金和渠道优势显著，需评估公司差异化是否可持续。"
+  ],
+  "step1_adjustment_hints": {
+    "supported": [
+      "行业处于国产替代窗口期，政策驱动明确"
+    ],
+    "caution": [
+      "技术领先不等于市场成功，需关注认证和渠道",
+      "收入结构可能被高估为产品化，实际多为项目制",
+      "竞争格局可能比Step1描述的更激烈"
+    ],
+    "to_step4": [
+      "请重点追问：收入结构（项目vs订阅）、客户采购真实驱动（政策vs性能）、认证进展、大厂竞争应对策略"
+    ]
+  },
+  "project_structure": {
+    "industry_tags": [
+      {
+        "tag": "advanced_materials",
+        "label": "新材料",
+        "confidence": "high",
+        "evidence": "命中关键词：材料、分子、催化剂、配方、原料、功能材料"
+      },
+      {
+        "tag": "new_energy",
+        "label": "新能源",
+        "confidence": "high",
+        "evidence": "命中关键词：新能源、锂电、电池、光伏"
+      },
+      {
+        "tag": "beauty_ingredients",
+        "label": "美妆/日化原料",
+        "confidence": "medium",
+        "evidence": "命中关键词：原料、配方"
+      },
+      {
+        "tag": "food_ingredients",
+        "label": "食品/营养原料",
+        "confidence": "low",
+        "evidence": "命中关键词：食品"
+      },
+      {
+        "tag": "ai_application",
+        "label": "AI应用",
+        "confidence": "low",
+        "evidence": "命中关键词：数据"
+      }
+    ],
+    "business_lines": [
+      {
+        "name": "项目制交付/场景解决方案",
+        "role": "current_business",
+        "status": "项目制落地/场景交付",
+        "revenue_status": "项目收入和毛利待确认",
+        "evidence": "命中关键词：项目、解决方案、适配",
+        "confidence": "medium"
+      },
+      {
+        "name": "美妆/日化原料",
+        "role": "current_business",
+        "status": "当前收入底盘",
+        "revenue_status": "已有收入但金额需确认",
+        "evidence": "命中关键词：原料、配方",
+        "confidence": "medium"
+      },
+      {
+        "name": "食品/营养原料",
+        "role": "growth_story",
+        "status": "增长业务",
+        "revenue_status": "收入基数和复购待确认",
+        "evidence": "命中关键词：食品、保健品、原料、成分",
+        "confidence": "high"
+      },
+      {
+        "name": "自动驾驶系统/云端调度平台",
+        "role": "supporting_capability",
+        "status": "支撑主业务的技术/平台能力",
+        "revenue_status": "可能作为技术服务或软件服务收费，需确认",
+        "evidence": "命中关键词：规划、控制",
+        "confidence": "medium"
+      },
+      {
+        "name": "AI研发平台",
+        "role": "supporting_capability",
+        "status": "研发工具/效率工具",
+        "revenue_status": "是否对外收费待确认",
+        "evidence": "命中关键词：预测",
+        "confidence": "low"
+      },
+      {
+        "name": "新能源材料/回收业务",
+        "role": "valuation_story",
+        "status": "远期故事/待验证业务",
+        "revenue_status": "是否已有收入待确认",
+        "evidence": "命中关键词：新能源、锂电、电池、电解液、材料、回收",
+        "confidence": "high"
+      }
+    ],
+    "business_model_hypotheses": [
+      {
+        "bucket_key": "manufacturing_product_sales",
+        "bucket_name": "制造/产品销售型",
+        "role": "primary",
+        "current_or_future": "current",
+        "confidence": "low",
+        "evidence": "命中关键词：销售",
+        "why_it_matters": "如果当前收入主要来自产品/设备/原料销售，则公司更接近制造/产品销售型公司。"
+      },
+      {
+        "bucket_key": "project_delivery",
+        "bucket_name": "项目制交付型",
+        "role": "secondary",
+        "current_or_future": "current",
+        "confidence": "high",
+        "evidence": "命中关键词：项目、定制、解决方案、集成",
+        "why_it_matters": "如果收入依赖一个个项目交付，则需要重点验证标准化和毛利稳定性。"
+      },
+      {
+        "bucket_key": "data_ai_model",
+        "bucket_name": "数据/AI模型驱动型",
+        "role": "secondary",
+        "current_or_future": "narrative",
+        "confidence": "medium",
+        "evidence": "命中关键词：数据、预测",
+        "why_it_matters": "如果AI只是内部效率工具，则不应按AI平台公司估值；如果形成数据闭环，才可能构成壁垒。"
+      },
+      {
+        "bucket_key": "hardtech_commercialization",
+        "bucket_name": "硬科技商业化型",
+        "role": "secondary",
+        "current_or_future": "mixed",
+        "confidence": "high",
+        "evidence": "命中关键词：技术、研发、材料、中试",
+        "why_it_matters": "硬科技项目重点不是技术先进，而是能否稳定量产并被真实客户持续采购。"
+      },
+      {
+        "bucket_key": "government_industrial_landing",
+        "bucket_name": "政府/产业落地型",
+        "role": "secondary",
+        "current_or_future": "mixed",
+        "confidence": "medium",
+        "evidence": "命中关键词：政府、基金、落地",
+        "why_it_matters": "对政府基金而言，需判断项目是否能真实落地产值、税收、就业和产业协同。"
+      },
+      {
+        "bucket_key": "expansion_story",
+        "bucket_name": "多业务扩张/第二曲线型",
+        "role": "narrative",
+        "current_or_future": "future",
+        "confidence": "medium",
+        "evidence": "命中关键词：新能源、医药、食品",
+        "why_it_matters": "如果当前收入来自A业务，但估值故事来自B/C业务，需警惕扩张叙事。"
+      },
+      {
+        "bucket_key": "policy_driven",
+        "bucket_name": "政策驱动型",
+        "role": "risk",
+        "current_or_future": "mixed",
+        "confidence": "high",
+        "evidence": "命中关键词：政策、示范、新质生产力、国产替代",
+        "why_it_matters": "如果需求主要来自政策/补贴/示范项目，需验证政策退坡后的商业可持续性。"
+      },
+      {
+        "bucket_key": "team_credibility_story",
+        "bucket_name": "团队/背书叙事型",
+        "role": "risk",
+        "current_or_future": "narrative",
+        "confidence": "medium",
+        "evidence": "命中关键词：博士、实验室、专家",
+        "why_it_matters": "团队/背书需要验证是否转化为排他资源、成果转化或商业化能力。"
+      },
+      {
+        "bucket_key": "financing_valuation_story",
+        "bucket_name": "融资估值叙事型",
+        "role": "risk",
+        "current_or_future": "narrative",
+        "confidence": "low",
+        "evidence": "命中关键词：融资",
+        "why_it_matters": "需验证融资用途和估值逻辑是否匹配真实业务阶段。"
+      }
+    ],
+    "risk_buckets": [
+      {
+        "bucket_key": "project_delivery",
+        "bucket_name": "项目制交付型",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：定制、适配",
+        "why_it_matters": "如果每个项目都需要定制，规模化后交付和毛利可能承压。"
+      },
+      {
+        "bucket_key": "policy_driven",
+        "bucket_name": "政策驱动型",
+        "risk_role": "risk",
+        "confidence": "high",
+        "evidence": "命中关键词：政策、政府、示范、新质生产力",
+        "why_it_matters": "如果需求由政策驱动，需要验证政策退坡后客户是否仍会付费。"
+      },
+      {
+        "bucket_key": "hardtech_commercialization",
+        "bucket_name": "硬科技商业化型",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：供应商、第三方、良率",
+        "why_it_matters": "硬科技项目需要验证关键供应链、量产良率和工程化能力。"
+      },
+      {
+        "bucket_key": "expansion_story",
+        "bucket_name": "多业务扩张/第二曲线型",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：新能源、医药",
+        "why_it_matters": "多业务扩张可能是真增长，也可能只是扩大估值边界。"
+      },
+      {
+        "bucket_key": "team_credibility_story",
+        "bucket_name": "团队/背书叙事型",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：博士、实验室",
+        "why_it_matters": "背书需要验证是否真正转化为公司壁垒。"
+      },
+      {
+        "bucket_key": "financing_valuation_story",
+        "bucket_name": "融资估值叙事型",
+        "risk_role": "risk",
+        "confidence": "low",
+        "evidence": "命中关键词：融资",
+        "why_it_matters": "融资用途和估值逻辑可能与真实业务阶段不匹配。"
+      }
+    ],
+    "key_uncertainties": [
+      {
+        "uncertainty": "项目交付是否标准化，还是每个客户都需要大量定制？",
+        "why_it_matters": "决定公司能否规模化复制，以及毛利率是否会被交付成本侵蚀。",
+        "related_buckets": [
+          "project_delivery"
+        ],
+        "discriminating_questions": [
+          "一个新项目中有多少模块可以复用？",
+          "单个项目从签约到验收回款需要多久？",
+          "每个项目需要多少实施人员？",
+          "不同项目毛利率差异大不大？"
+        ]
+      },
+      {
+        "uncertainty": "AI/数据能力是核心壁垒，还是研发/交付效率工具？",
+        "why_it_matters": "如果AI只是内部工具，则不应按AI平台公司估值。",
+        "related_buckets": [
+          "data_ai_model"
+        ],
+        "discriminating_questions": [
+          "AI是否直接决定客户购买或产品性能？",
+          "AI相比传统方法带来什么量化提升？",
+          "数据是否独占并形成持续反馈闭环？",
+          "模型输出是否仍需要大量人工验证？"
+        ]
+      },
+      {
+        "uncertainty": "当前真实收入、增长业务和估值叙事是否错位？",
+        "why_it_matters": "如果当前收入来自小业务，但融资按平台/多行业故事估值，可能存在估值泡沫。",
+        "related_buckets": [
+          "expansion_story",
+          "financing_valuation_story"
+        ],
+        "discriminating_questions": [
+          "当前收入主要来自哪条业务线？",
+          "增长最快的业务线收入基数是多少？",
+          "估值主要依据当前收入还是未来平台故事？",
+          "新业务是否已有真实收入、复购和毛利？"
+        ]
+      },
+      {
+        "uncertainty": "客户需求是政策驱动，还是真实经济 ROI 驱动？",
+        "why_it_matters": "如果主要依赖政策/示范项目，政策退坡后收入可持续性存疑。",
+        "related_buckets": [
+          "policy_driven",
+          "government_industrial_landing"
+        ],
+        "discriminating_questions": [
+          "客户中有多少是纯商业ROI驱动？",
+          "如果没有补贴或政策要求，客户是否仍会采购？",
+          "客户是否有明确降本增效测算？",
+          "是否有非政策客户的复购案例？"
+        ]
+      },
+      {
+        "uncertainty": "团队/学术/名人背书是否真正转化为排他壁垒？",
+        "why_it_matters": "学历、奖项、名人、实验室背书本身不等于商业化能力。",
+        "related_buckets": [
+          "team_credibility_story"
+        ],
+        "discriminating_questions": [
+          "专家/实验室与公司的关系是全职、股东、顾问还是普通合作？",
+          "是否有排他性成果转化协议？",
+          "知识产权归属公司还是高校/实验室？",
+          "背书是否已经转化为产品、客户或收入？"
+        ]
+      }
+    ],
+    "structure_summary": "系统初步识别该项目涉及行业：新材料、新能源、美妆/日化原料；主要业务线包括：项目制交付/场景解决方案、美妆/日化原料、食品/营养原料；可能适用的投资逻辑包括：制造/产品销售型、项目制交付型、数据/AI模型驱动型。该识别仅作为后续分析入口，不代表最终判断。"
+  },
+  "raw_text": "{\n  \"selected_buckets\": [\"商业模式\", \"产业链与价值层级\", \"客户购买驱动\", \"竞争格局\", \"关键成功要素\", \"常见投资误判\"],\n  \"bucket_outputs\": [\n    {\n      \"bucket_key\": \"商业模式\",\n      \"bucket_label\": \"行业如何赚钱\",\n      \"point\": \"该行业核心收入来源为产品销售（硬件+软件），辅以项目制交付，订阅模式尚未普及。毛利结构呈两极分化：底层硬件毛利率约20-30%，上层软件/平台毛利率可达60-80%。\",\n      \"explanation\": \"从投资视角看，若项目仅依赖硬件销售，则毛利低、可复制性差；若已形成软件订阅或平台抽成，则估值逻辑可提升。需判断其收入结构中软件/服务占比。\",\n      \"relation_to_step1\": \"neutral\",\n      \"certainty\": \"high\",\n      \"source_type\": \"common_sense\"\n    },\n    {\n      \"bucket_key\": \"产业链与价值层级\",\n      \"bucket_label\": \"产业链与价值层级\",\n      \"point\": \"行业分为三层：底层（核心零部件/芯片）、中层（系统集成/整机）、上层（应用软件/平台）。价值最高的是上层（软件定义能力），竞争最激烈的是中层（集成商众多）。该公司通常处于中层偏上，需警惕被上下挤压。\",\n      \"explanation\": \"若Step1认为公司处于高价值层，但实际业务以集成/组装为主，则估值可能被高估。需确认其是否拥有不可替代的上层软件或数据闭环。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"high\",\n      \"source_type\": \"common_sense\"\n    },\n    {\n      \"bucket_key\": \"客户购买驱动\",\n      \"bucket_label\": \"客户为什么购买\",\n      \"point\": \"客户核心决策因素为性能可靠性（尤其是工业场景）和替代进口（政策驱动），价格敏感度中等。属于刚需，但采购周期长、决策链复杂。\",\n      \"explanation\": \"若Step1强调价格优势或快速放量，可能低估了客户验证周期和替换成本。需确认客户是否因政策强制或性能刚需而采购，而非单纯性价比。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"common_sense\"\n    },\n    {\n      \"bucket_key\": \"竞争格局与替代方案\",\n      \"bucket_label\": \"竞争格局与替代方案\",\n      \"point\": \"主要竞争对手包括国际龙头（如西门子、霍尼韦尔）和国内新锐（如部分AI公司）。客户不用它，可选用竞品、自研或传统技术路径（如PLC替代）。行业集中度低，但头部效应明显。\",\n      \"explanation\": \"若Step1认为公司无直接竞争对手，可能忽略了国际巨头下沉或客户自研风险。需确认其技术壁垒是否足以抵御大厂复制。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"common_sense\"\n    },\n    {\n      \"bucket_key\": \"关键成功要素\",\n      \"bucket_label\": \"行业关键成功要素\",\n      \"point\": \"关键能力依次为：技术认证（如防爆、功能安全）、渠道关系（行业大客户）、产能稳定性、资金储备。技术本身虽重要，但非唯一。\",\n      \"explanation\": \"若Step1只强调技术领先，可能忽略认证和渠道的隐性门槛。需确认公司是否已获得关键行业认证，以及大客户复购率。\",\n      \"relation_to_step1\": \"neutral\",\n      \"certainty\": \"high\",\n      \"source_type\": \"common_sense\"\n    },\n    {\n      \"bucket_key\": \"常见投资误判\",\n      \"bucket_label\": \"常见投资误判\",\n      \"point\": \"投资人最易误判：将项目制收入误认为产品化收入、将供应链整合误认为平台能力、将政策红利误认为内生增长。叙事高估点：'工业互联网平台''AI赋能'等概念。\",\n      \"explanation\": \"Step1若使用类似叙事，需警惕。应区分其收入中一次性项目与持续性订阅的比例。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"high\",\n      \"source_type\": \"common_sense\"\n    }\n  ],\n  \"publicly_resolvable\": [\n    {\n      \"bucket_key\": \"商业模式\",\n      \"item\": \"收入结构（硬件vs软件/服务占比）\",\n      \"current_conclusion\": \"Step1未明确区分，需从BP或公开数据确认\",\n      \"confidence\": \"low\"\n    },\n    {\n      \"bucket_key\": \"竞争格局\",\n      \"item\": \"主要竞争对手名单及市场份额\",\n      \"current_conclusion\": \"Step1未提及具体竞品，需行业报告验证\",\n      \"confidence\": \"low\"\n    },\n    {\n      \"bucket_key\": \"关键成功要素\",\n      \"item\": \"是否获得关键行业认证（如CE、UL、防爆）\",\n      \"current_conclusion\": \"Step1未提及，需BP或官网确认\",\n      \"confidence\": \"low\"\n    }\n  ],\n  \"still_unresolved\": [\n    {\n      \"bucket_key\": \"客户购买驱动\",\n      \"question\": \"客户采购该产品，是出于政策强制替代进口，还是性能确实优于现有方案？\",\n      \"why_unresolved\": \"Step1未提供客户访谈或第三方验证，仅依赖BP表述。若为政策驱动，则可持续性存疑；若为性能驱动，则壁垒更高。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"商业模式\",\n      \"question\": \"公司收入中，一次性项目收入与持续性订阅/服务收入的比例是多少？未来3年目标比例？\",\n      \"why_unresolved\": \"直接影响估值模型（PS倍数）和可预测性。若项目制占比>80%，则增长不可预测，估值应折价。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"竞争格局\",\n      \"question\": \"如果国际龙头（如西门子）推出类似产品，公司的护城河是什么？客户切换成本多高？\",\n      \"why_unresolved\": \"Step1未分析大厂进入风险。若护城河仅为先发优势，则投资风险极高。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"关键成功要素\",\n      \"question\": \"公司是否已获得目标行业（如石化、矿山）的必备安全认证？认证周期和成本如何？\",\n      \"why_unresolved\": \"认证是行业准入门槛，缺失则无法销售。Step1未提及，可能严重低估销售周期。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"常见投资误判\",\n      \"question\": \"公司宣称的'平台能力'，实际是自研软件平台，还是基于开源/第三方框架的二次开发？\",\n      \"why_unresolved\": \"区分真平台与伪平台。若为二次开发，则技术壁垒低，易被复制。Step1未深究。\",\n      \"impact_level\": \"high\"\n    }\n  ],\n  \"tensions\": [\n    \"Step1强调技术领先，但行业常识显示认证和渠道同样关键，需验证技术是否已转化为市场准入。\",\n    \"Step1可能高估产品化程度，但行业普遍为项目制，需确认收入可预测性。\",\n    \"Step1未提及大厂竞争，但行业龙头资金和渠道优势显著，需评估公司差异化是否可持续。\"\n  ],\n  \"step1_adjustment_hints\": {\n    \"supported\": [\n      \"行业处于国产替代窗口期，政策驱动明确\"\n    ],\n    \"caution\": [\n      \"技术领先不等于市场成功，需关注认证和渠道\",\n      \"收入结构可能被高估为产品化，实际多为项目制\",\n      \"竞争格局可能比Step1描述的更激烈\"\n    ],\n    \"to_step4\": [\n      \"请重点追问：收入结构（项目vs订阅）、客户采购真实驱动（政策vs性能）、认证进展、大厂竞争应对策略\"\n    ]\n  }\n}"
+}

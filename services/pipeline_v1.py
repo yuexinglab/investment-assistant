@@ -56,8 +56,8 @@ def run_step1(bp_text: str) -> str:
     """运行 Step1 初步判断"""
     prompt = STEP1_USER_TEMPLATE.format(bp_text=bp_text)
     return call_deepseek(
-        system_prompt=STEP1_SYSTEM,
-        user_prompt=prompt,
+        STEP1_SYSTEM,
+        prompt,
         max_retries=2
     )
 
@@ -113,8 +113,8 @@ def run_step3(bp_text: str, step1_text: str) -> dict:
 
     def _call_llm(system_prompt: str, user_prompt: str) -> str:
         return call_deepseek(
-            system_prompt=system_prompt,
-            user_prompt=user_prompt,
+            system_prompt,
+            user_prompt,
             max_retries=2
         )
 
@@ -186,8 +186,8 @@ def run_step4(bp_text: str, step1_text: str, step3_json: dict, step3b_json: dict
 
     def _call_llm(system_prompt: str, user_prompt: str) -> str:
         return call_deepseek(
-            system_prompt=system_prompt,
-            user_prompt=user_prompt,
+            system_prompt,
+            user_prompt,
             max_retries=2
         )
 
@@ -265,8 +265,8 @@ def run_step5(
 
     def _call_llm(system_prompt: str, user_prompt: str) -> str:
         return call_deepseek(
-            system_prompt=system_prompt,
-            user_prompt=user_prompt,
+            system_prompt,
+            user_prompt,
             max_retries=2
         )
 
