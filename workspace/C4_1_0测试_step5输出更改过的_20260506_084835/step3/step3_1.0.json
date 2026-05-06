@@ -1,0 +1,414 @@
+{
+  "selected_buckets": [
+    "商业模式与收入结构",
+    "产业链与价值层级",
+    "客户购买驱动",
+    "竞争格局与替代方案",
+    "关键成功要素",
+    "常见投资误判"
+  ],
+  "bucket_outputs": [
+    {
+      "bucket_key": "商业模式与收入结构",
+      "bucket_label": "商业模式与收入结构",
+      "point": "该公司当前商业模式本质是“材料产品销售+工艺包项目交付”，而非平台或订阅模式。",
+      "explanation": "BP中明确主营产品为特种分子筛、催化剂等材料，收入来源为产品销售（如电子特气专用分子筛、液相纯化分子筛等），并提及“协同客户完成从零到一的工艺包”项目制交付。未见订阅、平台抽成等持续收入模式。毛利结构上，BP宣称“成本约为精馏的50%”，暗示高毛利潜力，但需验证实际毛利率。",
+      "relation_to_step1": "support",
+      "certainty": "high",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "产业链与价值层级",
+      "bucket_label": "产业链与价值层级",
+      "point": "该公司处于新材料产业链的中游（材料生产与工艺应用），而非上游原料或下游终端。",
+      "explanation": "产业链可分为：上游（硅铝原料、设备）、中游（分子筛/催化剂研发生产、工艺包设计）、下游（电子特气、溶剂、氢能等终端用户）。该公司聚焦中游，核心价值在于通过工艺替代（分子筛法替代精馏法）为下游降本增效。中游竞争激烈，价值高低取决于产品性能差异化和客户粘性。",
+      "relation_to_step1": "support",
+      "certainty": "high",
+      "source_type": "common_sense"
+    },
+    {
+      "bucket_key": "客户购买驱动",
+      "bucket_label": "客户购买驱动",
+      "point": "客户核心购买驱动是“降本增效”和“国产替代”，属于刚需，但替换动力取决于实际验证数据。",
+      "explanation": "BP强调能耗下降70%-90%、成本为精馏的50%，这是直接的经济价值。同时，电子特气、高端溶剂等领域国产替代需求强烈。客户决策因素中，性能（纯度、选择性）和可靠性（认证、稳定性）优先于价格。若数据真实，替换动力强；但若缺乏大规模验证，客户可能观望。",
+      "relation_to_step1": "support",
+      "certainty": "medium",
+      "source_type": "bp"
+    },
+    {
+      "bucket_key": "竞争格局与替代方案",
+      "bucket_label": "竞争格局与替代方案",
+      "point": "竞争格局为“国际巨头+国内上市公司+新进入者”并存，替代方案包括传统精馏工艺和其他吸附技术。",
+      "explanation": "主要竞争对手：国际巨头UOP、Zeochem，国内上市公司建龙微纳、中触媒等。替代方案：客户可继续使用精馏工艺，或采用其他吸附剂（如活性炭、硅胶）。该公司差异化在于“工艺替代”和“定制化服务”，但需证明其产品在特定应用场景中性能显著优于竞品。",
+      "relation_to_step1": "support",
+      "certainty": "high",
+      "source_type": "common_sense"
+    },
+    {
+      "bucket_key": "关键成功要素",
+      "bucket_label": "关键成功要素",
+      "point": "关键成功要素是“客户验证案例+量产稳定性+集团资源协同”，而非单纯技术领先。",
+      "explanation": "在该行业，技术是基础，但商业化成功更依赖：1）头部客户验证案例（证明性能和经济性）；2）量产能力（良率、成本、供应链）；3）客户关系（认证周期长，集团背景可加速导入）。该公司背靠东岚集团，在初期资源获取上有优势，但独立性和长期竞争力仍需验证。",
+      "relation_to_step1": "support",
+      "certainty": "high",
+      "source_type": "common_sense"
+    },
+    {
+      "bucket_key": "常见投资误判",
+      "bucket_label": "常见投资误判",
+      "point": "投资人最容易高估“工艺替代”的通用性和可复制性，低估客户验证周期和量产难度。",
+      "explanation": "常见误判：1）将实验室性能数据直接外推至大规模量产；2）认为“能耗下降70%”就能自动转化为订单，忽略客户切换成本；3）将集团资源等同于公司自身壁垒，忽视独立发展风险。该公司BP中“能耗下降70%-90%”等数据缺乏第三方验证，需警惕。",
+      "relation_to_step1": "contradict",
+      "certainty": "medium",
+      "source_type": "common_sense"
+    }
+  ],
+  "publicly_resolvable": [
+    {
+      "bucket_key": "商业模式与收入结构",
+      "item": "当前收入是否主要来自材料产品销售，而非项目制服务？",
+      "current_conclusion": "是，BP显示主营产品为分子筛等材料，收入来自产品销售。",
+      "confidence": "high"
+    },
+    {
+      "bucket_key": "竞争格局与替代方案",
+      "item": "主要竞争对手是否包括UOP、建龙微纳等？",
+      "current_conclusion": "是，行业常识确认这些是主要玩家。",
+      "confidence": "high"
+    }
+  ],
+  "still_unresolved": [
+    {
+      "bucket_key": "客户购买驱动",
+      "question": "请提供至少2个已落地的头部客户案例，包括客户名称、应用场景、实际能耗/成本降低数据，以及客户出具的验收报告或采购订单。",
+      "why_unresolved": "BP中“能耗下降70%-90%”和“成本为精馏的50%”是核心价值主张，但缺乏第三方验证。若数据不实，整个商业逻辑崩塌。",
+      "impact_level": "high"
+    },
+    {
+      "bucket_key": "商业模式与收入结构",
+      "question": "2026年预计营收5000万，请拆解各业务板块（电子特气、液相、氢能等）的预期收入占比，并说明增长路径。",
+      "why_unresolved": "营收预测是估值基础，但BP未提供拆解。若电子特气占比过高，则客户集中风险大；若氢能占比高，则商业化阶段更早期。",
+      "impact_level": "high"
+    },
+    {
+      "bucket_key": "关键成功要素",
+      "question": "本轮融资5000万主要用于产线建设，请说明预计投产时间、达产产能、对应的营收贡献，以及当前良率和成本结构。",
+      "why_unresolved": "量产能力是商业化关键。若产线建设延迟或良率不达标，营收预测将无法实现。",
+      "impact_level": "high"
+    },
+    {
+      "bucket_key": "竞争格局与替代方案",
+      "question": "与UOP、建龙微纳等竞品相比，你们在电子特气、液相领域的具体性能指标（如纯度、选择性、寿命）有何量化优势？是否有第三方检测报告？",
+      "why_unresolved": "BP未提供与竞品的直接对比数据。若性能优势不显著，客户缺乏替换动力。",
+      "impact_level": "high"
+    },
+    {
+      "bucket_key": "常见投资误判",
+      "question": "公司未来是否有独立上市计划？如果集团战略调整，如何保证东岚晶微的独立性和资源投入的持续性？",
+      "why_unresolved": "集团孵化项目存在独立性风险。若公司长期依赖集团资源，估值可能被高估。",
+      "impact_level": "high"
+    }
+  ],
+  "tensions": [
+    "当前公司定位为“材料产品销售+工艺包项目交付”，但BP叙事更接近“平台型技术公司”，存在定位与估值叙事落差。",
+    "BP强调“能耗下降70%-90%”等颠覆性数据，但缺乏大规模客户验证，存在技术叙事与商业化现实之间的张力。",
+    "公司背靠东岚集团，初期资源丰富，但独立性和长期发展天花板受集团战略约束，与“独立高增长公司”叙事存在张力。"
+  ],
+  "step1_adjustment_hints": {
+    "supported": [
+      "Step1判断该公司为“工艺替代”故事，而非“材料创新”故事，与行业校准一致。",
+      "Step1指出客户验证周期长、壁垒高，与行业常识相符。"
+    ],
+    "caution": [
+      "Step1对“能耗下降70%-90%”数据的质疑是合理的，需进一步验证。"
+    ],
+    "to_step4": []
+  },
+  "project_structure": {
+    "industry_tags": [
+      {
+        "tag": "advanced_materials",
+        "label": "新材料",
+        "confidence": "high",
+        "evidence": "命中关键词：材料、分子、催化剂、配方、原料、功能材料"
+      },
+      {
+        "tag": "new_energy",
+        "label": "新能源",
+        "confidence": "high",
+        "evidence": "命中关键词：新能源、锂电、电池、光伏"
+      },
+      {
+        "tag": "beauty_ingredients",
+        "label": "美妆/日化原料",
+        "confidence": "medium",
+        "evidence": "命中关键词：原料、配方"
+      },
+      {
+        "tag": "food_ingredients",
+        "label": "食品/营养原料",
+        "confidence": "low",
+        "evidence": "命中关键词：食品"
+      },
+      {
+        "tag": "ai_application",
+        "label": "AI应用",
+        "confidence": "low",
+        "evidence": "命中关键词：数据"
+      }
+    ],
+    "business_lines": [
+      {
+        "name": "项目制交付/场景解决方案",
+        "role": "current_business",
+        "status": "项目制落地/场景交付",
+        "revenue_status": "项目收入和毛利待确认",
+        "evidence": "命中关键词：项目、解决方案、适配",
+        "confidence": "medium"
+      },
+      {
+        "name": "美妆/日化原料",
+        "role": "current_business",
+        "status": "当前收入底盘",
+        "revenue_status": "已有收入但金额需确认",
+        "evidence": "命中关键词：原料、配方",
+        "confidence": "medium"
+      },
+      {
+        "name": "食品/营养原料",
+        "role": "growth_story",
+        "status": "增长业务",
+        "revenue_status": "收入基数和复购待确认",
+        "evidence": "命中关键词：食品、保健品、原料、成分",
+        "confidence": "high"
+      },
+      {
+        "name": "自动驾驶系统/云端调度平台",
+        "role": "supporting_capability",
+        "status": "支撑主业务的技术/平台能力",
+        "revenue_status": "可能作为技术服务或软件服务收费，需确认",
+        "evidence": "命中关键词：规划、控制",
+        "confidence": "medium"
+      },
+      {
+        "name": "AI研发平台",
+        "role": "supporting_capability",
+        "status": "研发工具/效率工具",
+        "revenue_status": "是否对外收费待确认",
+        "evidence": "命中关键词：预测",
+        "confidence": "low"
+      },
+      {
+        "name": "新能源材料/回收业务",
+        "role": "valuation_story",
+        "status": "远期故事/待验证业务",
+        "revenue_status": "是否已有收入待确认",
+        "evidence": "命中关键词：新能源、锂电、电池、电解液、材料、回收",
+        "confidence": "high"
+      }
+    ],
+    "business_model_hypotheses": [
+      {
+        "bucket_key": "project_delivery",
+        "bucket_name": "项目制交付型",
+        "role": "secondary",
+        "current_or_future": "current",
+        "confidence": "high",
+        "evidence": "命中关键词：项目、定制、解决方案、集成",
+        "why_it_matters": "如果收入依赖一个个项目交付，则需要重点验证标准化和毛利稳定性。"
+      },
+      {
+        "bucket_key": "data_ai_model",
+        "bucket_name": "数据/AI模型驱动型",
+        "role": "secondary",
+        "current_or_future": "narrative",
+        "confidence": "medium",
+        "evidence": "命中关键词：数据、预测",
+        "why_it_matters": "如果AI只是内部效率工具，则不应按AI平台公司估值；如果形成数据闭环，才可能构成壁垒。"
+      },
+      {
+        "bucket_key": "hardtech_commercialization",
+        "bucket_name": "硬科技商业化型",
+        "role": "secondary",
+        "current_or_future": "mixed",
+        "confidence": "high",
+        "evidence": "命中关键词：技术、研发、材料、中试",
+        "why_it_matters": "硬科技项目重点不是技术先进，而是能否稳定量产并被真实客户持续采购。"
+      },
+      {
+        "bucket_key": "government_industrial_landing",
+        "bucket_name": "政府/产业落地型",
+        "role": "secondary",
+        "current_or_future": "mixed",
+        "confidence": "medium",
+        "evidence": "命中关键词：政府、基金、落地",
+        "why_it_matters": "对政府基金而言，需判断项目是否能真实落地产值、税收、就业和产业协同。"
+      },
+      {
+        "bucket_key": "expansion_story",
+        "bucket_name": "多业务扩张/第二曲线型",
+        "role": "narrative",
+        "current_or_future": "future",
+        "confidence": "medium",
+        "evidence": "命中关键词：新能源、医药、食品",
+        "why_it_matters": "如果当前收入来自A业务，但估值故事来自B/C业务，需警惕扩张叙事。"
+      },
+      {
+        "bucket_key": "policy_driven",
+        "bucket_name": "政策驱动型",
+        "role": "risk",
+        "current_or_future": "mixed",
+        "confidence": "high",
+        "evidence": "命中关键词：政策、示范、新质生产力、国产替代",
+        "why_it_matters": "如果需求主要来自政策/补贴/示范项目，需验证政策退坡后的商业可持续性。"
+      },
+      {
+        "bucket_key": "team_credibility_story",
+        "bucket_name": "团队/背书叙事型",
+        "role": "risk",
+        "current_or_future": "narrative",
+        "confidence": "medium",
+        "evidence": "命中关键词：博士、实验室、专家",
+        "why_it_matters": "团队/背书需要验证是否转化为排他资源、成果转化或商业化能力。"
+      },
+      {
+        "bucket_key": "financing_valuation_story",
+        "bucket_name": "融资估值叙事型",
+        "role": "risk",
+        "current_or_future": "narrative",
+        "confidence": "low",
+        "evidence": "命中关键词：融资",
+        "why_it_matters": "需验证融资用途和估值逻辑是否匹配真实业务阶段。"
+      }
+    ],
+    "risk_buckets": [
+      {
+        "bucket_key": "project_delivery",
+        "bucket_name": "项目制交付型",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：定制、适配、验收",
+        "why_it_matters": "如果每个项目都需要定制，规模化后交付和毛利可能承压。"
+      },
+      {
+        "bucket_key": "policy_driven",
+        "bucket_name": "政策驱动型",
+        "risk_role": "risk",
+        "confidence": "high",
+        "evidence": "命中关键词：政策、政府、示范、新质生产力",
+        "why_it_matters": "如果需求由政策驱动，需要验证政策退坡后客户是否仍会付费。"
+      },
+      {
+        "bucket_key": "hardtech_commercialization",
+        "bucket_name": "硬科技商业化型",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：供应商、第三方",
+        "why_it_matters": "硬科技项目需要验证关键供应链、量产良率和工程化能力。"
+      },
+      {
+        "bucket_key": "customer_concentration",
+        "bucket_name": "客户集中风险",
+        "risk_role": "risk",
+        "confidence": "low",
+        "evidence": "命中关键词：头部客户",
+        "why_it_matters": "如果收入依赖少数大客户，公司议价权和收入稳定性可能较弱。"
+      },
+      {
+        "bucket_key": "expansion_story",
+        "bucket_name": "多业务扩张/第二曲线型",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：新能源、医药",
+        "why_it_matters": "多业务扩张可能是真增长，也可能只是扩大估值边界。"
+      },
+      {
+        "bucket_key": "team_credibility_story",
+        "bucket_name": "团队/背书叙事型",
+        "risk_role": "risk",
+        "confidence": "medium",
+        "evidence": "命中关键词：博士、实验室",
+        "why_it_matters": "背书需要验证是否真正转化为公司壁垒。"
+      },
+      {
+        "bucket_key": "financing_valuation_story",
+        "bucket_name": "融资估值叙事型",
+        "risk_role": "risk",
+        "confidence": "low",
+        "evidence": "命中关键词：融资",
+        "why_it_matters": "融资用途和估值逻辑可能与真实业务阶段不匹配。"
+      }
+    ],
+    "key_uncertainties": [
+      {
+        "uncertainty": "项目交付是否标准化，还是每个客户都需要大量定制？",
+        "why_it_matters": "决定公司能否规模化复制，以及毛利率是否会被交付成本侵蚀。",
+        "related_buckets": [
+          "project_delivery"
+        ],
+        "discriminating_questions": [
+          "一个新项目中有多少模块可以复用？",
+          "单个项目从签约到验收回款需要多久？",
+          "每个项目需要多少实施人员？",
+          "不同项目毛利率差异大不大？"
+        ]
+      },
+      {
+        "uncertainty": "AI/数据能力是核心壁垒，还是研发/交付效率工具？",
+        "why_it_matters": "如果AI只是内部工具，则不应按AI平台公司估值。",
+        "related_buckets": [
+          "data_ai_model"
+        ],
+        "discriminating_questions": [
+          "AI是否直接决定客户购买或产品性能？",
+          "AI相比传统方法带来什么量化提升？",
+          "数据是否独占并形成持续反馈闭环？",
+          "模型输出是否仍需要大量人工验证？"
+        ]
+      },
+      {
+        "uncertainty": "当前真实收入、增长业务和估值叙事是否错位？",
+        "why_it_matters": "如果当前收入来自小业务，但融资按平台/多行业故事估值，可能存在估值泡沫。",
+        "related_buckets": [
+          "expansion_story",
+          "financing_valuation_story"
+        ],
+        "discriminating_questions": [
+          "当前收入主要来自哪条业务线？",
+          "增长最快的业务线收入基数是多少？",
+          "估值主要依据当前收入还是未来平台故事？",
+          "新业务是否已有真实收入、复购和毛利？"
+        ]
+      },
+      {
+        "uncertainty": "客户需求是政策驱动，还是真实经济 ROI 驱动？",
+        "why_it_matters": "如果主要依赖政策/示范项目，政策退坡后收入可持续性存疑。",
+        "related_buckets": [
+          "policy_driven",
+          "government_industrial_landing"
+        ],
+        "discriminating_questions": [
+          "客户中有多少是纯商业ROI驱动？",
+          "如果没有补贴或政策要求，客户是否仍会采购？",
+          "客户是否有明确降本增效测算？",
+          "是否有非政策客户的复购案例？"
+        ]
+      },
+      {
+        "uncertainty": "团队/学术/名人背书是否真正转化为排他壁垒？",
+        "why_it_matters": "学历、奖项、名人、实验室背书本身不等于商业化能力。",
+        "related_buckets": [
+          "team_credibility_story"
+        ],
+        "discriminating_questions": [
+          "专家/实验室与公司的关系是全职、股东、顾问还是普通合作？",
+          "是否有排他性成果转化协议？",
+          "知识产权归属公司还是高校/实验室？",
+          "背书是否已经转化为产品、客户或收入？"
+        ]
+      }
+    ],
+    "structure_summary": "系统初步识别该项目涉及行业：新材料、新能源、美妆/日化原料；主要业务线包括：项目制交付/场景解决方案、美妆/日化原料、食品/营养原料；可能适用的投资逻辑包括：项目制交付型、数据/AI模型驱动型、硬科技商业化型。该识别仅作为后续分析入口，不代表最终判断。"
+  },
+  "raw_text": "{\n  \"selected_buckets\": [\n    \"商业模式与收入结构\",\n    \"产业链与价值层级\",\n    \"客户购买驱动\",\n    \"竞争格局与替代方案\",\n    \"关键成功要素\",\n    \"常见投资误判\"\n  ],\n  \"bucket_outputs\": [\n    {\n      \"bucket_key\": \"商业模式与收入结构\",\n      \"bucket_label\": \"商业模式与收入结构\",\n      \"point\": \"该公司当前商业模式本质是“材料产品销售+工艺包项目交付”，而非平台或订阅模式。\",\n      \"explanation\": \"BP中明确主营产品为特种分子筛、催化剂等材料，收入来源为产品销售（如电子特气专用分子筛、液相纯化分子筛等），并提及“协同客户完成从零到一的工艺包”项目制交付。未见订阅、平台抽成等持续收入模式。毛利结构上，BP宣称“成本约为精馏的50%”，暗示高毛利潜力，但需验证实际毛利率。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"high\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"产业链与价值层级\",\n      \"bucket_label\": \"产业链与价值层级\",\n      \"point\": \"该公司处于新材料产业链的中游（材料生产与工艺应用），而非上游原料或下游终端。\",\n      \"explanation\": \"产业链可分为：上游（硅铝原料、设备）、中游（分子筛/催化剂研发生产、工艺包设计）、下游（电子特气、溶剂、氢能等终端用户）。该公司聚焦中游，核心价值在于通过工艺替代（分子筛法替代精馏法）为下游降本增效。中游竞争激烈，价值高低取决于产品性能差异化和客户粘性。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"high\",\n      \"source_type\": \"common_sense\"\n    },\n    {\n      \"bucket_key\": \"客户购买驱动\",\n      \"bucket_label\": \"客户购买驱动\",\n      \"point\": \"客户核心购买驱动是“降本增效”和“国产替代”，属于刚需，但替换动力取决于实际验证数据。\",\n      \"explanation\": \"BP强调能耗下降70%-90%、成本为精馏的50%，这是直接的经济价值。同时，电子特气、高端溶剂等领域国产替代需求强烈。客户决策因素中，性能（纯度、选择性）和可靠性（认证、稳定性）优先于价格。若数据真实，替换动力强；但若缺乏大规模验证，客户可能观望。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"bp\"\n    },\n    {\n      \"bucket_key\": \"竞争格局与替代方案\",\n      \"bucket_label\": \"竞争格局与替代方案\",\n      \"point\": \"竞争格局为“国际巨头+国内上市公司+新进入者”并存，替代方案包括传统精馏工艺和其他吸附技术。\",\n      \"explanation\": \"主要竞争对手：国际巨头UOP、Zeochem，国内上市公司建龙微纳、中触媒等。替代方案：客户可继续使用精馏工艺，或采用其他吸附剂（如活性炭、硅胶）。该公司差异化在于“工艺替代”和“定制化服务”，但需证明其产品在特定应用场景中性能显著优于竞品。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"high\",\n      \"source_type\": \"common_sense\"\n    },\n    {\n      \"bucket_key\": \"关键成功要素\",\n      \"bucket_label\": \"关键成功要素\",\n      \"point\": \"关键成功要素是“客户验证案例+量产稳定性+集团资源协同”，而非单纯技术领先。\",\n      \"explanation\": \"在该行业，技术是基础，但商业化成功更依赖：1）头部客户验证案例（证明性能和经济性）；2）量产能力（良率、成本、供应链）；3）客户关系（认证周期长，集团背景可加速导入）。该公司背靠东岚集团，在初期资源获取上有优势，但独立性和长期竞争力仍需验证。\",\n      \"relation_to_step1\": \"support\",\n      \"certainty\": \"high\",\n      \"source_type\": \"common_sense\"\n    },\n    {\n      \"bucket_key\": \"常见投资误判\",\n      \"bucket_label\": \"常见投资误判\",\n      \"point\": \"投资人最容易高估“工艺替代”的通用性和可复制性，低估客户验证周期和量产难度。\",\n      \"explanation\": \"常见误判：1）将实验室性能数据直接外推至大规模量产；2）认为“能耗下降70%”就能自动转化为订单，忽略客户切换成本；3）将集团资源等同于公司自身壁垒，忽视独立发展风险。该公司BP中“能耗下降70%-90%”等数据缺乏第三方验证，需警惕。\",\n      \"relation_to_step1\": \"contradict\",\n      \"certainty\": \"medium\",\n      \"source_type\": \"common_sense\"\n    }\n  ],\n  \"publicly_resolvable\": [\n    {\n      \"bucket_key\": \"商业模式与收入结构\",\n      \"item\": \"当前收入是否主要来自材料产品销售，而非项目制服务？\",\n      \"current_conclusion\": \"是，BP显示主营产品为分子筛等材料，收入来自产品销售。\",\n      \"confidence\": \"high\"\n    },\n    {\n      \"bucket_key\": \"竞争格局与替代方案\",\n      \"item\": \"主要竞争对手是否包括UOP、建龙微纳等？\",\n      \"current_conclusion\": \"是，行业常识确认这些是主要玩家。\",\n      \"confidence\": \"high\"\n    }\n  ],\n  \"still_unresolved\": [\n    {\n      \"bucket_key\": \"客户购买驱动\",\n      \"question\": \"请提供至少2个已落地的头部客户案例，包括客户名称、应用场景、实际能耗/成本降低数据，以及客户出具的验收报告或采购订单。\",\n      \"why_unresolved\": \"BP中“能耗下降70%-90%”和“成本为精馏的50%”是核心价值主张，但缺乏第三方验证。若数据不实，整个商业逻辑崩塌。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"商业模式与收入结构\",\n      \"question\": \"2026年预计营收5000万，请拆解各业务板块（电子特气、液相、氢能等）的预期收入占比，并说明增长路径。\",\n      \"why_unresolved\": \"营收预测是估值基础，但BP未提供拆解。若电子特气占比过高，则客户集中风险大；若氢能占比高，则商业化阶段更早期。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"关键成功要素\",\n      \"question\": \"本轮融资5000万主要用于产线建设，请说明预计投产时间、达产产能、对应的营收贡献，以及当前良率和成本结构。\",\n      \"why_unresolved\": \"量产能力是商业化关键。若产线建设延迟或良率不达标，营收预测将无法实现。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"竞争格局与替代方案\",\n      \"question\": \"与UOP、建龙微纳等竞品相比，你们在电子特气、液相领域的具体性能指标（如纯度、选择性、寿命）有何量化优势？是否有第三方检测报告？\",\n      \"why_unresolved\": \"BP未提供与竞品的直接对比数据。若性能优势不显著，客户缺乏替换动力。\",\n      \"impact_level\": \"high\"\n    },\n    {\n      \"bucket_key\": \"常见投资误判\",\n      \"question\": \"公司未来是否有独立上市计划？如果集团战略调整，如何保证东岚晶微的独立性和资源投入的持续性？\",\n      \"why_unresolved\": \"集团孵化项目存在独立性风险。若公司长期依赖集团资源，估值可能被高估。\",\n      \"impact_level\": \"high\"\n    }\n  ],\n  \"tensions\": [\n    \"当前公司定位为“材料产品销售+工艺包项目交付”，但BP叙事更接近“平台型技术公司”，存在定位与估值叙事落差。\",\n    \"BP强调“能耗下降70%-90%”等颠覆性数据，但缺乏大规模客户验证，存在技术叙事与商业化现实之间的张力。\",\n    \"公司背靠东岚集团，初期资源丰富，但独立性和长期发展天花板受集团战略约束，与“独立高增长公司”叙事存在张力。\"\n  ],\n  \"step1_adjustment_hints\": {\n    \"supported\": [\n      \"Step1判断该公司为“工艺替代”故事，而非“材料创新”故事，与行业校准一致。\",\n      \"Step1指出客户验证周期长、壁垒高，与行业常识相符。\"\n    ],\n    \"caution\": [\n      \"Step1对“能耗下降70%-90%”数据的质疑是合理的，需进一步验证。\"\n    ],\n    \"to_step4\": []\n  }\n}"
+}
